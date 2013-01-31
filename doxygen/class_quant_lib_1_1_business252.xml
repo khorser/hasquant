@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_business252" kind="class" prot="public">
+    <compoundname>QuantLib::Business252</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_business252_1_1_impl" prot="private">QuantLib::Business252::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_business252_1ae7be8e19c46cf51cf61f4b107825c06f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Business252</definition>
+        <argsstring>(Calendar c=Brazil())</argsstring>
+        <name>Business252</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+          <declname>c</declname>
+          <defval><ref refid="class_quant_lib_1_1_brazil" kindref="compound">Brazil</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Business/252 day count convention. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1500">
+        <label>Business252</label>
+        <link refid="class_quant_lib_1_1_business252"/>
+        <childnode refid="1501" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1501">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1502">
+        <label>Business252</label>
+        <link refid="class_quant_lib_1_1_business252"/>
+        <childnode refid="1503" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1503">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp" bodystart="36" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_business252_1ae7be8e19c46cf51cf61f4b107825c06f" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>Business252</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" virt="non-virtual"><scope>QuantLib::Business252</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Business252</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" virt="non-virtual"><scope>QuantLib::Business252</scope><name>yearFraction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

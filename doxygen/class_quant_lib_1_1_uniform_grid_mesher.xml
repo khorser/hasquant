@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_uniform_grid_mesher" kind="class" prot="public">
+    <compoundname>QuantLib::UniformGridMesher</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FdmMesher</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_uniform_grid_mesher_1ac0e29ba443e48544494c7f32c043ca3d" prot="private" static="no" mutable="no">
+        <type>boost::scoped_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>boost::scoped_array&lt;Real&gt; dx_</definition>
+        <argsstring></argsstring>
+        <name>dx_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_uniform_grid_mesher_1a1ffb050911a38093f0d1074b3bf77ec5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; locations_</definition>
+        <argsstring></argsstring>
+        <name>locations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1a1c3a3750ddbd38e4002a88e878b5d3b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UniformGridMesher</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmLinearOpLayout &gt; &amp;index, const std::vector&lt; std::pair&lt; Real, Real &gt; &gt; &amp;boundaries)</argsstring>
+        <name>UniformGridMesher</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmLinearOpLayout &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
+          <declname>boundaries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ad6116d14d2287697638fee156cc1a829" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dplus</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;, Size direction) const </argsstring>
+        <name>dplus</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="40" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1a3b1a44b0b29d619d966246423e77346b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dminus</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;, Size direction) const </argsstring>
+        <name>dminus</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ac75f3b532910f0e8af46e5811fb37783" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real location</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iter, Size direction) const </argsstring>
+        <name>location</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="47" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_uniform_grid_mesher_1ab2fc59ff4ab60aa3c6e6f37c4171b005" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; locations</definition>
+        <argsstring>(Size direction) const </argsstring>
+        <name>locations</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="34" bodyend="57"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a3b1a44b0b29d619d966246423e77346b" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dminus</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ad6116d14d2287697638fee156cc1a829" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dplus</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ac0e29ba443e48544494c7f32c043ca3d" prot="private" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dx_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>FdmMesher</name></member>
+      <member refid="class_quant_lib_1_1_fdm_mesher_1a6b36f4c5ff72e78891a8a0debfe2de35" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>layout</name></member>
+      <member refid="class_quant_lib_1_1_fdm_mesher_1a755865a8f3fcb686b26718c57dbc4cef" prot="protected" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>layout_</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ac75f3b532910f0e8af46e5811fb37783" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>location</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ab2fc59ff4ab60aa3c6e6f37c4171b005" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>locations</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a1ffb050911a38093f0d1074b3bf77ec5" prot="private" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>locations_</name></member>
+      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a1c3a3750ddbd38e4002a88e878b5d3b2" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>UniformGridMesher</name></member>
+      <member refid="class_quant_lib_1_1_fdm_mesher_1ac2b15cf3ca5f5499e5306151207cf0c0" prot="public" virt="virtual"><scope>QuantLib::UniformGridMesher</scope><name>~FdmMesher</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

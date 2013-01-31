@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_ibor_coupon_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::IborCouponPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_black_ibor_coupon_pricer" prot="public" virt="non-virtual">BlackIborCouponPricer</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_ibor_coupon_pricer_1a3e7a8d3fd9aaecc2a833165743019ca3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
+        <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVol_</definition>
+        <argsstring></argsstring>
+        <name>capletVol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IborCouponPricer</definition>
+        <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
+        <name>IborCouponPricer</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <declname>v</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
+        <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVolatility</definition>
+        <argsstring>() const </argsstring>
+        <name>capletVolatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ad26418d5cb34209463153a8b64491999" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCapletVolatility</definition>
+        <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
+        <name>setCapletVolatility</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <declname>v</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="71" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>base pricer for capped/floored Ibor coupons </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7579">
+        <label>BlackIborCouponPricer</label>
+        <link refid="class_quant_lib_1_1_black_ibor_coupon_pricer"/>
+        <childnode refid="7575" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7578">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7576">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="7577" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7578" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7575">
+        <label>IborCouponPricer</label>
+        <link refid="class_quant_lib_1_1_ibor_coupon_pricer"/>
+        <childnode refid="7576" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7577">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7583">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7581">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="7582" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7583" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7580">
+        <label>IborCouponPricer</label>
+        <link refid="class_quant_lib_1_1_ibor_coupon_pricer"/>
+        <childnode refid="7581" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7582">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/couponpricer.hpp" bodystart="62" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>capletPrice</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>capletRate</name></member>
+      <member refid="class_quant_lib_1_1_ibor_coupon_pricer_1a3e7a8d3fd9aaecc2a833165743019ca3" prot="private" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>capletVol_</name></member>
+      <member refid="class_quant_lib_1_1_ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>capletVolatility</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>floorletPrice</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>floorletRate</name></member>
+      <member refid="class_quant_lib_1_1_ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>IborCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a67e3aa825e7a48e9ee9d33e36b1cfdbd" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::IborCouponPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::IborCouponPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_ibor_coupon_pricer_1ad26418d5cb34209463153a8b64491999" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>setCapletVolatility</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>swapletPrice</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" virt="pure-virtual"><scope>QuantLib::IborCouponPricer</scope><name>swapletRate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::IborCouponPricer</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::IborCouponPricer</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac65d2910ffc9a596d3cf548aef90d06a" prot="public" virt="virtual"><scope>QuantLib::IborCouponPricer</scope><name>~FloatingRateCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::IborCouponPricer</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::IborCouponPricer</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_japan_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::Japan::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_japan_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" bodystart="65" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_japan_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isWeekend</definition>
+        <argsstring>(Weekday) const </argsstring>
+        <name>isWeekend</name>
+        <param>
+          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_japan_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isBusinessDay</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>isBusinessDay</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="67"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8613">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="8612">
+        <label>Japan::Impl</label>
+        <childnode refid="8613" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8615">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="8614">
+        <label>Japan::Impl</label>
+        <childnode refid="8615" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/japan.hpp" bodystart="63" bodyend="68"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Japan::Impl</scope><name>addedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_japan_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::Japan::Impl</scope><name>isBusinessDay</name></member>
+      <member refid="class_quant_lib_1_1_japan_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" virt="non-virtual"><scope>QuantLib::Japan::Impl</scope><name>isWeekend</name></member>
+      <member refid="class_quant_lib_1_1_japan_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Japan::Impl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Japan::Impl</scope><name>removedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Japan::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

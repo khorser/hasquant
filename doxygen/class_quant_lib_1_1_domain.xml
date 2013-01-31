@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_domain" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Domain</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, bool &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bounded_domain" prot="public" virt="non-virtual">BoundedDomain</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_null_domain" prot="public" virt="non-virtual">NullDomain</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_universal_domain" prot="public" virt="non-virtual">UniversalDomain</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool includes</definition>
+        <argsstring>(Real x, Real y) const =0</argsstring>
+        <name>includes</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator()</definition>
+        <argsstring>(Real x, Real y)</argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Domain</definition>
+        <argsstring>()</argsstring>
+        <name>~Domain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>domain abstract lcass </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="34" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" virt="pure-virtual"><scope>QuantLib::Domain</scope><name>includes</name></member>
+      <member refid="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" virt="non-virtual"><scope>QuantLib::Domain</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" virt="virtual"><scope>QuantLib::Domain</scope><name>~Domain</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

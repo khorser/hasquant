@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_snapshot_condition" kind="class" prot="public">
+    <compoundname>QuantLib::FdmSnapshotCondition</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">StepCondition&lt; Array &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_snapshot_condition_1a457f33ba3cae0a866042833846c84a81" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>const Time t_</definition>
+        <argsstring></argsstring>
+        <name>t_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_snapshot_condition_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array values_</definition>
+        <argsstring></argsstring>
+        <name>values_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_snapshot_condition_1ab0d2d23e05d15e613a386d5bc64190c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmSnapshotCondition</definition>
+        <argsstring>(Time t)</argsstring>
+        <name>FdmSnapshotCondition</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_snapshot_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyTo</definition>
+        <argsstring>(Array &amp;a, Time t) const </argsstring>
+        <name>applyTo</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_snapshot_condition_1a8dc33007ac597d89370bd88ee8a88293" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time getTime</definition>
+        <argsstring>() const </argsstring>
+        <name>getTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_snapshot_condition_1abe712a06664d7c2e825e4f2ff8fdbac6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; getValues</definition>
+        <argsstring>() const </argsstring>
+        <name>getValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6178">
+        <label>FdmSnapshotCondition</label>
+        <childnode refid="6179" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6179">
+        <label>StepCondition&lt; Array &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6180">
+        <label>FdmSnapshotCondition</label>
+        <childnode refid="6181" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6181">
+        <label>StepCondition&lt; Array &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" bodystart="33" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1ab0d2d23e05d15e613a386d5bc64190c9" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>FdmSnapshotCondition</name></member>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a8dc33007ac597d89370bd88ee8a88293" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>getTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1abe712a06664d7c2e825e4f2ff8fdbac6" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>getValues</name></member>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a457f33ba3cae0a866042833846c84a81" prot="private" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>t_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a99a3a78defaeab5ede226107da665b96" prot="private" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>values_</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>~StepCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

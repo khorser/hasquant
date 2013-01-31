@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_hull_white" kind="class" prot="public">
+    <compoundname>QuantLib::HullWhite</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_vasicek" prot="public" virt="non-virtual">Vasicek</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_term_structure_consistent_model" prot="public" virt="non-virtual">TermStructureConsistentModel</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_hull_white_1_1_dynamics" prot="public">QuantLib::HullWhite::Dynamics</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter" prot="public">QuantLib::HullWhite::FittingParameter</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_hull_white_1a1863803e3d08a291d7dd59ab2242e748" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
+        <definition>Parameter phi_</definition>
+        <argsstring></argsstring>
+        <name>phi_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a5a576c1761c7ea4da9bb03a78b7ad5d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HullWhite</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a=0.1, Real sigma=0.01)</argsstring>
+        <name>HullWhite</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>termStructure</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+          <defval>0.1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+          <defval>0.01</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
+        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
+        <name>tree</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <briefdescription>
+<para>Return by default a trinomial recombining tree. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; dynamics</definition>
+        <argsstring>() const </argsstring>
+        <name>dynamics</name>
+        <reimplements refid="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplements>
+        <briefdescription>
+<para>returns the short-rate dynamics </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="154" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real discountBondOption</definition>
+        <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
+        <name>discountBondOption</name>
+        <reimplements refid="class_quant_lib_1_1_vasicek_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>maturity</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>bondMaturity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1af554e020436a6a21568f1149d61e2f54" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate convexityBias</definition>
+        <argsstring>(Real futurePrice, Time t, Time T, Real sigma, Real a)</argsstring>
+        <name>convexityBias</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>futurePrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>T</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Futures convexity bias (i.e., the difference between futures implied rate and forward rate) calculated as in G. Kirikos, D. Novak, &quot;Convexity Conundrums&quot;, Risk Magazine, March 1997.</para><para><simplesect kind="note"><para>t and T should be expressed in yearfraction using deposit day counter, F_quoted is futures&apos; market price. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="74"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void generateArguments</definition>
+        <argsstring>()</argsstring>
+        <name>generateArguments</name>
+        <reimplements refid="class_quant_lib_1_1_calibrated_model_1a2a6a0697363420cbf8673f8e61fe6d7e">generateArguments</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a01dd11c13189fcd655784ccec798c410" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real A</definition>
+        <argsstring>(Time t, Time T) const </argsstring>
+        <name>A</name>
+        <reimplements refid="class_quant_lib_1_1_vasicek_1acc2599494b8b8a5d2dc1413f4c438aa2">A</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>T</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Single-factor Hull-White (extended Vasicek) model class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying <ref refid="class_quant_lib_1_1_vasicek" kindref="compound">Vasicek</ref> model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7481">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7477">
+        <label>OneFactorModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_model"/>
+        <childnode refid="7478" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7483">
+        <label>TermStructureConsistentModel</label>
+        <link refid="class_quant_lib_1_1_term_structure_consistent_model"/>
+        <childnode refid="7481" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7480">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7478">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="7479" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7475">
+        <label>Vasicek</label>
+        <link refid="class_quant_lib_1_1_vasicek"/>
+        <childnode refid="7476" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7482">
+        <label>AffineModel</label>
+        <link refid="class_quant_lib_1_1_affine_model"/>
+        <childnode refid="7481" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7476">
+        <label>OneFactorAffineModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_affine_model"/>
+        <childnode refid="7477" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7482" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7479">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="7480" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7481" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7474">
+        <label>HullWhite</label>
+        <link refid="class_quant_lib_1_1_hull_white"/>
+        <childnode refid="7475" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7483" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7491">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7495">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="7487">
+        <label>OneFactorModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_model"/>
+        <childnode refid="7488" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7496">
+        <label>TermStructureConsistentModel</label>
+        <link refid="class_quant_lib_1_1_term_structure_consistent_model"/>
+        <childnode refid="7491" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7490">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7488">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="7489" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7485">
+        <label>Vasicek</label>
+        <link refid="class_quant_lib_1_1_vasicek"/>
+        <childnode refid="7486" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7493" relation="usage">
+          <edgelabel>sigma_</edgelabel>
+          <edgelabel>lambda_</edgelabel>
+          <edgelabel>b_</edgelabel>
+          <edgelabel>a_</edgelabel>
+        </childnode>
+      </node>
+      <node id="7492">
+        <label>AffineModel</label>
+        <link refid="class_quant_lib_1_1_affine_model"/>
+        <childnode refid="7491" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7486">
+        <label>OneFactorAffineModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_affine_model"/>
+        <childnode refid="7487" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7492" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7493">
+        <label>Parameter</label>
+        <link refid="class_quant_lib_1_1_parameter"/>
+        <childnode refid="7494" relation="usage">
+          <edgelabel>constraint_</edgelabel>
+        </childnode>
+        <childnode refid="7495" relation="usage">
+          <edgelabel>params_</edgelabel>
+        </childnode>
+      </node>
+      <node id="7489">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="7490" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7491" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7484">
+        <label>HullWhite</label>
+        <link refid="class_quant_lib_1_1_hull_white"/>
+        <childnode refid="7485" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7496" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7494">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="48" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_hull_white_1a01dd11c13189fcd655784ccec798c410" prot="protected" virt="virtual"><scope>QuantLib::HullWhite</scope><name>A</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1aeb6c2cfe0928889369fc49347418ce31" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>a</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1ad4439c51d60a45db28cbc47843a73171" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1ad1cf85afbb81add225d9d591923cae35" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>b</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1ab9dc25c5b0470f0c58aa93e4a96341ab" prot="protected" virt="virtual"><scope>QuantLib::HullWhite</scope><name>B</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a11a47769611407b76d3b56ec19497841" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>CalibratedModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ae5ca439e5825287fbaa19c875d832021" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1af554e020436a6a21568f1149d61e2f54" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>convexityBias</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_affine_model_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>discount</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_affine_model_1a6e6da6d0ea51cae74b4ec8903bf09f18" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>discountBond</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_affine_model_1aa260e038c388bc1476369ebfcd750ca2" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>discountBond</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>discountBondOption</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>dynamics</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="virtual"><scope>QuantLib::HullWhite</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1a5a576c1761c7ea4da9bb03a78b7ad5d5" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>HullWhite</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a24cb1182953e872918829ca60b348e54" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>lambda</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a145abe699377e7ed7e4be80259b3cc49" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>lambda_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_affine_model_1a7ba76488a8dafa032560538843a5737f" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>OneFactorAffineModel</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1a9063908949ff755f1a8ac0562b05d6a0" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>OneFactorModel</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::HullWhite</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::HullWhite</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1a1863803e3d08a291d7dd59ab2242e748" prot="private" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>phi_</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a21cb0313d759e9d26706f81f8a17d98c" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>r0_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8705485af58de6eb300e980a627a0be0" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>shortRateEndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>ShortRateModel</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a78bca11664a7d403bde6a9842f72ae61" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>sigma</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>sigma_</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>termStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>TermStructureConsistentModel</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>tree</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1ad3ace61536533987a5945b8f640b56ba" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite</scope><name>Vasicek</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1aa58d01bd47bbd015e07402677e91d39e" prot="public" virt="virtual"><scope>QuantLib::HullWhite</scope><name>~OneFactorModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

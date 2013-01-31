@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_european_path_multi_path_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::EuropeanPathMultiPathPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a0cacd4870c3cc9f19211ca5c7ec177e9" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PathPayoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a9584b8ba9709f6a9559dbc9d2df9b808" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; timePositions_</definition>
+        <argsstring></argsstring>
+        <name>timePositions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a622edfbc9c32032e94fe333cc06e722e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;Handle&lt;YieldTermStructure&gt; &gt; forwardTermStructures_</definition>
+        <argsstring></argsstring>
+        <name>forwardTermStructures_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a795cf527bfd996d44c6654f2e63365ce" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array discounts_</definition>
+        <argsstring></argsstring>
+        <name>discounts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_european_path_multi_path_pricer_1a30a0963d0a5fde46af5d2b7f8d7ea176" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EuropeanPathMultiPathPricer</definition>
+        <argsstring>(boost::shared_ptr&lt; PathPayoff &gt; &amp;payoff, const std::vector&lt; Size &gt; &amp;timePositions, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;forwardTermStructures, const Array &amp;discounts)</argsstring>
+        <name>EuropeanPathMultiPathPricer</name>
+        <param>
+          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>timePositions</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <declname>forwardTermStructures</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>discounts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_european_path_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <declname>multiPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5287">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+      <node id="5286">
+        <label>EuropeanPathMultiPathPricer</label>
+        <childnode refid="5287" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5289">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+      <node id="5288">
+        <label>EuropeanPathMultiPathPricer</label>
+        <childnode refid="5289" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="90" bodyend="102"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a795cf527bfd996d44c6654f2e63365ce" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>discounts_</name></member>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a30a0963d0a5fde46af5d2b7f8d7ea176" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>EuropeanPathMultiPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a622edfbc9c32032e94fe333cc06e722e" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>forwardTermStructures_</name></member>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a0cacd4870c3cc9f19211ca5c7ec177e9" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a9584b8ba9709f6a9559dbc9d2df9b808" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>timePositions_</name></member>
+      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>~PathPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

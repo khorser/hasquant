@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_factorial" kind="class" prot="public">
+    <compoundname>QuantLib::Factorial</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a08a6c1c9fa512656b34c5b146a2c7786" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real get</definition>
+        <argsstring>(Natural n)</argsstring>
+        <name>get</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a521d12fb2a1218b7b4bf59b1bcabb767" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real ln</definition>
+        <argsstring>(Natural n)</argsstring>
+        <name>ln</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a9e05bb75a771251a38bb1e7f2d324271" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Factorial</definition>
+        <argsstring>()</argsstring>
+        <name>Factorial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Factorial numbers calculator </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000035"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" bodystart="35" bodyend="41"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_factorial_1a9e05bb75a771251a38bb1e7f2d324271" prot="private" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>Factorial</name></member>
+      <member refid="class_quant_lib_1_1_factorial_1a08a6c1c9fa512656b34c5b146a2c7786" prot="public" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>get</name></member>
+      <member refid="class_quant_lib_1_1_factorial_1a521d12fb2a1218b7b4bf59b1bcabb767" prot="public" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>ln</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

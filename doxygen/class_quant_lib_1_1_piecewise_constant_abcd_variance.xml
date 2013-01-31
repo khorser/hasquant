@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_piecewise_constant_abcd_variance" kind="class" prot="public">
+    <compoundname>QuantLib::PiecewiseConstantAbcdVariance</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">PiecewiseConstantVariance</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; variances_</definition>
+        <argsstring></argsstring>
+        <name>variances_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1ab5a2bba5768f739b1df4c1a68261b39b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; volatilities_</definition>
+        <argsstring></argsstring>
+        <name>volatilities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; rateTimes_</definition>
+        <argsstring></argsstring>
+        <name>rateTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a04b890f917032156f955c80d329dbd80" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real c_</definition>
+        <argsstring></argsstring>
+        <name>c_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a260091718af93fbcb88cdd51b7d6aa00" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real d_</definition>
+        <argsstring></argsstring>
+        <name>d_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a5afd59507a6e218ee9b4d8c03551fe05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseConstantAbcdVariance</definition>
+        <argsstring>(Real a, Real b, Real c, Real d, Size resetIndex, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
+        <name>PiecewiseConstantAbcdVariance</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>resetIndex</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1afc3a5849e84e0173735de0514c2ea883" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Real&gt;&amp; variances</definition>
+        <argsstring>() const </argsstring>
+        <name>variances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a326aa467e2ebd85ca3a044165c952077" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Real&gt;&amp; volatilities</definition>
+        <argsstring>() const </argsstring>
+        <name>volatilities</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; rateTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>rateTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_abcd_variance_1afb0afbeec8ae1d3bd532df06ad86b027" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void getABCD</definition>
+        <argsstring>(Real &amp;a, Real &amp;b, Real &amp;c, Real &amp;d) const </argsstring>
+        <name>getABCD</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/piecewiseconstantabcdvariance.hpp" bodystart="30" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a04b890f917032156f955c80d329dbd80" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>c_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a260091718af93fbcb88cdd51b7d6aa00" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>d_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1afb0afbeec8ae1d3bd532df06ad86b027" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>getABCD</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a5afd59507a6e218ee9b4d8c03551fe05" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>PiecewiseConstantAbcdVariance</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>rateTimes</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_variance_1a42970b6f13f76c5b40bafa7a102c47da" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>totalVariance</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_variance_1a945196031994b5a588947cffdd9d8416" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>totalVolatility</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_variance_1a56fbd184988a6e363d9238dec4044361" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1afc3a5849e84e0173735de0514c2ea883" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>variances</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a5e6a6ce748d7b860ae24fc1f1e331e00" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>variances_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1a326aa467e2ebd85ca3a044165c952077" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>volatilities</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_abcd_variance_1ab5a2bba5768f739b1df4c1a68261b39b" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>volatilities_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_variance_1a5b256026fd5b2517137c2bf68886410e" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_variance_1a22503e6f07e55d69923990e0e04f69df" prot="public" virt="virtual"><scope>QuantLib::PiecewiseConstantAbcdVariance</scope><name>~PiecewiseConstantVariance</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

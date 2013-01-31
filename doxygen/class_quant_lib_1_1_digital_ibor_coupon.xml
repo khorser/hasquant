@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_digital_ibor_coupon" kind="class" prot="public">
+    <compoundname>QuantLib::DigitalIborCoupon</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_digital_coupon" prot="public" virt="non-virtual">DigitalCoupon</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_ibor_coupon_1ac042717d999581a57f2c05266c996dbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DigitalIborCoupon</definition>
+        <argsstring>(const boost::shared_ptr&lt; IborCoupon &gt; &amp;underlying, Rate callStrike=Null&lt; Rate &gt;(), Position::Type callPosition=Position::Long, bool isCallATMIncluded=false, Rate callDigitalPayoff=Null&lt; Rate &gt;(), Rate putStrike=Null&lt; Rate &gt;(), Position::Type putPosition=Position::Long, bool isPutATMIncluded=false, Rate putDigitalPayoff=Null&lt; Rate &gt;(), const boost::shared_ptr&lt; DigitalReplication &gt; &amp;replication=boost::shared_ptr&lt; DigitalReplication &gt;())</argsstring>
+        <name>DigitalIborCoupon</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_coupon" kindref="compound">IborCoupon</ref> &gt; &amp;</type>
+          <declname>underlying</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>callStrike</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>Position::Type</type>
+          <declname>callPosition</declname>
+          <defval>Position::Long</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isCallATMIncluded</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>callDigitalPayoff</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>putStrike</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>Position::Type</type>
+          <declname>putPosition</declname>
+          <defval>Position::Long</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isPutATMIncluded</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>putDigitalPayoff</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>
+          <declname>replication</declname>
+          <defval>boost::shared_ptr&lt; DigitalReplication &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Ibor rate coupon with digital digital call/put option. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3752">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3753" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3753">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3754">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3749">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="3750" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3754" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3747">
+        <label>DigitalIborCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_ibor_coupon"/>
+        <childnode refid="3748" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3751">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="3752" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3750">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="3751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3748">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="3749" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3760">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3761" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3761">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3763">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3757">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="3758" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3763" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3764" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3762">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="3755">
+        <label>DigitalIborCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_ibor_coupon"/>
+        <childnode refid="3756" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3764">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="3759">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="3760" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3758">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="3759" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3762" relation="usage">
+          <edgelabel>refPeriodEnd_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+          <edgelabel>accrualEndDate_</edgelabel>
+          <edgelabel>accrualStartDate_</edgelabel>
+          <edgelabel>refPeriodStart_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3756">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="3757" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitaliborcoupon.hpp" bodystart="36" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualEndDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1ab871d5b910c9a7426056d7dc4660d5d4" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualEndDate_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualPeriod</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualStartDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a7db0f13993a640aa7f0d594e71cd4fb0" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accrualStartDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accruedAmount</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accruedDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>accruedPeriod</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>adjustedFixing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aa33caba2dc88968d771e3a79070bd7a2" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callCsi_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a13fb727eb4d28c9caf4d4f787ef02718" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callDigitalPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ac75c26537453ce63f05003b32d308c90" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callDigitalPayoff_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a0e1fb31b709b06dd507860d67089f0b1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callLeftEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a722313ee7ee8f9e8d1642e5cd4ce60ab" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callOptionRate</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7b3cbbff69d1f8f7233205dc0b62349b" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callRightEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7ca129239e82cd87ca9b6f08da17f4c8" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callStrike</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7f5c314683cbb54c47b16866eab8fb1d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>callStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>convexityAdjustment</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a119ba767531cbaa8a9eb9e1b9d5bac72" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>convexityAdjustmentImpl</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>Coupon</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a6048038f1c6804ba2dc7bc2b3404cf83" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>DigitalCoupon</name></member>
+      <member refid="class_quant_lib_1_1_digital_ibor_coupon_1ac042717d999581a57f2c05266c996dbc" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>DigitalIborCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>fixingDate</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>fixingDays</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a7b5758dc357368c9bcb7920c66084351" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>fixingDays_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>FloatingRateCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>gearing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a89386edb14c735d40c878ae6a68d5484" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasCall</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a934d869cdebc40353a5b3f9d32c58ea1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasCallStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8f1c4b46fc4b720e7378e4cb1bee6c0b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasCollar</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8744c654cd818c3e5a7b8a919229832f" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasPut</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a609a054082b446fcc12c43b17c1566d3" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>hasPutStrike_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab36c19ec4146edfb3995d21524eec75a" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>indexFixing</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a67f817c1b667ee61371f64684662bd7d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isCallATMIncluded_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a814712da06f54990b8a79b2de0d55010" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isCallCashOrNothing_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isInArrears</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a25f8da0f6e04b43219b0a3adc3b546a2" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isInArrears_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1afcfdb4e0823b4971d94ac7bf8a84ee70" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isLongCall</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aa152a190acf785f398d8c5a0b82de02c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isLongPut</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a73c3824ad5f51c965365c5b37c3894e1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isPutATMIncluded_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a512cba5740e82c1b51c95811d371b4a9" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>isPutCashOrNothing_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::DigitalIborCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::DigitalIborCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a292ad9c54719780e61282ddeeac02410" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>price</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>pricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3b075e34ab824af88d259d676650670a" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>pricer_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aee3bd60ba173d0b1023bea0209a16f14" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putCsi_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a98ec6b9db0a40653c9d5c36b272948bf" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putDigitalPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a3da18fe716416715c8c43eafeb6de048" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putDigitalPayoff_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1acb4e266831e0a75b7bc719ca9665cb28" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putLeftEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1d04cfdd9d0c187adb76ac5f129b164d" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putOptionRate</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ad0b7aeaf2e9a1d51917b95669dd917f6" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putRightEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ab42db3671367ec99c6e0099ed1be6f0c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putStrike</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ab6787bf490f0f234ee2c81d16b12347d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>putStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>rate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>referencePeriodEnd</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>referencePeriodStart</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a662e5b434a5da06dcc6b453780a18a52" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>refPeriodEnd_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a98fabc993511982e34098f058a23792b" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>refPeriodStart_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aab6cebbb5dcd43e84bd6d3b5f0c489a1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>replicationType_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>setPricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>spread</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1db4a23ccbe6bf105c49a94b464649ac" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>underlying_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::DigitalIborCoupon</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

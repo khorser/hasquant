@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_constant_parameter_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::ConstantParameter::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_parameter_1_1_impl" prot="public" virt="non-virtual">Parameter::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_constant_parameter_1_1_impl_1a73f1b9e59f8e3e079031f1c93118da66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;params, Time) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="75" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2489">
+        <label>ConstantParameter::Impl</label>
+        <childnode refid="2490" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2490">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2491">
+        <label>ConstantParameter::Impl</label>
+        <childnode refid="2492" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2492">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="73" bodyend="78"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_constant_parameter_1_1_impl_1a73f1b9e59f8e3e079031f1c93118da66" prot="public" virt="non-virtual"><scope>QuantLib::ConstantParameter::Impl</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::ConstantParameter::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

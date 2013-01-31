@@ -1,0 +1,309 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op" kind="class" prot="public">
+    <compoundname>QuantLib::FdmKlugeExtOUOp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FdmLinearOpComposite</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
+        <argsstring></argsstring>
+        <name>mesher_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1af006f735a20172e3270200865bb4f05d" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; kluge_</definition>
+        <argsstring></argsstring>
+        <name>kluge_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a17d01b48e15925b5924626d1106f1405" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; extOU_</definition>
+        <argsstring></argsstring>
+        <name>extOU_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
+        <argsstring></argsstring>
+        <name>rTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" static="no" mutable="no">
+        <type>const FdmBoundaryConditionSet</type>
+        <definition>const FdmBoundaryConditionSet bcSet_</definition>
+        <argsstring></argsstring>
+        <name>bcSet_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1aab054b5ea2257fd3d0b838c3146b031d" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op" kindref="compound">FdmExtOUJumpOp</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmExtOUJumpOp&gt; klugeOp_</definition>
+        <argsstring></argsstring>
+        <name>klugeOp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a7c506e612bc53209c1b6a065523f9781" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmExtendedOrnsteinUhlenbackOp &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmExtendedOrnsteinUhlenbackOp&gt; ouOp_</definition>
+        <argsstring></argsstring>
+        <name>ouOp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ab34235771f6460dc69ebe21ba2a73575" prot="private" static="no" mutable="no">
+        <type>const NinePointLinearOp</type>
+        <definition>const NinePointLinearOp corrMap_</definition>
+        <argsstring></argsstring>
+        <name>corrMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6196d15718e60a26804ca495e0bff78a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmKlugeExtOUOp</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; KlugeExtOUProcess &gt; &amp;klugeOUProcess, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, const FdmBoundaryConditionSet &amp;bcSet, Size integroIntegrationOrder)</argsstring>
+        <name>FdmKlugeExtOUOp</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
+          <declname>mesher</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt; &amp;</type>
+          <declname>klugeOUProcess</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>rTS</declname>
+        </param>
+        <param>
+          <type>const FdmBoundaryConditionSet &amp;</type>
+          <declname>bcSet</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>integroIntegrationOrder</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time t1, Time t2)</argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_mixed</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply_mixed</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_direction</definition>
+        <argsstring>(Size direction, const Array &amp;r) const </argsstring>
+        <name>apply_direction</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; solve_splitting</definition>
+        <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
+        <name>solve_splitting</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; preconditioner</definition>
+        <argsstring>(const Array &amp;r, Real s) const </argsstring>
+        <name>preconditioner</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="83"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class describes a correlated Kluge - extended Ornstein-Uhlenbeck process governed by <formula id="133">\[ \begin{array}{rcl} P_t &amp;=&amp; \exp(p_t + X_t + Y_t) \\ dX_t &amp;=&amp; -\alpha X_tdt + \sigma_x dW_t^x \\ dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J) &amp;=&amp; \eta e^{-\eta J} \\ G_t &amp;=&amp; \exp(g_t + U_t) \\ dU_t &amp;=&amp; -\kappa U_tdt + \sigma_udW_t^u \\ \rho &amp;=&amp; \mathrm{corr} (dW_t^x, dW_t^u) \end{array} \]</formula></para><para>References: Kluge, Timo L., 2008. Pricing Swing Options and other Electricity Derivatives, <ulink url="http://eprints.maths.ox.ac.uk/246/1/kluge.pdf">http://eprints.maths.ox.ac.uk/246/1/kluge.pdf</ulink></para><para><ulink url="http://spanderen.de/2011/06/13/vpp-pricing-i-stochastic-processes-partial-integro-differential-equation/">http://spanderen.de/2011/06/13/vpp-pricing-i-stochastic-processes-partial-integro-differential-equation/</ulink> </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmklugeextouop.hpp" bodystart="64" bodyend="98"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>apply_direction</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>apply_mixed</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>bcSet_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ab34235771f6460dc69ebe21ba2a73575" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>corrMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a17d01b48e15925b5924626d1106f1405" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>extOU_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6196d15718e60a26804ca495e0bff78a" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>FdmKlugeExtOUOp</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1af006f735a20172e3270200865bb4f05d" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>kluge_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1aab054b5ea2257fd3d0b838c3146b031d" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>klugeOp_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>mesher_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a7c506e612bc53209c1b6a065523f9781" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>ouOp_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>preconditioner</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>rTS_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>solve_splitting</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmKlugeExtOUOp</scope><name>~FdmLinearOp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

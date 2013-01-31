@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_compound_option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::CompoundOption::arguments</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_asset_option" kindref="compound">OneAssetOption</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;OneAssetOption&gt; motherOption</definition>
+        <argsstring></argsstring>
+        <name>motherOption</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_compound_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="53" bodyend="57"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" virt="non-virtual"><scope>QuantLib::CompoundOption::arguments</scope><name>motherOption</name></member>
+      <member refid="class_quant_lib_1_1_compound_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CompoundOption::arguments</scope><name>validate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

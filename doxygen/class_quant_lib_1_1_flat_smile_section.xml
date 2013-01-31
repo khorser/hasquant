@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_flat_smile_section" kind="class" prot="public">
+    <compoundname>QuantLib::FlatSmileSection</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="non-virtual">SmileSection</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>SmileSection interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>minStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>maxStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real atmLevel</definition>
+        <argsstring>() const </argsstring>
+        <name>atmLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="65" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_smile_section_1afb977a806da7549be85871860f938568" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility vol_</definition>
+        <argsstring></argsstring>
+        <name>vol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_smile_section_1a6c68e01ed1c69b74a3e4e4632dae9945" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real atmLevel_</definition>
+        <argsstring></argsstring>
+        <name>atmLevel_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aab05bc4fef9d8582e5aba84f89ba9a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FlatSmileSection</definition>
+        <argsstring>(const Date &amp;d, Volatility vol, const DayCounter &amp;dc, const Date &amp;referenceDate=Date(), Real atmLevel=Null&lt; Rate &gt;())</argsstring>
+        <name>FlatSmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <declname>vol</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>atmLevel</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FlatSmileSection</definition>
+        <argsstring>(Time exerciseTime, Volatility vol, const DayCounter &amp;dc, Real atmLevel=Null&lt; Rate &gt;())</argsstring>
+        <name>FlatSmileSection</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>exerciseTime</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <declname>vol</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>atmLevel</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1a513cb927b3a9265140701171549bf3eb" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatilityImpl</definition>
+        <argsstring>(Rate) const </argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6447">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6445">
+        <label>FlatSmileSection</label>
+        <childnode refid="6446" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6448">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6446">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="6447" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6448" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6451">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6449">
+        <label>FlatSmileSection</label>
+        <childnode refid="6450" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6452">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6450">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="6451" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6452" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/flatsmilesection.hpp" bodystart="33" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>atmLevel</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1a6c68e01ed1c69b74a3e4e4632dae9945" prot="private" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>atmLevel_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>exerciseDate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>exerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1aab05bc4fef9d8582e5aba84f89ba9a4d" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>FlatSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>FlatSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>initializeExerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FlatSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FlatSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="protected" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>varianceImpl</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1afb977a806da7549be85871860f938568" prot="private" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>vol_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_flat_smile_section_1a513cb927b3a9265140701171549bf3eb" prot="protected" virt="non-virtual"><scope>QuantLib::FlatSmileSection</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" virt="virtual"><scope>QuantLib::FlatSmileSection</scope><name>~SmileSection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

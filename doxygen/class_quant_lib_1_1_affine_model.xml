@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_affine_model" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::AffineModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_g2" prot="public" virt="non-virtual">G2</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_libor_forward_model" prot="public" virt="non-virtual">LiborForwardModel</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_affine_model" prot="public" virt="non-virtual">OneFactorAffineModel</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1ad70c7f05240b55443c045ba1d209f829" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>virtual DiscountFactor discount</definition>
+        <argsstring>(Time t) const =0</argsstring>
+        <name>discount</name>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_1ae85d814b067b54d8e1ea803a90a6db32">discount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_1ae85d814b067b54d8e1ea803a90a6db32">discount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_one_factor_affine_model_1ae85d814b067b54d8e1ea803a90a6db32">discount</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>Implied discount curve. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real discountBond</definition>
+        <argsstring>(Time now, Time maturity, Array factors) const =0</argsstring>
+        <name>discountBond</name>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_1a1324bc7ce72e493fb4aa734a4cb6ec85">discountBond</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_1a6e6da6d0ea51cae74b4ec8903bf09f18">discountBond</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_one_factor_affine_model_1a6e6da6d0ea51cae74b4ec8903bf09f18">discountBond</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>now</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>maturity</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+          <declname>factors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real discountBondOption</definition>
+        <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const =0</argsstring>
+        <name>discountBondOption</name>
+        <reimplementedby refid="class_quant_lib_1_1_vasicek_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49">discountBondOption</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49">discountBondOption</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_1a0b47448ed1ba48ac5138854aed3f1d49">discountBondOption</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_1a0b47448ed1ba48ac5138854aed3f1d49">discountBondOption</reimplementedby>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>maturity</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>bondMaturity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Affine model class. </para>    </briefdescription>
+    <detaileddescription>
+<para>Base class for analytically tractable models. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="88">
+        <label>LiborForwardModel</label>
+        <link refid="class_quant_lib_1_1_libor_forward_model"/>
+        <childnode refid="85" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>G2</label>
+        <link refid="class_quant_lib_1_1_g2"/>
+        <childnode refid="85" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="86">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="92">
+        <label>Vasicek</label>
+        <link refid="class_quant_lib_1_1_vasicek"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>AffineModel</label>
+        <link refid="class_quant_lib_1_1_affine_model"/>
+        <childnode refid="86" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>OneFactorAffineModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_affine_model"/>
+        <childnode refid="85" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="93">
+        <label>HullWhite</label>
+        <link refid="class_quant_lib_1_1_hull_white"/>
+        <childnode refid="92" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="91">
+        <label>ExtendedCoxIngersollRoss</label>
+        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross"/>
+        <childnode refid="90" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="90">
+        <label>CoxIngersollRoss</label>
+        <link refid="class_quant_lib_1_1_cox_ingersoll_ross"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="95">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="94">
+        <label>AffineModel</label>
+        <link refid="class_quant_lib_1_1_affine_model"/>
+        <childnode refid="95" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="43" bodyend="56"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_affine_model_1ad70c7f05240b55443c045ba1d209f829" prot="public" virt="pure-virtual"><scope>QuantLib::AffineModel</scope><name>discount</name></member>
+      <member refid="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1" prot="public" virt="pure-virtual"><scope>QuantLib::AffineModel</scope><name>discountBond</name></member>
+      <member refid="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5" prot="public" virt="pure-virtual"><scope>QuantLib::AffineModel</scope><name>discountBondOption</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::AffineModel</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::AffineModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::AffineModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::AffineModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::AffineModel</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

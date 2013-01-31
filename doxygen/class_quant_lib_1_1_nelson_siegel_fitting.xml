@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_nelson_siegel_fitting" kind="class" prot="public">
+    <compoundname>QuantLib::NelsonSiegelFitting</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" prot="public" virt="non-virtual">FittedBondDiscountCurve::FittingMethod</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1a6e61366712a43ae31f6cea6118f98bf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NelsonSiegelFitting</definition>
+        <argsstring>()</argsstring>
+        <name>NelsonSiegelFitting</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
+        <definition>std::auto_ptr&lt;FittedBondDiscountCurve::FittingMethod&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
+        <briefdescription>
+<para>clone of the current object </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <briefdescription>
+<para>total number of coefficients to fit/solve for </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discountFunction</definition>
+        <argsstring>(const Array &amp;x, Time t) const </argsstring>
+        <name>discountFunction</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a">discountFunction</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>derived classes must set this </para>        </briefdescription>
+        <detaileddescription>
+<para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Nelson-Siegel fitting method. </para>    </briefdescription>
+    <detaileddescription>
+<para>Fits a discount function to the form <formula id="398">$ d(t) = \exp^{-r t}, $</formula> where the zero rate <formula id="399">$r$</formula> is defined as <formula id="400">\[ r \equiv c_0 + (c_0 + c_1)*(1 - exp^{-\kappa*t}/(\kappa t) - c_2 exp^{ - \kappa t}. \]</formula> See: Nelson, C. and A. Siegel (1985): &quot;Parsimonious modeling of yield
+       curves for US Treasury bills.&quot; NBER Working Paper Series, no 1594. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="10185">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+      </node>
+      <node id="10184">
+        <label>NelsonSiegelFitting</label>
+        <link refid="class_quant_lib_1_1_nelson_siegel_fitting"/>
+        <childnode refid="10185" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10195">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="10192" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10191" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10192">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10196">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="10194">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="10190">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="10191" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10192" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10193" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10194" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10188">
+        <label>FittedBondDiscountCurve</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve"/>
+        <childnode refid="10189" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10195" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10193">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="10191">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10189">
+        <label>YieldTermStructure</label>
+        <link refid="class_quant_lib_1_1_yield_term_structure"/>
+        <childnode refid="10190" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10187">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+        <childnode refid="10188" relation="usage">
+          <edgelabel>curve_</edgelabel>
+        </childnode>
+        <childnode refid="10196" relation="usage">
+          <edgelabel>solution_</edgelabel>
+          <edgelabel>guessSolution_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10186">
+        <label>NelsonSiegelFitting</label>
+        <link refid="class_quant_lib_1_1_nelson_siegel_fitting"/>
+        <childnode refid="10187" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="66" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" virt="virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa1fc1e61ea2ebf0998ac056c0f9fe236" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>constrainAtZero_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1accb31bbfa6ee2bfd5725524a5074d5b1" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>costFunction_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a0065b55394f4efe0207a7da835aea5fe" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>curve_</name></member>
+      <member refid="class_quant_lib_1_1_nelson_siegel_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" virt="virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>discountFunction</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a4332212ca948f9f0fd5dd8392e084977" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>FittingMethod</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a36b574df786ec85edcb9ae49b1c8f85d" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>guessSolution_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a02fd73d861ef2e4aabb38c0c9ff82947" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>init</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>minimumCostValue</name></member>
+      <member refid="class_quant_lib_1_1_nelson_siegel_fitting_1a6e61366712a43ae31f6cea6118f98bf2" prot="public" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>NelsonSiegelFitting</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>numberOfIterations</name></member>
+      <member refid="class_quant_lib_1_1_nelson_siegel_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" virt="virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a6d8cb9a904d7c3d52208120af8369e07" prot="public" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>solution</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa0b993e23f5b95d9594323745aadd2be" prot="protected" virt="non-virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>solution_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" virt="virtual"><scope>QuantLib::NelsonSiegelFitting</scope><name>~FittingMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

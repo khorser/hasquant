@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_region" kind="class" prot="public">
+    <compoundname>QuantLib::Region</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_australia_region" prot="public" virt="non-virtual">AustraliaRegion</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_e_u_region" prot="public" virt="non-virtual">EURegion</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_france_region" prot="public" virt="non-virtual">FranceRegion</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_generic_region" prot="public" virt="non-virtual">GenericRegion</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_u_k_region" prot="public" virt="non-virtual">UKRegion</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_u_s_region" prot="public" virt="non-virtual">USRegion</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
+    <innerclass refid="struct_quant_lib_1_1_region_1_1_data" prot="public">QuantLib::Region::Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_region_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="96" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_region_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; code</definition>
+        <argsstring>() const </argsstring>
+        <name>code</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="100" bodyend="102"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_region_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; Data &gt;</type>
+        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_region_1ab0affbdd5f40d4d9d7f4cd1fe6d816ca" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Region</definition>
+        <argsstring>()</argsstring>
+        <name>Region</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_region_1a2693369a6f504bb273441569e0487054" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const Region &amp;, const Region &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_region_1a91999f0d2a4817c3d44e56f8fa9b3a38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const Region &amp;, const Region &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="108" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> class, used for inflation applicability. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12750">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="12755">
+        <label>UKRegion</label>
+        <link refid="class_quant_lib_1_1_u_k_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12754">
+        <label>GenericRegion</label>
+        <link refid="class_quant_lib_1_1_generic_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12753">
+        <label>FranceRegion</label>
+        <link refid="class_quant_lib_1_1_france_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12751">
+        <label>AustraliaRegion</label>
+        <link refid="class_quant_lib_1_1_australia_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12756">
+        <label>USRegion</label>
+        <link refid="class_quant_lib_1_1_u_s_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12752">
+        <label>EURegion</label>
+        <link refid="class_quant_lib_1_1_e_u_region"/>
+        <childnode refid="12750" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="34" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_region_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::Region</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_region_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::Region</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_region_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::Region</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_region_1a91999f0d2a4817c3d44e56f8fa9b3a38" prot="public" virt="non-virtual"><scope>QuantLib::Region</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_region_1a2693369a6f504bb273441569e0487054" prot="public" virt="non-virtual"><scope>QuantLib::Region</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_region_1ab0affbdd5f40d4d9d7f4cd1fe6d816ca" prot="protected" virt="non-virtual"><scope>QuantLib::Region</scope><name>Region</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

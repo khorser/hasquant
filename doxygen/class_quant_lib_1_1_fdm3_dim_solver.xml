@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm3_dim_solver" kind="class" prot="public">
+    <compoundname>QuantLib::Fdm3DimSolver</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
+        <type>const FdmSolverDesc</type>
+        <definition>const FdmSolverDesc solverDesc_</definition>
+        <argsstring></argsstring>
+        <name>solverDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a3dbee12d35ac857fce84d2e13990b09b" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmLinearOpComposite &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmLinearOpComposite&gt; op_</definition>
+        <argsstring></argsstring>
+        <name>op_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmSnapshotCondition &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmSnapshotCondition&gt; thetaCondition_</definition>
+        <argsstring></argsstring>
+        <name>thetaCondition_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmStepConditionComposite &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmStepConditionComposite&gt; conditions_</definition>
+        <argsstring></argsstring>
+        <name>conditions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; x_</definition>
+        <argsstring></argsstring>
+        <name>x_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a71a6c36122b9ef005c4c52bda3890e24" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; y_</definition>
+        <argsstring></argsstring>
+        <name>y_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a585c5a1819f797bf907fe72e4bf14127" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; z_</definition>
+        <argsstring></argsstring>
+        <name>z_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; initialValues_</definition>
+        <argsstring></argsstring>
+        <name>initialValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1a3101c3e50272f7f95c80e21bff94043a" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>std::vector&lt;Matrix&gt; resultValues_</definition>
+        <argsstring></argsstring>
+        <name>resultValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm3_dim_solver_1abf34330deb3dd04afa3e9aae06995f53" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bicubic_spline" kindref="compound">BicubicSpline</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;BicubicSpline&gt; &gt; interpolation_</definition>
+        <argsstring></argsstring>
+        <name>interpolation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a78fb9edae255d65e5a8f536ec8e28893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Fdm3DimSolver</definition>
+        <argsstring>(const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc, const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;op)</argsstring>
+        <name>Fdm3DimSolver</name>
+        <param>
+          <type>const FdmSolverDesc &amp;</type>
+          <declname>solverDesc</declname>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a41bbadb8d3e97a883e1b7a70f27e4838" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real interpolateAt</definition>
+        <argsstring>(Real x, Real y, Rate z) const </argsstring>
+        <name>interpolateAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a97b5f5aa53e4698ceae478523bbf9359" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real thetaAt</definition>
+        <argsstring>(Real x, Real y, Rate z) const </argsstring>
+        <name>thetaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5991">
+        <label>Fdm3DimSolver</label>
+        <childnode refid="5992" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5993">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5992">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="5993" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5994" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5994">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5995">
+        <label>Fdm3DimSolver</label>
+        <childnode refid="5996" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5997">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5996">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="5997" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5998" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5998">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdm3dimsolver.hpp" bodystart="37" bodyend="59"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>conditions_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a78fb9edae255d65e5a8f536ec8e28893" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>Fdm3DimSolver</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>initialValues_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a41bbadb8d3e97a883e1b7a70f27e4838" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>interpolateAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1abf34330deb3dd04afa3e9aae06995f53" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>interpolation_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a3dbee12d35ac857fce84d2e13990b09b" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>op_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Fdm3DimSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Fdm3DimSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a3101c3e50272f7f95c80e21bff94043a" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>resultValues_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>solverDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a97b5f5aa53e4698ceae478523bbf9359" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>thetaAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>thetaCondition_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>x_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a71a6c36122b9ef005c4c52bda3890e24" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>y_</name></member>
+      <member refid="class_quant_lib_1_1_fdm3_dim_solver_1a585c5a1819f797bf907fe72e4bf14127" prot="private" virt="non-virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>z_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Fdm3DimSolver</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

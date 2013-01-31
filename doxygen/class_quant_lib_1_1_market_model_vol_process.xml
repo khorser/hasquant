@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_vol_process" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::MarketModelVolProcess</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_square_root_andersen" prot="public" virt="non-virtual">SquareRootAndersen</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a61d017960d55f63ae47efe0cafdef517" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MarketModelVolProcess</definition>
+        <argsstring>()</argsstring>
+        <name>MarketModelVolProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a0d022be0cc10ca0e82cc3e3d98bea81f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ~MarketModelVolProcess</definition>
+        <argsstring>()</argsstring>
+        <name>~MarketModelVolProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a30b3195890d4684837576013f12dc480" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size variatesPerStep</definition>
+        <argsstring>()=0</argsstring>
+        <name>variatesPerStep</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1aa7c096d1e12c20cfa755c0b3b033537a">variatesPerStep</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a252a356cbc3fa869736761ac3f3fdb0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size numberSteps</definition>
+        <argsstring>()=0</argsstring>
+        <name>numberSteps</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1a6d83557adbc933ab37b96a2bf545cb30">numberSteps</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1abe94347b5b3b934a1484879af7175e78" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void nextPath</definition>
+        <argsstring>()=0</argsstring>
+        <name>nextPath</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1aea9ac6ded607172edc58b33120d49305">nextPath</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a5889656dac25cff3583f7cf97b95d1f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real nextstep</definition>
+        <argsstring>(const std::vector&lt; Real &gt; &amp;variates)=0</argsstring>
+        <name>nextstep</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1a790819874b2d07cfe050f88b7986775d">nextstep</reimplementedby>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>variates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a855f726db559fa3b8d89c0fcc7b0d028" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real stepSd</definition>
+        <argsstring>() const =0</argsstring>
+        <name>stepSd</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1add0737fe4f812e1669a809fdfd35345c">stepSd</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1ab8e2637cfe42113a8a7386dd18277a26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>virtual const std::vector&lt;Real&gt;&amp; stateVariables</definition>
+        <argsstring>() const =0</argsstring>
+        <name>stateVariables</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1a3483b4e6c56f73fd3604d6e70e27300d">stateVariables</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_vol_process_1a80b1fcbda138cec23753e2c78a0b7008" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size numberStateVariables</definition>
+        <argsstring>() const =0</argsstring>
+        <name>numberStateVariables</name>
+        <reimplementedby refid="class_quant_lib_1_1_square_root_andersen_1a700d068edb6482e7e012d396979c5930">numberStateVariables</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Displaced diffusion LMM with uncorrelated vol process. Called &quot;Shifted BGM&quot; with Heston vol by Brace in &quot;Engineering BGM.&quot; Vol process is an external input. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9551">
+        <label>SquareRootAndersen</label>
+        <link refid="class_quant_lib_1_1_square_root_andersen"/>
+        <childnode refid="9550" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9550">
+        <label>MarketModelVolProcess</label>
+        <link refid="class_quant_lib_1_1_market_model_vol_process"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" bodystart="34" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a61d017960d55f63ae47efe0cafdef517" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>MarketModelVolProcess</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1abe94347b5b3b934a1484879af7175e78" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>nextPath</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a5889656dac25cff3583f7cf97b95d1f4" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>nextstep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a80b1fcbda138cec23753e2c78a0b7008" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>numberStateVariables</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a252a356cbc3fa869736761ac3f3fdb0f" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>numberSteps</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1ab8e2637cfe42113a8a7386dd18277a26" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>stateVariables</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a855f726db559fa3b8d89c0fcc7b0d028" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>stepSd</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a30b3195890d4684837576013f12dc480" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>variatesPerStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_vol_process_1a0d022be0cc10ca0e82cc3e3d98bea81f" prot="public" virt="virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>~MarketModelVolProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

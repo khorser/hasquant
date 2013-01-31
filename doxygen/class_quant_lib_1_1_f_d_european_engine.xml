@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_european_engine" kind="class" prot="public">
+    <compoundname>QuantLib::FDEuropeanEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">OneAssetOption::engine</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_f_d_vanilla_engine" prot="public" virt="non-virtual">FDVanillaEngine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>Scheme</declname>
+        <defname>Scheme</defname>
+        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_european_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
+        <definition>SampledCurve prices_</definition>
+        <argsstring></argsstring>
+        <name>prices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_european_engine_1a9da867b11905305bb6465102d0613f05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FDEuropeanEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
+        <name>FDEuropeanEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="46" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_european_engine_1a10873979f635888606e03f9cb2d8a096" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="61" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for European options using finite-differences. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000126"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against analytic results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5885">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+      </node>
+      <node id="5884">
+        <label>FDEuropeanEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_european_engine"/>
+        <childnode refid="5885" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5887">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+        <childnode refid="5888" relation="usage">
+          <edgelabel>intrinsicValues_</edgelabel>
+        </childnode>
+        <childnode refid="5889" relation="usage">
+          <edgelabel>exerciseDate_</edgelabel>
+        </childnode>
+        <childnode refid="5890" relation="usage">
+          <edgelabel>finiteDifferenceOperator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5890">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+        <childnode refid="5891" relation="usage">
+          <edgelabel>upperDiagonal_</edgelabel>
+          <edgelabel>lowerDiagonal_</edgelabel>
+          <edgelabel>temp_</edgelabel>
+          <edgelabel>diagonal_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5891">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="5888">
+        <label>SampledCurve</label>
+        <link refid="class_quant_lib_1_1_sampled_curve"/>
+      </node>
+      <node id="5889">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="5886">
+        <label>FDEuropeanEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_european_engine"/>
+        <childnode refid="5887" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdeuropeanengine.hpp" bodystart="43" bodyend="57"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>bc_type</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1af5ad104496c57fc44c7d043228540df3" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>BCs_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_european_engine_1a10873979f635888606e03f9cb2d8a096" prot="private" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a6d1498fa8ea69ec53974976d2de35a8e" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>center_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ae1dd3d1c5ca170640a5924b2ee281e41" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>ensureStrikeInGrid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a82043c5ad79ac1b7b969001c0fac6b01" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>exerciseDate_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_european_engine_1a9da867b11905305bb6465102d0613f05" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>FDEuropeanEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>FDVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a339a08d2d842659617830840971da35e" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>finiteDifferenceOperator_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a674e7ea5e90acab0262d251898ff792d" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>getResidualTime</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>grid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a7145182f52df597ca8aa4d5866217c1e" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>gridPoints_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aec873e3e9f589c5f7450e44c176bba53" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>initializeBoundaryConditions</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a78e07ab8f1efe95af3620d4515bee51d" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>initializeInitialCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a11960243546eb3fbfd156bb356521f0c" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>initializeOperator</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a8edf65769664d4ebdccdf4570511510f" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>intrinsicValues_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FDEuropeanEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FDEuropeanEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_european_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="private" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>prices_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a5a97f4313a9da6e57d378b06ffcb41a1" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>requiredGridValue_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aab2fa1494d4f4992fbfdbbc6df8328fc" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a95a121986a34191e5e0e79614f1291bc" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a962e8e99edd2b2802cb56cb06c572ec2" prot="protected" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aa3e79b584dea15108e9e47722b105e03" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>sMax_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ad8993bc76e2e718431695d0ad5844f76" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>sMin_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1afe877f42f51da049474a29ca152f6e38" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>timeDependent_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aaaf57b9fc05bb255d2d7f329fb445d5b" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>~FDVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::FDEuropeanEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

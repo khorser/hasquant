@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__instruments" kind="group">
+    <compoundname>instruments</compoundname>
+    <title>Financial instruments</title>
+    <innerclass refid="class_quant_lib_1_1_digital_coupon" prot="public">QuantLib::DigitalCoupon</innerclass>
+    <innerclass refid="class_quant_lib_1_1_callable_bond" prot="public">QuantLib::CallableBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_callable_fixed_rate_bond" prot="public">QuantLib::CallableFixedRateBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_callable_zero_coupon_bond" prot="public">QuantLib::CallableZeroCouponBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_commodity" prot="public">QuantLib::Commodity</innerclass>
+    <innerclass refid="class_quant_lib_1_1_energy_commodity" prot="public">QuantLib::EnergyCommodity</innerclass>
+    <innerclass refid="class_quant_lib_1_1_energy_future" prot="public">QuantLib::EnergyFuture</innerclass>
+    <innerclass refid="class_quant_lib_1_1_compound_option" prot="public">QuantLib::CompoundOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_margrabe_option" prot="public">QuantLib::MargrabeOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_pagoda_option" prot="public">QuantLib::PagodaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_variance_option" prot="public">QuantLib::VarianceOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_continuous_averaging_asian_option" prot="public">QuantLib::ContinuousAveragingAsianOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_discrete_averaging_asian_option" prot="public">QuantLib::DiscreteAveragingAsianOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_asset_swap" prot="public">QuantLib::AssetSwap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_barrier_option" prot="public">QuantLib::BarrierOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_basket_option" prot="public">QuantLib::BasketOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_bond" prot="public">QuantLib::Bond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_c_t_e_u" prot="public">QuantLib::CCTEU</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_t_p" prot="public">QuantLib::BTP</innerclass>
+    <innerclass refid="class_quant_lib_1_1_cms_rate_bond" prot="public">QuantLib::CmsRateBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_p_i_bond" prot="public">QuantLib::CPIBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fixed_rate_bond" prot="public">QuantLib::FixedRateBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_floating_rate_bond" prot="public">QuantLib::FloatingRateBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_zero_coupon_bond" prot="public">QuantLib::ZeroCouponBond</innerclass>
+    <innerclass refid="class_quant_lib_1_1_cap_floor" prot="public">QuantLib::CapFloor</innerclass>
+    <innerclass refid="class_quant_lib_1_1_cap" prot="public">QuantLib::Cap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_floor" prot="public">QuantLib::Floor</innerclass>
+    <innerclass refid="class_quant_lib_1_1_collar" prot="public">QuantLib::Collar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_cliquet_option" prot="public">QuantLib::CliquetOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_composite_instrument" prot="public">QuantLib::CompositeInstrument</innerclass>
+    <innerclass refid="class_quant_lib_1_1_credit_default_swap" prot="public">QuantLib::CreditDefaultSwap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_dividend_barrier_option" prot="public">QuantLib::DividendBarrierOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_dividend_vanilla_option" prot="public">QuantLib::DividendVanillaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_european_option" prot="public">QuantLib::EuropeanOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fixed_rate_bond_forward" prot="public">QuantLib::FixedRateBondForward</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward" prot="public">QuantLib::Forward</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_vanilla_option" prot="public">QuantLib::ForwardVanillaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yo_y_inflation_cap_floor" prot="public">QuantLib::YoYInflationCapFloor</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yo_y_inflation_cap" prot="public">QuantLib::YoYInflationCap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yo_y_inflation_floor" prot="public">QuantLib::YoYInflationFloor</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yo_y_inflation_collar" prot="public">QuantLib::YoYInflationCollar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_continuous_floating_lookback_option" prot="public">QuantLib::ContinuousFloatingLookbackOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_continuous_fixed_lookback_option" prot="public">QuantLib::ContinuousFixedLookbackOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_quanto_barrier_option" prot="public">QuantLib::QuantoBarrierOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_quanto_forward_vanilla_option" prot="public">QuantLib::QuantoForwardVanillaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_quanto_vanilla_option" prot="public">QuantLib::QuantoVanillaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_stock" prot="public">QuantLib::Stock</innerclass>
+    <innerclass refid="class_quant_lib_1_1_swap" prot="public">QuantLib::Swap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_swaption" prot="public">QuantLib::Swaption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_vanilla_option" prot="public">QuantLib::VanillaOption</innerclass>
+    <innerclass refid="class_quant_lib_1_1_vanilla_swap" prot="public">QuantLib::VanillaSwap</innerclass>
+    <innerclass refid="class_quant_lib_1_1_variance_swap" prot="public">QuantLib::VarianceSwap</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Since version 0.3.4, the <computeroutput>Instrument</computeroutput> class was reworked as shown in the following figure.</para><para><latexonly> 
+   \begin{center}
+   \includegraphics[width=14cm]{instrument}
+   \end{center}
+   </latexonly></para><para><htmlonly> 
+   &lt;center&gt;&lt;img src=&quot;instrument.png&quot; alt=&quot;UML diagram&quot;&gt;&lt;/center&gt;
+   </htmlonly></para><para>On the one hand, the checking of the expiration condition is now performed in a method <computeroutput>isExpired()</computeroutput> separated from the actual calculation, and a <computeroutput>setupExpired()</computeroutput> method is provided. The latter sets the NPV to 0.0 and can be extended in derived classes should any other results be returned.</para><para>On the other hand, the pricing-engine machinery previously contained in the Option class was moved upwards to the Instrument class. Also, the <computeroutput>setupEngine()</computeroutput> method was replaced by a <computeroutput>setupArguments(Arguments*)</computeroutput> method. This allows one to cleanly implement containment of instruments with code such as:</para><para><programlisting><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">FooArguments<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Arguments<sp/>{<sp/>...<sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Foo<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Instrument<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setupArguments(Arguments*);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FooOptionArguments<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>FooArguments<sp/>{<sp/>...<sp/>};</highlight></codeline>
+<codeline><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FooOption<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Option<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Foo<sp/>underlying_;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>setupArguments(Arguments*<sp/>args)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>underlying_.setupArguments(args);</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>set<sp/>the<sp/>option-specific<sp/>part</highlight><highlight class="normal"></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para><para>which was more difficult to write with <computeroutput>setupEngine()</computeroutput>.</para><para>Therefore, there are now two ways to inherit from <computeroutput>Instrument</computeroutput>, namely: <verbatim>-# implement the &lt;tt&gt;isExpired&lt;/tt&gt; method, and completely 
+   override the &lt;tt&gt;performCalculations&lt;/tt&gt; method so that 
+   it bypasses the pricing-engine machinery. If the class 
+   declared any other results beside &lt;tt&gt;NPV_&lt;/tt&gt; and 
+   &lt;tt&gt;errorEstimate_&lt;/tt&gt;, the &lt;tt&gt;setupExpired&lt;/tt&gt; method 
+   should also be extended so that those results are set to a
+   value suitable for an expired instrument. This was the migration
+   path taken for all instruments not previously deriving from
+   the &lt;tt&gt;Option&lt;/tt&gt; class.
+-# define suitable argument and result classes for the instrument
+   and implement the &lt;tt&gt;isExpired&lt;/tt&gt; and &lt;tt&gt;setupArguments&lt;/tt&gt;
+   methods, reusing the pricing-engine machinery provided by
+   the default &lt;tt&gt;performCalculations&lt;/tt&gt; method. The latter 
+   can be extended by first calling the default implementation
+   and then performing any additional tasks required by the 
+   instrument---most often, copying additional results from the
+   pricing engine results to the corresponding data members of
+   the instrument. As in the previous case, the &lt;tt&gt;setupExpired&lt;/tt&gt; 
+   method can be extended to account for such extra data members.</verbatim></para>    </detaileddescription>
+  </compounddef>
+</doxygen>

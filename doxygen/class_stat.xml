@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_stat" kind="class" prot="public">
+    <compoundname>Stat</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_generic_gaussian_statistics" prot="public" virt="non-virtual">GenericGaussianStatistics&lt; Stat &gt;</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="15646">
+        <label>Stat</label>
+      </node>
+      <node id="15647">
+        <label>GenericGaussianStatistics&lt; Stat &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_gaussian_statistics"/>
+        <childnode refid="15646" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="40"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

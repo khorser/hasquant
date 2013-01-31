@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_doubling_convergence_steps" kind="class" prot="public">
+    <compoundname>QuantLib::DoublingConvergenceSteps</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_doubling_convergence_steps_1a15799b509c68b53e020146a6a42c713c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size initialSamples</definition>
+        <argsstring>() const </argsstring>
+        <name>initialSamples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_doubling_convergence_steps_1a667e1a2c13a65ad09095b8cf7b800848" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size nextSamples</definition>
+        <argsstring>(Size current)</argsstring>
+        <name>nextSamples</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>current</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="36" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="33" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_doubling_convergence_steps_1a15799b509c68b53e020146a6a42c713c" prot="public" virt="non-virtual"><scope>QuantLib::DoublingConvergenceSteps</scope><name>initialSamples</name></member>
+      <member refid="class_quant_lib_1_1_doubling_convergence_steps_1a667e1a2c13a65ad09095b8cf7b800848" prot="public" virt="non-virtual"><scope>QuantLib::DoublingConvergenceSteps</scope><name>nextSamples</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

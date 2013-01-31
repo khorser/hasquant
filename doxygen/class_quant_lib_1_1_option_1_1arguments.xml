@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::Option::arguments</compoundname>
+    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_cds_option_1_1arguments" prot="public" virt="non-virtual">CdsOption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_cliquet_option_1_1arguments" prot="public" virt="non-virtual">CliquetOption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments" prot="public" virt="non-virtual">ConvertibleBond::option::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_margrabe_option_1_1arguments" prot="public" virt="non-virtual">MargrabeOption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_pagoda_option_1_1arguments" prot="public" virt="non-virtual">PagodaOption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_swaption_1_1arguments" prot="public" virt="non-virtual">Swaption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments" prot="public" virt="virtual">VanillaVPPOption::arguments</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments" prot="public" virt="non-virtual">WriterExtensibleOption::arguments</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
+        <argsstring></argsstring>
+        <name>payoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
+        <argsstring></argsstring>
+        <name>exercise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="60" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>basic option arguments </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11806">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_cds_option_1_1arguments"/>
+        <childnode refid="11805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11809">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
+        <childnode refid="11805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11807">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_cliquet_option_1_1arguments"/>
+        <childnode refid="11805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11808">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_margrabe_option_1_1arguments"/>
+        <childnode refid="11805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11810">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments"/>
+        <childnode refid="11805" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11805">
+        <label>Option::arguments</label>
+        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="57" bodyend="66"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>payoff</name></member>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::Option::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_multi_path_generator" kind="class" prot="public">
+    <compoundname>QuantLib::MultiPathGenerator</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class GSG</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_path_generator_1a0f7a5af246b6d497bbf49e20515d29b2" prot="public" static="no">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &gt;</type>
+        <definition>typedef Sample&lt;MultiPath&gt; sample_type</definition>
+        <argsstring></argsstring>
+        <name>sample_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_path_generator_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool brownianBridge_</definition>
+        <argsstring></argsstring>
+        <name>brownianBridge_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_path_generator_1aa94312a20d5fdd30808a9c44fea1c986" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StochasticProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_path_generator_1a64140717577d3f2eafa18016be2b53eb" prot="private" static="no" mutable="no">
+        <type>GSG</type>
+        <definition>GSG generator_</definition>
+        <argsstring></argsstring>
+        <name>generator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_path_generator_1ab66466f0938ee327635eab8a616d1ef4" prot="private" static="no" mutable="yes">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+        <definition>sample_type next_</definition>
+        <argsstring></argsstring>
+        <name>next_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1aec953e0036be310f7660675a4915a9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MultiPathGenerator</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;, const TimeGrid &amp;, GSG generator, bool brownianBridge=false)</argsstring>
+        <name>MultiPathGenerator</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <defname>process</defname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <defname>times</defname>
+        </param>
+        <param>
+          <type>GSG</type>
+          <declname>generator</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>brownianBridge</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="71" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1a08dcfc5879d85c52e6a463515b6bb7a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref> &amp;</type>
+        <definition>const MultiPathGenerator&lt; GSG &gt;::sample_type &amp; next</definition>
+        <argsstring>() const </argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="92" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1a367af962c96536f36f35c4e924d5e69b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref> &amp;</type>
+        <definition>const MultiPathGenerator&lt; GSG &gt;::sample_type &amp; antithetic</definition>
+        <argsstring>() const </argsstring>
+        <name>antithetic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1a54b9ab2aefa4d7d1b1cc3b699337aac3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref> &amp;</type>
+        <definition>const MultiPathGenerator&lt; GSG &gt;::sample_type &amp; next</definition>
+        <argsstring>(bool antithetic) const </argsstring>
+        <name>next</name>
+        <param>
+          <type>bool</type>
+          <declname>antithetic</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="104" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generates a multipath from a random number generator. </para>    </briefdescription>
+    <detaileddescription>
+<para>RSG is a sample generator which returns a random sequence. It must have the minimal interface: <programlisting><codeline><highlight class="normal">RSG<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Sample&lt;Array&gt;<sp/>next();</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting></para><para><xrefsect id="test_1_test000079"><xreftitle>Tests</xreftitle><xrefdescription><para>the generated paths are checked against cached results </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="50" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a367af962c96536f36f35c4e924d5e69b" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>antithetic</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>brownianBridge_</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a64140717577d3f2eafa18016be2b53eb" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>generator_</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1aec953e0036be310f7660675a4915a9f8" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>MultiPathGenerator</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a08dcfc5879d85c52e6a463515b6bb7a3" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a54b9ab2aefa4d7d1b1cc3b699337aac3" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1ab66466f0938ee327635eab8a616d1ef4" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next_</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1aa94312a20d5fdd30808a9c44fea1c986" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_multi_path_generator_1a0f7a5af246b6d497bbf49e20515d29b2" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>sample_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

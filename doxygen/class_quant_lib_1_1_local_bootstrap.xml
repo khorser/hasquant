@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_local_bootstrap" kind="class" prot="public">
+    <compoundname>QuantLib::LocalBootstrap</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_local_bootstrap_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
+        <type>Curve::traits_type</type>
+        <definition>typedef Curve::traits_type Traits</definition>
+        <argsstring></argsstring>
+        <name>Traits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_local_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" static="no">
+        <type>Curve::interpolator_type</type>
+        <definition>typedef Curve::interpolator_type Interpolator</definition>
+        <argsstring></argsstring>
+        <name>Interpolator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1ae7e37a0cd72e79fc76ff937158c608b6" prot="private" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool validCurve_</definition>
+        <argsstring></argsstring>
+        <name>validCurve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1aa1c2b6a55e098a66c64ac699025eda08" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+        <definition>Curve* ts_</definition>
+        <argsstring></argsstring>
+        <name>ts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1aaafa151c3c244b107a148e67b39cdc61" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size localisation_</definition>
+        <argsstring></argsstring>
+        <name>localisation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_local_bootstrap_1a2e33aee3148dccfadec4cc0a83b10179" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool forcePositive_</definition>
+        <argsstring></argsstring>
+        <name>forcePositive_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1af581ddd45305ac7377fbe85856952886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LocalBootstrap</definition>
+        <argsstring>(Size localisation=2, bool forcePositive=true)</argsstring>
+        <name>LocalBootstrap</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>localisation</declname>
+          <defval>2</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forcePositive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="107" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setup</definition>
+        <argsstring>(Curve *ts)</argsstring>
+        <name>setup</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <declname>ts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="114" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="133" bodyend="247"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Localised-term-structure bootstrapper for most curve types. </para>    </briefdescription>
+    <detaileddescription>
+<para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (<ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref>) the input term structure is solved on a number of market instruments which are passed as a vector of handles to <ref refid="class_quant_lib_1_1_bootstrap_helper" kindref="compound">BootstrapHelper</ref> instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the <ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref> class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="86" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1a2e33aee3148dccfadec4cc0a83b10179" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>forcePositive_</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>Interpolator</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1af581ddd45305ac7377fbe85856952886" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>LocalBootstrap</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1aaafa151c3c244b107a148e67b39cdc61" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>localisation_</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>setup</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>Traits</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1aa1c2b6a55e098a66c64ac699025eda08" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>ts_</name></member>
+      <member refid="class_quant_lib_1_1_local_bootstrap_1ae7e37a0cd72e79fc76ff937158c608b6" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>validCurve_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

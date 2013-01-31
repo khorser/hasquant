@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_heston_model_1_1_feller_constraint" kind="class" prot="public">
+    <compoundname>QuantLib::HestonModel::FellerConstraint</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint" prot="public" virt="non-virtual">Constraint</basecompoundref>
+    <innerclass refid="class_quant_lib_1_1_heston_model_1_1_feller_constraint_1_1_impl" prot="private">QuantLib::HestonModel::FellerConstraint::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_1_1_feller_constraint_1a85c2b9f1e8b866e785c6749c9315b4a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FellerConstraint</definition>
+        <argsstring>()</argsstring>
+        <name>FellerConstraint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="79" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7381">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+      <node id="7380">
+        <label>HestonModel::FellerConstraint</label>
+        <childnode refid="7381" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7383">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+      <node id="7382">
+        <label>HestonModel::FellerConstraint</label>
+        <childnode refid="7383" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/hestonmodel.hpp" bodystart="66" bodyend="82"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>Constraint</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1_1_feller_constraint_1a85c2b9f1e8b866e785c6749c9315b4a1" prot="public" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>FellerConstraint</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::HestonModel::FellerConstraint</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

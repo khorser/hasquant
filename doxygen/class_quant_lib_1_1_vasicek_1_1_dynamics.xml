@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_vasicek_1_1_dynamics" kind="class" prot="public">
+    <compoundname>QuantLib::Vasicek::Dynamics</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public" virt="non-virtual">OneFactorModel::ShortRateDynamics</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a21cb0313d759e9d26706f81f8a17d98c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real r0_</definition>
+        <argsstring></argsstring>
+        <name>r0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a5dce670364e0706a1573c3a758856d90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Dynamics</definition>
+        <argsstring>(Real a, Real b, Real sigma, Real r0)</argsstring>
+        <name>Dynamics</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>r0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="79" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real variable</definition>
+        <argsstring>(Time, Rate r) const </argsstring>
+        <name>variable</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Compute state variable from short rate. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="87" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_vasicek_1_1_dynamics_1af27a7a114190fb434f373a1427cca1fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real shortRate</definition>
+        <argsstring>(Time, Real x) const </argsstring>
+        <name>shortRate</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>variable</declname>
+        </param>
+        <briefdescription>
+<para>Compute short rate from state variable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Short-rate dynamics in the Vasicek model. </para>    </briefdescription>
+    <detaileddescription>
+<para>The short-rate follows an Ornstein-Uhlenbeck process with mean <formula id="48">$ b $</formula>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="14781">
+        <label>Vasicek::Dynamics</label>
+        <link refid="class_quant_lib_1_1_vasicek_1_1_dynamics"/>
+        <childnode refid="14782" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14782">
+        <label>ShortRateDynamics</label>
+        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14783">
+        <label>Vasicek::Dynamics</label>
+        <link refid="class_quant_lib_1_1_vasicek_1_1_dynamics"/>
+        <childnode refid="14784" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14784">
+        <label>ShortRateDynamics</label>
+        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/vasicek.hpp" bodystart="77" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a5dce670364e0706a1573c3a758856d90" prot="public" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>Dynamics</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>process</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a21cb0313d759e9d26706f81f8a17d98c" prot="private" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>r0_</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1af27a7a114190fb434f373a1427cca1fe" prot="public" virt="virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>shortRate</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>ShortRateDynamics</name></member>
+      <member refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" virt="virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>variable</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::Vasicek::Dynamics</scope><name>~ShortRateDynamics</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

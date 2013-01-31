@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_volatility_compositor" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::VolatilityCompositor</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_constant_estimator" prot="public" virt="non-virtual">ConstantEstimator</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garch11" prot="public" virt="non-virtual">Garch11</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_compositor_1a5e304d417b3145a7458d6fc2cd97fe6a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~VolatilityCompositor</definition>
+        <argsstring>()</argsstring>
+        <name>~VolatilityCompositor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_compositor_1ae4670ccf94cd30655af28ebe54299721" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>virtual TimeSeries&lt;Volatility&gt; calculate</definition>
+        <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;volatilitySeries)=0</argsstring>
+        <name>calculate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>volatilitySeries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_compositor_1ae400d3120e1f60ad4a0f959778efff61" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void calibrate</definition>
+        <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;volatilitySeries)=0</argsstring>
+        <name>calibrate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>volatilitySeries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14815">
+        <label>Garch11</label>
+        <link refid="class_quant_lib_1_1_garch11"/>
+        <childnode refid="14813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14814">
+        <label>ConstantEstimator</label>
+        <link refid="class_quant_lib_1_1_constant_estimator"/>
+        <childnode refid="14813" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14813">
+        <label>VolatilityCompositor</label>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="41" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_volatility_compositor_1ae4670ccf94cd30655af28ebe54299721" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityCompositor</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_volatility_compositor_1ae400d3120e1f60ad4a0f959778efff61" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityCompositor</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_volatility_compositor_1a5e304d417b3145a7458d6fc2cd97fe6a" prot="public" virt="virtual"><scope>QuantLib::VolatilityCompositor</scope><name>~VolatilityCompositor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

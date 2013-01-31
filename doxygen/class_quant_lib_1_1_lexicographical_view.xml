@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lexicographical_view" kind="class" prot="public">
+    <compoundname>QuantLib::LexicographicalView</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>RandomAccessIterator</declname>
+        <defname>RandomAccessIterator</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>Element access</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a20b182f3ebd58c72b9d7ec207efde1bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" kindref="member">y_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::y_iterator operator[]</definition>
+        <argsstring>(Size i)</argsstring>
+        <name>operator[]</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Iterator access</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a5d6d0013e2b539b82adc6ee9aced4c3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a60ae9a6c903bfa254d23a6a144ad05ae" kindref="member">x_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::x_iterator xbegin</definition>
+        <argsstring>(Size j)</argsstring>
+        <name>xbegin</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="99" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a95880e751665365e1bc72f0533ba5d43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a60ae9a6c903bfa254d23a6a144ad05ae" kindref="member">x_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::x_iterator xend</definition>
+        <argsstring>(Size j)</argsstring>
+        <name>xend</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1acab55b16f1b726eb6ae7ae1b30849076" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1affef015b19d72a3e5affd7f6f94c487c" kindref="member">reverse_x_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::reverse_x_iterator rxbegin</definition>
+        <argsstring>(Size j)</argsstring>
+        <name>rxbegin</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="112" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1ae0bdc43b58a69fc779ae759e4c4b4eed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1affef015b19d72a3e5affd7f6f94c487c" kindref="member">reverse_x_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::reverse_x_iterator rxend</definition>
+        <argsstring>(Size j)</argsstring>
+        <name>rxend</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a5ada822e35e1d1e457536b934cc915c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" kindref="member">y_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::y_iterator ybegin</definition>
+        <argsstring>(Size i)</argsstring>
+        <name>ybegin</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="125" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a5ff481378d38b12bfd7bdd4e8229f15f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" kindref="member">y_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::y_iterator yend</definition>
+        <argsstring>(Size i)</argsstring>
+        <name>yend</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1aa1cdbcea66a355d777a591b22f55dec4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a9ca10f675e1e0b950cf45bb46d2ae2ad" kindref="member">reverse_y_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::reverse_y_iterator rybegin</definition>
+        <argsstring>(Size i)</argsstring>
+        <name>rybegin</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a104ca00059e96eba5a43cb453864b8eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_lexicographical_view_1a9ca10f675e1e0b950cf45bb46d2ae2ad" kindref="member">reverse_y_iterator</ref></type>
+        <definition>LexicographicalView&lt; RandomAccessIterator &gt;::reverse_y_iterator ryend</definition>
+        <argsstring>(Size i)</argsstring>
+        <name>ryend</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="145" bodyend="147"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a9181efab98a01d26ddb0f7d07006fdd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size xSize</definition>
+        <argsstring>() const </argsstring>
+        <name>xSize</name>
+        <briefdescription>
+<para>dimension of the array along x </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1ac8b98e629892d44bca18d9fe1e6f7b84" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size ySize</definition>
+        <argsstring>() const </argsstring>
+        <name>ySize</name>
+        <briefdescription>
+<para>dimension of the array along y </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_lexicographical_view_1a60ae9a6c903bfa254d23a6a144ad05ae" prot="public" static="no">
+        <type>RandomAccessIterator</type>
+        <definition>typedef RandomAccessIterator x_iterator</definition>
+        <argsstring></argsstring>
+        <name>x_iterator</name>
+        <briefdescription>
+<para>iterates over <formula id="210">$ v_{ij} $</formula> with <formula id="211">$ j $</formula> fixed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_lexicographical_view_1affef015b19d72a3e5affd7f6f94c487c" prot="public" static="no">
+        <type>boost::reverse_iterator&lt; RandomAccessIterator &gt;</type>
+        <definition>typedef boost::reverse_iterator&lt;RandomAccessIterator&gt; reverse_x_iterator</definition>
+        <argsstring></argsstring>
+        <name>reverse_x_iterator</name>
+        <briefdescription>
+<para>iterates backwards over <formula id="210">$ v_{ij} $</formula> with <formula id="211">$ j $</formula> fixed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">step_iterator</ref>&lt; RandomAccessIterator &gt;</type>
+        <definition>typedef step_iterator&lt;RandomAccessIterator&gt; y_iterator</definition>
+        <argsstring></argsstring>
+        <name>y_iterator</name>
+        <briefdescription>
+<para>iterates over <formula id="210">$ v_{ij} $</formula> with <formula id="56">$ i $</formula> fixed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_lexicographical_view_1a9ca10f675e1e0b950cf45bb46d2ae2ad" prot="public" static="no">
+        <type>boost::reverse_iterator&lt; <ref refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" kindref="member">y_iterator</ref> &gt;</type>
+        <definition>typedef boost::reverse_iterator&lt;y_iterator&gt; reverse_y_iterator</definition>
+        <argsstring></argsstring>
+        <name>reverse_y_iterator</name>
+        <briefdescription>
+<para>iterates backwards over <formula id="210">$ v_{ij} $</formula> with <formula id="56">$ i $</formula> fixed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1aff626e64244e6b8430972b61a2405169" prot="private" static="no" mutable="no">
+        <type>RandomAccessIterator</type>
+        <definition>RandomAccessIterator begin_</definition>
+        <argsstring></argsstring>
+        <name>begin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a5e57fc05a0e74011ddb318203e15be2d" prot="private" static="no" mutable="no">
+        <type>RandomAccessIterator</type>
+        <definition>RandomAccessIterator end_</definition>
+        <argsstring></argsstring>
+        <name>end_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a5b7d151dd8bd0b9caf6c2226a1a0bfa8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size xSize_</definition>
+        <argsstring></argsstring>
+        <name>xSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lexicographical_view_1a4b4ced0c6342f8c5e8d8788b1e4d3417" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size ySize_</definition>
+        <argsstring></argsstring>
+        <name>ySize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lexicographical_view_1a64811b5cfac61b8b7f079a1e56c273f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LexicographicalView</definition>
+        <argsstring>(const RandomAccessIterator &amp;begin, const RandomAccessIterator &amp;end, Size xSize)</argsstring>
+        <name>LexicographicalView</name>
+        <param>
+          <type>const RandomAccessIterator &amp;</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>const RandomAccessIterator &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>xSize</declname>
+        </param>
+        <briefdescription>
+<para>attaches the view with the given dimension to a sequence </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="86" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Lexicographical 2-D view of a contiguous set of data. </para>    </briefdescription>
+    <detaileddescription>
+<para>This view can be used to easily store a discretized 2-D function in an array to be used in a finite differences calculation. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="37" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1aff626e64244e6b8430972b61a2405169" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>begin_</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a5e57fc05a0e74011ddb318203e15be2d" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>end_</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a64811b5cfac61b8b7f079a1e56c273f1" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>LexicographicalView</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a20b182f3ebd58c72b9d7ec207efde1bc" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>operator[]</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1affef015b19d72a3e5affd7f6f94c487c" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>reverse_x_iterator</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a9ca10f675e1e0b950cf45bb46d2ae2ad" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>reverse_y_iterator</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1acab55b16f1b726eb6ae7ae1b30849076" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rxbegin</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1ae0bdc43b58a69fc779ae759e4c4b4eed" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rxend</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1aa1cdbcea66a355d777a591b22f55dec4" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rybegin</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a104ca00059e96eba5a43cb453864b8eb" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ryend</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a60ae9a6c903bfa254d23a6a144ad05ae" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>x_iterator</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a5d6d0013e2b539b82adc6ee9aced4c3b" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xbegin</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a95880e751665365e1bc72f0533ba5d43" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xend</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a9181efab98a01d26ddb0f7d07006fdd9" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xSize</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a5b7d151dd8bd0b9caf6c2226a1a0bfa8" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xSize_</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>y_iterator</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a5ada822e35e1d1e457536b934cc915c8" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ybegin</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a5ff481378d38b12bfd7bdd4e8229f15f" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>yend</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1ac8b98e629892d44bca18d9fe1e6f7b84" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ySize</name></member>
+      <member refid="class_quant_lib_1_1_lexicographical_view_1a4b4ced0c6342f8c5e8d8788b1e4d3417" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ySize_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

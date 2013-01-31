@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1binary__compose3__function" kind="class" prot="public">
+    <compoundname>QuantLib::binary_compose3_function</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; G::argument_type, H::argument_type, F::result_type &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class F</type>
+      </param>
+      <param>
+        <type>class G</type>
+      </param>
+      <param>
+        <type>class H</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1ab0fe93287a99040a88ba6bd9a7efd358" prot="public" static="no">
+        <type>G::argument_type</type>
+        <definition>typedef G::argument_type first_argument_type</definition>
+        <argsstring></argsstring>
+        <name>first_argument_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" static="no">
+        <type>H::argument_type</type>
+        <definition>typedef H::argument_type second_argument_type</definition>
+        <argsstring></argsstring>
+        <name>second_argument_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
+        <type>F::result_type</type>
+        <definition>typedef F::result_type result_type</definition>
+        <argsstring></argsstring>
+        <name>result_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" static="no" mutable="no">
+        <type>F</type>
+        <definition>F f_</definition>
+        <argsstring></argsstring>
+        <name>f_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" static="no" mutable="no">
+        <type>G</type>
+        <definition>G g_</definition>
+        <argsstring></argsstring>
+        <name>g_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1binary__compose3__function_1abbaf94cb47bb8a35351ed320c1119e3e" prot="private" static="no" mutable="no">
+        <type>H</type>
+        <definition>H h_</definition>
+        <argsstring></argsstring>
+        <name>h_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>binary_compose3_function</definition>
+        <argsstring>(const F &amp;f, const G &amp;g, const H &amp;h)</argsstring>
+        <name>binary_compose3_function</name>
+        <param>
+          <type>const F &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type>const G &amp;</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>const H &amp;</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="142" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="141" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>result_type</type>
+        <definition>result_type operator()</definition>
+        <argsstring>(const first_argument_type &amp;x, const second_argument_type &amp;y) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const first_argument_type &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>const second_argument_type &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="132" bodyend="153"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>binary_compose3_function</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1ab0fe93287a99040a88ba6bd9a7efd358" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>first_argument_type</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>g_</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1abbaf94cb47bb8a35351ed320c1119e3e" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>h_</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>second_argument_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

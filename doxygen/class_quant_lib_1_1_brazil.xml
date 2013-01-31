@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_brazil" kind="class" prot="public">
+    <compoundname>QuantLib::Brazil</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calendar" prot="public" virt="non-virtual">Calendar</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_brazil_1_1_exchange_impl" prot="private">QuantLib::Brazil::ExchangeImpl</innerclass>
+    <innerclass refid="class_quant_lib_1_1_brazil_1_1_settlement_impl" prot="private">QuantLib::Brazil::SettlementImpl</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+        <name>Market</name>
+        <enumvalue id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public">
+          <name>Settlement</name>
+          <briefdescription>
+<para>generic settlement calendar </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a89fe455d57ae52cfe608090a0ffe2979" prot="public">
+          <name>Exchange</name>
+          <briefdescription>
+<para>BOVESPA calendar. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Brazilian calendars. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_brazil_1a7c199eab446f4b3abb6850b0171d1872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Brazil</definition>
+        <argsstring>(Market market=Settlement)</argsstring>
+        <name>Brazil</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <declname>market</declname>
+          <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Brazilian calendar. </para>    </briefdescription>
+    <detaileddescription>
+<para>Banking holidays: <itemizedlist>
+<listitem>
+<para>Saturdays </para></listitem>
+<listitem>
+<para>Sundays </para></listitem>
+<listitem>
+<para>New Year&apos;s Day, January 1st </para></listitem>
+<listitem>
+<para>Tiradentes&apos;s Day, April 21th </para></listitem>
+<listitem>
+<para>Labour Day, May 1st </para></listitem>
+<listitem>
+<para>Independence Day, September 7th </para></listitem>
+<listitem>
+<para>Nossa Sra. Aparecida Day, October 12th </para></listitem>
+<listitem>
+<para>All Souls Day, November 2nd </para></listitem>
+<listitem>
+<para>Republic Day, November 15th </para></listitem>
+<listitem>
+<para>Christmas, December 25th </para></listitem>
+<listitem>
+<para>Passion of Christ </para></listitem>
+<listitem>
+<para>Carnival </para></listitem>
+<listitem>
+<para>Corpus Christi </para></listitem>
+</itemizedlist>
+</para><para>Holidays for the Bovespa stock exchange <itemizedlist>
+<listitem>
+<para>Saturdays </para></listitem>
+<listitem>
+<para>Sundays </para></listitem>
+<listitem>
+<para>New Year&apos;s Day, January 1st </para></listitem>
+<listitem>
+<para>Sao Paulo City Day, January 25th </para></listitem>
+<listitem>
+<para>Tiradentes&apos;s Day, April 21th </para></listitem>
+<listitem>
+<para>Labour Day, May 1st </para></listitem>
+<listitem>
+<para>Revolution Day, July 9th </para></listitem>
+<listitem>
+<para>Independence Day, September 7th </para></listitem>
+<listitem>
+<para>Nossa Sra. Aparecida Day, October 12th </para></listitem>
+<listitem>
+<para>All Souls Day, November 2nd </para></listitem>
+<listitem>
+<para>Republic Day, November 15th </para></listitem>
+<listitem>
+<para>Black Consciousness Day, November 20th (since 2007) </para></listitem>
+<listitem>
+<para>Christmas, December 25th </para></listitem>
+<listitem>
+<para>Passion of Christ </para></listitem>
+<listitem>
+<para>Carnival </para></listitem>
+<listitem>
+<para>Corpus Christi </para></listitem>
+<listitem>
+<para>the last business day of the year </para></listitem>
+</itemizedlist>
+</para><para><xrefsect id="test_1_test000146"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1443">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="1442">
+        <label>Brazil</label>
+        <link refid="class_quant_lib_1_1_brazil"/>
+        <childnode refid="1443" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1445">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="1444">
+        <label>Brazil</label>
+        <link refid="class_quant_lib_1_1_brazil"/>
+        <childnode refid="1445" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" bodystart="76" bodyend="94"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calendar_1a656020bddfdb2d9f48c9f0dc12b26597" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>addHoliday</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>adjust</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>advance</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>advance</name></member>
+      <member refid="class_quant_lib_1_1_brazil_1a7c199eab446f4b3abb6850b0171d1872" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>Brazil</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>businessDaysBetween</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1af5714af8cb45a29153e0fd53ee5e7241" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>Calendar</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>endOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a89fe455d57ae52cfe608090a0ffe2979" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>Exchange</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>holidayList</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a85aed4d5b4c114bdd47766ef9e52e2f7" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>isBusinessDay</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a406c43181bd59e07a145a4722fdf2480" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>isEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aa529b7298ba96b90261ed56c34f015f8" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>isHoliday</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a9c1941e4f95b1d74d7f9b2e772174c73" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>isWeekend</name></member>
+      <member refid="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>Market</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1af842d77a8aacbc167a64749dba1a3a87" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aab055e8665c0e69976ecbe4aebd47a8f" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ae9d6f7766f633f5d75cc3acd7826bc9f" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a4c682210881efe66d463cc0907f00722" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>removeHoliday</name></member>
+      <member refid="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public" virt="non-virtual"><scope>QuantLib::Brazil</scope><name>Settlement</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

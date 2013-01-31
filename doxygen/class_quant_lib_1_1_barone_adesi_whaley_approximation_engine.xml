@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine" kind="class" prot="public">
+    <compoundname>QuantLib::BaroneAdesiWhaleyApproximationEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1af2bac5403ba35d337fa1ec9fdfc77b42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BaroneAdesiWhaleyApproximationEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
+        <name>BaroneAdesiWhaleyApproximationEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a83d913a20019f285a302512dfd934bb0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real criticalPrice</definition>
+        <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, DiscountFactor riskFreeDiscount, DiscountFactor dividendDiscount, Real variance, Real tolerance=1e-6)</argsstring>
+        <name>criticalPrice</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>riskFreeDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>dividendDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>variance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+          <defval>1e-6</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Barone-Adesi and Whaley pricing engine for American options (1987) </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000118"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" bodystart="39" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1af2bac5403ba35d337fa1ec9fdfc77b42" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>BaroneAdesiWhaleyApproximationEngine</name></member>
+      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a83d913a20019f285a302512dfd934bb0" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>criticalPrice</name></member>
+      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>process_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

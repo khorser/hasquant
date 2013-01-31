@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bespoke_calendar_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::BespokeCalendar::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_impl" prot="public" virt="non-virtual">Calendar::Impl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a88c0cdd7a3eaa3c5d8ef20d215c94e40" prot="private" static="no" mutable="no">
+        <type>std::set&lt; <ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref> &gt;</type>
+        <definition>std::set&lt;Weekday&gt; weekend_</definition>
+        <argsstring></argsstring>
+        <name>weekend_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string name_</definition>
+        <argsstring></argsstring>
+        <name>name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1ac177416ebd0b1c2eaa829b5ee18f5953" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Impl</definition>
+        <argsstring>(const std::string &amp;name=&quot;&quot;)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isWeekend</definition>
+        <argsstring>(Weekday) const </argsstring>
+        <name>isWeekend</name>
+        <param>
+          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isBusinessDay</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>isBusinessDay</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4fd5f300b4e29a8d91452121d64ca6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void addWeekend</definition>
+        <argsstring>(Weekday)</argsstring>
+        <name>addWeekend</name>
+        <param>
+          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="883">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="882">
+        <label>BespokeCalendar::Impl</label>
+        <childnode refid="883" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="885">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="884">
+        <label>BespokeCalendar::Impl</label>
+        <childnode refid="885" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp" bodystart="42" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>addedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4fd5f300b4e29a8d91452121d64ca6e3" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>addWeekend</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1ac177416ebd0b1c2eaa829b5ee18f5953" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>Impl</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>isBusinessDay</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>isWeekend</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="private" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>name_</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>removedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl_1a88c0cdd7a3eaa3c5d8ef20d215c94e40" prot="private" virt="non-virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>weekend_</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::BespokeCalendar::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

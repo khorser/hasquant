@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_ziggurat_rng" kind="class" prot="public">
+    <compoundname>QuantLib::ZigguratRng</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_ziggurat_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>typedef Sample&lt;Real&gt; sample_type</definition>
+        <argsstring></argsstring>
+        <name>sample_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_ziggurat_rng_1a8179b6f798136e72f4691fe0aa93ef76" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_mersenne_twister_uniform_rng" kindref="compound">MersenneTwisterUniformRng</ref></type>
+        <definition>MersenneTwisterUniformRng mt32_</definition>
+        <argsstring></argsstring>
+        <name>mt32_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1a2052bed081d36e3d3c216260365d6a31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ZigguratRng</definition>
+        <argsstring>(unsigned long seed=0)</argsstring>
+        <name>ZigguratRng</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>seed</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+        <definition>sample_type next</definition>
+        <argsstring>() const </argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_ziggurat_rng_1a02ce9033842ef7bba94d91f0d09c7ebc" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nextGaussian</definition>
+        <argsstring>() const </argsstring>
+        <name>nextGaussian</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Ziggurat random-number generator. </para>    </briefdescription>
+    <detaileddescription>
+<para>This generator returns standard normal variates using the Ziggurat method. The underlying RNG is mt19937 (32 bit version). The algorithm is described in Marsaglia and Tsang (2000). &quot;The Ziggurat Method for Generating Random
+       Variables&quot;. Journal of Statistical Software 5 (8). Note that step 2 from the above paper reuses the rightmost 8 bits of the random integer, which creates correlation between steps 1 and<orderedlist>
+<listitem><para>This implementation was written from scratch, following Marsaglia and Tsang. It avoids the correlation by using only the leftmost 24 bits of mt19937&apos;s output.</para></listitem></orderedlist>
+</para><para>Note that the GNU GSL implementation uses a different value for the right-most step. The GSL value is somewhat different from the one reported by Marsaglia and Tsang because GSL uses a different tail. This implementation uses the same right-most step as reported by Marsaglia and Tsang. The generator was put through Marsaglia&apos;s Diehard battery of tests and didn&apos;t exibit any abnormal behavior. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="52" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_ziggurat_rng_1a8179b6f798136e72f4691fe0aa93ef76" prot="private" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>mt32_</name></member>
+      <member refid="class_quant_lib_1_1_ziggurat_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>next</name></member>
+      <member refid="class_quant_lib_1_1_ziggurat_rng_1a02ce9033842ef7bba94d91f0d09c7ebc" prot="private" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>nextGaussian</name></member>
+      <member refid="class_quant_lib_1_1_ziggurat_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>sample_type</name></member>
+      <member refid="class_quant_lib_1_1_ziggurat_rng_1a2052bed081d36e3d3c216260365d6a31" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>ZigguratRng</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

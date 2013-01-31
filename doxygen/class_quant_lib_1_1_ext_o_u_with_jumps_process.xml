@@ -1,0 +1,385 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_ext_o_u_with_jumps_process" kind="class" prot="public">
+    <compoundname>QuantLib::ExtOUWithJumpsProcess</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a2042460b349afb44b566cdea19e4b893" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real Y0_</definition>
+        <argsstring></argsstring>
+        <name>Y0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1abb89333a64fdf97627f73462a9e43591" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real jumpIntensity_</definition>
+        <argsstring></argsstring>
+        <name>jumpIntensity_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real eta_</definition>
+        <argsstring></argsstring>
+        <name>eta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1ac42eae749f0558b848f89d7cababcc08" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; ouProcess_</definition>
+        <argsstring></argsstring>
+        <name>ouProcess_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af1fc88eee476d12a7fe5d010bbb5c8e2" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
+        <definition>const CumulativeNormalDistribution cumNormalDist_</definition>
+        <argsstring></argsstring>
+        <name>cumNormalDist_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9ee1094a02d912b9ebef54df29b7363d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ExtOUWithJumpsProcess</definition>
+        <argsstring>(const boost::shared_ptr&lt; ExtendedOrnsteinUhlenbeckProcess &gt; &amp;process, Real Y0, Real beta, Real jumpIntensity, Real eta)</argsstring>
+        <name>ExtOUWithJumpsProcess</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>Y0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>jumpIntensity</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <briefdescription>
+<para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size factors</definition>
+        <argsstring>() const </argsstring>
+        <name>factors</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
+        <briefdescription>
+<para>returns the number of independent factors of the process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; initialValues</definition>
+        <argsstring>() const </argsstring>
+        <name>initialValues</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
+        <briefdescription>
+<para>returns the initial values of the state variables </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; drift</definition>
+        <argsstring>(Time t, const Array &amp;x) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1">drift</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
+        <argsstring>(Time t, const Array &amp;x) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a">diffusion</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; evolve</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
+        <name>evolve</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97">evolve</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>dw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a29ea335873b5a145dfa597b4f4aa102f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; getExtendedOrnsteinUhlenbeckProcess</definition>
+        <argsstring>() const </argsstring>
+        <name>getExtendedOrnsteinUhlenbeckProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta</definition>
+        <argsstring>() const </argsstring>
+        <name>beta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real eta</definition>
+        <argsstring>() const </argsstring>
+        <name>eta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a451382fba1026b4d0b6279db11b088c2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real jumpIntensity</definition>
+        <argsstring>() const </argsstring>
+        <name>jumpIntensity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This class describes a Ornstein Uhlenbeck model plus exp jump, an extension of the Lucia and Schwartz model <formula id="136">\[ \begin{array}{rcl} S &amp;=&amp; exp(X_t + Y_t) \\ dX_t &amp;=&amp; \alpha(\mu(t)-X_t)dt + \sigma dW_t \\ dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&amp;=&amp; \eta_u e^{-\eta_u J} \end{array} \]</formula></para><para>References: T. Kluge, 2008. Pricing Swing Options and other Electricity Derivatives, <ulink url="http://eprints.maths.ox.ac.uk/246/1/kluge.pdf">http://eprints.maths.ox.ac.uk/246/1/kluge.pdf</ulink></para><para>B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, <ulink url="http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf">http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf</ulink> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5603">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5601">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="5602" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5603" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5602">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5600">
+        <label>ExtOUWithJumpsProcess</label>
+        <link refid="class_quant_lib_1_1_ext_o_u_with_jumps_process"/>
+        <childnode refid="5601" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5607">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5605">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="5606" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5607" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5606">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5604">
+        <label>ExtOUWithJumpsProcess</label>
+        <link refid="class_quant_lib_1_1_ext_o_u_with_jumps_process"/>
+        <childnode refid="5605" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/extouwithjumpsprocess.hpp" bodystart="59" bodyend="86"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a07090b508d659de1879284548f3ea344" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a78a3f49ebd7612d4d23a640186b86140" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>beta</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a8ddfc241f0a0f0e37d2245bf2cde4354" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>covariance</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af1fc88eee476d12a7fe5d010bbb5c8e2" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>cumNormalDist_</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a83e2f6eb6af4d95118d576ddfa2804bd" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>eta</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>eta_</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a90f2fadbc2346fb7f6c94611215a068b" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9ee1094a02d912b9ebef54df29b7363d" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>ExtOUWithJumpsProcess</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a29ea335873b5a145dfa597b4f4aa102f" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>getExtendedOrnsteinUhlenbeckProcess</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>initialValues</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a451382fba1026b4d0b6279db11b088c2" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>jumpIntensity</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1abb89333a64fdf97627f73462a9e43591" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>jumpIntensity_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1ac42eae749f0558b848f89d7cababcc08" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>ouProcess_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1af60142c7a240fe9fa7a9458740815b9c" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a2042460b349afb44b566cdea19e4b893" prot="private" virt="non-virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>Y0_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::ExtOUWithJumpsProcess</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

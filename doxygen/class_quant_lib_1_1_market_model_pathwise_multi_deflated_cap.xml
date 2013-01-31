@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap" kind="class" prot="public">
+    <compoundname>QuantLib::MarketModelPathwiseMultiDeflatedCap</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" prot="public" virt="non-virtual">MarketModelPathwiseMultiProduct</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a6360827251f6201fc1dd67f994411177" prot="private" static="no" mutable="no">
+        <type>MarketModelPathwiseMultiDeflatedCaplet</type>
+        <definition>MarketModelPathwiseMultiDeflatedCaplet underlyingCaplets_</definition>
+        <argsstring></argsstring>
+        <name>underlyingCaplets_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberRates_</definition>
+        <argsstring></argsstring>
+        <name>numberRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a870e0a0d986b7ed1294b2f78e023945f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;Size,Size&gt; &gt; startsAndEnds_</definition>
+        <argsstring></argsstring>
+        <name>startsAndEnds_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size currentIndex_</definition>
+        <argsstring></argsstring>
+        <name>currentIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1adac99cf3cb23e8689fc4696c7054a1ce" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; innerCashFlowSizes_</definition>
+        <argsstring></argsstring>
+        <name>innerCashFlowSizes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1abeb1a8ee9da6950e3365c02437adaeaa" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;MarketModelPathwiseMultiProduct::CashFlow&gt; &gt; innerCashFlowsGenerated_</definition>
+        <argsstring></argsstring>
+        <name>innerCashFlowsGenerated_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a78244d84483c4622f276510fbaad07c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MarketModelPathwiseMultiDeflatedCap</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Real &gt; &amp;accruals, const std::vector&lt; Time &gt; &amp;paymentTimes, Rate strike, const std::vector&lt; std::pair&lt; Size, Size &gt; &gt; &amp;startsAndEnds)</argsstring>
+        <name>MarketModelPathwiseMultiDeflatedCap</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>accruals</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>paymentTimes</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt; &amp;</type>
+          <declname>startsAndEnds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a4468c95aed52d59422a24440f52e6a25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~MarketModelPathwiseMultiDeflatedCap</definition>
+        <argsstring>()</argsstring>
+        <name>~MarketModelPathwiseMultiDeflatedCap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="161" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>virtual std::vector&lt;Size&gt; suggestedNumeraires</definition>
+        <argsstring>() const </argsstring>
+        <name>suggestedNumeraires</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="163"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1aaf1f37e1319c6476e12d03c295b74260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <definition>virtual const EvolutionDescription&amp; evolution</definition>
+        <argsstring>() const </argsstring>
+        <name>evolution</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>virtual std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>possibleCashFlowTimes</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116">possibleCashFlowTimes</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size numberOfProducts</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfProducts</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f">numberOfProducts</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ae9340ad78cd16947af851ac186443907" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size maxNumberOfCashFlowsPerProductPerStep</definition>
+        <argsstring>() const </argsstring>
+        <name>maxNumberOfCashFlowsPerProductPerStep</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54">maxNumberOfCashFlowsPerProductPerStep</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="167"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool alreadyDeflated</definition>
+        <argsstring>() const </argsstring>
+        <name>alreadyDeflated</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054">alreadyDeflated</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="170"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
+        <briefdescription>
+<para>during simulation put product at start of path </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="174"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab323de6c99257ba28ce5fc12da07241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool nextTimeStep</definition>
+        <argsstring>(const CurveState &amp;currentState, std::vector&lt; Size &gt; &amp;numberCashFlowsThisStep, std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt; &amp;cashFlowsGenerated)</argsstring>
+        <name>nextTimeStep</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1acac5d6422d1a97a1cc7830b670429ca4">nextTimeStep</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <declname>currentState</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>numberCashFlowsThisStep</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt; &amp;</type>
+          <declname>cashFlowsGenerated</declname>
+        </param>
+        <briefdescription>
+<para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt;</type>
+        <definition>virtual std::auto_ptr&lt;MarketModelPathwiseMultiProduct&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37">clone</reimplements>
+        <briefdescription>
+<para>returns a newly-allocated copy of itself </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="184"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><ref refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap" kindref="compound">MarketModelPathwiseMultiDeflatedCap</ref> to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9527">
+        <label>MarketModelPathwiseMultiDeflatedCap</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap"/>
+        <childnode refid="9528" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9528">
+        <label>MarketModelPathwiseMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9529">
+        <label>MarketModelPathwiseMultiDeflatedCap</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap"/>
+        <childnode refid="9530" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9530">
+        <label>MarketModelPathwiseMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="148" bodyend="198"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>alreadyDeflated</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>currentIndex_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>evolution</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1abeb1a8ee9da6950e3365c02437adaeaa" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>innerCashFlowsGenerated_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1adac99cf3cb23e8689fc4696c7054a1ce" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>innerCashFlowSizes_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a78244d84483c4622f276510fbaad07c9" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>MarketModelPathwiseMultiDeflatedCap</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>nextTimeStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>numberOfProducts</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>numberRates_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>possibleCashFlowTimes</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a870e0a0d986b7ed1294b2f78e023945f" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>startsAndEnds_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>suggestedNumeraires</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a6360827251f6201fc1dd67f994411177" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>underlyingCaplets_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a4468c95aed52d59422a24440f52e6a25" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>~MarketModelPathwiseMultiDeflatedCap</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>~MarketModelPathwiseMultiProduct</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bates_engine" kind="class" prot="public">
+    <compoundname>QuantLib::BatesEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_analytic_heston_engine" prot="public" virt="non-virtual">AnalyticHestonEngine</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bates_det_jump_engine" prot="public" virt="non-virtual">BatesDetJumpEngine</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1a612699f44f77c40d5705fa99c68934d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BatesEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; BatesModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
+        <name>BatesEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bates_model" kindref="compound">BatesModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>integrationOrder</declname>
+          <defval>144</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1a853de5b5181bc1c9ca97e2c89574db02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BatesEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; BatesModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
+        <name>BatesEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bates_model" kindref="compound">BatesModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>relTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxEvaluations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_engine_1aa10b245f3027db04aabb719f95dae0c6" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::complex&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::complex&lt;Real&gt; addOnTerm</definition>
+        <argsstring>(Real phi, Time t, Size j) const </argsstring>
+        <name>addOnTerm</name>
+        <reimplements refid="class_quant_lib_1_1_analytic_heston_engine_1a406a77cd82a42a93cdcd5d292f17bfd0">addOnTerm</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Bates model engines based on Fourier transform. </para>    </briefdescription>
+    <detaileddescription>
+<para>this classes price european options under the following processes <verbatim>   1. Jump-Diffusion with Stochastic Volatility
+</verbatim></para><para><formula id="322">\[ \begin{array}{rcl} dS(t, S) &amp;=&amp; (r-d-\lambda m) S dt +\sqrt{v} S dW_1 + (e^J - 1) S dN \\ dv(t, S) &amp;=&amp; \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ dW_1 dW_2 &amp;=&amp; \rho dt \end{array} \]</formula> <verbatim>  N is a Poisson process with the intensity \form#29@_fakenl. When a jump occurs the magnitude J has the probability
+  density function \form#323.
+
+  1.1 Log-Normal Jump Diffusion: BatesEngine
+
+  Logarithm of the jump size J is normally distributed
+</verbatim> <formula id="324">\[ \omega(J) = \frac{1}{\sqrt{2\pi \delta^2}} \exp\left[-\frac{(J-\nu)^2}{2\delta^2}\right] \]</formula> <verbatim>  1.2  Double-Exponential Jump Diffusion: BatesDoubleExpEngine
+
+  The jump size has an asymmetric double exponential distribution
+</verbatim> <formula id="325">\[ \begin{array}{rcl} \omega(J)&amp;=&amp; p\frac{1}{\eta_u}e^{-\frac{1}{\eta_u}J} 1_{J&gt;0} + q\frac{1}{\eta_d}e^{\frac{1}{\eta_d}J} 1_{J&lt;0} \\ p + q &amp;=&amp; 1 \end{array} \]</formula> <verbatim>  2. Stochastic Volatility with Jump Diffusion
+     and Deterministic Jump Intensity
+</verbatim></para><para><formula id="326">\[ \begin{array}{rcl} dS(t, S) &amp;=&amp; (r-d-\lambda m) S dt +\sqrt{v} S dW_1 + (e^J - 1) S dN \\ dv(t, S) &amp;=&amp; \kappa (\theta - v) dt + \sigma \sqrt{v} dW_2 \\ d\lambda(t) &amp;=&amp; \kappa_\lambda(\theta_\lambda-\lambda) dt \\ dW_1 dW_2 &amp;=&amp; \rho dt \end{array} \]</formula> <verbatim>  2.1 Log-Normal Jump Diffusion with Deterministic Jump Intensity
+        BatesDetJumpEngine
+
+  2.2 Double-Exponential Jump Diffusion with Deterministic Jump Intensity
+        BatesDoubleExpDetJumpEngine
+
+  References:
+
+  D. Bates, Jumps and stochastic volatility: exchange rate processes
+  implicit in Deutsche mark options,
+  Review of Financial Sudies 9, 69-107.
+
+  A. Sepp, Pricing European-Style Options under Jump Diffusion
+  Processes with Stochastic Volatility: Applications of Fourier
+  Transform (&lt;http://math.ut.ee/~spartak/papers/stochjumpvols.pdf&gt;)
+</verbatim></para><para><xrefsect id="test_1_test000119"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature, testing against <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref>&apos;s jump diffusion engine and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="827">
+        <label>GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="828" relation="public-inheritance">
+        </childnode>
+        <childnode refid="830" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="829">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="825">
+        <label>AnalyticHestonEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_heston_engine"/>
+        <childnode refid="826" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="830">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="826">
+        <label>GenericModelEngine&lt; HestonModel, VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="827" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="828">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="829" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="824">
+        <label>BatesEngine</label>
+        <link refid="class_quant_lib_1_1_bates_engine"/>
+        <childnode refid="825" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="834">
+        <label>GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="835" relation="public-inheritance">
+        </childnode>
+        <childnode refid="837" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="836">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="832">
+        <label>AnalyticHestonEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_heston_engine"/>
+        <childnode refid="833" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="837">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="833">
+        <label>GenericModelEngine&lt; HestonModel, VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="834" relation="public-inheritance">
+        </childnode>
+        <childnode refid="838" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="835">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="836" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="831">
+        <label>BatesEngine</label>
+        <link refid="class_quant_lib_1_1_bates_engine"/>
+        <childnode refid="832" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="838">
+        <label>Handle&lt; HestonModel &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" bodystart="106" bodyend="115"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bates_engine_1aa10b245f3027db04aabb719f95dae0c6" prot="protected" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>addOnTerm</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_bates_engine_1a612699f44f77c40d5705fa99c68934d7" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>BatesEngine</name></member>
+      <member refid="class_quant_lib_1_1_bates_engine_1a853de5b5181bc1c9ca97e2c89574db02" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>BatesEngine</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>BranchCorrection</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>ComplexLogFormula</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>doCalculation</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>Gatheral</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>numberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BatesEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::BatesEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BatesEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::BatesEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

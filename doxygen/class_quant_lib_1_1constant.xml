@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1constant" kind="class" prot="public">
+    <compoundname>QuantLib::constant</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; T, U &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1everywhere" prot="public" virt="non-virtual">everywhere</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1nowhere" prot="public" virt="non-virtual">nowhere</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>U</declname>
+        <defname>U</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1constant_1a1595f1eed6e7358f3b73ff9e86e9b26f" prot="private" static="no" mutable="no">
+        <type>U</type>
+        <definition>U u_</definition>
+        <argsstring></argsstring>
+        <name>u_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>constant</definition>
+        <argsstring>(const U &amp;u)</argsstring>
+        <name>constant</name>
+        <param>
+          <type>const U &amp;</type>
+          <declname>u</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>U</type>
+        <definition>U operator()</definition>
+        <argsstring>(const T &amp;) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="36" bodyend="42"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" virt="non-virtual"><scope>QuantLib::constant</scope><name>constant</name></member>
+      <member refid="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" virt="non-virtual"><scope>QuantLib::constant</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1constant_1a1595f1eed6e7358f3b73ff9e86e9b26f" prot="private" virt="non-virtual"><scope>QuantLib::constant</scope><name>u_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_evolver" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::MarketModelEvolver</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_constrained_evolver" prot="public" virt="non-virtual">ConstrainedEvolver</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc" prot="public" virt="non-virtual">LogNormalCmSwapRatePc</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc" prot="public" virt="non-virtual">LogNormalCotSwapRatePc</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_rate_balland" prot="public" virt="non-virtual">LogNormalFwdRateBalland</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_rate_euler" prot="public" virt="non-virtual">LogNormalFwdRateEuler</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland" prot="public" virt="non-virtual">LogNormalFwdRateiBalland</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc" prot="public" virt="non-virtual">LogNormalFwdRateIpc</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_log_normal_fwd_rate_pc" prot="public" virt="non-virtual">LogNormalFwdRatePc</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_normal_fwd_rate_pc" prot="public" virt="non-virtual">NormalFwdRatePc</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc" prot="public" virt="non-virtual">SVDDFwdRatePc</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1a4c1f152fb923561c3e6739d30e55a4c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~MarketModelEvolver</definition>
+        <argsstring>()</argsstring>
+        <name>~MarketModelEvolver</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <definition>virtual const std::vector&lt;Size&gt;&amp; numeraires</definition>
+        <argsstring>() const =0</argsstring>
+        <name>numeraires</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a70e220bffe590588fae688df4700ca84">numeraires</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real startNewPath</definition>
+        <argsstring>()=0</argsstring>
+        <name>startNewPath</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a4dc8779ddad08edbbfddd716df9d5bd3">startNewPath</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real advanceStep</definition>
+        <argsstring>()=0</argsstring>
+        <name>advanceStep</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a280269ace6d9053b78eeb52702cef9d1">advanceStep</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size currentStep</definition>
+        <argsstring>() const =0</argsstring>
+        <name>currentStep</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a3c05dea1b785c4581cfc8488127805b1">currentStep</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+        <definition>virtual const CurveState&amp; currentState</definition>
+        <argsstring>() const =0</argsstring>
+        <name>currentState</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1a521e8787acede5b2ee0a6c797cb31da5">currentState</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_evolver_1ad5880f2c1b2a8457b76064ffe83e2590" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void setInitialState</definition>
+        <argsstring>(const CurveState &amp;)=0</argsstring>
+        <name>setInitialState</name>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_balland_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_normal_fwd_rate_pc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_pc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained_1ad2a4cd43598d0be484849363691856cc">setInitialState</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Market-model evolver. </para>    </briefdescription>
+    <detaileddescription>
+<para>Abstract base class. The evolver does the actual gritty work of evolving the forward rates from one time to the next. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9480">
+        <label>NormalFwdRatePc</label>
+        <link refid="class_quant_lib_1_1_normal_fwd_rate_pc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9477">
+        <label>LogNormalFwdRateiBalland</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_ratei_balland"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9481">
+        <label>SVDDFwdRatePc</label>
+        <link refid="class_quant_lib_1_1_s_v_d_d_fwd_rate_pc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9479">
+        <label>LogNormalFwdRatePc</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_pc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9471">
+        <label>ConstrainedEvolver</label>
+        <link refid="class_quant_lib_1_1_constrained_evolver"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9473">
+        <label>LogNormalCmSwapRatePc</label>
+        <link refid="class_quant_lib_1_1_log_normal_cm_swap_rate_pc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9475">
+        <label>LogNormalFwdRateBalland</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_balland"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9470">
+        <label>MarketModelEvolver</label>
+        <link refid="class_quant_lib_1_1_market_model_evolver"/>
+      </node>
+      <node id="9478">
+        <label>LogNormalFwdRateIpc</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9474">
+        <label>LogNormalCotSwapRatePc</label>
+        <link refid="class_quant_lib_1_1_log_normal_cot_swap_rate_pc"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9476">
+        <label>LogNormalFwdRateEuler</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_euler"/>
+        <childnode refid="9470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9472">
+        <label>LogNormalFwdRateEulerConstrained</label>
+        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained"/>
+        <childnode refid="9471" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolver.hpp" bodystart="35" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>advanceStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>currentState</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>currentStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>numeraires</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1ad5880f2c1b2a8457b76064ffe83e2590" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>setInitialState</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelEvolver</scope><name>startNewPath</name></member>
+      <member refid="class_quant_lib_1_1_market_model_evolver_1a4c1f152fb923561c3e6739d30e55a4c4" prot="public" virt="virtual"><scope>QuantLib::MarketModelEvolver</scope><name>~MarketModelEvolver</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

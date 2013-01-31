@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_s" kind="class" prot="public">
+    <compoundname>S</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_generic_risk_statistics" prot="public" virt="non-virtual">GenericRiskStatistics&lt; S &gt;</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="15643">
+        <label>S</label>
+      </node>
+      <node id="15644">
+        <label>GenericRiskStatistics&lt; S &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_risk_statistics"/>
+        <childnode refid="15643" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/riskstatistics.hpp" line="42"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

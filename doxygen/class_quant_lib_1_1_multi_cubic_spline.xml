@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_multi_cubic_spline" kind="class" prot="public">
+    <compoundname>QuantLib::MultiCubicSpline</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <declname>i</declname>
+        <defname>i</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1af1e8a80facc3611088896b222bae00ac" prot="private" static="no">
+        <type>detail::Int2Type&lt; i &gt;::c_spline</type>
+        <definition>typedef detail::Int2Type&lt;i&gt;::c_spline c_spline</definition>
+        <argsstring></argsstring>
+        <name>c_spline</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="467" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="467" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1af15dc76a76a8d91e8bb4312a7bca5d7d" prot="private" static="no">
+        <type>detail::Int2Type&lt; i &gt;::c_splint</type>
+        <definition>typedef detail::Int2Type&lt;i&gt;::c_splint c_splint</definition>
+        <argsstring></argsstring>
+        <name>c_splint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="468" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="468" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a015b0e85ee81e3da61427f7a4c0d42ee" prot="public" static="no">
+        <type>c_splint::argument_type</type>
+        <definition>typedef c_splint::argument_type argument_type</definition>
+        <argsstring></argsstring>
+        <name>argument_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="470" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="470" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a1041b4d77c5a2dc893d85075b9683901" prot="public" static="no">
+        <type>c_splint::result_type</type>
+        <definition>typedef c_splint::result_type result_type</definition>
+        <argsstring></argsstring>
+        <name>result_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="471" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="471" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1ad52271a2cb04f2fa648165cc57c2606a" prot="public" static="no">
+        <type>c_splint::data_table</type>
+        <definition>typedef c_splint::data_table data_table</definition>
+        <argsstring></argsstring>
+        <name>data_table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="472" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="472" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1abb2defc9d91d720b0608c60bc1e54450" prot="public" static="no">
+        <type>c_splint::return_type</type>
+        <definition>typedef c_splint::return_type return_type</definition>
+        <argsstring></argsstring>
+        <name>return_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="473" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="473" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a4155be31bdd2d49d7f4f2276773a470c" prot="public" static="no">
+        <type>c_splint::output_data</type>
+        <definition>typedef c_splint::output_data output_data</definition>
+        <argsstring></argsstring>
+        <name>output_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="474" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="474" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a212b7ae9248cc51f5df6690ac9aab14e" prot="public" static="no">
+        <type>c_splint::dimensions</type>
+        <definition>typedef c_splint::dimensions dimensions</definition>
+        <argsstring></argsstring>
+        <name>dimensions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="475" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="475" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a6586602618017024fdcd66a924e147e8" prot="public" static="no">
+        <type>c_splint::data</type>
+        <definition>typedef c_splint::data data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="476" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="476" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a65345d4adea6c897b8824d82736c7f94" prot="private" static="no" mutable="no">
+        <type>const SplineGrid &amp;</type>
+        <definition>const SplineGrid&amp; grid_</definition>
+        <argsstring></argsstring>
+        <name>grid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="494" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="494" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" static="no" mutable="no">
+        <type>const data_table &amp;</type>
+        <definition>const data_table&amp; y_</definition>
+        <argsstring></argsstring>
+        <name>y_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="495" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="495" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a910627e4802692b64a0a6179dc1b35ad" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; bool &gt; &amp;</type>
+        <definition>const std::vector&lt;bool&gt;&amp; ae_</definition>
+        <argsstring></argsstring>
+        <name>ae_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="496" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="496" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1adf97530712b52ad69e832dee06a6d8b2" prot="private" static="no" mutable="yes">
+        <type>return_type</type>
+        <definition>return_type a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="497" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a4cfdaf5ed4564619b0a7f8fb2bff7ac5" prot="private" static="no" mutable="yes">
+        <type>return_type</type>
+        <definition>return_type b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="497" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a37a444b54c0b2854d02d378cee16d569" prot="private" static="no" mutable="yes">
+        <type>return_type</type>
+        <definition>return_type a2_</definition>
+        <argsstring></argsstring>
+        <name>a2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="497" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a9b4f67a134242cf04eacfaae088999d1" prot="private" static="no" mutable="yes">
+        <type>return_type</type>
+        <definition>return_type b2_</definition>
+        <argsstring></argsstring>
+        <name>b2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="497" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="497" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a7714d3d344bb0040f2bbc1f4b7aaab35" prot="private" static="no" mutable="yes">
+        <type>output_data</type>
+        <definition>output_data v_</definition>
+        <argsstring></argsstring>
+        <name>v_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="498" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1acbe9e209858a9727935f621ee6a9f5d9" prot="private" static="no" mutable="yes">
+        <type>output_data</type>
+        <definition>output_data v1_</definition>
+        <argsstring></argsstring>
+        <name>v1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="498" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a07af66a76dd90a4fd664486afae2dcb9" prot="private" static="no" mutable="yes">
+        <type>output_data</type>
+        <definition>output_data v2_</definition>
+        <argsstring></argsstring>
+        <name>v2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="498" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="498" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a644cd1cb3e658b5ff362710981e372a2" prot="private" static="no" mutable="yes">
+        <type>result_type</type>
+        <definition>result_type res_</definition>
+        <argsstring></argsstring>
+        <name>res_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="499" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="499" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1ad13db1cb1cab86ec9296d8a23443a98e" prot="private" static="no" mutable="yes">
+        <type>dimensions</type>
+        <definition>dimensions i_</definition>
+        <argsstring></argsstring>
+        <name>i_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="500" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="500" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a52a2fab1f1440cf4b2e53f17255ba34d" prot="private" static="no" mutable="yes">
+        <type>data</type>
+        <definition>data d_</definition>
+        <argsstring></argsstring>
+        <name>d_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="501" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a2aa6757fd0024a02ac0dfd86a7611530" prot="private" static="no" mutable="yes">
+        <type>data</type>
+        <definition>data d2_</definition>
+        <argsstring></argsstring>
+        <name>d2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="501" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="501" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_multi_cubic_spline_1a6a20759641ced5517d675815387ebf8b" prot="private" static="no" mutable="yes">
+        <type>data_table</type>
+        <definition>data_table y2_</definition>
+        <argsstring></argsstring>
+        <name>y2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="502" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="502" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1acdd17fa93ecf7947e0a70431f9d2e28c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MultiCubicSpline</definition>
+        <argsstring>(const SplineGrid &amp;grid, const data_table &amp;y, const std::vector&lt; bool &gt; &amp;ae=std::vector&lt; bool &gt;(20, false))</argsstring>
+        <name>MultiCubicSpline</name>
+        <param>
+          <type>const SplineGrid &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type>const data_table &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; bool &gt; &amp;</type>
+          <declname>ae</declname>
+          <defval>std::vector&lt; bool &gt;(20, false)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="481" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="477" bodyend="484"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>result_type</type>
+        <definition>result_type operator()</definition>
+        <argsstring>(const argument_type &amp;x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const argument_type &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="485" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="485" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a34b4b0a9ab266c603ce441c4cf9db4c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_shared_increments</definition>
+        <argsstring>() const </argsstring>
+        <name>set_shared_increments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="491" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="508" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a54a993ffaa599e4ca5e431d59183c3d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void set_shared_coefficients</definition>
+        <argsstring>(const argument_type &amp;x) const </argsstring>
+        <name>set_shared_coefficients</name>
+        <param>
+          <type>const argument_type &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="492"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>N-dimensional cubic spline interpolation between discrete points. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000043"><xreftitle>Tests</xreftitle><xrefdescription><para>interpolated values are checked against the original function.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000034"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para><itemizedlist>
+<listitem><para>allow extrapolation as for the other interpolations</para></listitem><listitem><para>investigate if and how to implement Hyman filters and different boundary conditions</para></listitem></itemizedlist>
+</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000004"><xreftitle>Bug</xreftitle><xrefdescription><para>cannot interpolate at the grid points on the boundary surface of the N-dimensional region </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="466" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="466" bodyend="503"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a37a444b54c0b2854d02d378cee16d569" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>a2_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1adf97530712b52ad69e832dee06a6d8b2" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a910627e4802692b64a0a6179dc1b35ad" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>ae_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a015b0e85ee81e3da61427f7a4c0d42ee" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>argument_type</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a9b4f67a134242cf04eacfaae088999d1" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>b2_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a4cfdaf5ed4564619b0a7f8fb2bff7ac5" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1af1e8a80facc3611088896b222bae00ac" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>c_spline</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1af15dc76a76a8d91e8bb4312a7bca5d7d" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>c_splint</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a2aa6757fd0024a02ac0dfd86a7611530" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>d2_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a52a2fab1f1440cf4b2e53f17255ba34d" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>d_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a6586602618017024fdcd66a924e147e8" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>data</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1ad52271a2cb04f2fa648165cc57c2606a" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>data_table</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a212b7ae9248cc51f5df6690ac9aab14e" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>dimensions</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a65345d4adea6c897b8824d82736c7f94" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>grid_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1ad13db1cb1cab86ec9296d8a23443a98e" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>i_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1acdd17fa93ecf7947e0a70431f9d2e28c" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>MultiCubicSpline</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a4155be31bdd2d49d7f4f2276773a470c" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>output_data</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a644cd1cb3e658b5ff362710981e372a2" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>res_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a1041b4d77c5a2dc893d85075b9683901" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1abb2defc9d91d720b0608c60bc1e54450" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>return_type</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a54a993ffaa599e4ca5e431d59183c3d1" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>set_shared_coefficients</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a34b4b0a9ab266c603ce441c4cf9db4c9" prot="public" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>set_shared_increments</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1acbe9e209858a9727935f621ee6a9f5d9" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>v1_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a07af66a76dd90a4fd664486afae2dcb9" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>v2_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a7714d3d344bb0040f2bbc1f4b7aaab35" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>v_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1a6a20759641ced5517d675815387ebf8b" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>y2_</name></member>
+      <member refid="class_quant_lib_1_1_multi_cubic_spline_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" virt="non-virtual"><scope>QuantLib::MultiCubicSpline</scope><name>y_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

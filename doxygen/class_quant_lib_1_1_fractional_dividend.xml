@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fractional_dividend" kind="class" prot="public">
+    <compoundname>QuantLib::FractionalDividend</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_dividend" prot="public" virt="non-virtual">Dividend</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Dividend interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real amount</definition>
+        <argsstring>() const </argsstring>
+        <name>amount</name>
+        <reimplements refid="class_quant_lib_1_1_dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <briefdescription>
+<para>returns the amount of the cash flow </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="83" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a4331227e15dd6175bbb270e7e6311a43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real amount</definition>
+        <argsstring>(Real underlying) const </argsstring>
+        <name>amount</name>
+        <reimplements refid="class_quant_lib_1_1_dividend_1a4851910d5646519c98bb6ee48bab8648">amount</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>underlying</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="87" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a6e0be46b8606ad399eecc52ada97ea90" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rate</definition>
+        <argsstring>() const </argsstring>
+        <name>rate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal</definition>
+        <argsstring>() const </argsstring>
+        <name>nominal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="94" bodyend="94"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fractional_dividend_1a5b9240d65aeaed752bbe64d3ae5925fe" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rate_</definition>
+        <argsstring></argsstring>
+        <name>rate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fractional_dividend_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal_</definition>
+        <argsstring></argsstring>
+        <name>nominal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1a68253c2a6dabefefb0d6ccf1f7712b02" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FractionalDividend</definition>
+        <argsstring>(Real rate, const Date &amp;date)</argsstring>
+        <name>FractionalDividend</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="76" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fractional_dividend_1abd37cb9ff2205d88d83bde5d932d6cc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FractionalDividend</definition>
+        <argsstring>(Real rate, Real nominal, const Date &amp;date)</argsstring>
+        <name>FractionalDividend</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nominal</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="79" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Predetermined cash flow. </para>    </briefdescription>
+    <detaileddescription>
+<para>This cash flow pays a fractional amount at a given date. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6704">
+        <label>FractionalDividend</label>
+        <link refid="class_quant_lib_1_1_fractional_dividend"/>
+        <childnode refid="6705" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6707">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="6708" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6708">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6706">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="6707" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6705">
+        <label>Dividend</label>
+        <link refid="class_quant_lib_1_1_dividend"/>
+        <childnode refid="6706" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6709">
+        <label>FractionalDividend</label>
+        <link refid="class_quant_lib_1_1_fractional_dividend"/>
+        <childnode refid="6710" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6712">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="6713" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6713">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6714">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="6711">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="6712" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6710">
+        <label>Dividend</label>
+        <link refid="class_quant_lib_1_1_dividend"/>
+        <childnode refid="6711" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6714" relation="usage">
+          <edgelabel>date_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="74" bodyend="99"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_dividend_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a4331227e15dd6175bbb270e7e6311a43" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_dividend_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="protected" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>date_</name></member>
+      <member refid="class_quant_lib_1_1_dividend_1a3ce04351ecc7f83eab8f3bfaaa99f3d4" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>Dividend</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a68253c2a6dabefefb0d6ccf1f7712b02" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>FractionalDividend</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1abd37cb9ff2205d88d83bde5d932d6cc5" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>FractionalDividend</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="protected" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a6e0be46b8606ad399eecc52ada97ea90" prot="public" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>rate</name></member>
+      <member refid="class_quant_lib_1_1_fractional_dividend_1a5b9240d65aeaed752bbe64d3ae5925fe" prot="protected" virt="non-virtual"><scope>QuantLib::FractionalDividend</scope><name>rate_</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FractionalDividend</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

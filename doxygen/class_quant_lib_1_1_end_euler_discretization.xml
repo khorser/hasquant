@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_end_euler_discretization" kind="class" prot="public">
+    <compoundname>QuantLib::EndEulerDiscretization</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" prot="public" virt="non-virtual">StochasticProcess::discretization</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization" prot="public" virt="non-virtual">StochasticProcess1D::discretization</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; drift</definition>
+        <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a34bda8631ccdcbafb2dc5da0fc4d05ce">drift</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the drift defined as <formula id="332">$ \mu(t_0 + \Delta t, \mathbf{x}_0) \Delta t $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real drift</definition>
+        <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1afe744d667f97faf96e673cbde379b597">drift</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the drift defined as <formula id="333">$ \mu(t_0 + \Delta t, x_0) \Delta t $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
+        <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a2ba0ace71b0d2f7b758d1685e59e7c40">diffusion</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the diffusion defined as <formula id="334">$ \sigma(t_0 + \Delta t, \mathbf{x}_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real diffusion</definition>
+        <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a2b3c25680a5820b79568dcd4b9a81b65">diffusion</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the diffusion defined as <formula id="335">$ \sigma(t_0 + \Delta t, x_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; covariance</definition>
+        <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>covariance</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a8c5e010d99024e4340bf7f694f3abcb5">covariance</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the covariance defined as <formula id="336">$ \sigma(t_0 + \Delta t, \mathbf{x}_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_end_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real variance</definition>
+        <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
+        <name>variance</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a45a2880c7e449f4fa332d25b1f9bbfcb">variance</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns an approximation of the variance defined as <formula id="337">$ \sigma(t_0 + \Delta t, x_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Euler end-point discretization for stochastic processes. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4058">
+        <label>EndEulerDiscretization</label>
+        <link refid="class_quant_lib_1_1_end_euler_discretization"/>
+        <childnode refid="4059" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4060" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4060">
+        <label>discretization</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization"/>
+      </node>
+      <node id="4059">
+        <label>discretization</label>
+        <link refid="class_quant_lib_1_1_stochastic_process_1_1discretization"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4061">
+        <label>EndEulerDiscretization</label>
+        <link refid="class_quant_lib_1_1_end_euler_discretization"/>
+        <childnode refid="4062" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4063">
+        <label>discretization</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization"/>
+      </node>
+      <node id="4062">
+        <label>discretization</label>
+        <link refid="class_quant_lib_1_1_stochastic_process_1_1discretization"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/endeulerdiscretization.hpp" bodystart="33" bodyend="70"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>covariance</name></member>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_end_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" virt="virtual"><scope>QuantLib::EndEulerDiscretization</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" virt="virtual" ambiguityscope="QuantLib::"><scope>QuantLib::EndEulerDiscretization</scope><name>~discretization</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" virt="virtual" ambiguityscope="QuantLib::StochasticProcess1D::discretization::"><scope>QuantLib::EndEulerDiscretization</scope><name>~discretization</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,284 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_dirichlet_boundary" kind="class" prot="public">
+    <compoundname>QuantLib::FdmDirichletBoundary</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_boundary_condition" prot="public" virt="non-virtual">BoundaryCondition&lt; FdmLinearOp &gt;</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9625d18a7fe44bba0f81c0de83f765fb" prot="public" static="no">
+        <type>FdmLinearOp</type>
+        <definition>typedef FdmLinearOp operator_type</definition>
+        <argsstring></argsstring>
+        <name>operator_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a1813b44fed97254f385fac37cfca09ee" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">FdmLinearOp::array_type</ref></type>
+        <definition>typedef FdmLinearOp::array_type array_type</definition>
+        <argsstring></argsstring>
+        <name>array_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a25abbd804206d98770d676560b6a635e" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">BoundaryCondition</ref>&lt; FdmLinearOp &gt;::Side</type>
+        <definition>typedef BoundaryCondition&lt;FdmLinearOp&gt;::Side Side</definition>
+        <argsstring></argsstring>
+        <name>Side</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a98e8e540edb437f98c62fbbc3bbdb701" prot="private" static="no" mutable="no">
+        <type>const Side</type>
+        <definition>const Side side_</definition>
+        <argsstring></argsstring>
+        <name>side_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6f82d4a4640bb56acd32cee4139370d0" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real valueOnBoundary_</definition>
+        <argsstring></argsstring>
+        <name>valueOnBoundary_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a217fc462bba36545e25bc0b7f50e2377" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real xExtreme_</definition>
+        <argsstring></argsstring>
+        <name>xExtreme_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a04ab9a298d4798a54e2ba82c50fb19a2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; indicies_</definition>
+        <argsstring></argsstring>
+        <name>indicies_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9045300122c604195884011d6607940f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmDirichletBoundary</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;layout, Real valueOnBoundary, Size direction, Side side)</argsstring>
+        <name>FdmDirichletBoundary</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
+          <declname>layout</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>valueOnBoundary</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>Side</type>
+          <declname>side</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1aee99faccbd03377e771635a6cfae86b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyBeforeApplying</definition>
+        <argsstring>(operator_type &amp;) const </argsstring>
+        <name>applyBeforeApplying</name>
+        <param>
+          <type>operator_type &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1aca642c8c604583162711f4396ef2b51e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyBeforeSolving</definition>
+        <argsstring>(operator_type &amp;, array_type &amp;) const </argsstring>
+        <name>applyBeforeSolving</name>
+        <param>
+          <type>operator_type &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1af4a571c9f08e9d1ff4d37d2ebd467857" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyAfterApplying</definition>
+        <argsstring>(array_type &amp;) const </argsstring>
+        <name>applyAfterApplying</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a4556b05a74d18222e48aa7a2ad43b9ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyAfterSolving</definition>
+        <argsstring>(array_type &amp;) const </argsstring>
+        <name>applyAfterSolving</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6e60101b2af13783da6aa3d7cee67acb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time)</argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6a903b9c6cc4872dec364e066c09e6d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real applyAfterApplying</definition>
+        <argsstring>(Real x, Real value) const </argsstring>
+        <name>applyAfterApplying</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6039">
+        <label>FdmDirichletBoundary</label>
+        <childnode refid="6040" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6040">
+        <label>BoundaryCondition&lt; FdmLinearOp &gt;</label>
+        <link refid="class_quant_lib_1_1_boundary_condition"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6041">
+        <label>FdmDirichletBoundary</label>
+        <childnode refid="6042" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6042">
+        <label>BoundaryCondition&lt; FdmLinearOp &gt;</label>
+        <link refid="class_quant_lib_1_1_boundary_condition"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="38" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1af4a571c9f08e9d1ff4d37d2ebd467857" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterApplying</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6a903b9c6cc4872dec364e066c09e6d3" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterApplying</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a4556b05a74d18222e48aa7a2ad43b9ec" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterSolving</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1aee99faccbd03377e771635a6cfae86b8" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyBeforeApplying</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1aca642c8c604583162711f4396ef2b51e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyBeforeSolving</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a1813b44fed97254f385fac37cfca09ee" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9045300122c604195884011d6607940f" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>FdmDirichletBoundary</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a04ab9a298d4798a54e2ba82c50fb19a2" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>indicies_</name></member>
+      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00af886b397626076218462d53d50eb96bc" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Lower</name></member>
+      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>None</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9625d18a7fe44bba0f81c0de83f765fb" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>operator_type</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6e60101b2af13783da6aa3d7cee67acb" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a25abbd804206d98770d676560b6a635e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Side</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a98e8e540edb437f98c62fbbc3bbdb701" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>side_</name></member>
+      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ae70afef0d3ff7aca74e17e85ff6c9f2e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Upper</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6f82d4a4640bb56acd32cee4139370d0" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>valueOnBoundary_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a217fc462bba36545e25bc0b7f50e2377" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>xExtreme_</name></member>
+      <member refid="class_quant_lib_1_1_boundary_condition_1aadb0c87dae0ef14d92760cbc517f5330" prot="public" virt="virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>~BoundaryCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

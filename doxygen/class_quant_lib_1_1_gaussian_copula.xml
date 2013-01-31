@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_gaussian_copula" kind="class" prot="public">
+    <compoundname>QuantLib::GaussianCopula</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_copula_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho_</definition>
+        <argsstring></argsstring>
+        <name>rho_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_copula_1ab64c3f92d74e0d72052ac557db4a6e3d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p" kindref="compound">BivariateCumulativeNormalDistributionWe04DP</ref></type>
+        <definition>BivariateCumulativeNormalDistributionWe04DP bivariate_normal_cdf_</definition>
+        <argsstring></argsstring>
+        <name>bivariate_normal_cdf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gaussian_copula_1a51e59cc7566c2879ab0a6df1900cba8d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_inverse_cumulative_normal" kindref="compound">InverseCumulativeNormal</ref></type>
+        <definition>InverseCumulativeNormal invCumNormal_</definition>
+        <argsstring></argsstring>
+        <name>invCumNormal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_copula_1a025f2c6e6ec49736861536ce63c46734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GaussianCopula</definition>
+        <argsstring>(Real rho)</argsstring>
+        <name>GaussianCopula</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Gaussian copula. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="33" bodyend="41"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_gaussian_copula_1ab64c3f92d74e0d72052ac557db4a6e3d" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>bivariate_normal_cdf_</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_copula_1a025f2c6e6ec49736861536ce63c46734" prot="public" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>GaussianCopula</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_copula_1a51e59cc7566c2879ab0a6df1900cba8d" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>invCumNormal_</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_copula_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>rho_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

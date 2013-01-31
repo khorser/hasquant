@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_covariance_decomposition" kind="class" prot="public">
+    <compoundname>QuantLib::CovarianceDecomposition</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1a056cd2cd8c8177ec2aafdcd9c7077ecd" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array variances_</definition>
+        <argsstring></argsstring>
+        <name>variances_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1aac09b3a47c6403bf02aedef03612ac4c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array stdDevs_</definition>
+        <argsstring></argsstring>
+        <name>stdDevs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_covariance_decomposition_1a3d5aeaf3b3e2c9ac3abefa191f9d387a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix correlationMatrix_</definition>
+        <argsstring></argsstring>
+        <name>correlationMatrix_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1a91fc136055dc917754c5238edb5bc138" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CovarianceDecomposition</definition>
+        <argsstring>(const Matrix &amp;covarianceMatrix, Real tolerance=1.0e-12)</argsstring>
+        <name>CovarianceDecomposition</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>covarianceMatrix</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+          <defval>1.0e-12</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="pre"><para>covarianceMatrix must be symmetric </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1acc058c47207cbd07511c380d0c4e4eb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; variances</definition>
+        <argsstring>() const </argsstring>
+        <name>variances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the variances <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="102" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1ac552baaa07f4c0775024d08fd5dd55a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; standardDeviations</definition>
+        <argsstring>() const </argsstring>
+        <name>standardDeviations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the standard deviations <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_covariance_decomposition_1ae5ed4f9cce250d01778cf8d213fa8309" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <definition>const Matrix&amp; correlationMatrix</definition>
+        <argsstring>() const </argsstring>
+        <name>correlationMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the correlation matrix </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="106" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Covariance decomposition into correlation and variances. </para>    </briefdescription>
+    <detaileddescription>
+<para>Extracts the correlation matrix and the vector of variances out of the input covariance matrix.</para><para>Note that only the lower symmetric part of the covariance matrix is used.</para><para><simplesect kind="pre"><para>The covariance matrix must be symmetric.</para></simplesect>
+<xrefsect id="test_1_test000045"><xreftitle>Tests</xreftitle><xrefdescription><para>cross checked with getCovariance </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="95" bodyend="110"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1ae5ed4f9cce250d01778cf8d213fa8309" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>correlationMatrix</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1a3d5aeaf3b3e2c9ac3abefa191f9d387a" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>correlationMatrix_</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1a91fc136055dc917754c5238edb5bc138" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>CovarianceDecomposition</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1ac552baaa07f4c0775024d08fd5dd55a7" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>standardDeviations</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1aac09b3a47c6403bf02aedef03612ac4c" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>stdDevs_</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1acc058c47207cbd07511c380d0c4e4eb6" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>variances</name></member>
+      <member refid="class_quant_lib_1_1_covariance_decomposition_1a056cd2cd8c8177ec2aafdcd9c7077ecd" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>variances_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

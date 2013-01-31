@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_make_m_c_barrier_engine" kind="class" prot="public">
+    <compoundname>QuantLib::MakeMCBarrierEngine</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class RNG</type>
+        <defval><ref refid="namespace_quant_lib_1af791c06b3da1d5f4b90a19f3f423e75e" kindref="member">PseudoRandom</ref></defval>
+      </param>
+      <param>
+        <type>class S</type>
+        <defval><ref refid="namespace_quant_lib_1a235b6c8805adaa743cc845aae9c05946" kindref="member">Statistics</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a237ba632601944316deef578c245e825" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool brownianBridge_</definition>
+        <argsstring></argsstring>
+        <name>brownianBridge_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool antithetic_</definition>
+        <argsstring></argsstring>
+        <name>antithetic_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ade84baf707b589b6e566b2a39aa86c23" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool biased_</definition>
+        <argsstring></argsstring>
+        <name>biased_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size steps_</definition>
+        <argsstring></argsstring>
+        <name>steps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size stepsPerYear_</definition>
+        <argsstring></argsstring>
+        <name>stepsPerYear_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size samples_</definition>
+        <argsstring></argsstring>
+        <name>samples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxSamples_</definition>
+        <argsstring></argsstring>
+        <name>maxSamples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real tolerance_</definition>
+        <argsstring></argsstring>
+        <name>tolerance_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+        <definition>BigNatural seed_</definition>
+        <argsstring></argsstring>
+        <name>seed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a6ca629d70bd3b7e8c5d700b2877ead04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MakeMCBarrierEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
+        <name>MakeMCBarrierEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <defname>process</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="276" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1aab1eeb3b95f206e93fa68cb880a032fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withSteps</definition>
+        <argsstring>(Size steps)</argsstring>
+        <name>withSteps</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>steps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="285" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ab0ea0a6124111ed9d4d8c59b9122fc7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withStepsPerYear</definition>
+        <argsstring>(Size steps)</argsstring>
+        <name>withStepsPerYear</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>steps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="292" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a8332e045971dc7498a33fcccbe2533e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withBrownianBridge</definition>
+        <argsstring>(bool b=true)</argsstring>
+        <name>withBrownianBridge</name>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="299" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ae20bcaba3c58ea67be477f743e2cc0a8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withAntitheticVariate</definition>
+        <argsstring>(bool b=true)</argsstring>
+        <name>withAntitheticVariate</name>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="306" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a03d6a65759905f3264e8c0af47686338" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withSamples</definition>
+        <argsstring>(Size samples)</argsstring>
+        <name>withSamples</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>samples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="313" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1ac685892a4f02a2070abaf4044a3a5d9b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withAbsoluteTolerance</definition>
+        <argsstring>(Real tolerance)</argsstring>
+        <name>withAbsoluteTolerance</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="322" bodyend="330"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a3ef8ae75f270ab9adf1fd73ea162f641" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withMaxSamples</definition>
+        <argsstring>(Size samples)</argsstring>
+        <name>withMaxSamples</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>samples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="334" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a88166957d0455f3e90404ac72a24a1fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withBias</definition>
+        <argsstring>(bool b=true)</argsstring>
+        <name>withBias</name>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="341" bodyend="344"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a27c5fab28d8f4a29b161ec7842dcd309" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_m_c_barrier_engine" kindref="compound">MakeMCBarrierEngine</ref> &amp;</type>
+        <definition>MakeMCBarrierEngine&lt; RNG, S &gt; &amp; withSeed</definition>
+        <argsstring>(BigNatural seed)</argsstring>
+        <name>withSeed</name>
+        <param>
+          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="348" bodyend="351"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_m_c_barrier_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>operator boost::shared_ptr&lt; PricingEngine &gt;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator boost::shared_ptr&lt; PricingEngine &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="355" bodyend="371"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Monte Carlo barrier-option engine factory. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="115" bodyend="137"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>antithetic_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ade84baf707b589b6e566b2a39aa86c23" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>biased_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>brownianBridge_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a6ca629d70bd3b7e8c5d700b2877ead04" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>MakeMCBarrierEngine</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>maxSamples_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>samples_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>seed_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>steps_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>stepsPerYear_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>tolerance_</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ac685892a4f02a2070abaf4044a3a5d9b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withAbsoluteTolerance</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ae20bcaba3c58ea67be477f743e2cc0a8" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withAntitheticVariate</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a88166957d0455f3e90404ac72a24a1fe" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withBias</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a8332e045971dc7498a33fcccbe2533e9" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withBrownianBridge</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a3ef8ae75f270ab9adf1fd73ea162f641" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withMaxSamples</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a03d6a65759905f3264e8c0af47686338" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withSamples</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1a27c5fab28d8f4a29b161ec7842dcd309" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withSeed</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1aab1eeb3b95f206e93fa68cb880a032fb" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withSteps</name></member>
+      <member refid="class_quant_lib_1_1_make_m_c_barrier_engine_1ab0ea0a6124111ed9d4d8c59b9122fc7c" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCBarrierEngine</scope><name>withStepsPerYear</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

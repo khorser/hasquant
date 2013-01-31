@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_garman_klass_abstract" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::GarmanKlassAbstract</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::LocalVolatilityEstimator&lt; IntervalPrice &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma4" prot="public" virt="non-virtual">GarmanKlassSigma4</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_sigma5" prot="public" virt="non-virtual">GarmanKlassSigma5</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_simple_sigma" prot="public" virt="non-virtual">GarmanKlassSimpleSigma</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_parkinson_sigma" prot="public" virt="non-virtual">ParkinsonSigma</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_garman_klass_abstract_1a685ec69bc8fa930e820390e5d34b06f1" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real yearFraction_</definition>
+        <argsstring></argsstring>
+        <name>yearFraction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1a989d2a31c7afcc945ac1425c730345d4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real calculatePoint</definition>
+        <argsstring>(const IntervalPrice &amp;p)=0</argsstring>
+        <name>calculatePoint</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GarmanKlassAbstract</definition>
+        <argsstring>(Real y)</argsstring>
+        <name>GarmanKlassAbstract</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
+        <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;quoteSeries)</argsstring>
+        <name>calculate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+          <declname>quoteSeries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Garman-Klass volatility model. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements a concrete volatility model based on high low formulas using the method of Garman and Klass in their paper &quot;On the Estimation of the Security Price from
+       Historical Data&quot; at <ulink url="http://www.fea.com/resources/pdf/a_estimation_of_security_price.pdf">http://www.fea.com/resources/pdf/a_estimation_of_security_price.pdf</ulink></para><para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="41" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassAbstract</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::GarmanKlassAbstract</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a989d2a31c7afcc945ac1425c730345d4" prot="protected" virt="pure-virtual"><scope>QuantLib::GarmanKlassAbstract</scope><name>calculatePoint</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassAbstract</scope><name>GarmanKlassAbstract</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a685ec69bc8fa930e820390e5d34b06f1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassAbstract</scope><name>yearFraction_</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::GarmanKlassAbstract</scope><name>~LocalVolatilityEstimator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

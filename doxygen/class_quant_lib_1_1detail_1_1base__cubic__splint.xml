@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1base__cubic__splint" kind="class" prot="public">
+    <compoundname>QuantLib::detail::base_cubic_splint</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; base_arg_type, Real &gt;</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1a40e1ff99ae6254a8809dff87dd7e4cd5" prot="public" static="no">
+        <type>base_data</type>
+        <definition>typedef base_data data</definition>
+        <argsstring></argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="282" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1a3b807ce7052068570437321cbe598705" prot="public" static="no">
+        <type>base_data_table</type>
+        <definition>typedef base_data_table data_table</definition>
+        <argsstring></argsstring>
+        <name>data_table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="283" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="283" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1aa9c30a74d2ffcf6540a56edb0eb1b0c7" prot="public" static="no">
+        <type>base_dimensions</type>
+        <definition>typedef base_dimensions dimensions</definition>
+        <argsstring></argsstring>
+        <name>dimensions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="284" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1ad2eb9da029f604acb1ef1477859265f2" prot="public" static="no">
+        <type>base_output_data</type>
+        <definition>typedef base_output_data output_data</definition>
+        <argsstring></argsstring>
+        <name>output_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="285" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1a60c09994815f11b59d5c6590cddf1539" prot="public" static="no">
+        <type>base_return_type</type>
+        <definition>typedef base_return_type return_type</definition>
+        <argsstring></argsstring>
+        <name>return_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="286" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1base__cubic__splint_1a317bc8b22a139aadfb60f580fb57b959" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>base_cubic_splint</definition>
+        <argsstring>(const return_type &amp;a, const return_type &amp;b, const return_type &amp;a2, const return_type &amp;b2, const dimensions &amp;i, const data &amp;, const data &amp;, const data_table &amp;y, data_table &amp;y2, output_data &amp;, output_data &amp;, output_data &amp;, result_type &amp;res)</argsstring>
+        <name>base_cubic_splint</name>
+        <param>
+          <type>const return_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const return_type &amp;</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const return_type &amp;</type>
+          <declname>a2</declname>
+        </param>
+        <param>
+          <type>const return_type &amp;</type>
+          <declname>b2</declname>
+        </param>
+        <param>
+          <type>const dimensions &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const data &amp;</type>
+        </param>
+        <param>
+          <type>const data &amp;</type>
+        </param>
+        <param>
+          <type>const data_table &amp;</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>data_table &amp;</type>
+          <declname>y2</declname>
+        </param>
+        <param>
+          <type>output_data &amp;</type>
+        </param>
+        <param>
+          <type>output_data &amp;</type>
+        </param>
+        <param>
+          <type>output_data &amp;</type>
+        </param>
+        <param>
+          <type>result_type &amp;</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="294" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="287" bodyend="296"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="280" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="280" bodyend="297"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a317bc8b22a139aadfb60f580fb57b959" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>base_cubic_splint</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a40e1ff99ae6254a8809dff87dd7e4cd5" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>data</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a3b807ce7052068570437321cbe598705" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>data_table</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1aa9c30a74d2ffcf6540a56edb0eb1b0c7" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>dimensions</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1ad2eb9da029f604acb1ef1477859265f2" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>output_data</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a60c09994815f11b59d5c6590cddf1539" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>return_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

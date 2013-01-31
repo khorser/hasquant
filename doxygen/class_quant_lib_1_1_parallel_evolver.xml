@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_parallel_evolver" kind="class" prot="public">
+    <compoundname>QuantLib::ParallelEvolver</compoundname>
+    <templateparamlist>
+      <param>
+        <type>class Evolver</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_1ac4d750b5cedcaf966401b628d2e540d2" prot="public" static="no">
+        <type>ParallelEvolverTraits&lt; typename Evolver::traits &gt;</type>
+        <definition>typedef ParallelEvolverTraits&lt;typename Evolver::traits&gt; traits</definition>
+        <argsstring></argsstring>
+        <name>traits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
+        <type>traits::operator_type</type>
+        <definition>typedef traits::operator_type operator_type</definition>
+        <argsstring></argsstring>
+        <name>operator_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
+        <type>traits::array_type</type>
+        <definition>typedef traits::array_type array_type</definition>
+        <argsstring></argsstring>
+        <name>array_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_parallel_evolver_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
+        <type>traits::bc_set</type>
+        <definition>typedef traits::bc_set bc_set</definition>
+        <argsstring></argsstring>
+        <name>bc_set</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_parallel_evolver_1aef6b7dd9b6ddcb702ca96f3b5cdf0fba" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; Evolver &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;Evolver&gt; &gt; evolvers_</definition>
+        <argsstring></argsstring>
+        <name>evolvers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_parallel_evolver_1a837ec9638f5c903436c81bcde0601c4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ParallelEvolver</definition>
+        <argsstring>(const operator_type &amp;L, const bc_set &amp;bcs)</argsstring>
+        <name>ParallelEvolver</name>
+        <param>
+          <type>const operator_type &amp;</type>
+          <declname>L</declname>
+        </param>
+        <param>
+          <type>const bc_set &amp;</type>
+          <declname>bcs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="91" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parallel_evolver_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void step</definition>
+        <argsstring>(array_type &amp;a, Time t)</argsstring>
+        <name>step</name>
+        <param>
+          <type>array_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="99" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parallel_evolver_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setStep</definition>
+        <argsstring>(Time dt)</argsstring>
+        <name>setStep</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="83" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1ac07e755f1412353806d561469c9ad49f" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>bc_set</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1aef6b7dd9b6ddcb702ca96f3b5cdf0fba" prot="private" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>evolvers_</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1a02ede700df8d04acf392294f6ab090c4" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>operator_type</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1a837ec9638f5c903436c81bcde0601c4e" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>ParallelEvolver</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>setStep</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>step</name></member>
+      <member refid="class_quant_lib_1_1_parallel_evolver_1ac4d750b5cedcaf966401b628d2e540d2" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>traits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

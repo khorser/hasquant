@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer" prot="public" virt="non-virtual">YoYInflationCouponPricer</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1aaf117f45aba9582f1937b3b5ad3eb8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>UnitDisplacedBlackYoYInflationCouponPricer</definition>
+        <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;capletVol=Handle&lt; YoYOptionletVolatilitySurface &gt;())</argsstring>
+        <name>UnitDisplacedBlackYoYInflationCouponPricer</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <declname>capletVol</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1acfc8acdaa2629202e579ae7c9c6ea74d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~UnitDisplacedBlackYoYInflationCouponPricer</definition>
+        <argsstring>()</argsstring>
+        <name>~UnitDisplacedBlackYoYInflationCouponPricer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="151" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1af00af24e3150c4c041fbbcfbfd83c67b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real optionletPriceImp</definition>
+        <argsstring>(Option::Type, Real strike, Real forward, Real stdDev) const </argsstring>
+        <name>optionletPriceImp</name>
+        <reimplements refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1aff67f7a2d156c5a490391f80d8d44316">optionletPriceImp</reimplements>
+        <param>
+          <type>Option::Type</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>stdDev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>usually only need implement this (of course they may need to re-implement initialize too ...) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="154"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Unit-Displaced-Black-formula pricer for capped/floored yoy inflation coupons. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14363">
+        <label>YoYInflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer"/>
+        <childnode refid="14364" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14362">
+        <label>UnitDisplacedBlackYoYInflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer"/>
+        <childnode refid="14363" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14366">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14365">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14364">
+        <label>InflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_inflation_coupon_pricer"/>
+        <childnode refid="14365" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14366" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14368">
+        <label>YoYInflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer"/>
+        <childnode refid="14369" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14374" relation="usage">
+          <edgelabel>capletVol_</edgelabel>
+        </childnode>
+        <childnode refid="14375" relation="usage">
+          <edgelabel>coupon_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14367">
+        <label>UnitDisplacedBlackYoYInflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer"/>
+        <childnode refid="14368" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14376">
+        <label>InflationCoupon</label>
+        <link refid="class_quant_lib_1_1_inflation_coupon"/>
+        <childnode refid="14377" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14370" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14380" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+        <childnode refid="14381" relation="usage">
+          <edgelabel>observationLag_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14379">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="14371" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14371">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14381">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="14372">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14370">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14374">
+        <label>Handle&lt; QuantLib::YoYOptionletVolatilitySurface &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14373">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="14380">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="14369">
+        <label>InflationCouponPricer</label>
+        <link refid="class_quant_lib_1_1_inflation_coupon_pricer"/>
+        <childnode refid="14370" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14371" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14372" relation="usage">
+          <edgelabel>rateCurve_</edgelabel>
+        </childnode>
+        <childnode refid="14373" relation="usage">
+          <edgelabel>paymentDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14375">
+        <label>YoYInflationCoupon</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_coupon"/>
+        <childnode refid="14376" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14378">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="14379" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14377">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="14378" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14373" relation="usage">
+          <edgelabel>refPeriodEnd_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+          <edgelabel>accrualEndDate_</edgelabel>
+          <edgelabel>accrualStartDate_</edgelabel>
+          <edgelabel>refPeriodStart_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/inflationcouponpricer.hpp" bodystart="144" bodyend="155"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1af5723a4db889afc5243483cf6557b5a1" prot="protected" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>adjustedFixing</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>capletPrice</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>capletRate</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1af556f3984ba9d53b98250ff674b443c9" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>capletVol_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a8913a18449d60f7f821d45bffee446a2" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>capletVolatility</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a7b84a775af1aa499a785f01a762efc62" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>coupon_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1aea69a040116fac17d85f412ad3bade51" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>floorletPrice</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>floorletRate</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a45e3444b97c506c9c7e4134f52c95bc3" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1afb810e72720dec33f5547f9625ad3746" prot="protected" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>optionletPrice</name></member>
+      <member refid="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1af00af24e3150c4c041fbbcfbfd83c67b" prot="protected" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>optionletPriceImp</name></member>
+      <member refid="class_quant_lib_1_1_inflation_coupon_pricer_1a292ad9c54719780e61282ddeeac02410" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_inflation_coupon_pricer_1a8ca075a069cbdaef300ed3c33643cbc7" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>rateCurve_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a72e496727fc864420dbb21f076968266" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>setCapletVolatility</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a13e8e0bbdf635458d4b3b32fc3d2a817" prot="protected" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>spreadLegValue_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>swapletPrice</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>swapletRate</name></member>
+      <member refid="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1aaf117f45aba9582f1937b3b5ad3eb8f2" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>UnitDisplacedBlackYoYInflationCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_inflation_coupon_pricer_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer_1a38a1e769775eb4f9ee5e8466341d5603" prot="public" virt="non-virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>YoYInflationCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_inflation_coupon_pricer_1ad147a1afa82e0fb39dde2053c1008538" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>~InflationCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1acfc8acdaa2629202e579ae7c9c6ea74d" prot="public" virt="virtual"><scope>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</scope><name>~UnitDisplacedBlackYoYInflationCouponPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

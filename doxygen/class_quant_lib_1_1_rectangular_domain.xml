@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_rectangular_domain" kind="class" prot="public">
+    <compoundname>QuantLib::RectangularDomain</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BoundedDomain</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a4b5473213e394f5b1744d2a1c7bf8108" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minX_</definition>
+        <argsstring></argsstring>
+        <name>minX_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a53f0c7efd005f4b1147c89fec4eea9f9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minY_</definition>
+        <argsstring></argsstring>
+        <name>minY_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1ae19fab9e86676781cb4b5ea6b0e06c46" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxX_</definition>
+        <argsstring></argsstring>
+        <name>maxX_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rectangular_domain_1a1b02085fb6a7eead8f6feee856383165" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxY_</definition>
+        <argsstring></argsstring>
+        <name>maxY_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1acf2ae9a59519990901e0bb37f9e50ca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RectangularDomain</definition>
+        <argsstring>(Real x1, Real y1, Real x2, Real y2)</argsstring>
+        <name>RectangularDomain</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="61" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1aa944d690a56d7efe96b404c5cf283e00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool includes</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>includes</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="63" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1ad6a4c9b3852034116b39f6a8fbb3e7e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real xLowerBound</definition>
+        <argsstring>() const </argsstring>
+        <name>xLowerBound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1af3f83a419a092a49f8b9f950690eae49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real yLowerBound</definition>
+        <argsstring>() const </argsstring>
+        <name>yLowerBound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1af8f8eac4d08f24233e7c489ac6a1100e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real xUpperBound</definition>
+        <argsstring>() const </argsstring>
+        <name>xUpperBound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rectangular_domain_1a06519b8aac8c0425b9f5c20277db5c29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real yUpperBound</definition>
+        <argsstring>() const </argsstring>
+        <name>yUpperBound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="70" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="59" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1aa944d690a56d7efe96b404c5cf283e00" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>includes</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1ae19fab9e86676781cb4b5ea6b0e06c46" prot="private" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>maxX_</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1a1b02085fb6a7eead8f6feee856383165" prot="private" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>maxY_</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1a4b5473213e394f5b1744d2a1c7bf8108" prot="private" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>minX_</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1a53f0c7efd005f4b1147c89fec4eea9f9" prot="private" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>minY_</name></member>
+      <member refid="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1acf2ae9a59519990901e0bb37f9e50ca5" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>RectangularDomain</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1ad6a4c9b3852034116b39f6a8fbb3e7e3" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>xLowerBound</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1af8f8eac4d08f24233e7c489ac6a1100e" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>xUpperBound</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1af3f83a419a092a49f8b9f950690eae49" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>yLowerBound</name></member>
+      <member refid="class_quant_lib_1_1_rectangular_domain_1a06519b8aac8c0425b9f5c20277db5c29" prot="public" virt="non-virtual"><scope>QuantLib::RectangularDomain</scope><name>yUpperBound</name></member>
+      <member refid="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" virt="virtual"><scope>QuantLib::RectangularDomain</scope><name>~Domain</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lecuyer_uniform_rng" kind="class" prot="public">
+    <compoundname>QuantLib::LecuyerUniformRng</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_lecuyer_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>typedef Sample&lt;Real&gt; sample_type</definition>
+        <argsstring></argsstring>
+        <name>sample_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a8b16998a078d244f74b6670e65581c9b" prot="private" static="no" mutable="yes">
+        <type>long</type>
+        <definition>long temp1</definition>
+        <argsstring></argsstring>
+        <name>temp1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a5399dcab8d608cb0503d584b447d7162" prot="private" static="no" mutable="yes">
+        <type>long</type>
+        <definition>long temp2</definition>
+        <argsstring></argsstring>
+        <name>temp2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a04ee6b20e6d3476ab1f51397993cfeef" prot="private" static="no" mutable="yes">
+        <type>long</type>
+        <definition>long y</definition>
+        <argsstring></argsstring>
+        <name>y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1af034a88fa2af8f32782a86023aaca9bd" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; long &gt;</type>
+        <definition>std::vector&lt;long&gt; buffer</definition>
+        <argsstring></argsstring>
+        <name>buffer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a351b28bfd179207bc21cffd7afbe5232" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long m1</definition>
+        <argsstring></argsstring>
+        <name>m1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a4a467794d400fb3a3b8aa13af41d3963" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long a1</definition>
+        <argsstring></argsstring>
+        <name>a1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a9a6f8e39ea72420c2dbb304c98bb2503" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long q1</definition>
+        <argsstring></argsstring>
+        <name>q1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a758e8067d5ce84177590a9f57ca11cda" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long r1</definition>
+        <argsstring></argsstring>
+        <name>r1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a288be252ebd68b10582028cb24b02d98" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long m2</definition>
+        <argsstring></argsstring>
+        <name>m2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a06c54786b4d1e39b1b2bfe1a08ea0673" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long a2</definition>
+        <argsstring></argsstring>
+        <name>a2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1ad41b8aefdaea08d69f8d898b40d1eea6" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long q2</definition>
+        <argsstring></argsstring>
+        <name>q2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1aa38909b2bf8811c158b8296fb1a7c0ed" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long r2</definition>
+        <argsstring></argsstring>
+        <name>r2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a4cb7aa26412b9517e92b492fa0386879" prot="private" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int bufferSize</definition>
+        <argsstring></argsstring>
+        <name>bufferSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1acb8c6ca96fa3bacc4775a5cecae0e47c" prot="private" static="yes" mutable="no">
+        <type>const long</type>
+        <definition>const long bufferNormalizer</definition>
+        <argsstring></argsstring>
+        <name>bufferNormalizer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a38f6a104aff480dba22d93f4a484f66b" prot="private" static="yes" mutable="no">
+        <type>const long double</type>
+        <definition>const long double maxRandom</definition>
+        <argsstring></argsstring>
+        <name>maxRandom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a148a11db369ad4f65dee641ecb0f8215" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LecuyerUniformRng</definition>
+        <argsstring>(long seed=0)</argsstring>
+        <name>LecuyerUniformRng</name>
+        <param>
+          <type>long</type>
+          <declname>seed</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lecuyer_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+        <definition>sample_type next</definition>
+        <argsstring>() const </argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns a sample with weight 1.0 containing a random number uniformly chosen from (0.0,1.0) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Uniform random number generator. </para>    </briefdescription>
+    <detaileddescription>
+<para>Random number generator of L&apos;Ecuyer with added Bays-Durham shuffle (know as ran2 in Numerical recipes)</para><para>For more details see Section 7.1 of Numerical Recipes in C, 2nd Edition, Cambridge University Press (available at <ulink url="http://www.nr.com/">http://www.nr.com/</ulink>) </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/lecuyeruniformrng.hpp" bodystart="40" bodyend="64"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a4a467794d400fb3a3b8aa13af41d3963" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>a1</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a06c54786b4d1e39b1b2bfe1a08ea0673" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>a2</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1af034a88fa2af8f32782a86023aaca9bd" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>buffer</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1acb8c6ca96fa3bacc4775a5cecae0e47c" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>bufferNormalizer</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a4cb7aa26412b9517e92b492fa0386879" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>bufferSize</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a148a11db369ad4f65dee641ecb0f8215" prot="public" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>LecuyerUniformRng</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a351b28bfd179207bc21cffd7afbe5232" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>m1</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a288be252ebd68b10582028cb24b02d98" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>m2</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a38f6a104aff480dba22d93f4a484f66b" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>maxRandom</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>next</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a9a6f8e39ea72420c2dbb304c98bb2503" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>q1</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1ad41b8aefdaea08d69f8d898b40d1eea6" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>q2</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a758e8067d5ce84177590a9f57ca11cda" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>r1</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1aa38909b2bf8811c158b8296fb1a7c0ed" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>r2</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>sample_type</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a8b16998a078d244f74b6670e65581c9b" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>temp1</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a5399dcab8d608cb0503d584b447d7162" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>temp2</name></member>
+      <member refid="class_quant_lib_1_1_lecuyer_uniform_rng_1a04ee6b20e6d3476ab1f51397993cfeef" prot="private" virt="non-virtual"><scope>QuantLib::LecuyerUniformRng</scope><name>y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

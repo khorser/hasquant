@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__capfloorengines" kind="group">
+    <compoundname>capfloorengines</compoundname>
+    <title>Cap/floor engines</title>
+    <innerclass refid="class_quant_lib_1_1_analytic_cap_floor_engine" prot="public">QuantLib::AnalyticCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_black_cap_floor_engine" prot="public">QuantLib::BlackCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine" prot="public">QuantLib::MCHullWhiteCapFloorEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tree_cap_floor_engine" prot="public">QuantLib::TreeCapFloorEngine</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_s_m_m_drift_calculator" kind="class" prot="public">
+    <compoundname>QuantLib::SMMDriftCalculator</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates_</definition>
+        <argsstring></argsstring>
+        <name>numberOfRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfFactors_</definition>
+        <argsstring></argsstring>
+        <name>numberOfFactors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isFullFactor_</definition>
+        <argsstring></argsstring>
+        <name>isFullFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numeraire_</definition>
+        <argsstring></argsstring>
+        <name>numeraire_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size alive_</definition>
+        <argsstring></argsstring>
+        <name>alive_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a247c5d7048480396e3b561b6fb8193e9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
+        <definition>std::vector&lt;Spread&gt; displacements_</definition>
+        <argsstring></argsstring>
+        <name>displacements_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; oneOverTaus_</definition>
+        <argsstring></argsstring>
+        <name>oneOverTaus_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix C_</definition>
+        <argsstring></argsstring>
+        <name>C_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix pseudo_</definition>
+        <argsstring></argsstring>
+        <name>pseudo_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; tmp_</definition>
+        <argsstring></argsstring>
+        <name>tmp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a3869bd911dd3ff55982d6c1b68ac4368" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix wkaj_</definition>
+        <argsstring></argsstring>
+        <name>wkaj_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a40688c5a094973bbb4d829d0f56628b1" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix wkpj_</definition>
+        <argsstring></argsstring>
+        <name>wkpj_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a1edb0064c59b742bf7377071c706dc34" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix wkajshifted_</definition>
+        <argsstring></argsstring>
+        <name>wkajshifted_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SMMDriftCalculator</definition>
+        <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
+        <name>SMMDriftCalculator</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>pseudo</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <declname>displacements</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>taus</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numeraire</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>alive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compute</definition>
+        <argsstring>(const CoterminalSwapCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>compute</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_coterminal_swap_curve_state" kindref="compound">CoterminalSwapCurveState</ref> &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+<para>Computes the drifts. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Drift computation for coterminal swap market models. </para>    </briefdescription>
+    <detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, Lorenzo Liesch, <emphasis>Effective Implementation Of Generic Market Models</emphasis>. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="40" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>alive_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>C_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>compute</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>displacements_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>isFullFactor_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numberOfFactors_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numeraire_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>oneOverTaus_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>pseudo_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>SMMDriftCalculator</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>tmp_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a3869bd911dd3ff55982d6c1b68ac4368" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkaj_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a1edb0064c59b742bf7377071c706dc34" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkajshifted_</name></member>
+      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a40688c5a094973bbb4d829d0f56628b1" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkpj_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

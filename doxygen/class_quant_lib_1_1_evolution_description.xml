@@ -1,0 +1,269 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_evolution_description" kind="class" prot="public">
+    <compoundname>QuantLib::EvolutionDescription</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_evolution_description_1ad8ba39e337bc63e984353f33e35aabeb" prot="private" static="no">
+        <type>std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>typedef std::pair&lt;Size,Size&gt; range</definition>
+        <argsstring></argsstring>
+        <name>range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates_</definition>
+        <argsstring></argsstring>
+        <name>numberOfRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; rateTimes_</definition>
+        <argsstring></argsstring>
+        <name>rateTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1af051a5fac945acae7bc4256d87825405" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; evolutionTimes_</definition>
+        <argsstring></argsstring>
+        <name>evolutionTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a125cc7df9b1915820ac221e4fa52df6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;Size,Size&gt; &gt; relevanceRates_</definition>
+        <argsstring></argsstring>
+        <name>relevanceRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1aa688289997396acdd1ad9b7c64735213" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; rateTaus_</definition>
+        <argsstring></argsstring>
+        <name>rateTaus_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_evolution_description_1a1862cdc142ad9865dcb859afa61135c7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; firstAliveRate_</definition>
+        <argsstring></argsstring>
+        <name>firstAliveRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a6fd5bdcae0a8be5550cbe10cfe47c3e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EvolutionDescription</definition>
+        <argsstring>()</argsstring>
+        <name>EvolutionDescription</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1aecf292561e16fe6df3c652f7b07ee82c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EvolutionDescription</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Time &gt; &amp;evolutionTimes=std::vector&lt; Time &gt;(), const std::vector&lt; std::pair&lt; Size, Size &gt; &gt; &amp;relevanceRates=std::vector&lt; range &gt;())</argsstring>
+        <name>EvolutionDescription</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>evolutionTimes</declname>
+          <defval>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt; &amp;</type>
+          <declname>relevanceRates</declname>
+          <defval>std::vector&lt; range &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; rateTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>rateTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a354ca1793c355a773e185886211db03a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; rateTaus</definition>
+        <argsstring>() const </argsstring>
+        <name>rateTaus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a0dac97b4b0bffee5390d8e79f635963a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; evolutionTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>evolutionTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1abca2bff1bd358cec29095d1073726857" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Size&gt;&amp; firstAliveRate</definition>
+        <argsstring>() const </argsstring>
+        <name>firstAliveRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1a0fb9d12ce3c6ee872a153fe766ea9489" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; std::pair&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref>, <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &gt; &amp;</type>
+        <definition>const std::vector&lt;std::pair&lt;Size,Size&gt; &gt;&amp; relevanceRates</definition>
+        <argsstring>() const </argsstring>
+        <name>relevanceRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_evolution_description_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfSteps</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfSteps</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Market-model evolution description. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class stores:<orderedlist>
+<listitem><para>evolutionTimes = the times at which the rates need to be known,</para></listitem><listitem><para>rateTimes = the times defining the rates that are to be evolved,</para></listitem><listitem><para>relevanceRates = which rates need to be known at each time.</para></listitem></orderedlist>
+</para><para>This class is really just a tuple of evolution and rate times;<itemizedlist>
+<listitem><para>there will be n+1 rate times expressing payment and reset times of forward rates.</para></listitem><listitem><para>there will be any number of evolution times.</para></listitem><listitem><para>we also store which part of the rates are relevant for pricing via relevance rates. The important part for the i-th step will then range from relevanceRates[i].first to relevanceRates[i].second. Default values for relevance rates will be 0 and n.</para></listitem><listitem><para>example for n = 5: <preformatted>
+          |--<mdash/>|--<mdash/>|--<mdash/>|--<mdash/>|--<mdash/>|      (size = 6)
+          t0    t1    t2    t3    t4    t5     rateTimes
+          f0    f1    f2    f3    f4           forwardRates
+          d0    d1    d2    d3    d4    d5     discountBonds
+          d0/d0 d1/d0 d2/d0 d3/d0 d4/d0 d5/d0  discountRatios
+          sr0   sr1   sr2   sr3   sr4          coterminalSwaps
+       </preformatted> </para></listitem></itemizedlist>
+</para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolutiondescription.hpp" bodystart="54" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_evolution_description_1a6fd5bdcae0a8be5550cbe10cfe47c3e1" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>EvolutionDescription</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1aecf292561e16fe6df3c652f7b07ee82c" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>EvolutionDescription</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a0dac97b4b0bffee5390d8e79f635963a" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>evolutionTimes</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1af051a5fac945acae7bc4256d87825405" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>evolutionTimes_</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1abca2bff1bd358cec29095d1073726857" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>firstAliveRate</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a1862cdc142ad9865dcb859afa61135c7" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>firstAliveRate_</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>numberOfRates</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>numberOfSteps</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1ad8ba39e337bc63e984353f33e35aabeb" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>range</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a354ca1793c355a773e185886211db03a" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>rateTaus</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1aa688289997396acdd1ad9b7c64735213" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>rateTaus_</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>rateTimes</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a0fb9d12ce3c6ee872a153fe766ea9489" prot="public" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>relevanceRates</name></member>
+      <member refid="class_quant_lib_1_1_evolution_description_1a125cc7df9b1915820ac221e4fa52df6f" prot="private" virt="non-virtual"><scope>QuantLib::EvolutionDescription</scope><name>relevanceRates_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

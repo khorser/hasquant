@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_callability_1_1_price" kind="class" prot="public">
+    <compoundname>QuantLib::Callability::Price</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7ac6af973c5e80fa24e058491cfc3ce3d7" prot="public">
+          <name>Dirty</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7accea35f717039c64bc6ea05604ecddc0" prot="public">
+          <name>Clean</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1_1_price_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount_</definition>
+        <argsstring></argsstring>
+        <name>amount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1_1_price_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1ae582fb779f6c1b5549fd220239816302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Price</definition>
+        <argsstring>()</argsstring>
+        <name>Price</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1ab8ab494def066d8193e346cdea69a68d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Price</definition>
+        <argsstring>(Real amount, Type type)</argsstring>
+        <name>Price</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>amount</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount</definition>
+        <argsstring>() const </argsstring>
+        <name>amount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Type</type>
+        <definition>Type type</definition>
+        <argsstring>() const </argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>amount to be paid upon callability </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="40" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>amount_</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7accea35f717039c64bc6ea05604ecddc0" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Clean</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7ac6af973c5e80fa24e058491cfc3ce3d7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Dirty</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1ae582fb779f6c1b5549fd220239816302" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Price</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1ab8ab494def066d8193e346cdea69a68d" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Price</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_callability_1_1_price_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>type_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

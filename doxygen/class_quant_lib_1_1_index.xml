@@ -1,0 +1,940 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_index" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Index</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_inflation_index" prot="public" virt="non-virtual">InflationIndex</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interest_rate_index" prot="public" virt="non-virtual">InterestRateIndex</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/index.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Index</definition>
+        <argsstring>()</argsstring>
+        <name>~Index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplementedby>
+        <briefdescription>
+<para>Returns the name of the index. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>virtual Calendar fixingCalendar</definition>
+        <argsstring>() const =0</argsstring>
+        <name>fixingCalendar</name>
+        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1abd47d61ed23fb73440b0c02534236330">fixingCalendar</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1abd47d61ed23fb73440b0c02534236330">fixingCalendar</reimplementedby>
+        <briefdescription>
+<para>returns the calendar defining valid fixing dates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool isValidFixingDate</definition>
+        <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
+        <name>isValidFixingDate</name>
+        <reimplementedby refid="class_quant_lib_1_1_b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1aa279f27f1bb152aa71ff980f0bae2727">isValidFixingDate</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>fixingDate</declname>
+        </param>
+        <briefdescription>
+<para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real fixing</definition>
+        <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const =0</argsstring>
+        <name>fixing</name>
+        <reimplementedby refid="class_quant_lib_1_1_interest_rate_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6">fixing</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_zero_inflation_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_index_1a1c776ca10de744b29a4d051102003eb9">fixing</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>fixingDate</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forecastTodaysFixing</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>returns the fixing at the given date </para>        </briefdescription>
+        <detaileddescription>
+<para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const TimeSeries&lt;Real&gt;&amp; timeSeries</definition>
+        <argsstring>() const </argsstring>
+        <name>timeSeries</name>
+        <briefdescription>
+<para>returns the fixing <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void addFixing</definition>
+        <argsstring>(const Date &amp;fixingDate, Real fixing, bool forceOverwrite=false)</argsstring>
+        <name>addFixing</name>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_index_1aa8992ffa6a24397eda41c2a7ac458c97">addFixing</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>fixingDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>fixing</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceOverwrite</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>stores the historical fixing at the given date </para>        </briefdescription>
+        <detaileddescription>
+<para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void addFixings</definition>
+        <argsstring>(const TimeSeries&lt; Real &gt; &amp;t, bool forceOverwrite=false)</argsstring>
+        <name>addFixings</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceOverwrite</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>stores historical fixings from a <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+        <detaileddescription>
+<para>the dates in the <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class DateIterator</type>
+          </param>
+          <param>
+            <type>class ValueIterator</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void addFixings</definition>
+        <argsstring>(DateIterator dBegin, DateIterator dEnd, ValueIterator vBegin, bool forceOverwrite=false)</argsstring>
+        <name>addFixings</name>
+        <param>
+          <type>DateIterator</type>
+          <declname>dBegin</declname>
+        </param>
+        <param>
+          <type>DateIterator</type>
+          <declname>dEnd</declname>
+        </param>
+        <param>
+          <type>ValueIterator</type>
+          <declname>vBegin</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>forceOverwrite</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>stores historical fixings at the given dates </para>        </briefdescription>
+        <detaileddescription>
+<para>the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="85" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clearFixings</definition>
+        <argsstring>()</argsstring>
+        <name>clearFixings</name>
+        <briefdescription>
+<para>clears all stored historical fixings </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>purely virtual base class for indexes </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000030"><xreftitle>Warning</xreftitle><xrefdescription><para>this class performs no check that the provided/requested fixings are for dates in the past, i.e. for dates less than or equal to the evaluation date. It is up to the client code to take care of possible inconsistencies due to &quot;seeing in the
+                future&quot; </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7768">
+        <label>EUHICPXT</label>
+        <link refid="class_quant_lib_1_1_e_u_h_i_c_p_x_t"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7760">
+        <label>YYGenericCPIr</label>
+        <link refid="class_quant_lib_1_1_y_y_generic_c_p_ir"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7804">
+        <label>Euribor365_10M</label>
+        <link refid="class_quant_lib_1_1_euribor365__10_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7790">
+        <label>Euribor1M</label>
+        <link refid="class_quant_lib_1_1_euribor1_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7754">
+        <label>YYEUHICP</label>
+        <link refid="class_quant_lib_1_1_y_y_e_u_h_i_c_p"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7845">
+        <label>ProxyIbor</label>
+        <link refid="class_quant_lib_1_1_proxy_ibor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7791">
+        <label>Euribor1Y</label>
+        <link refid="class_quant_lib_1_1_euribor1_y"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7792">
+        <label>Euribor2M</label>
+        <link refid="class_quant_lib_1_1_euribor2_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7793">
+        <label>Euribor2W</label>
+        <link refid="class_quant_lib_1_1_euribor2_w"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7859">
+        <label>JpyLiborSwapIsdaFixPm</label>
+        <link refid="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7794">
+        <label>Euribor3M</label>
+        <link refid="class_quant_lib_1_1_euribor3_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7843">
+        <label>SEKLibor</label>
+        <link refid="class_quant_lib_1_1_s_e_k_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7764">
+        <label>YYUSCPIr</label>
+        <link refid="class_quant_lib_1_1_y_y_u_s_c_p_ir"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7763">
+        <label>YYUSCPI</label>
+        <link refid="class_quant_lib_1_1_y_y_u_s_c_p_i"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7782">
+        <label>DailyTenorGBPLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_g_b_p_libor"/>
+        <childnode refid="7779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7748">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="7749" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7860">
+        <label>OvernightIndexedSwapIndex</label>
+        <link refid="class_quant_lib_1_1_overnight_indexed_swap_index"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7780">
+        <label>CADLiborON</label>
+        <link refid="class_quant_lib_1_1_c_a_d_libor_o_n"/>
+        <childnode refid="7779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7833">
+        <label>EURLiborSW</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor_s_w"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7818">
+        <label>Euribor365_SW</label>
+        <link refid="class_quant_lib_1_1_euribor365___s_w"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7772">
+        <label>USCPI</label>
+        <link refid="class_quant_lib_1_1_u_s_c_p_i"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7752">
+        <label>YYAUCPI</label>
+        <link refid="class_quant_lib_1_1_y_y_a_u_c_p_i"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7758">
+        <label>YYFRHICPr</label>
+        <link refid="class_quant_lib_1_1_y_y_f_r_h_i_c_pr"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7834">
+        <label>Jibar</label>
+        <link refid="class_quant_lib_1_1_jibar"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7779">
+        <label>DailyTenorLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_libor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7749">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7786">
+        <label>USDLiborON</label>
+        <link refid="class_quant_lib_1_1_u_s_d_libor_o_n"/>
+        <childnode refid="7785" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7788">
+        <label>Euribor10M</label>
+        <link refid="class_quant_lib_1_1_euribor10_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7841">
+        <label>JPYLibor</label>
+        <link refid="class_quant_lib_1_1_j_p_y_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7767">
+        <label>EUHICP</label>
+        <link refid="class_quant_lib_1_1_e_u_h_i_c_p"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7789">
+        <label>Euribor11M</label>
+        <link refid="class_quant_lib_1_1_euribor11_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7836">
+        <label>AUDLibor</label>
+        <link refid="class_quant_lib_1_1_a_u_d_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7862">
+        <label>UsdLiborSwapIsdaFixPm</label>
+        <link refid="class_quant_lib_1_1_usd_libor_swap_isda_fix_pm"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7776">
+        <label>Cdor</label>
+        <link refid="class_quant_lib_1_1_cdor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7766">
+        <label>AUCPI</label>
+        <link refid="class_quant_lib_1_1_a_u_c_p_i"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7783">
+        <label>GBPLiborON</label>
+        <link refid="class_quant_lib_1_1_g_b_p_libor_o_n"/>
+        <childnode refid="7782" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7755">
+        <label>YYEUHICPr</label>
+        <link refid="class_quant_lib_1_1_y_y_e_u_h_i_c_pr"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7858">
+        <label>JpyLiborSwapIsdaFixAm</label>
+        <link refid="class_quant_lib_1_1_jpy_libor_swap_isda_fix_am"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7784">
+        <label>DailyTenorJPYLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_j_p_y_libor"/>
+        <childnode refid="7779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7835">
+        <label>Libor</label>
+        <link refid="class_quant_lib_1_1_libor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7852">
+        <label>EuriborSwapIsdaFixA</label>
+        <link refid="class_quant_lib_1_1_euribor_swap_isda_fix_a"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7853">
+        <label>EuriborSwapIsdaFixB</label>
+        <link refid="class_quant_lib_1_1_euribor_swap_isda_fix_b"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7750">
+        <label>InflationIndex</label>
+        <link refid="class_quant_lib_1_1_inflation_index"/>
+        <childnode refid="7748" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7787">
+        <label>Euribor</label>
+        <link refid="class_quant_lib_1_1_euribor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7775">
+        <label>IborIndex</label>
+        <link refid="class_quant_lib_1_1_ibor_index"/>
+        <childnode refid="7773" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7762">
+        <label>YYUKRPIr</label>
+        <link refid="class_quant_lib_1_1_y_y_u_k_r_p_ir"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7839">
+        <label>DKKLibor</label>
+        <link refid="class_quant_lib_1_1_d_k_k_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7857">
+        <label>GbpLiborSwapIsdaFix</label>
+        <link refid="class_quant_lib_1_1_gbp_libor_swap_isda_fix"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7825">
+        <label>EURLibor2W</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor2_w"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7838">
+        <label>CHFLibor</label>
+        <link refid="class_quant_lib_1_1_c_h_f_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7826">
+        <label>EURLibor3M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor3_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7757">
+        <label>YYFRHICP</label>
+        <link refid="class_quant_lib_1_1_y_y_f_r_h_i_c_p"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7842">
+        <label>NZDLibor</label>
+        <link refid="class_quant_lib_1_1_n_z_d_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7761">
+        <label>YYUKRPI</label>
+        <link refid="class_quant_lib_1_1_y_y_u_k_r_p_i"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7840">
+        <label>GBPLibor</label>
+        <link refid="class_quant_lib_1_1_g_b_p_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7823">
+        <label>EURLibor1Y</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor1_y"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7824">
+        <label>EURLibor2M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor2_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7822">
+        <label>EURLibor1M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor1_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7802">
+        <label>EuriborSW</label>
+        <link refid="class_quant_lib_1_1_euribor_s_w"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7771">
+        <label>UKRPI</label>
+        <link refid="class_quant_lib_1_1_u_k_r_p_i"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7773">
+        <label>InterestRateIndex</label>
+        <link refid="class_quant_lib_1_1_interest_rate_index"/>
+        <childnode refid="7748" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7753">
+        <label>YYAUCPIr</label>
+        <link refid="class_quant_lib_1_1_y_y_a_u_c_p_ir"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7807">
+        <label>Euribor365_1Y</label>
+        <link refid="class_quant_lib_1_1_euribor365__1_y"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7808">
+        <label>Euribor365_2M</label>
+        <link refid="class_quant_lib_1_1_euribor365__2_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7844">
+        <label>USDLibor</label>
+        <link refid="class_quant_lib_1_1_u_s_d_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7803">
+        <label>Euribor365</label>
+        <link refid="class_quant_lib_1_1_euribor365"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7819">
+        <label>EURLibor</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7809">
+        <label>Euribor365_2W</label>
+        <link refid="class_quant_lib_1_1_euribor365__2_w"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7810">
+        <label>Euribor365_3M</label>
+        <link refid="class_quant_lib_1_1_euribor365__3_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7832">
+        <label>EURLibor9M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor9_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7765">
+        <label>ZeroInflationIndex</label>
+        <link refid="class_quant_lib_1_1_zero_inflation_index"/>
+        <childnode refid="7750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7831">
+        <label>EURLibor8M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor8_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7855">
+        <label>EurLiborSwapIsdaFixA</label>
+        <link refid="class_quant_lib_1_1_eur_libor_swap_isda_fix_a"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7856">
+        <label>EurLiborSwapIsdaFixB</label>
+        <link refid="class_quant_lib_1_1_eur_libor_swap_isda_fix_b"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7806">
+        <label>Euribor365_1M</label>
+        <link refid="class_quant_lib_1_1_euribor365__1_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7830">
+        <label>EURLibor7M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor7_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7769">
+        <label>FRHICP</label>
+        <link refid="class_quant_lib_1_1_f_r_h_i_c_p"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7814">
+        <label>Euribor365_6M</label>
+        <link refid="class_quant_lib_1_1_euribor365__6_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7829">
+        <label>EURLibor6M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor6_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7820">
+        <label>EURLibor10M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor10_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7815">
+        <label>Euribor365_7M</label>
+        <link refid="class_quant_lib_1_1_euribor365__7_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7828">
+        <label>EURLibor5M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor5_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7811">
+        <label>Euribor365_3W</label>
+        <link refid="class_quant_lib_1_1_euribor365__3_w"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7848">
+        <label>Zibor</label>
+        <link refid="class_quant_lib_1_1_zibor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7821">
+        <label>EURLibor11M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor11_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7812">
+        <label>Euribor365_4M</label>
+        <link refid="class_quant_lib_1_1_euribor365__4_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7827">
+        <label>EURLibor4M</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor4_m"/>
+        <childnode refid="7819" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7813">
+        <label>Euribor365_5M</label>
+        <link refid="class_quant_lib_1_1_euribor365__5_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7851">
+        <label>EuriborSwapIfrFix</label>
+        <link refid="class_quant_lib_1_1_euribor_swap_ifr_fix"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7816">
+        <label>Euribor365_8M</label>
+        <link refid="class_quant_lib_1_1_euribor365__8_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7770">
+        <label>GenericCPI</label>
+        <link refid="class_quant_lib_1_1_generic_c_p_i"/>
+        <childnode refid="7765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7817">
+        <label>Euribor365_9M</label>
+        <link refid="class_quant_lib_1_1_euribor365__9_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7785">
+        <label>DailyTenorUSDLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_u_s_d_libor"/>
+        <childnode refid="7779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7854">
+        <label>EurLiborSwapIfrFix</label>
+        <link refid="class_quant_lib_1_1_eur_libor_swap_ifr_fix"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7849">
+        <label>SwapIndex</label>
+        <link refid="class_quant_lib_1_1_swap_index"/>
+        <childnode refid="7773" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7781">
+        <label>DailyTenorCHFLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_c_h_f_libor"/>
+        <childnode refid="7779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7777">
+        <label>DailyTenorEURLibor</label>
+        <link refid="class_quant_lib_1_1_daily_tenor_e_u_r_libor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7850">
+        <label>ChfLiborSwapIsdaFix</label>
+        <link refid="class_quant_lib_1_1_chf_libor_swap_isda_fix"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7847">
+        <label>TRLibor</label>
+        <link refid="class_quant_lib_1_1_t_r_libor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7800">
+        <label>Euribor8M</label>
+        <link refid="class_quant_lib_1_1_euribor8_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7774">
+        <label>BMAIndex</label>
+        <link refid="class_quant_lib_1_1_b_m_a_index"/>
+        <childnode refid="7773" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7801">
+        <label>Euribor9M</label>
+        <link refid="class_quant_lib_1_1_euribor9_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7756">
+        <label>YYEUHICPXT</label>
+        <link refid="class_quant_lib_1_1_y_y_e_u_h_i_c_p_x_t"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7846">
+        <label>Tibor</label>
+        <link refid="class_quant_lib_1_1_tibor"/>
+        <childnode refid="7775" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7795">
+        <label>Euribor3W</label>
+        <link refid="class_quant_lib_1_1_euribor3_w"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7796">
+        <label>Euribor4M</label>
+        <link refid="class_quant_lib_1_1_euribor4_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7778">
+        <label>EURLiborON</label>
+        <link refid="class_quant_lib_1_1_e_u_r_libor_o_n"/>
+        <childnode refid="7777" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7751">
+        <label>YoYInflationIndex</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_index"/>
+        <childnode refid="7750" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7797">
+        <label>Euribor5M</label>
+        <link refid="class_quant_lib_1_1_euribor5_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7861">
+        <label>UsdLiborSwapIsdaFixAm</label>
+        <link refid="class_quant_lib_1_1_usd_libor_swap_isda_fix_am"/>
+        <childnode refid="7849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7837">
+        <label>CADLibor</label>
+        <link refid="class_quant_lib_1_1_c_a_d_libor"/>
+        <childnode refid="7835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7798">
+        <label>Euribor6M</label>
+        <link refid="class_quant_lib_1_1_euribor6_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7759">
+        <label>YYGenericCPI</label>
+        <link refid="class_quant_lib_1_1_y_y_generic_c_p_i"/>
+        <childnode refid="7751" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7799">
+        <label>Euribor7M</label>
+        <link refid="class_quant_lib_1_1_euribor7_m"/>
+        <childnode refid="7787" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7805">
+        <label>Euribor365_11M</label>
+        <link refid="class_quant_lib_1_1_euribor365__11_m"/>
+        <childnode refid="7803" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7863">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="7864" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7864">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/index.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/index.hpp" bodystart="44" bodyend="130"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" virt="virtual"><scope>QuantLib::Index</scope><name>addFixing</name></member>
+      <member refid="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>clearFixings</name></member>
+      <member refid="class_quant_lib_1_1_index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" virt="pure-virtual"><scope>QuantLib::Index</scope><name>fixing</name></member>
+      <member refid="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a" prot="public" virt="pure-virtual"><scope>QuantLib::Index</scope><name>fixingCalendar</name></member>
+      <member refid="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" virt="pure-virtual"><scope>QuantLib::Index</scope><name>isValidFixingDate</name></member>
+      <member refid="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::Index</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" virt="non-virtual"><scope>QuantLib::Index</scope><name>timeSeries</name></member>
+      <member refid="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" virt="virtual"><scope>QuantLib::Index</scope><name>~Index</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Index</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

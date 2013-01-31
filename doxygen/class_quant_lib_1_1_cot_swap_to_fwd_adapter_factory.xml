@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory" kind="class" prot="public">
+    <compoundname>QuantLib::CotSwapToFwdAdapterFactory</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_market_model_factory" prot="public" virt="non-virtual">MarketModelFactory</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1a307197ff22c81f8ebee8482f78bf8651" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_factory" kindref="compound">MarketModelFactory</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;MarketModelFactory&gt; coterminalFactory_</definition>
+        <argsstring></argsstring>
+        <name>coterminalFactory_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1a589ed64cdb0fd519ff3f7bd9997a85f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CotSwapToFwdAdapterFactory</definition>
+        <argsstring>(const boost::shared_ptr&lt; MarketModelFactory &gt; &amp;coterminalFactory)</argsstring>
+        <name>CotSwapToFwdAdapterFactory</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_factory" kindref="compound">MarketModelFactory</ref> &gt; &amp;</type>
+          <declname>coterminalFactory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;MarketModel&gt; create</definition>
+        <argsstring>(const EvolutionDescription &amp;, Size numberOfFactors) const </argsstring>
+        <name>create</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfFactors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2775">
+        <label>MarketModelFactory</label>
+        <link refid="class_quant_lib_1_1_market_model_factory"/>
+        <childnode refid="2776" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2776">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2777">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2774">
+        <label>CotSwapToFwdAdapterFactory</label>
+        <childnode refid="2775" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2777" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2779">
+        <label>MarketModelFactory</label>
+        <link refid="class_quant_lib_1_1_market_model_factory"/>
+        <childnode refid="2780" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2780">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2781">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2778">
+        <label>CotSwapToFwdAdapterFactory</label>
+        <childnode refid="2779" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2781" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/cotswaptofwdadapter.hpp" bodystart="53" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1a307197ff22c81f8ebee8482f78bf8651" prot="private" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>coterminalFactory_</name></member>
+      <member refid="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1a589ed64cdb0fd519ff3f7bd9997a85f6" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>CotSwapToFwdAdapterFactory</name></member>
+      <member refid="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>create</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_cot_swap_to_fwd_adapter_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" virt="virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>~MarketModelFactory</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CotSwapToFwdAdapterFactory</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

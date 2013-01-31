@@ -1,0 +1,368 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_deposit_rate_helper" kind="class" prot="public">
+    <compoundname>QuantLib::DepositRateHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_relative_date_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::RelativeDateBootstrapHelper&lt; YieldTermStructure &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>RateHelper interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real impliedQuote</definition>
+        <argsstring>() const </argsstring>
+        <name>impliedQuote</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTermStructure</definition>
+        <argsstring>(YieldTermStructure *)</argsstring>
+        <name>setTermStructure</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="124"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="128"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_deposit_rate_helper_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date fixingDate_</definition>
+        <argsstring></argsstring>
+        <name>fixingDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_deposit_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
+        <argsstring></argsstring>
+        <name>iborIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_deposit_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;YieldTermStructure&gt; termStructureHandle_</definition>
+        <argsstring></argsstring>
+        <name>termStructureHandle_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1ad5435561466b2c20cb9128901222960c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepositRateHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const Period &amp;tenor, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
+        <name>DepositRateHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>fixingDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>convention</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>endOfMonth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a206ac6021e19128ce1c3d3a9678bddde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepositRateHelper</definition>
+        <argsstring>(Rate rate, const Period &amp;tenor, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
+        <name>DepositRateHelper</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>fixingDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>convention</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>endOfMonth</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a68d9c871a6079d86eeb37ae5533f810f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepositRateHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
+        <name>DepositRateHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>iborIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a9e1952132092e1635687d2e3f8d9ba8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DepositRateHelper</definition>
+        <argsstring>(Rate rate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
+        <name>DepositRateHelper</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>rate</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>iborIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="120"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void initializeDates</definition>
+        <argsstring>()</argsstring>
+        <name>initializeDates</name>
+        <reimplements refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aac525f92a4e969388fe7563e8c2a2251">initializeDates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Rate helper for bootstrapping over deposit rates. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3454">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="3455" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3456" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3453">
+        <label>RelativeDateRateHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="3454" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3456">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3452">
+        <label>DepositRateHelper</label>
+        <link refid="class_quant_lib_1_1_deposit_rate_helper"/>
+        <childnode refid="3453" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3455">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3459">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="3460" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3461" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3462" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="3463" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3458">
+        <label>RelativeDateRateHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="3459" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3462" relation="usage">
+          <edgelabel>evaluationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3461">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3457">
+        <label>DepositRateHelper</label>
+        <link refid="class_quant_lib_1_1_deposit_rate_helper"/>
+        <childnode refid="3458" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3463">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="3460">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3462">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="101" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1ad5435561466b2c20cb9128901222960c" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>DepositRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a206ac6021e19128ce1c3d3a9678bddde" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>DepositRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a68d9c871a6079d86eeb37ae5533f810f" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>DepositRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a9e1952132092e1635687d2e3f8d9ba8b" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>DepositRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="protected" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a0f3d454856e688ed07ac415619cd9fda" prot="private" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>fixingDate_</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="private" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>iborIndex_</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>initializeDates</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::DepositRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::DepositRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a1fa46ec9a0cdf7a8bed120d969664a1b" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a9c40799ff28c28591de0a7e6db4387da" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::RelativeDateBootstrapHelper::"><scope>QuantLib::DepositRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_deposit_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="private" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>termStructureHandle_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::DepositRateHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::DepositRateHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

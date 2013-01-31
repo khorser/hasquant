@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_forward_measure_process1_d" kind="class" prot="public">
+    <compoundname>QuantLib::ForwardMeasureProcess1D</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_hull_white_forward_process" prot="public" virt="non-virtual">HullWhiteForwardProcess</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_measure_process1_d_1a0a04e1aa89ae3670613ee52a136b31dd" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time T_</definition>
+        <argsstring></argsstring>
+        <name>T_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1a3a96bffd94ced6cc152372a566e0149b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setForwardMeasureTime</definition>
+        <argsstring>(Time)</argsstring>
+        <name>setForwardMeasureTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1afe41668f5b5ae4637406e1a9e19ea204" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time getForwardMeasureTime</definition>
+        <argsstring>() const </argsstring>
+        <name>getForwardMeasureTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1aa7e540604dee64270d7902e1b0c65287" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ForwardMeasureProcess1D</definition>
+        <argsstring>()</argsstring>
+        <name>ForwardMeasureProcess1D</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1a9c6bf2f5efefe24710ba87321fe8c055" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ForwardMeasureProcess1D</definition>
+        <argsstring>(Time T)</argsstring>
+        <name>ForwardMeasureProcess1D</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>T</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_measure_process1_d_1a6bb9c50dbdfa80b9667eae7df9d1a18a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ForwardMeasureProcess1D</definition>
+        <argsstring>(const boost::shared_ptr&lt; discretization &gt; &amp;)</argsstring>
+        <name>ForwardMeasureProcess1D</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>forward-measure 1-D stochastic process </para>    </briefdescription>
+    <detaileddescription>
+<para>1-D stochastic process whose dynamics are expressed in the forward measure. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6574">
+        <label>HullWhiteForwardProcess</label>
+        <link refid="class_quant_lib_1_1_hull_white_forward_process"/>
+        <childnode refid="6569" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6569">
+        <label>ForwardMeasureProcess1D</label>
+        <link refid="class_quant_lib_1_1_forward_measure_process1_d"/>
+        <childnode refid="6570" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6573">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6571">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="6572" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6573" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6572">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6570">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="6571" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6575">
+        <label>ForwardMeasureProcess1D</label>
+        <link refid="class_quant_lib_1_1_forward_measure_process1_d"/>
+        <childnode refid="6576" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6579">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6577">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="6578" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6579" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6578">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6576">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="6577" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/forwardmeasureprocess.hpp" bodystart="54" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a905bb2d5a924e5274035b0850c3e04fb" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1afaf479da3baa52185b369071b1689d89" prot="public" virt="pure-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3" prot="public" virt="pure-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1aa7e540604dee64270d7902e1b0c65287" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>ForwardMeasureProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1a9c6bf2f5efefe24710ba87321fe8c055" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>ForwardMeasureProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1a6bb9c50dbdfa80b9667eae7df9d1a18a" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>ForwardMeasureProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1afe41668f5b5ae4637406e1a9e19ea204" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>getForwardMeasureTime</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1a3a96bffd94ced6cc152372a566e0149b" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>setForwardMeasureTime</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ad98007dd5c830d050dfb0d4205094b9e" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a704996c48f48a23c4db6a6549a094807" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_forward_measure_process1_d_1a0a04e1aa89ae3670613ee52a136b31dd" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>T_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0" prot="public" virt="pure-virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>x0</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::ForwardMeasureProcess1D</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

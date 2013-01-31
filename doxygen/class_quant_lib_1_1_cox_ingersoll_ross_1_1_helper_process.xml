@@ -1,0 +1,243 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" kind="class" prot="public">
+    <compoundname>QuantLib::CoxIngersollRoss::HelperProcess</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a11822cc7a38fbfe7925643c3f280283c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real y0_</definition>
+        <argsstring></argsstring>
+        <name>y0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real theta_</definition>
+        <argsstring></argsstring>
+        <name>theta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a9fd062c3257b97efb131dd9a0c168a38" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real k_</definition>
+        <argsstring></argsstring>
+        <name>k_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real sigma_</definition>
+        <argsstring></argsstring>
+        <name>sigma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1ace87e1fa10f8c6fa480a7212d3a88392" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>HelperProcess</definition>
+        <argsstring>(Real theta, Real k, Real sigma, Real y0)</argsstring>
+        <name>HelperProcess</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="81" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real x0</definition>
+        <argsstring>() const </argsstring>
+        <name>x0</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a235679989fd92d45c74c198d7d1b475c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real drift</definition>
+        <argsstring>(Time, Real y) const </argsstring>
+        <name>drift</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="87" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real diffusion</definition>
+        <argsstring>(Time, Real) const </argsstring>
+        <name>diffusion</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2833">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2829">
+        <label>CoxIngersollRoss::HelperProcess</label>
+        <childnode refid="2830" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2831">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="2832" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2833" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2832">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2830">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="2831" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2838">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2834">
+        <label>CoxIngersollRoss::HelperProcess</label>
+        <childnode refid="2835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2836">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="2837" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2838" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2837">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2835">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="2836" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="79" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a905bb2d5a924e5274035b0850c3e04fb" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a235679989fd92d45c74c198d7d1b475c" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1ace87e1fa10f8c6fa480a7212d3a88392" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>HelperProcess</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a9fd062c3257b97efb131dd9a0c168a38" prot="private" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>k_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>sigma_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ad98007dd5c830d050dfb0d4205094b9e" prot="protected" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a704996c48f48a23c4db6a6549a094807" prot="protected" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>theta_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>x0</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a11822cc7a38fbfe7925643c3f280283c" prot="private" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>y0_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::HelperProcess</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

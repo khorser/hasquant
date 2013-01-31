@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_simple_local_estimator" kind="class" prot="public">
+    <compoundname>QuantLib::SimpleLocalEstimator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::LocalVolatilityEstimator&lt; Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_simple_local_estimator_1a685ec69bc8fa930e820390e5d34b06f1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real yearFraction_</definition>
+        <argsstring></argsstring>
+        <name>yearFraction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_local_estimator_1a7f45f02ee06c173a5926ac70f23f3d3b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SimpleLocalEstimator</definition>
+        <argsstring>(Real y)</argsstring>
+        <name>SimpleLocalEstimator</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="40" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_local_estimator_1a2ff585a7a780ab4d7275a408e86b4642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
+        <argsstring>(const TimeSeries&lt; Real &gt; &amp;quoteSeries)</argsstring>
+        <name>calculate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>quoteSeries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="43" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Local-estimator volatility model. </para>    </briefdescription>
+    <detaileddescription>
+<para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="35" bodyend="56"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_simple_local_estimator_1a2ff585a7a780ab4d7275a408e86b4642" prot="public" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::SimpleLocalEstimator</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_simple_local_estimator_1a7f45f02ee06c173a5926ac70f23f3d3b" prot="public" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>SimpleLocalEstimator</name></member>
+      <member refid="class_quant_lib_1_1_simple_local_estimator_1a685ec69bc8fa930e820390e5d34b06f1" prot="private" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>yearFraction_</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>~LocalVolatilityEstimator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

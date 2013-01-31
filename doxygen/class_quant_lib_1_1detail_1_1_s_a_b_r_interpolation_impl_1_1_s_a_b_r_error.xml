@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" kind="class" prot="private">
+    <compoundname>QuantLib::detail::SABRInterpolationImpl::SABRError</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a5da17267622558d2f7d5e9773425bd98" prot="private" static="no" mutable="no">
+        <type>SABRInterpolationImpl *</type>
+        <definition>SABRInterpolationImpl* sabr_</definition>
+        <argsstring></argsstring>
+        <name>sabr_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="327" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ab9619d7b0fe821089bc61239afec165e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SABRError</definition>
+        <argsstring>(SABRInterpolationImpl *sabr)</argsstring>
+        <name>SABRError</name>
+        <param>
+          <type>SABRInterpolationImpl *</type>
+          <declname>sabr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="306" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="305" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;x) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="308" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a24bca93c2bbe35871e279fd8a935143d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; values</definition>
+        <argsstring>(const Array &amp;x) const </argsstring>
+        <name>values</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="317" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="317" bodyend="324"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3674">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+      <node id="3673">
+        <label>SABRInterpolationImpl&lt; I1, I2 &gt;::SABRError</label>
+        <childnode refid="3674" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3676">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+      <node id="3675">
+        <label>SABRInterpolationImpl&lt; I1, I2 &gt;::SABRError</label>
+        <childnode refid="3676" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="303" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="303" bodyend="328"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>finiteDifferenceEpsilon</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>gradient</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a5da17267622558d2f7d5e9773425bd98" prot="private" virt="non-virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>sabr_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ab9619d7b0fe821089bc61239afec165e" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>SABRError</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>valueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error_1a24bca93c2bbe35871e279fd8a935143d" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>values</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::detail::SABRInterpolationImpl::SABRError</scope><name>~CostFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,957 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_make_vanilla_swap" kind="class" prot="public">
+    <compoundname>QuantLib::MakeVanillaSwap</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period swapTenor_</definition>
+        <argsstring></argsstring>
+        <name>swapTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
+        <argsstring></argsstring>
+        <name>iborIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fixedRate_</definition>
+        <argsstring></argsstring>
+        <name>fixedRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period forwardStart_</definition>
+        <argsstring></argsstring>
+        <name>forwardStart_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date effectiveDate_</definition>
+        <argsstring></argsstring>
+        <name>effectiveDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a4fd303bf9a2fb197696acf7d8481b77b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date terminationDate_</definition>
+        <argsstring></argsstring>
+        <name>terminationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1ad797690a2bfa71066adeade3df2062e3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar fixedCalendar_</definition>
+        <argsstring></argsstring>
+        <name>fixedCalendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1ad54b0e95fac9bae9da86553998d153ae" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar floatCalendar_</definition>
+        <argsstring></argsstring>
+        <name>floatCalendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1afb1fc848e5b4e9bbdfb25bfe171f7207" prot="private" static="no" mutable="no">
+        <type>VanillaSwap::Type</type>
+        <definition>VanillaSwap::Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal_</definition>
+        <argsstring></argsstring>
+        <name>nominal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1ac01a3a26423d713b624e420726ea3db2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period fixedTenor_</definition>
+        <argsstring></argsstring>
+        <name>fixedTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a3c7dc1eb48904104d0fc5a9ce84c31b2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period floatTenor_</definition>
+        <argsstring></argsstring>
+        <name>floatTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a1317e1bce37ec4fcc241069d1405e87a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention fixedConvention_</definition>
+        <argsstring></argsstring>
+        <name>fixedConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1abe99741dc6500fbdd44bb41bde40cf67" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention fixedTerminationDateConvention_</definition>
+        <argsstring></argsstring>
+        <name>fixedTerminationDateConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1ae60a07c9bc2ad615a4e024154188c328" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention floatConvention_</definition>
+        <argsstring></argsstring>
+        <name>floatConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a6e546717f702497ebb8d5a5664576850" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention floatTerminationDateConvention_</definition>
+        <argsstring></argsstring>
+        <name>floatTerminationDateConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a9821d2b27359b72ef005d84fcfa69ac3" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        <definition>DateGeneration::Rule fixedRule_</definition>
+        <argsstring></argsstring>
+        <name>fixedRule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a3e83ad896e9c8aad6d53d1caa231a6c2" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        <definition>DateGeneration::Rule floatRule_</definition>
+        <argsstring></argsstring>
+        <name>floatRule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1af670365ab5e831b5beea4ce652daf022" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool fixedEndOfMonth_</definition>
+        <argsstring></argsstring>
+        <name>fixedEndOfMonth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a084ebd72604fe38dc9d9b0d7b2b6c809" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool floatEndOfMonth_</definition>
+        <argsstring></argsstring>
+        <name>floatEndOfMonth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a3bda383ebfd50932558d17af16491f80" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date fixedFirstDate_</definition>
+        <argsstring></argsstring>
+        <name>fixedFirstDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a2376c83528611ddc3544e01593e904bf" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date fixedNextToLastDate_</definition>
+        <argsstring></argsstring>
+        <name>fixedNextToLastDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a180c162ce826f7849d3717c2560e1389" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date floatFirstDate_</definition>
+        <argsstring></argsstring>
+        <name>floatFirstDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a2e6d503cc98a1c473a7469f90a113b70" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date floatNextToLastDate_</definition>
+        <argsstring></argsstring>
+        <name>floatNextToLastDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a7b3ea87f51b55dc733902ca72b716f2f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread floatSpread_</definition>
+        <argsstring></argsstring>
+        <name>floatSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter fixedDayCount_</definition>
+        <argsstring></argsstring>
+        <name>fixedDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1a52317f2d9d20fcdf6da1753974274a67" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter floatDayCount_</definition>
+        <argsstring></argsstring>
+        <name>floatDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_vanilla_swap_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
+        <argsstring></argsstring>
+        <name>engine_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ae164a49d8750e0f21a9170605d858008" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MakeVanillaSwap</definition>
+        <argsstring>(const Period &amp;swapTenor, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, Rate fixedRate=Null&lt; Rate &gt;(), const Period &amp;forwardStart=0 *Days)</argsstring>
+        <name>MakeVanillaSwap</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>swapTenor</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>iborIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>fixedRate</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>forwardStart</declname>
+          <defval>0 *Days</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1afc2916511ef852e27ef385689a882810" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator VanillaSwap</definition>
+        <argsstring>() const </argsstring>
+        <name>operator VanillaSwap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a72b80dd9ade456887a1b5c34df7b7895" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator boost::shared_ptr&lt; VanillaSwap &gt;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator boost::shared_ptr&lt; VanillaSwap &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ab1d92b1e7fc4a3db977740df16642a40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; receiveFixed</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>receiveFixed</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a29326b18d03c2afe15487466512351a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withType</definition>
+        <argsstring>(VanillaSwap::Type type)</argsstring>
+        <name>withType</name>
+        <param>
+          <type>VanillaSwap::Type</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1aa6903d91214d2dcd8b348f5acaa7e1ea" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withNominal</definition>
+        <argsstring>(Real n)</argsstring>
+        <name>withNominal</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a7b4d1104ab63df2c92186679b583f40f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withEffectiveDate</definition>
+        <argsstring>(const Date &amp;)</argsstring>
+        <name>withEffectiveDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1addcfb3e824eabed95cfdc70d8a865b0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withTerminationDate</definition>
+        <argsstring>(const Date &amp;)</argsstring>
+        <name>withTerminationDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ae2cd7de4e28b58c2a68967433f29a470" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a068f530309e704bd5738f6016b45323c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegTenor</definition>
+        <argsstring>(const Period &amp;t)</argsstring>
+        <name>withFixedLegTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a88bfe641d2317ff8e6a537b7478dc0e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegCalendar</definition>
+        <argsstring>(const Calendar &amp;cal)</argsstring>
+        <name>withFixedLegCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>cal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ac5c461f3d0b94d3eac490f6e8384b35a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFixedLegConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1aad4b1bec31b77aefe3a2173d5070138a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFixedLegTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a593a60b393a652c96c87117a147136d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withFixedLegRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ad15c7e584c167640d94fdf398cb2b589" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegEndOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withFixedLegEndOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ad72db29d9ffe88e5370437a9fb1c4a33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFixedLegFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a39eb16b1b314adc3c4a6cd39f75765b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFixedLegNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a0a032b408c945364fc78010cceb7d3cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFixedLegDayCount</definition>
+        <argsstring>(const DayCounter &amp;dc)</argsstring>
+        <name>withFixedLegDayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a7224c2a0d5fc6993c310773a88bbd269" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegTenor</definition>
+        <argsstring>(const Period &amp;t)</argsstring>
+        <name>withFloatingLegTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a0294e4391f4f2e183dc47bcb762885be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegCalendar</definition>
+        <argsstring>(const Calendar &amp;cal)</argsstring>
+        <name>withFloatingLegCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>cal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1abb558392bbaf05ed4efb7f368aa8a0e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFloatingLegConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a7a5ee54ad82b31f61a8121682aab0278" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFloatingLegTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a0a099ca8aa763d0b6b5eafa8e7321735" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withFloatingLegRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a38dad0cdc3897aadc954c9ae107ac3fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegEndOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withFloatingLegEndOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1aea4ab586a9b7b24bec2307c17836ddbd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFloatingLegFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a2933f80f79f9f2175aeb767cd6e13b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFloatingLegNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a528ad9d266aa68073a2fc85c37181fe9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegDayCount</definition>
+        <argsstring>(const DayCounter &amp;dc)</argsstring>
+        <name>withFloatingLegDayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a148b22872218da556a36153a25accebe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withFloatingLegSpread</definition>
+        <argsstring>(Spread sp)</argsstring>
+        <name>withFloatingLegSpread</name>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>sp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1ae00c7b645d566d6456169ed229556fbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withDiscountingTermStructure</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
+        <name>withDiscountingTermStructure</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_vanilla_swap_1a3bf5d80abe9ca5f21fc2ad8d173ac43f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref> &amp;</type>
+        <definition>MakeVanillaSwap&amp; withPricingEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine)</argsstring>
+        <name>withPricingEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="82"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>helper class </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides a more comfortable way to instantiate standard market swap. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makevanillaswap.hpp" bodystart="39" bodyend="105"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>effectiveDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ad797690a2bfa71066adeade3df2062e3" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedCalendar_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a1317e1bce37ec4fcc241069d1405e87a" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a417ce99525ff934e161e933d540c0409" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1af670365ab5e831b5beea4ce652daf022" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedEndOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a3bda383ebfd50932558d17af16491f80" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedFirstDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a2376c83528611ddc3544e01593e904bf" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedNextToLastDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedRate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a9821d2b27359b72ef005d84fcfa69ac3" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedRule_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ac01a3a26423d713b624e420726ea3db2" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1abe99741dc6500fbdd44bb41bde40cf67" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>fixedTerminationDateConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ad54b0e95fac9bae9da86553998d153ae" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatCalendar_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ae60a07c9bc2ad615a4e024154188c328" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a52317f2d9d20fcdf6da1753974274a67" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a084ebd72604fe38dc9d9b0d7b2b6c809" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatEndOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a180c162ce826f7849d3717c2560e1389" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatFirstDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a2e6d503cc98a1c473a7469f90a113b70" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatNextToLastDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a3e83ad896e9c8aad6d53d1caa231a6c2" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatRule_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a7b3ea87f51b55dc733902ca72b716f2f" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatSpread_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a3c7dc1eb48904104d0fc5a9ce84c31b2" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a6e546717f702497ebb8d5a5664576850" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>floatTerminationDateConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>forwardStart_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a211475384befbdc6d1d92bfe69635cd0" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>iborIndex_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ae164a49d8750e0f21a9170605d858008" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>MakeVanillaSwap</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a72b80dd9ade456887a1b5c34df7b7895" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>operator boost::shared_ptr&lt; VanillaSwap &gt;</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1afc2916511ef852e27ef385689a882810" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>operator VanillaSwap</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ab1d92b1e7fc4a3db977740df16642a40" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>receiveFixed</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>swapTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a4fd303bf9a2fb197696acf7d8481b77b" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>terminationDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1afb1fc848e5b4e9bbdfb25bfe171f7207" prot="private" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ae00c7b645d566d6456169ed229556fbc" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withDiscountingTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a7b4d1104ab63df2c92186679b583f40f" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withEffectiveDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a88bfe641d2317ff8e6a537b7478dc0e9" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ac5c461f3d0b94d3eac490f6e8384b35a" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a0a032b408c945364fc78010cceb7d3cb" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegDayCount</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ad15c7e584c167640d94fdf398cb2b589" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ad72db29d9ffe88e5370437a9fb1c4a33" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a39eb16b1b314adc3c4a6cd39f75765b7" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a593a60b393a652c96c87117a147136d5" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegRule</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a068f530309e704bd5738f6016b45323c" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1aad4b1bec31b77aefe3a2173d5070138a" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFixedLegTerminationDateConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a0294e4391f4f2e183dc47bcb762885be" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1abb558392bbaf05ed4efb7f368aa8a0e2" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a528ad9d266aa68073a2fc85c37181fe9" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegDayCount</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a38dad0cdc3897aadc954c9ae107ac3fc" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1aea4ab586a9b7b24bec2307c17836ddbd" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a2933f80f79f9f2175aeb767cd6e13b02" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a0a099ca8aa763d0b6b5eafa8e7321735" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegRule</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a148b22872218da556a36153a25accebe" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegSpread</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a7224c2a0d5fc6993c310773a88bbd269" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a7a5ee54ad82b31f61a8121682aab0278" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withFloatingLegTerminationDateConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1aa6903d91214d2dcd8b348f5acaa7e1ea" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withNominal</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a3bf5d80abe9ca5f21fc2ad8d173ac43f" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1ae2cd7de4e28b58c2a68967433f29a470" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withRule</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1addcfb3e824eabed95cfdc70d8a865b0c" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withTerminationDate</name></member>
+      <member refid="class_quant_lib_1_1_make_vanilla_swap_1a29326b18d03c2afe15487466512351a7" prot="public" virt="non-virtual"><scope>QuantLib::MakeVanillaSwap</scope><name>withType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

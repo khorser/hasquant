@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_implied_spot_helper" kind="class" prot="public">
+    <compoundname>QuantLib::ImpliedSpotHelper</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_implied_spot_helper_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor dividendDiscount_</definition>
+        <argsstring></argsstring>
+        <name>dividendDiscount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_implied_spot_helper_1aa638469d31148178272450a0a3aa49dc" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscount_</definition>
+        <argsstring></argsstring>
+        <name>riskFreeDiscount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_implied_spot_helper_1ab2dfc9b536e75b5097734f081c3b4716" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real standardDeviation_</definition>
+        <argsstring></argsstring>
+        <name>standardDeviation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_implied_spot_helper_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strike_</definition>
+        <argsstring></argsstring>
+        <name>strike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_implied_spot_helper_1afe77231bdde0e45330c5c0fe5c7bbc92" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PlainVanillaPayoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_implied_spot_helper_1a7b3d43cf263798d7c26a754bfed48aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ImpliedSpotHelper</definition>
+        <argsstring>(DiscountFactor dividendDiscount, DiscountFactor riskFreeDiscount, Real standardDeviation, boost::shared_ptr&lt; PlainVanillaPayoff &gt; payoff, Real strike)</argsstring>
+        <name>ImpliedSpotHelper</name>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>dividendDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>riskFreeDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>standardDeviation</declname>
+        </param>
+        <param>
+          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real spot) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spot</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="104" bodyend="118"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>dividendDiscount_</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1a7b3d43cf263798d7c26a754bfed48aa0" prot="public" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>ImpliedSpotHelper</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1afe77231bdde0e45330c5c0fe5c7bbc92" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1aa638469d31148178272450a0a3aa49dc" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>riskFreeDiscount_</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1ab2dfc9b536e75b5097734f081c3b4716" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>standardDeviation_</name></member>
+      <member refid="class_quant_lib_1_1_implied_spot_helper_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>strike_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

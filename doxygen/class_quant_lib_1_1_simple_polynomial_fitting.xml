@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_simple_polynomial_fitting" kind="class" prot="public">
+    <compoundname>QuantLib::SimplePolynomialFitting</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" prot="public" virt="non-virtual">FittedBondDiscountCurve::FittingMethod</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_simple_polynomial_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1ac77ed0c3330de2413cf47cfb60c6f5a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SimplePolynomialFitting</definition>
+        <argsstring>(Natural degree, bool constrainAtZero=true)</argsstring>
+        <name>SimplePolynomialFitting</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>degree</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>constrainAtZero</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
+        <definition>std::auto_ptr&lt;FittedBondDiscountCurve::FittingMethod&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
+        <briefdescription>
+<para>clone of the current object </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="152"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <briefdescription>
+<para>total number of coefficients to fit/solve for </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_polynomial_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discountFunction</definition>
+        <argsstring>(const Array &amp;x, Time t) const </argsstring>
+        <name>discountFunction</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a">discountFunction</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>derived classes must set this </para>        </briefdescription>
+        <detaileddescription>
+<para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="155"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simple polynomial fitting method. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13114">
+        <label>SimplePolynomialFitting</label>
+        <link refid="class_quant_lib_1_1_simple_polynomial_fitting"/>
+        <childnode refid="13115" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13115">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13125">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="13122" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13121" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13122">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13126">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="13124">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="13116">
+        <label>SimplePolynomialFitting</label>
+        <link refid="class_quant_lib_1_1_simple_polynomial_fitting"/>
+        <childnode refid="13117" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13120">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="13121" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13122" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13123" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13124" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="13118">
+        <label>FittedBondDiscountCurve</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve"/>
+        <childnode refid="13119" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13125" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13123">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="13121">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13119">
+        <label>YieldTermStructure</label>
+        <link refid="class_quant_lib_1_1_yield_term_structure"/>
+        <childnode refid="13120" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13117">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+        <childnode refid="13118" relation="usage">
+          <edgelabel>curve_</edgelabel>
+        </childnode>
+        <childnode refid="13126" relation="usage">
+          <edgelabel>solution_</edgelabel>
+          <edgelabel>guessSolution_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="147" bodyend="157"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_simple_polynomial_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" virt="virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa1fc1e61ea2ebf0998ac056c0f9fe236" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>constrainAtZero_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1accb31bbfa6ee2bfd5725524a5074d5b1" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>costFunction_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a0065b55394f4efe0207a7da835aea5fe" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>curve_</name></member>
+      <member refid="class_quant_lib_1_1_simple_polynomial_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" virt="virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>discountFunction</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a4332212ca948f9f0fd5dd8392e084977" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>FittingMethod</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a36b574df786ec85edcb9ae49b1c8f85d" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>guessSolution_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a02fd73d861ef2e4aabb38c0c9ff82947" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>init</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>minimumCostValue</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>numberOfIterations</name></member>
+      <member refid="class_quant_lib_1_1_simple_polynomial_fitting_1ac77ed0c3330de2413cf47cfb60c6f5a1" prot="public" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>SimplePolynomialFitting</name></member>
+      <member refid="class_quant_lib_1_1_simple_polynomial_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" virt="virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_simple_polynomial_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a6d8cb9a904d7c3d52208120af8369e07" prot="public" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>solution</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa0b993e23f5b95d9594323745aadd2be" prot="protected" virt="non-virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>solution_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" virt="virtual"><scope>QuantLib::SimplePolynomialFitting</scope><name>~FittingMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

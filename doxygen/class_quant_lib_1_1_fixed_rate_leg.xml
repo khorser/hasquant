@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fixed_rate_leg" kind="class" prot="public">
+    <compoundname>QuantLib::FixedRateLeg</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a070ed82c6cab5f05e2874979f4193388" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+        <definition>Schedule schedule_</definition>
+        <argsstring></argsstring>
+        <name>schedule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar_</definition>
+        <argsstring></argsstring>
+        <name>calendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a6bbb9ef180bf5ecb750bbb9a698708c7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; notionals_</definition>
+        <argsstring></argsstring>
+        <name>notionals_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a46a843a04f3614ec9b133809c24e8f84" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &gt;</type>
+        <definition>std::vector&lt;InterestRate&gt; couponRates_</definition>
+        <argsstring></argsstring>
+        <name>couponRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a48826fb25246d10925107fcf981762a3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter firstPeriodDC_</definition>
+        <argsstring></argsstring>
+        <name>firstPeriodDC_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_leg_1a0ec2a9dc099c63b9124c80bad34ead6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention paymentAdjustment_</definition>
+        <argsstring></argsstring>
+        <name>paymentAdjustment_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a5821e3c67abc98a6277bec59af44d845" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FixedRateLeg</definition>
+        <argsstring>(const Schedule &amp;schedule)</argsstring>
+        <name>FixedRateLeg</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>schedule</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a21e2f9d9028e6e2d1f5d3d4425fc28cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withNotionals</definition>
+        <argsstring>(Real)</argsstring>
+        <name>withNotionals</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a8a014355056a0b53ccc2f9908513361c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withNotionals</definition>
+        <argsstring>(const std::vector&lt; Real &gt; &amp;)</argsstring>
+        <name>withNotionals</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ad2040c280f6237c267870a34638ef286" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withCouponRates</definition>
+        <argsstring>(Rate, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
+        <name>withCouponRates</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>paymentDayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>comp</declname>
+          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73aebfbf7dc5cde0772efb1aa49712bd76b" kindref="member">Simple</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>freq</declname>
+          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a265711e3c4c71f9780f06857ab2e27a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withCouponRates</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;, const DayCounter &amp;paymentDayCounter, Compounding comp=Simple, Frequency freq=Annual)</argsstring>
+        <name>withCouponRates</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>paymentDayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>comp</declname>
+          <defval><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73aebfbf7dc5cde0772efb1aa49712bd76b" kindref="member">Simple</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>freq</declname>
+          <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaa508b18014c96e2d466c12b39d7f4e426" kindref="member">Annual</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a206b1b3fd1058dd57d062f0411b6c14a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withCouponRates</definition>
+        <argsstring>(const InterestRate &amp;)</argsstring>
+        <name>withCouponRates</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ade4ee2e24246a804a5f4b18aaf16ebe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withCouponRates</definition>
+        <argsstring>(const std::vector&lt; InterestRate &gt; &amp;)</argsstring>
+        <name>withCouponRates</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1a6bedf5c0cb87d1091426ed25e0c99501" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withPaymentAdjustment</definition>
+        <argsstring>(BusinessDayConvention)</argsstring>
+        <name>withPaymentAdjustment</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1abaa315a09cba365842643e6cc8c7a7be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withFirstPeriodDayCounter</definition>
+        <argsstring>(const DayCounter &amp;)</argsstring>
+        <name>withFirstPeriodDayCounter</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ab3dc6f3c5e33c4eee7b142e21f75d2bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_fixed_rate_leg" kindref="compound">FixedRateLeg</ref> &amp;</type>
+        <definition>FixedRateLeg&amp; withPaymentCalendar</definition>
+        <argsstring>(const Calendar &amp;)</argsstring>
+        <name>withPaymentCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator Leg</definition>
+        <argsstring>() const </argsstring>
+        <name>operator Leg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>helper class building a sequence of fixed rate coupons </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/fixedratecoupon.hpp" bodystart="80" bodyend="106"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a46a843a04f3614ec9b133809c24e8f84" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>couponRates_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a48826fb25246d10925107fcf981762a3" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>firstPeriodDC_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a5821e3c67abc98a6277bec59af44d845" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>FixedRateLeg</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a6bbb9ef180bf5ecb750bbb9a698708c7" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>notionals_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>operator Leg</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a0ec2a9dc099c63b9124c80bad34ead6d" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>paymentAdjustment_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a070ed82c6cab5f05e2874979f4193388" prot="private" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>schedule_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1ad2040c280f6237c267870a34638ef286" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withCouponRates</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a265711e3c4c71f9780f06857ab2e27a3" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withCouponRates</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a206b1b3fd1058dd57d062f0411b6c14a" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withCouponRates</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1ade4ee2e24246a804a5f4b18aaf16ebe1" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withCouponRates</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1abaa315a09cba365842643e6cc8c7a7be" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withFirstPeriodDayCounter</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a21e2f9d9028e6e2d1f5d3d4425fc28cb" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withNotionals</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a8a014355056a0b53ccc2f9908513361c" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withNotionals</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1a6bedf5c0cb87d1091426ed25e0c99501" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withPaymentAdjustment</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_leg_1ab3dc6f3c5e33c4eee7b142e21f75d2bc" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateLeg</scope><name>withPaymentCalendar</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

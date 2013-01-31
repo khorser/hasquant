@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_p_l_n_currency" kind="class" prot="public">
+    <compoundname>QuantLib::PLNCurrency</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_currency" prot="public" virt="non-virtual">Currency</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_p_l_n_currency_1a4c48cb0e41e7c86e47612c7d25789617" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PLNCurrency</definition>
+        <argsstring>()</argsstring>
+        <name>PLNCurrency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="312" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="312" bodyend="319"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Polish zloty. </para>    </briefdescription>
+    <detaileddescription>
+<para>The ISO three-letter code is PLN; the numeric code is 985. It is divided in 100 groszy. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12284">
+        <label>PLNCurrency</label>
+        <link refid="class_quant_lib_1_1_p_l_n_currency"/>
+        <childnode refid="12285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12285">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12286">
+        <label>PLNCurrency</label>
+        <link refid="class_quant_lib_1_1_p_l_n_currency"/>
+        <childnode refid="12287" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12287">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="310" bodyend="320"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>Currency</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>format</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>fractionsPerUnit</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>fractionSymbol</name></member>
+      <member refid="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>numericCode</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_p_l_n_currency_1a4c48cb0e41e7c86e47612c7d25789617" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>PLNCurrency</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>rounding</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>symbol</name></member>
+      <member refid="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" virt="non-virtual"><scope>QuantLib::PLNCurrency</scope><name>triangulationCurrency</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

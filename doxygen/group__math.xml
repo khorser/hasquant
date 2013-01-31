@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__math" kind="group">
+    <compoundname>math</compoundname>
+    <title>Math tools</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Math facilities of the library include:</para><sect1 id="group__math_1randomnumbers">
+<title>Pseudo-random number and low-discrepancy sequence generators</title>
+<para>Implementations of pseudo-random number and low-discrepancy sequence generators. They share the ql/RandomNumbers directory.</para></sect1>
+<sect1 id="group__math_1solvers1d">
+<title>One-dimensional solvers</title>
+<para>The abstract class <ref refid="class_quant_lib_1_1_solver1_d" kindref="compound">QuantLib::Solver1D</ref> provides the interface for one-dimensional solvers which can find the zeroes of a given function.</para><para>A number of such solvers is contained in the ql/Solvers1D directory.</para><para>The implementation of the algorithms was inspired by &quot;Numerical Recipes in C&quot;, 2nd edition, Press, Teukolsky, Vetterling, Flannery - Chapter 9</para><para>Some work is needed to resolve the ambiguity of the root finding accuracy defition: for some algorithms it is the x-accuracy, for others it is f(x)-accuracy.</para></sect1>
+<sect1 id="group__math_1optimizers">
+<title>Optimizers</title>
+<para>The optimization framework (corresponding to the ql/Optimization directory) implements some multi-dimensional minimizing methods. The function to be minimized is to be derived from the <ref refid="class_quant_lib_1_1_cost_function" kindref="compound">QuantLib::CostFunction</ref> base class (if the gradient is not analytically implemented, it will be computed numerically).</para><para><simplesect kind="par"><title>The simplex method</title><para></para></simplesect>
+This method, implemented in <ref refid="class_quant_lib_1_1_simplex" kindref="compound">QuantLib::Simplex</ref>, is rather raw and requires quite a lot of computing resources, but it has the advantage that it does not need any evaluation of the cost function&apos;s gradient, and that it is quite easily implemented. First, we must choose N+1 starting points, given here by a starting point <formula id="27">$ \mathbf{P}_{0} $</formula> and N points such that <formula id="28">\[ \mathbf{P}_{\mathbf{i}}=\mathbf{P}_{0}+\lambda \mathbf{e}_{\mathbf{i}}, \]</formula> where <formula id="29">$ \lambda $</formula> is the problem&apos;s characteristic length scale). These points will form a geometrical form called simplex. The principle of the downhill simplex method is, at each iteration, to move the worst point (highest cost function value) through the opposite face to a better point. When the simplex seems to be constrained in a valley, it will be contracted downhill, keeping the best point unchanged.</para><para><simplesect kind="par"><title>The conjugate gradient method</title><para>We&apos;ll now continue with a bit more sophisticated method, implemented in <ref refid="class_quant_lib_1_1_conjugate_gradient" kindref="compound">QuantLib::ConjugateGradient</ref> . At each step, we minimize (using Armijo&apos;s line search algorithm, implemented in <ref refid="class_quant_lib_1_1_armijo_line_search" kindref="compound">QuantLib::ArmijoLineSearch</ref>) the function along a line defined by <formula id="30">\[ \mathbf{d_i} = -\nabla f(\mathbf{x_i})+\frac{\left\Vert \nabla f(\mathbf{x_i})\right\Vert ^{2}}{\left\Vert \nabla f(\mathbf{x_{i-1}})\right\Vert ^{2}}\mathbf{d_{i-1}}, \]</formula> <formula id="31">\[ \mathbf{d}_{0} = -\nabla f(\mathbf{x}_{0}). \]</formula></para></simplesect>
+As we can see, this optimization method requires the knowledge of the gradient of the cost function. See <ref refid="class_quant_lib_1_1_conjugate_gradient" kindref="compound">QuantLib::ConjugateGradient</ref> . </para></sect1>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

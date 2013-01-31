@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_simple2d_b_s_solver" kind="class" prot="public">
+    <compoundname>QuantLib::FdmSimple2dBSSolver</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="private" virt="non-virtual">LazyObject</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>Handle&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a14272b32e607ffb18de710cd74e7daef" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real strike_</definition>
+        <argsstring></argsstring>
+        <name>strike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
+        <type>const FdmSolverDesc</type>
+        <definition>const FdmSolverDesc solverDesc_</definition>
+        <argsstring></argsstring>
+        <name>solverDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; Fdm2DimSolver &gt;</type>
+        <definition>boost::shared_ptr&lt;Fdm2DimSolver&gt; solver_</definition>
+        <argsstring></argsstring>
+        <name>solver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a6b497b216edcc245dfdf5fd190f80043" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmSimple2dBSSolver</definition>
+        <argsstring>(const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real strike, const FdmSolverDesc &amp;desc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas())</argsstring>
+        <name>FdmSimple2dBSSolver</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type>const FdmSolverDesc &amp;</type>
+          <declname>desc</declname>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+          <defval>FdmSchemeDesc::Douglas()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a08091184a8b4325348b2062c1433d009" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real valueAt</definition>
+        <argsstring>(Real s, Real a) const </argsstring>
+        <name>valueAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a467dde03a1dcd0c527322f4ccc783d81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real deltaAt</definition>
+        <argsstring>(Real s, Real a, Real eps) const </argsstring>
+        <name>deltaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a1b18cc499c595c38f5b8861e0f998bd6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gammaAt</definition>
+        <argsstring>(Real s, Real a, Real eps) const </argsstring>
+        <name>gammaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a81d315312a390829ed78190f9a8b31ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real thetaAt</definition>
+        <argsstring>(Real s, Real a) const </argsstring>
+        <name>thetaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6146">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6145">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6146" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6147" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6144">
+        <label>FdmSimple2dBSSolver</label>
+        <childnode refid="6145" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="6147">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6150">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6149">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6150" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6151" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6148">
+        <label>FdmSimple2dBSSolver</label>
+        <childnode refid="6149" relation="private-inheritance">
+        </childnode>
+      </node>
+      <node id="6151">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsimple2dbssolver.hpp" bodystart="38" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="private" virt="virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a467dde03a1dcd0c527322f4ccc783d81" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>deltaAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a6b497b216edcc245dfdf5fd190f80043" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>FdmSimple2dBSSolver</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a1b18cc499c595c38f5b8861e0f998bd6" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>gammaAt</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="private" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="private" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>solver_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>solverDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a14272b32e607ffb18de710cd74e7daef" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a81d315312a390829ed78190f9a8b31ad" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>thetaAt</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="private" virt="virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fdm_simple2d_b_s_solver_1a08091184a8b4325348b2062c1433d009" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>valueAt</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="private" virt="virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="private" virt="virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="private" virt="virtual"><scope>QuantLib::FdmSimple2dBSSolver</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

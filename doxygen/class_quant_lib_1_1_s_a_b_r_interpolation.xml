@@ -1,0 +1,318 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_s_a_b_r_interpolation" kind="class" prot="public">
+    <compoundname>QuantLib::SABRInterpolation</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_interpolation" prot="public" virt="non-virtual">Interpolation</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_s_a_b_r_interpolation_1ab2a1566d1dd58f7ee17d2f855b48704b" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; detail::SABRCoeffHolder &gt;</type>
+        <definition>boost::shared_ptr&lt;detail::SABRCoeffHolder&gt; coeffs_</definition>
+        <argsstring></argsstring>
+        <name>coeffs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="389" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a8d3a99345838129d005d3fa371235189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class I1</type>
+          </param>
+          <param>
+            <type>class I2</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>SABRInterpolation</definition>
+        <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Time t, const Real &amp;forward, Real alpha, Real beta, Real nu, Real rho, bool alphaIsFixed, bool betaIsFixed, bool nuIsFixed, bool rhoIsFixed, bool vegaWeighted=true, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;optMethod=boost::shared_ptr&lt; OptimizationMethod &gt;())</argsstring>
+        <name>SABRInterpolation</name>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xBegin</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xEnd</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yBegin</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>alphaIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>betaIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>nuIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>rhoIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>vegaWeighted</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <declname>endCriteria</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <declname>optMethod</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="361" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="344" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real expiry</definition>
+        <argsstring>() const </argsstring>
+        <name>expiry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="376" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="376" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1adb2a510fdff4d31015ee30cb417391aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real forward</definition>
+        <argsstring>() const </argsstring>
+        <name>forward</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="377" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="377" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha</definition>
+        <argsstring>() const </argsstring>
+        <name>alpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="378" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="378" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta</definition>
+        <argsstring>() const </argsstring>
+        <name>beta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="379" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="379" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nu</definition>
+        <argsstring>() const </argsstring>
+        <name>nu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="380" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="380" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho</definition>
+        <argsstring>() const </argsstring>
+        <name>rho</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="381" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="381" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rmsError</definition>
+        <argsstring>() const </argsstring>
+        <name>rmsError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="382" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="382" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxError</definition>
+        <argsstring>() const </argsstring>
+        <name>maxError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="383" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="383" bodyend="383"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a775af76ec6dec7c7b6449831cf309796" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Real&gt;&amp; interpolationWeights</definition>
+        <argsstring>() const </argsstring>
+        <name>interpolationWeights</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="384" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="384" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_interpolation_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>EndCriteria::Type</type>
+        <definition>EndCriteria::Type endCriteria</definition>
+        <argsstring>()</argsstring>
+        <name>endCriteria</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="386" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="386" bodyend="386"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SABR smile interpolation between discrete volatility points. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12934">
+        <label>Interpolation</label>
+        <link refid="class_quant_lib_1_1_interpolation"/>
+        <childnode refid="12935" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12933">
+        <label>SABRInterpolation</label>
+        <link refid="class_quant_lib_1_1_s_a_b_r_interpolation"/>
+        <childnode refid="12934" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12935">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12937">
+        <label>Interpolation</label>
+        <link refid="class_quant_lib_1_1_interpolation"/>
+        <childnode refid="12938" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12936">
+        <label>SABRInterpolation</label>
+        <link refid="class_quant_lib_1_1_s_a_b_r_interpolation"/>
+        <childnode refid="12937" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12938">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="341" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="341" bodyend="390"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_extrapolator_1ad9e8911dd8792d5ec36f1ee071cfad7d" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>allowsExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>alpha</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1af498733f2fd0abef2f5f1071a1b9354a" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>argument_type</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a78a3f49ebd7612d4d23a640186b86140" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>beta</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ab1128d789d8186b63cb7f9ab2d6d0402" prot="protected" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1ab2a1566d1dd58f7ee17d2f855b48704b" prot="private" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>coeffs_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a762f31d09f9c70ceffb183248d3ef8ba" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>derivative</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>disableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ae60e793a77f44a9c022b103458fa993c" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>enableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>expiry</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1adb2a510fdff4d31015ee30cb417391aa" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>forward</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a4d268120480ee9ab42b43c05b2573144" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>Interpolation</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a775af76ec6dec7c7b6449831cf309796" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>interpolationWeights</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>isInRange</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1ac4d9decda86622fb96bacef77cfc4424" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a69c12ede1099bb0263342867dd12e045" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>nu</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac180804bcc9bccca4deca3246968e4f3" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a61e81104809d2137d59ace5e6c0688d0" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>primitive</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1abd4b619e88e62e8c704bc850340fc078" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a9e74bed9ddc465f1211381d725c945bb" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a575cfa031ce051c0f292518d6b0194e3" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>rmsError</name></member>
+      <member refid="class_quant_lib_1_1_s_a_b_r_interpolation_1a8d3a99345838129d005d3fa371235189" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>SABRInterpolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1aa261e6fbcb8c5436d3bb791e2b94f7b9" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>secondDerivative</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>xMax</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="non-virtual"><scope>QuantLib::SABRInterpolation</scope><name>xMin</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" virt="virtual"><scope>QuantLib::SABRInterpolation</scope><name>~Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ae01f84bd82b48ada57388023da514f5d" prot="public" virt="virtual"><scope>QuantLib::SABRInterpolation</scope><name>~Interpolation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,381 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_sub_periods_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::SubPeriodsPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" prot="public" virt="non-virtual">FloatingRateCouponPricer</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_averaging_rate_pricer" prot="public" virt="non-virtual">AveragingRatePricer</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_compounding_rate_pricer" prot="public" virt="non-virtual">CompoundingRatePricer</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a1e54a110bffcfdf846317f0aec65ada6" prot="protected" static="no" mutable="no">
+        <type>const SubPeriodsCoupon *</type>
+        <definition>const SubPeriodsCoupon* coupon_</definition>
+        <argsstring></argsstring>
+        <name>coupon_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a6b4dfb2aef0717c1cc3b47544c5c6f1f" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real startTime_</definition>
+        <argsstring></argsstring>
+        <name>startTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a0b07582d94c76dac428b440ab88c6339" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real endTime_</definition>
+        <argsstring></argsstring>
+        <name>endTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1ac10c63edf709c1a57e00fe717247f4c7" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real accrualFactor_</definition>
+        <argsstring></argsstring>
+        <name>accrualFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a0c2145cfda3466bf375b7d1917a15bcf" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; observationTimes_</definition>
+        <argsstring></argsstring>
+        <name>observationTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a2c4ab91113758b218453215459296570" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; observationCvg_</definition>
+        <argsstring></argsstring>
+        <name>observationCvg_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a1a5680106af428c3896552f9911bddd6" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; initialValues_</definition>
+        <argsstring></argsstring>
+        <name>initialValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1adcb93039a5073e458d19ec931090a7c4" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; observationIndexStartDates_</definition>
+        <argsstring></argsstring>
+        <name>observationIndexStartDates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1ad803f5ffc61748da05c3a6d3a06bb035" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; observationIndexEndDates_</definition>
+        <argsstring></argsstring>
+        <name>observationIndexEndDates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1ab2d4e5d738e1d20ccf4242ceb027eca4" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size observations_</definition>
+        <argsstring></argsstring>
+        <name>observations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1aea69a040116fac17d85f412ad3bade51" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real discount_</definition>
+        <argsstring></argsstring>
+        <name>discount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gearing_</definition>
+        <argsstring></argsstring>
+        <name>gearing_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread spread_</definition>
+        <argsstring></argsstring>
+        <name>spread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sub_periods_pricer_1a13e8e0bbdf635458d4b3b32fc3d2a817" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real spreadLegValue_</definition>
+        <argsstring></argsstring>
+        <name>spreadLegValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate swapletRate</definition>
+        <argsstring>() const </argsstring>
+        <name>swapletRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real capletPrice</definition>
+        <argsstring>(Rate effectiveCap) const </argsstring>
+        <name>capletPrice</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>effectiveCap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate capletRate</definition>
+        <argsstring>(Rate effectiveCap) const </argsstring>
+        <name>capletRate</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>effectiveCap</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real floorletPrice</definition>
+        <argsstring>(Rate effectiveFloor) const </argsstring>
+        <name>floorletPrice</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>effectiveFloor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate floorletRate</definition>
+        <argsstring>(Rate effectiveFloor) const </argsstring>
+        <name>floorletRate</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>effectiveFloor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sub_periods_pricer_1a886033c6497a874cf75f449632553464" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initialize</definition>
+        <argsstring>(const FloatingRateCoupon &amp;coupon)</argsstring>
+        <name>initialize</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
+          <declname>coupon</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13562">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13560">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="13561" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13562" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13559">
+        <label>SubPeriodsPricer</label>
+        <childnode refid="13560" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13561">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13566">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13564">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="13565" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13566" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13563">
+        <label>SubPeriodsPricer</label>
+        <childnode refid="13564" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13565">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="98" bodyend="125"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac10c63edf709c1a57e00fe717247f4c7" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>accrualFactor_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>capletPrice</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>capletRate</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a1e54a110bffcfdf846317f0aec65ada6" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>coupon_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1aea69a040116fac17d85f412ad3bade51" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a0b07582d94c76dac428b440ab88c6339" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>endTime_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>floorletPrice</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>floorletRate</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a886033c6497a874cf75f449632553464" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a1a5680106af428c3896552f9911bddd6" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>initialValues_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a2c4ab91113758b218453215459296570" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>observationCvg_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad803f5ffc61748da05c3a6d3a06bb035" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>observationIndexEndDates_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1adcb93039a5073e458d19ec931090a7c4" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>observationIndexStartDates_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ab2d4e5d738e1d20ccf4242ceb027eca4" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>observations_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a0c2145cfda3466bf375b7d1917a15bcf" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>observationTimes_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::SubPeriodsPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::SubPeriodsPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a13e8e0bbdf635458d4b3b32fc3d2a817" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>spreadLegValue_</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a6b4dfb2aef0717c1cc3b47544c5c6f1f" prot="protected" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>startTime_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" virt="pure-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>swapletPrice</name></member>
+      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>swapletRate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac65d2910ffc9a596d3cf548aef90d06a" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>~FloatingRateCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::SubPeriodsPricer</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

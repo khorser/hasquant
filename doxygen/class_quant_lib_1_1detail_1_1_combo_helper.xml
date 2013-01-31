@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_combo_helper" kind="class" prot="public">
+    <compoundname>QuantLib::detail::ComboHelper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">SectionHelper</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_combo_helper_1af9e0c2f35d25f2d15ae116fe2910ce5c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real quadraticity_</definition>
+        <argsstring></argsstring>
+        <name>quadraticity_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_combo_helper_1a1277f00c1bc0ff19d0c8f095ff396ca1" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; SectionHelper &gt;</type>
+        <definition>boost::shared_ptr&lt;SectionHelper&gt; quadraticHelper_</definition>
+        <argsstring></argsstring>
+        <name>quadraticHelper_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_combo_helper_1ac655dd49abd898f1005d9916d822dab1" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; SectionHelper &gt;</type>
+        <definition>boost::shared_ptr&lt;SectionHelper&gt; convMonoHelper_</definition>
+        <argsstring></argsstring>
+        <name>convMonoHelper_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a9c7c3284c8e6c261029491a3ac406e21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ComboHelper</definition>
+        <argsstring>(boost::shared_ptr&lt; SectionHelper &gt; &amp;quadraticHelper, boost::shared_ptr&lt; SectionHelper &gt; &amp;convMonoHelper, Real quadraticity)</argsstring>
+        <name>ComboHelper</name>
+        <param>
+          <type>boost::shared_ptr&lt; SectionHelper &gt; &amp;</type>
+          <declname>quadraticHelper</declname>
+        </param>
+        <param>
+          <type>boost::shared_ptr&lt; SectionHelper &gt; &amp;</type>
+          <declname>convMonoHelper</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>quadraticity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="112" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>value</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real primitive</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>primitive</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="124" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real fNext</definition>
+        <argsstring>() const </argsstring>
+        <name>fNext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="110" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a9c7c3284c8e6c261029491a3ac406e21" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>ComboHelper</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1ac655dd49abd898f1005d9916d822dab1" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>convMonoHelper_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>fNext</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>primitive</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a1277f00c1bc0ff19d0c8f095ff396ca1" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>quadraticHelper_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1af9e0c2f35d25f2d15ae116fe2910ce5c" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>quadraticity_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::ComboHelper</scope><name>~SectionHelper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

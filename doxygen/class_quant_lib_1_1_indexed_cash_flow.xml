@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_indexed_cash_flow" kind="class" prot="public">
+    <compoundname>QuantLib::IndexedCashFlow</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_p_i_cash_flow" prot="public" virt="non-virtual">CPICashFlow</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Event interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date</definition>
+        <argsstring>() const </argsstring>
+        <name>date</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="59" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>CashFlow interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount</definition>
+        <argsstring>() const </argsstring>
+        <name>amount</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <briefdescription>
+<para>returns the amount of the cash flow </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="88" bodyend="95"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real notional_</definition>
+        <argsstring></argsstring>
+        <name>notional_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1ab651f48b400b38a7a77a1e5dc0528774" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Index&gt; index_</definition>
+        <argsstring></argsstring>
+        <name>index_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a3da982a1d3d4255d4c6c1a00135cab37" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date baseDate_</definition>
+        <argsstring></argsstring>
+        <name>baseDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a0f3d454856e688ed07ac415619cd9fda" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date fixingDate_</definition>
+        <argsstring></argsstring>
+        <name>fixingDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1a292ad9c54719780e61282ddeeac02410" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date paymentDate_</definition>
+        <argsstring></argsstring>
+        <name>paymentDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_indexed_cash_flow_1adc460eee16e23c544191ba2a3997c078" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool growthOnly_</definition>
+        <argsstring></argsstring>
+        <name>growthOnly_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a26470d10d6c897a714ed1ae0ded3e446" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IndexedCashFlow</definition>
+        <argsstring>(Real notional, const boost::shared_ptr&lt; Index &gt; &amp;index, const Date &amp;baseDate, const Date &amp;fixingDate, const Date &amp;paymentDate, bool growthOnly=false)</argsstring>
+        <name>IndexedCashFlow</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notional</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>baseDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>fixingDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>paymentDate</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>growthOnly</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="46" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a6094d632a1b1613bef8c06c318be2069" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real notional</definition>
+        <argsstring>() const </argsstring>
+        <name>notional</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>virtual Date baseDate</definition>
+        <argsstring>() const </argsstring>
+        <name>baseDate</name>
+        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cash_flow_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>virtual Date fixingDate</definition>
+        <argsstring>() const </argsstring>
+        <name>fixingDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a0fa8bc0607c4e33977636c583cf6d1f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
+        <definition>virtual boost::shared_ptr&lt;Index&gt; index</definition>
+        <argsstring>() const </argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_indexed_cash_flow_1a18f08572e22caceb5550f518da51dd65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool growthOnly</definition>
+        <argsstring>() const </argsstring>
+        <name>growthOnly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="65" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Cash flow dependent on an index ratio. </para>    </briefdescription>
+    <detaileddescription>
+<para>This cash flow is not a coupon, i.e., there&apos;s no accrual. The amount is either i(T)/i(0) or i(T)/i(0) - 1, depending on the growthOnly parameter.</para><para>We expect this to be used inside an instrument that does all the date adjustment etc., so this takes just dates and does not change them. growthOnly = false means i(T)/i(0), which is a bond-type setting. growthOnly = true means i(T)/i(0) - 1, which is a swap-type setting. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7870">
+        <label>CPICashFlow</label>
+        <link refid="class_quant_lib_1_1_c_p_i_cash_flow"/>
+        <childnode refid="7865" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7867">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="7868" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7868">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7865">
+        <label>IndexedCashFlow</label>
+        <link refid="class_quant_lib_1_1_indexed_cash_flow"/>
+        <childnode refid="7866" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7869" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7869">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7866">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="7867" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7873">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="7874" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7874">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7871">
+        <label>IndexedCashFlow</label>
+        <link refid="class_quant_lib_1_1_indexed_cash_flow"/>
+        <childnode refid="7872" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7875" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7875">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7872">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="7873" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/indexedcashflow.hpp" bodystart="43" bodyend="83"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>baseDate</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a3da982a1d3d4255d4c6c1a00135cab37" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>baseDate_</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>fixingDate</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a0f3d454856e688ed07ac415619cd9fda" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>fixingDate_</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a18f08572e22caceb5550f518da51dd65" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>growthOnly</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1adc460eee16e23c544191ba2a3997c078" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>growthOnly_</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a0fa8bc0607c4e33977636c583cf6d1f0" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1ab651f48b400b38a7a77a1e5dc0528774" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a26470d10d6c897a714ed1ae0ded3e446" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>IndexedCashFlow</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a6094d632a1b1613bef8c06c318be2069" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>notional</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>notional_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::IndexedCashFlow</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::IndexedCashFlow</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1a292ad9c54719780e61282ddeeac02410" prot="private" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::IndexedCashFlow</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_indexed_cash_flow_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::IndexedCashFlow</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

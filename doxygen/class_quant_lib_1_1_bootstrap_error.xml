@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bootstrap_error" kind="class" prot="public">
+    <compoundname>QuantLib::BootstrapError</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_bootstrap_error_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
+        <type>Curve::traits_type</type>
+        <definition>typedef Curve::traits_type Traits</definition>
+        <argsstring></argsstring>
+        <name>Traits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_error_1a16444cd27eb4b1924b4403e73c7a3812" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+        <definition>const Curve* curve_</definition>
+        <argsstring></argsstring>
+        <name>curve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_error_1ab3a7601ef334012d4178ce63c6354c5a" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; typename Traits::helper &gt;</type>
+        <definition>const boost::shared_ptr&lt;typename Traits::helper&gt; helper_</definition>
+        <argsstring></argsstring>
+        <name>helper_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_error_1aa3438bfc9dbacb97b128366d96bf4702" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size segment_</definition>
+        <argsstring></argsstring>
+        <name>segment_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BootstrapError</definition>
+        <argsstring>(const Curve *curve, const boost::shared_ptr&lt; typename Traits::helper &gt; &amp;instrument, Size segment)</argsstring>
+        <name>BootstrapError</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <declname>curve</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; typename Traits::helper &gt; &amp;</type>
+          <declname>instrument</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>segment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="57" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Rate guess) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1a7d03a9f9dde0af34767ef0344d62ad74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; typename Traits::helper &gt; &amp;</type>
+        <definition>const boost::shared_ptr&lt;typename Traits::helper&gt;&amp; helper</definition>
+        <argsstring>()</argsstring>
+        <name>helper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="44" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>bootstrap error </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="36" bodyend="51"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>BootstrapError</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1a16444cd27eb4b1924b4403e73c7a3812" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>curve_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1a7d03a9f9dde0af34767ef0344d62ad74" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>helper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1ab3a7601ef334012d4178ce63c6354c5a" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>helper_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1aa3438bfc9dbacb97b128366d96bf4702" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>segment_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_error_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>Traits</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

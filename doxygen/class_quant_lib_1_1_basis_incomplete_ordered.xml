@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_basis_incomplete_ordered" kind="class" prot="public">
+    <compoundname>QuantLib::BasisIncompleteOrdered</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1a2123b524ed01f4b11c34f0bfb397694f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>std::vector&lt;Array&gt; currentBasis_</definition>
+        <argsstring></argsstring>
+        <name>currentBasis_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1a9db2ba0acb3b1825f382b8beea3ec1f1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size euclideanDimension_</definition>
+        <argsstring></argsstring>
+        <name>euclideanDimension_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_basis_incomplete_ordered_1aee6154e3e164ca3ef05c2e36505f12c0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array newVector_</definition>
+        <argsstring></argsstring>
+        <name>newVector_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BasisIncompleteOrdered</definition>
+        <argsstring>(Size euclideanDimension)</argsstring>
+        <name>BasisIncompleteOrdered</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>euclideanDimension</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool addVector</definition>
+        <argsstring>(const Array &amp;newVector)</argsstring>
+        <name>addVector</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>newVector</declname>
+        </param>
+        <briefdescription>
+<para>return value indicates if the vector was linearly independent </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size basisSize</definition>
+        <argsstring>() const </argsstring>
+        <name>basisSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size euclideanDimension</definition>
+        <argsstring>() const </argsstring>
+        <name>euclideanDimension</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix getBasisAsRowsInMatrix</definition>
+        <argsstring>() const </argsstring>
+        <name>getBasisAsRowsInMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="29" bodyend="41"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>addVector</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>BasisIncompleteOrdered</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>basisSize</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a2123b524ed01f4b11c34f0bfb397694f" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>currentBasis_</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>euclideanDimension</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a9db2ba0acb3b1825f382b8beea3ec1f1" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>euclideanDimension_</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>getBasisAsRowsInMatrix</name></member>
+      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1aee6154e3e164ca3ef05c2e36505f12c0" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>newVector_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

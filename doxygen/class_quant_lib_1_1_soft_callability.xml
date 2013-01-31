@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_soft_callability" kind="class" prot="public">
+    <compoundname>QuantLib::SoftCallability</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_callability" prot="public" virt="non-virtual">Callability</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_soft_callability_1a39c805c18ebd9255ee1af6663afcc3fa" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real trigger_</definition>
+        <argsstring></argsstring>
+        <name>trigger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_soft_callability_1a36fd5f2e71095de9309ef637be035508" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SoftCallability</definition>
+        <argsstring>(const Price &amp;price, const Date &amp;date, Real trigger)</argsstring>
+        <name>SoftCallability</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+          <declname>price</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>trigger</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_soft_callability_1ab4fe9e3ae5fd6b333729ad55292e74b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real trigger</definition>
+        <argsstring>() const </argsstring>
+        <name>trigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>callability leaving to the holder the possibility to convert </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13196">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="13197" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13197">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13195">
+        <label>Callability</label>
+        <link refid="class_quant_lib_1_1_callability"/>
+        <childnode refid="13196" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13194">
+        <label>SoftCallability</label>
+        <link refid="class_quant_lib_1_1_soft_callability"/>
+        <childnode refid="13195" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13200">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="13201" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13201">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13199">
+        <label>Callability</label>
+        <link refid="class_quant_lib_1_1_callability"/>
+        <childnode refid="13200" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13198">
+        <label>SoftCallability</label>
+        <link refid="class_quant_lib_1_1_soft_callability"/>
+        <childnode refid="13199" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="42" bodyend="51"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::SoftCallability</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Call</name></member>
+      <member refid="class_quant_lib_1_1_callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Callability</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::SoftCallability</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" virt="virtual"><scope>QuantLib::SoftCallability</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a45e2518616fcb5eda062598143213af1" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>price</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Put</name></member>
+      <member refid="class_quant_lib_1_1_soft_callability_1a36fd5f2e71095de9309ef637be035508" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>SoftCallability</name></member>
+      <member refid="class_quant_lib_1_1_soft_callability_1ab4fe9e3ae5fd6b333729ad55292e74b4" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>trigger</name></member>
+      <member refid="class_quant_lib_1_1_soft_callability_1a39c805c18ebd9255ee1af6663afcc3fa" prot="private" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>trigger_</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::SoftCallability</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::SoftCallability</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SoftCallability</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

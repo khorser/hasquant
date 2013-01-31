@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_composite_quote" kind="class" prot="public">
+    <compoundname>QuantLib::CompositeQuote</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="non-virtual">Quote</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class BinaryFunction</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1afb829bc5e5c096af536f0c5d49074186" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value1</definition>
+        <argsstring>() const </argsstring>
+        <name>value1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1a2398c24daa949e532f309fa4b199fda9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value2</definition>
+        <argsstring>() const </argsstring>
+        <name>value2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Quote interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>() const </argsstring>
+        <name>value</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <briefdescription>
+<para>returns the current value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool isValid</definition>
+        <argsstring>() const </argsstring>
+        <name>isValid</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <briefdescription>
+<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="84" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1ac182967a91827b9f3653635840e65b1a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; element1_</definition>
+        <argsstring></argsstring>
+        <name>element1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1aceda1e20ef5d041116c46f6fee025506" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; element2_</definition>
+        <argsstring></argsstring>
+        <name>element2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_quote_1a8491af6ee584103994b06d1d9cf731b8" prot="private" static="no" mutable="no">
+        <type>BinaryFunction</type>
+        <definition>BinaryFunction f_</definition>
+        <argsstring></argsstring>
+        <name>f_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_quote_1a2628d28a842eb4da85ddbdcb576553f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CompositeQuote</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;element1, const Handle&lt; Quote &gt; &amp;element2, const BinaryFunction &amp;f)</argsstring>
+        <name>CompositeQuote</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>element1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>element2</declname>
+        </param>
+        <param>
+          <type>const BinaryFunction &amp;</type>
+          <declname>f</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="68" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>market element whose value depends on two other market element </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000138"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2392">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="2393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2393">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2394">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2391">
+        <label>CompositeQuote&lt; BinaryFunction &gt;</label>
+        <link refid="class_quant_lib_1_1_composite_quote"/>
+        <childnode refid="2392" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2394" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2396">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="2397" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2397">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2398">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2395">
+        <label>CompositeQuote&lt; BinaryFunction &gt;</label>
+        <link refid="class_quant_lib_1_1_composite_quote"/>
+        <childnode refid="2396" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2398" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/compositequote.hpp" bodystart="39" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_composite_quote_1a2628d28a842eb4da85ddbdcb576553f3" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>CompositeQuote</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1ac182967a91827b9f3653635840e65b1a" prot="private" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>element1_</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1aceda1e20ef5d041116c46f6fee025506" prot="private" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>element2_</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1a8491af6ee584103994b06d1d9cf731b8" prot="private" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>isValid</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CompositeQuote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::CompositeQuote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1afb829bc5e5c096af536f0c5d49074186" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>value1</name></member>
+      <member refid="class_quant_lib_1_1_composite_quote_1a2398c24daa949e532f309fa4b199fda9" prot="public" virt="non-virtual"><scope>QuantLib::CompositeQuote</scope><name>value2</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::CompositeQuote</scope><name>~Quote</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

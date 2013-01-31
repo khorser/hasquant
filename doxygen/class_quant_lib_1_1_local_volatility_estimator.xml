@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_local_volatility_estimator" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::LocalVolatilityEstimator</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_abstract" prot="public" virt="non-virtual">GarmanKlassAbstract</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_simple_local_estimator" prot="public" virt="non-virtual">SimpleLocalEstimator</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~LocalVolatilityEstimator</definition>
+        <argsstring>()</argsstring>
+        <name>~LocalVolatilityEstimator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>virtual TimeSeries&lt;Volatility&gt; calculate</definition>
+        <argsstring>(const TimeSeries&lt; T &gt; &amp;quoteSeries)=0</argsstring>
+        <name>calculate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; T &gt; &amp;</type>
+          <declname>quoteSeries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9175">
+        <label>GarmanKlassAbstract&lt; IntervalPrice &gt;</label>
+        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
+        <childnode refid="9174" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9176">
+        <label>SimpleLocalEstimator&lt; Real &gt;</label>
+        <link refid="class_quant_lib_1_1_simple_local_estimator"/>
+        <childnode refid="9174" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9174">
+        <label>LocalVolatilityEstimator&lt; T &gt;</label>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="34" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual"><scope>QuantLib::LocalVolatilityEstimator</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::LocalVolatilityEstimator</scope><name>~LocalVolatilityEstimator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

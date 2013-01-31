@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::ContinuousFixedLookbackOption::arguments</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">arguments</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a7d7892274fd67168a5eeddb4bd161587" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minmax</definition>
+        <argsstring></argsstring>
+        <name>minmax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Arguments for continuous fixed lookback option calculation </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="74" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a7d7892274fd67168a5eeddb4bd161587" prot="public" virt="non-virtual"><scope>QuantLib::ContinuousFixedLookbackOption::arguments</scope><name>minmax</name></member>
+      <member refid="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::ContinuousFixedLookbackOption::arguments</scope><name>validate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_parametric_exercise_adapter" kind="class" prot="public">
+    <compoundname>QuantLib::ParametricExerciseAdapter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::ExerciseStrategy&lt; CurveState &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a2c21aea2418a5a63b99bb267d9f9e1d7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelParametricExercise &gt;</type>
+        <definition>Clone&lt;MarketModelParametricExercise&gt; exercise_</definition>
+        <argsstring></argsstring>
+        <name>exercise_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1afd83397529bc22ef01f0fb0b782ce8e9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; parameters_</definition>
+        <argsstring></argsstring>
+        <name>parameters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1aa010100d61810501bed98b1773802fe5" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; exerciseTimes_</definition>
+        <argsstring></argsstring>
+        <name>exerciseTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a0cd1da9c234a65843ed1783da733f913" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size currentStep_</definition>
+        <argsstring></argsstring>
+        <name>currentStep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a3eac9ea0fb436d6a6f72379588b39921" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size currentExercise_</definition>
+        <argsstring></argsstring>
+        <name>currentExercise_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; bool &gt;</type>
+        <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
+        <argsstring></argsstring>
+        <name>isExerciseTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a3b7c47d0e999001cf2378ec95e660bac" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; numberOfVariables_</definition>
+        <argsstring></argsstring>
+        <name>numberOfVariables_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_parametric_exercise_adapter_1a7a0ba563aebb3a7b4df558ae61d61e70" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; variables_</definition>
+        <argsstring></argsstring>
+        <name>variables_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1ad97257635561dfa7bb32e7a66d5cc9cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ParametricExerciseAdapter</definition>
+        <argsstring>(const MarketModelParametricExercise &amp;exercise, const std::vector&lt; std::vector&lt; Real &gt; &gt; &amp;parameters)</argsstring>
+        <name>ParametricExerciseAdapter</name>
+        <param>
+          <type>const MarketModelParametricExercise &amp;</type>
+          <declname>exercise</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1aa8dcb0de162131db7bd1609d221445ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>exerciseTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; relevantTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>relevantTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1aec2d702d48459594eb8f12eaec1920bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void nextStep</definition>
+        <argsstring>(const CurveState &amp;currentState)</argsstring>
+        <name>nextStep</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <declname>currentState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1af66beb74da59fb4825934b77b8d2c469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool exercise</definition>
+        <argsstring>(const CurveState &amp;currentState) const </argsstring>
+        <name>exercise</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <declname>currentState</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_parametric_exercise_adapter_1acd9318273e52073d486e779f628ca372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::auto_ptr&lt; ExerciseStrategy&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &gt;</type>
+        <definition>std::auto_ptr&lt;ExerciseStrategy&lt;CurveState&gt; &gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="33" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1acd9318273e52073d486e779f628ca372" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a3eac9ea0fb436d6a6f72379588b39921" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>currentExercise_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a0cd1da9c234a65843ed1783da733f913" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>currentStep_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1af66beb74da59fb4825934b77b8d2c469" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a2c21aea2418a5a63b99bb267d9f9e1d7" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aa8dcb0de162131db7bd1609d221445ea" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exerciseTimes</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aa010100d61810501bed98b1773802fe5" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exerciseTimes_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>isExerciseTime_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aec2d702d48459594eb8f12eaec1920bd" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>nextStep</name></member>
+      <member refid="class_quant_lib_1_1_exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::ParametricExerciseAdapter</scope><name>nextStep</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a3b7c47d0e999001cf2378ec95e660bac" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>numberOfVariables_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1afd83397529bc22ef01f0fb0b782ce8e9" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>parameters_</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ad97257635561dfa7bb32e7a66d5cc9cc" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>ParametricExerciseAdapter</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>relevantTimes</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a7a0ba563aebb3a7b4df558ae61d61e70" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>variables_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_strategy_1a131d63d54acfaaee85f99d675cb83fa8" prot="public" virt="virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>~ExerciseStrategy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_ju_quadratic_approximation_engine" kind="class" prot="public">
+    <compoundname>QuantLib::JuQuadraticApproximationEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a140983fad68b7dcbbf122222f9ffaba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>JuQuadraticApproximationEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
+        <name>JuQuadraticApproximationEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for American options with Ju quadratic approximation. </para>    </briefdescription>
+    <detaileddescription>
+<para>Reference: An Approximate Formula for Pricing American Options, Journal of Derivatives Winter 1999, Ju, N.</para><para><xrefsect id="caveats_1_caveats000104"><xreftitle>Warning</xreftitle><xrefdescription><para>Barone-Adesi-Whaley critical commodity price calculation is used, it has not been modified to see whether the method of Ju is faster. Ju does not say how he solves the equation for the critical stock price, e.g. <ref refid="class_quant_lib_1_1_newton" kindref="compound">Newton</ref> method. He just gives the solution. The method of BAW gives answers to the same accuracy as in Ju (1999).</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000131"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" bodystart="52" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a140983fad68b7dcbbf122222f9ffaba3" prot="public" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>JuQuadraticApproximationEngine</name></member>
+      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>process_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

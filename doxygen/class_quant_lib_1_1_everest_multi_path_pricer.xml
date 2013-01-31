@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_everest_multi_path_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::EverestMultiPathPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_everest_multi_path_pricer_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real notional_</definition>
+        <argsstring></argsstring>
+        <name>notional_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_everest_multi_path_pricer_1a53e56e9b35ea1d8e73f46255806b4f91" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate guarantee_</definition>
+        <argsstring></argsstring>
+        <name>guarantee_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_everest_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discount_</definition>
+        <argsstring></argsstring>
+        <name>discount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_everest_multi_path_pricer_1ad0f5ddf9a2810e7bf729ed40168a82eb" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EverestMultiPathPricer</definition>
+        <argsstring>(Real notional, Rate guarantee, DiscountFactor discount)</argsstring>
+        <name>EverestMultiPathPricer</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notional</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guarantee</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>discount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_everest_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <declname>multiPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5326">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+      <node id="5325">
+        <label>EverestMultiPathPricer</label>
+        <childnode refid="5326" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5328">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+      <node id="5327">
+        <label>EverestMultiPathPricer</label>
+        <childnode refid="5328" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mceverestengine.hpp" bodystart="124" bodyend="134"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_everest_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_everest_multi_path_pricer_1ad0f5ddf9a2810e7bf729ed40168a82eb" prot="public" virt="non-virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>EverestMultiPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_everest_multi_path_pricer_1a53e56e9b35ea1d8e73f46255806b4f91" prot="private" virt="non-virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>guarantee_</name></member>
+      <member refid="class_quant_lib_1_1_everest_multi_path_pricer_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="private" virt="non-virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>notional_</name></member>
+      <member refid="class_quant_lib_1_1_everest_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="non-virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::EverestMultiPathPricer</scope><name>~PathPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

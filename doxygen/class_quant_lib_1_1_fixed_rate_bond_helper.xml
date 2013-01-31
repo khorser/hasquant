@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fixed_rate_bond_helper" kind="class" prot="public">
+    <compoundname>QuantLib::FixedRateBondHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_bond_helper" prot="public" virt="non-virtual">BondHelper</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>additional inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt; FixedRateBond &gt; fixedRateBond</definition>
+        <argsstring>() const </argsstring>
+        <name>fixedRateBond</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="97" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fixed_rate_bond_helper_1a05546e5e6f0af6f4e0444706a9aee524" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;FixedRateBond&gt; fixedRateBond_</definition>
+        <argsstring></argsstring>
+        <name>fixedRateBond_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1a79eb27824ff30b4ccffc460090b7cc1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FixedRateBondHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;cleanPrice, Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;dayCounter, BusinessDayConvention paymentConv=Following, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
+        <name>FixedRateBondHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>cleanPrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>faceAmount</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>schedule</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>coupons</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>paymentConv</declname>
+          <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>redemption</declname>
+          <defval>100.0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>issueDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6382">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6381">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6379">
+        <label>BondHelper</label>
+        <link refid="class_quant_lib_1_1_bond_helper"/>
+        <childnode refid="6380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6380">
+        <label>RateHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="6381" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6382" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6378">
+        <label>FixedRateBondHelper</label>
+        <childnode refid="6379" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6387">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6391">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="6389">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="6386">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6388">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="6384">
+        <label>BondHelper</label>
+        <link refid="class_quant_lib_1_1_bond_helper"/>
+        <childnode refid="6385" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6390" relation="usage">
+          <edgelabel>termStructureHandle_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6385">
+        <label>RateHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="6386" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6387" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6388" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="6389" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6390">
+        <label>RelinkableHandle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_relinkable_handle"/>
+        <childnode refid="6391" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6383">
+        <label>FixedRateBondHelper</label>
+        <childnode refid="6384" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bondhelpers.hpp" bodystart="66" bodyend="87"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fixed_rate_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1ae540c55f1fe7f5011af6cf12d1c9a60d" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>bond</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1a4821815d418ae403f661fe086661d7da" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>bond_</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1af4868f10939da98e59cac5ed15f5d922" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>BondHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>fixedRateBond</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_bond_helper_1a05546e5e6f0af6f4e0444706a9aee524" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>fixedRateBond_</name></member>
+      <member refid="class_quant_lib_1_1_fixed_rate_bond_helper_1a79eb27824ff30b4ccffc460090b7cc1b" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>FixedRateBondHelper</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FixedRateBondHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::FixedRateBondHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::BootstrapHelper::"><scope>QuantLib::FixedRateBondHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_bond_helper_1a2e8f394e2be5705b297a1316eea82056" prot="protected" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>termStructureHandle_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FixedRateBondHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

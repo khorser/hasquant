@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_composite_constraint" kind="class" prot="public">
+    <compoundname>QuantLib::CompositeConstraint</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint" prot="public" virt="non-virtual">Constraint</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_composite_constraint_1_1_impl" prot="private">QuantLib::CompositeConstraint::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CompositeConstraint</definition>
+        <argsstring>(const Constraint &amp;c1, const Constraint &amp;c2)</argsstring>
+        <name>CompositeConstraint</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>c1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>c2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Constraint enforcing both given sub-constraints </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2372">
+        <label>CompositeConstraint</label>
+        <link refid="class_quant_lib_1_1_composite_constraint"/>
+        <childnode refid="2373" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2373">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2374">
+        <label>CompositeConstraint</label>
+        <link refid="class_quant_lib_1_1_composite_constraint"/>
+        <childnode refid="2375" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2375">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="110" bodyend="127"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>CompositeConstraint</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>Constraint</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint</scope><name>update</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

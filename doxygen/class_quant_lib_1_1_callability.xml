@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_callability" kind="class" prot="public">
+    <compoundname>QuantLib::Callability</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_soft_callability" prot="public" virt="non-virtual">SoftCallability</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Event interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date</definition>
+        <argsstring>() const </argsstring>
+        <name>date</name>
+        <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <briefdescription>
+<para>returns the date at which the event occurs </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="66" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="78" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
+          <name>Call</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
+          <name>Put</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>type of the callability </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1a7b2a906019af6d4ad9a0077d9d4e7462" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &gt;</type>
+        <definition>boost::optional&lt;Price&gt; price_</definition>
+        <argsstring></argsstring>
+        <name>price_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <definition>Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callability_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date_</definition>
+        <argsstring></argsstring>
+        <name>date_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Callability</definition>
+        <argsstring>(const Price &amp;price, Type type, const Date &amp;date)</argsstring>
+        <name>Callability</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+          <declname>price</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="57" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a45e2518616fcb5eda062598143213af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+        <definition>const Price&amp; price</definition>
+        <argsstring>() const </argsstring>
+        <name>price</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <definition>Type type</definition>
+        <argsstring>() const </argsstring>
+        <name>type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>instrument callability </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1647">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="1648" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1648">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1646">
+        <label>Callability</label>
+        <link refid="class_quant_lib_1_1_callability"/>
+        <childnode refid="1647" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1649">
+        <label>SoftCallability</label>
+        <link refid="class_quant_lib_1_1_soft_callability"/>
+        <childnode refid="1646" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1651">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="1652" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1652">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1650">
+        <label>Callability</label>
+        <link refid="class_quant_lib_1_1_callability"/>
+        <childnode refid="1651" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="37" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::Callability</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Call</name></member>
+      <member refid="class_quant_lib_1_1_callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Callability</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::Callability</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_callability_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" virt="non-virtual"><scope>QuantLib::Callability</scope><name>date_</name></member>
+      <member refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" virt="virtual"><scope>QuantLib::Callability</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a45e2518616fcb5eda062598143213af1" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>price</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a7b2a906019af6d4ad9a0077d9d4e7462" prot="private" virt="non-virtual"><scope>QuantLib::Callability</scope><name>price_</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Put</name></member>
+      <member refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_callability_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::Callability</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::Callability</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Callability</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

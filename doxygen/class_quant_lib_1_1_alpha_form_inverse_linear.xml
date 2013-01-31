@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_alpha_form_inverse_linear" kind="class" prot="public">
+    <compoundname>QuantLib::AlphaFormInverseLinear</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">AlphaForm</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_alpha_form_inverse_linear_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; times_</definition>
+        <argsstring></argsstring>
+        <name>times_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_alpha_form_inverse_linear_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha_</definition>
+        <argsstring></argsstring>
+        <name>alpha_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_inverse_linear_1a2a47531b55e4be9e8a64e29e23569d5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AlphaFormInverseLinear</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;times, Real alpha=0.0)</argsstring>
+        <name>AlphaFormInverseLinear</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_inverse_linear_1a3aea7b84bbbf664e68592030eb1df570" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~AlphaFormInverseLinear</definition>
+        <argsstring>()</argsstring>
+        <name>~AlphaFormInverseLinear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_inverse_linear_1a505ee7ab6797433701bc35ad7288999f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real operator()</definition>
+        <argsstring>(Integer i) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_inverse_linear_1adb629c9fa86a33bf0492d07c25176173" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setAlpha</definition>
+        <argsstring>(Real alpha_)</argsstring>
+        <name>setAlpha</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaformconcrete.hpp" bodystart="28" bodyend="38"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1a2a47531b55e4be9e8a64e29e23569d5e" prot="public" virt="non-virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>AlphaFormInverseLinear</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1a505ee7ab6797433701bc35ad7288999f" prot="public" virt="virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1adb629c9fa86a33bf0492d07c25176173" prot="public" virt="virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>setAlpha</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>times_</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_1a34759557c2dd9970a96b6ad522c6a16b" prot="public" virt="virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>~AlphaForm</name></member>
+      <member refid="class_quant_lib_1_1_alpha_form_inverse_linear_1a3aea7b84bbbf664e68592030eb1df570" prot="public" virt="virtual"><scope>QuantLib::AlphaFormInverseLinear</scope><name>~AlphaFormInverseLinear</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lm_const_wrapper_volatility_model" kind="class" prot="public">
+    <compoundname>QuantLib::LmConstWrapperVolatilityModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ac748714686dada0dd648d79cfde12d9d" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;LmVolatilityModel&gt; volaModel_</definition>
+        <argsstring></argsstring>
+        <name>volaModel_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LmConstWrapperVolatilityModel</definition>
+        <argsstring>(const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;volaModel)</argsstring>
+        <name>LmConstWrapperVolatilityModel</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
+          <declname>volaModel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; volatility</definition>
+        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>volatility</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1abc5c862454998819a6b89ab41895528d">volatility</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a91c06b3f5c1a0426b7a871e1cd103799" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatility</definition>
+        <argsstring>(Size i, Time t, const Array &amp;x=Null&lt; Array &gt;())</argsstring>
+        <name>volatility</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integratedVariance</definition>
+        <argsstring>(Size i, Size j, Time u, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>integratedVariance</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1acc1cf9ab061974e46c30a61b4e8443af">integratedVariance</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="48" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void generateArguments</definition>
+        <argsstring>()</argsstring>
+        <name>generateArguments</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>caplet const volatility model </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9114">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9113">
+        <label>LmConstWrapperVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model"/>
+        <childnode refid="9114" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9116">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9115">
+        <label>LmConstWrapperVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model"/>
+        <childnode refid="9116" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="32" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>integratedVariance</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>LmConstWrapperVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1aadbf151af61e33a78daafdef33307386" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>LmVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ac748714686dada0dd648d79cfde12d9d" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volaModel_</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a91c06b3f5c1a0426b7a871e1cd103799" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1aae8073ece95900dc7ce2738fb4eca1da" prot="public" virt="virtual" ambiguityscope="QuantLib::LmVolatilityModel::"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a05941543805ec3ef0b4dea387671af16" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>~LmVolatilityModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

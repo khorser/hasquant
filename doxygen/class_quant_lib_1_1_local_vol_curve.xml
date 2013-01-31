@@ -1,0 +1,329 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_local_vol_curve" kind="class" prot="public">
+    <compoundname>QuantLib::LocalVolCurve</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_local_vol_term_structure" prot="public" virt="non-virtual">LocalVolTermStructure</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>TermStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date&amp; referenceDate</definition>
+        <argsstring>() const </argsstring>
+        <name>referenceDate</name>
+        <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
+        <briefdescription>
+<para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="43" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar</definition>
+        <argsstring>() const </argsstring>
+        <name>calendar</name>
+        <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
+        <briefdescription>
+<para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="46" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dayCounter</definition>
+        <argsstring>() const </argsstring>
+        <name>dayCounter</name>
+        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <briefdescription>
+<para>the day counter used for date/time conversion </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date maxDate</definition>
+        <argsstring>() const </argsstring>
+        <name>maxDate</name>
+        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <briefdescription>
+<para>the latest date for which the curve can return values </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>VolatilityTermStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>minStrike</name>
+        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <briefdescription>
+<para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>maxStrike</name>
+        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <briefdescription>
+<para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_local_vol_term_structure_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="79" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_local_vol_curve_1afd01980b2c0bec102befc8e227490e95" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_variance_curve" kindref="compound">BlackVarianceCurve</ref> &gt;</type>
+        <definition>Handle&lt;BlackVarianceCurve&gt; blackVarianceCurve_</definition>
+        <argsstring></argsstring>
+        <name>blackVarianceCurve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1a9bcfbba29fe0a01738bfb53056be256a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LocalVolCurve</definition>
+        <argsstring>(const Handle&lt; BlackVarianceCurve &gt; &amp;curve)</argsstring>
+        <name>LocalVolCurve</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_variance_curve" kindref="compound">BlackVarianceCurve</ref> &gt; &amp;</type>
+          <declname>curve</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="35" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_local_vol_curve_1aae14ca62291a64bc501d292224396525" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility localVolImpl</definition>
+        <argsstring>(Time, Real) const </argsstring>
+        <name>localVolImpl</name>
+        <reimplements refid="class_quant_lib_1_1_local_vol_term_structure_1a0b539b6f4f12c8e2835533e11e593c95">localVolImpl</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <defname>t</defname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <defname>dummy</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The relation <formula id="385">\[ \int_0^T \sigma_L^2(t)dt = \sigma_B^2 T \]</formula> holds, where <formula id="386">$ \sigma_L(t) $</formula> is the local volatility at time <formula id="147">$ t $</formula> and <formula id="387">$ \sigma_B(T) $</formula> is the Black volatility for maturity <formula id="45">$ T $</formula>. From the above, the formula <formula id="388">\[ \sigma_L(t) = \sqrt{\frac{\mathrm{d}}{\mathrm{d}t}\sigma_B^2(t)t} \]</formula> can be deduced which is here implemented. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="100" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Local volatility curve derived from a Black curve. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9183">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9180">
+        <label>VolatilityTermStructure</label>
+        <link refid="class_quant_lib_1_1_volatility_term_structure"/>
+        <childnode refid="9181" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9181">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="9182" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9183" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9184" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9178">
+        <label>LocalVolCurve</label>
+        <link refid="class_quant_lib_1_1_local_vol_curve"/>
+        <childnode refid="9179" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9184">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="9182">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9179">
+        <label>LocalVolTermStructure</label>
+        <link refid="class_quant_lib_1_1_local_vol_term_structure"/>
+        <childnode refid="9180" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9190">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9187">
+        <label>VolatilityTermStructure</label>
+        <link refid="class_quant_lib_1_1_volatility_term_structure"/>
+        <childnode refid="9188" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9192">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="9188">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="9189" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9190" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9191" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9192" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="9185">
+        <label>LocalVolCurve</label>
+        <link refid="class_quant_lib_1_1_local_vol_curve"/>
+        <childnode refid="9186" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9191">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="9189">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9186">
+        <label>LocalVolTermStructure</label>
+        <link refid="class_quant_lib_1_1_local_vol_term_structure"/>
+        <childnode refid="9187" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/localvolcurve.hpp" bodystart="33" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ad9e8911dd8792d5ec36f1ee071cfad7d" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>allowsExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1afd01980b2c0bec102befc8e227490e95" prot="private" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>blackVarianceCurve_</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>businessDayConvention</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a46ffaeebfc997f51c70fe18e72c8bad5" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a63453af27c24ca1149b8c41d86174290" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a9bf3c3b4a973237738c770a8f9b520e9" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>checkStrike</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>disableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ae60e793a77f44a9c022b103458fa993c" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>enableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1a19bfd7b7a21a66ba4a46b3df79079a32" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>localVol</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1af51829f96ba20ca7f57a773a99db269d" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>localVol</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1a9bcfbba29fe0a01738bfb53056be256a" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>LocalVolCurve</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1aae14ca62291a64bc501d292224396525" prot="protected" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>localVolImpl</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1aab7e89f622d77dc9b21b73a98e163be1" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>LocalVolTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1a22dbcfb670e37c7b778f6a53a8a39fe6" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>LocalVolTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1ad6bec7ca8be90c47f0b0a16b906898a6" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>LocalVolTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1a8db8952b2a6a0c4ab6a4f06e952d1d97" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>LocalVolTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>maxDate</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>maxTime</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a3cfce9cb19de6f0604adee64b6d80a35" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>moving_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::LocalVolCurve</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::LocalVolCurve</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>optionDateFromTenor</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_curve_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>settlementDays</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a4a8e0f324391a12454f11f5f5d5e66e8" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a44918f70ab345cad67a287d46641f20f" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1ab72309c6d49bd4b6dc5b9ed09b67c7b9" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a56d243294c1b34335d067270796f5668" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>timeFromReference</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a56cd8ee45c3477740e0429f98758c935" prot="protected" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>updated_</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a5f30fa48a97a7299157730452b4034e6" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" virt="non-virtual"><scope>QuantLib::LocalVolCurve</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>~Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_local_vol_term_structure_1a5927fb3cd9e96a62f73cd32a5cc50bd6" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>~LocalVolTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" virt="virtual"><scope>QuantLib::LocalVolCurve</scope><name>~TermStructure</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

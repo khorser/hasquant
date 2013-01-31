@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_forward_type_payoff" kind="class" prot="public">
+    <compoundname>QuantLib::ForwardTypePayoff</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_payoff" prot="public" virt="non-virtual">Payoff</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Payoff interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="156" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string description</definition>
+        <argsstring>() const </argsstring>
+        <name>description</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="190" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real price) const </argsstring>
+        <name>operator()</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a6d8b8d4f6c9e7904c5de2786903518b6">operator()</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>price</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="196" bodyend="205"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_type_payoff_1af717036b5aefb4c4a33b8101a4235738" prot="protected" static="no" mutable="no">
+        <type>Position::Type</type>
+        <definition>Position::Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strike_</definition>
+        <argsstring></argsstring>
+        <name>strike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1ada3df9ea663fc2de8153d88f1d396d88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ForwardTypePayoff</definition>
+        <argsstring>(Position::Type type, Real strike)</argsstring>
+        <name>ForwardTypePayoff</name>
+        <param>
+          <type>Position::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1a30ea205639463631071175eb2aba4c79" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Position::Type</type>
+        <definition>Position::Type forwardType</definition>
+        <argsstring>() const </argsstring>
+        <name>forwardType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="152" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strike</definition>
+        <argsstring>() const </argsstring>
+        <name>strike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="153" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class for forward type payoffs. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6661">
+        <label>ForwardTypePayoff</label>
+        <link refid="class_quant_lib_1_1_forward_type_payoff"/>
+        <childnode refid="6662" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6662">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6663">
+        <label>ForwardTypePayoff</label>
+        <link refid="class_quant_lib_1_1_forward_type_payoff"/>
+        <childnode refid="6664" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6664">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forward.hpp" bodystart="146" bodyend="163"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>description</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1a30ea205639463631071175eb2aba4c79" prot="public" virt="non-virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>forwardType</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1ada3df9ea663fc2de8153d88f1d396d88" prot="public" virt="non-virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>ForwardTypePayoff</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" virt="non-virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>strike</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_forward_type_payoff_1af717036b5aefb4c4a33b8101a4235738" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::ForwardTypePayoff</scope><name>~Payoff</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

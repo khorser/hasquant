@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_no_constraint_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::NoConstraint::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint_1_1_impl" prot="public" virt="non-virtual">Constraint::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_no_constraint_1_1_impl_1ad7ad64454914c6eb4bb42c4c1cb1cd63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool test</definition>
+        <argsstring>(const Array &amp;) const </argsstring>
+        <name>test</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="57" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10234">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+      <node id="10233">
+        <label>NoConstraint::Impl</label>
+        <childnode refid="10234" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10236">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+      <node id="10235">
+        <label>NoConstraint::Impl</label>
+        <childnode refid="10236" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="55" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_no_constraint_1_1_impl_1ad7ad64454914c6eb4bb42c4c1cb1cd63" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint::Impl</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::NoConstraint::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

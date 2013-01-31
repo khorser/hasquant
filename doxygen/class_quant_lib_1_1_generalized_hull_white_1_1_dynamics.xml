@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" kind="class" prot="public">
+    <compoundname>QuantLib::GeneralizedHullWhite::Dynamics</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ShortRateDynamics</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
+        <definition>Parameter fitting_</definition>
+        <argsstring></argsstring>
+        <name>fitting_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a560ea615fecdd923dc4a551eb2ab0b96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Dynamics</definition>
+        <argsstring>(const Parameter &amp;fitting, const boost::function&lt; Real(Time)&gt; &amp;alpha, const boost::function&lt; Real(Time)&gt; &amp;sigma)</argsstring>
+        <name>Dynamics</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <declname>fitting</declname>
+        </param>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt; &amp;</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt; &amp;</type>
+          <declname>sigma</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="101" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real variable</definition>
+        <argsstring>(Time t, Rate r) const </argsstring>
+        <name>variable</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="108" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real shortRate</definition>
+        <argsstring>(Time t, Real x) const </argsstring>
+        <name>shortRate</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="112" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Short-rate dynamics in the generalized Hull-White model. </para>    </briefdescription>
+    <detaileddescription>
+<para>The short-rate is here <verbatim>   f(r_t) = x_t + g(t)
+
+   where g is the deterministic time-dependent
+   parameter (which can not be determined analytically)
+   used for term-structure fitting and  x_t is the state
+   variable following an Ornstein-Uhlenbeck process.</verbatim> </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="98" bodyend="118"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a560ea615fecdd923dc4a551eb2ab0b96" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite::Dynamics</scope><name>Dynamics</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite::Dynamics</scope><name>fitting_</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite::Dynamics</scope><name>shortRate</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite::Dynamics</scope><name>variable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

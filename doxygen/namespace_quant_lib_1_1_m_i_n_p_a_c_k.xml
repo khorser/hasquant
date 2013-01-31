@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="namespace_quant_lib_1_1_m_i_n_p_a_c_k" kind="namespace">
+    <compoundname>QuantLib::MINPACK</compoundname>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1a85606b294d179235dedade5da05cf7fa" prot="public" static="no">
+        <type>boost::function&lt; void(int, int, double *, double *, int *)&gt;</type>
+        <definition>typedef boost::function&lt;void (int, int, double*, double*, int*)&gt; LmdifCostFunction</definition>
+        <argsstring></argsstring>
+        <name>LmdifCostFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1a8b309a61d19eae120279b290d0376637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QuantLib::MINPACK::lmdif</definition>
+        <argsstring>(int m, int n, double *x, double *fvec, double ftol, double xtol, double gtol, int maxfev, double epsfcn, double *diag, int mode, double factor, int nprint, int *info, int *nfev, double *fjac, int ldfjac, int *ipvt, double *qtf, double *wa1, double *wa2, double *wa3, double *wa4, const LmdifCostFunction &amp;fcn)</argsstring>
+        <name>lmdif</name>
+        <param>
+          <type>int</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>fvec</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>ftol</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>xtol</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>gtol</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>maxfev</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>epsfcn</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>diag</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>factor</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nprint</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>nfev</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>fjac</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ldfjac</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ipvt</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>qtf</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa1</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa2</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa3</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa4</declname>
+        </param>
+        <param>
+          <type>const LmdifCostFunction &amp;</type>
+          <declname>fcn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1af88696e86938b1fe73f58912e1e70542" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QuantLib::MINPACK::qrsolv</definition>
+        <argsstring>(int n, double *r, int ldr, int *ipvt, double *diag, double *qtb, double *x, double *sdiag, double *wa)</argsstring>
+        <name>qrsolv</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ldr</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ipvt</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>diag</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>qtb</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>sdiag</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_quant_lib_1_1_m_i_n_p_a_c_k_1a1dba8c6b62011018e89803b7bbdbc8eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void QuantLib::MINPACK::qrfac</definition>
+        <argsstring>(int m, int n, double *a, int, int pivot, int *ipvt, int, double *rdiag, double *acnorm, double *wa)</argsstring>
+        <name>qrfac</name>
+        <param>
+          <type>int</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>pivot</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ipvt</declname>
+        </param>
+        <param>
+          <type>int</type>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>rdiag</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>acnorm</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>wa</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/lmdif.hpp" line="32"/>
+  </compounddef>
+</doxygen>

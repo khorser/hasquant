@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_jump_diffusion_engine" kind="class" prot="public">
+    <compoundname>QuantLib::JumpDiffusionEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_jump_diffusion_engine_1a21562578cbc7c64f98c0d96de2b0afe8" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_merton76_process" kindref="compound">Merton76Process</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Merton76Process&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_jump_diffusion_engine_1a143abeb112e1d03d1fad1fde1f082a89" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real relativeAccuracy_</definition>
+        <argsstring></argsstring>
+        <name>relativeAccuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_jump_diffusion_engine_1af75d2bb304cdff446e507879467b2582" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxIterations_</definition>
+        <argsstring></argsstring>
+        <name>maxIterations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>JumpDiffusionEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; Merton76Process &gt; &amp;, Real relativeAccuracy_=1e-4, Size maxIterations=100)</argsstring>
+        <name>JumpDiffusionEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_merton76_process" kindref="compound">Merton76Process</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>relativeAccuracy_</declname>
+          <defval>1e-4</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Jump-diffusion engine for vanilla options. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000130"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
+<listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
+</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="42" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>JumpDiffusionEngine</name></member>
+      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1af75d2bb304cdff446e507879467b2582" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>maxIterations_</name></member>
+      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a21562578cbc7c64f98c0d96de2b0afe8" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a143abeb112e1d03d1fad1fde1f082a89" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>relativeAccuracy_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

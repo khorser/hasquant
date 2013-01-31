@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_integral_engine" kind="class" prot="public">
+    <compoundname>QuantLib::IntegralEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_integral_engine_1a420636a7aeea66f792ad96b7712e05dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IntegralEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
+        <name>IntegralEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integral_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for European vanilla options using integral approach. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000058"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>define tolerance for calculate()</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/integralengine.hpp" bodystart="39" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_integral_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::IntegralEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_integral_engine_1a420636a7aeea66f792ad96b7712e05dd" prot="public" virt="non-virtual"><scope>QuantLib::IntegralEngine</scope><name>IntegralEngine</name></member>
+      <member refid="class_quant_lib_1_1_integral_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::IntegralEngine</scope><name>process_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_null_condition" kind="class" prot="public">
+    <compoundname>QuantLib::NullCondition</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">QuantLib::StepCondition&lt; array_type &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class array_type</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_null_condition_1a878bab06de00a1b5dfee2a25928f75ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void applyTo</definition>
+        <argsstring>(array_type &amp;, Time) const </argsstring>
+        <name>applyTo</name>
+        <reimplements refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
+        <param>
+          <type>array_type &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="111" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>null step condition </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10308">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+      <node id="10307">
+        <label>NullCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_null_condition"/>
+        <childnode refid="10308" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10310">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+      <node id="10309">
+        <label>NullCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_null_condition"/>
+        <childnode refid="10310" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_null_condition_1a878bab06de00a1b5dfee2a25928f75ba" prot="public" virt="virtual"><scope>QuantLib::NullCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::NullCondition</scope><name>~StepCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow" kind="struct" prot="public">
+    <compoundname>QuantLib::MarketModelMultiProduct::CashFlow</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow_1a68cc2038eb65e95d23e948581a8d0515" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeIndex</definition>
+        <argsstring></argsstring>
+        <name>timeIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow_1a97dc362a0df831201a29780ff74a5356" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount</definition>
+        <argsstring></argsstring>
+        <name>amount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/multiproduct.hpp" bodystart="52" bodyend="55"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow_1a97dc362a0df831201a29780ff74a5356" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelMultiProduct::CashFlow</scope><name>amount</name></member>
+      <member refid="struct_quant_lib_1_1_market_model_multi_product_1_1_cash_flow_1a68cc2038eb65e95d23e948581a8d0515" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelMultiProduct::CashFlow</scope><name>timeIndex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

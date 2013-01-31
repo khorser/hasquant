@@ -1,0 +1,445 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_option" kind="class" prot="public">
+    <compoundname>QuantLib::Option</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_cds_option" prot="public" virt="non-virtual">CdsOption</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_one_asset_option" prot="public" virt="non-virtual">OneAssetOption</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_swaption" prot="public" virt="non-virtual">Swaption</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_option_1_1arguments" prot="public">QuantLib::Option::arguments</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
+          <name>Put</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
+          <name>Call</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_option_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_option_1a3dba475b3e3956c0cc7b1a2934a8941e" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Exercise&gt; exercise_</definition>
+        <argsstring></argsstring>
+        <name>exercise_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1adfced6b95046a68a31ad8bee9157eb9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Option</definition>
+        <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
+        <name>Option</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <declname>exercise</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void setupArguments</definition>
+        <argsstring>(PricingEngine::arguments *) const </argsstring>
+        <name>setupArguments</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <param>
+          <type>PricingEngine::arguments *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="95" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
+        <argsstring>()</argsstring>
+        <name>payoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
+        <argsstring>()</argsstring>
+        <name>exercise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_option_1a03bf400e04666eadc73907b0c716739e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, Option::Type)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>Option::Type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="104" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>base option class </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11777">
+        <label>SpreadOption</label>
+        <link refid="class_quant_lib_1_1_spread_option"/>
+        <childnode refid="11772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11788">
+        <label>DividendVanillaOption</label>
+        <link refid="class_quant_lib_1_1_dividend_vanilla_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11782">
+        <label>CliquetOption</label>
+        <link refid="class_quant_lib_1_1_cliquet_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11796">
+        <label>VanillaSwingOption</label>
+        <link refid="class_quant_lib_1_1_vanilla_swing_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11792">
+        <label>SimpleChooserOption</label>
+        <link refid="class_quant_lib_1_1_simple_chooser_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11769">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11768">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11769" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11770" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11786">
+        <label>ContinuousFloatingLookbackOption</label>
+        <link refid="class_quant_lib_1_1_continuous_floating_lookback_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11784">
+        <label>ContinuousAveragingAsianOption</label>
+        <link refid="class_quant_lib_1_1_continuous_averaging_asian_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11778">
+        <label>OneAssetOption</label>
+        <link refid="class_quant_lib_1_1_one_asset_option"/>
+        <childnode refid="11766" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11774">
+        <label>HimalayaOption</label>
+        <link refid="class_quant_lib_1_1_himalaya_option"/>
+        <childnode refid="11772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11771">
+        <label>CdsOption</label>
+        <link refid="class_quant_lib_1_1_cds_option"/>
+        <childnode refid="11766" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11797">
+        <label>WriterExtensibleOption</label>
+        <link refid="class_quant_lib_1_1_writer_extensible_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11798">
+        <label>Swaption</label>
+        <link refid="class_quant_lib_1_1_swaption"/>
+        <childnode refid="11766" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11770">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11781">
+        <label>QuantoBarrierOption</label>
+        <link refid="class_quant_lib_1_1_quanto_barrier_option"/>
+        <childnode refid="11779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11785">
+        <label>ContinuousFixedLookbackOption</label>
+        <link refid="class_quant_lib_1_1_continuous_fixed_lookback_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11779">
+        <label>BarrierOption</label>
+        <link refid="class_quant_lib_1_1_barrier_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11766">
+        <label>Option</label>
+        <link refid="class_quant_lib_1_1_option"/>
+        <childnode refid="11767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11787">
+        <label>DiscreteAveragingAsianOption</label>
+        <link refid="class_quant_lib_1_1_discrete_averaging_asian_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11793">
+        <label>VanillaOption</label>
+        <link refid="class_quant_lib_1_1_vanilla_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11795">
+        <label>VanillaStorageOption</label>
+        <link refid="class_quant_lib_1_1_vanilla_storage_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11775">
+        <label>MargrabeOption</label>
+        <link refid="class_quant_lib_1_1_margrabe_option"/>
+        <childnode refid="11772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11773">
+        <label>BasketOption</label>
+        <link refid="class_quant_lib_1_1_basket_option"/>
+        <childnode refid="11772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11791">
+        <label>QuantoVanillaOption</label>
+        <link refid="class_quant_lib_1_1_quanto_vanilla_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11789">
+        <label>ForwardVanillaOption</label>
+        <link refid="class_quant_lib_1_1_forward_vanilla_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11767">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="11768" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11776">
+        <label>PagodaOption</label>
+        <link refid="class_quant_lib_1_1_pagoda_option"/>
+        <childnode refid="11772" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11772">
+        <label>MultiAssetOption</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option"/>
+        <childnode refid="11766" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11780">
+        <label>DividendBarrierOption</label>
+        <link refid="class_quant_lib_1_1_dividend_barrier_option"/>
+        <childnode refid="11779" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11790">
+        <label>QuantoForwardVanillaOption</label>
+        <link refid="class_quant_lib_1_1_quanto_forward_vanilla_option"/>
+        <childnode refid="11789" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11794">
+        <label>EuropeanOption</label>
+        <link refid="class_quant_lib_1_1_european_option"/>
+        <childnode refid="11793" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11783">
+        <label>CompoundOption</label>
+        <link refid="class_quant_lib_1_1_compound_option"/>
+        <childnode refid="11778" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11802">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11801">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11802" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11803" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11803">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11799">
+        <label>Option</label>
+        <link refid="class_quant_lib_1_1_option"/>
+        <childnode refid="11800" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11804">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="11800">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="11801" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11804" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="35" bodyend="51"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::Option</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Call</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_option_1a3dba475b3e3956c0cc7b1a2934a8941e" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>exercise_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0" prot="public" virt="pure-virtual"><scope>QuantLib::Option</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_option_1a03bf400e04666eadc73907b0c716739e" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Option</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Option</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_option_1adfced6b95046a68a31ad8bee9157eb9c" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Option</name></member>
+      <member refid="class_quant_lib_1_1_option_1ad20055b3037f613d7246b9b637768154" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>payoff</name></member>
+      <member refid="class_quant_lib_1_1_option_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::Option</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Put</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::Option</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::Option</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::Option</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Option</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

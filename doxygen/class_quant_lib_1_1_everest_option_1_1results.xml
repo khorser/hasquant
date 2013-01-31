@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_everest_option_1_1results" kind="class" prot="public">
+    <compoundname>QuantLib::EverestOption::results</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public" virt="non-virtual">MultiAssetOption::results</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_everest_option_1_1results_1a1ebcbdafd2b86df77bc263ae8ba8c329" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate yield</definition>
+        <argsstring></argsstring>
+        <name>yield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_everest_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5358">
+        <label>Greeks</label>
+        <link refid="class_quant_lib_1_1_greeks"/>
+      </node>
+      <node id="5356">
+        <label>EverestOption::results</label>
+        <childnode refid="5357" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5357">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option_1_1results"/>
+        <childnode refid="5358" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5361">
+        <label>Greeks</label>
+        <link refid="class_quant_lib_1_1_greeks"/>
+      </node>
+      <node id="5359">
+        <label>EverestOption::results</label>
+        <childnode refid="5360" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5360">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option_1_1results"/>
+        <childnode refid="5361" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="58" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1a2d36dd8b8b6c0a3685c5a580e8ae6fe6" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1a6e815cecfc8bf0ee83558d5bfd70c2d1" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1a7c5d299a74a83de4dd1b4ef52afb6209" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>dividendRho</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1aa6c217ecbc13c7107f5586f8f09cb3d2" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1aeb695f823ca39262c951705759792d22" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>gamma</name></member>
+      <member refid="class_quant_lib_1_1_everest_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1ae07d6de71cc56577f5d379b54839ba8c" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1a2c52330fe605e3d67b38b448db51a49c" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1a644ac254d3177ed6b4ddc84a7fddd45c" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1abd5746c9a8c4bf217e5294c6c702559b" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1af9da45f4580b5165ceb0da994368b510" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>vega</name></member>
+      <member refid="class_quant_lib_1_1_everest_option_1_1results_1a1ebcbdafd2b86df77bc263ae8ba8c329" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::results</scope><name>yield</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::EverestOption::results</scope><name>~results</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

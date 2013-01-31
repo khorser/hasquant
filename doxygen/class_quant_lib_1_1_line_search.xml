@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_line_search" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::LineSearch</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_armijo_line_search" prot="public" virt="non-virtual">ArmijoLineSearch</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1a2279b9a5a0693be810780a356ce2593f" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array searchDirection_</definition>
+        <argsstring></argsstring>
+        <name>searchDirection_</name>
+        <briefdescription>
+<para>current values of the search direction </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1a633de5cce68edbe62dcc0104c92e69c1" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array xtd_</definition>
+        <argsstring></argsstring>
+        <name>xtd_</name>
+        <briefdescription>
+<para>new x and its gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1a28dad9f0113c33c5641f4c87b6c5208c" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array gradient_</definition>
+        <argsstring></argsstring>
+        <name>gradient_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1af784d8fad068c2fcb91696bd7a7346c3" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real qt_</definition>
+        <argsstring></argsstring>
+        <name>qt_</name>
+        <briefdescription>
+<para>cost function value and gradient norm corresponding to xtd_ </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1aca10938722a51a63857d6bc7bc1f4717" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real qpt_</definition>
+        <argsstring></argsstring>
+        <name>qpt_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_1a1bdb6aaa82b6a980db5312bcc3c86c3a" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool succeed_</definition>
+        <argsstring></argsstring>
+        <name>succeed_</name>
+        <briefdescription>
+<para>flag to know if linesearch succeed </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1abf6329e7e510004f936417b572cd3feb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LineSearch</definition>
+        <argsstring>(Real=0.0)</argsstring>
+        <name>LineSearch</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="41" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1aa1525d9d1f8f851f1371337be8d9a587" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~LineSearch</definition>
+        <argsstring>()</argsstring>
+        <name>~LineSearch</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a73029249454596185357bd919ecc66e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; lastX</definition>
+        <argsstring>()</argsstring>
+        <name>lastX</name>
+        <briefdescription>
+<para>return last x value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1af69b05a05ba75aa93dad2aa580f192d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lastFunctionValue</definition>
+        <argsstring>()</argsstring>
+        <name>lastFunctionValue</name>
+        <briefdescription>
+<para>return last cost function value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a0a99d489f61c963d573fb9eb2a404c1d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; lastGradient</definition>
+        <argsstring>()</argsstring>
+        <name>lastGradient</name>
+        <briefdescription>
+<para>return last gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a54f1c9dd805235c94fb4145a860411d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lastGradientNorm2</definition>
+        <argsstring>()</argsstring>
+        <name>lastGradientNorm2</name>
+        <briefdescription>
+<para>return square norm of last gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a493a40ac48f746089050c94b6b01ca52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool succeed</definition>
+        <argsstring>()</argsstring>
+        <name>succeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a97d8cb294aaa9a7bc88678370e80f31e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real operator()</definition>
+        <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)=0</argsstring>
+        <name>operator()</name>
+        <reimplementedby refid="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0">operator()</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type>EndCriteria::Type &amp;</type>
+          <declname>ecType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>t_ini</declname>
+        </param>
+        <briefdescription>
+<para>Perform line search. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a5014094d4595b63fad08d361f70bea98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real update</definition>
+        <argsstring>(Array &amp;params, const Array &amp;direction, Real beta, const Constraint &amp;constraint)</argsstring>
+        <name>update</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>constraint</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1ab43e31a0f04f11a616b9a1b08dbac7c7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; searchDirection</definition>
+        <argsstring>() const </argsstring>
+        <name>searchDirection</name>
+        <briefdescription>
+<para>current value of the search direction </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="68" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_line_search_1a8925a1dc9b83be8f1181b1c638804a1f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>Array&amp; searchDirection</definition>
+        <argsstring>()</argsstring>
+        <name>searchDirection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="69" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for line search. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9095">
+        <label>ArmijoLineSearch</label>
+        <link refid="class_quant_lib_1_1_armijo_line_search"/>
+        <childnode refid="9094" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9094">
+        <label>LineSearch</label>
+        <link refid="class_quant_lib_1_1_line_search"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9097">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="9096">
+        <label>LineSearch</label>
+        <link refid="class_quant_lib_1_1_line_search"/>
+        <childnode refid="9097" relation="usage">
+          <edgelabel>gradient_</edgelabel>
+          <edgelabel>xtd_</edgelabel>
+          <edgelabel>searchDirection_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearch.hpp" bodystart="38" bodyend="80"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_line_search_1a28dad9f0113c33c5641f4c87b6c5208c" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>gradient_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1af69b05a05ba75aa93dad2aa580f192d0" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>lastFunctionValue</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a0a99d489f61c963d573fb9eb2a404c1d" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>lastGradient</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a54f1c9dd805235c94fb4145a860411d4" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>lastGradientNorm2</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a73029249454596185357bd919ecc66e7" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>lastX</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1abf6329e7e510004f936417b572cd3feb" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>LineSearch</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a97d8cb294aaa9a7bc88678370e80f31e" prot="public" virt="pure-virtual"><scope>QuantLib::LineSearch</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1aca10938722a51a63857d6bc7bc1f4717" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>qpt_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1af784d8fad068c2fcb91696bd7a7346c3" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>qt_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1ab43e31a0f04f11a616b9a1b08dbac7c7" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>searchDirection</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a8925a1dc9b83be8f1181b1c638804a1f" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>searchDirection</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a2279b9a5a0693be810780a356ce2593f" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>searchDirection_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a493a40ac48f746089050c94b6b01ca52" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>succeed</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a1bdb6aaa82b6a980db5312bcc3c86c3a" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>succeed_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a5014094d4595b63fad08d361f70bea98" prot="public" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a633de5cce68edbe62dcc0104c92e69c1" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearch</scope><name>xtd_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1aa1525d9d1f8f851f1371337be8d9a587" prot="public" virt="virtual"><scope>QuantLib::LineSearch</scope><name>~LineSearch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

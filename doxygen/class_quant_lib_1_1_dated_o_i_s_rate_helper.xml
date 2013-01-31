@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_dated_o_i_s_rate_helper" kind="class" prot="public">
+    <compoundname>QuantLib::DatedOISRateHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::BootstrapHelper&lt; YieldTermStructure &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>RateHelper interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real impliedQuote</definition>
+        <argsstring>() const </argsstring>
+        <name>impliedQuote</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTermStructure</definition>
+        <argsstring>(YieldTermStructure *)</argsstring>
+        <name>setTermStructure</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="84"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="88"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a3f0c381dbc0211f217e5fb0f1904b937" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;OvernightIndexedSwap&gt; swap_</definition>
+        <argsstring></argsstring>
+        <name>swap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;YieldTermStructure&gt; termStructureHandle_</definition>
+        <argsstring></argsstring>
+        <name>termStructureHandle_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a56f398c46e63bbe59c77f21c6b39ffaa" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; discountHandle_</definition>
+        <argsstring></argsstring>
+        <name>discountHandle_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a11983310cace758fa0f027631ce25843" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;YieldTermStructure&gt; discountRelinkableHandle_</definition>
+        <argsstring></argsstring>
+        <name>discountRelinkableHandle_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a5d33bceef55505811f1b944cd0bda1a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DatedOISRateHelper</definition>
+        <argsstring>(const Date &amp;startDate, const Date &amp;endDate, const Handle&lt; Quote &gt; &amp;fixedRate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
+        <name>DatedOISRateHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>startDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>endDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>fixedRate</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; OvernightIndex &gt; &amp;</type>
+          <declname>overnightIndex</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountingCurve</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Rate helper for bootstrapping over Overnight Indexed <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> rates. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3338">
+        <label>DatedOISRateHelper</label>
+        <link refid="class_quant_lib_1_1_dated_o_i_s_rate_helper"/>
+        <childnode refid="3339" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3341">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3340">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3339">
+        <label>RateHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="3340" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3341" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3342">
+        <label>DatedOISRateHelper</label>
+        <link refid="class_quant_lib_1_1_dated_o_i_s_rate_helper"/>
+        <childnode refid="3343" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3348" relation="usage">
+          <edgelabel>discountHandle_</edgelabel>
+        </childnode>
+        <childnode refid="3349" relation="usage">
+          <edgelabel>discountRelinkableHandle_</edgelabel>
+          <edgelabel>termStructureHandle_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3345">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3348">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="3347">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="3344">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3346">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="3343">
+        <label>RateHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="3344" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3345" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3346" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="3347" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3349">
+        <label>RelinkableHandle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_relinkable_handle"/>
+        <childnode refid="3348" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/oisratehelper.hpp" bodystart="71" bodyend="96"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a5d33bceef55505811f1b944cd0bda1a7" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>DatedOISRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a56f398c46e63bbe59c77f21c6b39ffaa" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>discountHandle_</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a11983310cace758fa0f027631ce25843" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>discountRelinkableHandle_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::DatedOISRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::DatedOISRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::BootstrapHelper::"><scope>QuantLib::DatedOISRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a3f0c381dbc0211f217e5fb0f1904b937" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>swap_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="protected" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>termStructureHandle_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::DatedOISRateHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_step_condition_set" kind="class" prot="public">
+    <compoundname>QuantLib::StepConditionSet</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>typename array_type</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_step_condition_set_1a95a92b40a27f7bda1d2c8b7ff09742e1" prot="private" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_step_condition" kindref="compound">StepCondition</ref>&lt; array_type &gt; &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;StepCondition&lt;array_type&gt; &gt; itemType</definition>
+        <argsstring></argsstring>
+        <name>itemType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_step_condition_set_1a7261b531978cd11dfbc3ebfa6bbb2bb8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; itemType &gt;</type>
+        <definition>std::vector&lt;itemType&gt; stepConditions_</definition>
+        <argsstring></argsstring>
+        <name>stepConditions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyTo</definition>
+        <argsstring>(std::vector&lt; array_type &gt; &amp;a, Time t) const </argsstring>
+        <name>applyTo</name>
+        <param>
+          <type>std::vector&lt; array_type &gt; &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="50" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void push_back</definition>
+        <argsstring>(const itemType &amp;a)</argsstring>
+        <name>push_back</name>
+        <param>
+          <type>const itemType &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Parallel evolver for multiple arrays. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="46" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_set_1a95a92b40a27f7bda1d2c8b7ff09742e1" prot="private" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>itemType</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>push_back</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_set_1a7261b531978cd11dfbc3ebfa6bbb2bb8" prot="private" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>stepConditions_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

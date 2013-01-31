@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_pathwise_inverse_floater" kind="class" prot="public">
+    <compoundname>QuantLib::MarketModelPathwiseInverseFloater</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" prot="public" virt="non-virtual">MarketModelPathwiseMultiProduct</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; rateTimes_</definition>
+        <argsstring></argsstring>
+        <name>rateTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ad3aae77deea2299a19a323693babc367" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; fixedAccruals_</definition>
+        <argsstring></argsstring>
+        <name>fixedAccruals_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a27ab05f4ebf0871b131b91330353d146" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; floatingAccruals_</definition>
+        <argsstring></argsstring>
+        <name>floatingAccruals_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a2faaf75cde7ca4aaec563d01efddd9a3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; fixedStrikes_</definition>
+        <argsstring></argsstring>
+        <name>fixedStrikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3c3ba7b225669d05b62322bd6f1c4a97" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; fixedMultipliers_</definition>
+        <argsstring></argsstring>
+        <name>fixedMultipliers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3a4b8ac50f8b84dd64fc7980593bf53a" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; floatingSpreads_</definition>
+        <argsstring></argsstring>
+        <name>floatingSpreads_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a0fa00dfc19817fe667f6a4418f692880" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; paymentTimes_</definition>
+        <argsstring></argsstring>
+        <name>paymentTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a8c62f834ee93d2c8dbbb49d9da2cc3e6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool payer_</definition>
+        <argsstring></argsstring>
+        <name>payer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a64a39b19c9c0e793eab7cc04265b2308" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real multiplier_</definition>
+        <argsstring></argsstring>
+        <name>multiplier_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a4db1170620701c092375336c1c0427d7" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size lastIndex_</definition>
+        <argsstring></argsstring>
+        <name>lastIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref></type>
+        <definition>EvolutionDescription evolution_</definition>
+        <argsstring></argsstring>
+        <name>evolution_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size currentIndex_</definition>
+        <argsstring></argsstring>
+        <name>currentIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab780670b50d3d6218b423095121bd887" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MarketModelPathwiseInverseFloater</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Real &gt; &amp;fixedAccruals, const std::vector&lt; Real &gt; &amp;floatingAccruals, const std::vector&lt; Real &gt; &amp;fixedStrikes, const std::vector&lt; Real &gt; &amp;fixedMultipliers, const std::vector&lt; Real &gt; &amp;floatingSpreads, const std::vector&lt; Time &gt; &amp;paymentTimes, bool payer=true)</argsstring>
+        <name>MarketModelPathwiseInverseFloater</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>fixedAccruals</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>floatingAccruals</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>fixedStrikes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>fixedMultipliers</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>floatingSpreads</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>paymentTimes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>payer</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab82a70566ba2dd36aa0fe6ed2072993c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~MarketModelPathwiseInverseFloater</definition>
+        <argsstring>()</argsstring>
+        <name>~MarketModelPathwiseInverseFloater</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>virtual std::vector&lt;Size&gt; suggestedNumeraires</definition>
+        <argsstring>() const </argsstring>
+        <name>suggestedNumeraires</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d">suggestedNumeraires</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aaf1f37e1319c6476e12d03c295b74260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <definition>virtual const EvolutionDescription&amp; evolution</definition>
+        <argsstring>() const </argsstring>
+        <name>evolution</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>virtual std::vector&lt;Time&gt; possibleCashFlowTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>possibleCashFlowTimes</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116">possibleCashFlowTimes</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size numberOfProducts</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfProducts</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f">numberOfProducts</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ae9340ad78cd16947af851ac186443907" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size maxNumberOfCashFlowsPerProductPerStep</definition>
+        <argsstring>() const </argsstring>
+        <name>maxNumberOfCashFlowsPerProductPerStep</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54">maxNumberOfCashFlowsPerProductPerStep</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool alreadyDeflated</definition>
+        <argsstring>() const </argsstring>
+        <name>alreadyDeflated</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054">alreadyDeflated</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
+        <briefdescription>
+<para>during simulation put product at start of path </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab323de6c99257ba28ce5fc12da07241f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool nextTimeStep</definition>
+        <argsstring>(const CurveState &amp;currentState, std::vector&lt; Size &gt; &amp;numberCashFlowsThisStep, std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt; &amp;cashFlowsGenerated)</argsstring>
+        <name>nextTimeStep</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1acac5d6422d1a97a1cc7830b670429ca4">nextTimeStep</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <declname>currentState</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>numberCashFlowsThisStep</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::vector&lt; MarketModelPathwiseMultiProduct::CashFlow &gt; &gt; &amp;</type>
+          <declname>cashFlowsGenerated</declname>
+        </param>
+        <briefdescription>
+<para>return value indicates whether path is finished, TRUE means done </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt;</type>
+        <definition>virtual std::auto_ptr&lt;MarketModelPathwiseMultiProduct&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37">clone</reimplements>
+        <briefdescription>
+<para>returns a newly-allocated copy of itself </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Pathwise product inverse floater for doing <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> Tested in MarketModels::testInverseFloater() </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9519">
+        <label>MarketModelPathwiseInverseFloater</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater"/>
+        <childnode refid="9520" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9520">
+        <label>MarketModelPathwiseMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9521">
+        <label>MarketModelPathwiseInverseFloater</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater"/>
+        <childnode refid="9522" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9522">
+        <label>MarketModelPathwiseMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="42" bodyend="94"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>alreadyDeflated</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>currentIndex_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>evolution</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>evolution_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ad3aae77deea2299a19a323693babc367" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedAccruals_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3c3ba7b225669d05b62322bd6f1c4a97" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedMultipliers_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a2faaf75cde7ca4aaec563d01efddd9a3" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a27ab05f4ebf0871b131b91330353d146" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>floatingAccruals_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3a4b8ac50f8b84dd64fc7980593bf53a" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>floatingSpreads_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a4db1170620701c092375336c1c0427d7" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>lastIndex_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab780670b50d3d6218b423095121bd887" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>MarketModelPathwiseInverseFloater</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a64a39b19c9c0e793eab7cc04265b2308" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>multiplier_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>nextTimeStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>numberOfProducts</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a8c62f834ee93d2c8dbbb49d9da2cc3e6" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>payer_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a0fa00dfc19817fe667f6a4418f692880" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>paymentTimes_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>possibleCashFlowTimes</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>suggestedNumeraires</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab82a70566ba2dd36aa0fe6ed2072993c" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>~MarketModelPathwiseInverseFloater</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>~MarketModelPathwiseMultiProduct</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

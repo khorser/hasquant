@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_y_y_generic_c_p_i" kind="class" prot="public">
+    <compoundname>QuantLib::YYGenericCPI</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_yo_y_inflation_index" prot="public" virt="non-virtual">YoYInflationIndex</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_y_y_generic_c_p_i_1a9e302fa408e7581a1bc684b69ad54e20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>YYGenericCPI</definition>
+        <argsstring>(Frequency frequency, bool revised, bool interpolated, const Period &amp;lag, const Currency &amp;ccy, const Handle&lt; YoYInflationTermStructure &gt; &amp;ts=Handle&lt; YoYInflationTermStructure &gt;())</argsstring>
+        <name>YYGenericCPI</name>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>revised</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>interpolated</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>lag</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>ccy</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <declname>ts</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="66" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Genuine year-on-year Generic CPI (i.e. not a ratio) </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="15385">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="15386" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15386">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="15384">
+        <label>InflationIndex</label>
+        <link refid="class_quant_lib_1_1_inflation_index"/>
+        <childnode refid="15385" relation="public-inheritance">
+        </childnode>
+        <childnode refid="15387" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15387">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="15383">
+        <label>YoYInflationIndex</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_index"/>
+        <childnode refid="15384" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15382">
+        <label>YYGenericCPI</label>
+        <link refid="class_quant_lib_1_1_y_y_generic_c_p_i"/>
+        <childnode refid="15383" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="15396">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="15391">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="15392" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15394">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="15392">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="15397">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="15390">
+        <label>InflationIndex</label>
+        <link refid="class_quant_lib_1_1_inflation_index"/>
+        <childnode refid="15391" relation="public-inheritance">
+        </childnode>
+        <childnode refid="15393" relation="public-inheritance">
+        </childnode>
+        <childnode refid="15394" relation="usage">
+          <edgelabel>currency_</edgelabel>
+        </childnode>
+        <childnode refid="15395" relation="usage">
+          <edgelabel>referenceDate_</edgelabel>
+        </childnode>
+        <childnode refid="15396" relation="usage">
+          <edgelabel>region_</edgelabel>
+        </childnode>
+        <childnode refid="15397" relation="usage">
+          <edgelabel>availabilityLag_</edgelabel>
+        </childnode>
+      </node>
+      <node id="15393">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="15395">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="15389">
+        <label>YoYInflationIndex</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_index"/>
+        <childnode refid="15390" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15388">
+        <label>YYGenericCPI</label>
+        <link refid="class_quant_lib_1_1_y_y_generic_c_p_i"/>
+        <childnode refid="15389" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="64" bodyend="82"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_inflation_index_1aa8992ffa6a24397eda41c2a7ac458c97" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>addFixing</name></member>
+      <member refid="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a1a96e907a4fa3ef48090f8febb6ef80e" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>availabilityLag</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a56ed474676ed281c13e46b111268048a" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>availabilityLag_</name></member>
+      <member refid="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>clearFixings</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_index_1adf7343dbc0a657bd0b93e258c9f5c0f3" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1af41171847c0cf98154d62bb7f71f3070" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>currency_</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a270dc2fcae13173748f2f3edddd92727" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>familyName</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1acabfc12151f5d68c514dcea66310b07b" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>familyName_</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>fixing</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1abd47d61ed23fb73440b0c02534236330" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>fixingCalendar</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a70fafd3d3f212d824101e977784dbcf5" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>frequency</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1ae358763dc753768bb42e898365204a9a" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>frequency_</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a08a953a7e2c9faae6d595913aae0893b" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>InflationIndex</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a40c4f14701638cfb8f7ce2ce9cbeabf3" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>interpolated</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a2a2ae12e77e0ac75d12813f693958b4a" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>interpolated_</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>isValidFixingDate</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::YYGenericCPI</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::YYGenericCPI</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_index_1a20c2db4456208bb1ed76d261f476da6c" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>ratio</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a3e22290961d6b56dce069c1c4fda6386" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>referenceDate_</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a304741bfa4f39cb526cb58694ba21b72" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>region</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1ae317ee96b7d55086990324e05fe08b8d" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>region_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1a55fadd1d6444ec9683aef9abcf28f0c8" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>revised</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1af2fa7e8f9bd566705c7e223c70a18bc3" prot="protected" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>revised_</name></member>
+      <member refid="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>timeSeries</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_inflation_index_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_index_1a9c8e75da8b8f15185f87c2ec73388af3" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>YoYInflationIndex</name></member>
+      <member refid="class_quant_lib_1_1_yo_y_inflation_index_1a9c3c66040e9a444f6331bc4a40590e51" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>yoyInflationTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_y_y_generic_c_p_i_1a9e302fa408e7581a1bc684b69ad54e20" prot="public" virt="non-virtual"><scope>QuantLib::YYGenericCPI</scope><name>YYGenericCPI</name></member>
+      <member refid="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>~Index</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::YYGenericCPI</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

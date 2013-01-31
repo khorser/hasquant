@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bankruptcy_event" kind="class" prot="public">
+    <compoundname>QuantLib::BankruptcyEvent</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_default_event" prot="public" virt="non-virtual">DefaultEvent</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bankruptcy_event_1a524279fd2b161e7686b1665ff5441b49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BankruptcyEvent</definition>
+        <argsstring>(const Date &amp;creditEventDate, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate, const std::map&lt; Seniority, Real &gt; &amp;recoveryRates)</argsstring>
+        <name>BankruptcyEvent</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>creditEventDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>curr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <declname>bondsSen</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>settleDate</declname>
+        </param>
+        <param>
+          <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>recoveryRates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="231"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bankruptcy_event_1ab0762226a02ea8054d86adffb516d29d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BankruptcyEvent</definition>
+        <argsstring>(const Date &amp;creditEventDate, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate, Real recoveryRates)</argsstring>
+        <name>BankruptcyEvent</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>creditEventDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>curr</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <declname>bondsSen</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>settleDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="238"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bankruptcy_event_1afff9a26f2b04e6a9f8211f18db006486" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool matchesEventType</definition>
+        <argsstring>(const boost::shared_ptr&lt; DefaultType &gt; &amp;) const </argsstring>
+        <name>matchesEventType</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+<para>This is a stronger than all event and will trigger all of them. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="240" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="240" bodyend="242"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="666">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="667" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="667">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="664">
+        <label>BankruptcyEvent</label>
+        <childnode refid="665" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="665">
+        <label>DefaultEvent</label>
+        <link refid="class_quant_lib_1_1_default_event"/>
+        <childnode refid="666" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="670">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="672">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="671">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="668">
+        <label>BankruptcyEvent</label>
+        <childnode refid="669" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="669">
+        <label>DefaultEvent</label>
+        <link refid="class_quant_lib_1_1_default_event"/>
+        <childnode refid="670" relation="public-inheritance">
+        </childnode>
+        <childnode refid="672" relation="usage">
+          <edgelabel>bondsCurrency_</edgelabel>
+        </childnode>
+        <childnode refid="673" relation="usage">
+          <edgelabel>defaultDate_</edgelabel>
+        </childnode>
+        <childnode refid="674" relation="usage">
+          <edgelabel>eventType_</edgelabel>
+        </childnode>
+      </node>
+      <node id="674">
+        <label>DefaultType</label>
+        <link refid="class_quant_lib_1_1_default_type"/>
+      </node>
+      <node id="673">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="224" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="224" bodyend="243"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bankruptcy_event_1a524279fd2b161e7686b1665ff5441b49" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>BankruptcyEvent</name></member>
+      <member refid="class_quant_lib_1_1_bankruptcy_event_1ab0762226a02ea8054d86adffb516d29d" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>BankruptcyEvent</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a7bb7bd92e75d008d41de306244dc95e8" prot="protected" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>bondsCurrency_</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1ac400880b1ee8aecb1291976b98926d54" prot="protected" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>bondsSeniority_</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1abc33baebf744532876f39f22cf971342" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1aa954a0df9ac3ac39f901846adb2e5008" prot="protected" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>defaultDate_</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a538254ee240ed75fde17e25d55c65c1c" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>DefaultEvent</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1ac4affece3915597c9325f07e8f292be7" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>DefaultEvent</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a2c28bc2ecab4fcb305aecac24e805fcb" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>defaultType</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1ae721f445de757ccf6725e8a06a3495d9" prot="protected" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>defSettlement_</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a147fb3038f22fa7a4712735336e744e1" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>eventSeniority</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1ab02b704ba6dc61336d51ea7ab6a60294" prot="protected" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>eventType_</name></member>
+      <member refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a6396845b5459f6de8ef0296651a62294" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>hasSettled</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a3c0ebe326f24d183b76e69b2db54f04f" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>isDefault</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>isRestructuring</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1aeca84afdcb5d299984f01c26e3fa5204" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>matchesDefaultKey</name></member>
+      <member refid="class_quant_lib_1_1_bankruptcy_event_1afff9a26f2b04e6a9f8211f18db006486" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>matchesEventType</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a3e74393b4a53bec2a028d1c24600951c" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>recoveryRate</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1a49d7fb04fe9b96881799ff9cb0958691" prot="public" virt="non-virtual"><scope>QuantLib::BankruptcyEvent</scope><name>settlement</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BankruptcyEvent</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_recovery_rate_model" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::RecoveryRateModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_constant_recovery_model" prot="public" virt="non-virtual">ConstantRecoveryModel</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1aaad2f8d05f1afd02a7511a65519a4a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real recoveryValue</definition>
+        <argsstring>(const Date &amp;defaultDate, const DefaultProbKey &amp;defaultKey=DefaultProbKey()) const </argsstring>
+        <name>recoveryValue</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>defaultDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <declname>defaultKey</declname>
+          <defval><ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the expected recovery rate at a future time conditional on some default event type and seniority. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="38" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool appliesToSeniority</definition>
+        <argsstring>(Seniority) const =0</argsstring>
+        <name>appliesToSeniority</name>
+        <reimplementedby refid="class_quant_lib_1_1_constant_recovery_model_1afe953f4160ca21765a8aadb329bab537">appliesToSeniority</reimplementedby>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the model will return recovery rates for the requested seniority. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a37915b226f19351027ec846e3af7e44e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~RecoveryRateModel</definition>
+        <argsstring>()</argsstring>
+        <name>~RecoveryRateModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a6ac1a3aec02147ee4086c6cba3c86a76" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real recoveryValueImpl</definition>
+        <argsstring>(const Date &amp;, const DefaultProbKey &amp;defaultKey) const =0</argsstring>
+        <name>recoveryValueImpl</name>
+        <reimplementedby refid="class_quant_lib_1_1_constant_recovery_model_1a102b17702f706c02dfb037c4ac947341">recoveryValueImpl</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <declname>defaultKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns Null&lt;Real&gt; if unable to produce a recovery for the requested seniority. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Models of the recovery rate provide future values of a recovery rate in the event of a default. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12723">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12722">
+        <label>RecoveryRateModel</label>
+        <link refid="class_quant_lib_1_1_recovery_rate_model"/>
+        <childnode refid="12723" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12724">
+        <label>ConstantRecoveryModel</label>
+        <link refid="class_quant_lib_1_1_constant_recovery_model"/>
+        <childnode refid="12722" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12726">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12725">
+        <label>RecoveryRateModel</label>
+        <link refid="class_quant_lib_1_1_recovery_rate_model"/>
+        <childnode refid="12726" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratemodel.hpp" bodystart="33" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66" prot="public" virt="pure-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>appliesToSeniority</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_recovery_rate_model_1aaad2f8d05f1afd02a7511a65519a4a5c" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateModel</scope><name>recoveryValue</name></member>
+      <member refid="class_quant_lib_1_1_recovery_rate_model_1a6ac1a3aec02147ee4086c6cba3c86a76" prot="protected" virt="pure-virtual"><scope>QuantLib::RecoveryRateModel</scope><name>recoveryValueImpl</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateModel</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_recovery_rate_model_1a37915b226f19351027ec846e3af7e44e" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateModel</scope><name>~RecoveryRateModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

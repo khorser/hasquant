@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_mexico" kind="class" prot="public">
+    <compoundname>QuantLib::Mexico</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calendar" prot="public" virt="non-virtual">Calendar</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_mexico_1_1_bmv_impl" prot="private">QuantLib::Mexico::BmvImpl</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+        <name>Market</name>
+        <enumvalue id="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42a4a4d729cff7171673eab4864cf8f91b3" prot="public">
+          <name>BMV</name>
+          <briefdescription>
+<para>Mexican stock exchange. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="58" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_mexico_1af1ecdfd154937d25805360c1cd3586d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Mexico</definition>
+        <argsstring>(Market m=BMV)</argsstring>
+        <name>Mexico</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <declname>m</declname>
+          <defval><ref refid="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42a4a4d729cff7171673eab4864cf8f91b3" kindref="member">BMV</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mexican calendars </para>    </briefdescription>
+    <detaileddescription>
+<para>Holidays for the Mexican stock exchange (data from <ulink url="http://www.bmv.com.mx/">http://www.bmv.com.mx/</ulink>): <itemizedlist>
+<listitem>
+<para>Saturdays </para></listitem>
+<listitem>
+<para>Sundays </para></listitem>
+<listitem>
+<para>New Year&apos;s Day, January 1st </para></listitem>
+<listitem>
+<para>Constitution Day, February 5th </para></listitem>
+<listitem>
+<para>Birthday of Benito Juarez, March 21st </para></listitem>
+<listitem>
+<para>Holy Thursday </para></listitem>
+<listitem>
+<para>Good Friday </para></listitem>
+<listitem>
+<para>Labour Day, May 1st </para></listitem>
+<listitem>
+<para>National Day, September 16th </para></listitem>
+<listitem>
+<para>Our Lady of Guadalupe, December 12th </para></listitem>
+<listitem>
+<para>Christmas, December 25th </para></listitem>
+</itemizedlist>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9854">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="9853">
+        <label>Mexico</label>
+        <link refid="class_quant_lib_1_1_mexico"/>
+        <childnode refid="9854" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9856">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="9855">
+        <label>Mexico</label>
+        <link refid="class_quant_lib_1_1_mexico"/>
+        <childnode refid="9856" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="50" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calendar_1a656020bddfdb2d9f48c9f0dc12b26597" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>addHoliday</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>adjust</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>advance</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>advance</name></member>
+      <member refid="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42a4a4d729cff7171673eab4864cf8f91b3" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>BMV</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>businessDaysBetween</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1af5714af8cb45a29153e0fd53ee5e7241" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>Calendar</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>endOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>holidayList</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a85aed4d5b4c114bdd47766ef9e52e2f7" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>isBusinessDay</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a406c43181bd59e07a145a4722fdf2480" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>isEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aa529b7298ba96b90261ed56c34f015f8" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>isHoliday</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a9c1941e4f95b1d74d7f9b2e772174c73" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>isWeekend</name></member>
+      <member refid="class_quant_lib_1_1_mexico_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>Market</name></member>
+      <member refid="class_quant_lib_1_1_mexico_1af1ecdfd154937d25805360c1cd3586d5" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>Mexico</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1af842d77a8aacbc167a64749dba1a3a87" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1aab055e8665c0e69976ecbe4aebd47a8f" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1ae9d6f7766f633f5d75cc3acd7826bc9f" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1a4c682210881efe66d463cc0907f00722" prot="public" virt="non-virtual"><scope>QuantLib::Mexico</scope><name>removeHoliday</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

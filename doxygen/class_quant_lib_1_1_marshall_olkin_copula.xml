@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_marshall_olkin_copula" kind="class" prot="public">
+    <compoundname>QuantLib::MarshallOlkinCopula</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::binary_function&lt; Real, Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_marshall_olkin_copula_1a7808bed616def7f344acacb1b9b48f77" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real a1_</definition>
+        <argsstring></argsstring>
+        <name>a1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_marshall_olkin_copula_1afeaad24aaccd1fa2c6d91b92be41e4e0" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real a2_</definition>
+        <argsstring></argsstring>
+        <name>a2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_marshall_olkin_copula_1a1043cb418214310a8e762bb72a6d5b69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MarshallOlkinCopula</definition>
+        <argsstring>(Real a1, Real a2)</argsstring>
+        <name>MarshallOlkinCopula</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_marshall_olkin_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Marshall-Olkin copula. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="33" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a7808bed616def7f344acacb1b9b48f77" prot="private" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>a1_</name></member>
+      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1afeaad24aaccd1fa2c6d91b92be41e4e0" prot="private" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>a2_</name></member>
+      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a1043cb418214310a8e762bb72a6d5b69" prot="public" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>MarshallOlkinCopula</name></member>
+      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

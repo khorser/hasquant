@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="bug" kind="page">
+    <compoundname>bug</compoundname>
+    <title>Known Bugs</title>
+    <detaileddescription>
+<para><variablelist>
+<varlistentry><term><anchor id="bug_1_bug000003"/>Class <ref refid="class_quant_lib_1_1_asset_swap" kindref="compound">AssetSwap</ref>  </term></varlistentry>
+<listitem><para>fair prices are not calculated correctly when using indexed coupons.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000011"/>Class <ref refid="class_quant_lib_1_1_black_calculator" kindref="compound">BlackCalculator</ref>  </term></varlistentry>
+<listitem><para>When the variance is null, division by zero occur during the calculation of delta, delta forward, gamma, gamma forward, rho, dividend rho, vega, and strike sensitivity.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000005"/>Class <ref refid="class_quant_lib_1_1_cap_helper" kindref="compound">CapHelper</ref>  </term></varlistentry>
+<listitem><para>This helper does not register with the passed IBOR index and with the evaluation date. Furthermore, the ATM strike rate is not recalculated when any of its observables change.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000007"/>Class <ref refid="class_quant_lib_1_1_cox_ingersoll_ross" kindref="compound">CoxIngersollRoss</ref>  </term></varlistentry>
+<listitem><para>this class was not tested enough to guarantee its functionality. </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000008"/>Class <ref refid="class_quant_lib_1_1_extended_cox_ingersoll_ross" kindref="compound">ExtendedCoxIngersollRoss</ref>  </term></varlistentry>
+<listitem><para>this class was not tested enough to guarantee its functionality. </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000010"/>Class <ref refid="class_quant_lib_1_1_g2" kindref="compound">G2</ref>  </term></varlistentry>
+<listitem><para>This class was not tested enough to guarantee its functionality. </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000009"/>Class <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref>  </term></varlistentry>
+<listitem><para>When the term structure is relinked, the r0 parameter of the underlying Vasicek model is not updated. </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000012"/>Class <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref>  </term></varlistentry>
+<listitem><para>This class was not tested enough to guarantee its functionality... work in progress </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000001"/>Class <ref refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper" kindref="compound">InterpolatedYoYOptionletStripper&lt; Interpolator1D &gt;</ref>  </term></varlistentry>
+<listitem><para>Tests currently fail.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000002"/>Class <ref refid="class_quant_lib_1_1_k_interpolated_yo_y_optionlet_volatility_surface" kindref="compound">KInterpolatedYoYOptionletVolatilitySurface&lt; Interpolator1D &gt;</ref>  </term></varlistentry>
+<listitem><para>Tests currently fail.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000013"/>Class <ref refid="class_quant_lib_1_1_local_vol_surface" kindref="compound">LocalVolSurface</ref>  </term></varlistentry>
+<listitem><para>this class is untested, probably unreliable.  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000004"/>Class <ref refid="class_quant_lib_1_1_multi_cubic_spline" kindref="compound">MultiCubicSpline&lt; i &gt;</ref>  </term></varlistentry>
+<listitem><para>cannot interpolate at the grid points on the boundary surface of the N-dimensional region  </para></listitem>
+<varlistentry><term><anchor id="bug_1_bug000006"/>Class <ref refid="class_quant_lib_1_1_swaption_helper" kindref="compound">SwaptionHelper</ref>  </term></varlistentry>
+<listitem><para>This helper does not register with the passed IBOR index and with the evaluation date. Furthermore, the ATM exercise rate is not recalculated when any of its observables change. </para></listitem>
+</variablelist>
+</para>    </detaileddescription>
+  </compounddef>
+</doxygen>

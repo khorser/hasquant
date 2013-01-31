@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_trinomial_tree_1_1_branching" kind="class" prot="private">
+    <compoundname>QuantLib::TrinomialTree::Branching</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a86da9394b278f33027480c8bc1007ee9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref> &gt;</type>
+        <definition>std::vector&lt;Integer&gt; k_</definition>
+        <argsstring></argsstring>
+        <name>k_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a57b7fb8ccdbe4f391e6f8d22efae05c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;Real&gt; &gt; probs_</definition>
+        <argsstring></argsstring>
+        <name>probs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d8ef3bc0a662a82efe16c6fdbbc7549" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer kMin_</definition>
+        <argsstring></argsstring>
+        <name>kMin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a524d8e24987352df34903a1a9b261ea1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer jMin_</definition>
+        <argsstring></argsstring>
+        <name>jMin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab7db9bc49f542ebe4cd33c1a4430cf06" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer kMax_</definition>
+        <argsstring></argsstring>
+        <name>kMax_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a31c7ecd71c5c6f5546deacba7d354d24" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer jMax_</definition>
+        <argsstring></argsstring>
+        <name>jMax_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a6440a938bab4c653572cc4415b17c18e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Branching</definition>
+        <argsstring>()</argsstring>
+        <name>Branching</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a902d61ea4fb27f53ba4b2afe10c3576c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size descendant</definition>
+        <argsstring>(Size index, Size branch) const </argsstring>
+        <name>descendant</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>branch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a145add76f9c73ff983e8f4cf6300fe7e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real probability</definition>
+        <argsstring>(Size index, Size branch) const </argsstring>
+        <name>probability</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>branch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="114" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9f8fe03de342db031b659926a0e0d8ef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer jMin</definition>
+        <argsstring>() const </argsstring>
+        <name>jMin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="123" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d1f1a8a465fea89e53b1885a64532b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer jMax</definition>
+        <argsstring>() const </argsstring>
+        <name>jMax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab4fabe8e08237f19708696793524622a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void add</definition>
+        <argsstring>(Integer k, Real p1, Real p2, Real p3)</argsstring>
+        <name>add</name>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>p3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="131" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="66" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab4fabe8e08237f19708696793524622a" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>add</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a6440a938bab4c653572cc4415b17c18e" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>Branching</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a902d61ea4fb27f53ba4b2afe10c3576c" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>descendant</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d1f1a8a465fea89e53b1885a64532b3" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMax</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a31c7ecd71c5c6f5546deacba7d354d24" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMax_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9f8fe03de342db031b659926a0e0d8ef" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMin</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a524d8e24987352df34903a1a9b261ea1" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMin_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a86da9394b278f33027480c8bc1007ee9" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>k_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab7db9bc49f542ebe4cd33c1a4430cf06" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>kMax_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d8ef3bc0a662a82efe16c6fdbbc7549" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>kMin_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a145add76f9c73ff983e8f4cf6300fe7e" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>probability</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a57b7fb8ccdbe4f391e6f8d22efae05c6" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>probs_</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

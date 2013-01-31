@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_energy_swap" kind="class" prot="public">
+    <compoundname>QuantLib::EnergySwap</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_energy_commodity" prot="public" virt="non-virtual">EnergyCommodity</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_energy_basis_swap" prot="public" virt="non-virtual">EnergyBasisSwap</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_energy_vanilla_swap" prot="public" virt="non-virtual">EnergyVanillaSwap</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar_</definition>
+        <argsstring></argsstring>
+        <name>calendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1ae609dfa19d10d7356b271b69c0ef1936" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency payCurrency_</definition>
+        <argsstring></argsstring>
+        <name>payCurrency_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1ac9cb4c04c7ef40d3f0c53c41ce43c359" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency receiveCurrency_</definition>
+        <argsstring></argsstring>
+        <name>receiveCurrency_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1a04be82c033154cbd42425fccd71674d0" prot="protected" static="no" mutable="no">
+        <type>PricingPeriods</type>
+        <definition>PricingPeriods pricingPeriods_</definition>
+        <argsstring></argsstring>
+        <name>pricingPeriods_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1a00e7c62873815762c842c833981183fa" prot="protected" static="no" mutable="yes">
+        <type>EnergyDailyPositions</type>
+        <definition>EnergyDailyPositions dailyPositions_</definition>
+        <argsstring></argsstring>
+        <name>dailyPositions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_swap_1afdd3a562e21bcd5797bca3669ea25d68" prot="protected" static="no" mutable="yes">
+        <type>CommodityCashFlows</type>
+        <definition>CommodityCashFlows paymentCashFlows_</definition>
+        <argsstring></argsstring>
+        <name>paymentCashFlows_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a97463b8decd2a897e5b74ff4137eae58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EnergySwap</definition>
+        <argsstring>(const Calendar &amp;calendar, const Currency &amp;payCurrency, const Currency &amp;receiveCurrency, const PricingPeriods &amp;pricingPeriods, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
+        <name>EnergySwap</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>payCurrency</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>receiveCurrency</declname>
+        </param>
+        <param>
+          <type>const PricingPeriods &amp;</type>
+          <declname>pricingPeriods</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <declname>commodityType</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
+          <declname>secondaryCosts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>isExpired</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <definition>const Calendar&amp; calendar</definition>
+        <argsstring>() const </argsstring>
+        <name>calendar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1af959291e4c35bb7a553101d736a72359" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>const Currency&amp; payCurrency</definition>
+        <argsstring>() const </argsstring>
+        <name>payCurrency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a77a6f3f389661b64bee75eb52b4c7fe7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>const Currency&amp; receiveCurrency</definition>
+        <argsstring>() const </argsstring>
+        <name>receiveCurrency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1aa1f173496e5327c7a5c4214813c6b20e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const PricingPeriods &amp;</type>
+        <definition>const PricingPeriods&amp; pricingPeriods</definition>
+        <argsstring>() const </argsstring>
+        <name>pricingPeriods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a3a8fe1e133670b135d9cc68e9023c893" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const EnergyDailyPositions &amp;</type>
+        <definition>const EnergyDailyPositions&amp; dailyPositions</definition>
+        <argsstring>() const </argsstring>
+        <name>dailyPositions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="48" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a92faec0e77b127b737a33d89667ada28" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const CommodityCashFlows &amp;</type>
+        <definition>const CommodityCashFlows&amp; paymentCashFlows</definition>
+        <argsstring>() const </argsstring>
+        <name>paymentCashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        <definition>const CommodityType&amp; commodityType</definition>
+        <argsstring>() const </argsstring>
+        <name>commodityType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>
+        <definition>Quantity quantity</definition>
+        <argsstring>() const </argsstring>
+        <name>quantity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4122">
+        <label>EnergyCommodity</label>
+        <link refid="class_quant_lib_1_1_energy_commodity"/>
+        <childnode refid="4123" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4126">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="4125">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="4126" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4128">
+        <label>EnergyBasisSwap</label>
+        <link refid="class_quant_lib_1_1_energy_basis_swap"/>
+        <childnode refid="4121" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4127">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="4123">
+        <label>Commodity</label>
+        <link refid="class_quant_lib_1_1_commodity"/>
+        <childnode refid="4124" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4124">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="4125" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4121">
+        <label>EnergySwap</label>
+        <childnode refid="4122" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4129">
+        <label>EnergyVanillaSwap</label>
+        <link refid="class_quant_lib_1_1_energy_vanilla_swap"/>
+        <childnode refid="4121" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4131">
+        <label>EnergyCommodity</label>
+        <link refid="class_quant_lib_1_1_energy_commodity"/>
+        <childnode refid="4132" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4138" relation="usage">
+          <edgelabel>commodityType_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4139">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="4135">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="4134">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="4135" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4136" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4140">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="4138">
+        <label>CommodityType</label>
+        <link refid="class_quant_lib_1_1_commodity_type"/>
+      </node>
+      <node id="4136">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="4132">
+        <label>Commodity</label>
+        <link refid="class_quant_lib_1_1_commodity"/>
+        <childnode refid="4133" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4137">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="4133">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="4134" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4137" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4130">
+        <label>EnergySwap</label>
+        <childnode refid="4131" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4139" relation="usage">
+          <edgelabel>receiveCurrency_</edgelabel>
+          <edgelabel>payCurrency_</edgelabel>
+        </childnode>
+        <childnode refid="4140" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energyswap.hpp" bodystart="34" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa4b416446a4e9361cbd46fb295db6ce2e" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Absolute</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1adcf5b5285c0e8f1aa49d6e93ee8a27be" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>addPricingError</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a72c709964a3937b8f6899f7d2429a90a" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calculateFxConversionFactor</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a362d94e0f09929cde5622e33ea387d25" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calculateSecondaryCostAmounts</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a64c44368ed8353ddaa4b66d13a5fa188" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calculateUnitCost</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a28c24b5995011e2e9ee35518629d910f" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calculateUomConversionFactor</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a158b39795cddba2f2b2c3e04843dcf0c" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Commodity</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>commodityType</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a792de4e88e29e3df5d753c1590d47d8c" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>commodityType_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aaaeefcc3671b16fd4226e51cfe73a8da7" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Constant</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa6b15f8b55b10fefe6300b2f3bf60ad78" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Daily</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a3a8fe1e133670b135d9cc68e9023c893" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>dailyPositions</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a00e7c62873815762c842c833981183fa" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>dailyPositions_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9a" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>DeliverySchedule</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa449a67515bfc882bfa043a46efd9f60" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>EnergyCommodity</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a97463b8decd2a897e5b74ff4137eae58" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>EnergySwap</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aae50a9e16d6f2eaad8190b43377796a99" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Hourly</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa075d775ff1bb75474c994bd94e9629f4" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Monthly</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1aa3a4677fdf428bab1dc18ea66bddf81f" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>MonthlySettlement</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::EnergySwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::EnergySwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1af959291e4c35bb7a553101d736a72359" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>payCurrency</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1ae609dfa19d10d7356b271b69c0ef1936" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>payCurrency_</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a92faec0e77b127b737a33d89667ada28" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>paymentCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1afdd3a562e21bcd5797bca3669ea25d68" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>paymentCashFlows_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PaymentSchedule</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9faccb3efba137e4dd3074b8032720085aa" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerDay</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa40303340a4b58d2978d687c035829227" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerHour</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa836ce08aeb278e8f1464a0331f5bf193" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerMonth</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fa510c229234d5277ff1d410ae72c4a291" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerQuarter</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9fae004baf1b7d5f0c118056898d0aaeee8" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerWeek</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9facfd69d04d084cdb2b06b3bb0af946a48" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>PerYear</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a23f2960fa1d326be0357be9c9fdd1ac1" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>pricingErrors</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1af35ac89c7076d35e237e0fcc414cd4c9" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>pricingErrors_</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1aa1f173496e5327c7a5c4214813c6b20e" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>pricingPeriods</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a04be82c033154cbd42425fccd71674d0" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>pricingPeriods_</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>quantity</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1ae1c35b00dd9a7841aac1026aa504db9f" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>QuantityPeriodicity</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aab4fce358383d1822f7596659e00b07f7" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Quarterly</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1aec07ce9169198d56bc4d5a9244c39866" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>QuarterlySettlement</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1a77a6f3f389661b64bee75eb52b4c7fe7" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>receiveCurrency</name></member>
+      <member refid="class_quant_lib_1_1_energy_swap_1ac9cb4c04c7ef40d3f0c53c41ce43c359" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>receiveCurrency_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a34142b1dd8c4ea5624f6f48757d70340" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>secondaryCostAmounts</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1af0c4cfec6bf26d5ea22a7e29395c764c" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>secondaryCostAmounts_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1ae3794650bbfcd5cdc7cfce815dcda82e" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>secondaryCosts</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a5fbbba7aa834bddd8b002c0af0568ecd" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>secondaryCosts_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa39017ed07c435bd4b739cda6bf3e5a35" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Weekly</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aafaa0e0e40662bc85cee2e839768efcce" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Window</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1af9d0fbcad271b5d1ff1d4e1f9cdda495" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>WindowSettlement</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1aa8a473eb00f211a22d296c4d2f750c9aa07475026c2b3e0057ff0c6ab3b076793" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>Yearly</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1a55c761331cfc70cf8fc39727b8c4a3a1a8cf63fd2364f3ccd61974865d5c5358d" prot="public" virt="non-virtual"><scope>QuantLib::EnergySwap</scope><name>YearlySettlement</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::EnergySwap</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

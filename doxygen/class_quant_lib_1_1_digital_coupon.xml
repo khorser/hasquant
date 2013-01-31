@@ -1,0 +1,803 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_digital_coupon" kind="class" prot="public">
+    <compoundname>QuantLib::DigitalCoupon</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon" prot="public" virt="non-virtual">FloatingRateCoupon</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_digital_cms_coupon" prot="public" virt="non-virtual">DigitalCmsCoupon</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_digital_ibor_coupon" prot="public" virt="non-virtual">DigitalIborCoupon</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a6048038f1c6804ba2dc7bc2b3404cf83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DigitalCoupon</definition>
+        <argsstring>(const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;underlying, Rate callStrike=Null&lt; Rate &gt;(), Position::Type callPosition=Position::Long, bool isCallITMIncluded=false, Rate callDigitalPayoff=Null&lt; Rate &gt;(), Rate putStrike=Null&lt; Rate &gt;(), Position::Type putPosition=Position::Long, bool isPutITMIncluded=false, Rate putDigitalPayoff=Null&lt; Rate &gt;(), const boost::shared_ptr&lt; DigitalReplication &gt; &amp;replication=boost::shared_ptr&lt; DigitalReplication &gt;())</argsstring>
+        <name>DigitalCoupon</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt; &amp;</type>
+          <declname>underlying</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>callStrike</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>Position::Type</type>
+          <declname>callPosition</declname>
+          <defval>Position::Long</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isCallITMIncluded</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>callDigitalPayoff</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>putStrike</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>Position::Type</type>
+          <declname>putPosition</declname>
+          <defval>Position::Long</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isPutITMIncluded</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>putDigitalPayoff</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>
+          <declname>replication</declname>
+          <defval>boost::shared_ptr&lt; DigitalReplication &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>general constructor </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Coupon interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate rate</definition>
+        <argsstring>() const </argsstring>
+        <name>rate</name>
+        <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
+        <briefdescription>
+<para>accrued rate </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate convexityAdjustment</definition>
+        <argsstring>() const </argsstring>
+        <name>convexityAdjustment</name>
+        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
+        <briefdescription>
+<para>convexity adjustment </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="99"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Digital inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a7ca129239e82cd87ca9b6f08da17f4c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>callStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1ab42db3671367ec99c6e0099ed1be6f0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>putStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a13fb727eb4d28c9caf4d4f787ef02718" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callDigitalPayoff</definition>
+        <argsstring>() const </argsstring>
+        <name>callDigitalPayoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a98ec6b9db0a40653c9d5c36b272948bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putDigitalPayoff</definition>
+        <argsstring>() const </argsstring>
+        <name>putDigitalPayoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a8744c654cd818c3e5a7b8a919229832f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hasPut</definition>
+        <argsstring>() const </argsstring>
+        <name>hasPut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="108" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a89386edb14c735d40c878ae6a68d5484" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hasCall</definition>
+        <argsstring>() const </argsstring>
+        <name>hasCall</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="109" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a8f1c4b46fc4b720e7378e4cb1bee6c0b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hasCollar</definition>
+        <argsstring>() const </argsstring>
+        <name>hasCollar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1aa152a190acf785f398d8c5a0b82de02c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isLongPut</definition>
+        <argsstring>() const </argsstring>
+        <name>isLongPut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1afcfdb4e0823b4971d94ac7bf8a84ee70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isLongCall</definition>
+        <argsstring>() const </argsstring>
+        <name>isLongCall</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1db4a23ccbe6bf105c49a94b464649ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying</definition>
+        <argsstring>() const </argsstring>
+        <name>underlying</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="113" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a722313ee7ee8f9e8d1642e5cd4ce60ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callOptionRate</definition>
+        <argsstring>() const </argsstring>
+        <name>callOptionRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the call option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a1d04cfdd9d0c187adb76ac5f129b164d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putOptionRate</definition>
+        <argsstring>() const </argsstring>
+        <name>putOptionRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the put option rate (multiplied by: nominal*accrualperiod*discount is the NPV of the option) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="125"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setPricer</definition>
+        <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;pricer)</argsstring>
+        <name>setPricer</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <declname>pricer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="131" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Data members</header>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
+        <argsstring></argsstring>
+        <name>underlying_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a7f5c314683cbb54c47b16866eab8fb1d" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callStrike_</definition>
+        <argsstring></argsstring>
+        <name>callStrike_</name>
+        <briefdescription>
+<para>strike rate for the the call option </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ab6787bf490f0f234ee2c81d16b12347d" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putStrike_</definition>
+        <argsstring></argsstring>
+        <name>putStrike_</name>
+        <briefdescription>
+<para>strike rate for the the put option </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aa33caba2dc88968d771e3a79070bd7a2" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real callCsi_</definition>
+        <argsstring></argsstring>
+        <name>callCsi_</name>
+        <briefdescription>
+<para>multiplicative factor of call payoff </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aee3bd60ba173d0b1023bea0209a16f14" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real putCsi_</definition>
+        <argsstring></argsstring>
+        <name>putCsi_</name>
+        <briefdescription>
+<para>multiplicative factor of put payoff </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a67f817c1b667ee61371f64684662bd7d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isCallATMIncluded_</definition>
+        <argsstring></argsstring>
+        <name>isCallATMIncluded_</name>
+        <briefdescription>
+<para>inclusion flag og the call payoff if the call option ends at-the-money </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a73c3824ad5f51c965365c5b37c3894e1" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isPutATMIncluded_</definition>
+        <argsstring></argsstring>
+        <name>isPutATMIncluded_</name>
+        <briefdescription>
+<para>inclusion flag og the put payoff if the put option ends at-the-money </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a814712da06f54990b8a79b2de0d55010" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isCallCashOrNothing_</definition>
+        <argsstring></argsstring>
+        <name>isCallCashOrNothing_</name>
+        <briefdescription>
+<para>digital call option type: if true, cash-or-nothing, if false asset-or-nothing </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a512cba5740e82c1b51c95811d371b4a9" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isPutCashOrNothing_</definition>
+        <argsstring></argsstring>
+        <name>isPutCashOrNothing_</name>
+        <briefdescription>
+<para>digital put option type: if true, cash-or-nothing, if false asset-or-nothing </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ac75c26537453ce63f05003b32d308c90" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callDigitalPayoff_</definition>
+        <argsstring></argsstring>
+        <name>callDigitalPayoff_</name>
+        <briefdescription>
+<para>digital call option payoff rate, if any </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a3da18fe716416715c8c43eafeb6de048" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putDigitalPayoff_</definition>
+        <argsstring></argsstring>
+        <name>putDigitalPayoff_</name>
+        <briefdescription>
+<para>digital put option payoff rate, if any </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a0e1fb31b709b06dd507860d67089f0b1" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real callLeftEps_</definition>
+        <argsstring></argsstring>
+        <name>callLeftEps_</name>
+        <briefdescription>
+<para>the left and right gaps applied in payoff replication for call </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a7b3cbbff69d1f8f7233205dc0b62349b" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real callRightEps_</definition>
+        <argsstring></argsstring>
+        <name>callRightEps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1acb4e266831e0a75b7bc719ca9665cb28" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real putLeftEps_</definition>
+        <argsstring></argsstring>
+        <name>putLeftEps_</name>
+        <briefdescription>
+<para>the left and right gaps applied in payoff replication for puf </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1ad0b7aeaf2e9a1d51917b95669dd917f6" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real putRightEps_</definition>
+        <argsstring></argsstring>
+        <name>putRightEps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a609a054082b446fcc12c43b17c1566d3" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hasPutStrike_</definition>
+        <argsstring></argsstring>
+        <name>hasPutStrike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1a934d869cdebc40353a5b3f9d32c58ea1" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hasCallStrike_</definition>
+        <argsstring></argsstring>
+        <name>hasCallStrike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_digital_coupon_1aab6cebbb5dcd43e84bd6d3b5f0c489a1" prot="protected" static="no" mutable="no">
+        <type>Replication::Type</type>
+        <definition>Replication::Type replicationType_</definition>
+        <argsstring></argsstring>
+        <name>replicationType_</name>
+        <briefdescription>
+<para>Type of replication. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1a926dd08eb98ca1553e4b0b6e4939d54f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate callPayoff</definition>
+        <argsstring>() const </argsstring>
+        <name>callPayoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="178"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_digital_coupon_1ab91a6fa7cd981bd6d857a192449093a7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate putPayoff</definition>
+        <argsstring>() const </argsstring>
+        <name>putPayoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="179"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Digital-payoff coupon. </para>    </briefdescription>
+    <detaileddescription>
+<para>Implementation of a floating-rate coupon with digital call/put option. Payoffs:<itemizedlist>
+<listitem><para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> with cash-or-nothing Digital Call rate + csi * payoffRate * Heaviside(rate-strike)</para></listitem><listitem><para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> with cash-or-nothing Digital Put rate + csi * payoffRate * Heaviside(strike-rate) where csi=+1 or csi=-1.</para></listitem><listitem><para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> with asset-or-nothing Digital Call rate + csi * rate * Heaviside(rate-strike)</para></listitem><listitem><para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> with asset-or-nothing Digital Put rate + csi * rate * Heaviside(strike-rate) where csi=+1 or csi=-1. The evaluation of the coupon is made using the call/put spread replication method.</para></listitem></itemizedlist>
+</para><para><xrefsect id="test_1_test000001"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
+<listitem><para>the correctness of the returned value in case of Asset-or-nothing embedded option is tested by pricing the digital option with Cox-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Asset-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of Cash-or-nothing embedded option is tested by pricing the digital option with Reiner-Rubinstein formula.</para></listitem><listitem><para>the correctness of the returned value in case of deep-in-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value in case of deep-out-of-the-money Cash-or-nothing embedded option is tested vs the expected values of coupon and option.</para></listitem><listitem><para>the correctness of the returned value is tested checking the correctness of the call-put parity relation.</para></listitem><listitem><para>the correctness of the returned value is tested by the relationship between prices in case of different replication types. </para></listitem></itemizedlist>
+</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3733">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3734" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3734">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3735">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3730">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="3731" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3735" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3737">
+        <label>DigitalIborCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_ibor_coupon"/>
+        <childnode refid="3729" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3732">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="3733" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3731">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="3732" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3736">
+        <label>DigitalCmsCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_cms_coupon"/>
+        <childnode refid="3729" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3729">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="3730" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3742">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3743" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3743">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3745">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3739">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="3740" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3745" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3746" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3744">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="3746">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="3741">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="3742" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3740">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="3741" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3744" relation="usage">
+          <edgelabel>refPeriodEnd_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+          <edgelabel>accrualEndDate_</edgelabel>
+          <edgelabel>accrualStartDate_</edgelabel>
+          <edgelabel>refPeriodStart_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3738">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="3739" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/digitalcoupon.hpp" bodystart="78" bodyend="181"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualEndDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1ab871d5b910c9a7426056d7dc4660d5d4" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualEndDate_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualPeriod</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualStartDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a7db0f13993a640aa7f0d594e71cd4fb0" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accrualStartDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>accruedAmount</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accruedDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>accruedPeriod</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>adjustedFixing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aa33caba2dc88968d771e3a79070bd7a2" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callCsi_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a13fb727eb4d28c9caf4d4f787ef02718" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callDigitalPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ac75c26537453ce63f05003b32d308c90" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callDigitalPayoff_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a0e1fb31b709b06dd507860d67089f0b1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callLeftEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a722313ee7ee8f9e8d1642e5cd4ce60ab" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callOptionRate</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a926dd08eb98ca1553e4b0b6e4939d54f" prot="private" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7b3cbbff69d1f8f7233205dc0b62349b" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callRightEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7ca129239e82cd87ca9b6f08da17f4c8" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callStrike</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a7f5c314683cbb54c47b16866eab8fb1d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>callStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>convexityAdjustment</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a119ba767531cbaa8a9eb9e1b9d5bac72" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>convexityAdjustmentImpl</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>Coupon</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a6048038f1c6804ba2dc7bc2b3404cf83" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>DigitalCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>fixingDate</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>fixingDays</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a7b5758dc357368c9bcb7920c66084351" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>fixingDays_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>FloatingRateCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>gearing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a89386edb14c735d40c878ae6a68d5484" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasCall</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a934d869cdebc40353a5b3f9d32c58ea1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasCallStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8f1c4b46fc4b720e7378e4cb1bee6c0b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasCollar</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8744c654cd818c3e5a7b8a919229832f" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasPut</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a609a054082b446fcc12c43b17c1566d3" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>hasPutStrike_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab36c19ec4146edfb3995d21524eec75a" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>indexFixing</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a67f817c1b667ee61371f64684662bd7d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isCallATMIncluded_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a814712da06f54990b8a79b2de0d55010" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isCallCashOrNothing_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isInArrears</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a25f8da0f6e04b43219b0a3adc3b546a2" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isInArrears_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1afcfdb4e0823b4971d94ac7bf8a84ee70" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isLongCall</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aa152a190acf785f398d8c5a0b82de02c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isLongPut</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a73c3824ad5f51c965365c5b37c3894e1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isPutATMIncluded_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a512cba5740e82c1b51c95811d371b4a9" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>isPutCashOrNothing_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::DigitalCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::DigitalCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a292ad9c54719780e61282ddeeac02410" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>price</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>pricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3b075e34ab824af88d259d676650670a" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>pricer_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aee3bd60ba173d0b1023bea0209a16f14" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putCsi_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a98ec6b9db0a40653c9d5c36b272948bf" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putDigitalPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a3da18fe716416715c8c43eafeb6de048" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putDigitalPayoff_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1acb4e266831e0a75b7bc719ca9665cb28" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putLeftEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1d04cfdd9d0c187adb76ac5f129b164d" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putOptionRate</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ab91a6fa7cd981bd6d857a192449093a7" prot="private" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putPayoff</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ad0b7aeaf2e9a1d51917b95669dd917f6" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putRightEps_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ab42db3671367ec99c6e0099ed1be6f0c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putStrike</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ab6787bf490f0f234ee2c81d16b12347d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>putStrike_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>rate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>referencePeriodEnd</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>referencePeriodStart</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a662e5b434a5da06dcc6b453780a18a52" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>refPeriodEnd_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a98fabc993511982e34098f058a23792b" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>refPeriodStart_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aab6cebbb5dcd43e84bd6d3b5f0c489a1" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>replicationType_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>setPricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>spread</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a1db4a23ccbe6bf105c49a94b464649ac" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>underlying_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::DigitalCoupon</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_digital_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::DigitalCoupon</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

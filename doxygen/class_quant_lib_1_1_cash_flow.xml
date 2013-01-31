@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cash_flow" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::CashFlow</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_commodity_cash_flow" prot="public" virt="non-virtual">CommodityCashFlow</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_coupon" prot="public" virt="non-virtual">Coupon</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_dividend" prot="public" virt="non-virtual">Dividend</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_indexed_cash_flow" prot="public" virt="non-virtual">IndexedCashFlow</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_simple_cash_flow" prot="public" virt="non-virtual">SimpleCashFlow</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Event interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>virtual Date date</definition>
+        <argsstring>() const =0</argsstring>
+        <name>date</name>
+        <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool hasOccurred</definition>
+        <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
+        <name>hasOccurred</name>
+        <reimplements refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb">hasOccurred</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type>boost::optional&lt; bool &gt;</type>
+          <declname>includeRefDate</declname>
+          <defval>boost::none</defval>
+        </param>
+        <briefdescription>
+<para>returns true if an event has already occurred before a date </para>        </briefdescription>
+        <detaileddescription>
+<para>overloads <ref refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> in order to take QL_TODAYS_PAYMENTS in account </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>CashFlow interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real amount</definition>
+        <argsstring>() const =0</argsstring>
+        <name>amount</name>
+        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_coupon_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fixed_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fractional_dividend_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_c_p_i_cash_flow_1a16b8c27249065cfd9c5a2df99c217fac">amount</reimplementedby>
+        <briefdescription>
+<para>returns the amount of the cash flow </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dividend_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~CashFlow</definition>
+        <argsstring>()</argsstring>
+        <name>~CashFlow</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" bodystart="41" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for cash flows. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class is purely virtual and acts as a base class for the actual cash flow implementations. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2001">
+        <label>FractionalDividend</label>
+        <link refid="class_quant_lib_1_1_fractional_dividend"/>
+        <childnode refid="1999" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1995">
+        <label>InflationCoupon</label>
+        <link refid="class_quant_lib_1_1_inflation_coupon"/>
+        <childnode refid="1984" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2003">
+        <label>CPICashFlow</label>
+        <link refid="class_quant_lib_1_1_c_p_i_cash_flow"/>
+        <childnode refid="2002" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1982">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="1983" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1985">
+        <label>FixedRateCoupon</label>
+        <link refid="class_quant_lib_1_1_fixed_rate_coupon"/>
+        <childnode refid="1984" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1983">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2006">
+        <label>Redemption</label>
+        <link refid="class_quant_lib_1_1_redemption"/>
+        <childnode refid="2004" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2000">
+        <label>FixedDividend</label>
+        <link refid="class_quant_lib_1_1_fixed_dividend"/>
+        <childnode refid="1999" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2002">
+        <label>IndexedCashFlow</label>
+        <link refid="class_quant_lib_1_1_indexed_cash_flow"/>
+        <childnode refid="1981" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2005">
+        <label>AmortizingPayment</label>
+        <link refid="class_quant_lib_1_1_amortizing_payment"/>
+        <childnode refid="2004" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1994">
+        <label>OvernightIndexedCoupon</label>
+        <link refid="class_quant_lib_1_1_overnight_indexed_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1987">
+        <label>AverageBMACoupon</label>
+        <link refid="class_quant_lib_1_1_average_b_m_a_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1998">
+        <label>CappedFlooredYoYInflationCoupon</label>
+        <link refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon"/>
+        <childnode refid="1997" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1986">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="1984" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1996">
+        <label>CPICoupon</label>
+        <link refid="class_quant_lib_1_1_c_p_i_coupon"/>
+        <childnode refid="1995" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1992">
+        <label>DigitalIborCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_ibor_coupon"/>
+        <childnode refid="1990" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1988">
+        <label>CappedFlooredCoupon</label>
+        <link refid="class_quant_lib_1_1_capped_floored_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2004">
+        <label>SimpleCashFlow</label>
+        <link refid="class_quant_lib_1_1_simple_cash_flow"/>
+        <childnode refid="1981" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1989">
+        <label>CmsCoupon</label>
+        <link refid="class_quant_lib_1_1_cms_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1997">
+        <label>YoYInflationCoupon</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_coupon"/>
+        <childnode refid="1995" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1981">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="1982" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1984">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="1981" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1993">
+        <label>IborCoupon</label>
+        <link refid="class_quant_lib_1_1_ibor_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1999">
+        <label>Dividend</label>
+        <link refid="class_quant_lib_1_1_dividend"/>
+        <childnode refid="1981" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1991">
+        <label>DigitalCmsCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_cms_coupon"/>
+        <childnode refid="1990" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1990">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="1986" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2008">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="2009" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2009">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2007">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="2008" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflow.hpp" bodystart="39" bodyend="66"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::CashFlow</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" virt="pure-virtual"><scope>QuantLib::CashFlow</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" virt="pure-virtual"><scope>QuantLib::CashFlow</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::CashFlow</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CashFlow</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::CashFlow</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::CashFlow</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::CashFlow</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CashFlow</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

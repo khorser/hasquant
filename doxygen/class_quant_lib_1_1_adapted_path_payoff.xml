@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_adapted_path_payoff" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::AdaptedPathPayoff</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_payoff" prot="public" virt="non-virtual">PathPayoff</basecompoundref>
+    <innerclass refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data" prot="public">QuantLib::AdaptedPathPayoff::ValuationData</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1a4fc1c7b18d5496f70710a11e9101665e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void value</definition>
+        <argsstring>(const Matrix &amp;path, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;forwardTermStructures, Array &amp;payments, Array &amp;exercises, std::vector&lt; Array &gt; &amp;states) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <declname>forwardTermStructures</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>payments</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>exercises</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <declname>states</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1a3974d2941a266520a836161d5231efed" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void operator()</definition>
+        <argsstring>(ValuationData &amp;data) const =0</argsstring>
+        <name>operator()</name>
+        <param>
+          <type>ValuationData &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="70">
+        <label>PathPayoff</label>
+        <link refid="class_quant_lib_1_1_path_payoff"/>
+      </node>
+      <node id="69">
+        <label>AdaptedPathPayoff</label>
+        <childnode refid="70" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="72">
+        <label>PathPayoff</label>
+        <link refid="class_quant_lib_1_1_path_payoff"/>
+      </node>
+      <node id="71">
+        <label>AdaptedPathPayoff</label>
+        <childnode refid="72" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="31" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_path_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_path_payoff_1a04619d6110aa5a91bd45584e3cb76681" prot="public" virt="pure-virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>basisSystemDimension</name></member>
+      <member refid="class_quant_lib_1_1_path_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" virt="pure-virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>description</name></member>
+      <member refid="class_quant_lib_1_1_path_payoff_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_adapted_path_payoff_1a3974d2941a266520a836161d5231efed" prot="protected" virt="pure-virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_adapted_path_payoff_1a4fc1c7b18d5496f70710a11e9101665e" prot="public" virt="virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_path_payoff_1a444a94ef33e9aebb6daffdd30b35d931" prot="public" virt="virtual"><scope>QuantLib::AdaptedPathPayoff</scope><name>~PathPayoff</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_null_parameter_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::NullParameter::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_parameter_1_1_impl" prot="public" virt="non-virtual">Parameter::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_null_parameter_1_1_impl_1ad4c967bed855ac8f15c2554635b466d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;, Time) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="105" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10322">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+      <node id="10321">
+        <label>NullParameter::Impl</label>
+        <childnode refid="10322" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10324">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+      <node id="10323">
+        <label>NullParameter::Impl</label>
+        <childnode refid="10324" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="103" bodyend="108"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_null_parameter_1_1_impl_1ad4c967bed855ac8f15c2554635b466d2" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter::Impl</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::NullParameter::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

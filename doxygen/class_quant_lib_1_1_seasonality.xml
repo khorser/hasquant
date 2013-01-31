@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_seasonality" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Seasonality</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_multiplicative_price_seasonality" prot="public" virt="non-virtual">MultiplicativePriceSeasonality</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Seasonality interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1af4103a7879130a7286d87ce550213553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate correctZeroRate</definition>
+        <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
+        <name>correctZeroRate</name>
+        <reimplementedby refid="class_quant_lib_1_1_multiplicative_price_seasonality_1aa37fbae55acaa96be0560fa5d0639668">correctZeroRate</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <declname>iTS</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1ac93d68f5fa5eaa0d5bde685923877e13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate correctYoYRate</definition>
+        <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
+        <name>correctYoYRate</name>
+        <reimplementedby refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a88825843d6b6a77114265771bed9c0b2">correctYoYRate</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <declname>iTS</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool isConsistent</definition>
+        <argsstring>(const InflationTermStructure &amp;iTS) const </argsstring>
+        <name>isConsistent</name>
+        <reimplementedby refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ad3811d44e8830cd435b032e3d28a31f9">isConsistent</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <declname>iTS</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>It is possible for multi-year seasonalities to be inconsistent with the inflation term structure they are given to. This method enables testing - but programmers are not required to implement it. E.g. for price seasonality the corrections at whole years after the inflation curve base date should be the same or else there can be an inconsistency with quoted instruments. Alternatively, the seasonality can be set <emphasis>before</emphasis> the inflation curve is bootstrapped. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="74"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1a047e624db01a253658360c259176e7bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Seasonality</definition>
+        <argsstring>()</argsstring>
+        <name>~Seasonality</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A transformation of an existing inflation swap rate. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is an abstract class and contains the functions correctXXXRate which returns rates with the seasonality correction. Currently only the price multiplicative version is implemented, but this covers stationary (1-year) and non-stationary (multi-year) seasonality depending on how many years of factors are given. <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> is piecewise constant, hence it will work with un-interpolated inflation indices.</para><para>A seasonality assumption can be used to fill in inflation swap curves between maturities that are usually given in integer numbers of years, e.g. 8,9,10,15,20, etc. Historical seasonality may be observed in reported CPI values, alternatively it may be affected by known future events, e.g. announced changes in VAT rates. Thus seasonality may be stationary or non-stationary.</para><para>If seasonality is additive then both swap rates will show affects. Additive seasonality is not implemented. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12988">
+        <label>Seasonality</label>
+        <link refid="class_quant_lib_1_1_seasonality"/>
+      </node>
+      <node id="12989">
+        <label>MultiplicativePriceSeasonality</label>
+        <link refid="class_quant_lib_1_1_multiplicative_price_seasonality"/>
+        <childnode refid="12988" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="54" bodyend="78"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_seasonality_1ac93d68f5fa5eaa0d5bde685923877e13" prot="public" virt="pure-virtual"><scope>QuantLib::Seasonality</scope><name>correctYoYRate</name></member>
+      <member refid="class_quant_lib_1_1_seasonality_1af4103a7879130a7286d87ce550213553" prot="public" virt="pure-virtual"><scope>QuantLib::Seasonality</scope><name>correctZeroRate</name></member>
+      <member refid="class_quant_lib_1_1_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" virt="virtual"><scope>QuantLib::Seasonality</scope><name>isConsistent</name></member>
+      <member refid="class_quant_lib_1_1_seasonality_1a047e624db01a253658360c259176e7bf" prot="public" virt="virtual"><scope>QuantLib::Seasonality</scope><name>~Seasonality</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

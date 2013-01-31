@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_e_u_region" kind="class" prot="public">
+    <compoundname>QuantLib::EURegion</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_region" prot="public" virt="non-virtual">Region</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_e_u_region_1a54cb357ef7442aeabe3652a4eba85b22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EURegion</definition>
+        <argsstring>()</argsstring>
+        <name>EURegion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>European Union as geographical/economic region. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4235">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="4234">
+        <label>EURegion</label>
+        <link refid="class_quant_lib_1_1_e_u_region"/>
+        <childnode refid="4235" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4237">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="4236">
+        <label>EURegion</label>
+        <link refid="class_quant_lib_1_1_e_u_region"/>
+        <childnode refid="4237" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="69" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_region_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_region_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_e_u_region_1a54cb357ef7442aeabe3652a4eba85b22" prot="public" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>EURegion</name></member>
+      <member refid="class_quant_lib_1_1_region_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_region_1a91999f0d2a4817c3d44e56f8fa9b3a38" prot="public" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_region_1a2693369a6f504bb273441569e0487054" prot="public" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_region_1ab0affbdd5f40d4d9d7f4cd1fe6d816ca" prot="protected" virt="non-virtual"><scope>QuantLib::EURegion</scope><name>Region</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

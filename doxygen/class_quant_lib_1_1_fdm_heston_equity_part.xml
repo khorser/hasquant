@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_heston_equity_part" kind="class" prot="public">
+    <compoundname>QuantLib::FdmHestonEquityPart</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1ac09a51aa3fb3051644149acc2e6779e4" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array varianceValues_</definition>
+        <argsstring></argsstring>
+        <name>varianceValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a1519d5beb3b4845ae048e625322b3598" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array volatilityValues_</definition>
+        <argsstring></argsstring>
+        <name>volatilityValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a82f2181cddb352b862acabc7ae59c2d8" prot="protected" static="no" mutable="no">
+        <type>const FirstDerivativeOp</type>
+        <definition>const FirstDerivativeOp dxMap_</definition>
+        <argsstring></argsstring>
+        <name>dxMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a5e644644495ba53895b390d07bde7d9b" prot="protected" static="no" mutable="no">
+        <type>const TripleBandLinearOp</type>
+        <definition>const TripleBandLinearOp dxxMap_</definition>
+        <argsstring></argsstring>
+        <name>dxxMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" static="no" mutable="no">
+        <type>TripleBandLinearOp</type>
+        <definition>TripleBandLinearOp mapT_</definition>
+        <argsstring></argsstring>
+        <name>mapT_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a50650312ead6442d887c2ff8637a7bbb" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
+        <argsstring></argsstring>
+        <name>mesher_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
+        <argsstring></argsstring>
+        <name>rTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1afd8b427c80e7331fc15c52b6c15a10d7" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; qTS_</definition>
+        <argsstring></argsstring>
+        <name>qTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_equity_part_1a2ba3d53953e61390ced2acf890863aa8" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmQuantoHelper &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmQuantoHelper&gt; quantoHelper_</definition>
+        <argsstring></argsstring>
+        <name>quantoHelper_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_equity_part_1a6e53550c068868a5ac8325c3fec5ac58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmHestonEquityPart</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;qTS, const boost::shared_ptr&lt; FdmQuantoHelper &gt; &amp;quantoHelper)</argsstring>
+        <name>FdmHestonEquityPart</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
+          <declname>mesher</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>rTS</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>qTS</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmQuantoHelper &gt; &amp;</type>
+          <declname>quantoHelper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_equity_part_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time t1, Time t2)</argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_equity_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const TripleBandLinearOp &amp;</type>
+        <definition>const TripleBandLinearOp&amp; getMap</definition>
+        <argsstring>() const </argsstring>
+        <name>getMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="6067">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="6066">
+        <label>FdmHestonEquityPart</label>
+        <childnode refid="6067" relation="usage">
+          <edgelabel>volatilityValues_</edgelabel>
+          <edgelabel>varianceValues_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="38" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a82f2181cddb352b862acabc7ae59c2d8" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>dxMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a5e644644495ba53895b390d07bde7d9b" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>dxxMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a6e53550c068868a5ac8325c3fec5ac58" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>FdmHestonEquityPart</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>getMap</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>mapT_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a50650312ead6442d887c2ff8637a7bbb" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>mesher_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1afd8b427c80e7331fc15c52b6c15a10d7" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>qTS_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a2ba3d53953e61390ced2acf890863aa8" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>quantoHelper_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>rTS_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1ac09a51aa3fb3051644149acc2e6779e4" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>varianceValues_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_equity_part_1a1519d5beb3b4845ae048e625322b3598" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonEquityPart</scope><name>volatilityValues_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

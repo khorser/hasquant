@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_commodity" kind="class" prot="public">
+    <compoundname>QuantLib::Commodity</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_energy_commodity" prot="public" virt="non-virtual">EnergyCommodity</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_1a5fbbba7aa834bddd8b002c0af0568ecd" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; SecondaryCosts &gt;</type>
+        <definition>boost::shared_ptr&lt;SecondaryCosts&gt; secondaryCosts_</definition>
+        <argsstring></argsstring>
+        <name>secondaryCosts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_1af35ac89c7076d35e237e0fcc414cd4c9" prot="protected" static="no" mutable="yes">
+        <type>PricingErrors</type>
+        <definition>PricingErrors pricingErrors_</definition>
+        <argsstring></argsstring>
+        <name>pricingErrors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_1af0c4cfec6bf26d5ea22a7e29395c764c" prot="protected" static="no" mutable="yes">
+        <type>SecondaryCostAmounts</type>
+        <definition>SecondaryCostAmounts secondaryCostAmounts_</definition>
+        <argsstring></argsstring>
+        <name>secondaryCostAmounts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a158b39795cddba2f2b2c3e04843dcf0c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Commodity</definition>
+        <argsstring>(const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
+        <name>Commodity</name>
+        <param>
+          <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
+          <declname>secondaryCosts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_1ae3794650bbfcd5cdc7cfce815dcda82e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;</type>
+        <definition>const boost::shared_ptr&lt;SecondaryCosts&gt;&amp; secondaryCosts</definition>
+        <argsstring>() const </argsstring>
+        <name>secondaryCosts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a34142b1dd8c4ea5624f6f48757d70340" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const SecondaryCostAmounts &amp;</type>
+        <definition>const SecondaryCostAmounts&amp; secondaryCostAmounts</definition>
+        <argsstring>() const </argsstring>
+        <name>secondaryCostAmounts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_1a23f2960fa1d326be0357be9c9fdd1ac1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const PricingErrors &amp;</type>
+        <definition>const PricingErrors&amp; pricingErrors</definition>
+        <argsstring>() const </argsstring>
+        <name>pricingErrors</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_1adcf5b5285c0e8f1aa49d6e93ee8a27be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void addPricingError</definition>
+        <argsstring>(PricingError::Level errorLevel, const std::string &amp;error, const std::string &amp;detail=&quot;&quot;) const </argsstring>
+        <name>addPricingError</name>
+        <param>
+          <type>PricingError::Level</type>
+          <declname>errorLevel</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>error</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>detail</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_quant_lib_1_1_commodity" kindref="compound">Commodity</ref> base class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2313">
+        <label>EnergyCommodity</label>
+        <link refid="class_quant_lib_1_1_energy_commodity"/>
+        <childnode refid="2308" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2311">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2310">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="2311" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2312" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2314">
+        <label>EnergyFuture</label>
+        <link refid="class_quant_lib_1_1_energy_future"/>
+        <childnode refid="2313" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2312">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2308">
+        <label>Commodity</label>
+        <link refid="class_quant_lib_1_1_commodity"/>
+        <childnode refid="2309" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2309">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="2310" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2318">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2317">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="2318" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2319" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2319">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2315">
+        <label>Commodity</label>
+        <link refid="class_quant_lib_1_1_commodity"/>
+        <childnode refid="2316" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2320">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="2316">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="2317" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2320" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodity.hpp" bodystart="63" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1adcf5b5285c0e8f1aa49d6e93ee8a27be" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>addPricingError</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::Commodity</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a158b39795cddba2f2b2c3e04843dcf0c" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Commodity</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0" prot="public" virt="pure-virtual"><scope>QuantLib::Commodity</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Commodity</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Commodity</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::Commodity</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a23f2960fa1d326be0357be9c9fdd1ac1" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>pricingErrors</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1af35ac89c7076d35e237e0fcc414cd4c9" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>pricingErrors_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a34142b1dd8c4ea5624f6f48757d70340" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>secondaryCostAmounts</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1af0c4cfec6bf26d5ea22a7e29395c764c" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>secondaryCostAmounts_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1ae3794650bbfcd5cdc7cfce815dcda82e" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>secondaryCosts</name></member>
+      <member refid="class_quant_lib_1_1_commodity_1a5fbbba7aa834bddd8b002c0af0568ecd" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>secondaryCosts_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::Commodity</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::Commodity</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Commodity</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

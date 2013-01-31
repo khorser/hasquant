@@ -1,0 +1,230 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fast_fourier_transform" kind="class" prot="public">
+    <compoundname>QuantLib::FastFourierTransform</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fast_fourier_transform_1aa69043ccd264c92f74f238f9986e9665" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; cs_</definition>
+        <argsstring></argsstring>
+        <name>cs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fast_fourier_transform_1a1e8a188246324c2c8b4094329f03f012" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; double &gt;</type>
+        <definition>std::vector&lt;double&gt; sn_</definition>
+        <argsstring></argsstring>
+        <name>sn_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a52f3db7d80c4e276e8aad3336e5e5040" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>static std::size_t min_order</definition>
+        <argsstring>(std::size_t inputSize)</argsstring>
+        <name>min_order</name>
+        <param>
+          <type>std::size_t</type>
+          <declname>inputSize</declname>
+        </param>
+        <briefdescription>
+<para>the minimum order required for the given input size </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a243e8c292e9c05646ca997a5aca19044" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FastFourierTransform</definition>
+        <argsstring>(std::size_t order)</argsstring>
+        <name>FastFourierTransform</name>
+        <param>
+          <type>std::size_t</type>
+          <declname>order</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="47" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a75e2c0c0deb0a74fdb9df4d2767a0a29" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>std::size_t output_size</definition>
+        <argsstring>() const </argsstring>
+        <name>output_size</name>
+        <briefdescription>
+<para>The required size for the output vector. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1ad295b84fb61f06da7058f34c4021e7c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+          <param>
+            <type>typename RandomAccessIterator</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void transform</definition>
+        <argsstring>(InputIterator inBegin, InputIterator inEnd, RandomAccessIterator out) const </argsstring>
+        <name>transform</name>
+        <param>
+          <type>InputIterator</type>
+          <declname>inBegin</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>inEnd</declname>
+        </param>
+        <param>
+          <type>RandomAccessIterator</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>FFT transform. </para>        </briefdescription>
+        <detaileddescription>
+<para>The output sequence must be allocated by the user </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a38b5f227d390596a7ccfd835d7803bcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+          <param>
+            <type>typename RandomAccessIterator</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void inverse_transform</definition>
+        <argsstring>(InputIterator inBegin, InputIterator inEnd, RandomAccessIterator out) const </argsstring>
+        <name>inverse_transform</name>
+        <param>
+          <type>InputIterator</type>
+          <declname>inBegin</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>inEnd</declname>
+        </param>
+        <param>
+          <type>RandomAccessIterator</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+<para>Inverse FFT transform. </para>        </briefdescription>
+        <detaileddescription>
+<para>The output sequence must be allocated by the user. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1af5cd3ea31ebe82dc353ca835e79f710e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename InputIterator</type>
+          </param>
+          <param>
+            <type>typename RandomAccessIterator</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void transform_impl</definition>
+        <argsstring>(InputIterator inBegin, InputIterator inEnd, RandomAccessIterator out, bool inverse) const </argsstring>
+        <name>transform_impl</name>
+        <param>
+          <type>InputIterator</type>
+          <declname>inBegin</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>inEnd</declname>
+        </param>
+        <param>
+          <type>RandomAccessIterator</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>inverse</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="83" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a913d365024003817bdf148a238c1de9e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::size_t</type>
+        <definition>static std::size_t bit_reverse</definition>
+        <argsstring>(std::size_t x, std::size_t order)</argsstring>
+        <name>bit_reverse</name>
+        <param>
+          <type>std::size_t</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>std::size_t</type>
+          <declname>order</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="112" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>FFT implementation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="38" bodyend="121"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a913d365024003817bdf148a238c1de9e" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>bit_reverse</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1aa69043ccd264c92f74f238f9986e9665" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>cs_</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a243e8c292e9c05646ca997a5aca19044" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>FastFourierTransform</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a38b5f227d390596a7ccfd835d7803bcf" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>inverse_transform</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a52f3db7d80c4e276e8aad3336e5e5040" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>min_order</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a75e2c0c0deb0a74fdb9df4d2767a0a29" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>output_size</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a1e8a188246324c2c8b4094329f03f012" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>sn_</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1ad295b84fb61f06da7058f34c4021e7c6" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>transform</name></member>
+      <member refid="class_quant_lib_1_1_fast_fourier_transform_1af5cd3ea31ebe82dc353ca835e79f710e" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>transform_impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

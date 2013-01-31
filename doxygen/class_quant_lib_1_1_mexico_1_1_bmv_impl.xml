@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_mexico_1_1_bmv_impl" kind="class" prot="private">
+    <compoundname>QuantLib::Mexico::BmvImpl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calendar_1_1_western_impl" prot="public" virt="non-virtual">Calendar::WesternImpl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_mexico_1_1_bmv_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_mexico_1_1_bmv_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isBusinessDay</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>isBusinessDay</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9859">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="9858">
+        <label>WesternImpl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
+        <childnode refid="9859" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9857">
+        <label>Mexico::BmvImpl</label>
+        <childnode refid="9858" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9862">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
+      </node>
+      <node id="9861">
+        <label>WesternImpl</label>
+        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
+        <childnode refid="9862" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9860">
+        <label>Mexico::BmvImpl</label>
+        <childnode refid="9861" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/mexico.hpp" bodystart="52" bodyend="56"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>addedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" virt="non-virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>easterMonday</name></member>
+      <member refid="class_quant_lib_1_1_mexico_1_1_bmv_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>isBusinessDay</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="protected" virt="virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>isWeekend</name></member>
+      <member refid="class_quant_lib_1_1_mexico_1_1_bmv_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>removedHolidays</name></member>
+      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Mexico::BmvImpl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

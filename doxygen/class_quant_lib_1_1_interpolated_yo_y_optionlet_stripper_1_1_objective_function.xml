@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function" kind="class" prot="protected">
+    <compoundname>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</compoundname>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ac5a975550c524843220400b7ca58552a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real slope_</definition>
+        <argsstring></argsstring>
+        <name>slope_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aba22a604426f553860dd24a012d6636c" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate K_</definition>
+        <argsstring></argsstring>
+        <name>K_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ae358763dc753768bb42e898365204a9a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <definition>Frequency frequency_</definition>
+        <argsstring></argsstring>
+        <name>frequency_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a5efd9d78315713e82ef9c956ebe86eb4" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool indexIsInterpolated_</definition>
+        <argsstring></argsstring>
+        <name>indexIsInterpolated_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a54604f1e1a84769d0cdd01cbfddc90e0" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; tvec_</definition>
+        <argsstring></argsstring>
+        <name>tvec_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a9a1f8045765ddcd785b17655124ff5e2" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; dvec_</definition>
+        <argsstring></argsstring>
+        <name>dvec_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a4b1c756ea84cc01d63125e7ee08c441b" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>std::vector&lt;Volatility&gt; vvec_</definition>
+        <argsstring></argsstring>
+        <name>vvec_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aab33676b3982e05283f1cbc7dead456b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor" kindref="compound">YoYInflationCapFloor</ref></type>
+        <definition>YoYInflationCapFloor capfloor_</definition>
+        <argsstring></argsstring>
+        <name>capfloor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ab96407f8ebf6e962c92541ff2b20e33e" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real priceToMatch_</definition>
+        <argsstring></argsstring>
+        <name>priceToMatch_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a5e33105d2876060b823f2e38eccabf92" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;YoYCapFloorTermPriceSurface&gt; surf_</definition>
+        <argsstring></argsstring>
+        <name>surf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a686092ffaa2ce9ba65a854d47a710a2b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period lag_</definition>
+        <argsstring></argsstring>
+        <name>lag_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ae5a227abb7c15c490444779d0692bf03" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;YoYInflationCapFloorEngine&gt; p_</definition>
+        <argsstring></argsstring>
+        <name>p_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aafe9555a1b241d82ed62ab32be14095c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ObjectiveFunction</definition>
+        <argsstring>(YoYInflationCapFloor::Type type, Real slope, Rate K, Period &amp;lag, Natural fixingDays, boost::shared_ptr&lt; YoYInflationIndex &gt; anIndex, const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;p, Real priceToMatch)</argsstring>
+        <name>ObjectiveFunction</name>
+        <param>
+          <type>YoYInflationCapFloor::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>slope</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>K</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>lag</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>fixingDays</declname>
+        </param>
+        <param>
+          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+          <declname>anIndex</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <defname>surf</defname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>priceToMatch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="105" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1abdacd409ecccc5c455e3e09a60e2d4c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Volatility guess) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <declname>guess</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="154" bodyend="171"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="8439">
+        <label>InterpolatedYoYOptionletStripper&lt; Interpolator1D &gt;::ObjectiveFunction</label>
+        <childnode refid="8440" relation="usage">
+          <edgelabel>capfloor_</edgelabel>
+        </childnode>
+        <childnode refid="8446" relation="usage">
+          <edgelabel>lag_</edgelabel>
+        </childnode>
+      </node>
+      <node id="8443">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="8442">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="8443" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8444" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8446">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="8440">
+        <label>YoYInflationCapFloor</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_cap_floor"/>
+        <childnode refid="8441" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8444">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="8445">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="8441">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="8442" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8445" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="72" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aab33676b3982e05283f1cbc7dead456b" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>capfloor_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a9a1f8045765ddcd785b17655124ff5e2" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>dvec_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ae358763dc753768bb42e898365204a9a" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>frequency_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a5efd9d78315713e82ef9c956ebe86eb4" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>indexIsInterpolated_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aba22a604426f553860dd24a012d6636c" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>K_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a686092ffaa2ce9ba65a854d47a710a2b" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>lag_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aafe9555a1b241d82ed62ab32be14095c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>ObjectiveFunction</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1abdacd409ecccc5c455e3e09a60e2d4c5" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ae5a227abb7c15c490444779d0692bf03" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>p_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ab96407f8ebf6e962c92541ff2b20e33e" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>priceToMatch_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1ac5a975550c524843220400b7ca58552a" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>slope_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a5e33105d2876060b823f2e38eccabf92" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>surf_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a54604f1e1a84769d0cdd01cbfddc90e0" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>tvec_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1a4b1c756ea84cc01d63125e7ee08c441b" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</scope><name>vvec_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

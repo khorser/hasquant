@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__barrierengines" kind="group">
+    <compoundname>barrierengines</compoundname>
+    <title>Barrier option engines</title>
+    <innerclass refid="class_quant_lib_1_1_perturbative_barrier_option_engine" prot="public">QuantLib::PerturbativeBarrierOptionEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_barrier_engine" prot="public">QuantLib::AnalyticBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_barrier_engine" prot="public">QuantLib::FdBlackScholesBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_black_scholes_rebate_engine" prot="public">QuantLib::FdBlackScholesRebateEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_heston_barrier_engine" prot="public">QuantLib::FdHestonBarrierEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd_heston_rebate_engine" prot="public">QuantLib::FdHestonRebateEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_barrier_engine" prot="public">QuantLib::MCBarrierEngine</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

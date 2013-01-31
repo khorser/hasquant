@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_d_zero" kind="class" prot="public">
+    <compoundname>QuantLib::DZero</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_tridiagonal_operator" prot="public" virt="non-virtual">TridiagonalOperator</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dzero.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_d_zero_1a38542ce04e1dc1ba8def05d54f5ef722" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>DZero</definition>
+        <argsstring>(Size gridPoints, Real h)</argsstring>
+        <name>DZero</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dzero.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dzero.hpp" bodystart="51" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><formula id="281">$ D_{0} $</formula> matricial representation </para>    </briefdescription>
+    <detaileddescription>
+<para>The differential operator <formula id="281">$ D_{0} $</formula> discretizes the first derivative with the second-order formula <formula id="282">\[ \frac{\partial u_{i}}{\partial x} \approx \frac{u_{i+1}-u_{i-1}}{2h} = D_{0} u_{i} \]</formula></para><para><xrefsect id="test_1_test000076"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="4023">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+      </node>
+      <node id="4022">
+        <label>DZero</label>
+        <link refid="class_quant_lib_1_1_d_zero"/>
+        <childnode refid="4023" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4025">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+        <childnode refid="4026" relation="usage">
+          <edgelabel>upperDiagonal_</edgelabel>
+          <edgelabel>lowerDiagonal_</edgelabel>
+          <edgelabel>temp_</edgelabel>
+          <edgelabel>diagonal_</edgelabel>
+        </childnode>
+      </node>
+      <node id="4026">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="4024">
+        <label>DZero</label>
+        <link refid="class_quant_lib_1_1_d_zero"/>
+        <childnode refid="4025" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dzero.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/dzero.hpp" bodystart="43" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a112ec8c0a82c5ba78b0203b093687f47" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a7750fe82fcf1c7eccd9ebda149e2ff16" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>diagonal</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1af5530947e239dbe2770cc68b00be1c5d" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>diagonal_</name></member>
+      <member refid="class_quant_lib_1_1_d_zero_1a38542ce04e1dc1ba8def05d54f5ef722" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>DZero</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1af7d138b877b39e9af280942629d871c5" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>identity</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aadf78a9a7f0763ac460c36286b51093f" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>isTimeDependent</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aa9ffb885f8454676f62eec587622cc95" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>lowerDiagonal</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a0467f333e5deea857d0e085d086cec33" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>lowerDiagonal_</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a9bedbbacb0b82a55c579510cee137603" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>n_</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a8f66389fe4aab7671101792bec064118" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1ab43e4ba91f1d74a3fd352eb5e7d96c96" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>setFirstRow</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a9bd33a0848dba9e558cb8f546bcee5d0" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>setLastRow</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1af67f1e3dddc642501ce58c719f54f177" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>setMidRow</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aa442c4c252e0cc87b8f0bfce245e1776" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>setMidRows</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aa3452028876895626738d87042ea6a1b" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a73742343dfce6f478b7a7d11d07aa63e" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>solveFor</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1ab98bc0891800b58aa3b2bea357884124" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>solveFor</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a23e7cd3f97a88ebf7495659fbb9c7612" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>SOR</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aae5ca66b3ce602c02ca9a2072dcb3a2d" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>swap</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1ac5d806c61eb50e57909ce47ffe587436" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>temp_</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1ac95a7b47b49279c9464f2c2d190d936b" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>timeSetter_</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a597bed0ea0561e7c1a176c9ede6356b4" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>TridiagonalOperator</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a47ce685a88cd2ab45ae0875fb5574f0f" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>TridiagonalOperator</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aaa4521540895eb521cadae239c7a29c3" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>TridiagonalOperator</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1aef1be2122e6b404d52ac60819893a55d" prot="public" virt="non-virtual"><scope>QuantLib::DZero</scope><name>upperDiagonal</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1a7713e5f977a1f0ad62dae6c14554812b" prot="protected" virt="non-virtual"><scope>QuantLib::DZero</scope><name>upperDiagonal_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

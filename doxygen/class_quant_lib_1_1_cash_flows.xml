@@ -1,0 +1,1529 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cash_flows" kind="class" prot="public">
+    <compoundname>QuantLib::CashFlows</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Date functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a3393c4e4a7533490b540d49466594f24" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date startDate</definition>
+        <argsstring>(const Leg &amp;leg)</argsstring>
+        <name>startDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a356f8aea0022acb2e628dfce5cf47e14" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date maturityDate</definition>
+        <argsstring>(const Leg &amp;leg)</argsstring>
+        <name>maturityDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aba88d0e60cebe7088f340357e48dd88d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool isExpired</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>isExpired</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>CashFlow functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ac0113b119a8c4c90ee57b4abf64bda0d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Leg::const_reverse_iterator</type>
+        <definition>static Leg::const_reverse_iterator previousCashFlow</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>previousCashFlow</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>the last cashflow paying before or at the given date </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a812cc01c85ff1bc09e4edb798a92ae5b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Leg::const_iterator</type>
+        <definition>static Leg::const_iterator nextCashFlow</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>nextCashFlow</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>the first cashflow paying after the given date </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ae97cfc1d7c084bc7ff0660b082722352" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date previousCashFlowDate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>previousCashFlowDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a835348c16d1009ffe4e50e50929fc0dd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date nextCashFlowDate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>nextCashFlowDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a97719a1d5eb607d221bebe79efbb1671" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real previousCashFlowAmount</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>previousCashFlowAmount</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a49d7390ee1e3377d916ea425735b3873" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real nextCashFlowAmount</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>nextCashFlowAmount</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="82"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Coupon inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1adf7c17d0ea199777ce5703e0d100d3b8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate previousCouponRate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>previousCouponRate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aef37790de2210df61dbe752914e61762" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate nextCouponRate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>nextCouponRate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a709490e6c0ffead2b28bdbeb8c0ec0a0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real nominal</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
+        <name>nominal</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a327c021eb612eda92e4bf006c5d106be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date accrualStartDate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
+        <name>accrualStartDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1add502f32c2b28eaef015581725c16362" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date accrualEndDate</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accrualEndDate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a2f3b3519e1df56006aaf605de8db4d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date referencePeriodStart</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
+        <name>referencePeriodStart</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a7ae9cbcf2cfb504c8941a6ddc7275c16" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date referencePeriodEnd</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlDate=Date())</argsstring>
+        <name>referencePeriodEnd</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af769ffc5d74836d41dbf61afc5fd48d4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time accrualPeriod</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accrualPeriod</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1aeff3590f9dcd736c6813415fecb3264e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>static BigInteger accrualDays</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accrualDays</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a4fa213c8cf4de8362071823155d2698b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time accruedPeriod</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accruedPeriod</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ac5e20d3c2a37e64e2d191e9a7718d690" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>static BigInteger accruedDays</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accruedDays</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ad847f5760463d3f239ac388287f1b13f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real accruedAmount</definition>
+        <argsstring>(const Leg &amp;leg, bool includeSettlementDateFlows, Date settlementDate=Date())</argsstring>
+        <name>accruedAmount</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="135"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>YieldTermStructure functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a935030a697b942fe432e020706a21fc8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real npv</definition>
+        <argsstring>(const Leg &amp;leg, const YieldTermStructure &amp;discountCurve, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>npv</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>NPV of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The NPV is the sum of the cash flows, each discounted according to the given term structure. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a9b11008b6df9721a340a1844e96c1385" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Leg &amp;leg, const YieldTermStructure &amp;discountCurve, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given term structure. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a8ba8a6673783d6c60a6869f9a40432fd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void npvbps</definition>
+        <argsstring>(const Leg &amp;leg, const YieldTermStructure &amp;discountCurve, bool includeSettlementDateFlows, Date settlementDate, Date npvDate, Real &amp;npv, Real &amp;bps)</argsstring>
+        <name>npvbps</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>npv</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>bps</declname>
+        </param>
+        <briefdescription>
+<para>NPV and BPS of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The NPV and BPS of the cash flows calculated together for performance reason </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="172"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ae3aa49c05366fc3a840988b8d44e8a94" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate atmRate</definition>
+        <argsstring>(const Leg &amp;leg, const YieldTermStructure &amp;discountCurve, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date(), Real npv=Null&lt; Real &gt;())</argsstring>
+        <name>atmRate</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>npv</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>At-the-money rate of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The result is the fixed rate for which a fixed rate cash flow vector, equivalent to the input vector, has the required NPV according to the given term structure. If the required NPV is not given, the input cash flow vector&apos;s NPV is used instead. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="185"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Yield (a.k.a. Internal Rate of Return, i.e. IRR) functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a5cf9ce7f6f791493a5c54b21a766d463" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real npv</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>npv</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>NPV of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The IRR is the interest rate at which the NPV of the cash flows equals the dirty price.</para><para>The NPV is the sum of the cash flows, each discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="203"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a58ac4a7022b3f7803e3262df1291eed1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real npv</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>npv</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af9cc5fe1103f97e4471922c6069307d1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Basis-point sensitivity of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>The result is the change in NPV due to a uniform 1-basis-point change in the rate paid by the cash flows. The change for each coupon is discounted according to the given constant interest rate. The result is affected by the choice of the interest-rate compounding and the relative frequency and day counter. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="224"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af60dbf95c35352d257f55588716cb12a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real bps</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>bps</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="232"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a5fcebd9dacabca6a125a48a97dd3c0b3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>static Rate yield</definition>
+        <argsstring>(const Leg &amp;leg, Real npv, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.05)</argsstring>
+        <name>yield</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>npv</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+          <defval>0.05</defval>
+        </param>
+        <briefdescription>
+<para>Implied internal rate of return. </para>        </briefdescription>
+        <detaileddescription>
+<para>The function verifies the theoretical existance of an IRR and numerically establishes the IRR to the desired precision. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="248"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a64640dcb0a9d2c0bd9d914e03450b6e0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time duration</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, Duration::Type type, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>duration</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>Duration::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Cash-flow duration. </para>        </briefdescription>
+        <detaileddescription>
+<para>The simple duration of a string of cash flows is defined as <formula id="54">\[ D_{\mathrm{simple}} = \frac{\sum t_i c_i B(t_i)}{\sum c_i B(t_i)} \]</formula> where <formula id="55">$ c_i $</formula> is the amount of the <formula id="56">$ i $</formula>-th cash flow, <formula id="57">$ t_i $</formula> is its payment time, and <formula id="58">$ B(t_i) $</formula> is the corresponding discount according to the passed yield.</para><para>The modified duration is defined as <formula id="59">\[ D_{\mathrm{modified}} = -\frac{1}{P} \frac{\partial P}{\partial y} \]</formula> where <formula id="41">$ P $</formula> is the present value of the cash flows according to the given IRR <formula id="13">$ y $</formula>.</para><para>The Macaulay duration is defined for a compounded IRR as <formula id="60">\[ D_{\mathrm{Macaulay}} = \left( 1 + \frac{y}{N} \right) D_{\mathrm{modified}} \]</formula> where <formula id="13">$ y $</formula> is the IRR and <formula id="32">$ N $</formula> is the number of cash flows per year. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1af70bbcf5337066d9cd6848020bf8b7e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>static Time duration</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, Duration::Type type, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>duration</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>Duration::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="288"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a72621ac467ab4e7a3c53ab6b8f5d4d71" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real convexity</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>convexity</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Cash-flow convexity. </para>        </briefdescription>
+        <detaileddescription>
+<para>The convexity of a string of cash flows is defined as <formula id="61">\[ C = \frac{1}{P} \frac{\partial^2 P}{\partial y^2} \]</formula> where <formula id="41">$ P $</formula> is the present value of the cash flows according to the given IRR <formula id="13">$ y $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="302"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a41eee8556d9ae0771a47ce1eef65a9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real convexity</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>convexity</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="310"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a954517447441b8adc1e91a510fc687da" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real basisPointValue</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>basisPointValue</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Basis-point value. </para>        </briefdescription>
+        <detaileddescription>
+<para>Obtained by setting dy = 0.0001 in the 2nd-order Taylor series expansion. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="320"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a62e34cfbad021c887ca517d30f76a266" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real basisPointValue</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>basisPointValue</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="328"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a24ff333a91ccb3fcc3928f921d2bc4c3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real yieldValueBasisPoint</definition>
+        <argsstring>(const Leg &amp;leg, const InterestRate &amp;yield, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>yieldValueBasisPoint</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &amp;</type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>Yield value of a basis point. </para>        </briefdescription>
+        <detaileddescription>
+<para>The yield value of a one basis point change in price is the derivative of the yield with respect to the price multiplied by 0.01 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="339"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a9fe83b29ebedc44cb8ca72935df11a2e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real yieldValueBasisPoint</definition>
+        <argsstring>(const Leg &amp;leg, Rate yield, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>yieldValueBasisPoint</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>yield</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="347"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Z-spread functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a043fe6f5dd5dc0ad42b453e9fbafabd5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real npv</definition>
+        <argsstring>(const Leg &amp;leg, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;discount, Spread zSpread, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
+        <name>npv</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>zSpread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>NPV of the cash flows. </para>        </briefdescription>
+        <detaileddescription>
+<para>For details on z-spread refer to: &quot;Credit Spreads Explained&quot;, Lehman Brothers European Fixed Income Research - March 2004, D. O&apos;Kane</para><para>The NPV is the sum of the cash flows, each discounted according to the z-spreaded term structure. The result is affected by the choice of the z-spread compounding and the relative frequency and day counter. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="370"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a1a2af0e4ab0d785e046b89e8a9b2ca97" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>static Spread zSpread</definition>
+        <argsstring>(const Leg &amp;leg, Real npv, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.0)</argsstring>
+        <name>zSpread</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>npv</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+<para>implied Z-spread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="383"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1afb5712af994c2bb3890466253ff2da4e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>static Spread zSpread</definition>
+        <argsstring>(const Leg &amp;leg, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;d, Real npv, const DayCounter &amp;dayCounter, Compounding compounding, Frequency frequency, bool includeSettlementDateFlows, Date settlementDate=Date(), Date npvDate=Date(), Real accuracy=1.0e-10, Size maxIterations=100, Rate guess=0.0)</argsstring>
+        <name>zSpread</name>
+        <param>
+          <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+          <declname>leg</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>npv</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a2779d04b4839fd386b5c85bbb96aaf73" kindref="member">Compounding</ref></type>
+          <declname>compounding</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeSettlementDateFlows</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>settlementDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <declname>npvDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>guess</declname>
+          <defval>0.0</defval>
+        </param>
+        <briefdescription>
+<para>deprecated implied Z-spread. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="396" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" bodystart="385" bodyend="400"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1a48f48014b35fc99fd49086a6ce8d0421" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CashFlows</definition>
+        <argsstring>()</argsstring>
+        <name>CashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cash_flows_1ad9756e7e5aef49e2b9eb7f8cc9a348a8" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CashFlows</definition>
+        <argsstring>(const CashFlows &amp;)</argsstring>
+        <name>CashFlows</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_cash_flows" kindref="compound">CashFlows</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>cashflow-analysis functions </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000001"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add tests </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" bodystart="41" bodyend="403"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cash_flows_1aeff3590f9dcd736c6813415fecb3264e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualDays</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1add502f32c2b28eaef015581725c16362" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualEndDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1af769ffc5d74836d41dbf61afc5fd48d4" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualPeriod</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a327c021eb612eda92e4bf006c5d106be" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualStartDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ad847f5760463d3f239ac388287f1b13f" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedAmount</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ac5e20d3c2a37e64e2d191e9a7718d690" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedDays</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a4fa213c8cf4de8362071823155d2698b" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedPeriod</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ae3aa49c05366fc3a840988b8d44e8a94" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>atmRate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a954517447441b8adc1e91a510fc687da" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>basisPointValue</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a62e34cfbad021c887ca517d30f76a266" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>basisPointValue</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a9b11008b6df9721a340a1844e96c1385" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1af9cc5fe1103f97e4471922c6069307d1" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1af60dbf95c35352d257f55588716cb12a" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a48f48014b35fc99fd49086a6ce8d0421" prot="private" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>CashFlows</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ad9756e7e5aef49e2b9eb7f8cc9a348a8" prot="private" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>CashFlows</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a72621ac467ab4e7a3c53ab6b8f5d4d71" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>convexity</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a1a41eee8556d9ae0771a47ce1eef65a9" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>convexity</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a64640dcb0a9d2c0bd9d914e03450b6e0" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>duration</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1af70bbcf5337066d9cd6848020bf8b7e7" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>duration</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1aba88d0e60cebe7088f340357e48dd88d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a356f8aea0022acb2e628dfce5cf47e14" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>maturityDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a812cc01c85ff1bc09e4edb798a92ae5b" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlow</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a49d7390ee1e3377d916ea425735b3873" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlowAmount</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a835348c16d1009ffe4e50e50929fc0dd" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlowDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1aef37790de2210df61dbe752914e61762" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCouponRate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a709490e6c0ffead2b28bdbeb8c0ec0a0" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a935030a697b942fe432e020706a21fc8" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a5cf9ce7f6f791493a5c54b21a766d463" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a58ac4a7022b3f7803e3262df1291eed1" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a043fe6f5dd5dc0ad42b453e9fbafabd5" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a8ba8a6673783d6c60a6869f9a40432fd" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npvbps</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ac0113b119a8c4c90ee57b4abf64bda0d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlow</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a97719a1d5eb607d221bebe79efbb1671" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlowAmount</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1ae97cfc1d7c084bc7ff0660b082722352" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlowDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1adf7c17d0ea199777ce5703e0d100d3b8" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCouponRate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a7ae9cbcf2cfb504c8941a6ddc7275c16" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>referencePeriodEnd</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a1a2f3b3519e1df56006aaf605de8db4d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>referencePeriodStart</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a3393c4e4a7533490b540d49466594f24" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>startDate</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a5fcebd9dacabca6a125a48a97dd3c0b3" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yield</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a24ff333a91ccb3fcc3928f921d2bc4c3" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yieldValueBasisPoint</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a9fe83b29ebedc44cb8ca72935df11a2e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yieldValueBasisPoint</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1a1a2af0e4ab0d785e046b89e8a9b2ca97" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>zSpread</name></member>
+      <member refid="class_quant_lib_1_1_cash_flows_1afb5712af994c2bb3890466253ff2da4e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>zSpread</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

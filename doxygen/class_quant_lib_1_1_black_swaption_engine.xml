@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_black_swaption_engine" kind="class" prot="public">
+    <compoundname>QuantLib::BlackSwaptionEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_swaption_1_1engine" prot="public" virt="non-virtual">Swaption::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_swaption_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
+        <argsstring></argsstring>
+        <name>discountCurve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_swaption_engine_1ab7bb4e4c9f5765d736acddb95770aa7c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+        <definition>Handle&lt;SwaptionVolatilityStructure&gt; vol_</definition>
+        <argsstring></argsstring>
+        <name>vol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackSwaptionEngine</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Volatility vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>BlackSwaptionEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <declname>vol</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a98b10c260bbcb19900e976a19909b60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackSwaptionEngine</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; Quote &gt; &amp;vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>BlackSwaptionEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>vol</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a25dd2687fa0325a6a488661fc9a0fe40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackSwaptionEngine</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; SwaptionVolatilityStructure &gt; &amp;vol)</argsstring>
+        <name>BlackSwaptionEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <declname>vol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
+        <argsstring>()</argsstring>
+        <name>termStructure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a6c5808888339733d1c7217afb71353ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+        <definition>Handle&lt;SwaptionVolatilityStructure&gt; volatility</definition>
+        <argsstring>()</argsstring>
+        <name>volatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="54" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Black-formula swaption engine. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000100"><xreftitle>Warning</xreftitle><xrefdescription><para>The engine assumes that the exercise date equals the start date of the passed swap. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1156">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1154">
+        <label>GenericEngine&lt; Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="1155" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1157" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1157">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1152">
+        <label>BlackSwaptionEngine</label>
+        <link refid="class_quant_lib_1_1_black_swaption_engine"/>
+        <childnode refid="1153" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1155">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="1156" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1153">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_swaption_1_1engine"/>
+        <childnode refid="1154" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1162">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1160">
+        <label>GenericEngine&lt; Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="1161" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1163" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1164" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1164">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
+        <childnode refid="1165" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1163">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1158">
+        <label>BlackSwaptionEngine</label>
+        <link refid="class_quant_lib_1_1_black_swaption_engine"/>
+        <childnode refid="1159" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1166">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
+      </node>
+      <node id="1161">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="1162" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1165">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_vanilla_swap_1_1arguments"/>
+      </node>
+      <node id="1159">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_swaption_1_1engine"/>
+        <childnode refid="1160" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/blackswaptionengine.hpp" bodystart="42" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>BlackSwaptionEngine</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1a98b10c260bbcb19900e976a19909b60c" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>BlackSwaptionEngine</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1a25dd2687fa0325a6a488661fc9a0fe40" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>BlackSwaptionEngine</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>discountCurve_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BlackSwaptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::BlackSwaptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>termStructure</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1ab7bb4e4c9f5765d736acddb95770aa7c" prot="private" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>vol_</name></member>
+      <member refid="class_quant_lib_1_1_black_swaption_engine_1a6c5808888339733d1c7217afb71353ad" prot="public" virt="non-virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::BlackSwaptionEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

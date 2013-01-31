@@ -1,0 +1,418 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_m_c_european_basket_engine" kind="class" prot="public">
+    <compoundname>QuantLib::MCEuropeanBasketEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_basket_option_1_1engine" prot="public" virt="non-virtual">BasketOption::engine</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_mc_simulation" prot="public" virt="non-virtual">McSimulation&lt; MultiVariate, RNG, S &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class RNG</type>
+        <defval><ref refid="namespace_quant_lib_1af791c06b3da1d5f4b90a19f3f423e75e" kindref="member">PseudoRandom</ref></defval>
+      </param>
+      <param>
+        <type>class S</type>
+        <defval><ref refid="namespace_quant_lib_1a235b6c8805adaa743cc845aae9c05946" kindref="member">Statistics</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_basket_engine_1a97d0a464c09dfbac519dd3c4ed297523" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::path_generator_type</type>
+        <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_generator_type path_generator_type</definition>
+        <argsstring></argsstring>
+        <name>path_generator_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_basket_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::path_pricer_type</type>
+        <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
+        <argsstring></argsstring>
+        <name>path_pricer_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_european_basket_engine_1a931267be1997474da010eacc9e911b29" prot="public" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;::stats_type</type>
+        <definition>typedef McSimulation&lt;MultiVariate,RNG,S&gt;::stats_type stats_type</definition>
+        <argsstring></argsstring>
+        <name>stats_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a44461bbe7cf3adc237d74f325e7f68e2" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StochasticProcessArray&gt; processes_</definition>
+        <argsstring></argsstring>
+        <name>processes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeSteps_</definition>
+        <argsstring></argsstring>
+        <name>timeSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a9c25c7000e01433677e04eae138ff831" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeStepsPerYear_</definition>
+        <argsstring></argsstring>
+        <name>timeStepsPerYear_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a937ea3e2dae694ac2df5226b1b349b22" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size requiredSamples_</definition>
+        <argsstring></argsstring>
+        <name>requiredSamples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxSamples_</definition>
+        <argsstring></argsstring>
+        <name>maxSamples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1aa336fe20be7a7fe0b17df1565bbc2f1a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real requiredTolerance_</definition>
+        <argsstring></argsstring>
+        <name>requiredTolerance_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a237ba632601944316deef578c245e825" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool brownianBridge_</definition>
+        <argsstring></argsstring>
+        <name>brownianBridge_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_european_basket_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+        <definition>BigNatural seed_</definition>
+        <argsstring></argsstring>
+        <name>seed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_european_basket_engine_1a3421a65be40303cce916f93f3a706038" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MCEuropeanBasketEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcessArray &gt; &amp;, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
+        <name>MCEuropeanBasketEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
+          <defname>processes</defname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeStepsPerYear</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>brownianBridge</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>antitheticVariate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>requiredSamples</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>requiredTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxSamples</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="143" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_european_basket_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="62" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_european_basket_engine_1aac0bc663d50bdc0fd6771bb1ad2481e5" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref></type>
+        <definition>TimeGrid timeGrid</definition>
+        <argsstring>() const </argsstring>
+        <name>timeGrid</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1a6ae51c5540a0f80f270a0f9a66eb6df3">timeGrid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="175" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_european_basket_engine_1a7751aec86337c68f4b4ee807247f5648" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; path_generator_type &gt;</type>
+        <definition>boost::shared_ptr&lt;path_generator_type&gt; pathGenerator</definition>
+        <argsstring>() const </argsstring>
+        <name>pathGenerator</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1a014c4e8a7f294e9c447b3a7dec739596">pathGenerator</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="74" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_european_basket_engine_1a4a0999895df5e5426053e8d53531ec90" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; path_pricer_type &gt;</type>
+        <definition>boost::shared_ptr&lt; typename MCEuropeanBasketEngine&lt; RNG, S &gt;::path_pricer_type &gt; pathPricer</definition>
+        <argsstring>() const </argsstring>
+        <name>pathPricer</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1a365db6627d7db47cf842a9f816ab299b">pathPricer</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="192" bodyend="208"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for European basket options using Monte Carlo simulation. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000097"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9685">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_basket_option_1_1engine"/>
+        <childnode refid="9686" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9688">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9684">
+        <label>MCEuropeanBasketEngine&lt; RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_m_c_european_basket_engine"/>
+        <childnode refid="9685" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9689">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9687">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="9688" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9686">
+        <label>GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="9687" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9689" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9690">
+        <label>McSimulation&lt; MultiVariate, RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_mc_simulation"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9692">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_basket_option_1_1engine"/>
+        <childnode refid="9693" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9695">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9691">
+        <label>MCEuropeanBasketEngine&lt; RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_m_c_european_basket_engine"/>
+        <childnode refid="9692" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9697" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9696">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9694">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="9695" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9693">
+        <label>GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="9694" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9696" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9697">
+        <label>McSimulation&lt; MultiVariate, RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_mc_simulation"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="43" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a3f79786890b8283d011bf31f3b325311" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>antitheticVariate_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a237ba632601944316deef578c245e825" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>brownianBridge_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a778f370c51e99a9f99dc8eb03cbe6140" prot="public" virt="non-virtual" ambiguityscope="McSimulation&lt; MultiVariate, RNG, S &gt;::"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a1042ecfdf238d90cef5634540387ee64" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>controlPathGenerator</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a0f51bdda15eb669a6b73a9bfa1d5642e" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>controlPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a14e616889c4ee17d7e4277952bf85ed0" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>controlPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a1c27fd78e44f207125a15990d39ad4f5" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>controlVariate_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1adcaeed031f5385c78a0c1214e198b68c" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>controlVariateValue</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1aedf5500bc16aadda7266e3d70e86102c" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a6e88fa36deb63e5bf40cad0082068f57" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1ab8fcdfbea80f9ee9882c197655216b2d" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>maxSamples_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a3421a65be40303cce916f93f3a706038" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>MCEuropeanBasketEngine</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a578bfc5052dad419af0dafb920aff02d" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>mcModel_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1ab494776b2804de3802deefd3b35e2503" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>McSimulation</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a97d0a464c09dfbac519dd3c4ed297523" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>path_generator_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a6a9d35263b41b36b002797dde605d942" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>path_pricer_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a7751aec86337c68f4b4ee807247f5648" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>pathGenerator</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a4a0999895df5e5426053e8d53531ec90" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>pathPricer</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a44461bbe7cf3adc237d74f325e7f68e2" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>processes_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a937ea3e2dae694ac2df5226b1b349b22" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>requiredSamples_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1aa336fe20be7a7fe0b17df1565bbc2f1a" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>requiredTolerance_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a94aa31e474a79b56b5921e9b5e59090d" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a97a9254d199bc4ea4a78d11eaf2d713d" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>sampleAccumulator</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>seed_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a931267be1997474da010eacc9e911b29" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>stats_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1aac0bc663d50bdc0fd6771bb1ad2481e5" prot="protected" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>timeGrid</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_european_basket_engine_1a9c25c7000e01433677e04eae138ff831" prot="protected" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>timeStepsPerYear_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1af5af70b152b72f235dc275464058ef69" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1acabb99b71d14507ebd13797c9d904ffc" prot="public" virt="non-virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>valueWithSamples</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a5db0fd3bf528716e23dbd7d7013fad44" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>~McSimulation</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::MCEuropeanBasketEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

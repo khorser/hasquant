@@ -1,0 +1,442 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_asset_swap_helper" kind="class" prot="public">
+    <compoundname>QuantLib::AssetSwapHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::BootstrapHelper&lt; DefaultProbabilityTermStructure &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period tenor_</definition>
+        <argsstring></argsstring>
+        <name>tenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a8cb58608de54286272715a08a7492a7e" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural settlementDays_</definition>
+        <argsstring></argsstring>
+        <name>settlementDays_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar_</definition>
+        <argsstring></argsstring>
+        <name>calendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a1317e1bce37ec4fcc241069d1405e87a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention fixedConvention_</definition>
+        <argsstring></argsstring>
+        <name>fixedConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ad2bab65a51b36b242d8f1eca37f29288" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period fixedPeriod_</definition>
+        <argsstring></argsstring>
+        <name>fixedPeriod_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a417ce99525ff934e161e933d540c0409" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter fixedDayCount_</definition>
+        <argsstring></argsstring>
+        <name>fixedDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ae60a07c9bc2ad615a4e024154188c328" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention floatConvention_</definition>
+        <argsstring></argsstring>
+        <name>floatConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a05c24c44b71e2f774c63c214e4803018" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period floatPeriod_</definition>
+        <argsstring></argsstring>
+        <name>floatPeriod_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a52317f2d9d20fcdf6da1753974274a67" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter floatDayCount_</definition>
+        <argsstring></argsstring>
+        <name>floatDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real recoveryRate_</definition>
+        <argsstring></argsstring>
+        <name>recoveryRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a3d2fad300b5d5ea0e346c325f7a48a57" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;YieldTermStructure&gt; yieldTS_</definition>
+        <argsstring></argsstring>
+        <name>yieldTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1ac87492227a6f6469bcab91963eab9db7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period integrationStepSize_</definition>
+        <argsstring></argsstring>
+        <name>integrationStepSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date evaluationDate_</definition>
+        <argsstring></argsstring>
+        <name>evaluationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a10eb26663e86e8ab1d9683296b33dbbc" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_risky_asset_swap" kindref="compound">RiskyAssetSwap</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;RiskyAssetSwap&gt; asw_</definition>
+        <argsstring></argsstring>
+        <name>asw_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_asset_swap_helper_1a2fe509ef8ab9a9696c015a6fa1e3c261" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
+        <argsstring></argsstring>
+        <name>probability_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a57f70b6981a20fc936aeb38d1499b000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AssetSwapHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;spread, const Period &amp;tenor, Natural settlementDays, const Calendar &amp;calendar, const Period &amp;fixedPeriod, BusinessDayConvention fixedConvention, const DayCounter &amp;fixedDayCount, const Period &amp;floatPeriod, BusinessDayConvention floatConvention, const DayCounter &amp;floatDayCount, Real recoveryRate, const RelinkableHandle&lt; YieldTermStructure &gt; &amp;yieldTS, const Period &amp;integrationStepSize=Period())</argsstring>
+        <name>AssetSwapHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>spread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>fixedPeriod</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>fixedConvention</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>fixedDayCount</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>floatPeriod</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>floatConvention</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>floatDayCount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>yieldTS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>integrationStepSize</declname>
+          <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real impliedQuote</definition>
+        <argsstring>() const </argsstring>
+        <name>impliedQuote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTermStructure</definition>
+        <argsstring>(DefaultProbabilityTermStructure *)</argsstring>
+        <name>setTermStructure</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initializeDates</definition>
+        <argsstring>()</argsstring>
+        <name>initializeDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="547">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="545">
+        <label>DefaultProbabilityHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="546" relation="public-inheritance">
+        </childnode>
+        <childnode refid="547" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="544">
+        <label>AssetSwapHelper</label>
+        <childnode refid="545" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="546">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="551">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="549">
+        <label>DefaultProbabilityHelper</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="550" relation="public-inheritance">
+        </childnode>
+        <childnode refid="551" relation="public-inheritance">
+        </childnode>
+        <childnode refid="552" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="553" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="548">
+        <label>AssetSwapHelper</label>
+        <childnode refid="549" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="553">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="550">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="552">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/riskyassetswap.hpp" bodystart="89" bodyend="127"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a57f70b6981a20fc936aeb38d1499b000" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>AssetSwapHelper</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a10eb26663e86e8ab1d9683296b33dbbc" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>asw_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a1317e1bce37ec4fcc241069d1405e87a" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>fixedConvention_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a417ce99525ff934e161e933d540c0409" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>fixedDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1ad2bab65a51b36b242d8f1eca37f29288" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>fixedPeriod_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1ae60a07c9bc2ad615a4e024154188c328" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>floatConvention_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a52317f2d9d20fcdf6da1753974274a67" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>floatDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a05c24c44b71e2f774c63c214e4803018" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>floatPeriod_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a5b508edbd7d439284c55178fd681adb0" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>initializeDates</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1ac87492227a6f6469bcab91963eab9db7" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>integrationStepSize_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::AssetSwapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::AssetSwapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a2fe509ef8ab9a9696c015a6fa1e3c261" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>probability_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>recoveryRate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a845ffeb1161341447a075435a0718e39" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::BootstrapHelper::"><scope>QuantLib::AssetSwapHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a8cb58608de54286272715a08a7492a7e" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>settlementDays_</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>tenor_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_asset_swap_helper_1a3d2fad300b5d5ea0e346c325f7a48a57" prot="private" virt="non-virtual"><scope>QuantLib::AssetSwapHelper</scope><name>yieldTS_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::AssetSwapHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

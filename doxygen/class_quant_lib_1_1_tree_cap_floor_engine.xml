@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_tree_cap_floor_engine" kind="class" prot="public">
+    <compoundname>QuantLib::TreeCapFloorEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lattice_short_rate_model_engine" prot="public" virt="non-virtual">LatticeShortRateModelEngine&lt; CapFloor::arguments, CapFloor::results &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <description><para><simplesect kind="note"><para>the term structure is only needed when the short-rate model cannot provide one itself. </para></simplesect>
+</para></description>
+      <memberdef kind="function" id="class_quant_lib_1_1_tree_cap_floor_engine_1a21ec8e9f8bdbaf2ad692d2c704ab8455" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TreeCapFloorEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
+        <name>TreeCapFloorEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>termStructure</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_tree_cap_floor_engine_1acccfb13ec8b6b235820cfe3325bdbb50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TreeCapFloorEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const TimeGrid &amp;timeGrid, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
+        <name>TreeCapFloorEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <declname>timeGrid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>termStructure</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_tree_cap_floor_engine_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; termStructure_</definition>
+        <argsstring></argsstring>
+        <name>termStructure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_tree_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Numerical lattice engine for cap/floors. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14129">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14126">
+        <label>GenericModelEngine&lt; ShortRateModel, CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="14127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14127">
+        <label>GenericEngine&lt; CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="14128" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14130" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14125">
+        <label>LatticeShortRateModelEngine&lt; CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_lattice_short_rate_model_engine"/>
+        <childnode refid="14126" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14130">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14124">
+        <label>TreeCapFloorEngine</label>
+        <link refid="class_quant_lib_1_1_tree_cap_floor_engine"/>
+        <childnode refid="14125" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14128">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="14129" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14136">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14133">
+        <label>GenericModelEngine&lt; ShortRateModel, CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="14134" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14139" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14134">
+        <label>GenericEngine&lt; CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="14135" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14137" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14138" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14132">
+        <label>LatticeShortRateModelEngine&lt; CapFloor::arguments, CapFloor::results &gt;</label>
+        <link refid="class_quant_lib_1_1_lattice_short_rate_model_engine"/>
+        <childnode refid="14133" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14140" relation="usage">
+          <edgelabel>timeGrid_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14140">
+        <label>TimeGrid</label>
+        <link refid="class_quant_lib_1_1_time_grid"/>
+      </node>
+      <node id="14139">
+        <label>Handle&lt; ShortRateModel &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14137">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14131">
+        <label>TreeCapFloorEngine</label>
+        <link refid="class_quant_lib_1_1_tree_cap_floor_engine"/>
+        <childnode refid="14132" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14138">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_cap_floor_1_1arguments"/>
+      </node>
+      <node id="14135">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="14136" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/treecapfloorengine.hpp" bodystart="34" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_tree_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1a84a673ad4191efc05839167e4b5eb168" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>lattice_</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1a747300dccfd365b1b752a419234534f2" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>LatticeShortRateModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1aaa4869e006043fd23877d570331730ee" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>LatticeShortRateModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1acbc8f3ff77b5c912ed7558b6eb8c23b7" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>LatticeShortRateModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::TreeCapFloorEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::TreeCapFloorEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_tree_cap_floor_engine_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1adda5ae6c670bdbb1857509a4aa20ec25" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>timeGrid_</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_tree_cap_floor_engine_1a21ec8e9f8bdbaf2ad692d2c704ab8455" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>TreeCapFloorEngine</name></member>
+      <member refid="class_quant_lib_1_1_tree_cap_floor_engine_1acccfb13ec8b6b235820cfe3325bdbb50" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>TreeCapFloorEngine</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::TreeCapFloorEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_gauss_kronrod_adaptive" kind="class" prot="public">
+    <compoundname>QuantLib::GaussKronrodAdaptive</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Integrator</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_adaptive_1add0ba79f141ae0a90b0db80d4994d9dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GaussKronrodAdaptive</definition>
+        <argsstring>(Real tolerance, Size maxFunctionEvaluations=Null&lt; Size &gt;())</argsstring>
+        <name>GaussKronrodAdaptive</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxFunctionEvaluations</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_adaptive_1a5a7b69e9c96cb1f7b182caef74747c6c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integrate</definition>
+        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b) const </argsstring>
+        <name>integrate</name>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_adaptive_1a0f208918243b415ece7768b3b770d2ff" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integrateRecursively</definition>
+        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b, Real tolerance) const </argsstring>
+        <name>integrateRecursively</name>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="98"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Integral of a 1-dimensional function using the Gauss-Kronrod methods. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provide an adaptive integration procedure using 15 points Gauss-Kronrod integration rule. This is more robust in that it allows to integrate less smooth functions (though singular functions should be integrated using dedicated algorithms) but less efficient beacuse it does not reuse precedently computed points during computation steps.</para><para>References:</para><para>Gauss-Kronrod Integration <ulink url="http://mathcssun1.emporia.edu/~oneilcat/ExperimentApplet3/ExperimentApplet3.html">http://mathcssun1.emporia.edu/~oneilcat/ExperimentApplet3/ExperimentApplet3.html</ulink></para><para>NMS - Numerical Analysis Library <ulink url="http://www.math.iastate.edu/burkardt/f_src/nms/nms.html">http://www.math.iastate.edu/burkardt/f_src/nms/nms.html</ulink></para><para><xrefsect id="test_1_test000038"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/kronrodintegral.hpp" bodystart="86" bodyend="99"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_integrator_1a30349681fee19d861a0a89c9f4bf941d" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>absoluteAccuracy</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>absoluteError</name></member>
+      <member refid="class_quant_lib_1_1_gauss_kronrod_adaptive_1add0ba79f141ae0a90b0db80d4994d9dd" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>GaussKronrodAdaptive</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a239d39c2bf8f6edefc8b4b78451b8c8e" prot="protected" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>increaseNumberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_gauss_kronrod_adaptive_1a5a7b69e9c96cb1f7b182caef74747c6c" prot="protected" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>integrate</name></member>
+      <member refid="class_quant_lib_1_1_gauss_kronrod_adaptive_1a0f208918243b415ece7768b3b770d2ff" prot="private" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>integrateRecursively</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1acc129571df52ec7737c23e281c830106" prot="public" virt="virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>integrationSuccess</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a63b3dafdb96cf907300477ec2478ea8b" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>Integrator</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>maxEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>numberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>setAbsoluteAccuracy</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a3deaec481d5e01a78e29bcddab11ce93" prot="protected" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>setAbsoluteError</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a3ae2d70f89b2d3c6a9d16cfa91c4cc70" prot="public" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>setMaxEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a5bf750b90dc3c089122560f6d5a5db0d" prot="protected" virt="non-virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>setNumberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ac13ff1f4b36510ac4bcd076d4c1773ab" prot="public" virt="virtual"><scope>QuantLib::GaussKronrodAdaptive</scope><name>~Integrator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

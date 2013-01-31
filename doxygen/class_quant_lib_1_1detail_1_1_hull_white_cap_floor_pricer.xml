@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::detail::HullWhiteCapFloorPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; Path &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a8ec534b4d382bebfbbf67aebd59dfb85" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref></type>
+        <definition>CapFloor::arguments args_</definition>
+        <argsstring></argsstring>
+        <name>args_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ae17cd1f7f9373246a88cdb16ec452491" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;HullWhite&gt; model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a317182705f8bfb652d113309b7f4b109" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time forwardMeasureTime_</definition>
+        <argsstring></argsstring>
+        <name>forwardMeasureTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a45cd34204ac2aa3c508a521d3f5c2530" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor endDiscount_</definition>
+        <argsstring></argsstring>
+        <name>endDiscount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ad9c8f547e3e532d4be646472b0a2cc58" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; startTimes_</definition>
+        <argsstring></argsstring>
+        <name>startTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a93cf51d5f36c6055582b0ef5136f0f37" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; endTimes_</definition>
+        <argsstring></argsstring>
+        <name>endTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ab8d80d95c018986943e14d484b6ff9c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; fixingTimes_</definition>
+        <argsstring></argsstring>
+        <name>fixingTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1abe7d071053c9c3a3e1b7048d0023fd28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HullWhiteCapFloorPricer</definition>
+        <argsstring>(const CapFloor::arguments &amp;, const boost::shared_ptr&lt; HullWhite &gt; &amp;, Time forwardMeasureTime)</argsstring>
+        <name>HullWhiteCapFloorPricer</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>forwardMeasureTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const Path &amp;path) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3554">
+        <label>HullWhiteCapFloorPricer</label>
+        <childnode refid="3555" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3555">
+        <label>PathPricer&lt; Path &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3556">
+        <label>HullWhiteCapFloorPricer</label>
+        <childnode refid="3557" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3557">
+        <label>PathPricer&lt; Path &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="37" bodyend="49"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a8ec534b4d382bebfbbf67aebd59dfb85" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>args_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a45cd34204ac2aa3c508a521d3f5c2530" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>endDiscount_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a93cf51d5f36c6055582b0ef5136f0f37" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>endTimes_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ab8d80d95c018986943e14d484b6ff9c6" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>fixingTimes_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1a317182705f8bfb652d113309b7f4b109" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>forwardMeasureTime_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1abe7d071053c9c3a3e1b7048d0023fd28" prot="public" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>HullWhiteCapFloorPricer</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ae17cd1f7f9373246a88cdb16ec452491" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_hull_white_cap_floor_pricer_1ad9c8f547e3e532d4be646472b0a2cc58" prot="private" virt="non-virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>startTimes_</name></member>
+      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::detail::HullWhiteCapFloorPricer</scope><name>~PathPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

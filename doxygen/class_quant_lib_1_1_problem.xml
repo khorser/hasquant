@@ -1,0 +1,416 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_problem" kind="class" prot="public">
+    <compoundname>QuantLib::Problem</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1a1172b404ecd012087022709b0a80a1d1" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+        <definition>CostFunction&amp; costFunction_</definition>
+        <argsstring></argsstring>
+        <name>costFunction_</name>
+        <briefdescription>
+<para>Unconstrained cost function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1a99de11981890ee039f574235d33748f8" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+        <definition>Constraint&amp; constraint_</definition>
+        <argsstring></argsstring>
+        <name>constraint_</name>
+        <briefdescription>
+<para><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1a606d547447ff1c2954836887bd74e438" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array currentValue_</definition>
+        <argsstring></argsstring>
+        <name>currentValue_</name>
+        <briefdescription>
+<para>current value of the local minimum </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1af306e7f46dac616d414c32fb9ec99b49" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real functionValue_</definition>
+        <argsstring></argsstring>
+        <name>functionValue_</name>
+        <briefdescription>
+<para>function and gradient norm values at the curentValue_ (i.e. the last step) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1a495dc2d1ad3260b8fe18772d25ba9cc3" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real squaredNorm_</definition>
+        <argsstring></argsstring>
+        <name>squaredNorm_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1a733c93ead43e5991f400c80708e828f7" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer functionEvaluation_</definition>
+        <argsstring></argsstring>
+        <name>functionEvaluation_</name>
+        <briefdescription>
+<para>number of evaluation of cost function and its gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_problem_1ace467be01625780015069dbded6e3d8a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer gradientEvaluation_</definition>
+        <argsstring></argsstring>
+        <name>gradientEvaluation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a4ca51162378bd037e929d7b5fc093a95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Problem</definition>
+        <argsstring>(CostFunction &amp;costFunction, Constraint &amp;constraint, const Array &amp;initialValue=Array())</argsstring>
+        <name>Problem</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+          <declname>costFunction</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>constraint</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>initialValue</declname>
+          <defval><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>default constructor </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000071"><xreftitle>Warning</xreftitle><xrefdescription><para>it does not reset the current minumum to any initial value </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="139" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ab5a7fc79ae2c7a09f08d7ab169a52dc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;x)</argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>call cost function computation and increment evaluation counter </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1abc8c323a0850669748ab4342f3294ae9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt; Array &gt; values</definition>
+        <argsstring>(const Array &amp;x)</argsstring>
+        <name>values</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>call cost values computation and increment evaluation counter </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="121" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ade662b750c56006317b08b8aa6b38ac8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void gradient</definition>
+        <argsstring>(Array &amp;grad_f, const Array &amp;x)</argsstring>
+        <name>gradient</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>grad_f</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>call cost function gradient computation and increment </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="126" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ae1f5aed11663d0d3aac5a2b1ff111763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real valueAndGradient</definition>
+        <argsstring>(Array &amp;grad_f, const Array &amp;x)</argsstring>
+        <name>valueAndGradient</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>grad_f</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>call cost function computation and it gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="132" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a587d1ba7605c5e283b0e48a138b36b47" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+        <definition>Constraint&amp; constraint</definition>
+        <argsstring>() const </argsstring>
+        <name>constraint</name>
+        <briefdescription>
+<para><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ae7eb58c3620c8d99559a7a5739772e7a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+        <definition>CostFunction&amp; costFunction</definition>
+        <argsstring>() const </argsstring>
+        <name>costFunction</name>
+        <briefdescription>
+<para>Cost function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1add2cc5dffd3ac08701ec18a03a41d151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCurrentValue</definition>
+        <argsstring>(const Array &amp;currentValue)</argsstring>
+        <name>setCurrentValue</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>currentValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a664394f06abfdf2668dffa35c5d2fc08" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; currentValue</definition>
+        <argsstring>() const </argsstring>
+        <name>currentValue</name>
+        <briefdescription>
+<para>current value of the local minimum </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="81" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1ac5276af7ef5302961018ebc9734223f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setFunctionValue</definition>
+        <argsstring>(Real functionValue)</argsstring>
+        <name>setFunctionValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>functionValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a507050a322afee6459b66f62c82a6672" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real functionValue</definition>
+        <argsstring>() const </argsstring>
+        <name>functionValue</name>
+        <briefdescription>
+<para>value of cost function </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a816d4b1c93a6838c0d409abc326a2236" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setGradientNormValue</definition>
+        <argsstring>(Real squaredNorm)</argsstring>
+        <name>setGradientNormValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>squaredNorm</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a3eb1f139d3924e741c5bb18c1525c5af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gradientNormValue</definition>
+        <argsstring>() const </argsstring>
+        <name>gradientNormValue</name>
+        <briefdescription>
+<para>value of cost function gradient norm </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a9ce4fbf7f4d0fa879601ef3dada784cc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer functionEvaluation</definition>
+        <argsstring>() const </argsstring>
+        <name>functionEvaluation</name>
+        <briefdescription>
+<para>number of evaluation of cost function </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="97" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_problem_1a899e30587abf2892515ee1ca642decb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer gradientEvaluation</definition>
+        <argsstring>() const </argsstring>
+        <name>gradientEvaluation</name>
+        <briefdescription>
+<para>number of evaluation of cost function gradient </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="100" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Constrained optimization problem. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000070"><xreftitle>Warning</xreftitle><xrefdescription><para>The passed <ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> and <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> instances are stored by reference. The user of this class must make sure that they are not destroyed before the <ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> instance. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="12521">
+        <label>Problem</label>
+        <link refid="class_quant_lib_1_1_problem"/>
+        <childnode refid="12522" relation="usage">
+          <edgelabel>costFunction_</edgelabel>
+        </childnode>
+        <childnode refid="12523" relation="usage">
+          <edgelabel>constraint_</edgelabel>
+        </childnode>
+        <childnode refid="12524" relation="usage">
+          <edgelabel>currentValue_</edgelabel>
+        </childnode>
+      </node>
+      <node id="12524">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="12522">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+      <node id="12523">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/problem.hpp" bodystart="42" bodyend="113"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_problem_1a587d1ba7605c5e283b0e48a138b36b47" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a99de11981890ee039f574235d33748f8" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ae7eb58c3620c8d99559a7a5739772e7a" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>costFunction</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a1172b404ecd012087022709b0a80a1d1" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>costFunction_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a664394f06abfdf2668dffa35c5d2fc08" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>currentValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a606d547447ff1c2954836887bd74e438" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>currentValue_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a9ce4fbf7f4d0fa879601ef3dada784cc" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>functionEvaluation</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a733c93ead43e5991f400c80708e828f7" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>functionEvaluation_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a507050a322afee6459b66f62c82a6672" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>functionValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1af306e7f46dac616d414c32fb9ec99b49" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>functionValue_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ade662b750c56006317b08b8aa6b38ac8" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>gradient</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a899e30587abf2892515ee1ca642decb6" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>gradientEvaluation</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ace467be01625780015069dbded6e3d8a" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>gradientEvaluation_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a3eb1f139d3924e741c5bb18c1525c5af" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>gradientNormValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a4ca51162378bd037e929d7b5fc093a95" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>Problem</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_problem_1add2cc5dffd3ac08701ec18a03a41d151" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>setCurrentValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ac5276af7ef5302961018ebc9734223f0" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>setFunctionValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a816d4b1c93a6838c0d409abc326a2236" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>setGradientNormValue</name></member>
+      <member refid="class_quant_lib_1_1_problem_1a495dc2d1ad3260b8fe18772d25ba9cc3" prot="protected" virt="non-virtual"><scope>QuantLib::Problem</scope><name>squaredNorm_</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ab5a7fc79ae2c7a09f08d7ab169a52dc7" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_problem_1ae1f5aed11663d0d3aac5a2b1ff111763" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>valueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1_problem_1abc8c323a0850669748ab4342f3294ae9" prot="public" virt="non-virtual"><scope>QuantLib::Problem</scope><name>values</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

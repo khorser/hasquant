@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_black_scholes_solver" kind="class" prot="public">
+    <compoundname>QuantLib::FdmBlackScholesSolver</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" static="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;</type>
+        <definition>typedef std::vector&lt;boost::shared_ptr&lt;FdmDirichletBoundary&gt; &gt; BoundaryConditionSet</definition>
+        <argsstring></argsstring>
+        <name>BoundaryConditionSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>Handle&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a14272b32e607ffb18de710cd74e7daef" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real strike_</definition>
+        <argsstring></argsstring>
+        <name>strike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" static="no" mutable="no">
+        <type>const FdmSolverDesc</type>
+        <definition>const FdmSolverDesc solverDesc_</definition>
+        <argsstring></argsstring>
+        <name>solverDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
+        <argsstring></argsstring>
+        <name>mesher_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmSnapshotCondition &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmSnapshotCondition&gt; thetaCondition_</definition>
+        <argsstring></argsstring>
+        <name>thetaCondition_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmStepConditionComposite &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmStepConditionComposite&gt; conditions_</definition>
+        <argsstring></argsstring>
+        <name>conditions_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a18d4d9334fdfbd5b9f515cb382a278b8" prot="private" static="no" mutable="no">
+        <type>const bool</type>
+        <definition>const bool localVol_</definition>
+        <argsstring></argsstring>
+        <name>localVol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1aff1b9e5e66f10d47518609e153448d55" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real illegalLocalVolOverwrite_</definition>
+        <argsstring></argsstring>
+        <name>illegalLocalVolOverwrite_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; x_</definition>
+        <argsstring></argsstring>
+        <name>x_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; initialValues_</definition>
+        <argsstring></argsstring>
+        <name>initialValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a503d3494663627cfc13e5745438ea039" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array resultValues_</definition>
+        <argsstring></argsstring>
+        <name>resultValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a0f226db64c39f45d87ed8055e1c1824f" prot="private" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cubic_interpolation" kindref="compound">CubicInterpolation</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;CubicInterpolation&gt; interpolation_</definition>
+        <argsstring></argsstring>
+        <name>interpolation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a2986b49afcf28744b247caa5903df833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmBlackScholesSolver</definition>
+        <argsstring>(const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real strike, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas(), bool localVol=false, Real illegalLocalVolOverwrite=-Null&lt; Real &gt;())</argsstring>
+        <name>FdmBlackScholesSolver</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type>const FdmSolverDesc &amp;</type>
+          <declname>solverDesc</declname>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+          <defval>FdmSchemeDesc::Douglas()</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>localVol</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>illegalLocalVolOverwrite</declname>
+          <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1ac135bb3ca4f704218ebcc70c1dffeef3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real valueAt</definition>
+        <argsstring>(Real s) const </argsstring>
+        <name>valueAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a8b0fc7774c2f2b044382fec8eb106395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real deltaAt</definition>
+        <argsstring>(Real s) const </argsstring>
+        <name>deltaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1aad84cbb24ad994902f176e28a82c899e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gammaAt</definition>
+        <argsstring>(Real s) const </argsstring>
+        <name>gammaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a7e97a9498f2ad1d643305f505d933a1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real thetaAt</definition>
+        <argsstring>(Real s) const </argsstring>
+        <name>thetaAt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6033">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6032">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6033" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6034" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6031">
+        <label>FdmBlackScholesSolver</label>
+        <childnode refid="6032" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6034">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6037">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6036">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6037" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6038" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6035">
+        <label>FdmBlackScholesSolver</label>
+        <childnode refid="6036" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6038">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" bodystart="39" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>BoundaryConditionSet</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1ae1eee6b55c9dc464e35c5225991bc128" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>conditions_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a8b0fc7774c2f2b044382fec8eb106395" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>deltaAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a2986b49afcf28744b247caa5903df833" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>FdmBlackScholesSolver</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1aad84cbb24ad994902f176e28a82c899e" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>gammaAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1aff1b9e5e66f10d47518609e153448d55" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>illegalLocalVolOverwrite_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a1a5680106af428c3896552f9911bddd6" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>initialValues_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a0f226db64c39f45d87ed8055e1c1824f" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>interpolation_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a18d4d9334fdfbd5b9f515cb382a278b8" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>localVol_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>mesher_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FdmBlackScholesSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FdmBlackScholesSolver</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1ad303dc9251eef656d2ef96a9f98e6e05" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a503d3494663627cfc13e5745438ea039" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>resultValues_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>solverDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a14272b32e607ffb18de710cd74e7daef" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a7e97a9498f2ad1d643305f505d933a1c" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>thetaAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1a06afd27dcb2e2053592df2c535af8327" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>thetaCondition_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1ac135bb3ca4f704218ebcc70c1dffeef3" prot="public" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>valueAt</name></member>
+      <member refid="class_quant_lib_1_1_fdm_black_scholes_solver_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" virt="non-virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>x_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FdmBlackScholesSolver</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

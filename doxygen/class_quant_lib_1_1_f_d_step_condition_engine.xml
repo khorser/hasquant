@@ -1,0 +1,251 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_step_condition_engine" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::FDStepConditionEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_f_d_vanilla_engine" prot="public" virt="non-virtual">FDVanillaEngine</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_american_condition" prot="public" virt="non-virtual">FDAmericanCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_shout_condition" prot="public" virt="non-virtual">FDShoutCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>Scheme</declname>
+        <defname>Scheme</defname>
+        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_step_condition_engine_1a18024c5d78548b580cca5cb4753c45a1" prot="protected" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a1a481730b77798735b31d2a815a5d242" kindref="member">StandardStepCondition</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StandardStepCondition&gt; stepCondition_</definition>
+        <argsstring></argsstring>
+        <name>stepCondition_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_step_condition_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
+        <definition>SampledCurve prices_</definition>
+        <argsstring></argsstring>
+        <name>prices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_step_condition_engine_1ab88681c2339de3e010c4e3fd219517e2" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
+        <definition>TridiagonalOperator controlOperator_</definition>
+        <argsstring></argsstring>
+        <name>controlOperator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_step_condition_engine_1aaa5e8f02e94cfa06866412b0903b65be" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; boost::shared_ptr&lt; bc_type &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;bc_type&gt; &gt; controlBCs_</definition>
+        <argsstring></argsstring>
+        <name>controlBCs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_step_condition_engine_1a4d13291612f90dd1b2d60f8251ae3569" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
+        <definition>SampledCurve controlPrices_</definition>
+        <argsstring></argsstring>
+        <name>controlPrices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_step_condition_engine_1af644955dae523700eea4f242983c6b9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FDStepConditionEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps, Size gridPoints, bool timeDependent=false)</argsstring>
+        <name>FDStepConditionEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="41" bodyend="46"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_step_condition_engine_1afd440604ad7e7a187d1bb72170eb602e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void initializeStepCondition</definition>
+        <argsstring>() const =0</argsstring>
+        <name>initializeStepCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_step_condition_engine_1a1fe4d9b38864bd09fed225810631c15b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>(PricingEngine::results *) const </argsstring>
+        <name>calculate</name>
+        <param>
+          <type>PricingEngine::results *</type>
+          <defname>r</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="61" bodyend="134"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Finite-differences pricing engine for American-style vanilla options. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6253">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+      </node>
+      <node id="6252">
+        <label>FDStepConditionEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_step_condition_engine"/>
+        <childnode refid="6253" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6255">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+        <childnode refid="6256" relation="usage">
+          <edgelabel>intrinsicValues_</edgelabel>
+        </childnode>
+        <childnode refid="6257" relation="usage">
+          <edgelabel>exerciseDate_</edgelabel>
+        </childnode>
+        <childnode refid="6258" relation="usage">
+          <edgelabel>finiteDifferenceOperator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6258">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+        <childnode refid="6259" relation="usage">
+          <edgelabel>upperDiagonal_</edgelabel>
+          <edgelabel>lowerDiagonal_</edgelabel>
+          <edgelabel>temp_</edgelabel>
+          <edgelabel>diagonal_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6259">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="6256">
+        <label>SampledCurve</label>
+        <link refid="class_quant_lib_1_1_sampled_curve"/>
+      </node>
+      <node id="6254">
+        <label>FDStepConditionEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_step_condition_engine"/>
+        <childnode refid="6255" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6256" relation="usage">
+          <edgelabel>prices_</edgelabel>
+          <edgelabel>controlPrices_</edgelabel>
+        </childnode>
+        <childnode refid="6258" relation="usage">
+          <edgelabel>controlOperator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6257">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdstepconditionengine.hpp" bodystart="39" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>bc_type</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1af5ad104496c57fc44c7d043228540df3" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>BCs_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1a1fe4d9b38864bd09fed225810631c15b" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a6d1498fa8ea69ec53974976d2de35a8e" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>center_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1aaa5e8f02e94cfa06866412b0903b65be" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>controlBCs_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1ab88681c2339de3e010c4e3fd219517e2" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>controlOperator_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1a4d13291612f90dd1b2d60f8251ae3569" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>controlPrices_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ae1dd3d1c5ca170640a5924b2ee281e41" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>ensureStrikeInGrid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a82043c5ad79ac1b7b969001c0fac6b01" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>exerciseDate_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1af644955dae523700eea4f242983c6b9d" prot="public" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>FDStepConditionEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>FDVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a339a08d2d842659617830840971da35e" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>finiteDifferenceOperator_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a674e7ea5e90acab0262d251898ff792d" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>getResidualTime</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>grid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a7145182f52df597ca8aa4d5866217c1e" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>gridPoints_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aec873e3e9f589c5f7450e44c176bba53" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>initializeBoundaryConditions</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a78e07ab8f1efe95af3620d4515bee51d" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>initializeInitialCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a11960243546eb3fbfd156bb356521f0c" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>initializeOperator</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1afd440604ad7e7a187d1bb72170eb602e" prot="protected" virt="pure-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>initializeStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a8edf65769664d4ebdccdf4570511510f" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>intrinsicValues_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>prices_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a5a97f4313a9da6e57d378b06ffcb41a1" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>requiredGridValue_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aab2fa1494d4f4992fbfdbbc6df8328fc" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a95a121986a34191e5e0e79614f1291bc" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a962e8e99edd2b2802cb56cb06c572ec2" prot="protected" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aa3e79b584dea15108e9e47722b105e03" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>sMax_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ad8993bc76e2e718431695d0ad5844f76" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>sMin_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_step_condition_engine_1a18024c5d78548b580cca5cb4753c45a1" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>stepCondition_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1afe877f42f51da049474a29ca152f6e38" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>timeDependent_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aaaf57b9fc05bb255d2d7f329fb445d5b" prot="public" virt="virtual"><scope>QuantLib::FDStepConditionEngine</scope><name>~FDVanillaEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_flat_vol_factory" kind="class" prot="public">
+    <compoundname>QuantLib::FlatVolFactory</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_market_model_factory" prot="public" virt="non-virtual">MarketModelFactory</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1a396843cefa7ccffa374af73c5313f782" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real longTermCorrelation_</definition>
+        <argsstring></argsstring>
+        <name>longTermCorrelation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; times_</definition>
+        <argsstring></argsstring>
+        <name>times_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>std::vector&lt;Volatility&gt; vols_</definition>
+        <argsstring></argsstring>
+        <name>vols_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1a3f4c30d4d2573cf9b255ca8232537a72" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <definition>Interpolation volatility_</definition>
+        <argsstring></argsstring>
+        <name>volatility_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1aca2ef8b3a4cde925ac721bf04a9d86c8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; yieldCurve_</definition>
+        <argsstring></argsstring>
+        <name>yieldCurve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_flat_vol_factory_1a904de61d29065cca661632ee77a27a24" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread displacement_</definition>
+        <argsstring></argsstring>
+        <name>displacement_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1a093886b811d5fa9f94a291aabebf53cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FlatVolFactory</definition>
+        <argsstring>(Real longTermCorrelation, Real beta, const std::vector&lt; Time &gt; &amp;times, const std::vector&lt; Volatility &gt; &amp;vols, const Handle&lt; YieldTermStructure &gt; &amp;yieldCurve, Spread displacement)</argsstring>
+        <name>FlatVolFactory</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>longTermCorrelation</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>vols</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>yieldCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>displacement</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;MarketModel&gt; create</definition>
+        <argsstring>(const EvolutionDescription &amp;, Size numberOfFactors) const </argsstring>
+        <name>create</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfFactors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="83"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6458">
+        <label>MarketModelFactory</label>
+        <link refid="class_quant_lib_1_1_market_model_factory"/>
+        <childnode refid="6459" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6459">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6460">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6457">
+        <label>FlatVolFactory</label>
+        <childnode refid="6458" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6460" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6462">
+        <label>MarketModelFactory</label>
+        <link refid="class_quant_lib_1_1_market_model_factory"/>
+        <childnode refid="6463" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6463">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6464">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6461">
+        <label>FlatVolFactory</label>
+        <childnode refid="6462" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6464" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/flatvol.hpp" bodystart="66" bodyend="93"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>create</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a904de61d29065cca661632ee77a27a24" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>displacement_</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a093886b811d5fa9f94a291aabebf53cc" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>FlatVolFactory</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a396843cefa7ccffa374af73c5313f782" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>longTermCorrelation_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FlatVolFactory</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FlatVolFactory</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>times_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1a3f4c30d4d2573cf9b255ca8232537a72" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>volatility_</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>vols_</name></member>
+      <member refid="class_quant_lib_1_1_flat_vol_factory_1aca2ef8b3a4cde925ac721bf04a9d86c8" prot="private" virt="non-virtual"><scope>QuantLib::FlatVolFactory</scope><name>yieldCurve_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" virt="virtual"><scope>QuantLib::FlatVolFactory</scope><name>~MarketModelFactory</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FlatVolFactory</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FlatVolFactory</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

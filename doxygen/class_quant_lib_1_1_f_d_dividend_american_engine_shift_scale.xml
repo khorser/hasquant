@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale" kind="class" prot="public">
+    <compoundname>QuantLib::FDDividendAmericanEngineShiftScale</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngineShiftScale&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>Scheme</declname>
+        <defname>Scheme</defname>
+        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale_1a8475db10398cf9eed6dc3eb986d4b286" prot="private" static="no">
+        <type>FDEngineAdapter&lt; FDAmericanCondition&lt; <ref refid="class_quant_lib_1_1_f_d_dividend_engine_shift_scale" kindref="compound">FDDividendEngineShiftScale</ref>&lt; Scheme &gt; &gt;, <ref refid="class_quant_lib_1_1_dividend_vanilla_option_1_1engine" kindref="compound">DividendVanillaOption::engine</ref> &gt;</type>
+        <definition>typedef FDEngineAdapter&lt;FDAmericanCondition&lt; FDDividendEngineShiftScale&lt;Scheme&gt; &gt;, DividendVanillaOption::engine&gt; super</definition>
+        <argsstring></argsstring>
+        <name>super</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale_1a89b086f210229d47e41334e577793eae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FDDividendAmericanEngineShiftScale</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
+        <name>FDDividendAmericanEngineShiftScale</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="83" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="75" bodyend="88"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale_1a89b086f210229d47e41334e577793eae" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendAmericanEngineShiftScale</scope><name>FDDividendAmericanEngineShiftScale</name></member>
+      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendAmericanEngineShiftScale</scope><name>FDEngineAdapter</name></member>
+      <member refid="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale_1a8475db10398cf9eed6dc3eb986d4b286" prot="private" virt="non-virtual"><scope>QuantLib::FDDividendAmericanEngineShiftScale</scope><name>super</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bates_det_jump_model" kind="class" prot="public">
+    <compoundname>QuantLib::BatesDetJumpModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_bates_model" prot="public" virt="non-virtual">BatesModel</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_det_jump_model_1abb613fcd22fe4fc89abbcf1046722835" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BatesDetJumpModel</definition>
+        <argsstring>(const boost::shared_ptr&lt; BatesProcess &gt; &amp;process, Real kappaLambda=1.0, Real thetaLambda=0.1)</argsstring>
+        <name>BatesDetJumpModel</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>kappaLambda</declname>
+          <defval>1.0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>thetaLambda</declname>
+          <defval>0.1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_det_jump_model_1a2704f787964893648797f96e53f888b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real kappaLambda</definition>
+        <argsstring>() const </argsstring>
+        <name>kappaLambda</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_det_jump_model_1a289cb9075de16640c79660628980519e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real thetaLambda</definition>
+        <argsstring>() const </argsstring>
+        <name>thetaLambda</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="788">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="783">
+        <label>BatesDetJumpModel</label>
+        <childnode refid="784" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="787">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="784">
+        <label>BatesModel</label>
+        <link refid="class_quant_lib_1_1_bates_model"/>
+        <childnode refid="785" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="785">
+        <label>HestonModel</label>
+        <link refid="class_quant_lib_1_1_heston_model"/>
+        <childnode refid="786" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="786">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="787" relation="public-inheritance">
+        </childnode>
+        <childnode refid="788" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="794">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="789">
+        <label>BatesDetJumpModel</label>
+        <childnode refid="790" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="793">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="790">
+        <label>BatesModel</label>
+        <link refid="class_quant_lib_1_1_bates_model"/>
+        <childnode refid="791" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="791">
+        <label>HestonModel</label>
+        <link refid="class_quant_lib_1_1_heston_model"/>
+        <childnode refid="792" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="792">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="793" relation="public-inheritance">
+        </childnode>
+        <childnode refid="794" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="56" bodyend="64"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_bates_det_jump_model_1abb613fcd22fe4fc89abbcf1046722835" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>BatesDetJumpModel</name></member>
+      <member refid="class_quant_lib_1_1_bates_model_1ab6a20ee72b6e6b32bd3bbbbf2b110308" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>BatesModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>CalibratedModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ae5ca439e5825287fbaa19c875d832021" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_bates_model_1a2397bf69d6801e3328c9273143c87ce6" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_bates_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1ae97050524301ec4c399a197e447dbd4f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>HestonModel</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a925b952838ecbba1d743cab564c69dc9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>kappa</name></member>
+      <member refid="class_quant_lib_1_1_bates_det_jump_model_1a2704f787964893648797f96e53f888b3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>kappaLambda</name></member>
+      <member refid="class_quant_lib_1_1_bates_model_1a24cb1182953e872918829ca60b348e54" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>lambda</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_bates_model_1a69c12ede1099bb0263342867dd12e045" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>nu</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BatesDetJumpModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::BatesDetJumpModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a57e932938bc12589eb93ad22a7402d2e" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>process</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a913c0bb126440b8eebb19cb20ed021a2" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a9e74bed9ddc465f1211381d725c945bb" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" virt="virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8705485af58de6eb300e980a627a0be0" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>shortRateEndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a78bca11664a7d403bde6a9842f72ae61" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>sigma</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_bates_det_jump_model_1a289cb9075de16640c79660628980519e" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>thetaLambda</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>v0</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" virt="non-virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BatesDetJumpModel</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

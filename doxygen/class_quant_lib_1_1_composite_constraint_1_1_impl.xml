@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_composite_constraint_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::CompositeConstraint::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint_1_1_impl" prot="public" virt="non-virtual">Constraint::Impl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1af52f657d5950bd668e858a718936b9d3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref></type>
+        <definition>Constraint c1_</definition>
+        <argsstring></argsstring>
+        <name>c1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1ab3621e87adf3a9b3086633435deeb327" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref></type>
+        <definition>Constraint c2_</definition>
+        <argsstring></argsstring>
+        <name>c2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1a97371fef8a4150c4928c1f976cd6fd05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Impl</definition>
+        <argsstring>(const Constraint &amp;c1, const Constraint &amp;c2)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>c1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>c2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="114" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool test</definition>
+        <argsstring>(const Array &amp;params) const </argsstring>
+        <name>test</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="117" bodyend="119"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2376">
+        <label>CompositeConstraint::Impl</label>
+        <childnode refid="2377" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2377">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2378">
+        <label>CompositeConstraint::Impl</label>
+        <childnode refid="2379" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2379">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="112" bodyend="122"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1af52f657d5950bd668e858a718936b9d3" prot="private" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>c1_</name></member>
+      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1ab3621e87adf3a9b3086633435deeb327" prot="private" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>c2_</name></member>
+      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1a97371fef8a4150c4928c1f976cd6fd05" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>Impl</name></member>
+      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

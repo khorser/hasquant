@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_quote" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Quote</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_composite_quote" prot="public" virt="non-virtual">CompositeQuote&lt; BinaryFunction &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_delta_vol_quote" prot="public" virt="non-virtual">DeltaVolQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_derived_quote" prot="public" virt="non-virtual">DerivedQuote&lt; UnaryFunction &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote" prot="public" virt="non-virtual">EurodollarFuturesImpliedStdDevQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_forward_swap_quote" prot="public" virt="non-virtual">ForwardSwapQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_forward_value_quote" prot="public" virt="non-virtual">ForwardValueQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_futures_conv_adjustment_quote" prot="public" virt="non-virtual">FuturesConvAdjustmentQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_implied_std_dev_quote" prot="public" virt="non-virtual">ImpliedStdDevQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_last_fixing_quote" prot="public" virt="non-virtual">LastFixingQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_recovery_rate_quote" prot="public" virt="non-virtual">RecoveryRateQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote" prot="public" virt="non-virtual">RendistatoEquivalentSwapLengthQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote" prot="public" virt="non-virtual">RendistatoEquivalentSwapSpreadQuote</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_simple_quote" prot="public" virt="non-virtual">SimpleQuote</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quote.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Quote</definition>
+        <argsstring>()</argsstring>
+        <name>~Quote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real value</definition>
+        <argsstring>() const =0</argsstring>
+        <name>value</name>
+        <reimplementedby refid="class_quant_lib_1_1_simple_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_last_fixing_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_forward_value_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_forward_swap_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_recovery_rate_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_derived_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_implied_std_dev_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_composite_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_delta_vol_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1ab7f31cfaca49d25079e464ca462d691c">value</reimplementedby>
+        <briefdescription>
+<para>returns the current value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool isValid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>isValid</name>
+        <reimplementedby refid="class_quant_lib_1_1_simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_last_fixing_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_forward_value_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_forward_swap_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_recovery_rate_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_derived_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_implied_std_dev_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_composite_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_delta_vol_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81">isValid</reimplementedby>
+        <briefdescription>
+<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>purely virtual base class for market observables </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000137"><xreftitle>Tests</xreftitle><xrefdescription><para>the observability of class instances is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12652">
+        <label>LastFixingQuote</label>
+        <link refid="class_quant_lib_1_1_last_fixing_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12654">
+        <label>RendistatoEquivalentSwapLengthQuote</label>
+        <link refid="class_quant_lib_1_1_rendistato_equivalent_swap_length_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12642">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="12643" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12643">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12648">
+        <label>ForwardSwapQuote</label>
+        <link refid="class_quant_lib_1_1_forward_swap_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12655">
+        <label>RendistatoEquivalentSwapSpreadQuote</label>
+        <link refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12645">
+        <label>DeltaVolQuote</label>
+        <link refid="class_quant_lib_1_1_delta_vol_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12644">
+        <label>CompositeQuote&lt; BinaryFunction &gt;</label>
+        <link refid="class_quant_lib_1_1_composite_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12650">
+        <label>FuturesConvAdjustmentQuote</label>
+        <link refid="class_quant_lib_1_1_futures_conv_adjustment_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12653">
+        <label>RecoveryRateQuote</label>
+        <link refid="class_quant_lib_1_1_recovery_rate_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12656">
+        <label>SimpleQuote</label>
+        <link refid="class_quant_lib_1_1_simple_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12646">
+        <label>DerivedQuote&lt; UnaryFunction &gt;</label>
+        <link refid="class_quant_lib_1_1_derived_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12647">
+        <label>EurodollarFuturesImpliedStdDevQuote</label>
+        <link refid="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12649">
+        <label>ForwardValueQuote</label>
+        <link refid="class_quant_lib_1_1_forward_value_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12651">
+        <label>ImpliedStdDevQuote</label>
+        <link refid="class_quant_lib_1_1_implied_std_dev_quote"/>
+        <childnode refid="12642" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12657">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="12658" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12658">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quote.hpp" bodystart="37" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae" prot="public" virt="pure-virtual"><scope>QuantLib::Quote</scope><name>isValid</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Quote</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Quote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Quote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::Quote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e" prot="public" virt="pure-virtual"><scope>QuantLib::Quote</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Quote</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::Quote</scope><name>~Quote</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

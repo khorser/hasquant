@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_integrator" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Integrator</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_gauss_kronrod_adaptive" prot="public" virt="non-virtual">GaussKronrodAdaptive</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_gauss_kronrod_non_adaptive" prot="public" virt="non-virtual">GaussKronrodNonAdaptive</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_gauss_lobatto_integral" prot="public" virt="non-virtual">GaussLobattoIntegral</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_segment_integral" prot="public" virt="non-virtual">SegmentIntegral</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_trapezoid_integral" prot="public" virt="non-virtual">TrapezoidIntegral&lt; IntegrationPolicy &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_trapezoid_integral" prot="public" virt="non-virtual">TrapezoidIntegral&lt; Default &gt;</derivedcompoundref>
+      <sectiondef kind="user-defined">
+      <header>Modifiers</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setAbsoluteAccuracy</definition>
+        <argsstring>(Real)</argsstring>
+        <name>setAbsoluteAccuracy</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a3ae2d70f89b2d3c6a9d16cfa91c4cc70" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setMaxEvaluations</definition>
+        <argsstring>(Size)</argsstring>
+        <name>setMaxEvaluations</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a30349681fee19d861a0a89c9f4bf941d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real absoluteAccuracy</definition>
+        <argsstring>() const </argsstring>
+        <name>absoluteAccuracy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxEvaluations</definition>
+        <argsstring>() const </argsstring>
+        <name>maxEvaluations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1afbbb68a54db77cdca0efc99b01952d77" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real absoluteAccuracy_</definition>
+        <argsstring></argsstring>
+        <name>absoluteAccuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1a52e105735af14c9d511476dc6a74b536" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real absoluteError_</definition>
+        <argsstring></argsstring>
+        <name>absoluteError_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1ad1fbba98763c2a0de29a5700ad331942" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxEvaluations_</definition>
+        <argsstring></argsstring>
+        <name>maxEvaluations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integrator_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size evaluations_</definition>
+        <argsstring></argsstring>
+        <name>evaluations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a63b3dafdb96cf907300477ec2478ea8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Integrator</definition>
+        <argsstring>(Real absoluteAccuracy, Size maxEvaluations)</argsstring>
+        <name>Integrator</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>absoluteAccuracy</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxEvaluations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ac13ff1f4b36510ac4bcd076d4c1773ab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Integrator</definition>
+        <argsstring>()</argsstring>
+        <name>~Integrator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real absoluteError</definition>
+        <argsstring>() const </argsstring>
+        <name>absoluteError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfEvaluations</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfEvaluations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1acc129571df52ec7737c23e281c830106" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool integrationSuccess</definition>
+        <argsstring>() const </argsstring>
+        <name>integrationSuccess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="56"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a5d6d526be178e73b9a0a66e24270d03b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real integrate</definition>
+        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b) const =0</argsstring>
+        <name>integrate</name>
+        <param>
+          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
+          <declname>f</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a3deaec481d5e01a78e29bcddab11ce93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setAbsoluteError</definition>
+        <argsstring>(Real error) const </argsstring>
+        <name>setAbsoluteError</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a5bf750b90dc3c089122560f6d5a5db0d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setNumberOfEvaluations</definition>
+        <argsstring>(Size evaluations) const </argsstring>
+        <name>setNumberOfEvaluations</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>evaluations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integrator_1a239d39c2bf8f6edefc8b4b78451b8c8e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void increaseNumberOfEvaluations</definition>
+        <argsstring>(Size increase) const </argsstring>
+        <name>increaseNumberOfEvaluations</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>increase</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8131">
+        <label>SegmentIntegral</label>
+        <link refid="class_quant_lib_1_1_segment_integral"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8127">
+        <label>Integrator</label>
+      </node>
+      <node id="8128">
+        <label>GaussKronrodAdaptive</label>
+        <link refid="class_quant_lib_1_1_gauss_kronrod_adaptive"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8130">
+        <label>GaussLobattoIntegral</label>
+        <link refid="class_quant_lib_1_1_gauss_lobatto_integral"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8129">
+        <label>GaussKronrodNonAdaptive</label>
+        <link refid="class_quant_lib_1_1_gauss_kronrod_non_adaptive"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8134">
+        <label>SimpsonIntegral</label>
+        <link refid="class_quant_lib_1_1_simpson_integral"/>
+        <childnode refid="8133" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8133">
+        <label>TrapezoidIntegral&lt; Default &gt;</label>
+        <link refid="class_quant_lib_1_1_trapezoid_integral"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8132">
+        <label>TrapezoidIntegral&lt; IntegrationPolicy &gt;</label>
+        <link refid="class_quant_lib_1_1_trapezoid_integral"/>
+        <childnode refid="8127" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/integral.hpp" bodystart="30" bodyend="70"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_integrator_1a30349681fee19d861a0a89c9f4bf941d" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>absoluteAccuracy</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1afbbb68a54db77cdca0efc99b01952d77" prot="private" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>absoluteAccuracy_</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>absoluteError</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a52e105735af14c9d511476dc6a74b536" prot="private" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>absoluteError_</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>evaluations_</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a239d39c2bf8f6edefc8b4b78451b8c8e" prot="protected" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>increaseNumberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a5d6d526be178e73b9a0a66e24270d03b" prot="protected" virt="pure-virtual"><scope>QuantLib::Integrator</scope><name>integrate</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1acc129571df52ec7737c23e281c830106" prot="public" virt="virtual"><scope>QuantLib::Integrator</scope><name>integrationSuccess</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a63b3dafdb96cf907300477ec2478ea8b" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>Integrator</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>maxEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ad1fbba98763c2a0de29a5700ad331942" prot="private" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>maxEvaluations_</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>numberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>setAbsoluteAccuracy</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a3deaec481d5e01a78e29bcddab11ce93" prot="protected" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>setAbsoluteError</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a3ae2d70f89b2d3c6a9d16cfa91c4cc70" prot="public" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>setMaxEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1a5bf750b90dc3c089122560f6d5a5db0d" prot="protected" virt="non-virtual"><scope>QuantLib::Integrator</scope><name>setNumberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_integrator_1ac13ff1f4b36510ac4bcd076d4c1773ab" prot="public" virt="virtual"><scope>QuantLib::Integrator</scope><name>~Integrator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

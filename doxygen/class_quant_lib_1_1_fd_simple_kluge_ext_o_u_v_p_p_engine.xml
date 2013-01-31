@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine" kind="class" prot="public">
+    <compoundname>QuantLib::FdSimpleKlugeExtOUVPPEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; VanillaVPPOption::arguments, VanillaVPPOption::results &gt;</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a41e5d6817cb171cff9a28e375681f742" prot="public" static="no">
+        <type>FdmExtOUJumpModelInnerValue::Shape</type>
+        <definition>typedef FdmExtOUJumpModelInnerValue::Shape Shape</definition>
+        <argsstring></argsstring>
+        <name>Shape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a1d22018539f2db0a665c760b4d15db87" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;KlugeExtOUProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
+        <argsstring></argsstring>
+        <name>rTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a670c4c1cfaff8bb46b1cfd39c79d1b8e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real carbonPrice_</definition>
+        <argsstring></argsstring>
+        <name>carbonPrice_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a6d591f172e57f6416837b1cb49ec0128" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; Shape &gt;</type>
+        <definition>const boost::shared_ptr&lt;Shape&gt; gasShape_</definition>
+        <argsstring></argsstring>
+        <name>gasShape_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1ad9bf8ca9e96f0594ab58db50c7c91d0a" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; Shape &gt;</type>
+        <definition>const boost::shared_ptr&lt;Shape&gt; powerShape_</definition>
+        <argsstring></argsstring>
+        <name>powerShape_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size tGrid_</definition>
+        <argsstring></argsstring>
+        <name>tGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size xGrid_</definition>
+        <argsstring></argsstring>
+        <name>xGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size yGrid_</definition>
+        <argsstring></argsstring>
+        <name>yGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1adb8d0d8b054a223eff85f4c945fe0fbe" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size gGrid_</definition>
+        <argsstring></argsstring>
+        <name>gGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a839236e96d61afe7168ff45ed535c622" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdSimpleKlugeExtOUVPPEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; KlugeExtOUProcess &gt; &amp;process, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, Real carbonPrice, Size tGrid=1, Size xGrid=50, Size yGrid=10, Size gGrid=20, const boost::shared_ptr&lt; Shape &gt; &amp;gasShape=boost::shared_ptr&lt; Shape &gt;(), const boost::shared_ptr&lt; Shape &gt; &amp;powerShape=boost::shared_ptr&lt; Shape &gt;(), const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
+        <name>FdSimpleKlugeExtOUVPPEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>rTS</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>carbonPrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>tGrid</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>xGrid</declname>
+          <defval>50</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>yGrid</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gGrid</declname>
+          <defval>20</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; Shape &gt; &amp;</type>
+          <declname>gasShape</declname>
+          <defval>boost::shared_ptr&lt; Shape &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; Shape &gt; &amp;</type>
+          <declname>powerShape</declname>
+          <defval>boost::shared_ptr&lt; Shape &gt;()</defval>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+          <defval>FdmSchemeDesc::Hundsdorfer()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6245">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6246">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6243">
+        <label>GenericEngine&lt; VanillaVPPOption::arguments, VanillaVPPOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="6244" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6246" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6244">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="6245" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6242">
+        <label>FdSimpleKlugeExtOUVPPEngine</label>
+        <childnode refid="6243" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6250">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6251">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6248">
+        <label>GenericEngine&lt; VanillaVPPOption::arguments, VanillaVPPOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="6249" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6251" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6249">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="6250" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6247">
+        <label>FdSimpleKlugeExtOUVPPEngine</label>
+        <childnode refid="6248" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdsimpleklugeextouvppengine.hpp" bodystart="39" bodyend="67"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a670c4c1cfaff8bb46b1cfd39c79d1b8e" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>carbonPrice_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a839236e96d61afe7168ff45ed535c622" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>FdSimpleKlugeExtOUVPPEngine</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a6d591f172e57f6416837b1cb49ec0128" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>gasShape_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1adb8d0d8b054a223eff85f4c945fe0fbe" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>gGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1ad9bf8ca9e96f0594ab58db50c7c91d0a" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>powerShape_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a1d22018539f2db0a665c760b4d15db87" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>rTS_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1a41e5d6817cb171cff9a28e375681f742" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>Shape</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>tGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>xGrid_</name></member>
+      <member refid="class_quant_lib_1_1_fd_simple_kluge_ext_o_u_v_p_p_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" virt="non-virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>yGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::FdSimpleKlugeExtOUVPPEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

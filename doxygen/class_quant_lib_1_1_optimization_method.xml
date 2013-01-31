@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_optimization_method" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::OptimizationMethod</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_levenberg_marquardt" prot="public" virt="non-virtual">LevenbergMarquardt</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_line_search_based_method" prot="public" virt="non-virtual">LineSearchBasedMethod</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_simplex" prot="public" virt="non-virtual">Simplex</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~OptimizationMethod</definition>
+        <argsstring>()</argsstring>
+        <name>~OptimizationMethod</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>EndCriteria::Type</type>
+        <definition>virtual EndCriteria::Type minimize</definition>
+        <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)=0</argsstring>
+        <name>minimize</name>
+        <reimplementedby refid="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a">minimize</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a">minimize</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <declname>endCriteria</declname>
+        </param>
+        <briefdescription>
+<para>minimize the optimization problem P </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract class for constrained optimization method. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11762">
+        <label>OptimizationMethod</label>
+        <link refid="class_quant_lib_1_1_optimization_method"/>
+      </node>
+      <node id="11764">
+        <label>Simplex</label>
+        <link refid="class_quant_lib_1_1_simplex"/>
+        <childnode refid="11762" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11763">
+        <label>LevenbergMarquardt</label>
+        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
+        <childnode refid="11762" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" bodystart="36" bodyend="43"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" virt="pure-virtual"><scope>QuantLib::OptimizationMethod</scope><name>minimize</name></member>
+      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::OptimizationMethod</scope><name>~OptimizationMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

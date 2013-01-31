@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__basketengines" kind="group">
+    <compoundname>basketengines</compoundname>
+    <title>Basket option engines</title>
+    <innerclass refid="class_quant_lib_1_1_m_c_american_path_engine" prot="public">QuantLib::MCAmericanPathEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" prot="public">QuantLib::Fd2dBlackScholesVanillaEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_kirk_engine" prot="public">QuantLib::KirkEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_american_basket_engine" prot="public">QuantLib::MCAmericanBasketEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_european_basket_engine" prot="public">QuantLib::MCEuropeanBasketEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_stulz_engine" prot="public">QuantLib::StulzEngine</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

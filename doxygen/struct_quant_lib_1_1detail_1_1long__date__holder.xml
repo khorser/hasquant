@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1long__date__holder" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::long_date_holder</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1long__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date d</definition>
+        <argsstring></argsstring>
+        <name>d</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="213" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1long__date__holder_1a081da9a86fa117d04ad4abd9fa1c3fba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>long_date_holder</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>long_date_holder</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="212" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="212" bodyend="212"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3621">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="3620">
+        <label>long_date_holder</label>
+        <childnode refid="3621" relation="usage">
+          <edgelabel>d</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="211" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="211" bodyend="214"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1detail_1_1long__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" virt="non-virtual"><scope>QuantLib::detail::long_date_holder</scope><name>d</name></member>
+      <member refid="struct_quant_lib_1_1detail_1_1long__date__holder_1a081da9a86fa117d04ad4abd9fa1c3fba" prot="public" virt="non-virtual"><scope>QuantLib::detail::long_date_holder</scope><name>long_date_holder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

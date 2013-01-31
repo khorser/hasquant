@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper" kind="class" prot="public">
+    <compoundname>QuantLib::detail::EverywhereConstantHelper</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">SectionHelper</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a3750926f3db88561a589630027f75a97" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real prevPrimitive_</definition>
+        <argsstring></argsstring>
+        <name>prevPrimitive_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real xPrev_</definition>
+        <argsstring></argsstring>
+        <name>xPrev_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af451d01880fa199372a6b8d8b5042893" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>EverywhereConstantHelper</definition>
+        <argsstring>(Real value, Real prevPrimitive, Real xPrev)</argsstring>
+        <name>EverywhereConstantHelper</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>prevPrimitive</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>xPrev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="139" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a183a38ca3e73199aae47a6d24274e2fb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(Real) const </argsstring>
+        <name>value</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real primitive</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>primitive</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="146" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real fNext</definition>
+        <argsstring>() const </argsstring>
+        <name>fNext</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="149" bodyend="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="137" bodyend="156"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af451d01880fa199372a6b8d8b5042893" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>EverywhereConstantHelper</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>fNext</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>prevPrimitive_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>primitive</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a183a38ca3e73199aae47a6d24274e2fb" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a3750926f3db88561a589630027f75a97" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>value_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>xPrev_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>~SectionHelper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

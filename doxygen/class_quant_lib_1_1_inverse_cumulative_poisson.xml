@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_inverse_cumulative_poisson" kind="class" prot="public">
+    <compoundname>QuantLib::InverseCumulativePoisson</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lambda_</definition>
+        <argsstring></argsstring>
+        <name>lambda_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a916136b717afde07e1a8b711c7975d0d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InverseCumulativePoisson</definition>
+        <argsstring>(Real lambda=1.0)</argsstring>
+        <name>InverseCumulativePoisson</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>lambda</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="109" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="114" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_poisson_1a7687e32b422e3629854ab18be2e8a515" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real calcSummand</definition>
+        <argsstring>(BigNatural index) const </argsstring>
+        <name>calcSummand</name>
+        <param>
+          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="132" bodyend="135"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Inverse cumulative Poisson distribution function. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000034"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="77" bodyend="84"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_poisson_1a7687e32b422e3629854ab18be2e8a515" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativePoisson</scope><name>calcSummand</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_poisson_1a916136b717afde07e1a8b711c7975d0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativePoisson</scope><name>InverseCumulativePoisson</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_poisson_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativePoisson</scope><name>lambda_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_poisson_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativePoisson</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

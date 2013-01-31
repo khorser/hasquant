@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1detail_1_1sequence__holder" kind="struct" prot="public">
+    <compoundname>QuantLib::detail::sequence_holder</compoundname>
+    <templateparamlist>
+      <param>
+        <type>typename InputIterator</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1sequence__holder_1a26aaf5c66fa3d5e11ac43edd61390701" prot="public" static="no" mutable="no">
+        <type>InputIterator</type>
+        <definition>InputIterator begin</definition>
+        <argsstring></argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1sequence__holder_1a8877f759cfc55450f57fee7e9d92711c" prot="public" static="no" mutable="no">
+        <type>InputIterator</type>
+        <definition>InputIterator end</definition>
+        <argsstring></argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1sequence__holder_1a712b749387d8591b045ca599d3415ac3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>sequence_holder</definition>
+        <argsstring>(InputIterator begin, InputIterator end)</argsstring>
+        <name>sequence_holder</name>
+        <param>
+          <type>InputIterator</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>InputIterator</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="62" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="61" bodyend="65"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a26aaf5c66fa3d5e11ac43edd61390701" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>begin</name></member>
+      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a8877f759cfc55450f57fee7e9d92711c" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>end</name></member>
+      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a712b749387d8591b045ca599d3415ac3" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>sequence_holder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_european_multi_path_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::EuropeanMultiPathPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_multi_path_pricer_1a7b5082ae03b9506e1d5b91b3c3209094" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; BasketPayoff &gt;</type>
+        <definition>boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_european_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discount_</definition>
+        <argsstring></argsstring>
+        <name>discount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_european_multi_path_pricer_1a3a36f74c994874ea880cff1ee94c610e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EuropeanMultiPathPricer</definition>
+        <argsstring>(const boost::shared_ptr&lt; BasketPayoff &gt; &amp;payoff, DiscountFactor discount)</argsstring>
+        <name>EuropeanMultiPathPricer</name>
+        <param>
+          <type>const boost::shared_ptr&lt; BasketPayoff &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>discount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_european_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <declname>multiPath</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="133"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5265">
+        <label>EuropeanMultiPathPricer</label>
+        <childnode refid="5266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5266">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5267">
+        <label>EuropeanMultiPathPricer</label>
+        <childnode refid="5268" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5268">
+        <label>PathPricer&lt; MultiPath &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mceuropeanbasketengine.hpp" bodystart="129" bodyend="137"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_european_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanMultiPathPricer</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_european_multi_path_pricer_1a3a36f74c994874ea880cff1ee94c610e" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanMultiPathPricer</scope><name>EuropeanMultiPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_european_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanMultiPathPricer</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_european_multi_path_pricer_1a7b5082ae03b9506e1d5b91b3c3209094" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanMultiPathPricer</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::EuropeanMultiPathPricer</scope><name>~PathPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

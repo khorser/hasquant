@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_parkinson_sigma" kind="class" prot="public">
+    <compoundname>QuantLib::ParkinsonSigma</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_garman_klass_abstract" prot="public" virt="non-virtual">GarmanKlassAbstract</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_open_close" prot="public" virt="non-virtual">GarmanKlassOpenClose&lt; ParkinsonSigma &gt;</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_parkinson_sigma_1a08eabbc03a9101e6beeeb0a5fb73081f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ParkinsonSigma</definition>
+        <argsstring>(Real y)</argsstring>
+        <name>ParkinsonSigma</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="122" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_parkinson_sigma_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real calculatePoint</definition>
+        <argsstring>(const IntervalPrice &amp;p)</argsstring>
+        <name>calculatePoint</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="125" bodyend="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12012">
+        <label>GarmanKlassAbstract</label>
+        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
+      </node>
+      <node id="12011">
+        <label>ParkinsonSigma</label>
+        <childnode refid="12012" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12014">
+        <label>GarmanKlassAbstract</label>
+        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
+      </node>
+      <node id="12013">
+        <label>ParkinsonSigma</label>
+        <childnode refid="12014" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="119" bodyend="130"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::ParkinsonSigma</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::ParkinsonSigma</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_parkinson_sigma_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" virt="non-virtual"><scope>QuantLib::ParkinsonSigma</scope><name>calculatePoint</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" virt="non-virtual"><scope>QuantLib::ParkinsonSigma</scope><name>GarmanKlassAbstract</name></member>
+      <member refid="class_quant_lib_1_1_parkinson_sigma_1a08eabbc03a9101e6beeeb0a5fb73081f" prot="public" virt="non-virtual"><scope>QuantLib::ParkinsonSigma</scope><name>ParkinsonSigma</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a685ec69bc8fa930e820390e5d34b06f1" prot="protected" virt="non-virtual"><scope>QuantLib::ParkinsonSigma</scope><name>yearFraction_</name></member>
+      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::ParkinsonSigma</scope><name>~LocalVolatilityEstimator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

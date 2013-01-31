@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_greeks" kind="class" prot="public">
+    <compoundname>QuantLib::Greeks</compoundname>
+    <basecompoundref prot="public" virt="virtual">PricingEngine::results</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_multi_asset_option_1_1results" prot="public" virt="non-virtual">MultiAssetOption::results</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_one_asset_option_1_1results" prot="public" virt="non-virtual">OneAssetOption::results</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/option.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1a6e815cecfc8bf0ee83558d5bfd70c2d1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real delta</definition>
+        <argsstring></argsstring>
+        <name>delta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1aeb695f823ca39262c951705759792d22" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gamma</definition>
+        <argsstring></argsstring>
+        <name>gamma</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1a2c52330fe605e3d67b38b448db51a49c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real theta</definition>
+        <argsstring></argsstring>
+        <name>theta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1af9da45f4580b5165ceb0da994368b510" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real vega</definition>
+        <argsstring></argsstring>
+        <name>vega</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1ae07d6de71cc56577f5d379b54839ba8c" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho</definition>
+        <argsstring></argsstring>
+        <name>rho</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_greeks_1a7c5d299a74a83de4dd1b4ef52afb6209" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dividendRho</definition>
+        <argsstring></argsstring>
+        <name>dividendRho</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="71" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>additional option results </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7309">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_margrabe_option_1_1results"/>
+        <childnode refid="7308" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7310">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_one_asset_option_1_1results"/>
+        <childnode refid="7307" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7307">
+        <label>Greeks</label>
+        <link refid="class_quant_lib_1_1_greeks"/>
+      </node>
+      <node id="7308">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option_1_1results"/>
+        <childnode refid="7307" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="69" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_greeks_1a6e815cecfc8bf0ee83558d5bfd70c2d1" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1a7c5d299a74a83de4dd1b4ef52afb6209" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>dividendRho</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1aeb695f823ca39262c951705759792d22" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>gamma</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1ae07d6de71cc56577f5d379b54839ba8c" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1a2c52330fe605e3d67b38b448db51a49c" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_greeks_1af9da45f4580b5165ceb0da994368b510" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>vega</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::Greeks</scope><name>~results</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

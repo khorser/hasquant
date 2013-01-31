@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__currencies" kind="group">
+    <compoundname>currencies</compoundname>
+    <title>Currencies and FX rates</title>
+    <innerclass refid="class_quant_lib_1_1_z_a_r_currency" prot="public">QuantLib::ZARCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_a_r_s_currency" prot="public">QuantLib::ARSCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_r_l_currency" prot="public">QuantLib::BRLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_a_d_currency" prot="public">QuantLib::CADCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_l_p_currency" prot="public">QuantLib::CLPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_o_p_currency" prot="public">QuantLib::COPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_x_n_currency" prot="public">QuantLib::MXNCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_e_n_currency" prot="public">QuantLib::PENCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_e_i_currency" prot="public">QuantLib::PEICurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_e_h_currency" prot="public">QuantLib::PEHCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_t_d_currency" prot="public">QuantLib::TTDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_u_s_d_currency" prot="public">QuantLib::USDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_v_e_b_currency" prot="public">QuantLib::VEBCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_d_t_currency" prot="public">QuantLib::BDTCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_n_y_currency" prot="public">QuantLib::CNYCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_h_k_d_currency" prot="public">QuantLib::HKDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_l_s_currency" prot="public">QuantLib::ILSCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_n_r_currency" prot="public">QuantLib::INRCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_q_d_currency" prot="public">QuantLib::IQDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_r_r_currency" prot="public">QuantLib::IRRCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_j_p_y_currency" prot="public">QuantLib::JPYCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_k_r_w_currency" prot="public">QuantLib::KRWCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_k_w_d_currency" prot="public">QuantLib::KWDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_n_p_r_currency" prot="public">QuantLib::NPRCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_k_r_currency" prot="public">QuantLib::PKRCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_s_a_r_currency" prot="public">QuantLib::SARCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_s_g_d_currency" prot="public">QuantLib::SGDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_h_b_currency" prot="public">QuantLib::THBCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_w_d_currency" prot="public">QuantLib::TWDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_g_l_currency" prot="public">QuantLib::BGLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_y_r_currency" prot="public">QuantLib::BYRCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_h_f_currency" prot="public">QuantLib::CHFCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_y_p_currency" prot="public">QuantLib::CYPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_c_z_k_currency" prot="public">QuantLib::CZKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_k_k_currency" prot="public">QuantLib::DKKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_e_e_k_currency" prot="public">QuantLib::EEKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_e_u_r_currency" prot="public">QuantLib::EURCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g_b_p_currency" prot="public">QuantLib::GBPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_h_u_f_currency" prot="public">QuantLib::HUFCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_s_k_currency" prot="public">QuantLib::ISKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_l_t_l_currency" prot="public">QuantLib::LTLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_l_v_l_currency" prot="public">QuantLib::LVLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_t_l_currency" prot="public">QuantLib::MTLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_n_o_k_currency" prot="public">QuantLib::NOKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_l_n_currency" prot="public">QuantLib::PLNCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_r_o_l_currency" prot="public">QuantLib::ROLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_r_o_n_currency" prot="public">QuantLib::RONCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_s_e_k_currency" prot="public">QuantLib::SEKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_s_i_t_currency" prot="public">QuantLib::SITCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_s_k_k_currency" prot="public">QuantLib::SKKCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_r_l_currency" prot="public">QuantLib::TRLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_r_y_currency" prot="public">QuantLib::TRYCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_a_t_s_currency" prot="public">QuantLib::ATSCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_e_f_currency" prot="public">QuantLib::BEFCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_e_m_currency" prot="public">QuantLib::DEMCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_e_s_p_currency" prot="public">QuantLib::ESPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_f_i_m_currency" prot="public">QuantLib::FIMCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_f_r_f_currency" prot="public">QuantLib::FRFCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_g_r_d_currency" prot="public">QuantLib::GRDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_e_p_currency" prot="public">QuantLib::IEPCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_i_t_l_currency" prot="public">QuantLib::ITLCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_l_u_f_currency" prot="public">QuantLib::LUFCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_n_l_g_currency" prot="public">QuantLib::NLGCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_p_t_e_currency" prot="public">QuantLib::PTECurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_a_u_d_currency" prot="public">QuantLib::AUDCurrency</innerclass>
+    <innerclass refid="class_quant_lib_1_1_n_z_d_currency" prot="public">QuantLib::NZDCurrency</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

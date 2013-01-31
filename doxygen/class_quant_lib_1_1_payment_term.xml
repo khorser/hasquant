@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_payment_term" kind="class" prot="public">
+    <compoundname>QuantLib::PaymentTerm</compoundname>
+    <innerclass refid="struct_quant_lib_1_1_payment_term_1_1_data" prot="protected">QuantLib::PaymentTerm::Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>name, e.g, &quot;Pricing end + 5 days&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="91" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a185923cbbe3930934c65be45ad6e9540" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>EventType</type>
+        <definition>PaymentTerm::EventType eventType</definition>
+        <argsstring>() const </argsstring>
+        <name>eventType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a373bf0ccb7c58a5013f566809db15ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer offsetDays</definition>
+        <argsstring>() const </argsstring>
+        <name>offsetDays</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="99" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+        <definition>const Calendar&amp; calendar</definition>
+        <argsstring>() const </argsstring>
+        <name>calendar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool empty</definition>
+        <argsstring>() const </argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6fa" prot="public" static="no">
+        <name>EventType</name>
+        <enumvalue id="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6faa163e5758eb39035af57978ef0c155727" prot="public">
+          <name>TradeDate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6faa276311ceb012f92d59769096553a2e31" prot="public">
+          <name>PricingDate</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_payment_term_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; Data &gt;</type>
+        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_payment_term_1af712537c9641a0c00f62adfd46aea75f" prot="protected" static="yes" mutable="no">
+        <type>std::map&lt; std::string, boost::shared_ptr&lt; Data &gt; &gt;</type>
+        <definition>std::map&lt;std::string, boost::shared_ptr&lt;Data&gt; &gt; paymentTerms_</definition>
+        <argsstring></argsstring>
+        <name>paymentTerms_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ac0b4bf5957764421c6e7ae31db2cbf86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PaymentTerm</definition>
+        <argsstring>()</argsstring>
+        <name>PaymentTerm</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1abae5f1ff8a6259bd67929553d96a9adf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>PaymentTerm</definition>
+        <argsstring>(const std::string &amp;name, EventType eventType, Integer offsetDays, const Calendar &amp;calendar)</argsstring>
+        <name>PaymentTerm</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>EventType</type>
+          <declname>eventType</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>offsetDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a79661a4eb9c43c53b4b0849fdc9de7a9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date getPaymentDate</definition>
+        <argsstring>(const Date &amp;date) const </argsstring>
+        <name>getPaymentDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="103" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ad0c696b905fd1f7d49b97806e7e28aa1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const PaymentTerm &amp;, const PaymentTerm &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const PaymentTerm &amp;</type>
+        </param>
+        <param>
+          <type>const PaymentTerm &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a3a14cda29f7ea6b3b761303a887cf119" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const PaymentTerm &amp;, const PaymentTerm &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const PaymentTerm &amp;</type>
+        </param>
+        <param>
+          <type>const PaymentTerm &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1a9f6412633af57189ba935181fe3b4065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, const PaymentTerm &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const PaymentTerm &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="32" bodyend="67"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_payment_term_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a185923cbbe3930934c65be45ad6e9540" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>eventType</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6fa" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>EventType</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a79661a4eb9c43c53b4b0849fdc9de7a9" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>getPaymentDate</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a373bf0ccb7c58a5013f566809db15ed0" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>offsetDays</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a3a14cda29f7ea6b3b761303a887cf119" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a9f6412633af57189ba935181fe3b4065" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1ad0c696b905fd1f7d49b97806e7e28aa1" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1ac0b4bf5957764421c6e7ae31db2cbf86" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>PaymentTerm</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1abae5f1ff8a6259bd67929553d96a9adf" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>PaymentTerm</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1af712537c9641a0c00f62adfd46aea75f" prot="protected" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>paymentTerms_</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6faa276311ceb012f92d59769096553a2e31" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>PricingDate</name></member>
+      <member refid="class_quant_lib_1_1_payment_term_1a2628ea8d12e8b2563c32f05dc7fff6faa163e5758eb39035af57978ef0c155727" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm</scope><name>TradeDate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

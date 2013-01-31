@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_actual360" kind="class" prot="public">
+    <compoundname>QuantLib::Actual360</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_actual360_1_1_impl" prot="private">QuantLib::Actual360::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_actual360_1a9ad909a3db0cc1201aa7d8c0335405a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Actual360</definition>
+        <argsstring>()</argsstring>
+        <name>Actual360</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" bodystart="50" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Actual/360 day count convention. </para>    </briefdescription>
+    <detaileddescription>
+<para>Actual/360 day count convention, also known as &quot;Act/360&quot;, or &quot;A/360&quot;. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="35">
+        <label>Actual360</label>
+        <link refid="class_quant_lib_1_1_actual360"/>
+        <childnode refid="36" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="37">
+        <label>Actual360</label>
+        <link refid="class_quant_lib_1_1_actual360"/>
+        <childnode refid="38" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="38">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual360.hpp" bodystart="37" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_actual360_1a9ad909a3db0cc1201aa7d8c0335405a6" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>Actual360</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" virt="non-virtual"><scope>QuantLib::Actual360</scope><name>yearFraction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

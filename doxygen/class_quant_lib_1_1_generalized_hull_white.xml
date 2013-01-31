@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_generalized_hull_white" kind="class" prot="public">
+    <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_one_factor_model" prot="public" virt="non-virtual">OneFactorModel</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_term_structure_consistent_model" prot="public" virt="non-virtual">TermStructureConsistentModel</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a9eb54631de0ff65d7ae3516aed4a6e94" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; speedstructure_</definition>
+        <argsstring></argsstring>
+        <name>speedstructure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a82f021d0d82f55fad82b099884a9fb4b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; volstructure_</definition>
+        <argsstring></argsstring>
+        <name>volstructure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a198afb8e4fec5d3187ee5e91a15cd716" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; speedperiods_</definition>
+        <argsstring></argsstring>
+        <name>speedperiods_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a5f10512a54cdea141168efadf1c72cf7" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; volperiods_</definition>
+        <argsstring></argsstring>
+        <name>volperiods_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1ad4439c51d60a45db28cbc47843a73171" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+        <definition>Parameter&amp; a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+        <definition>Parameter&amp; sigma_</definition>
+        <argsstring></argsstring>
+        <name>sigma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generalized_hull_white_1a1863803e3d08a291d7dd59ab2242e748" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref></type>
+        <definition>Parameter phi_</definition>
+        <argsstring></argsstring>
+        <name>phi_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GeneralizedHullWhite</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure)</argsstring>
+        <name>GeneralizedHullWhite</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>yieldtermStructure</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>speedstructure</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>volstructure</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1aa56711fc82e513c4861c27ef105e479d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GeneralizedHullWhite</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure, const std::vector&lt; Real &gt; &amp;speed, const std::vector&lt; Real &gt; &amp;vol)</argsstring>
+        <name>GeneralizedHullWhite</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>yieldtermStructure</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>speedstructure</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>volstructure</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>speed</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>vol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
+        <argsstring>() const </argsstring>
+        <name>dynamics</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
+        <briefdescription>
+<para>returns the short-rate dynamics </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
+        <argsstring>(const TimeGrid &amp;grid) const </argsstring>
+        <name>tree</name>
+        <reimplements refid="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a152c593c6c6d82f43ccbbaa6c274efa6" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
+        <definition>boost::function&lt;Real (Time)&gt; speed</definition>
+        <argsstring>() const </argsstring>
+        <name>speed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a979df69e95f3cafb2b705afeb84c9dd4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>)&gt;</type>
+        <definition>boost::function&lt;Real (Time)&gt; vol</definition>
+        <argsstring>() const </argsstring>
+        <name>vol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generalized Hull-White model class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements the standard Black-Karasinski model defined by <formula id="138">\[ d f(r_t) = (\theta(t) - \alpha f(r_t))dt + \sigma dW_t, \]</formula> where <formula id="139">$ alpha $</formula> and <formula id="140">$ sigma $</formula> are piecewise linear functions. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7138">
+        <label>GeneralizedHullWhite</label>
+        <link refid="class_quant_lib_1_1_generalized_hull_white"/>
+        <childnode refid="7139" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7144" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7143">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7139">
+        <label>OneFactorModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_model"/>
+        <childnode refid="7140" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7144">
+        <label>TermStructureConsistentModel</label>
+        <link refid="class_quant_lib_1_1_term_structure_consistent_model"/>
+        <childnode refid="7143" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7142">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7140">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="7141" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7141">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="7142" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7143" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7145">
+        <label>GeneralizedHullWhite</label>
+        <link refid="class_quant_lib_1_1_generalized_hull_white"/>
+        <childnode refid="7146" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7151" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7150">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7146">
+        <label>OneFactorModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_model"/>
+        <childnode refid="7147" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7151">
+        <label>TermStructureConsistentModel</label>
+        <link refid="class_quant_lib_1_1_term_structure_consistent_model"/>
+        <childnode refid="7150" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7149">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7147">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="7148" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7148">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="7149" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7150" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/shortrate/generalizedhullwhite.hpp" bodystart="42" bodyend="86"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1ad4439c51d60a45db28cbc47843a73171" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>CalibratedModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ae5ca439e5825287fbaa19c875d832021" prot="protected" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>dynamics</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>GeneralizedHullWhite</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1aa56711fc82e513c4861c27ef105e479d" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>GeneralizedHullWhite</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a2a6a0697363420cbf8673f8e61fe6d7e" prot="protected" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1a9063908949ff755f1a8ac0562b05d6a0" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>OneFactorModel</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::GeneralizedHullWhite</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::GeneralizedHullWhite</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a1863803e3d08a291d7dd59ab2242e748" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>phi_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8705485af58de6eb300e980a627a0be0" prot="protected" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>shortRateEndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>ShortRateModel</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a070a7d50740ec1a9a7cab8de7a5bed62" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>sigma_</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a152c593c6c6d82f43ccbbaa6c274efa6" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>speed</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a198afb8e4fec5d3187ee5e91a15cd716" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>speedperiods_</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a9eb54631de0ff65d7ae3516aed4a6e94" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>speedstructure_</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>termStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>TermStructureConsistentModel</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>tree</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a979df69e95f3cafb2b705afeb84c9dd4" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>vol</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a5f10512a54cdea141168efadf1c72cf7" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>volperiods_</name></member>
+      <member refid="class_quant_lib_1_1_generalized_hull_white_1a82f021d0d82f55fad82b099884a9fb4b" prot="private" virt="non-virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>volstructure_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1aa58d01bd47bbd015e07402677e91d39e" prot="public" virt="virtual"><scope>QuantLib::GeneralizedHullWhite</scope><name>~OneFactorModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_litre_unit_of_measure" kind="class" prot="public">
+    <compoundname>QuantLib::LitreUnitOfMeasure</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_unit_of_measure" prot="public" virt="non-virtual">UnitOfMeasure</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_litre_unit_of_measure_1acfdd6c4a8d28615fa06d4385bebc532e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LitreUnitOfMeasure</definition>
+        <argsstring>()</argsstring>
+        <name>LitreUnitOfMeasure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="71" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9106">
+        <label>UnitOfMeasure</label>
+        <link refid="class_quant_lib_1_1_unit_of_measure"/>
+      </node>
+      <node id="9105">
+        <label>LitreUnitOfMeasure</label>
+        <childnode refid="9106" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9108">
+        <label>UnitOfMeasure</label>
+        <link refid="class_quant_lib_1_1_unit_of_measure"/>
+      </node>
+      <node id="9107">
+        <label>LitreUnitOfMeasure</label>
+        <childnode refid="9108" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/petroleumunitsofmeasure.hpp" bodystart="69" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a52549afe87628ebdafaca441e36d0f54" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>Energy</name></member>
+      <member refid="class_quant_lib_1_1_litre_unit_of_measure_1acfdd6c4a8d28615fa06d4385bebc532e" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>LitreUnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7ad6a7c05ee148611b428c59bbf905c819" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>Mass</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a7b072a8434094fec0d21f53346581ee4" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a5dc130ad7da6f32ebcc08e2018fe9f22" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a93b0e3b06bb3eff2e7f80864d32101b2" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a9c7c3d0a1c0a535dac79d101d2559a6d" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>Quantity</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>rounding</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1aeb506a9dedbc3874208f905c91982f34" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>triangulationUnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a0d331fdab7998ace4c8dd0db6e6bd2df" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>UnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1ab8298d7a2df5c748273a284404203a49" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>UnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1aa0884bf693afec5332fdffb5458f5ede" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>unitType</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a99d9a37107ba00eec7702a4683ed93e7" prot="public" virt="non-virtual"><scope>QuantLib::LitreUnitOfMeasure</scope><name>Volume</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

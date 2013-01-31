@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_penalty_function" kind="class" prot="public">
+    <compoundname>QuantLib::PenaltyFunction</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
+        <type>Curve::traits_type</type>
+        <definition>typedef Curve::traits_type Traits</definition>
+        <argsstring></argsstring>
+        <name>Traits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a29ce88ec2013c3de7a04fbee85c27624" prot="private" static="no">
+        <type>Traits::helper</type>
+        <definition>typedef Traits::helper helper</definition>
+        <argsstring></argsstring>
+        <name>helper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a1802435247f5ee780a0408e67697d286" prot="private" static="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; helper &gt; &gt;::const_iterator</type>
+        <definition>typedef std::vector&lt; boost::shared_ptr&lt;helper&gt; &gt;::const_iterator helper_iterator</definition>
+        <argsstring></argsstring>
+        <name>helper_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1ae48628359537d2f1fc62e147ca8d1b0c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+        <definition>Curve* curve_</definition>
+        <argsstring></argsstring>
+        <name>curve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a8aa0f17cb3da1db49cadbf7e514e0505" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size initialIndex_</definition>
+        <argsstring></argsstring>
+        <name>initialIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1aaafa151c3c244b107a148e67b39cdc61" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size localisation_</definition>
+        <argsstring></argsstring>
+        <name>localisation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1acd95d5dd3a890eff5e905c8f71bc3425" prot="private" static="no" mutable="no">
+        <type>helper_iterator</type>
+        <definition>helper_iterator rateHelpersStart_</definition>
+        <argsstring></argsstring>
+        <name>rateHelpersStart_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_penalty_function_1a6ed49e6fc958b5d80c212ed807773d99" prot="private" static="no" mutable="no">
+        <type>helper_iterator</type>
+        <definition>helper_iterator rateHelpersEnd_</definition>
+        <argsstring></argsstring>
+        <name>rateHelpersEnd_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PenaltyFunction</definition>
+        <argsstring>(Curve *curve, Size initialIndex, helper_iterator rateHelpersStart, helper_iterator rateHelpersEnd)</argsstring>
+        <name>PenaltyFunction</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <declname>curve</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>initialIndex</declname>
+        </param>
+        <param>
+          <type>helper_iterator</type>
+          <declname>rateHelpersStart</declname>
+        </param>
+        <param>
+          <type>helper_iterator</type>
+          <declname>rateHelpersEnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;x) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt; Array &gt; values</definition>
+        <argsstring>(const Array &amp;x) const </argsstring>
+        <name>values</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12106">
+        <label>PenaltyFunction&lt; Curve &gt;</label>
+        <childnode refid="12107" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12107">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12108">
+        <label>PenaltyFunction&lt; Curve &gt;</label>
+        <childnode refid="12109" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12109">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="40" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_penalty_function_1ae48628359537d2f1fc62e147ca8d1b0c" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>curve_</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>finiteDifferenceEpsilon</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>gradient</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1a29ce88ec2013c3de7a04fbee85c27624" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>helper</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1a1802435247f5ee780a0408e67697d286" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>helper_iterator</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1a8aa0f17cb3da1db49cadbf7e514e0505" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>initialIndex_</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1aaafa151c3c244b107a148e67b39cdc61" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>localisation_</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>PenaltyFunction</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1a6ed49e6fc958b5d80c212ed807773d99" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>rateHelpersEnd_</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1acd95d5dd3a890eff5e905c8f71bc3425" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>rateHelpersStart_</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>Traits</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>valueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>values</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>~CostFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

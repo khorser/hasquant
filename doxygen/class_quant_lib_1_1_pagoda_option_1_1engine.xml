@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_pagoda_option_1_1engine" kind="class" prot="public">
+    <compoundname>QuantLib::PagodaOption::engine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; PagodaOption::arguments, PagodaOption::results &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_m_c_pagoda_engine" prot="public" virt="non-virtual">MCPagodaEngine&lt; RNG, S &gt;</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp</includes>
+    <briefdescription>
+<para>Pagoda-option engine base class </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11974">
+        <label>MCPagodaEngine&lt; RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_m_c_pagoda_engine"/>
+        <childnode refid="11969" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11969">
+        <label>PagodaOption::engine</label>
+        <link refid="class_quant_lib_1_1_pagoda_option_1_1engine"/>
+        <childnode refid="11970" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11972">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11973">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11971">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="11972" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11970">
+        <label>GenericEngine&lt; PagodaOption::arguments, PagodaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="11971" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11973" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11975">
+        <label>PagodaOption::engine</label>
+        <link refid="class_quant_lib_1_1_pagoda_option_1_1engine"/>
+        <childnode refid="11976" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11978">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11979">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11977">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="11978" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11976">
+        <label>GenericEngine&lt; PagodaOption::arguments, PagodaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="11977" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11979" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="70" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6" prot="public" virt="pure-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::PagodaOption::engine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::PagodaOption::engine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::engine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::engine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

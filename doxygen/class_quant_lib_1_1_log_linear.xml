@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_log_linear" kind="class" prot="public">
+    <compoundname>QuantLib::LogLinear</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_log_linear_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool global</definition>
+        <argsstring></argsstring>
+        <name>global</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_log_linear_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size requiredPoints</definition>
+        <argsstring></argsstring>
+        <name>requiredPoints</name>
+        <initializer>= 2</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_log_linear_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class I1</type>
+          </param>
+          <param>
+            <type>class I2</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <definition>Interpolation interpolate</definition>
+        <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
+        <name>interpolate</name>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xBegin</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xEnd</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yBegin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>log-linear interpolation factory and traits </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="93" bodyend="102"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_log_linear_1a288e578670054bd80e88dffe71d28b7b" prot="public" virt="non-virtual"><scope>QuantLib::LogLinear</scope><name>global</name></member>
+      <member refid="class_quant_lib_1_1_log_linear_1a51dd5c56d90da172e213d17a6d74550c" prot="public" virt="non-virtual"><scope>QuantLib::LogLinear</scope><name>interpolate</name></member>
+      <member refid="class_quant_lib_1_1_log_linear_1abe404d63ad88b3b804b458aa23052be5" prot="public" virt="non-virtual"><scope>QuantLib::LogLinear</scope><name>requiredPoints</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

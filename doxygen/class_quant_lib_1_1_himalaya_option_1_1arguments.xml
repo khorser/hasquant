@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_himalaya_option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::HimalayaOption::arguments</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; fixingDates</definition>
+        <argsstring></argsstring>
+        <name>fixingDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/himalayaoption.hpp" bodystart="59" bodyend="64"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_himalaya_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::HimalayaOption::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_himalaya_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" virt="non-virtual"><scope>QuantLib::HimalayaOption::arguments</scope><name>fixingDates</name></member>
+      <member refid="class_quant_lib_1_1_himalaya_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::HimalayaOption::arguments</scope><name>validate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

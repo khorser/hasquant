@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lm_fixed_volatility_model" kind="class" prot="public">
+    <compoundname>QuantLib::LmFixedVolatilityModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a9dd7c53d3020c2b4a373e1be3c9aa55c" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>const Array volatilities_</definition>
+        <argsstring></argsstring>
+        <name>volatilities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_fixed_volatility_model_1afa53808254a9d329c9cd25509b317ef2" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>const std::vector&lt;Time&gt; startTimes_</definition>
+        <argsstring></argsstring>
+        <name>startTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a533759436c1b9d801ec55e933bc24d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LmFixedVolatilityModel</definition>
+        <argsstring>(const Array &amp;volatilities, const std::vector&lt; Time &gt; &amp;startTimes)</argsstring>
+        <name>LmFixedVolatilityModel</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>volatilities</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>startTimes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; volatility</definition>
+        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>volatility</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatility</definition>
+        <argsstring>(Size i, Time t, const Array &amp;x) const </argsstring>
+        <name>volatility</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void generateArguments</definition>
+        <argsstring>()</argsstring>
+        <name>generateArguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9132">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9131">
+        <label>LmFixedVolatilityModel</label>
+        <childnode refid="9132" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9134">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9133">
+        <label>LmFixedVolatilityModel</label>
+        <childnode refid="9134" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmfixedvolmodel.hpp" bodystart="31" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1acc1cf9ab061974e46c30a61b4e8443af" prot="public" virt="virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>integratedVariance</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1a533759436c1b9d801ec55e933bc24d17" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>LmFixedVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1aadbf151af61e33a78daafdef33307386" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>LmVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1afa53808254a9d329c9cd25509b317ef2" prot="private" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>startTimes_</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1a9dd7c53d3020c2b4a373e1be3c9aa55c" prot="private" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>volatilities_</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" virt="non-virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a05941543805ec3ef0b4dea387671af16" prot="public" virt="virtual"><scope>QuantLib::LmFixedVolatilityModel</scope><name>~LmVolatilityModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_null_3_01_interval_price_01_4" kind="class" prot="public">
+    <compoundname>QuantLib::Null&lt; IntervalPrice &gt;</compoundname>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Null</definition>
+        <argsstring>()</argsstring>
+        <name>Null</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="112" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a06d1259c9dc4f8799616e2afdd7ecbc8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>operator IntervalPrice</definition>
+        <argsstring>() const </argsstring>
+        <name>operator IntervalPrice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="113" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="109" bodyend="114"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; IntervalPrice &gt;</scope><name>Null</name></member>
+      <member refid="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a06d1259c9dc4f8799616e2afdd7ecbc8" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; IntervalPrice &gt;</scope><name>operator IntervalPrice</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

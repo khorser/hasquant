@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_american_condition" kind="class" prot="public">
+    <compoundname>QuantLib::AmericanCondition</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::CurveDependentStepCondition&lt; Array &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1aff67f7f6768010452bb295e89923b85a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AmericanCondition</definition>
+        <argsstring>(Option::Type type, Real strike)</argsstring>
+        <name>AmericanCondition</name>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="39" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1aff6af0dd69f21e0c9ab7978eaa3df156" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>AmericanCondition</definition>
+        <argsstring>(const Array &amp;intrinsicValues)</argsstring>
+        <name>AmericanCondition</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>intrinsicValues</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="42" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1ad5076fc2089a30506dcd12c87c32e43e" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real applyToValue</definition>
+        <argsstring>(Real current, Real intrinsic) const </argsstring>
+        <name>applyToValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>current</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>intrinsic</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="45" bodyend="47"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>American exercise condition. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000041"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>unify the intrinsicValues/Payoff thing </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="36" bodyend="48"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_american_condition_1aff67f7f6768010452bb295e89923b85a" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>AmericanCondition</name></member>
+      <member refid="class_quant_lib_1_1_american_condition_1aff6af0dd69f21e0c9ab7978eaa3df156" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>AmericanCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::StepCondition::"><scope>QuantLib::AmericanCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_american_condition_1ad5076fc2089a30506dcd12c87c32e43e" prot="private" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>applyToValue</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a4ce0ef9bea67a237bb048a6555df22ec" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a3e2ba425513a0601d4e5aacd993a3d62" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1abd7f8a74564ed49a4fe8a6075418aaaf" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a867880aab93727e17df22adcc6b60d93" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>curveItem_</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a803294542460c8a9ecce1c4c3d8991cc" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>getValue</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::AmericanCondition</scope><name>~StepCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

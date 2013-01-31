@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_interpolated_smile_section" kind="class" prot="public">
+    <compoundname>QuantLib::InterpolatedSmileSection</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="non-virtual">SmileSection</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class Interpolator</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a3f780d143004e5cf127478ee7a544202" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real exerciseTimeSquareRoot_</definition>
+        <argsstring></argsstring>
+        <name>exerciseTimeSquareRoot_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; strikes_</definition>
+        <argsstring></argsstring>
+        <name>strikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a7e045438d429730668e385687214e270" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; stdDevHandles_</definition>
+        <argsstring></argsstring>
+        <name>stdDevHandles_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a2eda9ffb470e96ef36034f671a237037" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; atmLevel_</definition>
+        <argsstring></argsstring>
+        <name>atmLevel_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>std::vector&lt;Volatility&gt; vols_</definition>
+        <argsstring></argsstring>
+        <name>vols_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_smile_section_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <definition>Interpolation interpolation_</definition>
+        <argsstring></argsstring>
+        <name>interpolation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a3cc5763a9b3599ad0df3c117687e61ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedSmileSection</definition>
+        <argsstring>(Time expiryTime, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;stdDevHandles, const Handle&lt; Quote &gt; &amp;atmLevel, const Interpolator &amp;interpolator=Interpolator(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>InterpolatedSmileSection</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>expiryTime</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <declname>stdDevHandles</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>atmLevel</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>interpolator</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="89" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a7dd86624a8e18acc73f7cf44855a6059" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedSmileSection</definition>
+        <argsstring>(Time expiryTime, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Real &gt; &amp;stdDevs, Real atmLevel, const Interpolator &amp;interpolator=Interpolator(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>InterpolatedSmileSection</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>expiryTime</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>stdDevs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>atmLevel</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>interpolator</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="111" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ae3fd450eeda02800e544c596502af8aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedSmileSection</definition>
+        <argsstring>(const Date &amp;d, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;stdDevHandles, const Handle&lt; Quote &gt; &amp;atmLevel, const DayCounter &amp;dc=Actual365Fixed(), const Interpolator &amp;interpolator=Interpolator(), const Date &amp;referenceDate=Date())</argsstring>
+        <name>InterpolatedSmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <declname>stdDevHandles</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>atmLevel</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>interpolator</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="136" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ab9f0deb66c55974bf7a8d47950e5816c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedSmileSection</definition>
+        <argsstring>(const Date &amp;d, const std::vector&lt; Rate &gt; &amp;strikes, const std::vector&lt; Real &gt; &amp;stdDevs, Real atmLevel, const DayCounter &amp;dc=Actual365Fixed(), const Interpolator &amp;interpolator=Interpolator(), const Date &amp;referenceDate=Date())</argsstring>
+        <name>InterpolatedSmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>stdDevs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>atmLevel</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>interpolator</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="158" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="184" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real varianceImpl</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>varianceImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatilityImpl</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>minStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>maxStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ad8f0f9c721168150e102eba19df26273" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real atmLevel</definition>
+        <argsstring>() const </argsstring>
+        <name>atmLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="8364">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="8362" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8363" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8362">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="8363">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="8361">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="8362" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8363" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8360">
+        <label>InterpolatedSmileSection&lt; Interpolator &gt;</label>
+        <childnode refid="8361" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8364" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8369">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="8367" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8368" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8367">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="8368">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="8366">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="8367" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8368" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8365">
+        <label>InterpolatedSmileSection&lt; Interpolator &gt;</label>
+        <childnode refid="8366" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8369" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/interpolatedsmilesection.hpp" bodystart="37" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ad8f0f9c721168150e102eba19df26273" prot="public" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>atmLevel</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a2eda9ffb470e96ef36034f671a237037" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>atmLevel_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>exerciseDate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>exerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a3f780d143004e5cf127478ee7a544202" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>exerciseTimeSquareRoot_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>initializeExerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a3cc5763a9b3599ad0df3c117687e61ca" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>InterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a7dd86624a8e18acc73f7cf44855a6059" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>InterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ae3fd450eeda02800e544c596502af8aa" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>InterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ab9f0deb66c55974bf7a8d47950e5816c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>InterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>interpolation_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::InterpolatedSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::InterpolatedSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a02b90bbfee3ee29627939544fb59ec93" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a7e045438d429730668e385687214e270" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>stdDevHandles_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>strikes_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>varianceImpl</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="private" virt="non-virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>vols_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" virt="virtual"><scope>QuantLib::InterpolatedSmileSection</scope><name>~SmileSection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

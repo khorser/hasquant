@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_inner_value_calculator" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::FdmInnerValueCalculator</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_exp_ext_o_u_inner_value_calculator" prot="public" virt="non-virtual">FdmExpExtOUInnerValueCalculator</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value" prot="public" virt="non-virtual">FdmExtOUJumpModelInnerValue</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_log_basket_inner_value" prot="public" virt="non-virtual">FdmLogBasketInnerValue</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_log_inner_value" prot="public" virt="non-virtual">FdmLogInnerValue</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value" prot="public" virt="non-virtual">FdmSpreadPayoffInnerValue</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_fdm_zero_inner_value" prot="public" virt="non-virtual">FdmZeroInnerValue</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~FdmInnerValueCalculator</definition>
+        <argsstring>()</argsstring>
+        <name>~FdmInnerValueCalculator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1abf190c44cd8a17439c5121804d753e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real innerValue</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)=0</argsstring>
+        <name>innerValue</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a974ef05390467116171bc6cf8891d72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real avgInnerValue</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)=0</argsstring>
+        <name>avgInnerValue</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="40" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a974ef05390467116171bc6cf8891d72d" prot="public" virt="pure-virtual"><scope>QuantLib::FdmInnerValueCalculator</scope><name>avgInnerValue</name></member>
+      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1abf190c44cd8a17439c5121804d753e60" prot="public" virt="pure-virtual"><scope>QuantLib::FdmInnerValueCalculator</scope><name>innerValue</name></member>
+      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmInnerValueCalculator</scope><name>~FdmInnerValueCalculator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

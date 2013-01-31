@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_piecewise_constant_parameter" kind="class" prot="public">
+    <compoundname>QuantLib::PiecewiseConstantParameter</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_parameter" prot="public" virt="non-virtual">Parameter</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl" prot="private">QuantLib::PiecewiseConstantParameter::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_parameter_1abaab926b36c99cda27f439d3cbd55149" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseConstantParameter</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;times, const Constraint &amp;constraint=NoConstraint())</argsstring>
+        <name>PiecewiseConstantParameter</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <declname>constraint</declname>
+          <defval><ref refid="class_quant_lib_1_1_no_constraint" kindref="compound">NoConstraint</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="142" bodyend="149"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Piecewise-constant parameter. </para>    </briefdescription>
+    <detaileddescription>
+<para><formula id="288">$ a(t) = a_i if t_{i-1} \geq t &lt; t_i $</formula>. This kind of parameter is usually used to enhance the fitting of a model </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12147">
+        <label>PiecewiseConstantParameter</label>
+        <link refid="class_quant_lib_1_1_piecewise_constant_parameter"/>
+        <childnode refid="12148" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12148">
+        <label>Parameter</label>
+        <link refid="class_quant_lib_1_1_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12152">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="12149">
+        <label>PiecewiseConstantParameter</label>
+        <link refid="class_quant_lib_1_1_piecewise_constant_parameter"/>
+        <childnode refid="12150" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12150">
+        <label>Parameter</label>
+        <link refid="class_quant_lib_1_1_parameter"/>
+        <childnode refid="12151" relation="usage">
+          <edgelabel>constraint_</edgelabel>
+        </childnode>
+        <childnode refid="12152" relation="usage">
+          <edgelabel>params_</edgelabel>
+        </childnode>
+      </node>
+      <node id="12151">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="123" bodyend="150"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_parameter_1a87897679d6b7a92d8ef1ed8ccf012251" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a44d746dc59d36b77c5afc6238f995541" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>implementation</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a9736183e84f061ad08b6d595e2c293bf" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a722d0b273a6e3633c189fb21eaaa483c" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>Parameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1af377e71756ecf6d23f90351048c8a499" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>Parameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a7645d99ee1cc5e6d763836b5b335e95d" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1ab530ebeeba8cb03f510779f1f7470a9b" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>params_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1abaab926b36c99cda27f439d3cbd55149" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>PiecewiseConstantParameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a214b7ebc4d1aeba57c89c885e264bb8b" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>setParam</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1ab4ef17fdb7e62440087774171668418c" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter</scope><name>testParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_pde_b_s_m" kind="class" prot="public">
+    <compoundname>QuantLib::PdeBSM</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">PdeSecondOrderParabolic</basecompoundref>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_pde_b_s_m_1a48516a64919875b824270547d4632609" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>typedef boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; argument_type</definition>
+        <argsstring></argsstring>
+        <name>argument_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_pde_b_s_m_1abd43b82aee080b5c9f1d27e60bcf83f2" prot="public" static="no">
+        <type>LogGrid</type>
+        <definition>typedef LogGrid grid_type</definition>
+        <argsstring></argsstring>
+        <name>grid_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_pde_b_s_m_1a7be072a3f9cfbc89a71baf41516948a4" prot="private" static="no" mutable="no">
+        <type>const argument_type</type>
+        <definition>const argument_type process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a15e237ccad9b621e18a509acb3c8c227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PdeBSM</definition>
+        <argsstring>(const argument_type &amp;process)</argsstring>
+        <name>PdeBSM</name>
+        <param>
+          <type>const argument_type &amp;</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a6145a397fc88de2c481b429487a98164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real diffusion</definition>
+        <argsstring>(Time t, Real x) const </argsstring>
+        <name>diffusion</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="38" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real drift</definition>
+        <argsstring>(Time t, Real x) const </argsstring>
+        <name>drift</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="41" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_b_s_m_1a25c3f75b188136c4b1c845ee57fa999d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real discount</definition>
+        <argsstring>(Time t, Real) const </argsstring>
+        <name>discount</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="44" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="32" bodyend="51"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a48516a64919875b824270547d4632609" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>argument_type</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a6145a397fc88de2c481b429487a98164" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a25c3f75b188136c4b1c845ee57fa999d" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>discount</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a90779cff69e3e385225278103b4fae97" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>generateOperator</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1abd43b82aee080b5c9f1d27e60bcf83f2" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>grid_type</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a15e237ccad9b621e18a509acb3c8c227" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>PdeBSM</name></member>
+      <member refid="class_quant_lib_1_1_pde_b_s_m_1a7be072a3f9cfbc89a71baf41516948a4" prot="private" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>~PdeSecondOrderParabolic</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

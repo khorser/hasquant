@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::VanillaStorageOption::arguments</compoundname>
+    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3cf17821f2a14490d8e2dc2f8d103edb" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real capacity</definition>
+        <argsstring></argsstring>
+        <name>capacity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a954b9214299475271558fbf4e49437bb" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real load</definition>
+        <argsstring></argsstring>
+        <name>load</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a83ca0e34f53a40a1708f110891b9f763" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real changeRate</definition>
+        <argsstring></argsstring>
+        <name>changeRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a836af412aa7d7c7465c2f3650774173d" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_null_payoff" kindref="compound">NullPayoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;NullPayoff&gt; payoff</definition>
+        <argsstring></argsstring>
+        <name>payoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1aaa4d302145955765f8141768c7d194f9" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bermudan_exercise" kindref="compound">BermudanExercise</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;BermudanExercise&gt; exercise</definition>
+        <argsstring></argsstring>
+        <name>exercise</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="58" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="54" bodyend="78"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3cf17821f2a14490d8e2dc2f8d103edb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>capacity</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a83ca0e34f53a40a1708f110891b9f763" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>changeRate</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1aaa4d302145955765f8141768c7d194f9" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a954b9214299475271558fbf4e49437bb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>load</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a836af412aa7d7c7465c2f3650774173d" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>payoff</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

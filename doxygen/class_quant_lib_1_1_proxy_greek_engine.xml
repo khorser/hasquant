@@ -1,0 +1,332 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_proxy_greek_engine" kind="class" prot="public">
+    <compoundname>QuantLib::ProxyGreekEngine</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1aba105d74ff4bb0d47b19beed348f25fa" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;MarketModelEvolver&gt; originalEvolver_</definition>
+        <argsstring></argsstring>
+        <name>originalEvolver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1ac9fcd6a95a0ef5813d05e82e81aac8a8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constrained_evolver" kindref="compound">ConstrainedEvolver</ref> &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;boost::shared_ptr&lt;ConstrainedEvolver&gt; &gt; &gt; constrainedEvolvers_</definition>
+        <argsstring></argsstring>
+        <name>constrainedEvolvers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1af93796165d12b0780602f2188abaae48" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;std::vector&lt;Real&gt; &gt; &gt; diffWeights_</definition>
+        <argsstring></argsstring>
+        <name>diffWeights_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a04c8f74016be4fcfee59f90e5f7cfba3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; startIndexOfConstraint_</definition>
+        <argsstring></argsstring>
+        <name>startIndexOfConstraint_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a1c5bd2c6e08ac9de7bc0eecc970cb6e8" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; endIndexOfConstraint_</definition>
+        <argsstring></argsstring>
+        <name>endIndexOfConstraint_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1afe1ca2a0498e17face86d6cac6f38ec0" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <definition>Clone&lt;MarketModelMultiProduct&gt; product_</definition>
+        <argsstring></argsstring>
+        <name>product_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real initialNumeraireValue_</definition>
+        <argsstring></argsstring>
+        <name>initialNumeraireValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a4472a0e32e19632546affb5977062d24" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberProducts_</definition>
+        <argsstring></argsstring>
+        <name>numberProducts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1afc0c93913c8f291e88d60f712f5ca15e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; constraints_</definition>
+        <argsstring></argsstring>
+        <name>constraints_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a3c43ae2ed52a3db6b0c9d9d399464bd8" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; bool &gt;</type>
+        <definition>std::valarray&lt;bool&gt; constraintsActive_</definition>
+        <argsstring></argsstring>
+        <name>constraintsActive_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1ac02019c3e5395ae9a13d95e65733c56d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; numerairesHeld_</definition>
+        <argsstring></argsstring>
+        <name>numerairesHeld_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; numberCashFlowsThisStep_</definition>
+        <argsstring></argsstring>
+        <name>numberCashFlowsThisStep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a9bd4a6af8efd848e88a3b87585e59daf" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; MarketModelMultiProduct::CashFlow &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;MarketModelMultiProduct::CashFlow&gt; &gt; cashFlowsGenerated_</definition>
+        <argsstring></argsstring>
+        <name>cashFlowsGenerated_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_proxy_greek_engine_1a5aa2331136e0d40b661fe092ed262978" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; MarketModelDiscounter &gt;</type>
+        <definition>std::vector&lt;MarketModelDiscounter&gt; discounters_</definition>
+        <argsstring></argsstring>
+        <name>discounters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_proxy_greek_engine_1a6908870d62b0e39eeb5187dd9044dfef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ProxyGreekEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;evolver, const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; ConstrainedEvolver &gt; &gt; &gt; &amp;constrainedEvolvers, const std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;diffWeights, const std::vector&lt; Size &gt; &amp;startIndexOfConstraint, const std::vector&lt; Size &gt; &amp;endIndexOfConstraint, const Clone&lt; MarketModelMultiProduct &gt; &amp;product, double initialNumeraireValue)</argsstring>
+        <name>ProxyGreekEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &amp;</type>
+          <declname>evolver</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constrained_evolver" kindref="compound">ConstrainedEvolver</ref> &gt; &gt; &gt; &amp;</type>
+          <declname>constrainedEvolvers</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt; &amp;</type>
+          <declname>diffWeights</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>startIndexOfConstraint</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>endIndexOfConstraint</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt; &amp;</type>
+          <declname>product</declname>
+        </param>
+        <param>
+          <type>double</type>
+          <declname>initialNumeraireValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_proxy_greek_engine_1a77ba5d8a0e424e0e6ad3bba459bb6abc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void multiplePathValues</definition>
+        <argsstring>(SequenceStatisticsInc &amp;stats, std::vector&lt; std::vector&lt; SequenceStatisticsInc &gt; &gt; &amp;modifiedStats, Size numberOfPaths)</argsstring>
+        <name>multiplePathValues</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &gt; &gt; &amp;</type>
+          <declname>modifiedStats</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfPaths</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_proxy_greek_engine_1af3c9545b78e34688209c60757aff391a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void singlePathValues</definition>
+        <argsstring>(std::vector&lt; Real &gt; &amp;values, std::vector&lt; std::vector&lt; std::vector&lt; Real &gt; &gt; &gt; &amp;modifiedValues)</argsstring>
+        <name>singlePathValues</name>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::vector&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt; &amp;</type>
+          <declname>modifiedValues</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_proxy_greek_engine_1a2db9b664a4c6c50b988e98cc38996801" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void singleEvolverValues</definition>
+        <argsstring>(MarketModelEvolver &amp;evolver, std::vector&lt; Real &gt; &amp;values, bool storeRates=false)</argsstring>
+        <name>singleEvolverValues</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &amp;</type>
+          <declname>evolver</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>storeRates</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/proxygreekengine.hpp" bodystart="37" bodyend="80"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a9bd4a6af8efd848e88a3b87585e59daf" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>cashFlowsGenerated_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1ac9fcd6a95a0ef5813d05e82e81aac8a8" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>constrainedEvolvers_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1afc0c93913c8f291e88d60f712f5ca15e" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>constraints_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a3c43ae2ed52a3db6b0c9d9d399464bd8" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>constraintsActive_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1af93796165d12b0780602f2188abaae48" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>diffWeights_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a5aa2331136e0d40b661fe092ed262978" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>discounters_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a1c5bd2c6e08ac9de7bc0eecc970cb6e8" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>endIndexOfConstraint_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>initialNumeraireValue_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a77ba5d8a0e424e0e6ad3bba459bb6abc" prot="public" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>multiplePathValues</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>numberCashFlowsThisStep_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a4472a0e32e19632546affb5977062d24" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>numberProducts_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1ac02019c3e5395ae9a13d95e65733c56d" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>numerairesHeld_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1aba105d74ff4bb0d47b19beed348f25fa" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>originalEvolver_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1afe1ca2a0498e17face86d6cac6f38ec0" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>product_</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a6908870d62b0e39eeb5187dd9044dfef" prot="public" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>ProxyGreekEngine</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a2db9b664a4c6c50b988e98cc38996801" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>singleEvolverValues</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1af3c9545b78e34688209c60757aff391a" prot="public" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>singlePathValues</name></member>
+      <member refid="class_quant_lib_1_1_proxy_greek_engine_1a04c8f74016be4fcfee59f90e5f7cfba3" prot="private" virt="non-virtual"><scope>QuantLib::ProxyGreekEngine</scope><name>startIndexOfConstraint_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

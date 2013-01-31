@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_callable_bond_1_1results" kind="class" prot="public">
+    <compoundname>QuantLib::CallableBond::results</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Bond::results</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
+    <briefdescription>
+<para>results for a callable bond calculation </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="132" bodyend="135"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1a2d36dd8b8b6c0a3685c5a580e8ae6fe6" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1aa6c217ecbc13c7107f5586f8f09cb3d2" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_bond_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_bond_1_1results_1a4a64183e121ca4476b6d40fd9c853b60" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>settlementValue</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1a644ac254d3177ed6b4ddc84a7fddd45c" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1_1results_1abd5746c9a8c4bf217e5294c6c702559b" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::results</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::CallableBond::results</scope><name>~results</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

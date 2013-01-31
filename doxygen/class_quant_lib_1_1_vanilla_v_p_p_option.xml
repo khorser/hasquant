@@ -1,0 +1,359 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_vanilla_v_p_p_option" kind="class" prot="public">
+    <compoundname>QuantLib::VanillaVPPOption</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_multi_asset_option" prot="public" virt="non-virtual">MultiAssetOption</basecompoundref>
+    <innerclass refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments" prot="public">QuantLib::VanillaVPPOption::arguments</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ab6ee6ec5266ae8b1040cb8cf46afc66f" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real heatRate_</definition>
+        <argsstring></argsstring>
+        <name>heatRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1aee06cd02341796b9e83ede8be2ad0ee2" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real pMin_</definition>
+        <argsstring></argsstring>
+        <name>pMin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ada99e5388b503fa12e045c2060aa9475" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real pMax_</definition>
+        <argsstring></argsstring>
+        <name>pMax_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1acf629de0b7ded06172785e50f2c0ecef" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size tMinUp_</definition>
+        <argsstring></argsstring>
+        <name>tMinUp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ab06b54dddf49030f931b40aa717b3fa9" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size tMinDown_</definition>
+        <argsstring></argsstring>
+        <name>tMinDown_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1af2411cd32232caa591bd390c8b5b03eb" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real startUpFuel_</definition>
+        <argsstring></argsstring>
+        <name>startUpFuel_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1ad85e46c0c1e963f423e0a72082a05994" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real startUpFixCost_</definition>
+        <argsstring></argsstring>
+        <name>startUpFixCost_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a0581b0aeae621a9961269c3d1d8e07ef" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size initialState_</definition>
+        <argsstring></argsstring>
+        <name>initialState_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a8fdf6ebe5c289b259a32eb4f90affb93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>VanillaVPPOption</definition>
+        <argsstring>(Real heatRate, Real pMin, Real pMax, Size tMinUp, Size tMinDown, Real startUpFuel, Real startUpFixCost, Size initialState, const boost::shared_ptr&lt; SwingExercise &gt; &amp;exercise)</argsstring>
+        <name>VanillaVPPOption</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>heatRate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>pMin</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>pMax</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>tMinUp</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>tMinDown</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>startUpFuel</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>startUpFixCost</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>initialState</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
+          <declname>exercise</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>isExpired</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_v_p_p_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setupArguments</definition>
+        <argsstring>(PricingEngine::arguments *) const </argsstring>
+        <name>setupArguments</name>
+        <param>
+          <type>PricingEngine::arguments *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14662">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14661">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="14662" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14663" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14657">
+        <label>VanillaVPPOption</label>
+        <childnode refid="14658" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14663">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14659">
+        <label>Option</label>
+        <link refid="class_quant_lib_1_1_option"/>
+        <childnode refid="14660" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14660">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="14661" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14658">
+        <label>MultiAssetOption</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option"/>
+        <childnode refid="14659" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14669">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14668">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="14669" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14670" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14664">
+        <label>VanillaVPPOption</label>
+        <childnode refid="14665" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14670">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14666">
+        <label>Option</label>
+        <link refid="class_quant_lib_1_1_option"/>
+        <childnode refid="14667" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14671">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="14667">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="14668" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14671" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14665">
+        <label>MultiAssetOption</label>
+        <link refid="class_quant_lib_1_1_multi_asset_option"/>
+        <childnode refid="14666" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="33" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Call</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a2397bf69d6801e3328c9273143c87ce6" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a01517fec56e5a81589c2b6f4b5681c45" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>delta_</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a3275ba91d38e97f6cec10e3ade7f5f81" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>dividendRho</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a6c7b39d5c2301630075ba6e2b4b179db" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>dividendRho_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_option_1a3dba475b3e3956c0cc7b1a2934a8941e" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>exercise_</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>gamma</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a88c6756db7fb1136217d5e4f3fe88885" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>gamma_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1ab6ee6ec5266ae8b1040cb8cf46afc66f" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>heatRate_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1a0581b0aeae621a9961269c3d1d8e07ef" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>initialState_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1adc7c8413e89f6834762dcada4ba31a79" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>MultiAssetOption</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_option_1a03bf400e04666eadc73907b0c716739e" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::VanillaVPPOption</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::VanillaVPPOption</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_option_1adfced6b95046a68a31ad8bee9157eb9c" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Option</name></member>
+      <member refid="class_quant_lib_1_1_option_1ad20055b3037f613d7246b9b637768154" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>payoff</name></member>
+      <member refid="class_quant_lib_1_1_option_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1ada99e5388b503fa12e045c2060aa9475" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>pMax_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1aee06cd02341796b9e83ede8be2ad0ee2" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>pMin_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Put</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a9e74bed9ddc465f1211381d725c945bb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>rho_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1ad85e46c0c1e963f423e0a72082a05994" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>startUpFixCost_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1af2411cd32232caa591bd390c8b5b03eb" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>startUpFuel_</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>theta_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1ab06b54dddf49030f931b40aa717b3fa9" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>tMinDown_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1acf629de0b7ded06172785e50f2c0ecef" prot="private" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>tMinUp_</name></member>
+      <member refid="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1a8fdf6ebe5c289b259a32eb4f90affb93" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>VanillaVPPOption</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a7b972bc3d0a5ecbecb82c91b76d6e3ba" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>vega</name></member>
+      <member refid="class_quant_lib_1_1_multi_asset_option_1a7c212193f9c0fd38b46c202f42e9ec5b" prot="protected" virt="non-virtual"><scope>QuantLib::VanillaVPPOption</scope><name>vega_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

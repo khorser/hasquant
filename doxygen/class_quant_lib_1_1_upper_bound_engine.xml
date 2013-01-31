@@ -1,0 +1,393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_upper_bound_engine" kind="class" prot="public">
+    <compoundname>QuantLib::UpperBoundEngine</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a8cb4075d2c803646a9ee0d4b2896e332" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;MarketModelEvolver&gt; evolver_</definition>
+        <argsstring></argsstring>
+        <name>evolver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a550c1459474df87510712b909a9cdb36" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;MarketModelEvolver&gt; &gt; innerEvolvers_</definition>
+        <argsstring></argsstring>
+        <name>innerEvolvers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a9b139559c1337fed6b4434faba1f94a6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_multi_product_composite" kindref="compound">MultiProductComposite</ref></type>
+        <definition>MultiProductComposite composite_</definition>
+        <argsstring></argsstring>
+        <name>composite_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real initialNumeraireValue_</definition>
+        <argsstring></argsstring>
+        <name>initialNumeraireValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a239ed29b22116b155bcbd3fecb83e3c9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size underlyingSize_</definition>
+        <argsstring></argsstring>
+        <name>underlyingSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a5bb317952db97f4fe008c3c4326e8920" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size rebateSize_</definition>
+        <argsstring></argsstring>
+        <name>rebateSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1aebc8a1426f4be39d361aaeeb4ce784d5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size hedgeSize_</definition>
+        <argsstring></argsstring>
+        <name>hedgeSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1adfd28d9ed0970ed7fd83e75970182ea0" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size hedgeRebateSize_</definition>
+        <argsstring></argsstring>
+        <name>hedgeRebateSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a6865b9dc532c6d70b3db9ae12056c385" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size underlyingOffset_</definition>
+        <argsstring></argsstring>
+        <name>underlyingOffset_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a9534a66915c2da892c83fa1f35310bcb" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size rebateOffset_</definition>
+        <argsstring></argsstring>
+        <name>rebateOffset_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1ac027f56fe2d5db007ce7a2b9a046afbd" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size hedgeOffset_</definition>
+        <argsstring></argsstring>
+        <name>hedgeOffset_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a21ac86c10360ea613f0595680a999d30" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size hedgeRebateOffset_</definition>
+        <argsstring></argsstring>
+        <name>hedgeRebateOffset_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfProducts_</definition>
+        <argsstring></argsstring>
+        <name>numberOfProducts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a7096f7840a57cff837d27141bc085e5c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfSteps_</definition>
+        <argsstring></argsstring>
+        <name>numberOfSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; bool &gt;</type>
+        <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
+        <argsstring></argsstring>
+        <name>isExerciseTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; numberCashFlowsThisStep_</definition>
+        <argsstring></argsstring>
+        <name>numberCashFlowsThisStep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a9bd4a6af8efd848e88a3b87585e59daf" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; MarketModelMultiProduct::CashFlow &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;MarketModelMultiProduct::CashFlow&gt; &gt; cashFlowsGenerated_</definition>
+        <argsstring></argsstring>
+        <name>cashFlowsGenerated_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upper_bound_engine_1a5aa2331136e0d40b661fe092ed262978" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; MarketModelDiscounter &gt;</type>
+        <definition>std::vector&lt;MarketModelDiscounter&gt; discounters_</definition>
+        <argsstring></argsstring>
+        <name>discounters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_upper_bound_engine_1a22dcbb9d0595a1a70ecb0f472ef84258" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UpperBoundEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; MarketModelEvolver &gt; &amp;evolver, const std::vector&lt; boost::shared_ptr&lt; MarketModelEvolver &gt; &gt; &amp;innerEvolvers, const MarketModelMultiProduct &amp;underlying, const MarketModelExerciseValue &amp;rebate, const MarketModelMultiProduct &amp;hedge, const MarketModelExerciseValue &amp;hedgeRebate, const ExerciseStrategy&lt; CurveState &gt; &amp;hedgeStrategy, Real initialNumeraireValue)</argsstring>
+        <name>UpperBoundEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &amp;</type>
+          <declname>evolver</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_evolver" kindref="compound">MarketModelEvolver</ref> &gt; &gt; &amp;</type>
+          <declname>innerEvolvers</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &amp;</type>
+          <declname>underlying</declname>
+        </param>
+        <param>
+          <type>const MarketModelExerciseValue &amp;</type>
+          <declname>rebate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &amp;</type>
+          <declname>hedge</declname>
+        </param>
+        <param>
+          <type>const MarketModelExerciseValue &amp;</type>
+          <declname>hedgeRebate</declname>
+        </param>
+        <param>
+          <type>const ExerciseStrategy&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <declname>hedgeStrategy</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>initialNumeraireValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_upper_bound_engine_1af7c2a28148a4b96f48a7414ff67370d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void multiplePathValues</definition>
+        <argsstring>(Statistics &amp;stats, Size outerPaths, Size innerPaths)</argsstring>
+        <name>multiplePathValues</name>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a235b6c8805adaa743cc845aae9c05946" kindref="member">Statistics</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>outerPaths</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>innerPaths</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_upper_bound_engine_1af79ac18cb0d95ecab3070244d7e461c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::pair&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::pair&lt;Real,Real&gt; singlePathValue</definition>
+        <argsstring>(Size innerPaths)</argsstring>
+        <name>singlePathValue</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>innerPaths</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_upper_bound_engine_1a1148a6b52a9caf0eaa3be3396984e83b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real collectCashFlows</definition>
+        <argsstring>(Size currentStep, Real principalInNumerairePortfolio, Size beginProduct, Size endProduct) const </argsstring>
+        <name>collectCashFlows</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>currentStep</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>principalInNumerairePortfolio</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>beginProduct</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>endProduct</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Market-model engine for upper-bound estimation. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="pre"><para>product and hedge must have the same rate times and exercise times </para></simplesect>
+</para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/upperboundengine.hpp" bodystart="43" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a9bd4a6af8efd848e88a3b87585e59daf" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>cashFlowsGenerated_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a1148a6b52a9caf0eaa3be3396984e83b" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>collectCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a9b139559c1337fed6b4434faba1f94a6" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>composite_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a5aa2331136e0d40b661fe092ed262978" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>discounters_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a8cb4075d2c803646a9ee0d4b2896e332" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>evolver_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1ac027f56fe2d5db007ce7a2b9a046afbd" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>hedgeOffset_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a21ac86c10360ea613f0595680a999d30" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>hedgeRebateOffset_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1adfd28d9ed0970ed7fd83e75970182ea0" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>hedgeRebateSize_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1aebc8a1426f4be39d361aaeeb4ce784d5" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>hedgeSize_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a72ee3009f0ae910cbbe75ea95d0e9992" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>initialNumeraireValue_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a550c1459474df87510712b909a9cdb36" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>innerEvolvers_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>isExerciseTime_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1af7c2a28148a4b96f48a7414ff67370d8" prot="public" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>multiplePathValues</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1aa728e4b75a27d68ae924976413ac154b" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>numberCashFlowsThisStep_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>numberOfProducts_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a7096f7840a57cff837d27141bc085e5c" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>numberOfSteps_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a9534a66915c2da892c83fa1f35310bcb" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>rebateOffset_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a5bb317952db97f4fe008c3c4326e8920" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>rebateSize_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1af79ac18cb0d95ecab3070244d7e461c6" prot="public" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>singlePathValue</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a6865b9dc532c6d70b3db9ae12056c385" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>underlyingOffset_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a239ed29b22116b155bcbd3fecb83e3c9" prot="private" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>underlyingSize_</name></member>
+      <member refid="class_quant_lib_1_1_upper_bound_engine_1a22dcbb9d0595a1a70ecb0f472ef84258" prot="public" virt="non-virtual"><scope>QuantLib::UpperBoundEngine</scope><name>UpperBoundEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

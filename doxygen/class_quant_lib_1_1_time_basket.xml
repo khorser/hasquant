@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_time_basket" kind="class" prot="public">
+    <compoundname>QuantLib::TimeBasket</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">std::map&lt; Date, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Map interface</header>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1a6dc93ba2311dc4033218143dab0641e8" prot="public" static="no">
+        <type>super::iterator</type>
+        <definition>typedef super::iterator iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1aaae3bb8452ab2076a1678a4ea6ad87ed" prot="public" static="no">
+        <type>super::const_iterator</type>
+        <definition>typedef super::const_iterator const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1abd49bd01c7d10f089c6b298cd6e01e2e" prot="public" static="no">
+        <type>super::reverse_iterator</type>
+        <definition>typedef super::reverse_iterator reverse_iterator</definition>
+        <argsstring></argsstring>
+        <name>reverse_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1aa93a1332a54c147b7520c6db316f342a" prot="public" static="no">
+        <type>super::const_reverse_iterator</type>
+        <definition>typedef super::const_reverse_iterator const_reverse_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_reverse_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a0c4a88a3947bd9e763239f456b000e43" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hasDate</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>hasDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <defname>d</defname>
+        </param>
+        <briefdescription>
+<para>membership </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="76" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Algebra</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1aa8da85804e43c204de0ae7de04229c40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
+        <definition>TimeBasket &amp; operator+=</definition>
+        <argsstring>(const TimeBasket &amp;other)</argsstring>
+        <name>operator+=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="81" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a662b2aff055067f7930a3499f63c32cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
+        <definition>TimeBasket &amp; operator-=</definition>
+        <argsstring>(const TimeBasket &amp;other)</argsstring>
+        <name>operator-=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="88" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Other methods</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1ada4bc9b4db55dbf1023e1298fd3f9af7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_basket" kindref="compound">TimeBasket</ref></type>
+        <definition>TimeBasket rebin</definition>
+        <argsstring>(const std::vector&lt; Date &gt; &amp;buckets) const </argsstring>
+        <name>rebin</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>buckets</declname>
+        </param>
+        <briefdescription>
+<para>redistribute the entries over the given dates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="69"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1a3e97740a21d32bbc2a4dd0e5a729312d" prot="private" static="no">
+        <type>std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>typedef std::map&lt;Date,Real&gt; super</definition>
+        <argsstring></argsstring>
+        <name>super</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1adc14373ce1d117c919c147bb18db5a40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TimeBasket</definition>
+        <argsstring>()</argsstring>
+        <name>TimeBasket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1a6b78bdcda419ebfef78a827b17032b1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TimeBasket</definition>
+        <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;values)</argsstring>
+        <name>TimeBasket</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>dates</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>values</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Distribution over a number of dates. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="36" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_time_basket_1aaae3bb8452ab2076a1678a4ea6ad87ed" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>const_iterator</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1aa93a1332a54c147b7520c6db316f342a" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>const_reverse_iterator</name></member>
+      <member refid="classstd_1_1map_1af400dbe3fe1572c567f882190c772196" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>elements</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1a0c4a88a3947bd9e763239f456b000e43" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>hasDate</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1a6dc93ba2311dc4033218143dab0641e8" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>iterator</name></member>
+      <member refid="classstd_1_1map_1a4736f9b2b54dddaa10b54581a23a1789" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>keys</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1aa8da85804e43c204de0ae7de04229c40" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>operator+=</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1a662b2aff055067f7930a3499f63c32cb" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>operator-=</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1ada4bc9b4db55dbf1023e1298fd3f9af7" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>rebin</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1abd49bd01c7d10f089c6b298cd6e01e2e" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>reverse_iterator</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1a3e97740a21d32bbc2a4dd0e5a729312d" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>super</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1adc14373ce1d117c919c147bb18db5a40" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>TimeBasket</name></member>
+      <member refid="class_quant_lib_1_1_time_basket_1a6b78bdcda419ebfef78a827b17032b1d" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>TimeBasket</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

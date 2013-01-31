@@ -1,0 +1,169 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_simplex" kind="class" prot="public">
+    <compoundname>QuantLib::Simplex</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_optimization_method" prot="public" virt="non-virtual">OptimizationMethod</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lambda_</definition>
+        <argsstring></argsstring>
+        <name>lambda_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a9bb28cdfff977585169d516b07f42a10" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>std::vector&lt;Array&gt; vertices_</definition>
+        <argsstring></argsstring>
+        <name>vertices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1a99a3a78defaeab5ede226107da665b96" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array values_</definition>
+        <argsstring></argsstring>
+        <name>values_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_simplex_1aa17da009a6611e09a96444ce08b6ea18" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array sum_</definition>
+        <argsstring></argsstring>
+        <name>sum_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Simplex</definition>
+        <argsstring>(Real lambda)</argsstring>
+        <name>Simplex</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>lambda</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Constructor taking as input the characteristic length </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>EndCriteria::Type</type>
+        <definition>virtual EndCriteria::Type minimize</definition>
+        <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
+        <name>minimize</name>
+        <reimplements refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <declname>endCriteria</declname>
+        </param>
+        <briefdescription>
+<para>minimize the optimization problem P </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simplex_1ab5b2a304139601514d7d7216aee12257" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real extrapolate</definition>
+        <argsstring>(Problem &amp;P, Size iHighest, Real &amp;factor) const </argsstring>
+        <name>extrapolate</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>iHighest</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>factor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Multi-dimensional simplex class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13134">
+        <label>OptimizationMethod</label>
+        <link refid="class_quant_lib_1_1_optimization_method"/>
+      </node>
+      <node id="13133">
+        <label>Simplex</label>
+        <link refid="class_quant_lib_1_1_simplex"/>
+        <childnode refid="13134" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13136">
+        <label>OptimizationMethod</label>
+        <link refid="class_quant_lib_1_1_optimization_method"/>
+      </node>
+      <node id="13135">
+        <label>Simplex</label>
+        <link refid="class_quant_lib_1_1_simplex"/>
+        <childnode refid="13136" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="39" bodyend="52"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_simplex_1ab5b2a304139601514d7d7216aee12257" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>extrapolate</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>lambda_</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::Simplex</scope><name>minimize</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>Simplex</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1aa17da009a6611e09a96444ce08b6ea18" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>sum_</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1a99a3a78defaeab5ede226107da665b96" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>values_</name></member>
+      <member refid="class_quant_lib_1_1_simplex_1a9bb28cdfff977585169d516b07f42a10" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>vertices_</name></member>
+      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::Simplex</scope><name>~OptimizationMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

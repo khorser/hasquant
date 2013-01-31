@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_prime_numbers" kind="class" prot="public">
+    <compoundname>QuantLib::PrimeNumbers</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_prime_numbers_1a8f0710de46c09f881183cf8184c54946" prot="private" static="yes" mutable="no">
+        <type>std::vector&lt; <ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref> &gt;</type>
+        <definition>std::vector&lt;BigNatural&gt; primeNumbers_</definition>
+        <argsstring></argsstring>
+        <name>primeNumbers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+        <definition>static BigNatural get</definition>
+        <argsstring>(Size absoluteIndex)</argsstring>
+        <name>get</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>absoluteIndex</declname>
+        </param>
+        <briefdescription>
+<para>Get and store one after another. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a380c72c99a9c6e635a8347157daef351" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PrimeNumbers</definition>
+        <argsstring>()</argsstring>
+        <name>PrimeNumbers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="50" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a76738d2768be27aefd000752de7af2bc" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+        <definition>static BigNatural nextPrimeNumber</definition>
+        <argsstring>()</argsstring>
+        <name>nextPrimeNumber</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Prime numbers calculator. </para>    </briefdescription>
+    <detaileddescription>
+<para>Taken from &quot;Monte Carlo Methods in Finance&quot;, by Peter Jäckel </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="45" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>get</name></member>
+      <member refid="class_quant_lib_1_1_prime_numbers_1a76738d2768be27aefd000752de7af2bc" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>nextPrimeNumber</name></member>
+      <member refid="class_quant_lib_1_1_prime_numbers_1a380c72c99a9c6e635a8347157daef351" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>PrimeNumbers</name></member>
+      <member refid="class_quant_lib_1_1_prime_numbers_1a8f0710de46c09f881183cf8184c54946" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>primeNumbers_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

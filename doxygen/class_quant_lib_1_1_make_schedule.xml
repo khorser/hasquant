@@ -1,0 +1,407 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_make_schedule" kind="class" prot="public">
+    <compoundname>QuantLib::MakeSchedule</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar_</definition>
+        <argsstring></argsstring>
+        <name>calendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date effectiveDate_</definition>
+        <argsstring></argsstring>
+        <name>effectiveDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a4fd303bf9a2fb197696acf7d8481b77b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date terminationDate_</definition>
+        <argsstring></argsstring>
+        <name>terminationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1af5b68b462db0b1544bd1dd5ab311a37d" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt;</type>
+        <definition>boost::optional&lt;Period&gt; tenor_</definition>
+        <argsstring></argsstring>
+        <name>tenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a322aa0ac577ea2e90e03945520d74936" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &gt;</type>
+        <definition>boost::optional&lt;BusinessDayConvention&gt; convention_</definition>
+        <argsstring></argsstring>
+        <name>convention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a921c528c244c534f0dbe71a3faad14d2" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &gt;</type>
+        <definition>boost::optional&lt;BusinessDayConvention&gt; terminationDateConvention_</definition>
+        <argsstring></argsstring>
+        <name>terminationDateConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a8a0428b85c9033946cc024aa41a482eb" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        <definition>DateGeneration::Rule rule_</definition>
+        <argsstring></argsstring>
+        <name>rule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a0f9cce4f14d75f9e75dcba9a025ee764" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool endOfMonth_</definition>
+        <argsstring></argsstring>
+        <name>endOfMonth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1a694f4875a6fafbb45f10ca444b27896b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date firstDate_</definition>
+        <argsstring></argsstring>
+        <name>firstDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_schedule_1afde7abedc2b785ed6f3af2ddf11c7b23" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date nextToLastDate_</definition>
+        <argsstring></argsstring>
+        <name>nextToLastDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a0a2a330022635c4b445153a061041173" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MakeSchedule</definition>
+        <argsstring>()</argsstring>
+        <name>MakeSchedule</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="110"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1ab328480b098d9fb1f8e3fc03960ddf05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; from</definition>
+        <argsstring>(const Date &amp;effectiveDate)</argsstring>
+        <name>from</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>effectiveDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a98e157bbbcd9754986e8e0411d072761" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; to</definition>
+        <argsstring>(const Date &amp;terminationDate)</argsstring>
+        <name>to</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>terminationDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a45b742229f99f70787fc61225861fd93" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withTenor</definition>
+        <argsstring>(const Period &amp;)</argsstring>
+        <name>withTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1adf3f2cb35c6e58b77a96d9d4181fa6c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withFrequency</definition>
+        <argsstring>(Frequency)</argsstring>
+        <name>withFrequency</name>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="114"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1aa2ab61fb0be02d59f8e2058d8cdfe566" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withCalendar</definition>
+        <argsstring>(const Calendar &amp;)</argsstring>
+        <name>withCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a1c71edfcb4a2fceccbf74f99a2e30ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withConvention</definition>
+        <argsstring>(BusinessDayConvention)</argsstring>
+        <name>withConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a91aba7bd1dfd2f39c8900f3f8a5b21f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention)</argsstring>
+        <name>withTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a6e61306c222514eea56ca026eedc53aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withRule</definition>
+        <argsstring>(DateGeneration::Rule)</argsstring>
+        <name>withRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a53b3b5ba1718f24c821394513b55d7ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; forwards</definition>
+        <argsstring>()</argsstring>
+        <name>forwards</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1aa026676d0e8d140988f9fba868528747" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; backwards</definition>
+        <argsstring>()</argsstring>
+        <name>backwards</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a9ea887c09dd8b87db7cf1cabac50e57e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; endOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>endOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1ab96de6014f065896c1e5858ae44b4ca3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="122"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1ae598a7e4b725a132c6d8963142fa180d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_schedule" kindref="compound">MakeSchedule</ref> &amp;</type>
+        <definition>MakeSchedule&amp; withNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_schedule_1a7a9b241da5b636606cbdcd63d8998c66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator Schedule</definition>
+        <argsstring>() const </argsstring>
+        <name>operator Schedule</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>helper class </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides a more comfortable interface to the argument list of <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref>&apos;s constructor. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/schedule.hpp" bodystart="108" bodyend="134"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_make_schedule_1aa026676d0e8d140988f9fba868528747" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>backwards</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a322aa0ac577ea2e90e03945520d74936" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>convention_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>effectiveDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a9ea887c09dd8b87db7cf1cabac50e57e" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>endOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a0f9cce4f14d75f9e75dcba9a025ee764" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>endOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a694f4875a6fafbb45f10ca444b27896b" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>firstDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a53b3b5ba1718f24c821394513b55d7ff" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>forwards</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1ab328480b098d9fb1f8e3fc03960ddf05" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>from</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a0a2a330022635c4b445153a061041173" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>MakeSchedule</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1afde7abedc2b785ed6f3af2ddf11c7b23" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>nextToLastDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a7a9b241da5b636606cbdcd63d8998c66" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>operator Schedule</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a8a0428b85c9033946cc024aa41a482eb" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>rule_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1af5b68b462db0b1544bd1dd5ab311a37d" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>tenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a4fd303bf9a2fb197696acf7d8481b77b" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>terminationDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a921c528c244c534f0dbe71a3faad14d2" prot="private" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>terminationDateConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a98e157bbbcd9754986e8e0411d072761" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>to</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1aa2ab61fb0be02d59f8e2058d8cdfe566" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a1c71edfcb4a2fceccbf74f99a2e30ed5" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1ab96de6014f065896c1e5858ae44b4ca3" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1adf3f2cb35c6e58b77a96d9d4181fa6c9" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withFrequency</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1ae598a7e4b725a132c6d8963142fa180d" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a6e61306c222514eea56ca026eedc53aa" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withRule</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a45b742229f99f70787fc61225861fd93" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_schedule_1a91aba7bd1dfd2f39c8900f3f8a5b21f5" prot="public" virt="non-virtual"><scope>QuantLib::MakeSchedule</scope><name>withTerminationDateConvention</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

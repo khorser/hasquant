@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class" kind="class" prot="public">
+    <compoundname>QuantLib::BlackDeltaPremiumAdjustedSolverClass</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a5891bc0dca87b71ab42dc20f41eef112" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_black_delta_calculator" kindref="compound">BlackDeltaCalculator</ref></type>
+        <definition>BlackDeltaCalculator bdc_</definition>
+        <argsstring></argsstring>
+        <name>bdc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a01517fec56e5a81589c2b6f4b5681c45" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real delta_</definition>
+        <argsstring></argsstring>
+        <name>delta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a6d7137518df6f679f1acbbb53d270b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackDeltaPremiumAdjustedSolverClass</definition>
+        <argsstring>(Option::Type ot, DeltaVolQuote::DeltaType dt, Real spot, DiscountFactor dDiscount, DiscountFactor fDiscount, Real stdDev, Real delta)</argsstring>
+        <name>BlackDeltaPremiumAdjustedSolverClass</name>
+        <param>
+          <type>Option::Type</type>
+          <declname>ot</declname>
+        </param>
+        <param>
+          <type>DeltaVolQuote::DeltaType</type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spot</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>dDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>fDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>stdDev</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>delta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real strike) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="85" bodyend="101"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a5891bc0dca87b71ab42dc20f41eef112" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>bdc_</name></member>
+      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a6d7137518df6f679f1acbbb53d270b2e" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>BlackDeltaPremiumAdjustedSolverClass</name></member>
+      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a01517fec56e5a81589c2b6f4b5681c45" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>delta_</name></member>
+      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

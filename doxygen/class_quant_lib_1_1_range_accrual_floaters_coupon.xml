@@ -1,0 +1,508 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_range_accrual_floaters_coupon" kind="class" prot="public">
+    <compoundname>QuantLib::RangeAccrualFloatersCoupon</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_floating_rate_coupon" prot="public" virt="non-virtual">FloatingRateCoupon</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a6b4dfb2aef0717c1cc3b47544c5c6f1f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real startTime_</definition>
+        <argsstring></argsstring>
+        <name>startTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0b07582d94c76dac428b440ab88c6339" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real endTime_</definition>
+        <argsstring></argsstring>
+        <name>endTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1afe18ac63fb52bb300558fc5b50c802ae" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule_</definition>
+        <argsstring></argsstring>
+        <name>observationsSchedule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a36045fdd53fbd0603ce4860e6e95f780" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; observationDates_</definition>
+        <argsstring></argsstring>
+        <name>observationDates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0c2145cfda3466bf375b7d1917a15bcf" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; observationTimes_</definition>
+        <argsstring></argsstring>
+        <name>observationTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae97dad63d329cfd63323a0d4e5098370" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size observationsNo_</definition>
+        <argsstring></argsstring>
+        <name>observationsNo_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1256aca2de96ee6e714ed73606c7706a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lowerTrigger_</definition>
+        <argsstring></argsstring>
+        <name>lowerTrigger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1afa9209e450e3138cc67932cfb4e5abdf" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upperTrigger_</definition>
+        <argsstring></argsstring>
+        <name>upperTrigger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a56fb62bfd08374d2a2870f7588003718" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RangeAccrualFloatersCoupon</definition>
+        <argsstring>(const Date &amp;paymentDate, Real nominal, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const DayCounter &amp;dayCounter, Real gearing, Rate spread, const Date &amp;refPeriodStart, const Date &amp;refPeriodEnd, const boost::shared_ptr&lt; Schedule &gt; &amp;observationsSchedule, Real lowerTrigger, Real upperTrigger)</argsstring>
+        <name>RangeAccrualFloatersCoupon</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>paymentDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nominal</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>startDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>endDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>fixingDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gearing</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>spread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refPeriodStart</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refPeriodEnd</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &gt; &amp;</type>
+          <declname>observationsSchedule</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>lowerTrigger</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>upperTrigger</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real startTime</definition>
+        <argsstring>() const </argsstring>
+        <name>startTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real endTime</definition>
+        <argsstring>() const </argsstring>
+        <name>endTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a37ee03719abee959b788d4a4e2564817" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lowerTrigger</definition>
+        <argsstring>() const </argsstring>
+        <name>lowerTrigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae00db6447b4fb51cba4f1d870d4f625d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upperTrigger</definition>
+        <argsstring>() const </argsstring>
+        <name>upperTrigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab14e153aeace329bebb8e245602c6f7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size observationsNo</definition>
+        <argsstring>() const </argsstring>
+        <name>observationsNo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab7f8a1d4a314a985fa69de5ba722967" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Date&gt;&amp; observationDates</definition>
+        <argsstring>() const </argsstring>
+        <name>observationDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="65" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Real&gt;&amp; observationTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>observationTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1af30fb3b35833e1ec2afc875b7c400740" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;Schedule&gt; observationsSchedule</definition>
+        <argsstring>() const </argsstring>
+        <name>observationsSchedule</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_floaters_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real priceWithoutOptionality</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve) const </argsstring>
+        <name>priceWithoutOptionality</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12670">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="12671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12671">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12666">
+        <label>RangeAccrualFloatersCoupon</label>
+        <childnode refid="12667" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12672">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12667">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="12668" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12672" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12669">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="12670" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12668">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="12669" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12677">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="12678" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12678">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12673">
+        <label>RangeAccrualFloatersCoupon</label>
+        <childnode refid="12674" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12680">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12674">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="12675" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12680" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12681" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+      </node>
+      <node id="12679">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="12681">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="12676">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="12677" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12675">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="12676" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12679" relation="usage">
+          <edgelabel>refPeriodEnd_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+          <edgelabel>accrualEndDate_</edgelabel>
+          <edgelabel>accrualStartDate_</edgelabel>
+          <edgelabel>refPeriodStart_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/rangeaccrual.hpp" bodystart="40" bodyend="93"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualEndDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1ab871d5b910c9a7426056d7dc4660d5d4" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualEndDate_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualPeriod</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualStartDate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a7db0f13993a640aa7f0d594e71cd4fb0" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accrualStartDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accruedAmount</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accruedDays</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>accruedPeriod</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>adjustedFixing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>convexityAdjustment</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a119ba767531cbaa8a9eb9e1b9d5bac72" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>convexityAdjustmentImpl</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>Coupon</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1aed22d9abaf095bbffd906e613e827369" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>endTime</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0b07582d94c76dac428b440ab88c6339" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>endTime_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>fixingDate</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>fixingDays</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a7b5758dc357368c9bcb7920c66084351" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>fixingDays_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>FloatingRateCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>gearing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab36c19ec4146edfb3995d21524eec75a" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>indexFixing</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>isInArrears</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a25f8da0f6e04b43219b0a3adc3b546a2" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>isInArrears_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a37ee03719abee959b788d4a4e2564817" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>lowerTrigger</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1256aca2de96ee6e714ed73606c7706a" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>lowerTrigger_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab7f8a1d4a314a985fa69de5ba722967" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationDates</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a36045fdd53fbd0603ce4860e6e95f780" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationDates_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1aab14e153aeace329bebb8e245602c6f7" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationsNo</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae97dad63d329cfd63323a0d4e5098370" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationsNo_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1af30fb3b35833e1ec2afc875b7c400740" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationsSchedule</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1afe18ac63fb52bb300558fc5b50c802ae" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationsSchedule_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a4d76cb4fdc8ec3a1a5842b044e5a1165" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationTimes</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a0c2145cfda3466bf375b7d1917a15bcf" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>observationTimes_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a292ad9c54719780e61282ddeeac02410" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>price</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>pricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a3b075e34ab824af88d259d676650670a" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>pricer_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1aa8863d2b94859595390ec23a923f378c" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>priceWithoutOptionality</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a56fb62bfd08374d2a2870f7588003718" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>RangeAccrualFloatersCoupon</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>rate</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>referencePeriodEnd</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>referencePeriodStart</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a662e5b434a5da06dcc6b453780a18a52" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>refPeriodEnd_</name></member>
+      <member refid="class_quant_lib_1_1_coupon_1a98fabc993511982e34098f058a23792b" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>refPeriodStart_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ade8776ea16ef3f56f7b96afae4135186" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>setPricer</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>spread</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a1ece2eac4481e2a1685705aac57766d0" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>startTime</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1a6b4dfb2aef0717c1cc3b47544c5c6f1f" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>startTime_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1ae00db6447b4fb51cba4f1d870d4f625d" prot="public" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>upperTrigger</name></member>
+      <member refid="class_quant_lib_1_1_range_accrual_floaters_coupon_1afa9209e450e3138cc67932cfb4e5abdf" prot="private" virt="non-virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>upperTrigger_</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::RangeAccrualFloatersCoupon</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

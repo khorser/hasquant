@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_least_square_problem" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::LeastSquareProblem</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a2a78b6ec5fe09058edac6d74c9939d7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~LeastSquareProblem</definition>
+        <argsstring>()</argsstring>
+        <name>~LeastSquareProblem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a6c7ce2556129af8c0e1081fa87bfe83c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size size</definition>
+        <argsstring>()=0</argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>size of the problem ie size of target vector </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a11233390acce28369d1979816543f542" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void targetAndValue</definition>
+        <argsstring>(const Array &amp;x, Array &amp;target, Array &amp;fct2fit)=0</argsstring>
+        <name>targetAndValue</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>fct2fit</declname>
+        </param>
+        <briefdescription>
+<para>compute the target vector and the values of the function to fit </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_least_square_problem_1a5329bc9538315cd8ef49584ad144c526" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void targetValueAndGradient</definition>
+        <argsstring>(const Array &amp;x, Matrix &amp;grad_fct2fit, Array &amp;target, Array &amp;fct2fit)=0</argsstring>
+        <name>targetValueAndGradient</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>grad_fct2fit</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>fct2fit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>compute the target vector, the values of the function to fit and the matrix of derivatives </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for least square problem. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="38" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_least_square_problem_1a6c7ce2556129af8c0e1081fa87bfe83c" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_least_square_problem_1a11233390acce28369d1979816543f542" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>targetAndValue</name></member>
+      <member refid="class_quant_lib_1_1_least_square_problem_1a5329bc9538315cd8ef49584ad144c526" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>targetValueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1_least_square_problem_1a2a78b6ec5fe09058edac6d74c9939d7c" prot="public" virt="virtual"><scope>QuantLib::LeastSquareProblem</scope><name>~LeastSquareProblem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

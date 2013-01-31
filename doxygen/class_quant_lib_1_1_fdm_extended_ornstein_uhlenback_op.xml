@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op" kind="class" prot="public">
+    <compoundname>QuantLib::FdmExtendedOrnsteinUhlenbackOp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FdmLinearOpComposite</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
+        <argsstring></argsstring>
+        <name>mesher_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a4187a44b6510c1aafe021f8c8cda7fa0" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
+        <argsstring></argsstring>
+        <name>rTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" static="no" mutable="no">
+        <type>const FdmBoundaryConditionSet</type>
+        <definition>const FdmBoundaryConditionSet bcSet_</definition>
+        <argsstring></argsstring>
+        <name>bcSet_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1ac187ad7b9bfcbdec0261f48ac578d162" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size direction_</definition>
+        <argsstring></argsstring>
+        <name>direction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a48c41cf150b557ea5789f02c1be4b52f" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>const Array x_</definition>
+        <argsstring></argsstring>
+        <name>x_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a82f2181cddb352b862acabc7ae59c2d8" prot="private" static="no" mutable="no">
+        <type>const FirstDerivativeOp</type>
+        <definition>const FirstDerivativeOp dxMap_</definition>
+        <argsstring></argsstring>
+        <name>dxMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a5e644644495ba53895b390d07bde7d9b" prot="private" static="no" mutable="no">
+        <type>const TripleBandLinearOp</type>
+        <definition>const TripleBandLinearOp dxxMap_</definition>
+        <argsstring></argsstring>
+        <name>dxxMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1aec861e224d6245bd7388045691692a15" prot="private" static="no" mutable="no">
+        <type>TripleBandLinearOp</type>
+        <definition>TripleBandLinearOp mapX_</definition>
+        <argsstring></argsstring>
+        <name>mapX_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a6fc1ec0490d7d8d0f9ddf24601c114ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmExtendedOrnsteinUhlenbackOp</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; ExtendedOrnsteinUhlenbeckProcess &gt; &amp;p, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, const FdmBoundaryConditionSet &amp;bcSet, Size direction=0)</argsstring>
+        <name>FdmExtendedOrnsteinUhlenbackOp</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
+          <declname>mesher</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>rTS</declname>
+        </param>
+        <param>
+          <type>const FdmBoundaryConditionSet &amp;</type>
+          <declname>bcSet</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time t1, Time t2)</argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_mixed</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply_mixed</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_direction</definition>
+        <argsstring>(Size direction, const Array &amp;r) const </argsstring>
+        <name>apply_direction</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; solve_splitting</definition>
+        <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
+        <name>solve_splitting</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; preconditioner</definition>
+        <argsstring>(const Array &amp;r, Real s) const </argsstring>
+        <name>preconditioner</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextendedornsteinuhlenbeckop.hpp" bodystart="39" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>apply_direction</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>apply_mixed</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>bcSet_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1ac187ad7b9bfcbdec0261f48ac578d162" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>direction_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a82f2181cddb352b862acabc7ae59c2d8" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>dxMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a5e644644495ba53895b390d07bde7d9b" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>dxxMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a6fc1ec0490d7d8d0f9ddf24601c114ce" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>FdmExtendedOrnsteinUhlenbackOp</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1aec861e224d6245bd7388045691692a15" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>mapX_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>mesher_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>preconditioner</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a4187a44b6510c1aafe021f8c8cda7fa0" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>rTS_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>solve_splitting</name></member>
+      <member refid="class_quant_lib_1_1_fdm_extended_ornstein_uhlenback_op_1a48c41cf150b557ea5789f02c1be4b52f" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>x_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmExtendedOrnsteinUhlenbackOp</scope><name>~FdmLinearOp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

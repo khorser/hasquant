@@ -1,0 +1,1001 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_credit_default_swap" kind="class" prot="public">
+    <compoundname>QuantLib::CreditDefaultSwap</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1arguments" prot="public">QuantLib::CreditDefaultSwap::arguments</innerclass>
+    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1engine" prot="public">QuantLib::CreditDefaultSwap::engine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1results" prot="public">QuantLib::CreditDefaultSwap::results</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1acc79277d9b859d2db515a4006e39ab41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CreditDefaultSwap</definition>
+        <argsstring>(Protection::Side side, Real notional, Rate spread, const Schedule &amp;schedule, BusinessDayConvention paymentConvention, const DayCounter &amp;dayCounter, bool settlesAccrual=true, bool paysAtDefaultTime=true, const Date &amp;protectionStart=Date(), const boost::shared_ptr&lt; Claim &gt; &amp;=boost::shared_ptr&lt; Claim &gt;())</argsstring>
+        <name>CreditDefaultSwap</name>
+        <param>
+          <type>Protection::Side</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notional</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>spread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>schedule</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>paymentConvention</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>settlesAccrual</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>paysAtDefaultTime</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>protectionStart</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>CDS quoted as running-spread only. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>side</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the protection is bought or sold. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>notional</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Notional value </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>spread</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Running spread in fractional units. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schedule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>paymentConvention</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Business-day convention for payment-date adjustment. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dayCounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Day-count convention for accrual. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>settlesAccrual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether or not the accrued coupon is due in the event of a default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>paysAtDefaultTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>protectionStart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first date where a default event will trigger the contract. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a39ad57353c0f6d00b1e20ef3b370fdb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CreditDefaultSwap</definition>
+        <argsstring>(Protection::Side side, Real notional, Rate upfront, Rate spread, const Schedule &amp;schedule, BusinessDayConvention paymentConvention, const DayCounter &amp;dayCounter, bool settlesAccrual=true, bool paysAtDefaultTime=true, const Date &amp;protectionStart=Date(), const Date &amp;upfrontDate=Date(), const boost::shared_ptr&lt; Claim &gt; &amp;=boost::shared_ptr&lt; Claim &gt;())</argsstring>
+        <name>CreditDefaultSwap</name>
+        <param>
+          <type>Protection::Side</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notional</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>upfront</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>spread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>schedule</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>paymentConvention</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>settlesAccrual</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>paysAtDefaultTime</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>protectionStart</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>upfrontDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>CDS quoted as upfront and running spread. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>side</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether the protection is bought or sold. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>notional</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Notional value </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>upfront</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Upfront in fractional units. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>spread</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Running spread in fractional units. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>schedule</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>paymentConvention</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Business-day convention for payment-date adjustment. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>dayCounter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Day-count convention for accrual. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>settlesAccrual</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Whether or not the accrued coupon is due in the event of a default. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>paysAtDefaultTime</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If set to true, any payments triggered by a default event are due at default time. If set to false, they are due at the end of the accrual period. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>protectionStart</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The first date where a default event will trigger the contract. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>upfrontDate</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref> date for the upfront payment. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Instrument interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool isExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>isExpired</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <briefdescription>
+<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void setupArguments</definition>
+        <argsstring>(PricingEngine::arguments *) const </argsstring>
+        <name>setupArguments</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <param>
+          <type>PricingEngine::arguments *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void fetchResults</definition>
+        <argsstring>(const PricingEngine::results *) const </argsstring>
+        <name>fetchResults</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <param>
+          <type>const PricingEngine::results *</type>
+          <defname>r</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void setupExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>setupExpired</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="227"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Protection::Side</type>
+        <definition>Protection::Side side</definition>
+        <argsstring>() const </argsstring>
+        <name>side</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real notional</definition>
+        <argsstring>() const </argsstring>
+        <name>notional</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate runningSpread</definition>
+        <argsstring>() const </argsstring>
+        <name>runningSpread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>boost::optional&lt;Rate&gt; upfront</definition>
+        <argsstring>() const </argsstring>
+        <name>upfront</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a6c2c2b3c3323b9e8b7b7e9b6d9a381bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool settlesAccrual</definition>
+        <argsstring>() const </argsstring>
+        <name>settlesAccrual</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="135"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3a9c322458ea5f2f207bbbda4d63f63c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool paysAtDefaultTime</definition>
+        <argsstring>() const </argsstring>
+        <name>paysAtDefaultTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="136"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <definition>const Leg&amp; coupons</definition>
+        <argsstring>() const </argsstring>
+        <name>coupons</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date&amp; protectionStartDate</definition>
+        <argsstring>() const </argsstring>
+        <name>protectionStartDate</name>
+        <briefdescription>
+<para>The first date for which defaults will trigger the contract. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date&amp; protectionEndDate</definition>
+        <argsstring>() const </argsstring>
+        <name>protectionEndDate</name>
+        <briefdescription>
+<para>The last date for which defaults will trigger the contract. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="141"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Results</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1af902c4c5d6a281bfc0e46820bb8f8126" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairUpfront</definition>
+        <argsstring>() const </argsstring>
+        <name>fairUpfront</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairSpread</definition>
+        <argsstring>() const </argsstring>
+        <name>fairSpread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the running spread that, given the quoted recovery rate, will make the running-only CDS have an NPV of 0.</para><para><simplesect kind="note"><para>This calculation does not take any upfront into account, even if one was given. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real couponLegBPS</definition>
+        <argsstring>() const </argsstring>
+        <name>couponLegBPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the variation of the fixed-leg value given a one-basis-point change in the running spread. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upfrontBPS</definition>
+        <argsstring>() const </argsstring>
+        <name>upfrontBPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real couponLegNPV</definition>
+        <argsstring>() const </argsstring>
+        <name>couponLegNPV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real defaultLegNPV</definition>
+        <argsstring>() const </argsstring>
+        <name>defaultLegNPV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="163"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upfrontNPV</definition>
+        <argsstring>() const </argsstring>
+        <name>upfrontNPV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate impliedHazardRate</definition>
+        <argsstring>(Real targetNPV, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter, Real recoveryRate=0.4, Real accuracy=1.0e-6) const </argsstring>
+        <name>impliedHazardRate</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>targetNPV</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+          <defval>0.4</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-6</defval>
+        </param>
+        <briefdescription>
+<para>Implied hazard rate calculation. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="187"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate conventionalSpread</definition>
+        <argsstring>(Real conventionalRecovery, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter) const </argsstring>
+        <name>conventionalSpread</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>conventionalRecovery</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <briefdescription>
+<para>Conventional/standard upfront-to-spread conversion. </para>        </briefdescription>
+        <detaileddescription>
+<para>Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: &quot;ISDA
+           Standard CDS converter specification.&quot; May 2009.</para><para>The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.</para><para><simplesect kind="note"><para>The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.</para><simplesectsep/><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+</para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="222"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a9c93f5707fa78510a2dcc2948d832504" prot="protected" static="no" mutable="no">
+        <type>Protection::Side</type>
+        <definition>Protection::Side side_</definition>
+        <argsstring></argsstring>
+        <name>side_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="230" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="230" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real notional_</definition>
+        <argsstring></argsstring>
+        <name>notional_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="231" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="231" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1ab31cb0b8daa7d2943b90e6edcf913f42" prot="protected" static="no" mutable="no">
+        <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>boost::optional&lt;Rate&gt; upfront_</definition>
+        <argsstring></argsstring>
+        <name>upfront_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1aebc84697d9b3aee7df3fe493a9f0989a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate runningSpread_</definition>
+        <argsstring></argsstring>
+        <name>runningSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="233" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a35b254f503b2aee639d297831e005d45" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool settlesAccrual_</definition>
+        <argsstring></argsstring>
+        <name>settlesAccrual_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="234" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1ae03296278d01521f4ac3cb16e90e515d" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool paysAtDefaultTime_</definition>
+        <argsstring></argsstring>
+        <name>paysAtDefaultTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="234" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a8d19136c2677124e6f87b96097270f5d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Claim&gt; claim_</definition>
+        <argsstring></argsstring>
+        <name>claim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a3808b310b689d85c3baf02196676137e" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
+        <definition>Leg leg_</definition>
+        <argsstring></argsstring>
+        <name>leg_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="236" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1ac6189008a8d2ea5c60c9af97d19797ed" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;CashFlow&gt; upfrontPayment_</definition>
+        <argsstring></argsstring>
+        <name>upfrontPayment_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="237" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1af0732090814361ce5e8a885d9b57fc4b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date protectionStart_</definition>
+        <argsstring></argsstring>
+        <name>protectionStart_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="238" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="238" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1adead8c6e095e8d51ef0fb318a40de2dc" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairUpfront_</definition>
+        <argsstring></argsstring>
+        <name>fairUpfront_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="240" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a0f3353390dfe7de815a49d80ab5d41c4" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairSpread_</definition>
+        <argsstring></argsstring>
+        <name>fairSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="241" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a5f2ff788a1acd204d8068d4ca11f920c" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real couponLegBPS_</definition>
+        <argsstring></argsstring>
+        <name>couponLegBPS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="242" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a4b061c802e5e833b4d34384f3851c218" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real couponLegNPV_</definition>
+        <argsstring></argsstring>
+        <name>couponLegNPV_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="242" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a4e87a45d59ec242e881132bdad89e55e" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upfrontBPS_</definition>
+        <argsstring></argsstring>
+        <name>upfrontBPS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="243" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1a77bc6523b9016dca4d4ad9279a3d1c65" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upfrontNPV_</definition>
+        <argsstring></argsstring>
+        <name>upfrontNPV_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="243" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_credit_default_swap_1adcec84d0d7745f28dba0f139b2942c6d" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real defaultLegNPV_</definition>
+        <argsstring></argsstring>
+        <name>defaultLegNPV_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="244" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="244" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Credit default swap. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>This instrument currently assumes that the issuer did not default until today&apos;s date.</para></simplesect>
+<xrefsect id="caveats_1_caveats000054"><xreftitle>Warning</xreftitle><xrefdescription><para>if <computeroutput>Settings::includeReferenceDateCashFlows()</computeroutput> is set to <computeroutput>true</computeroutput>, payments occurring at the settlement date of the swap might be included in the NPV and therefore affect the fair-spread calculation. This might not be what you want.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3019">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3018">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="3019" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3020" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3020">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3017">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="3018" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3016">
+        <label>CreditDefaultSwap</label>
+        <link refid="class_quant_lib_1_1_credit_default_swap"/>
+        <childnode refid="3017" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3024">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3023">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="3024" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3025" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3025">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3026">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="3022">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="3023" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3026" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3021">
+        <label>CreditDefaultSwap</label>
+        <link refid="class_quant_lib_1_1_credit_default_swap"/>
+        <childnode refid="3022" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3026" relation="usage">
+          <edgelabel>protectionStart_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/creditdefaultswap.hpp" bodystart="52" bodyend="245"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a8d19136c2677124e6f87b96097270f5d" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>claim_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>conventionalSpread</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>couponLegBPS</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a5f2ff788a1acd204d8068d4ca11f920c" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>couponLegBPS_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>couponLegNPV</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a4b061c802e5e833b4d34384f3851c218" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>couponLegNPV_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>coupons</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1acc79277d9b859d2db515a4006e39ab41" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>CreditDefaultSwap</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a39ad57353c0f6d00b1e20ef3b370fdb5" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>CreditDefaultSwap</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>defaultLegNPV</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1adcec84d0d7745f28dba0f139b2942c6d" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>defaultLegNPV_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>fairSpread</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a0f3353390dfe7de815a49d80ab5d41c4" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>fairSpread_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1af902c4c5d6a281bfc0e46820bb8f8126" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>fairUpfront</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1adead8c6e095e8d51ef0fb318a40de2dc" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>fairUpfront_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>impliedHazardRate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a3808b310b689d85c3baf02196676137e" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>leg_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>notional</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a3d1edba4f4e875e8a85a5626164b9c6b" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>notional_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CreditDefaultSwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::CreditDefaultSwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a3a9c322458ea5f2f207bbbda4d63f63c" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>paysAtDefaultTime</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1ae03296278d01521f4ac3cb16e90e515d" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>paysAtDefaultTime_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>protectionEndDate</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1af0732090814361ce5e8a885d9b57fc4b" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>protectionStart_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>protectionStartDate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>runningSpread</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aebc84697d9b3aee7df3fe493a9f0989a" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>runningSpread_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a6c2c2b3c3323b9e8b7b7e9b6d9a381bf" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>settlesAccrual</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a35b254f503b2aee639d297831e005d45" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>settlesAccrual_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1acc92405f554372b2ac8be49b9c052908" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>side</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a9c93f5707fa78510a2dcc2948d832504" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>side_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfront</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1ab31cb0b8daa7d2943b90e6edcf913f42" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfront_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfrontBPS</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a4e87a45d59ec242e881132bdad89e55e" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfrontBPS_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfrontNPV</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1a77bc6523b9016dca4d4ad9279a3d1c65" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfrontNPV_</name></member>
+      <member refid="class_quant_lib_1_1_credit_default_swap_1ac6189008a8d2ea5c60c9af97d19797ed" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>upfrontPayment_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CreditDefaultSwap</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

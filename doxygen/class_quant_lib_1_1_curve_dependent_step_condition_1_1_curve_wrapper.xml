@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper" kind="class" prot="protected" abstract="yes">
+    <compoundname>QuantLib::CurveDependentStepCondition::CurveWrapper</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper" prot="public" virt="non-virtual">CurveDependentStepCondition&lt; array_type &gt;::ArrayWrapper</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper" prot="public" virt="non-virtual">CurveDependentStepCondition&lt; array_type &gt;::PayoffWrapper</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1ada5322ace3e6e7194879abfa92bede90" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~CurveWrapper</definition>
+        <argsstring>()</argsstring>
+        <name>~CurveWrapper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1a8ee3b79a9eb3fde4cc5be5a48667c97b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real getValue</definition>
+        <argsstring>(const array_type &amp;a, int i)=0</argsstring>
+        <name>getValue</name>
+        <param>
+          <type>const array_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="75"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="71" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1a8ee3b79a9eb3fde4cc5be5a48667c97b" prot="public" virt="pure-virtual"><scope>QuantLib::CurveDependentStepCondition::CurveWrapper</scope><name>getValue</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1ada5322ace3e6e7194879abfa92bede90" prot="public" virt="virtual"><scope>QuantLib::CurveDependentStepCondition::CurveWrapper</scope><name>~CurveWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

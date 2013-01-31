@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_normal_distribution" kind="class" prot="public">
+    <compoundname>QuantLib::NormalDistribution</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_normal_distribution_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real average_</definition>
+        <argsstring></argsstring>
+        <name>average_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_normal_distribution_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real sigma_</definition>
+        <argsstring></argsstring>
+        <name>sigma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_normal_distribution_1a871c79fde55c920083c231815586ad5e" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real normalizationFactor_</definition>
+        <argsstring></argsstring>
+        <name>normalizationFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_normal_distribution_1a120bafb552e96780d85907f665a170ed" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real denominator_</definition>
+        <argsstring></argsstring>
+        <name>denominator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_normal_distribution_1a83a8b76d311a9d856eb7f27ae5d7ab93" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derNormalizationFactor_</definition>
+        <argsstring></argsstring>
+        <name>derNormalizationFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a212896c50065ce0cacb7062a3427398c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>NormalDistribution</definition>
+        <argsstring>(Real average=0.0, Real sigma=1.0)</argsstring>
+        <name>NormalDistribution</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>average</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="231" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="244" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derivative</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>derivative</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="252" bodyend="254"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Normal distribution function. </para>    </briefdescription>
+    <detaileddescription>
+<para>Given x, it returns its probability in a Gaussian normal distribution. It provides the first derivative too.</para><para><xrefsect id="test_1_test000031"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. Cross-checks are also performed against the <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref> and <ref refid="class_quant_lib_1_1_inverse_cumulative_normal" kindref="compound">InverseCumulativeNormal</ref> classes. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="44" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>average_</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a120bafb552e96780d85907f665a170ed" prot="private" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>denominator_</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>derivative</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a83a8b76d311a9d856eb7f27ae5d7ab93" prot="private" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>derNormalizationFactor_</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a212896c50065ce0cacb7062a3427398c" prot="public" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>NormalDistribution</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a871c79fde55c920083c231815586ad5e" prot="private" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>normalizationFactor_</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_normal_distribution_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::NormalDistribution</scope><name>sigma_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

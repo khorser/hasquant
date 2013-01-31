@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_gamma_function" kind="class" prot="public">
+    <compoundname>QuantLib::GammaFunction</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1a06a101ad2c388a89e98dffb9198524bd" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c1_</definition>
+        <argsstring></argsstring>
+        <name>c1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c2_</definition>
+        <argsstring></argsstring>
+        <name>c2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1a302fa080d0424ffb023c3259315c9ef0" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c3_</definition>
+        <argsstring></argsstring>
+        <name>c3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1aff6828b9219a35779c7656f95f83b451" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c4_</definition>
+        <argsstring></argsstring>
+        <name>c4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1a8b2d67e606c9a1949cb068093183966b" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c5_</definition>
+        <argsstring></argsstring>
+        <name>c5_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_gamma_function_1a8271c33b430d797267d12c4cf889c050" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c6_</definition>
+        <argsstring></argsstring>
+        <name>c6_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gamma_function_1aa7a02154cf24b10b3f3c4801a6d0cd03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real logValue</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>logValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Gamma function class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This is a function defined by <formula id="183">\[ \Gamma(z) = \int_0^{\infty}t^{z-1}e^{-t}dt \]</formula> <verbatim>  The implementation of the algorithm was inspired by
+  &quot;Numerical Recipes in C&quot;, 2nd edition,
+  Press, Teukolsky, Vetterling, Flannery, chapter 6
+</verbatim></para><para><xrefsect id="test_1_test000030"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="57" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_gamma_function_1a06a101ad2c388a89e98dffb9198524bd" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c1_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c2_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1a302fa080d0424ffb023c3259315c9ef0" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c3_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1aff6828b9219a35779c7656f95f83b451" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c4_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1a8b2d67e606c9a1949cb068093183966b" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c5_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1a8271c33b430d797267d12c4cf889c050" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c6_</name></member>
+      <member refid="class_quant_lib_1_1_gamma_function_1aa7a02154cf24b10b3f3c4801a6d0cd03" prot="public" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>logValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fd_heston_rebate_engine" kind="class" prot="public">
+    <compoundname>QuantLib::FdHestonRebateEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; HestonModel, DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_rebate_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size tGrid_</definition>
+        <argsstring></argsstring>
+        <name>tGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_rebate_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size xGrid_</definition>
+        <argsstring></argsstring>
+        <name>xGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a4a9d2eb047a6d0d329c5ec9ba01e39b5" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size vGrid_</definition>
+        <argsstring></argsstring>
+        <name>vGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size dampingSteps_</definition>
+        <argsstring></argsstring>
+        <name>dampingSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd_heston_rebate_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a93a5297497abd3ea320ea47ac9deb2ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdHestonRebateEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
+        <name>FdHestonRebateEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>tGrid</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>xGrid</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>vGrid</declname>
+          <defval>50</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>dampingSteps</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+          <defval>FdmSchemeDesc::Hundsdorfer()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Finite-Differences Heston <ref refid="struct_quant_lib_1_1_barrier" kindref="compound">Barrier</ref> <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> rebate helper engine. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5932">
+        <label>GenericModelEngine&lt; HestonModel, DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="5933" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5935">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5931">
+        <label>FdHestonRebateEngine</label>
+        <link refid="class_quant_lib_1_1_fd_heston_rebate_engine"/>
+        <childnode refid="5932" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5933">
+        <label>GenericEngine&lt; DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="5934" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5936" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5936">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5934">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="5935" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5938">
+        <label>GenericModelEngine&lt; HestonModel, DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="5939" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5945" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5941">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5944">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_barrier_option_1_1arguments"/>
+      </node>
+      <node id="5937">
+        <label>FdHestonRebateEngine</label>
+        <link refid="class_quant_lib_1_1_fd_heston_rebate_engine"/>
+        <childnode refid="5938" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5939">
+        <label>GenericEngine&lt; DividendBarrierOption::arguments, DividendBarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="5940" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5942" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5943" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5942">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5940">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="5941" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5943">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_dividend_barrier_option_1_1arguments"/>
+        <childnode refid="5944" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5945">
+        <label>Handle&lt; HestonModel &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="42" bodyend="59"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>dampingSteps_</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1a93a5297497abd3ea320ea47ac9deb2ec" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>FdHestonRebateEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FdHestonRebateEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FdHestonRebateEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>tGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1a4a9d2eb047a6d0d329c5ec9ba01e39b5" prot="private" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>vGrid_</name></member>
+      <member refid="class_quant_lib_1_1_fd_heston_rebate_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" virt="non-virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>xGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::FdHestonRebateEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

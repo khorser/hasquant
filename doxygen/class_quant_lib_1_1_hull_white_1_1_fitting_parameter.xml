@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter" kind="class" prot="public">
+    <compoundname>QuantLib::HullWhite::FittingParameter</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_term_structure_fitting_parameter" prot="public" virt="non-virtual">TermStructureFittingParameter</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl" prot="private">QuantLib::HullWhite::FittingParameter::Impl</innerclass>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1af59da06e5e79cccc108014607dccfc53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FittingParameter</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a, Real sigma)</argsstring>
+        <name>FittingParameter</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>termStructure</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Analytical term-structure fitting parameter <formula id="294">$ \varphi(t) $</formula>. </para>    </briefdescription>
+    <detaileddescription>
+<para><formula id="294">$ \varphi(t) $</formula> is analytically defined by <formula id="306">\[ \varphi(t) = f(t) + \frac{1}{2}[\frac{\sigma(1-e^{-at})}{a}]^2, \]</formula> where <formula id="302">$ f(t) $</formula> is the instantaneous forward rate at <formula id="147">$ t $</formula>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7501">
+        <label>HullWhite::FittingParameter</label>
+        <link refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter"/>
+        <childnode refid="7502" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7502">
+        <label>TermStructureFittingParameter</label>
+        <link refid="class_quant_lib_1_1_term_structure_fitting_parameter"/>
+        <childnode refid="7503" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7503">
+        <label>Parameter</label>
+        <link refid="class_quant_lib_1_1_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7504">
+        <label>HullWhite::FittingParameter</label>
+        <link refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter"/>
+        <childnode refid="7505" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7508">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="7505">
+        <label>TermStructureFittingParameter</label>
+        <link refid="class_quant_lib_1_1_term_structure_fitting_parameter"/>
+        <childnode refid="7506" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7506">
+        <label>Parameter</label>
+        <link refid="class_quant_lib_1_1_parameter"/>
+        <childnode refid="7507" relation="usage">
+          <edgelabel>constraint_</edgelabel>
+        </childnode>
+        <childnode refid="7508" relation="usage">
+          <edgelabel>params_</edgelabel>
+        </childnode>
+      </node>
+      <node id="7507">
+        <label>Constraint</label>
+        <link refid="class_quant_lib_1_1_constraint"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="122" bodyend="148"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_parameter_1a87897679d6b7a92d8ef1ed8ccf012251" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1af59da06e5e79cccc108014607dccfc53" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>FittingParameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a44d746dc59d36b77c5afc6238f995541" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>implementation</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a9736183e84f061ad08b6d595e2c293bf" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a722d0b273a6e3633c189fb21eaaa483c" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>Parameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1af377e71756ecf6d23f90351048c8a499" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>Parameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a7645d99ee1cc5e6d763836b5b335e95d" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1ab530ebeeba8cb03f510779f1f7470a9b" prot="protected" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>params_</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a214b7ebc4d1aeba57c89c885e264bb8b" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>setParam</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1ae2eb7bf302a9eedb8c5d2302e3e24db6" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>TermStructureFittingParameter</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1a35657d170b9c194d5cdd82cdf3bf91a3" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>TermStructureFittingParameter</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1ab4ef17fdb7e62440087774171668418c" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter</scope><name>testParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

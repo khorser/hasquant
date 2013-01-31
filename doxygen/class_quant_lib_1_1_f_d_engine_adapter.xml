@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_engine_adapter" kind="class" prot="public">
+    <compoundname>QuantLib::FDEngineAdapter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">base</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_american_engine" prot="public" virt="non-virtual">FDAmericanEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine" prot="public" virt="non-virtual">FDDividendAmericanEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine_merton73" prot="public" virt="non-virtual">FDDividendAmericanEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_american_engine_shift_scale" prot="public" virt="non-virtual">FDDividendAmericanEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine" prot="public" virt="non-virtual">FDDividendEuropeanEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine_merton73" prot="public" virt="non-virtual">FDDividendEuropeanEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale" prot="public" virt="non-virtual">FDDividendEuropeanEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine" prot="public" virt="non-virtual">FDDividendShoutEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine_merton73" prot="public" virt="non-virtual">FDDividendShoutEngineMerton73&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_shout_engine_shift_scale" prot="public" virt="non-virtual">FDDividendShoutEngineShiftScale&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_shout_engine" prot="public" virt="non-virtual">FDShoutEngine&lt; Scheme &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>base</declname>
+        <defname>base</defname>
+      </param>
+      <param>
+        <type>typename</type>
+        <declname>engine</declname>
+        <defname>engine</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FDEngineAdapter</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
+        <name>FDEngineAdapter</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="93" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_engine_adapter_1a10873979f635888606e03f9cb2d8a096" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="101" bodyend="104"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5882">
+        <label>FDShoutEngine&lt; FDShoutCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_shout_engine"/>
+        <childnode refid="5877" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5877">
+        <label>FDEngineAdapter&lt; base, engine &gt;</label>
+      </node>
+      <node id="5880">
+        <label>FDDividendEuropeanEngine&lt; FDDividendEngine&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_european_engine"/>
+        <childnode refid="5877" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5879">
+        <label>FDDividendAmericanEngine&lt; FDAmericanCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_american_engine"/>
+        <childnode refid="5877" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5878">
+        <label>FDAmericanEngine&lt; FDAmericanCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_american_engine"/>
+        <childnode refid="5877" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5881">
+        <label>FDDividendShoutEngine&lt; FDShoutCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_shout_engine"/>
+        <childnode refid="5877" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="91" bodyend="105"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a10873979f635888606e03f9cb2d8a096" prot="private" virt="non-virtual"><scope>QuantLib::FDEngineAdapter</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDEngineAdapter</scope><name>FDEngineAdapter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

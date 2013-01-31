@@ -1,0 +1,439 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_analytic_heston_engine" kind="class" prot="public">
+    <compoundname>QuantLib::AnalyticHestonEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; HestonModel, VanillaOption::arguments, VanillaOption::results &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_analytic_heston_hull_white_engine" prot="public" virt="non-virtual">AnalyticHestonHullWhiteEngine</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bates_double_exp_engine" prot="public" virt="non-virtual">BatesDoubleExpEngine</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bates_engine" prot="public" virt="non-virtual">BatesEngine</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_analytic_heston_engine_1_1_integration" prot="public">QuantLib::AnalyticHestonEngine::Integration</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" static="no">
+        <name>ComplexLogFormula</name>
+        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public">
+          <name>Gatheral</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public">
+          <name>BranchCorrection</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="84" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size evaluations_</definition>
+        <argsstring></argsstring>
+        <name>evaluations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1ac475fa7be7680e386f295b8feb7a07ce" prot="private" static="no" mutable="no">
+        <type>const ComplexLogFormula</type>
+        <definition>const ComplexLogFormula cpxLog_</definition>
+        <argsstring></argsstring>
+        <name>cpxLog_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_heston_engine_1a5d7eae8c3d0cf7a7e66dd2f8ddc224bc" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; Integration &gt;</type>
+        <definition>const boost::shared_ptr&lt;Integration&gt; integration_</definition>
+        <argsstring></argsstring>
+        <name>integration_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AnalyticHestonEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
+        <name>AnalyticHestonEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>relTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxEvaluations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AnalyticHestonEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
+        <name>AnalyticHestonEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>integrationOrder</declname>
+          <defval>144</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AnalyticHestonEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, ComplexLogFormula cpxLog, const Integration &amp;itg)</argsstring>
+        <name>AnalyticHestonEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type>ComplexLogFormula</type>
+          <declname>cpxLog</declname>
+        </param>
+        <param>
+          <type>const Integration &amp;</type>
+          <declname>itg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a10873979f635888606e03f9cb2d8a096">calculate</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfEvaluations</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfEvaluations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="106"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void doCalculation</definition>
+        <argsstring>(Real riskFreeDiscount, Real dividendDiscount, Real spotPrice, Real strikePrice, Real term, Real kappa, Real theta, Real sigma, Real v0, Real rho, const TypePayoff &amp;type, const Integration &amp;integration, const ComplexLogFormula cpxLog, const AnalyticHestonEngine *const enginePtr, Real &amp;value, Size &amp;evaluations)</argsstring>
+        <name>doCalculation</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>riskFreeDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>dividendDiscount</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spotPrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strikePrice</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>term</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>kappa</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>v0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_type_payoff" kindref="compound">TypePayoff</ref> &amp;</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const Integration &amp;</type>
+          <declname>integration</declname>
+        </param>
+        <param>
+          <type>const ComplexLogFormula</type>
+          <declname>cpxLog</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_analytic_heston_engine" kindref="compound">AnalyticHestonEngine</ref> *const</type>
+          <declname>enginePtr</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &amp;</type>
+          <declname>evaluations</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="119"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a406a77cd82a42a93cdcd5d292f17bfd0" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::complex&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::complex&lt; Real &gt; addOnTerm</definition>
+        <argsstring>(Real phi, Time t, Size j) const </argsstring>
+        <name>addOnTerm</name>
+        <reimplementedby refid="class_quant_lib_1_1_analytic_heston_hull_white_engine_1a406a77cd82a42a93cdcd5d292f17bfd0">addOnTerm</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_bates_engine_1aa10b245f3027db04aabb719f95dae0c6">addOnTerm</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="189" bodyend="193"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>analytic Heston-model engine based on Fourier transform </para>    </briefdescription>
+    <detaileddescription>
+<para>Integration detail: Two algebraically equivalent formulations of the complex logarithm of the Heston model exist. Gatherals [2005] (also Duffie, Pan and <ref refid="class_quant_lib_1_1_singleton" kindref="compound">Singleton</ref> [2000], and Schoutens, Simons and Tistaert[2004]) version does not cause discoutinuities whereas the original version (e.g. Heston [1993]) needs some sort of &quot;branch correction&quot; to work properly. Gatheral&apos;s version does also work with adaptive integration routines and should be preferred over the original Heston version.</para><para>References: <verbatim>   Heston, Steven L., 1993. A Closed-Form Solution for Options
+   with Stochastic Volatility with Applications to Bond and
+   Currency Options.  The review of Financial Studies, Volume 6,
+   Issue 2, 327-343.
+
+   A. Sepp, Pricing European-Style Options under Jump Diffusion
+   Processes with Stochastic Volatility: Applications of Fourier
+   Transform (&lt;http://math.ut.ee/~spartak/papers/stochjumpvols.pdf&gt;)
+
+   R. Lord and C. Kahl, Why the rotation count algorithm works,
+   http://papers.ssrn.com/sol3/papers.cfm?abstract_id=921335
+
+   H. Albrecher, P. Mayer, W.Schoutens and J. Tistaert,
+   The Little Heston Trap, http://www.schoutens.be/HestonTrap.pdf
+
+   J. Gatheral, The Volatility Surface: A Practitioner&apos;s Guide,
+   Wiley Finance
+</verbatim></para><para><xrefsect id="test_1_test000116"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="405">
+        <label>GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="406" relation="public-inheritance">
+        </childnode>
+        <childnode refid="408" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="407">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="403">
+        <label>AnalyticHestonEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_heston_engine"/>
+        <childnode refid="404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="408">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="404">
+        <label>GenericModelEngine&lt; HestonModel, VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="405" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="406">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="407" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="409">
+        <label>AnalyticHestonHullWhiteEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_heston_hull_white_engine"/>
+        <childnode refid="403" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="410">
+        <label>BatesEngine</label>
+        <link refid="class_quant_lib_1_1_bates_engine"/>
+        <childnode refid="403" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="413">
+        <label>GenericEngine&lt; VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="414" relation="public-inheritance">
+        </childnode>
+        <childnode refid="416" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="415">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="411">
+        <label>AnalyticHestonEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_heston_engine"/>
+        <childnode refid="412" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="416">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="412">
+        <label>GenericModelEngine&lt; HestonModel, VanillaOption::arguments, VanillaOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="413" relation="public-inheritance">
+        </childnode>
+        <childnode refid="417" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="414">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="415" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="417">
+        <label>Handle&lt; HestonModel &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="78" bodyend="137"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a406a77cd82a42a93cdcd5d292f17bfd0" prot="protected" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>addOnTerm</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>AnalyticHestonEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>BranchCorrection</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>ComplexLogFormula</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1ac475fa7be7680e386f295b8feb7a07ce" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>cpxLog_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>doCalculation</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1ac192ece2bb0652f4e8e1627cd4343745" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>evaluations_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>Gatheral</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a5d7eae8c3d0cf7a7e66dd2f8ddc224bc" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>integration_</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>numberOfEvaluations</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::AnalyticHestonEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::AnalyticHestonEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::AnalyticHestonEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

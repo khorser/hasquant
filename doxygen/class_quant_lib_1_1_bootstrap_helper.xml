@@ -1,0 +1,429 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bootstrap_helper" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::BootstrapHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_asset_swap_helper" prot="public" virt="non-virtual">AssetSwapHelper</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bond_helper" prot="public" virt="non-virtual">BondHelper</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_dated_o_i_s_rate_helper" prot="public" virt="non-virtual">DatedOISRateHelper</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_futures_rate_helper" prot="public" virt="non-virtual">FuturesRateHelper</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_relative_date_bootstrap_helper" prot="public" virt="non-virtual">RelativeDateBootstrapHelper&lt; TS &gt;</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>TS</declname>
+        <defname>TS</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>BootstrapHelper interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;Quote&gt;&amp; quote</definition>
+        <argsstring>() const </argsstring>
+        <name>quote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real impliedQuote</definition>
+        <argsstring>() const =0</argsstring>
+        <name>impliedQuote</name>
+        <reimplementedby refid="class_quant_lib_1_1_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_bond_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_futures_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_spread_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fra_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a">impliedQuote</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real quoteError</definition>
+        <argsstring>() const </argsstring>
+        <name>quoteError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void setTermStructure</definition>
+        <argsstring>(TS *)</argsstring>
+        <name>setTermStructure</name>
+        <reimplementedby refid="class_quant_lib_1_1_zero_coupon_inflation_swap_helper_1a70ad3f5015feaac40fbe9ccb8cc04ee4">setTermStructure</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_yo_y_optionlet_helper_1a464b4c5152e08c1ba4be3b8c3822aef6">setTermStructure</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_year_on_year_inflation_swap_helper_1aeeeff42ebf958777b9b9ccd43b92ea8a">setTermStructure</reimplementedby>
+        <param>
+          <type>TS *</type>
+          <defname>t</defname>
+        </param>
+        <briefdescription>
+<para>sets the term structure to be used for pricing </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="135" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date earliestDate</definition>
+        <argsstring>() const </argsstring>
+        <name>earliestDate</name>
+        <briefdescription>
+<para>earliest relevant date </para>        </briefdescription>
+        <detaileddescription>
+<para>The earliest date at which data are needed by the helper in order to provide a quote. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="141" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date latestDate</definition>
+        <argsstring>() const </argsstring>
+        <name>latestDate</name>
+        <briefdescription>
+<para>latest relevant date </para>        </briefdescription>
+        <detaileddescription>
+<para>The latest date at which data are needed by the helper in order to provide a quote. It does not necessarily equal the maturity of the underlying instrument. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="146" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_cds_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725">update</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplementedby refid="class_quant_lib_1_1_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dated_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_futures_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fra_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="156" bodyend="163"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; quote_</definition>
+        <argsstring></argsstring>
+        <name>quote_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" static="no" mutable="no">
+        <type>TS *</type>
+        <definition>TS* termStructure_</definition>
+        <argsstring></argsstring>
+        <name>termStructure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date earliestDate_</definition>
+        <argsstring></argsstring>
+        <name>earliestDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date latestDate_</definition>
+        <argsstring></argsstring>
+        <name>latestDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BootstrapHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;quote)</argsstring>
+        <name>BootstrapHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>quote</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="124" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BootstrapHelper</definition>
+        <argsstring>(Real quote)</argsstring>
+        <name>BootstrapHelper</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>quote</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="130" bodyend="132"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~BootstrapHelper</definition>
+        <argsstring>()</argsstring>
+        <name>~BootstrapHelper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base helper class for bootstrapping. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides an abstraction for the instruments used to bootstrap a term structure.</para><para>It is advised that a bootstrap helper for an instrument contains an instance of the actual instrument class to ensure consistancy between the algorithms used during bootstrapping and later instrument pricing. This is not yet fully enforced in the available bootstrap helpers. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1414">
+        <label>UpfrontCdsHelper</label>
+        <link refid="class_quant_lib_1_1_upfront_cds_helper"/>
+        <childnode refid="1412" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1413">
+        <label>SpreadCdsHelper</label>
+        <link refid="class_quant_lib_1_1_spread_cds_helper"/>
+        <childnode refid="1412" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1406">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1412">
+        <label>CdsHelper&lt; DefaultProbabilityTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_cds_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1409">
+        <label>FuturesRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_futures_rate_helper"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1405">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1410">
+        <label>RelativeDateBootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1407">
+        <label>BondHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_bond_helper"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1415">
+        <label>DepositRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_deposit_rate_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1408">
+        <label>DatedOISRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_dated_o_i_s_rate_helper"/>
+        <childnode refid="1404" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1418">
+        <label>SwapRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_swap_rate_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1416">
+        <label>FraRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_fra_rate_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1417">
+        <label>OISRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_o_i_s_rate_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1411">
+        <label>BMASwapRateHelper&lt; YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_b_m_a_swap_rate_helper"/>
+        <childnode refid="1410" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1404">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="1405" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1406" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1421">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1423">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="1420">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1422">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="1419">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="1420" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1421" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1422" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="1423" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="49" bodyend="95"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa" prot="public" virt="pure-virtual"><scope>QuantLib::BootstrapHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BootstrapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::BootstrapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BootstrapHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

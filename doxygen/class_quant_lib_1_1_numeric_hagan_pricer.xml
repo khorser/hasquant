@@ -1,0 +1,464 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_numeric_hagan_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::NumericHaganPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_hagan_pricer" prot="public" virt="non-virtual">HaganPricer</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand" prot="public">QuantLib::NumericHaganPricer::ConundrumIntegrand</innerclass>
+    <innerclass refid="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function" prot="public">QuantLib::NumericHaganPricer::Function</innerclass>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1aa32a3be9afd8f79a45acd1063377d917" prot="public" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upperLimit_</definition>
+        <argsstring></argsstring>
+        <name>upperLimit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1a808d0ab93d60bfded8ddb45bc0a1cd50" prot="public" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviationsForUpperLimit_</definition>
+        <argsstring></argsstring>
+        <name>stdDeviationsForUpperLimit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1ac92827d1cac93a19c18258d02973424a" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real lowerLimit_</definition>
+        <argsstring></argsstring>
+        <name>lowerLimit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="311" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1a37ae41cfed12da87b77ce23f0e9af6ff" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real requiredStdDeviations_</definition>
+        <argsstring></argsstring>
+        <name>requiredStdDeviations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="311" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1a7e30a9e36ce4c5904526457fcf06469c" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real precision_</definition>
+        <argsstring></argsstring>
+        <name>precision_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="311" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_numeric_hagan_pricer_1a7c27dbd39bfd877bf5503171cf4f7ed9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real refiningIntegrationTolerance_</definition>
+        <argsstring></argsstring>
+        <name>refiningIntegrationTolerance_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="311" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1a78235c6c9ad039af06db37f4a744a9c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NumericHaganPricer</definition>
+        <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;swaptionVol, GFunctionFactory::YieldCurveModel modelOfYieldCurve, const Handle&lt; Quote &gt; &amp;meanReversion, Rate lowerLimit=0.0, Rate upperLimit=1.0, Real precision=1.0e-6)</argsstring>
+        <name>NumericHaganPricer</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <declname>swaptionVol</declname>
+        </param>
+        <param>
+          <type>GFunctionFactory::YieldCurveModel</type>
+          <declname>modelOfYieldCurve</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>meanReversion</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>lowerLimit</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>upperLimit</declname>
+          <defval>1.0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>precision</declname>
+          <defval>1.0e-6</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="257"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1a7cdd1d241a5b11493d53da7ff3d2b25e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real upperLimit</definition>
+        <argsstring>()</argsstring>
+        <name>upperLimit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="259" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="259" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1a945986e5f0f5dd049f4d3dbf69fca66e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviations</definition>
+        <argsstring>()</argsstring>
+        <name>stdDeviations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="260" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="260" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1ac754cefccdf0321db0259e35de724f3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integrate</definition>
+        <argsstring>(Real a, Real b, const ConundrumIntegrand &amp;Integrand) const </argsstring>
+        <name>integrate</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>const ConundrumIntegrand &amp;</type>
+          <declname>Integrand</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="303"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1aac92f2768007012121b6a887ba0d5b0b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real optionletPrice</definition>
+        <argsstring>(Option::Type optionType, Rate strike) const </argsstring>
+        <name>optionletPrice</name>
+        <reimplements refid="class_quant_lib_1_1_hagan_pricer_1a44f8103051603e71b2588646300e229b">optionletPrice</reimplements>
+        <param>
+          <type>Option::Type</type>
+          <declname>optionType</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="305"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real swapletPrice</definition>
+        <argsstring>() const </argsstring>
+        <name>swapletPrice</name>
+        <reimplements refid="class_quant_lib_1_1_hagan_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="306"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1a5ab54a87e9967e0e79c53a507e55e7b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real resetUpperLimit</definition>
+        <argsstring>(Real stdDeviationsForUpperLimit) const </argsstring>
+        <name>resetUpperLimit</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>stdDeviationsForUpperLimit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="307"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1ac3e806e30ff60cf075d0a16d1d58aefa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real refineIntegration</definition>
+        <argsstring>(Real integralValue, const ConundrumIntegrand &amp;integrand) const </argsstring>
+        <name>refineIntegration</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>integralValue</declname>
+        </param>
+        <param>
+          <type>const ConundrumIntegrand &amp;</type>
+          <declname>integrand</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="308"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>CMS-coupon pricer. </para>    </briefdescription>
+    <detaileddescription>
+<para>Prices a cms coupon via static replication as in Hagan&apos;s &quot;Conundrums...&quot; article via numerical integration based on prices of vanilla swaptions </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="10331">
+        <label>CmsCouponPricer</label>
+        <link refid="class_quant_lib_1_1_cms_coupon_pricer"/>
+        <childnode refid="10332" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10334">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10332">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="10333" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10334" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10329">
+        <label>NumericHaganPricer</label>
+        <link refid="class_quant_lib_1_1_numeric_hagan_pricer"/>
+        <childnode refid="10330" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10333">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10330">
+        <label>HaganPricer</label>
+        <link refid="class_quant_lib_1_1_hagan_pricer"/>
+        <childnode refid="10331" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10337">
+        <label>CmsCouponPricer</label>
+        <link refid="class_quant_lib_1_1_cms_coupon_pricer"/>
+        <childnode refid="10338" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10345">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="10340" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10340">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10349">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="10338">
+        <label>FloatingRateCouponPricer</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon_pricer"/>
+        <childnode refid="10339" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10340" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10335">
+        <label>NumericHaganPricer</label>
+        <link refid="class_quant_lib_1_1_numeric_hagan_pricer"/>
+        <childnode refid="10336" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10348">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="10339">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10342">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="10343" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10339" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10347" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10346">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="10336">
+        <label>HaganPricer</label>
+        <link refid="class_quant_lib_1_1_hagan_pricer"/>
+        <childnode refid="10337" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10341" relation="usage">
+          <edgelabel>coupon_</edgelabel>
+        </childnode>
+        <childnode refid="10348" relation="usage">
+          <edgelabel>meanReversion_</edgelabel>
+        </childnode>
+        <childnode refid="10346" relation="usage">
+          <edgelabel>fixingDate_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+        </childnode>
+        <childnode refid="10349" relation="usage">
+          <edgelabel>swapTenor_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10347">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="10341">
+        <label>CmsCoupon</label>
+        <link refid="class_quant_lib_1_1_cms_coupon"/>
+        <childnode refid="10342" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10344">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="10345" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10343">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="10344" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10346" relation="usage">
+          <edgelabel>refPeriodEnd_</edgelabel>
+          <edgelabel>paymentDate_</edgelabel>
+          <edgelabel>accrualEndDate_</edgelabel>
+          <edgelabel>accrualStartDate_</edgelabel>
+          <edgelabel>refPeriodStart_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="249" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="249" bodyend="312"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a485736735f59084da0315ef8b2832704" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>annuity_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>capletPrice</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>capletRate</name></member>
+      <member refid="class_quant_lib_1_1_cms_coupon_pricer_1a020c99088bd1bc23f839031d9841d2da" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>CmsCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a0c4cd7722099ab00888e4885b7547ad5" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>coupon_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a126d69c00fd6d2c8cad49c881dfdf86c" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>cutoffForCaplet_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1acac399d82d0d0c2f08c5f6496e3a95f3" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>cutoffForFloorlet_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a0f3d454856e688ed07ac415619cd9fda" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>fixingDate_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>floorletPrice</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>floorletRate</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>gearing_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a50237f14e921f304a0598d1475f5e327" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>gFunction_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a1505c45eec43fa69a4cc68ada5da452f" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>HaganPricer</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a886033c6497a874cf75f449632553464" prot="protected" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1ac754cefccdf0321db0259e35de724f3a" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>integrate</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1ac92827d1cac93a19c18258d02973424a" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>lowerLimit_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a7c89093abfeb25762659fbc97a854ec3" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>meanReversion</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a2b50f8924eff549cb145d2ced86b9749" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>meanReversion_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a7ae5124e2988ad43e5c8bb2cc108f62b" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>modelOfYieldCurve_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a78235c6c9ad039af06db37f4a744a9c1" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>NumericHaganPricer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::NumericHaganPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::NumericHaganPricer</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1aac92f2768007012121b6a887ba0d5b0b" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>optionletPrice</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a292ad9c54719780e61282ddeeac02410" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>paymentDate_</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a7e30a9e36ce4c5904526457fcf06469c" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>precision_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a2489a4ca930289cf4cb8a23eafe8a405" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>rateCurve_</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1ac3e806e30ff60cf075d0a16d1d58aefa" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>refineIntegration</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a7c27dbd39bfd877bf5503171cf4f7ed9" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>refiningIntegrationTolerance_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a37ae41cfed12da87b77ce23f0e9af6ff" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>requiredStdDeviations_</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a5ab54a87e9967e0e79c53a507e55e7b0" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>resetUpperLimit</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1af3746c23762d11af02d2c60d56c16455" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>setMeanReversion</name></member>
+      <member refid="class_quant_lib_1_1_cms_coupon_pricer_1acc82e5245021859b6ba363e4a12df3df" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>setSwaptionVolatility</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a13e8e0bbdf635458d4b3b32fc3d2a817" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>spreadLegValue_</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a945986e5f0f5dd049f4d3dbf69fca66e" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>stdDeviations</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a808d0ab93d60bfded8ddb45bc0a1cd50" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>stdDeviationsForUpperLimit_</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a3416b3c7e57041a332be8b73b8ba53a2" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>swapletPrice</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>swapletRate</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a189d3870df8769434064046f8d25dabc" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>swapRateValue_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a018a0d461762dbeef33e4838d7fb56c1" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>swapTenor_</name></member>
+      <member refid="class_quant_lib_1_1_cms_coupon_pricer_1abba72df9d5d3b68df94ed0993bdaf7ec" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>swaptionVolatility</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1a7cdd1d241a5b11493d53da7ff3d2b25e" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>upperLimit</name></member>
+      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1aa32a3be9afd8f79a45acd1063377d917" prot="public" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>upperLimit_</name></member>
+      <member refid="class_quant_lib_1_1_hagan_pricer_1a1b4a5fbdbcb740b55b7efa2bb2ee8213" prot="protected" virt="non-virtual"><scope>QuantLib::NumericHaganPricer</scope><name>vanillaOptionPricer_</name></member>
+      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac65d2910ffc9a596d3cf548aef90d06a" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>~FloatingRateCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

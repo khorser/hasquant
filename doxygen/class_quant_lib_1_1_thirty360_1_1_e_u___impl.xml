@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_thirty360_1_1_e_u___impl" kind="class" prot="private">
+    <compoundname>QuantLib::Thirty360::EU_Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_day_counter_1_1_impl" prot="public" virt="non-virtual">DayCounter::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>BigInteger dayCount</definition>
+        <argsstring>(const Date &amp;d1, const Date &amp;d2) const </argsstring>
+        <name>dayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time yearFraction</definition>
+        <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;, const Date &amp;) const </argsstring>
+        <name>yearFraction</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="76" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14017">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
+      </node>
+      <node id="14016">
+        <label>Thirty360::EU_Impl</label>
+        <childnode refid="14017" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14019">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
+      </node>
+      <node id="14018">
+        <label>Thirty360::EU_Impl</label>
+        <childnode refid="14019" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="71" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>yearFraction</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

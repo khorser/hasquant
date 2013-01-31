@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_gauss_legendre_polynomial" kind="class" prot="public">
+    <compoundname>QuantLib::GaussLegendrePolynomial</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_gauss_jacobi_polynomial" prot="public" virt="non-virtual">GaussJacobiPolynomial</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gauss_legendre_polynomial_1ab0e7ee6003cbf536ea0c7b3c9860c0fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GaussLegendrePolynomial</definition>
+        <argsstring>()</argsstring>
+        <name>GaussLegendrePolynomial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Gauss-Legendre polynomial. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7045">
+        <label>GaussLegendrePolynomial</label>
+        <link refid="class_quant_lib_1_1_gauss_legendre_polynomial"/>
+        <childnode refid="7046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7047">
+        <label>GaussianOrthogonalPolynomial</label>
+        <link refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial"/>
+      </node>
+      <node id="7046">
+        <label>GaussJacobiPolynomial</label>
+        <link refid="class_quant_lib_1_1_gauss_jacobi_polynomial"/>
+        <childnode refid="7047" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7048">
+        <label>GaussLegendrePolynomial</label>
+        <link refid="class_quant_lib_1_1_gauss_legendre_polynomial"/>
+        <childnode refid="7049" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7050">
+        <label>GaussianOrthogonalPolynomial</label>
+        <link refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial"/>
+      </node>
+      <node id="7049">
+        <label>GaussJacobiPolynomial</label>
+        <link refid="class_quant_lib_1_1_gauss_jacobi_polynomial"/>
+        <childnode refid="7050" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="106" bodyend="109"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a5636c42b75b9162dfc03348bdf0e46db" prot="public" virt="virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>alpha</name></member>
+      <member refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1aef8dfcc10e1813645475edd1b30ca109" prot="public" virt="virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>beta</name></member>
+      <member refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1ad4abd86f4ba42794324572b6f921b5ea" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>GaussJacobiPolynomial</name></member>
+      <member refid="class_quant_lib_1_1_gauss_legendre_polynomial_1ab0e7ee6003cbf536ea0c7b3c9860c0fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>GaussLegendrePolynomial</name></member>
+      <member refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a2ad28899a5762c677631c246bbd07d7e" prot="public" virt="virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>mu_0</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a452af47b58099bbec68537241bd743f7" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_gauss_jacobi_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf" prot="public" virt="virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>w</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1aef33067e7357c2c91caa62c6f38ecaa1" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>weightedValue</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1ad23187cb308f85ea0dea7911b6c0546d" prot="public" virt="virtual"><scope>QuantLib::GaussLegendrePolynomial</scope><name>~GaussianOrthogonalPolynomial</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

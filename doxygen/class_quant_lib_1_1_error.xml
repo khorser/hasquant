@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_error" kind="class" prot="public">
+    <compoundname>QuantLib::Error</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">exception</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/errors.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_error_1ab566f1e816eaa670bf41b5fb4a913d53" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; std::string &gt;</type>
+        <definition>boost::shared_ptr&lt;std::string&gt; message_</definition>
+        <argsstring></argsstring>
+        <name>message_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_error_1a55f022485ff175b831875b9a8b39a600" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Error</definition>
+        <argsstring>(const std::string &amp;file, long line, const std::string &amp;functionName, const std::string &amp;message=&quot;&quot;)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>long</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>functionName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The explicit use of this constructor is not advised. Use the QL_FAIL macro instead. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_error_1a9e90ca50dff9f67db785f712731faa43" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>~Error</definition>
+        <argsstring>()</argsstring>
+        <name>~Error</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the automatically generated destructor would not have the throw specifier. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_error_1a586eee248fedb7de1b50219e14b99c7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* what</definition>
+        <argsstring>() const </argsstring>
+        <name>what</name>
+        <exceptions> throw ()</exceptions>
+        <briefdescription>
+<para>returns the error message. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base error class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/errors.hpp" bodystart="38" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_error_1a55f022485ff175b831875b9a8b39a600" prot="public" virt="non-virtual"><scope>QuantLib::Error</scope><name>Error</name></member>
+      <member refid="class_quant_lib_1_1_error_1ab566f1e816eaa670bf41b5fb4a913d53" prot="private" virt="non-virtual"><scope>QuantLib::Error</scope><name>message_</name></member>
+      <member refid="class_quant_lib_1_1_error_1a586eee248fedb7de1b50219e14b99c7b" prot="public" virt="non-virtual"><scope>QuantLib::Error</scope><name>what</name></member>
+      <member refid="class_quant_lib_1_1_error_1a9e90ca50dff9f67db785f712731faa43" prot="public" virt="non-virtual"><scope>QuantLib::Error</scope><name>~Error</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__daycounters" kind="group">
+    <compoundname>daycounters</compoundname>
+    <title>Day counters</title>
+    <innerclass refid="class_quant_lib_1_1_actual360" prot="public">QuantLib::Actual360</innerclass>
+    <innerclass refid="class_quant_lib_1_1_actual365_fixed" prot="public">QuantLib::Actual365Fixed</innerclass>
+    <innerclass refid="class_quant_lib_1_1_actual_actual" prot="public">QuantLib::ActualActual</innerclass>
+    <innerclass refid="class_quant_lib_1_1_business252" prot="public">QuantLib::Business252</innerclass>
+    <innerclass refid="class_quant_lib_1_1_one_day_counter" prot="public">QuantLib::OneDayCounter</innerclass>
+    <innerclass refid="class_quant_lib_1_1_simple_day_counter" prot="public">QuantLib::SimpleDayCounter</innerclass>
+    <innerclass refid="class_quant_lib_1_1_thirty360" prot="public">QuantLib::Thirty360</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The class <computeroutput><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">QuantLib::DayCounter</ref></computeroutput> provides more advanced means of measuring the distance between two dates according to a given market convention, both as number of days of fraction of year. A number of such conventions is contained in the <computeroutput>ql/DayCounters</computeroutput> directory. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

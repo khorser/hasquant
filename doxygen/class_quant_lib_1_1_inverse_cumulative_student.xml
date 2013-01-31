@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_inverse_cumulative_student" kind="class" prot="public">
+    <compoundname>QuantLib::InverseCumulativeStudent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a8d06535f9bae5b629f83cb7261f5913f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_student_distribution" kindref="compound">StudentDistribution</ref></type>
+        <definition>StudentDistribution d_</definition>
+        <argsstring></argsstring>
+        <name>d_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a73c57033dc1cf3e6bfc24785b43e0733" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cumulative_student_distribution" kindref="compound">CumulativeStudentDistribution</ref></type>
+        <definition>CumulativeStudentDistribution f_</definition>
+        <argsstring></argsstring>
+        <name>f_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real accuracy_</definition>
+        <argsstring></argsstring>
+        <name>accuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_student_1af75d2bb304cdff446e507879467b2582" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxIterations_</definition>
+        <argsstring></argsstring>
+        <name>maxIterations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_student_1a4f10e6a2b86412632d0b563b756b9bb3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InverseCumulativeStudent</definition>
+        <argsstring>(Integer n, Real accuracy=1e-6, Size maxIterations=50)</argsstring>
+        <name>InverseCumulativeStudent</name>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1e-6</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+          <defval>50</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="83" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_student_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Inverse cumulative Student t-distribution. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000031"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Find/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the <ref refid="class_quant_lib_1_1_newton" kindref="compound">Newton</ref> iteration </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="80" bodyend="94"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>accuracy_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a8d06535f9bae5b629f83cb7261f5913f" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>d_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a73c57033dc1cf3e6bfc24785b43e0733" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a4f10e6a2b86412632d0b563b756b9bb3" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>InverseCumulativeStudent</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1af75d2bb304cdff446e507879467b2582" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>maxIterations_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

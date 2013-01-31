@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_floor_truncation" kind="class" prot="public">
+    <compoundname>QuantLib::FloorTruncation</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_rounding" prot="public" virt="non-virtual">Rounding</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_floor_truncation_1a37fd49e03301a91abd8b397ec83cfca5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FloorTruncation</definition>
+        <argsstring>(Integer precision, Integer digit=5)</argsstring>
+        <name>FloorTruncation</name>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>precision</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>digit</declname>
+          <defval>5</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="125" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Floor truncation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6533">
+        <label>FloorTruncation</label>
+        <link refid="class_quant_lib_1_1_floor_truncation"/>
+        <childnode refid="6534" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6534">
+        <label>Rounding</label>
+        <link refid="class_quant_lib_1_1_rounding"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6535">
+        <label>FloorTruncation</label>
+        <link refid="class_quant_lib_1_1_floor_truncation"/>
+        <childnode refid="6536" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6536">
+        <label>Rounding</label>
+        <link refid="class_quant_lib_1_1_rounding"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="123" bodyend="128"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a0d419a70fa5708b3735db741f20316c9" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Ceiling</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a32c94a47509871edf49d5c3936689d30" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Closest</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7abcf8c79e9a5f5f9d606fb35645a0fb27" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Down</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Floor</name></member>
+      <member refid="class_quant_lib_1_1_floor_truncation_1a37fd49e03301a91abd8b397ec83cfca5" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>FloorTruncation</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>None</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a9835436c4cf8e92f0f7d8a3ed4643983" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>precision</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a935bf504beb13c384b6bf2b57337b60c" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Rounding</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a2a79742b3f2854a95befbd58cf917341" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Rounding</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1abdd70a56bfd67e3da02c16706ea1898d" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>roundingDigit</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a57a7edcbc04d6175683383cad5c3e0a2" prot="public" virt="non-virtual"><scope>QuantLib::FloorTruncation</scope><name>Up</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

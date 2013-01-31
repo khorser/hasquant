@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_quanto_engine" kind="class" prot="public">
+    <compoundname>QuantLib::QuantoEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_engine" prot="public" virt="non-virtual">GenericEngine&lt; Instr::arguments, QuantoOptionResults&lt; Instr::results &gt; &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Instr</type>
+      </param>
+      <param>
+        <type>class Engine</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_engine_1a115031ddc05d2c8bd162f615a6e8a4f2" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; foreignRiskFreeRate_</definition>
+        <argsstring></argsstring>
+        <name>foreignRiskFreeRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_engine_1ad1c2bc20bc9b5f0ebc98b57b92c21bc9" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;BlackVolTermStructure&gt; exchangeRateVolatility_</definition>
+        <argsstring></argsstring>
+        <name>exchangeRateVolatility_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_engine_1a0bbb8459d54c70260f5dc06646c622fe" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; correlation_</definition>
+        <argsstring></argsstring>
+        <name>correlation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_quanto_engine_1a8d6555125db227d0efd26de75031613b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>QuantoEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;, const Handle&lt; YieldTermStructure &gt; &amp;foreignRiskFreeRate, const Handle&lt; BlackVolTermStructure &gt; &amp;exchangeRateVolatility, const Handle&lt; Quote &gt; &amp;correlation)</argsstring>
+        <name>QuantoEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <defname>process</defname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>foreignRiskFreeRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <declname>exchangeRateVolatility</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>correlation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="69" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_quanto_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="84" bodyend="173"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Quanto engine. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000099"><xreftitle>Warning</xreftitle><xrefdescription><para>for the time being, this engine will only work with simple Black-Scholes processes (i.e., no Merton.)</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000108"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
+<listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
+</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12582">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12579">
+        <label>QuantoEngine&lt; Instr, Engine &gt;</label>
+        <link refid="class_quant_lib_1_1_quanto_engine"/>
+        <childnode refid="12580" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12583">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12581">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="12582" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12580">
+        <label>GenericEngine&lt; Instr::arguments, QuantoOptionResults&lt; Instr::results &gt; &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="12581" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12583" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12587">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12589">
+        <label>QuantoOptionResults&lt; Instr::results &gt;</label>
+        <link refid="class_quant_lib_1_1_quanto_option_results"/>
+      </node>
+      <node id="12590">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12592">
+        <label>Handle&lt; QuantLib::BlackVolTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12584">
+        <label>QuantoEngine&lt; Instr, Engine &gt;</label>
+        <link refid="class_quant_lib_1_1_quanto_engine"/>
+        <childnode refid="12585" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12590" relation="usage">
+          <edgelabel>foreignRiskFreeRate_</edgelabel>
+        </childnode>
+        <childnode refid="12591" relation="usage">
+          <edgelabel>correlation_</edgelabel>
+        </childnode>
+        <childnode refid="12592" relation="usage">
+          <edgelabel>exchangeRateVolatility_</edgelabel>
+        </childnode>
+      </node>
+      <node id="12591">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12588">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12586">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="12587" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12585">
+        <label>GenericEngine&lt; Instr::arguments, QuantoOptionResults&lt; Instr::results &gt; &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="12586" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12588" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12589" relation="usage">
+          <edgelabel>results_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/quanto/quantoengine.hpp" bodystart="48" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1a0bbb8459d54c70260f5dc06646c622fe" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>correlation_</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1ad1c2bc20bc9b5f0ebc98b57b92c21bc9" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>exchangeRateVolatility_</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1a115031ddc05d2c8bd162f615a6e8a4f2" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>foreignRiskFreeRate_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::QuantoEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::QuantoEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_quanto_engine_1a8d6555125db227d0efd26de75031613b" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>QuantoEngine</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::QuantoEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::QuantoEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

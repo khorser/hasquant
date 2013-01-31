@@ -1,0 +1,232 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bicubic_spline" kind="class" prot="public">
+    <compoundname>QuantLib::BicubicSpline</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_interpolation2_d" prot="public" virt="non-virtual">Interpolation2D</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1ae24a981dc07335aa95c6ac705e64b198" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class I1</type>
+          </param>
+          <param>
+            <type>class I2</type>
+          </param>
+          <param>
+            <type>class M</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>BicubicSpline</definition>
+        <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, const I2 &amp;yEnd, const M &amp;zData)</argsstring>
+        <name>BicubicSpline</name>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xBegin</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xEnd</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yBegin</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yEnd</declname>
+        </param>
+        <param>
+          <type>const M &amp;</type>
+          <declname>zData</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> and <formula id="13">$ y $</formula> values must be sorted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="162" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derivativeX</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>derivativeX</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="170" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derivativeY</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>derivativeY</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1a23a1235d8e8f0ee2fe7f2bbf7ceb2f78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real secondDerivativeX</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>secondDerivativeX</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="178" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="178" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1ab6aae1be2b04ee5d4eadd9d90dacd8b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real secondDerivativeY</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>secondDerivativeY</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_spline_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derivativeXY</definition>
+        <argsstring>(Real x, Real y) const </argsstring>
+        <name>derivativeXY</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="187" bodyend="190"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>bicubic-spline interpolation between discrete points </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="todo_1_todo000032"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>revise end conditions </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="904">
+        <label>Interpolation2D</label>
+        <link refid="class_quant_lib_1_1_interpolation2_d"/>
+        <childnode refid="905" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="903">
+        <label>BicubicSpline</label>
+        <link refid="class_quant_lib_1_1_bicubic_spline"/>
+        <childnode refid="904" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="905">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="907">
+        <label>Interpolation2D</label>
+        <link refid="class_quant_lib_1_1_interpolation2_d"/>
+        <childnode refid="908" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="906">
+        <label>BicubicSpline</label>
+        <link refid="class_quant_lib_1_1_bicubic_spline"/>
+        <childnode refid="907" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="908">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="158" bodyend="191"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_extrapolator_1ad9e8911dd8792d5ec36f1ee071cfad7d" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>allowsExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1ae24a981dc07335aa95c6ac705e64b198" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>BicubicSpline</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a5ce68105935f163f4a38166f542cf59d" prot="protected" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1a35279b56a8a434738b5210e5abe66376" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>derivativeX</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1a96c8f7599965301834826364d48349fe" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>derivativeXY</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1a9bb70b34a017142d208a3439a59238cf" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>derivativeY</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>disableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ae60e793a77f44a9c022b103458fa993c" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>enableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1aeed8928d320364b39b92b65ef14fc17f" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>first_argument_type</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a4f7edfd9d51a0726b33d90c2ae87d0d7" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>Interpolation2D</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a4f46449c6173e13183974caff591ab2f" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>isInRange</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a1dad083b76f04303ab47af9b9cf673ad" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>locateX</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a226ca4edb5a41970a8589cda9a9c46b5" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>locateY</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a823a05987f30ef0b6ccc065aa607e22b" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1abd4b619e88e62e8c704bc850340fc078" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1addcb69efc826f908d6fe247fc39e1fd7" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>second_argument_type</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1a23a1235d8e8f0ee2fe7f2bbf7ceb2f78" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>secondDerivativeX</name></member>
+      <member refid="class_quant_lib_1_1_bicubic_spline_1ab6aae1be2b04ee5d4eadd9d90dacd8b9" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>secondDerivativeY</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>xMax</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>xMin</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1abd3804c44239a53b3697f463c999550b" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>xValues</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ac0015c501e8d85fcc8d8e2303b5713ba" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>yMax</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ae9d8578e244ef2368ca8870e98001bb6" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>yMin</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>yValues</name></member>
+      <member refid="class_quant_lib_1_1_interpolation2_d_1ada4fe51c1f2712b9652a097a6613a8a9" prot="public" virt="non-virtual"><scope>QuantLib::BicubicSpline</scope><name>zData</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" virt="virtual"><scope>QuantLib::BicubicSpline</scope><name>~Extrapolator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

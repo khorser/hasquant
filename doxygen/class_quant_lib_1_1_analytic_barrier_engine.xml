@@ -1,0 +1,479 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_analytic_barrier_engine" kind="class" prot="public">
+    <compoundname>QuantLib::AnalyticBarrierEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_barrier_option_1_1engine" prot="public" virt="non-virtual">BarrierOption::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_barrier_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_barrier_engine_1a295cb716891a8d7a7568773c4946e459" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
+        <definition>CumulativeNormalDistribution f_</definition>
+        <argsstring></argsstring>
+        <name>f_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a2e1333e01b68e3afc57fc53c8df8aac2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AnalyticBarrierEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
+        <name>AnalyticBarrierEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="50"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1ac49ad98a633b66a7a9ddf330a0d064d8" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real underlying</definition>
+        <argsstring>() const </argsstring>
+        <name>underlying</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1ad7c02470d5002728533aa20843a1bd78" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strike</definition>
+        <argsstring>() const </argsstring>
+        <name>strike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a384e61b69dd2e190b4041246b725e00c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time residualTime</definition>
+        <argsstring>() const </argsstring>
+        <name>residualTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1ae7cf26d190e83b99249233b1264cd0b1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatility</definition>
+        <argsstring>() const </argsstring>
+        <name>volatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a61c54984f9ffd29a9155b2a78947b805" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real barrier</definition>
+        <argsstring>() const </argsstring>
+        <name>barrier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a978ba8e31585f7823620521d091e96de" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rebate</definition>
+        <argsstring>() const </argsstring>
+        <name>rebate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a5027d9b072a2b0a2d0b95290ae60e60a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviation</definition>
+        <argsstring>() const </argsstring>
+        <name>stdDeviation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate riskFreeRate</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscount</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeDiscount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a49bcd44bdf5a8c6aa4ca42e3c75e2fb1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate dividendYield</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendYield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1aaa7e52ca4b7b09b017d2028c9f61e3ad" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor dividendDiscount</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendDiscount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1aaabfaa229ae6be805f0fca4bd8180404" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate mu</definition>
+        <argsstring>() const </argsstring>
+        <name>mu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1acc8b27f9b557c7d890697fda4ec8401e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real muSigma</definition>
+        <argsstring>() const </argsstring>
+        <name>muSigma</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a5103065ae6b1e9ad1ba2a2ce1b1b5bdd" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real A</definition>
+        <argsstring>(Real phi) const </argsstring>
+        <name>A</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a0bda52034ea7a3379a5ecf87460f0fbd" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real B</definition>
+        <argsstring>(Real phi) const </argsstring>
+        <name>B</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a3ba47ca86d2a067014e331d03f16cae2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real C</definition>
+        <argsstring>(Real eta, Real phi) const </argsstring>
+        <name>C</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1ae5f8d68743ca3380e070a5e958c4f610" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real D</definition>
+        <argsstring>(Real eta, Real phi) const </argsstring>
+        <name>D</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>phi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1aec2027f1600f1a5a42af421f3db90319" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real E</definition>
+        <argsstring>(Real eta) const </argsstring>
+        <name>E</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_barrier_engine_1a333faf874d339b7bd0597e9cb342a495" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real F</definition>
+        <argsstring>(Real eta) const </argsstring>
+        <name>F</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for barrier options using analytical formulae. </para>    </briefdescription>
+    <detaileddescription>
+<para>The formulas are taken from &quot;Option pricing formulas&quot;, E.G. Haug, McGraw-Hill, p.69 and following.</para><para><xrefsect id="test_1_test000091"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="208">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="204">
+        <label>AnalyticBarrierEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_barrier_engine"/>
+        <childnode refid="205" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="209">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="205">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_barrier_option_1_1engine"/>
+        <childnode refid="206" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="207">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="208" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="206">
+        <label>GenericEngine&lt; BarrierOption::arguments, BarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="207" relation="public-inheritance">
+        </childnode>
+        <childnode refid="209" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="214">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="216">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_barrier_option_1_1arguments"/>
+      </node>
+      <node id="210">
+        <label>AnalyticBarrierEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_barrier_engine"/>
+        <childnode refid="211" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="215">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="211">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_barrier_option_1_1engine"/>
+        <childnode refid="212" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="213">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="214" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="212">
+        <label>GenericEngine&lt; BarrierOption::arguments, BarrierOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="213" relation="public-inheritance">
+        </childnode>
+        <childnode refid="215" relation="public-inheritance">
+        </childnode>
+        <childnode refid="216" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/analyticbarrierengine.hpp" bodystart="46" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a5103065ae6b1e9ad1ba2a2ce1b1b5bdd" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>A</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a2e1333e01b68e3afc57fc53c8df8aac2" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>AnalyticBarrierEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a0bda52034ea7a3379a5ecf87460f0fbd" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>B</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a61c54984f9ffd29a9155b2a78947b805" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>barrier</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a3ba47ca86d2a067014e331d03f16cae2" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>C</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1ae5f8d68743ca3380e070a5e958c4f610" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>D</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1aaa7e52ca4b7b09b017d2028c9f61e3ad" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>dividendDiscount</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a49bcd44bdf5a8c6aa4ca42e3c75e2fb1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>dividendYield</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1aec2027f1600f1a5a42af421f3db90319" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>E</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a333faf874d339b7bd0597e9cb342a495" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>F</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a295cb716891a8d7a7568773c4946e459" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1aaabfaa229ae6be805f0fca4bd8180404" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>mu</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1acc8b27f9b557c7d890697fda4ec8401e" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>muSigma</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::AnalyticBarrierEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::AnalyticBarrierEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a978ba8e31585f7823620521d091e96de" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>rebate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a384e61b69dd2e190b4041246b725e00c" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>residualTime</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>riskFreeDiscount</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>riskFreeRate</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1a5027d9b072a2b0a2d0b95290ae60e60a" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1ad7c02470d5002728533aa20843a1bd78" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>strike</name></member>
+      <member refid="class_quant_lib_1_1_barrier_option_1_1engine_1a2dfff7e3f576b310f9705db6cfea48b7" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>triggered</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1ac49ad98a633b66a7a9ddf330a0d064d8" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_analytic_barrier_engine_1ae7cf26d190e83b99249233b1264cd0b1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::AnalyticBarrierEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

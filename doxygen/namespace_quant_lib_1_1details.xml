@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="namespace_quant_lib_1_1details" kind="namespace">
+    <compoundname>QuantLib::details</compoundname>
+    <innerclass refid="class_quant_lib_1_1details_1_1_linear_fct" prot="public">QuantLib::details::LinearFct</innerclass>
+    <innerclass refid="class_quant_lib_1_1details_1_1_linear_fcts" prot="public">QuantLib::details::LinearFcts</innerclass>
+    <innerclass refid="class_quant_lib_1_1details_1_1_linear_fcts_3_01x_container_00_01false_01_4" prot="public">QuantLib::details::LinearFcts&lt; xContainer, false &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="34"/>
+  </compounddef>
+</doxygen>

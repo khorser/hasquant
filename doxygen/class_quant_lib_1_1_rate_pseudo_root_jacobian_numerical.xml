@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical" kind="class" prot="public">
+    <compoundname>QuantLib::RatePseudoRootJacobianNumerical</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a287d7f45f243847879108986a5785263" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix pseudoRoot_</definition>
+        <argsstring></argsstring>
+        <name>pseudoRoot_</name>
+        <briefdescription>
+<para>this data is always the same </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a6e0aebb30b163f9873c2dd0eadd78708" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size aliveIndex_</definition>
+        <argsstring></argsstring>
+        <name>aliveIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a7faf504f2e153c71fac455aca1fab4aa" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; taus_</definition>
+        <argsstring></argsstring>
+        <name>taus_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67d680073efd6c1a4eb1934daae4d036" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>std::vector&lt;Matrix&gt; pseudoBumped_</definition>
+        <argsstring></argsstring>
+        <name>pseudoBumped_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a247c5d7048480396e3b561b6fb8193e9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
+        <definition>std::vector&lt;Spread&gt; displacements_</definition>
+        <argsstring></argsstring>
+        <name>displacements_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67921ca7df824b046fc691bc45270d4a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberBumps_</definition>
+        <argsstring></argsstring>
+        <name>numberBumps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ae97ee69ed41320364e20a8f52d27f289" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_l_m_m_drift_calculator" kindref="compound">LMMDriftCalculator</ref> &gt;</type>
+        <definition>std::vector&lt;LMMDriftCalculator&gt; driftsComputers_</definition>
+        <argsstring></argsstring>
+        <name>driftsComputers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size factors_</definition>
+        <argsstring></argsstring>
+        <name>factors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ac2bcba6756969892c65b5a8773cbd2b2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; drifts_</definition>
+        <argsstring></argsstring>
+        <name>drifts_</name>
+        <briefdescription>
+<para>workspace variables </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a63d1eab607645e71a8acd4cc68c48579" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; bumpedRates_</definition>
+        <argsstring></argsstring>
+        <name>bumpedRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a963ff17fbf89669cb603fc2a7077dd6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>RatePseudoRootJacobianNumerical</definition>
+        <argsstring>(const Matrix &amp;pseudoRoot, Size aliveIndex, Size numeraire, const std::vector&lt; Time &gt; &amp;taus, const std::vector&lt; Matrix &gt; &amp;pseudoBumps, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
+        <name>RatePseudoRootJacobianNumerical</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>pseudoRoot</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>aliveIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numeraire</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>taus</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <declname>pseudoBumps</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <declname>displacements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1aaa4d2804830043113c5009392f8f0ce0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void getBumps</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;oldRates, const std::vector&lt; Real &gt; &amp;oneStepDFs, const std::vector&lt; Rate &gt; &amp;newRates, const std::vector&lt; Real &gt; &amp;gaussians, Matrix &amp;B)</argsstring>
+        <name>getBumps</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>oldRates</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>oneStepDFs</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>newRates</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>gaussians</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>B</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="43" bodyend="75"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a6e0aebb30b163f9873c2dd0eadd78708" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>aliveIndex_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a63d1eab607645e71a8acd4cc68c48579" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>bumpedRates_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>displacements_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ac2bcba6756969892c65b5a8773cbd2b2" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>drifts_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ae97ee69ed41320364e20a8f52d27f289" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>driftsComputers_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>factors_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1aaa4d2804830043113c5009392f8f0ce0" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>getBumps</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67921ca7df824b046fc691bc45270d4a" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>numberBumps_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67d680073efd6c1a4eb1934daae4d036" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>pseudoBumped_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a287d7f45f243847879108986a5785263" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>pseudoRoot_</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a963ff17fbf89669cb603fc2a7077dd6b" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>RatePseudoRootJacobianNumerical</name></member>
+      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a7faf504f2e153c71fac455aca1fab4aa" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>taus_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

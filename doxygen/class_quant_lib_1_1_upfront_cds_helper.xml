@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_upfront_cds_helper" kind="class" prot="public">
+    <compoundname>QuantLib::UpfrontCdsHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cds_helper" prot="public" virt="non-virtual">CdsHelper</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1ae8ff2a0be6d5f0a407a3a92a9557a89f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural upfrontSettlementDays_</definition>
+        <argsstring></argsstring>
+        <name>upfrontSettlementDays_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1a803c3db64837bdd4d63de86f64a248ac" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date upfrontDate_</definition>
+        <argsstring></argsstring>
+        <name>upfrontDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_upfront_cds_helper_1aebc84697d9b3aee7df3fe493a9f0989a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate runningSpread_</definition>
+        <argsstring></argsstring>
+        <name>runningSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="176" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UpfrontCdsHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;upfront, Rate runningSpread, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Natural upfrontSettlementDays=0, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
+        <name>UpfrontCdsHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>upfront</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>runningSpread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>paymentConvention</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>rule</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>upfrontSettlementDays</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>settlesAccrual</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>paysAtDefaultTime</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UpfrontCdsHelper</definition>
+        <argsstring>(Rate upfront, Rate runningSpread, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Natural upfrontSettlementDays=0, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
+        <name>UpfrontCdsHelper</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>upfront</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>runningSpread</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>frequency</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>paymentConvention</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>rule</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>upfrontSettlementDays</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>settlesAccrual</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>paysAtDefaultTime</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>the upfront must be quoted in fractional units. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real impliedQuote</definition>
+        <argsstring>() const </argsstring>
+        <name>impliedQuote</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void initializeDates</definition>
+        <argsstring>()</argsstring>
+        <name>initializeDates</name>
+        <reimplements refid="class_quant_lib_1_1_cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1ae5bb53d57b1f705fbf3a6459c7d4f221" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void resetEngine</definition>
+        <argsstring>()</argsstring>
+        <name>resetEngine</name>
+        <reimplements refid="class_quant_lib_1_1_cds_helper_1ab3774009db0f4540cff6c9a7e50b73c2">resetEngine</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="177"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Upfront-quoted CDS hazard rate bootstrap helper. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14452">
+        <label>UpfrontCdsHelper</label>
+        <link refid="class_quant_lib_1_1_upfront_cds_helper"/>
+        <childnode refid="14453" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14455">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="14456" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14457" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14457">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14456">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14453">
+        <label>CdsHelper</label>
+        <link refid="class_quant_lib_1_1_cds_helper"/>
+        <childnode refid="14454" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14454">
+        <label>RelativeDateDefaultProbabilityHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="14455" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14458">
+        <label>UpfrontCdsHelper</label>
+        <link refid="class_quant_lib_1_1_upfront_cds_helper"/>
+        <childnode refid="14459" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14461">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="14462" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14463" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14464" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="14465" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14463">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="14472">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="14471">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="14466">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14467">
+        <label>Schedule</label>
+        <link refid="class_quant_lib_1_1_schedule"/>
+      </node>
+      <node id="14465">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14470">
+        <label>Handle&lt; QuantLib::DefaultProbabilityTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="14462">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="14464">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="14469">
+        <label>RelinkableHandle&lt; QuantLib::DefaultProbabilityTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_relinkable_handle"/>
+        <childnode refid="14470" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14468">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="14459">
+        <label>CdsHelper</label>
+        <link refid="class_quant_lib_1_1_cds_helper"/>
+        <childnode refid="14460" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14466" relation="usage">
+          <edgelabel>discountCurve_</edgelabel>
+        </childnode>
+        <childnode refid="14467" relation="usage">
+          <edgelabel>schedule_</edgelabel>
+        </childnode>
+        <childnode refid="14468" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+        <childnode refid="14464" relation="usage">
+          <edgelabel>protectionStart_</edgelabel>
+        </childnode>
+        <childnode refid="14469" relation="usage">
+          <edgelabel>probability_</edgelabel>
+        </childnode>
+        <childnode refid="14471" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+        <childnode refid="14472" relation="usage">
+          <edgelabel>tenor_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14460">
+        <label>RelativeDateDefaultProbabilityHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="14461" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14464" relation="usage">
+          <edgelabel>evaluationDate_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" line="138" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/defaultprobabilityhelpers.hpp" bodystart="138" bodyend="178"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1aadb08e58343efaf93254f2fc5b84b6a3" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>CdsHelper</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1ac70664feda1ab9d9cf8af821a8e521fe" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>CdsHelper</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a188f6df4c42679c1c133919254e351c5" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>discountCurve_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1ae358763dc753768bb42e898365204a9a" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>frequency_</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>initializeDates</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::UpfrontCdsHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::UpfrontCdsHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1ab0c2ba6da16ec8c201da972e61b08334" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>paymentConvention_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1ae03296278d01521f4ac3cb16e90e515d" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>paysAtDefaultTime_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a2fe509ef8ab9a9696c015a6fa1e3c261" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>probability_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1af0732090814361ce5e8a885d9b57fc4b" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>protectionStart_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>recoveryRate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a1fa46ec9a0cdf7a8bed120d969664a1b" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a9c40799ff28c28591de0a7e6db4387da" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1ae5bb53d57b1f705fbf3a6459c7d4f221" prot="private" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>resetEngine</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a8a0428b85c9033946cc024aa41a482eb" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>rule_</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1aebc84697d9b3aee7df3fe493a9f0989a" prot="private" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>runningSpread_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a070ed82c6cab5f05e2874979f4193388" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>schedule_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a845ffeb1161341447a075435a0718e39" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::RelativeDateBootstrapHelper::"><scope>QuantLib::UpfrontCdsHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a5bf05afa04b35d5ec23e5d7317d17001" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>settlementDays_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a35b254f503b2aee639d297831e005d45" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>settlesAccrual_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a094655deb03130e3cfb8a0b5ae5a54e7" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>swap_</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>tenor_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_cds_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="protected" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>UpfrontCdsHelper</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>UpfrontCdsHelper</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1a803c3db64837bdd4d63de86f64a248ac" prot="private" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>upfrontDate_</name></member>
+      <member refid="class_quant_lib_1_1_upfront_cds_helper_1ae8ff2a0be6d5f0a407a3a92a9557a89f" prot="private" virt="non-virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>upfrontSettlementDays_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::UpfrontCdsHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

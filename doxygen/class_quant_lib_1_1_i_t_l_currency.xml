@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_i_t_l_currency" kind="class" prot="public">
+    <compoundname>QuantLib::ITLCurrency</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_currency" prot="public" virt="non-virtual">Currency</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_i_t_l_currency_1ab1d3f96024da6a8f20241cda6d98e9ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ITLCurrency</definition>
+        <argsstring>()</argsstring>
+        <name>ITLCurrency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="634" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="634" bodyend="642"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Italian lira. </para>    </briefdescription>
+    <detaileddescription>
+<para>The ISO three-letter code was ITL; the numeric code was 380. It had no subdivisions.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8589">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="8588">
+        <label>ITLCurrency</label>
+        <link refid="class_quant_lib_1_1_i_t_l_currency"/>
+        <childnode refid="8589" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8591">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="8590">
+        <label>ITLCurrency</label>
+        <link refid="class_quant_lib_1_1_i_t_l_currency"/>
+        <childnode refid="8591" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="632" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="632" bodyend="643"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>Currency</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>format</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>fractionsPerUnit</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>fractionSymbol</name></member>
+      <member refid="class_quant_lib_1_1_i_t_l_currency_1ab1d3f96024da6a8f20241cda6d98e9ea" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>ITLCurrency</name></member>
+      <member refid="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>numericCode</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>rounding</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>symbol</name></member>
+      <member refid="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" virt="non-virtual"><scope>QuantLib::ITLCurrency</scope><name>triangulationCurrency</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

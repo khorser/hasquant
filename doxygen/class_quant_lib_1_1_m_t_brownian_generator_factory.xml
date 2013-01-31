@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_m_t_brownian_generator_factory" kind="class" prot="public">
+    <compoundname>QuantLib::MTBrownianGeneratorFactory</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">BrownianGeneratorFactory</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_t_brownian_generator_factory_1a39818330032075067999645be285873f" prot="private" static="no" mutable="no">
+        <type>unsigned long</type>
+        <definition>unsigned long seed_</definition>
+        <argsstring></argsstring>
+        <name>seed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_factory_1a1b1bfa9d112cb3e0f5ad0969ca57c4b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MTBrownianGeneratorFactory</definition>
+        <argsstring>(unsigned long seed=0)</argsstring>
+        <name>MTBrownianGeneratorFactory</name>
+        <param>
+          <type>unsigned long</type>
+          <declname>seed</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; BrownianGenerator &gt;</type>
+        <definition>boost::shared_ptr&lt;BrownianGenerator&gt; create</definition>
+        <argsstring>(Size factors, Size steps) const </argsstring>
+        <name>create</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>factors</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>steps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="61" bodyend="68"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>create</name></member>
+      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1a1b1bfa9d112cb3e0f5ad0969ca57c4b2" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>MTBrownianGeneratorFactory</name></member>
+      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1a39818330032075067999645be285873f" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>seed_</name></member>
+      <member refid="class_quant_lib_1_1_brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" virt="virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>~BrownianGeneratorFactory</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
+    <compoundname>QuantLib::CoxIngersollRoss::Dynamics</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" prot="public" virt="non-virtual">OneFactorModel::ShortRateDynamics</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" prot="public" virt="non-virtual">ExtendedCoxIngersollRoss::Dynamics</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Dynamics</definition>
+        <argsstring>(Real theta, Real k, Real sigma, Real x0)</argsstring>
+        <name>Dynamics</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real variable</definition>
+        <argsstring>(Time, Rate r) const </argsstring>
+        <name>variable</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33">variable</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Compute state variable from short rate. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real shortRate</definition>
+        <argsstring>(Time, Real y) const </argsstring>
+        <name>shortRate</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2">shortRate</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>variable</declname>
+        </param>
+        <briefdescription>
+<para>Compute short rate from state variable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="121" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Dynamics of the short-rate under the Cox-Ingersoll-Ross model </para>    </briefdescription>
+    <detaileddescription>
+<para>The state variable <formula id="297">$ y_t $</formula> will here be the square-root of the short-rate. It satisfies the following stochastic equation <formula id="298">\[ dy_t=\left[ (\frac{k\theta }{2}+\frac{\sigma ^2}{8})\frac{1}{y_t}- \frac{k}{2}y_t \right] d_t+ \frac{\sigma }{2}dW_{t} \]</formula>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2824">
+        <label>CoxIngersollRoss::Dynamics</label>
+        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
+        <childnode refid="2825" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2825">
+        <label>ShortRateDynamics</label>
+        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
+      </node>
+      <node id="2826">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics"/>
+        <childnode refid="2824" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2827">
+        <label>CoxIngersollRoss::Dynamics</label>
+        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
+        <childnode refid="2828" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2828">
+        <label>ShortRateDynamics</label>
+        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="108" bodyend="124"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>Dynamics</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>process</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>shortRate</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>ShortRateDynamics</name></member>
+      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>variable</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>~ShortRateDynamics</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

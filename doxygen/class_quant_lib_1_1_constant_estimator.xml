@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_constant_estimator" kind="class" prot="public">
+    <compoundname>QuantLib::ConstantEstimator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">VolatilityCompositor</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_constant_estimator_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_constant_estimator_1a98e507eeab1154e1a307974b5a7166cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ConstantEstimator</definition>
+        <argsstring>(Size size)</argsstring>
+        <name>ConstantEstimator</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" bodystart="39" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_constant_estimator_1a49e665f5ac3e31612db334fd86e69d31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
+        <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;)</argsstring>
+        <name>calculate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_constant_estimator_1aadd29f9fc5341618d0620aebc77aed6b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void calibrate</definition>
+        <argsstring>(const TimeSeries&lt; Volatility &gt; &amp;)</argsstring>
+        <name>calibrate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" bodystart="42" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Constant-estimator volatility model. </para>    </briefdescription>
+    <detaileddescription>
+<para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/constantestimator.hpp" bodystart="35" bodyend="43"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_constant_estimator_1a49e665f5ac3e31612db334fd86e69d31" prot="public" virt="non-virtual"><scope>QuantLib::ConstantEstimator</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_constant_estimator_1aadd29f9fc5341618d0620aebc77aed6b" prot="public" virt="non-virtual"><scope>QuantLib::ConstantEstimator</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_constant_estimator_1a98e507eeab1154e1a307974b5a7166cd" prot="public" virt="non-virtual"><scope>QuantLib::ConstantEstimator</scope><name>ConstantEstimator</name></member>
+      <member refid="class_quant_lib_1_1_constant_estimator_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::ConstantEstimator</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_volatility_compositor_1a5e304d417b3145a7458d6fc2cd97fe6a" prot="public" virt="virtual"><scope>QuantLib::ConstantEstimator</scope><name>~VolatilityCompositor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

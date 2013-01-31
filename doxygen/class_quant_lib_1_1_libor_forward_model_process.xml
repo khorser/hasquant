@@ -1,0 +1,592 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_libor_forward_model_process" kind="class" prot="public">
+    <compoundname>QuantLib::LiborForwardModelProcess</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process" prot="public" virt="non-virtual">StochasticProcess</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1aa6d95aa29676665036014e9161558c5b" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;IborIndex&gt; index_</definition>
+        <argsstring></argsstring>
+        <name>index_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1aceefcbe746d26dd651162f382095cd3a" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lfm_covariance_parameterization" kindref="compound">LfmCovarianceParameterization</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;LfmCovarianceParameterization&gt; lfmParam_</definition>
+        <argsstring></argsstring>
+        <name>lfmParam_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1a110e0feaca889be53ce4194ad6389ead" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array initialValues_</definition>
+        <argsstring></argsstring>
+        <name>initialValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1ab8d80d95c018986943e14d484b6ff9c6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; fixingTimes_</definition>
+        <argsstring></argsstring>
+        <name>fixingTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1a385ec624b35f431becf19c48a3698e07" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; fixingDates_</definition>
+        <argsstring></argsstring>
+        <name>fixingDates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1aff02144cc9a3f3cc0ca74794509ec58e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; accrualStartTimes_</definition>
+        <argsstring></argsstring>
+        <name>accrualStartTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1a9e85c79000a6d4f67f214880c8c7b41c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; accrualEndTimes_</definition>
+        <argsstring></argsstring>
+        <name>accrualEndTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1a5b942336204b3a7d7090531b38513248" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; accrualPeriod_</definition>
+        <argsstring></argsstring>
+        <name>accrualPeriod_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1a8bfe7ccfb26e56f884b47fe83fdcd362" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array m1</definition>
+        <argsstring></argsstring>
+        <name>m1</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_libor_forward_model_process_1afcdf901e88f6ababc9862b1652b156fc" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array m2</definition>
+        <argsstring></argsstring>
+        <name>m2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1ac9fab8518f6c26a8b6ca3af01be2d19b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LiborForwardModelProcess</definition>
+        <argsstring>(Size size, const boost::shared_ptr&lt; IborIndex &gt; &amp;index)</argsstring>
+        <name>LiborForwardModelProcess</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; initialValues</definition>
+        <argsstring>() const </argsstring>
+        <name>initialValues</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
+        <briefdescription>
+<para>returns the initial values of the state variables </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; drift</definition>
+        <argsstring>(Time t, const Array &amp;x) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1">drift</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; diffusion</definition>
+        <argsstring>(Time t, const Array &amp;x) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a">diffusion</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1aa35146549bd167f407791342e89927e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; covariance</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>covariance</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a8ddfc241f0a0f0e37d2245bf2cde4354">covariance</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the covariance <formula id="356">$ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply</definition>
+        <argsstring>(const Array &amp;x0, const Array &amp;dx) const </argsstring>
+        <name>apply</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a07090b508d659de1879284548f3ea344">apply</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>dx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; evolve</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
+        <name>evolve</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97">evolve</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>dw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <briefdescription>
+<para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size factors</definition>
+        <argsstring>() const </argsstring>
+        <name>factors</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
+        <briefdescription>
+<para>returns the number of independent factors of the process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1addc654f28fcfd5b1ed9f59d0314cff0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; index</definition>
+        <argsstring>() const </argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1af92caf4749478ba72dd159dbd82d871f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
+        <definition>Leg cashFlows</definition>
+        <argsstring>(Real amount=1.0) const </argsstring>
+        <name>cashFlows</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>amount</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1af4f90b7f7c6e1bd214dcebdaa94dc55e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setCovarParam</definition>
+        <argsstring>(const boost::shared_ptr&lt; LfmCovarianceParameterization &gt; &amp;param)</argsstring>
+        <name>setCovarParam</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lfm_covariance_parameterization" kindref="compound">LfmCovarianceParameterization</ref> &gt; &amp;</type>
+          <declname>param</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1ad19640becdc59e51ff00cb7334cc85e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lfm_covariance_parameterization" kindref="compound">LfmCovarianceParameterization</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;LfmCovarianceParameterization&gt; covarParam</definition>
+        <argsstring>() const </argsstring>
+        <name>covarParam</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a50e781d78a77b91b09d63af7be8370e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size nextIndexReset</definition>
+        <argsstring>(Time t) const </argsstring>
+        <name>nextIndexReset</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1ac65ca9ae19fc3937dfc431a79645393f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; fixingTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>fixingTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Date&gt;&amp; fixingDates</definition>
+        <argsstring>() const </argsstring>
+        <name>fixingDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a73154ce9a8976450bb2f20d9b034334f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; accrualStartTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>accrualStartTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1ae172c09e644b2c85addaa7d78ec314a2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; accrualEndTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>accrualEndTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_process_1a9ef5f82ed37b419330d61c2f658f58d0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
+        <definition>std::vector&lt;DiscountFactor&gt; discountBond</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;rates) const </argsstring>
+        <name>discountBond</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>rates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>libor-forward-model process </para>    </briefdescription>
+    <detaileddescription>
+<para>stochastic process of a libor forward model using the rolling forward measure incl. predictor-corrector step</para><para>References:</para><para>Glasserman, Paul, 2004, Monte Carlo Methods in Financial Engineering, Springer, Section 3.7</para><para>Antoon Pelsser, 2000, Efficient Methods for Valuing Interest Rate Derivatives, Springer, 8</para><para>Hull, John, White, Alan, 1999, <ref refid="class_quant_lib_1_1_forward" kindref="compound">Forward</ref> Rate Volatilities, <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> Rate Volatilities and the Implementation of the <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000025"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet NPVs and comparison with Black pricing.</para></xrefdescription></xrefsect></para><para><xrefsect id="caveats_1_caveats000068"><xreftitle>Warning</xreftitle><xrefdescription><para>this class does not work correctly with Visual C++ 6.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9071">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9068">
+        <label>LiborForwardModelProcess</label>
+        <link refid="class_quant_lib_1_1_libor_forward_model_process"/>
+        <childnode refid="9069" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9069">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="9070" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9071" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9070">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9075">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9072">
+        <label>LiborForwardModelProcess</label>
+        <link refid="class_quant_lib_1_1_libor_forward_model_process"/>
+        <childnode refid="9073" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9073">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="9074" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9075" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9074">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmprocess.hpp" bodystart="58" bodyend="110"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1ae172c09e644b2c85addaa7d78ec314a2" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>accrualEndTimes</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a9e85c79000a6d4f67f214880c8c7b41c" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>accrualEndTimes_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a5b942336204b3a7d7090531b38513248" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>accrualPeriod_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a73154ce9a8976450bb2f20d9b034334f" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>accrualStartTimes</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1aff02144cc9a3f3cc0ca74794509ec58e" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>accrualStartTimes_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1af92caf4749478ba72dd159dbd82d871f" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>cashFlows</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1aa35146549bd167f407791342e89927e3" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>covariance</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1ad19640becdc59e51ff00cb7334cc85e1" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>covarParam</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a9ef5f82ed37b419330d61c2f658f58d0" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>discountBond</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a90f2fadbc2346fb7f6c94611215a068b" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>fixingDates</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a385ec624b35f431becf19c48a3698e07" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>fixingDates_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1ac65ca9ae19fc3937dfc431a79645393f" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>fixingTimes</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1ab8d80d95c018986943e14d484b6ff9c6" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>fixingTimes_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1addc654f28fcfd5b1ed9f59d0314cff0f" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1aa6d95aa29676665036014e9161558c5b" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>initialValues</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a110e0feaca889be53ce4194ad6389ead" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>initialValues_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1aceefcbe746d26dd651162f382095cd3a" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>lfmParam_</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1ac9fab8518f6c26a8b6ca3af01be2d19b" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>LiborForwardModelProcess</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a8bfe7ccfb26e56f884b47fe83fdcd362" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>m1</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1afcdf901e88f6ababc9862b1652b156fc" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>m2</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a50e781d78a77b91b09d63af7be8370e7" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>nextIndexReset</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::LiborForwardModelProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::LiborForwardModelProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1af4f90b7f7c6e1bd214dcebdaa94dc55e" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>setCovarParam</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_libor_forward_model_process_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1af60142c7a240fe9fa7a9458740815b9c" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::LiborForwardModelProcess</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

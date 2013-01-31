@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_thirty360" kind="class" prot="public">
+    <compoundname>QuantLib::Thirty360</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_day_counter" prot="public" virt="non-virtual">DayCounter</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl" prot="private">QuantLib::Thirty360::EU_Impl</innerclass>
+    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_i_t___impl" prot="private">QuantLib::Thirty360::IT_Impl</innerclass>
+    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_u_s___impl" prot="private">QuantLib::Thirty360::US_Impl</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
+        <name>Convention</name>
+        <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0b949744f995e4aac602f82be588ce52" prot="public">
+          <name>USA</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578afe525918c971133e32a527175e35536a" prot="public">
+          <name>BondBasis</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public">
+          <name>European</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0ece34ef1403167787124ec002789bc9" prot="public">
+          <name>EurobondBasis</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a38200c77a50e3b8a545863777de3bb57" prot="public">
+          <name>Italian</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="56" bodyend="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1a1867185f9a1f3eb2f399745ddc03e490" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_day_counter_1_1_impl" kindref="compound">DayCounter::Impl</ref> &gt;</type>
+        <definition>static boost::shared_ptr&lt;DayCounter::Impl&gt; implementation</definition>
+        <argsstring>(Convention c)</argsstring>
+        <name>implementation</name>
+        <param>
+          <type>Convention</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="93"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_thirty360_1a72a1e7c32e8c78310b5fb0f9bc1b658f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Thirty360</definition>
+        <argsstring>(Convention c=Thirty360::BondBasis)</argsstring>
+        <name>Thirty360</name>
+        <param>
+          <type>Convention</type>
+          <declname>c</declname>
+          <defval>Thirty360::BondBasis</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="95" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>30/360 day count convention </para>    </briefdescription>
+    <detaileddescription>
+<para>The 30/360 day count can be calculated according to US, European, or Italian conventions.</para><para>US (NASD) convention: if the starting date is the 31st of a month, it becomes equal to the 30th of the same month. If the ending date is the 31st of a month and the starting date is earlier than the 30th of a month, the ending date becomes equal to the 1st of the next month, otherwise the ending date becomes equal to the 30th of the same month. Also known as &quot;30/360&quot;, &quot;360/360&quot;, or &quot;Bond Basis&quot;</para><para>European convention: starting dates or ending dates that occur on the 31st of a month become equal to the 30th of the same month. Also known as &quot;30E/360&quot;, or &quot;Eurobond Basis&quot;</para><para>Italian convention: starting dates or ending dates that occur on February and are grater than 27 become equal to 30 for computational sake. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="14012">
+        <label>Thirty360</label>
+        <link refid="class_quant_lib_1_1_thirty360"/>
+        <childnode refid="14013" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14013">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14014">
+        <label>Thirty360</label>
+        <link refid="class_quant_lib_1_1_thirty360"/>
+        <childnode refid="14015" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14015">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="54" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578afe525918c971133e32a527175e35536a" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>BondBasis</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>Convention</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>DayCounter</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0ece34ef1403167787124ec002789bc9" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>EurobondBasis</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>European</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a1867185f9a1f3eb2f399745ddc03e490" prot="private" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>implementation</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a38200c77a50e3b8a545863777de3bb57" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>Italian</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a72a1e7c32e8c78310b5fb0f9bc1b658f" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>Thirty360</name></member>
+      <member refid="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578a0b949744f995e4aac602f82be588ce52" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>USA</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360</scope><name>yearFraction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_integral_cds_engine" kind="class" prot="public">
+    <compoundname>QuantLib::IntegralCdsEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CreditDefaultSwap::engine</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_cds_engine_1af36628b26dba0928271de3b999f17b1d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period integrationStep_</definition>
+        <argsstring></argsstring>
+        <name>integrationStep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_cds_engine_1a441cf22e5da9198c16764b48f18d056f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;DefaultProbabilityTermStructure&gt; probability_</definition>
+        <argsstring></argsstring>
+        <name>probability_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_cds_engine_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real recoveryRate_</definition>
+        <argsstring></argsstring>
+        <name>recoveryRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_cds_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; discountCurve_</definition>
+        <argsstring></argsstring>
+        <name>discountCurve_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_integral_cds_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; bool &gt;</type>
+        <definition>boost::optional&lt;bool&gt; includeSettlementDateFlows_</definition>
+        <argsstring></argsstring>
+        <name>includeSettlementDateFlows_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_integral_cds_engine_1ab30f7acaf3c332994ef8542ceb029564" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IntegralCdsEngine</definition>
+        <argsstring>(const Period &amp;integrationStep, const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, boost::optional&lt; bool &gt; includeSettlementDateFlows=boost::none)</argsstring>
+        <name>IntegralCdsEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>integrationStep</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+        </param>
+        <param>
+          <type>boost::optional&lt; bool &gt;</type>
+          <declname>includeSettlementDateFlows</declname>
+          <defval>boost::none</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_integral_cds_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/credit/integralcdsengine.hpp" bodystart="32" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1a188f6df4c42679c1c133919254e351c5" prot="private" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>discountCurve_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1a4c03bc11ff086bfab1c39eb1409e968a" prot="private" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>includeSettlementDateFlows_</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1ab30f7acaf3c332994ef8542ceb029564" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>IntegralCdsEngine</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1af36628b26dba0928271de3b999f17b1d" prot="private" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>integrationStep_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::IntegralCdsEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::IntegralCdsEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1a441cf22e5da9198c16764b48f18d056f" prot="private" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>probability_</name></member>
+      <member refid="class_quant_lib_1_1_integral_cds_engine_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>recoveryRate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::IntegralCdsEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

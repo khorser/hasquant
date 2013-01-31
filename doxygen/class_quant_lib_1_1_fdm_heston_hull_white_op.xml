@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_heston_hull_white_op" kind="class" prot="public">
+    <compoundname>QuantLib::FdmHestonHullWhiteOp</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FdmLinearOpComposite</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae10660f3b964d88f488c5fc9c9395656" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>const Array rates_</definition>
+        <argsstring></argsstring>
+        <name>rates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1abc5f38e28831168fb58f00ecae2f0f15" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real v0_</definition>
+        <argsstring></argsstring>
+        <name>v0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a328e605f9c145cecc2d08eea52496fad" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real kappa_</definition>
+        <argsstring></argsstring>
+        <name>kappa_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a290a7be767e7d6796da0962c2462d785" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real theta_</definition>
+        <argsstring></argsstring>
+        <name>theta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a234b1e4d557bbd7144d3a72344ee9da5" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real sigma_</definition>
+        <argsstring></argsstring>
+        <name>sigma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a350ede3211a53486a5fb393ec23d4a21" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real rho_</definition>
+        <argsstring></argsstring>
+        <name>rho_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a714c59061823c674131b96e33bda273b" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white_process" kindref="compound">HullWhiteProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;HullWhiteProcess&gt; hwProcess_</definition>
+        <argsstring></argsstring>
+        <name>hwProcess_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a3e263c2fcc114b89a3cd8c24009ca908" prot="private" static="no" mutable="no">
+        <type>NinePointLinearOp</type>
+        <definition>NinePointLinearOp hestonCorrMap_</definition>
+        <argsstring></argsstring>
+        <name>hestonCorrMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1ad8ea4f82cdd6c3ddcf356d1857f0396c" prot="private" static="no" mutable="no">
+        <type>NinePointLinearOp</type>
+        <definition>NinePointLinearOp equityIrCorrMap_</definition>
+        <argsstring></argsstring>
+        <name>equityIrCorrMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1affedf5350c9ee4c405e182c101d1b052" prot="private" static="no" mutable="no">
+        <type>FdmHestonHullWhiteVariancePart</type>
+        <definition>FdmHestonHullWhiteVariancePart dyMap_</definition>
+        <argsstring></argsstring>
+        <name>dyMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1abd885c0a35893418dec411177ab55f44" prot="private" static="no" mutable="no">
+        <type>FdmHestonHullWhiteEquityPart</type>
+        <definition>FdmHestonHullWhiteEquityPart dxMap_</definition>
+        <argsstring></argsstring>
+        <name>dxMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a5ef75c0195e39240bcdc5b19ccad942c" prot="private" static="no" mutable="no">
+        <type>FdmHestonHullWhiteRatesPart</type>
+        <definition>FdmHestonHullWhiteRatesPart dzMap_</definition>
+        <argsstring></argsstring>
+        <name>dzMap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a0abc93f46f943fa2bd827bb7328ac04c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FdmHestonHullWhiteOp</definition>
+        <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; HestonProcess &gt; &amp;hestonProcess, const boost::shared_ptr&lt; HullWhiteProcess &gt; &amp;hwProcess, Real equityShortRateCorrelation)</argsstring>
+        <name>FdmHestonHullWhiteOp</name>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmMesher &gt; &amp;</type>
+          <declname>mesher</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <declname>hestonProcess</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white_process" kindref="compound">HullWhiteProcess</ref> &gt; &amp;</type>
+          <declname>hwProcess</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>equityShortRateCorrelation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time t1, Time t2)</argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_mixed</definition>
+        <argsstring>(const Array &amp;r) const </argsstring>
+        <name>apply_mixed</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; apply_direction</definition>
+        <argsstring>(Size direction, const Array &amp;r) const </argsstring>
+        <name>apply_direction</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; solve_splitting</definition>
+        <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
+        <name>solve_splitting</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>direction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; preconditioner</definition>
+        <argsstring>(const Array &amp;r, Real s) const </argsstring>
+        <name>preconditioner</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="104"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="86" bodyend="116"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply_direction</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply_mixed</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>array_type</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1abd885c0a35893418dec411177ab55f44" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dxMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1affedf5350c9ee4c405e182c101d1b052" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dyMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a5ef75c0195e39240bcdc5b19ccad942c" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dzMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ad8ea4f82cdd6c3ddcf356d1857f0396c" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>equityIrCorrMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a0abc93f46f943fa2bd827bb7328ac04c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>FdmHestonHullWhiteOp</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a3e263c2fcc114b89a3cd8c24009ca908" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>hestonCorrMap_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a714c59061823c674131b96e33bda273b" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>hwProcess_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a328e605f9c145cecc2d08eea52496fad" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>kappa_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>preconditioner</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae10660f3b964d88f488c5fc9c9395656" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>rates_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a350ede3211a53486a5fb393ec23d4a21" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>rho_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a234b1e4d557bbd7144d3a72344ee9da5" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>sigma_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>solve_splitting</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a290a7be767e7d6796da0962c2462d785" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>theta_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1abc5f38e28831168fb58f00ecae2f0f15" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>v0_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>~FdmLinearOp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__macros" kind="group">
+    <compoundname>macros</compoundname>
+    <title>QuantLib macros</title>
+    <innergroup refid="group__limit_macros">Numeric limits</innergroup>
+    <innergroup refid="group__debug_macros">Debugging macros</innergroup>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="group__macros_1gaab875de7b9fdb0458463f0e661b31151" prot="public" static="no">
+        <name>QL_VERSION</name>
+        <initializer>&quot;1.2.1&quot;</initializer>
+        <briefdescription>
+<para>version string </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__macros_1gabad58a5fe5235ef402aad82e6a7a166d" prot="public" static="no">
+        <name>QL_HEX_VERSION</name>
+        <initializer>0x010201f0</initializer>
+        <briefdescription>
+<para>version hexadecimal number </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="group__macros_1ga8a6c910e40a554b9a198326dc1eb8f90" prot="public" static="no">
+        <name>QL_LIB_VERSION</name>
+        <initializer>&quot;1_2_1&quot;</initializer>
+        <briefdescription>
+<para>version string for output lib name </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/version.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/version.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Global definitions and a few macros which help porting the code to different compilers. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

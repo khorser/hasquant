@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_replicating_variance_swap_engine" kind="class" prot="public">
+    <compoundname>QuantLib::ReplicatingVarianceSwapEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_variance_swap_1_1engine" prot="public" virt="non-virtual">VarianceSwap::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_replicating_variance_swap_engine_1ae4c21c3b5d3bff2b0fd3ff7d115b85d0" prot="public" static="no">
+        <type>std::vector&lt; std::pair&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>typedef std::vector&lt;std::pair&lt; boost::shared_ptr&lt;StrikedTypePayoff&gt;, Real&gt; &gt; weights_type</definition>
+        <argsstring></argsstring>
+        <name>weights_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a0542a02d6f99ccc90b1506798ca123e1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dk_</definition>
+        <argsstring></argsstring>
+        <name>dk_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_replicating_variance_swap_engine_1af4756acb81bf3fdefc9b437780c1a2bb" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; callStrikes_</definition>
+        <argsstring></argsstring>
+        <name>callStrikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_replicating_variance_swap_engine_1ab214d08bfbe340f2d0ed4c36f58ad35c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; putStrikes_</definition>
+        <argsstring></argsstring>
+        <name>putStrikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a66146cf9cddfc1a3a786cde6870395d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ReplicatingVarianceSwapEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real dk=5.0, const std::vector&lt; Real &gt; &amp;callStrikes=std::vector&lt; Real &gt;(), const std::vector&lt; Real &gt; &amp;putStrikes=std::vector&lt; Real &gt;())</argsstring>
+        <name>ReplicatingVarianceSwapEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>dk</declname>
+          <defval>5.0</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>callStrikes</declname>
+          <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>putStrikes</declname>
+          <defval>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="75" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="185" bodyend="209"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1ad759b41aa1bcee3f69b104b5c24d6e83" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void computeOptionWeights</definition>
+        <argsstring>(const std::vector&lt; Real &gt; &amp;, const Option::Type, weights_type &amp;optionWeights) const </argsstring>
+        <name>computeOptionWeights</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <defname>availStrikes</defname>
+        </param>
+        <param>
+          <type>const Option::Type</type>
+          <defname>type</defname>
+        </param>
+        <param>
+          <type>weights_type &amp;</type>
+          <declname>optionWeights</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="94" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1aeff2f095487d4038740643f6babec50e" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real computeLogPayoff</definition>
+        <argsstring>(const Real, const Real) const </argsstring>
+        <name>computeLogPayoff</name>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <defname>strike</defname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <defname>callPutStrikeBoundary</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="148" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a93d4c2fb8fba4bc25d52ee258d04fe8b" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real computeReplicatingPortfolio</definition>
+        <argsstring>(const weights_type &amp;optionWeights) const </argsstring>
+        <name>computeReplicatingPortfolio</name>
+        <param>
+          <type>const weights_type &amp;</type>
+          <declname>optionWeights</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="157" bodyend="181"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate riskFreeRate</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="222" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscount</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeDiscount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="229" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1ac49ad98a633b66a7a9ddf330a0d064d8" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real underlying</definition>
+        <argsstring>() const </argsstring>
+        <name>underlying</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="212" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_replicating_variance_swap_engine_1a384e61b69dd2e190b4041246b725e00c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time residualTime</definition>
+        <argsstring>() const </argsstring>
+        <name>residualTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="217" bodyend="219"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Variance-swap pricing engine using replicating cost,. </para>    </briefdescription>
+    <detaileddescription>
+<para>as described in Demeterfi, Derman, Kamal &amp; Zou, &quot;A Guide to Volatility and Variance Swaps&quot;, 1999</para><para><xrefsect id="test_1_test000104"><xreftitle>Tests</xreftitle><xrefdescription><para>returned variances verified against results from literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12808">
+        <label>ReplicatingVarianceSwapEngine</label>
+        <link refid="class_quant_lib_1_1_replicating_variance_swap_engine"/>
+        <childnode refid="12809" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12812">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12813">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12809">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_variance_swap_1_1engine"/>
+        <childnode refid="12810" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12811">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="12812" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12810">
+        <label>GenericEngine&lt; VarianceSwap::arguments, VarianceSwap::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="12811" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12813" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12814">
+        <label>ReplicatingVarianceSwapEngine</label>
+        <link refid="class_quant_lib_1_1_replicating_variance_swap_engine"/>
+        <childnode refid="12815" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12821">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_variance_swap_1_1arguments"/>
+        <childnode refid="12822" relation="usage">
+          <edgelabel>startDate</edgelabel>
+          <edgelabel>maturityDate</edgelabel>
+        </childnode>
+      </node>
+      <node id="12818">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12819">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12820">
+        <label>results</label>
+        <link refid="class_quant_lib_1_1_variance_swap_1_1results"/>
+      </node>
+      <node id="12822">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="12815">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_variance_swap_1_1engine"/>
+        <childnode refid="12816" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12817">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="12818" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12816">
+        <label>GenericEngine&lt; VarianceSwap::arguments, VarianceSwap::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="12817" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12819" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12820" relation="usage">
+          <edgelabel>results_</edgelabel>
+        </childnode>
+        <childnode refid="12821" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/replicatingvarianceswapengine.hpp" bodystart="43" bodyend="70"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1af4756acb81bf3fdefc9b437780c1a2bb" prot="private" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>callStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1aeff2f095487d4038740643f6babec50e" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>computeLogPayoff</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1ad759b41aa1bcee3f69b104b5c24d6e83" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>computeOptionWeights</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a93d4c2fb8fba4bc25d52ee258d04fe8b" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>computeReplicatingPortfolio</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a0542a02d6f99ccc90b1506798ca123e1" prot="private" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>dk_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1ab214d08bfbe340f2d0ed4c36f58ad35c" prot="private" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>putStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a66146cf9cddfc1a3a786cde6870395d4" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>ReplicatingVarianceSwapEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a384e61b69dd2e190b4041246b725e00c" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>residualTime</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1a4d3c06d01e8a68c61fc773da70ab5815" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>riskFreeDiscount</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1aec4742c5ccf23463c537d0e7d6990607" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>riskFreeRate</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1ac49ad98a633b66a7a9ddf330a0d064d8" prot="protected" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_replicating_variance_swap_engine_1ae4c21c3b5d3bff2b0fd3ff7d115b85d0" prot="public" virt="non-virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>weights_type</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::ReplicatingVarianceSwapEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

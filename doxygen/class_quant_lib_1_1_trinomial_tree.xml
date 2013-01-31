@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_trinomial_tree" kind="class" prot="public">
+    <compoundname>QuantLib::TrinomialTree</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_tree" prot="public" virt="non-virtual">Tree&lt; TrinomialTree &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_trinomial_tree_1_1_branching" prot="private">QuantLib::TrinomialTree::Branching</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" static="no">
+        <name>Branches</name>
+        <enumvalue id="class_quant_lib_1_1_trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0ac45748c7ad342476d13e14f6632203c1" prot="public">
+          <name>branches</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1a4cab8fbe3eb882df8aa3ed9dceb1edf5" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; Branching &gt;</type>
+        <definition>std::vector&lt;Branching&gt; branchings_</definition>
+        <argsstring></argsstring>
+        <name>branchings_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1afb597b35edab96eecbcbf9a2df04f05d" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real x0_</definition>
+        <argsstring></argsstring>
+        <name>x0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1aef7f39f95dbbf62fd365a1ec2a0e70bf" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; dx_</definition>
+        <argsstring></argsstring>
+        <name>dx_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_trinomial_tree_1adda5ae6c670bdbb1857509a4aa20ec25" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref></type>
+        <definition>TimeGrid timeGrid_</definition>
+        <argsstring></argsstring>
+        <name>timeGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1a078e840172f31eaf0ca3ce14574e2457" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TrinomialTree</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, const TimeGrid &amp;timeGrid, bool isPositive=false)</argsstring>
+        <name>TrinomialTree</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <declname>timeGrid</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isPositive</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1aa4bb94c633d219d75bb5b590fe6b23b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dx</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>dx</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        <definition>const TimeGrid&amp; timeGrid</definition>
+        <argsstring>() const </argsstring>
+        <name>timeGrid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>size</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="84" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real underlying</definition>
+        <argsstring>(Size i, Size index) const </argsstring>
+        <name>underlying</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="88" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1a48f57733a612b5288a9fbd89d9b71072" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size descendant</definition>
+        <argsstring>(Size i, Size index, Size branch) const </argsstring>
+        <name>descendant</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>branch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_trinomial_tree_1aca88ad07031bcbdd6c191208c49f1042" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real probability</definition>
+        <argsstring>(Size i, Size index, Size branch) const </argsstring>
+        <name>probability</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>branch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Recombining trinomial tree class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class defines a recombining trinomial tree approximating a 1-D stochastic process. <xrefsect id="caveats_1_caveats000083"><xreftitle>Warning</xreftitle><xrefdescription><para>The diffusion term of the SDE must be independent of the underlying process.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="14228">
+        <label>Tree&lt; TrinomialTree &gt;</label>
+        <link refid="class_quant_lib_1_1_tree"/>
+        <childnode refid="14229" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14227">
+        <label>TrinomialTree</label>
+        <link refid="class_quant_lib_1_1_trinomial_tree"/>
+        <childnode refid="14228" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14229">
+        <label>CuriouslyRecurringTemplate&lt; TrinomialTree &gt;</label>
+        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="14231">
+        <label>Tree&lt; TrinomialTree &gt;</label>
+        <link refid="class_quant_lib_1_1_tree"/>
+        <childnode refid="14232" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14230">
+        <label>TrinomialTree</label>
+        <link refid="class_quant_lib_1_1_trinomial_tree"/>
+        <childnode refid="14231" relation="public-inheritance">
+        </childnode>
+        <childnode refid="14233" relation="usage">
+          <edgelabel>timeGrid_</edgelabel>
+        </childnode>
+      </node>
+      <node id="14233">
+        <label>TimeGrid</label>
+        <link refid="class_quant_lib_1_1_time_grid"/>
+      </node>
+      <node id="14232">
+        <label>CuriouslyRecurringTemplate&lt; TrinomialTree &gt;</label>
+        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="41" bodyend="80"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>Branches</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0ac45748c7ad342476d13e14f6632203c1" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>branches</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a4cab8fbe3eb882df8aa3ed9dceb1edf5" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>branchings_</name></member>
+      <member refid="class_quant_lib_1_1_tree_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>columns</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>CuriouslyRecurringTemplate</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a48f57733a612b5288a9fbd89d9b71072" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>descendant</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1aa4bb94c633d219d75bb5b590fe6b23b7" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>dx</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1aef7f39f95dbbf62fd365a1ec2a0e70bf" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>dx_</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>impl</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>impl</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1aca88ad07031bcbdd6c191208c49f1042" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>probability</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>timeGrid</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1adda5ae6c670bdbb1857509a4aa20ec25" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>timeGrid_</name></member>
+      <member refid="class_quant_lib_1_1_tree_1a8fe1055f39c1f80fd420458fe249fd99" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>Tree</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1a078e840172f31eaf0ca3ce14574e2457" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>TrinomialTree</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_trinomial_tree_1afb597b35edab96eecbcbf9a2df04f05d" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>x0_</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" virt="non-virtual"><scope>QuantLib::TrinomialTree</scope><name>~CuriouslyRecurringTemplate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

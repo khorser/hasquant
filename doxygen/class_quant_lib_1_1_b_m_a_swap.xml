@@ -1,0 +1,469 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_b_m_a_swap" kind="class" prot="public">
+    <compoundname>QuantLib::BMASwap</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_swap" prot="public" virt="non-virtual">Swap</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a732b3eb6ff32f26801313e147d576dfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real liborFraction</definition>
+        <argsstring>() const </argsstring>
+        <name>liborFraction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1aea41d9796ef730b280d153450ee61964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread liborSpread</definition>
+        <argsstring>() const </argsstring>
+        <name>liborSpread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal</definition>
+        <argsstring>() const </argsstring>
+        <name>nominal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>Type</type>
+        <definition>Type type</definition>
+        <argsstring>() const </argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>&quot;payer&quot; or &quot;receiver&quot; refer to the BMA leg </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1acfe03e2a4aaefd6669112baf333cc14c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <definition>const Leg&amp; bmaLeg</definition>
+        <argsstring>() const </argsstring>
+        <name>bmaLeg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a5ad7aa63cd6fb992654999bb656882f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
+        <definition>const Leg&amp; liborLeg</definition>
+        <argsstring>() const </argsstring>
+        <name>liborLeg</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Results</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a0707097937d833306ca609088d4f416f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real liborLegBPS</definition>
+        <argsstring>() const </argsstring>
+        <name>liborLegBPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a3cff4d8e54d979f67f92f98ed4c5db18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real liborLegNPV</definition>
+        <argsstring>() const </argsstring>
+        <name>liborLegNPV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a147bf5d06b5f2177c6307feb7e1b370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairLiborFraction</definition>
+        <argsstring>() const </argsstring>
+        <name>fairLiborFraction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a06f94595a0296dc414b7f53316cf35be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread fairLiborSpread</definition>
+        <argsstring>() const </argsstring>
+        <name>fairLiborSpread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a45e18fdf92b40a73aa3e99e9e06f27e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real bmaLegBPS</definition>
+        <argsstring>() const </argsstring>
+        <name>bmaLegBPS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1ad3113cd2f1fb8b6611e478df44affdf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real bmaLegNPV</definition>
+        <argsstring>() const </argsstring>
+        <name>bmaLegNPV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
+          <name>Receiver</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
+          <name>Payer</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="37" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal_</definition>
+        <argsstring></argsstring>
+        <name>nominal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1aadb83d9343aed52cd8e4ad929429024e" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate liborFraction_</definition>
+        <argsstring></argsstring>
+        <name>liborFraction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_1a68df81f84ff876c153127481a690291e" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate liborSpread_</definition>
+        <argsstring></argsstring>
+        <name>liborSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a6e41b7b5fbe131e7f781084d96fb93e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BMASwap</definition>
+        <argsstring>(Type type, Real nominal, const Schedule &amp;liborSchedule, Rate liborFraction, Rate liborSpread, const boost::shared_ptr&lt; IborIndex &gt; &amp;liborIndex, const DayCounter &amp;liborDayCount, const Schedule &amp;bmaSchedule, const boost::shared_ptr&lt; BMAIndex &gt; &amp;bmaIndex, const DayCounter &amp;bmaDayCount)</argsstring>
+        <name>BMASwap</name>
+        <param>
+          <type>Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nominal</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>liborSchedule</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>liborFraction</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>liborSpread</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>liborIndex</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>liborDayCount</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>bmaSchedule</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <declname>bmaIndex</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>bmaDayCount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>swap paying <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> against BMA coupons </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1316">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1315">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="1316" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1317" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1317">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1314">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="1315" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1313">
+        <label>Swap</label>
+        <link refid="class_quant_lib_1_1_swap"/>
+        <childnode refid="1314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1312">
+        <label>BMASwap</label>
+        <link refid="class_quant_lib_1_1_b_m_a_swap"/>
+        <childnode refid="1313" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1322">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1321">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="1322" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1323" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1323">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1324">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="1320">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="1321" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1324" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1319">
+        <label>Swap</label>
+        <link refid="class_quant_lib_1_1_swap"/>
+        <childnode refid="1320" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1318">
+        <label>BMASwap</label>
+        <link refid="class_quant_lib_1_1_b_m_a_swap"/>
+        <childnode refid="1319" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bmaswap.hpp" bodystart="35" bodyend="78"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1acfe03e2a4aaefd6669112baf333cc14c" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>bmaLeg</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a45e18fdf92b40a73aa3e99e9e06f27e9" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>bmaLegBPS</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1ad3113cd2f1fb8b6611e478df44affdf5" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>bmaLegNPV</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a6e41b7b5fbe131e7f781084d96fb93e5" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>BMASwap</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::BMASwap</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1ac50265fc5de978e94b014cfbea2f1668" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>endDiscounts</name></member>
+      <member refid="class_quant_lib_1_1_swap_1ae0232c41db9e3051d6d073e3477329b5" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>endDiscounts_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a147bf5d06b5f2177c6307feb7e1b370c" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>fairLiborFraction</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a06f94595a0296dc414b7f53316cf35be" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>fairLiborSpread</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a59d4f1ae9886a4955a88789f6da538ad" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>leg</name></member>
+      <member refid="class_quant_lib_1_1_swap_1ae068828364b9e2254681f983d68dcb6c" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>legBPS</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aa0c286a9b52ee9b980f6db3422482167" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>legBPS_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a269631e31a13dd1e7d6e78bc52397cef" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>legNPV</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a63928801d947c68e40d22ccf9e9ab60b" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>legNPV_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a55d313924706a6ea67a5f2ab70c1702a" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>legs_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a732b3eb6ff32f26801313e147d576dfd" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborFraction</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1aadb83d9343aed52cd8e4ad929429024e" prot="private" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborFraction_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a5ad7aa63cd6fb992654999bb656882f5" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborLeg</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a0707097937d833306ca609088d4f416f" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborLegBPS</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a3cff4d8e54d979f67f92f98ed4c5db18" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborLegNPV</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1aea41d9796ef730b280d153450ee61964" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborSpread</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a68df81f84ff876c153127481a690291e" prot="private" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>liborSpread_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>maturityDate</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aade227fdc14701bf0bfde19b1c9ae2bb" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>npvDateDiscount</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a10f78ef64061fa4fcdc90fed285d8ed4" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>npvDateDiscount_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BMASwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::BMASwap</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Payer</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aec42fcaa87a0eca7ec78d2cf27ae1f5d" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>payer_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="virtual"><scope>QuantLib::BMASwap</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Receiver</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::BMASwap</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>startDate</name></member>
+      <member refid="class_quant_lib_1_1_swap_1addfecdb10b9c77cc3b2de423cbe7a5bf" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>startDiscounts</name></member>
+      <member refid="class_quant_lib_1_1_swap_1abb9efb6060f286d21fdaa742a2798599" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>startDiscounts_</name></member>
+      <member refid="class_quant_lib_1_1_swap_1aa7e28d70b1366663707f7554205b887b" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Swap</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a84d17705f422bce5e74d0a4ca0f6df34" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Swap</name></member>
+      <member refid="class_quant_lib_1_1_swap_1a428a8c0a5cb2912604b351462b52e228" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Swap</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwap</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BMASwap</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

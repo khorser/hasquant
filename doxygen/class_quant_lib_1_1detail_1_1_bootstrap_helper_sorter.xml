@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter" kind="class" prot="public">
+    <compoundname>QuantLib::detail::BootstrapHelperSorter</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter_1accc37d0e149204259fca6ae8ab0778de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class Helper</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool operator()</definition>
+        <argsstring>(const boost::shared_ptr&lt; Helper &gt; &amp;h1, const boost::shared_ptr&lt; Helper &gt; &amp;h2) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const boost::shared_ptr&lt; Helper &gt; &amp;</type>
+          <declname>h1</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; Helper &gt; &amp;</type>
+          <declname>h2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="187" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="185" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="182" bodyend="190"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter_1accc37d0e149204259fca6ae8ab0778de" prot="public" virt="non-virtual"><scope>QuantLib::detail::BootstrapHelperSorter</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

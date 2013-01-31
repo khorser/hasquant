@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::CalibratedModel::PrivateConstraint::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint_1_1_impl" prot="public" virt="non-virtual">Constraint::Impl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1af922d9f9b118b46d8acbd8b2d768a5c4" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Parameter&gt;&amp; arguments_</definition>
+        <argsstring></argsstring>
+        <name>arguments_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a8be4af264dc90debea6ae1bc11bf4b04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Impl</definition>
+        <argsstring>(const std::vector&lt; Parameter &gt; &amp;arguments)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+          <declname>arguments</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="143" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool test</definition>
+        <argsstring>(const Array &amp;params) const </argsstring>
+        <name>test</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="145" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1631">
+        <label>CalibratedModel::PrivateConstraint::Impl</label>
+        <childnode refid="1632" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1632">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1633">
+        <label>CalibratedModel::PrivateConstraint::Impl</label>
+        <childnode refid="1634" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1634">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="141" bodyend="159"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1af922d9f9b118b46d8acbd8b2d768a5c4" prot="private" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a8be4af264dc90debea6ae1bc11bf4b04" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>Impl</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

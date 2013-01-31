@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cost_function" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::CostFunction</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error" prot="public" virt="non-virtual">AbcdCalibration::AbcdError</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl_1_1_s_a_b_r_error" prot="public" virt="non-virtual">SABRInterpolationImpl&lt; I1, I2 &gt;::SABRError</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_frobenius_cost_function" prot="public" virt="non-virtual">FrobeniusCostFunction</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_least_square_function" prot="public" virt="non-virtual">LeastSquareFunction</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_penalty_function" prot="public" virt="non-virtual">PenaltyFunction&lt; Curve &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_projected_cost_function" prot="public" virt="non-virtual">ProjectedCostFunction</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~CostFunction</definition>
+        <argsstring>()</argsstring>
+        <name>~CostFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a132cbe03016a6e22c2ad3eaef6baf6a1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real value</definition>
+        <argsstring>(const Array &amp;x) const =0</argsstring>
+        <name>value</name>
+        <reimplementedby refid="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462">value</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1aa96b19df61cc4e727372ce7f9abb60c9">value</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute the cost function value in x </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; values</definition>
+        <argsstring>(const Array &amp;x) const =0</argsstring>
+        <name>values</name>
+        <reimplementedby refid="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273">values</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1aefd0ff60f2c43e34293b14ff785035d1">values</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute the cost function values in x </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void gradient</definition>
+        <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
+        <name>gradient</name>
+        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1a5606a9f56d4bf8a1b09386234ac220a1">gradient</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>grad</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute grad_f, the first derivative of </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="42" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real valueAndGradient</definition>
+        <argsstring>(Array &amp;grad, const Array &amp;x) const </argsstring>
+        <name>valueAndGradient</name>
+        <reimplementedby refid="class_quant_lib_1_1_least_square_function_1a35a37dbf4155454c382e433e5183ba2f">valueAndGradient</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>grad</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute grad_f, the first derivative of </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="57" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real finiteDifferenceEpsilon</definition>
+        <argsstring>() const </argsstring>
+        <name>finiteDifferenceEpsilon</name>
+        <briefdescription>
+<para>Default epsilon for finite difference method : </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="64" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Cost function abstract class for optimization problem. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2762">
+        <label>ProjectedCostFunction</label>
+        <link refid="class_quant_lib_1_1_projected_cost_function"/>
+        <childnode refid="2760" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2761">
+        <label>LeastSquareFunction</label>
+        <link refid="class_quant_lib_1_1_least_square_function"/>
+        <childnode refid="2760" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2760">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="32" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>finiteDifferenceEpsilon</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>gradient</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a132cbe03016a6e22c2ad3eaef6baf6a1" prot="public" virt="pure-virtual"><scope>QuantLib::CostFunction</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>valueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff" prot="public" virt="pure-virtual"><scope>QuantLib::CostFunction</scope><name>values</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>~CostFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

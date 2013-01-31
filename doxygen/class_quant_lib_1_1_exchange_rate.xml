@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_exchange_rate" kind="class" prot="public">
+    <compoundname>QuantLib::ExchangeRate</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ExchangeRate</definition>
+        <argsstring>()</argsstring>
+        <name>ExchangeRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="86" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ExchangeRate</definition>
+        <argsstring>(const Currency &amp;source, const Currency &amp;target, Decimal rate)</argsstring>
+        <name>ExchangeRate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+          <declname>rate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>the rate <formula id="65">$ r $</formula> is given with the convention that a unit of the source is worth <formula id="65">$ r $</formula> units of the target. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="89" bodyend="92"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>const Currency &amp; source</definition>
+        <argsstring>() const </argsstring>
+        <name>source</name>
+        <briefdescription>
+<para>the source currency. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>const Currency &amp; target</definition>
+        <argsstring>() const </argsstring>
+        <name>target</name>
+        <briefdescription>
+<para>the target currency. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <definition>ExchangeRate::Type type</definition>
+        <argsstring>() const </argsstring>
+        <name>type</name>
+        <briefdescription>
+<para>the type </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <definition>Decimal rate</definition>
+        <argsstring>() const </argsstring>
+        <name>rate</name>
+        <briefdescription>
+<para>the exchange rate (when available) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Utility methods</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
+        <definition>Money exchange</definition>
+        <argsstring>(const Money &amp;amount) const </argsstring>
+        <name>exchange</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+<para>apply the exchange rate to a cash amount </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref></type>
+        <definition>static ExchangeRate chain</definition>
+        <argsstring>(const ExchangeRate &amp;r1, const ExchangeRate &amp;r2)</argsstring>
+        <name>chain</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <declname>r1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <declname>r2</declname>
+        </param>
+        <briefdescription>
+<para>chain two exchange rates </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public">
+          <name>Direct</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>given directly by the user </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public">
+          <name>Derived</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>derived from exchange rates between other currencies </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="40" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_rate_1a2123a75e857ef4992df40cfb5d67a4cc" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency source_</definition>
+        <argsstring></argsstring>
+        <name>source_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_rate_1abed39c4c6f2a12f9f6774c7c15334ff9" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency target_</definition>
+        <argsstring></argsstring>
+        <name>target_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_rate_1ad703eabf3d6721eec6b70c2740aa7e9d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
+        <definition>Decimal rate_</definition>
+        <argsstring></argsstring>
+        <name>rate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_rate_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+        <definition>Type type_</definition>
+        <argsstring></argsstring>
+        <name>type_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_rate_1a8e6128017d2b6da84d09f3bb5c5a0474" prot="private" static="no" mutable="no">
+        <type>std::pair&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &gt;, boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &gt; &gt;</type>
+        <definition>std::pair&lt;boost::shared_ptr&lt;ExchangeRate&gt;, boost::shared_ptr&lt;ExchangeRate&gt; &gt; rateChain_</definition>
+        <argsstring></argsstring>
+        <name>rateChain_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>exchange rate between two currencies </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000003"><xreftitle>Tests</xreftitle><xrefdescription><para>application of direct and derived exchange rate is tested against calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="38" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>chain</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Derived</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Direct</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>exchange</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>ExchangeRate</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>ExchangeRate</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rate</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1ad703eabf3d6721eec6b70c2740aa7e9d" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rate_</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a8e6128017d2b6da84d09f3bb5c5a0474" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rateChain_</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>source</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a2123a75e857ef4992df40cfb5d67a4cc" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>source_</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>target</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1abed39c4c6f2a12f9f6774c7c15334ff9" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>target_</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_exchange_rate_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>type_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

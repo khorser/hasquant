@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_smile_section" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::SmileSection</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="virtual">Observable</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="virtual">Observer</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_flat_smile_section" prot="public" virt="non-virtual">FlatSmileSection</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_smile_section" prot="public" virt="non-virtual">InterpolatedSmileSection&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_sabr_interpolated_smile_section" prot="public" virt="non-virtual">SabrInterpolatedSmileSection</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_sabr_smile_section" prot="public" virt="non-virtual">SabrSmileSection</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_spreaded_smile_section" prot="public" virt="non-virtual">SpreadedSmileSection</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1accf36e1a5238df02dfe0073cadaa6414" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isFloating_</definition>
+        <argsstring></argsstring>
+        <name>isFloating_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1a3e22290961d6b56dce069c1c4fda6386" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date referenceDate_</definition>
+        <argsstring></argsstring>
+        <name>referenceDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1a82043c5ad79ac1b7b969001c0fac6b01" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date exerciseDate_</definition>
+        <argsstring></argsstring>
+        <name>exerciseDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dc_</definition>
+        <argsstring></argsstring>
+        <name>dc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_smile_section_1a57fcc5db9ef9fd7447a6fa4e3a9e64f9" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time exerciseTime_</definition>
+        <argsstring></argsstring>
+        <name>exerciseTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SmileSection</definition>
+        <argsstring>(const Date &amp;d, const DayCounter &amp;dc=DayCounter(), const Date &amp;referenceDate=Date())</argsstring>
+        <name>SmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SmileSection</definition>
+        <argsstring>(Time exerciseTime, const DayCounter &amp;dc=DayCounter())</argsstring>
+        <name>SmileSection</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>exerciseTime</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SmileSection</definition>
+        <argsstring>()</argsstring>
+        <name>SmileSection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~SmileSection</definition>
+        <argsstring>()</argsstring>
+        <name>~SmileSection</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a1a0b4386bde01c8cc2678dc87489fcd9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real minStrike</definition>
+        <argsstring>() const =0</argsstring>
+        <name>minStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1aede5e93dcaf5b7de1d5ffd4a773cd803" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real maxStrike</definition>
+        <argsstring>() const =0</argsstring>
+        <name>maxStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real variance</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>variance</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatility</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>volatility</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1aad514c538e95aed60e1506fcc2e9d69b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real atmLevel</definition>
+        <argsstring>() const =0</argsstring>
+        <name>atmLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date&amp; exerciseDate</definition>
+        <argsstring>() const </argsstring>
+        <name>exerciseDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date &amp; referenceDate</definition>
+        <argsstring>() const </argsstring>
+        <name>referenceDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time exerciseTime</definition>
+        <argsstring>() const </argsstring>
+        <name>exerciseTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+        <definition>const DayCounter&amp; dayCounter</definition>
+        <argsstring>() const </argsstring>
+        <name>dayCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="56" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void initializeExerciseTime</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeExerciseTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real varianceImpl</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>varianceImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="86" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_smile_section_1aa6ba38c209cad41a5e39bab2b6c5258c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>virtual Volatility volatilityImpl</definition>
+        <argsstring>(Rate strike) const =0</argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>interest rate volatility smile section </para>    </briefdescription>
+    <detaileddescription>
+<para>This abstract class provides volatility smile section interface </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="13181">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13182">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13180">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="13181" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13182" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13184">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13185">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13183">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="13184" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13185" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/smilesection.hpp" bodystart="35" bodyend="67"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_smile_section_1aad514c538e95aed60e1506fcc2e9d69b" prot="public" virt="pure-virtual"><scope>QuantLib::SmileSection</scope><name>atmLevel</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>dc_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>exerciseDate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a82043c5ad79ac1b7b969001c0fac6b01" prot="private" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>exerciseDate_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>exerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a57fcc5db9ef9fd7447a6fa4e3a9e64f9" prot="private" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>exerciseTime_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" virt="virtual"><scope>QuantLib::SmileSection</scope><name>initializeExerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1accf36e1a5238df02dfe0073cadaa6414" prot="private" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>isFloating_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aede5e93dcaf5b7de1d5ffd4a773cd803" prot="public" virt="pure-virtual"><scope>QuantLib::SmileSection</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a1a0b4386bde01c8cc2678dc87489fcd9" prot="public" virt="pure-virtual"><scope>QuantLib::SmileSection</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::SmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::SmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a3e22290961d6b56dce069c1c4fda6386" prot="private" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>referenceDate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" virt="virtual"><scope>QuantLib::SmileSection</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="protected" virt="virtual"><scope>QuantLib::SmileSection</scope><name>varianceImpl</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" virt="non-virtual"><scope>QuantLib::SmileSection</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aa6ba38c209cad41a5e39bab2b6c5258c" prot="protected" virt="pure-virtual"><scope>QuantLib::SmileSection</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SmileSection</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::SmileSection</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" virt="virtual"><scope>QuantLib::SmileSection</scope><name>~SmileSection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

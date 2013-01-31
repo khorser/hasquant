@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_energy_commodity_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::EnergyCommodity::arguments</compoundname>
+    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1arguments_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency currency</definition>
+        <argsstring></argsstring>
+        <name>currency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1arguments_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <definition>UnitOfMeasure unitOfMeasure</definition>
+        <argsstring></argsstring>
+        <name>unitOfMeasure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="122" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="4085">
+        <label>UnitOfMeasure</label>
+        <link refid="class_quant_lib_1_1_unit_of_measure"/>
+      </node>
+      <node id="4084">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="4083">
+        <label>EnergyCommodity::arguments</label>
+        <childnode refid="4084" relation="usage">
+          <edgelabel>currency</edgelabel>
+        </childnode>
+        <childnode refid="4085" relation="usage">
+          <edgelabel>unitOfMeasure</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="118" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>unitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

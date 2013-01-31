@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl" kind="class" prot="public">
+    <compoundname>QuantLib::detail::LinearInterpolationImpl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_interpolation_1_1template_impl" prot="public" virt="non-virtual">QuantLib::Interpolation::templateImpl&lt; I1, I2 &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class I1</type>
+      </param>
+      <param>
+        <type>class I2</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a93eaa990736f292e226b3b09a939beee" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; primitiveConst_</definition>
+        <argsstring></argsstring>
+        <name>primitiveConst_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a41bc28f21a1e438c67c0c0f823c59f17" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; s_</definition>
+        <argsstring></argsstring>
+        <name>s_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a02b5c58b0bd60e3a1778f9898eb71c72" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LinearInterpolationImpl</definition>
+        <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin)</argsstring>
+        <name>LinearInterpolationImpl</name>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xBegin</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xEnd</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yBegin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="43" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>value</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real primitive</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>primitive</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="56" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real derivative</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>derivative</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real secondDerivative</definition>
+        <argsstring>(Real) const </argsstring>
+        <name>secondDerivative</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3609">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
+      </node>
+      <node id="3607">
+        <label>LinearInterpolationImpl&lt; I1, I2 &gt;</label>
+        <childnode refid="3608" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3608">
+        <label>templateImpl&lt; I1, I2 &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
+        <childnode refid="3609" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3612">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
+      </node>
+      <node id="3610">
+        <label>LinearInterpolationImpl&lt; I1, I2 &gt;</label>
+        <childnode refid="3611" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3611">
+        <label>templateImpl&lt; I1, I2 &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
+        <childnode refid="3612" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/linearinterpolation.hpp" bodystart="36" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>derivative</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>isInRange</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a02b5c58b0bd60e3a1778f9898eb71c72" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>LinearInterpolationImpl</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1aa5248794b02829ab37c22f19f5232400" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>locate</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>primitive</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a93eaa990736f292e226b3b09a939beee" prot="private" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>primitiveConst_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a41bc28f21a1e438c67c0c0f823c59f17" prot="private" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>s_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>secondDerivative</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a0ff844014a170384d262231f91ec970b" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>templateImpl</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_linear_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a10aaa529bbf849a034c64dd3d6bcfa45" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>xBegin_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a948e1e0e08b57467fba9406d23c16222" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>xEnd_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>xMax</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>xMin</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1abd3804c44239a53b3697f463c999550b" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>xValues</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac3763f3814c4764c20937e50d5211b67" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>yBegin_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>yValues</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::detail::LinearInterpolationImpl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

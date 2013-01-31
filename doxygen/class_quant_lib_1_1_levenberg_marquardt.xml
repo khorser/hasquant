@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_levenberg_marquardt" kind="class" prot="public">
+    <compoundname>QuantLib::LevenbergMarquardt</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_optimization_method" prot="public" virt="non-virtual">OptimizationMethod</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1aa345e430a32a46229b67f4a7c0fa3edb" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> *</type>
+        <definition>Problem* currentProblem_</definition>
+        <argsstring></argsstring>
+        <name>currentProblem_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a31d6f8638e0f667353d0860bea7ce526" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array initCostValues_</definition>
+        <argsstring></argsstring>
+        <name>initCostValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1af205b6bc8a0c53ef01842bb58c9d9b29" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer info_</definition>
+        <argsstring></argsstring>
+        <name>info_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a107162d90a80a615e65d51c741a27773" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real epsfcn_</definition>
+        <argsstring></argsstring>
+        <name>epsfcn_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a974e29f035d694be1d2413256a1cc3f7" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real xtol_</definition>
+        <argsstring></argsstring>
+        <name>xtol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_levenberg_marquardt_1a5d738aeea7498205f87574a32a152f93" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real gtol_</definition>
+        <argsstring></argsstring>
+        <name>gtol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LevenbergMarquardt</definition>
+        <argsstring>(Real epsfcn=1.0e-8, Real xtol=1.0e-8, Real gtol=1.0e-8)</argsstring>
+        <name>LevenbergMarquardt</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>epsfcn</declname>
+          <defval>1.0e-8</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>xtol</declname>
+          <defval>1.0e-8</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gtol</declname>
+          <defval>1.0e-8</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>EndCriteria::Type</type>
+        <definition>virtual EndCriteria::Type minimize</definition>
+        <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
+        <name>minimize</name>
+        <reimplements refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <declname>endCriteria</declname>
+        </param>
+        <briefdescription>
+<para>minimize the optimization problem P </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>virtual Integer getInfo</definition>
+        <argsstring>() const </argsstring>
+        <name>getInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fcn</definition>
+        <argsstring>(int m, int n, double *x, double *fvec, int *iflag)</argsstring>
+        <name>fcn</name>
+        <param>
+          <type>int</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>fvec</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>iflag</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Levenberg-Marquardt optimization method. </para>    </briefdescription>
+    <detaileddescription>
+<para>This implementation is based on MINPACK (<ulink url="http://www.netlib.org/minpack">http://www.netlib.org/minpack</ulink>, <ulink url="http://www.netlib.org/cephes/linalg.tgz">http://www.netlib.org/cephes/linalg.tgz</ulink>) </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8999">
+        <label>OptimizationMethod</label>
+        <link refid="class_quant_lib_1_1_optimization_method"/>
+      </node>
+      <node id="8998">
+        <label>LevenbergMarquardt</label>
+        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
+        <childnode refid="8999" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9001">
+        <label>OptimizationMethod</label>
+        <link refid="class_quant_lib_1_1_optimization_method"/>
+      </node>
+      <node id="9000">
+        <label>LevenbergMarquardt</label>
+        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
+        <childnode refid="9001" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="36" bodyend="56"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1aa345e430a32a46229b67f4a7c0fa3edb" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>currentProblem_</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a107162d90a80a615e65d51c741a27773" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>epsfcn_</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>fcn</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>getInfo</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a5d738aeea7498205f87574a32a152f93" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>gtol_</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1af205b6bc8a0c53ef01842bb58c9d9b29" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>info_</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a31d6f8638e0f667353d0860bea7ce526" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>initCostValues_</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>LevenbergMarquardt</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>minimize</name></member>
+      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a974e29f035d694be1d2413256a1cc3f7" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>xtol_</name></member>
+      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>~OptimizationMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

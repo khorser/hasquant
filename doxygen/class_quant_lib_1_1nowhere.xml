@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1nowhere" kind="class" prot="public">
+    <compoundname>QuantLib::nowhere</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::constant&lt; Real, bool &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1nowhere_1a0e6626a5d9aff1b64cab2da450c4f1f9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>nowhere</definition>
+        <argsstring>()</argsstring>
+        <name>nowhere</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="75" bodyend="78"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>constant</name></member>
+      <member refid="class_quant_lib_1_1nowhere_1a0e6626a5d9aff1b64cab2da450c4f1f9" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>nowhere</name></member>
+      <member refid="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

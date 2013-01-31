@@ -1,0 +1,228 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_index_manager" kind="class" prot="public">
+    <compoundname>QuantLib::IndexManager</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_singleton" prot="public" virt="non-virtual">Singleton&lt; IndexManager &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_index_manager_1a4cfdb53fc4ba50a284863d232c0ac5db" prot="private" static="no">
+        <type>std::map&lt; std::string, <ref refid="class_quant_lib_1_1_observable_value" kindref="compound">ObservableValue</ref>&lt; <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt;</type>
+        <definition>typedef std::map&lt;std::string, ObservableValue&lt;TimeSeries&lt;Real&gt; &gt; &gt; history_map</definition>
+        <argsstring></argsstring>
+        <name>history_map</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_quant_lib_1_1_index_manager_1ab10666efc7e0e3ce490caf4ee6718752" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Singleton&lt; IndexManager &gt;</definition>
+        <argsstring></argsstring>
+        <name>Singleton&lt; IndexManager &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_index_manager_1a4e969c1b5fd69a14385063b40b2f9c03" prot="private" static="no" mutable="yes">
+        <type>history_map</type>
+        <definition>history_map data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a5cafa02d4aafb676b8bda53204b93dd7" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>IndexManager</definition>
+        <argsstring>()</argsstring>
+        <name>IndexManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool hasHistory</definition>
+        <argsstring>(const std::string &amp;name) const </argsstring>
+        <name>hasHistory</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>returns whether historical fixings were stored for the index </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const TimeSeries&lt;Real&gt;&amp; getHistory</definition>
+        <argsstring>(const std::string &amp;name) const </argsstring>
+        <name>getHistory</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>returns the (possibly empty) history of the index fixings </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a9ec05a3736796561dedbc52be053940b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setHistory</definition>
+        <argsstring>(const std::string &amp;name, const TimeSeries&lt; Real &gt; &amp;)</argsstring>
+        <name>setHistory</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+<para>stores the historical fixings of the index </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_observable" kindref="compound">Observable</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Observable&gt; notifier</definition>
+        <argsstring>(const std::string &amp;name) const </argsstring>
+        <name>notifier</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>observer notifying of changes in the index fixings </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a43ed480ac14a9943843719bdf928c64d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; histories</definition>
+        <argsstring>() const </argsstring>
+        <name>histories</name>
+        <briefdescription>
+<para>returns all names of the indexes for which fixings were stored </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1aefc1fd999512aefe154064e77d3c5a18" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clearHistory</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>clearHistory</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>clears the historical fixings of the index </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_index_manager_1a86d5defd0569fa7fe6c33f358a50a7e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void clearHistories</definition>
+        <argsstring>()</argsstring>
+        <name>clearHistories</name>
+        <briefdescription>
+<para>clears all stored fixings </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>global repository for past index fixings </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="note"><para>index names are case insensitive </para></simplesect>
+</para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7877">
+        <label>Singleton&lt; IndexManager &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+      <node id="7876">
+        <label>IndexManager</label>
+        <link refid="class_quant_lib_1_1_index_manager"/>
+        <childnode refid="7877" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7879">
+        <label>Singleton&lt; IndexManager &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+      <node id="7878">
+        <label>IndexManager</label>
+        <link refid="class_quant_lib_1_1_index_manager"/>
+        <childnode refid="7879" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="36" bodyend="59"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_index_manager_1a86d5defd0569fa7fe6c33f358a50a7e8" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>clearHistories</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1aefc1fd999512aefe154064e77d3c5a18" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>clearHistory</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a4e969c1b5fd69a14385063b40b2f9c03" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>getHistory</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>hasHistory</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a43ed480ac14a9943843719bdf928c64d" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>histories</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a4cfdb53fc4ba50a284863d232c0ac5db" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>history_map</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a5cafa02d4aafb676b8bda53204b93dd7" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>IndexManager</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>instance</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>notifier</name></member>
+      <member refid="class_quant_lib_1_1_index_manager_1a9ec05a3736796561dedbc52be053940b" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>setHistory</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>Singleton</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

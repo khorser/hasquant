@@ -1,0 +1,845 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_sabr_interpolated_smile_section" kind="class" prot="public">
+    <compoundname>QuantLib::SabrInterpolatedSmileSection</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_smile_section" prot="public" virt="non-virtual">SmileSection</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a144c2c04b6c92cf1479282c40b078f63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SabrInterpolatedSmileSection</definition>
+        <argsstring>(const Date &amp;optionDate, const Handle&lt; Quote &gt; &amp;forward, const std::vector&lt; Rate &gt; &amp;strikes, bool hasFloatingStrikes, const Handle&lt; Quote &gt; &amp;atmVolatility, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;volHandles, Real alpha, Real beta, Real nu, Real rho, bool isAlphaFixed=false, bool isBetaFixed=false, bool isNuFixed=false, bool isRhoFixed=false, bool vegaWeighted=true, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method=boost::shared_ptr&lt; OptimizationMethod &gt;(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>SabrInterpolatedSmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>optionDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>hasFloatingStrikes</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>atmVolatility</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <declname>volHandles</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isAlphaFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isBetaFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isNuFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isRhoFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>vegaWeighted</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <declname>endCriteria</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <declname>method</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>all market data are quotes </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aaf9dac04211a3b13bfb6f9ee64ac9872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SabrInterpolatedSmileSection</definition>
+        <argsstring>(const Date &amp;optionDate, const Rate &amp;forward, const std::vector&lt; Rate &gt; &amp;strikes, bool hasFloatingStrikes, const Volatility &amp;atmVolatility, const std::vector&lt; Volatility &gt; &amp;vols, Real alpha, Real beta, Real nu, Real rho, bool isAlphaFixed=false, bool isBetaFixed=false, bool isNuFixed=false, bool isRhoFixed=false, bool vegaWeighted=true, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method=boost::shared_ptr&lt; OptimizationMethod &gt;(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
+        <name>SabrInterpolatedSmileSection</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>optionDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &amp;</type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>strikes</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>hasFloatingStrikes</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &amp;</type>
+          <declname>atmVolatility</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>vols</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isAlphaFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isBetaFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isNuFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isRhoFixed</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>vegaWeighted</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <declname>endCriteria</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <declname>method</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+        </param>
+        <briefdescription>
+<para>no quotes </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="77"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>LazyObject interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a48496bf12296efd2444759343a6b36f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="133" bodyend="136"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>SmileSection interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real minStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>minStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="178" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>maxStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="184" bodyend="187"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real atmLevel</definition>
+        <argsstring>() const </argsstring>
+        <name>atmLevel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="189" bodyend="192"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha</definition>
+        <argsstring>() const </argsstring>
+        <name>alpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="143" bodyend="146"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta</definition>
+        <argsstring>() const </argsstring>
+        <name>beta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="148" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nu</definition>
+        <argsstring>() const </argsstring>
+        <name>nu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho</definition>
+        <argsstring>() const </argsstring>
+        <name>rho</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="158" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rmsError</definition>
+        <argsstring>() const </argsstring>
+        <name>rmsError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="163" bodyend="166"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxError</definition>
+        <argsstring>() const </argsstring>
+        <name>maxError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="168" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>EndCriteria::Type</type>
+        <definition>EndCriteria::Type endCriteria</definition>
+        <argsstring>() const </argsstring>
+        <name>endCriteria</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="173" bodyend="176"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a4ed3e6eeecbde08aae4741f2725f4a67" prot="protected" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_s_a_b_r_interpolation" kindref="compound">SABRInterpolation</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;SABRInterpolation&gt; sabrInterpolation_</definition>
+        <argsstring></argsstring>
+        <name>sabrInterpolation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a0c6443cde3777242ce93ff244f90e896" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>const Handle&lt;Quote&gt; forward_</definition>
+        <argsstring></argsstring>
+        <name>forward_</name>
+        <briefdescription>
+<para>Market data. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad7d16cf5f9037c55802e545f22019544" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>const Handle&lt;Quote&gt; atmVolatility_</definition>
+        <argsstring></argsstring>
+        <name>atmVolatility_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aeaea77606805639211b9e0e7f29205d8" prot="protected" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;Handle&lt;Quote&gt; &gt; volHandles_</definition>
+        <argsstring></argsstring>
+        <name>volHandles_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; strikes_</definition>
+        <argsstring></argsstring>
+        <name>strikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a716a0d2ca9d72722419ae78a410cf5ec" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; actualStrikes_</definition>
+        <argsstring></argsstring>
+        <name>actualStrikes_</name>
+        <briefdescription>
+<para>Only strikes corresponding to valid market data. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9d277c85c90ff19729d30edca652614c" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool hasFloatingStrikes_</definition>
+        <argsstring></argsstring>
+        <name>hasFloatingStrikes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a8191500956e6db000d6701aaf0cf02b0" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real forwardValue_</definition>
+        <argsstring></argsstring>
+        <name>forwardValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+        <definition>std::vector&lt;Volatility&gt; vols_</definition>
+        <argsstring></argsstring>
+        <name>vols_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a96c0f11fbeced8f51ee45a495d97e621" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha_</definition>
+        <argsstring></argsstring>
+        <name>alpha_</name>
+        <briefdescription>
+<para>Sabr parameters. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a6483291df5e2a5a0d80b22cf68a96750" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aa98338c783e2410f2e1fa6fce5f363e9" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nu_</definition>
+        <argsstring></argsstring>
+        <name>nu_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho_</definition>
+        <argsstring></argsstring>
+        <name>rho_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a561478316762a6647f12a1e358c3c1d1" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isAlphaFixed_</definition>
+        <argsstring></argsstring>
+        <name>isAlphaFixed_</name>
+        <briefdescription>
+<para>Sabr interpolation settings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a49f7321b27322013d21cff9c326f25b7" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isBetaFixed_</definition>
+        <argsstring></argsstring>
+        <name>isBetaFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a39e50370f6b721f2d31ae0123a06f2d6" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isNuFixed_</definition>
+        <argsstring></argsstring>
+        <name>isNuFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a3a3ba101748053e18bb6f079e081cd56" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isRhoFixed_</definition>
+        <argsstring></argsstring>
+        <name>isRhoFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aa68519070d2409fbca4d7f59355583b2" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool vegaWeighted_</definition>
+        <argsstring></argsstring>
+        <name>vegaWeighted_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1d9f2b1ebde30fde67b525c3d401068c" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;EndCriteria&gt; endCriteria_</definition>
+        <argsstring></argsstring>
+        <name>endCriteria_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a123ff138deaad2d2c4b7496dce0e7945" prot="protected" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;OptimizationMethod&gt; method_</definition>
+        <argsstring></argsstring>
+        <name>method_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aab7be0a2ef3486101fe70ac7ba229d17" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date evaluationDate_</definition>
+        <argsstring></argsstring>
+        <name>evaluationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="129" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real varianceImpl</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>varianceImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1f86e1622e6c213484d1425c30ebb6ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Real volatilityImpl</definition>
+        <argsstring>(Rate strike) const </argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="138" bodyend="141"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a009bf9d8a731de8139ce0d613e3f4b54" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void createInterpolation</definition>
+        <argsstring>() const </argsstring>
+        <name>createInterpolation</name>
+        <briefdescription>
+<para>Creates the mutable <ref refid="class_quant_lib_1_1_s_a_b_r_interpolation" kindref="compound">SABRInterpolation</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12921">
+        <label>SabrInterpolatedSmileSection</label>
+        <childnode refid="12922" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12925" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12925">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="12923" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12924" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12923">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12924">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12922">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="12923" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12924" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12926">
+        <label>SabrInterpolatedSmileSection</label>
+        <childnode refid="12927" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12930" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12931" relation="usage">
+          <edgelabel>evaluationDate_</edgelabel>
+        </childnode>
+        <childnode refid="12932" relation="usage">
+          <edgelabel>forward_</edgelabel>
+          <edgelabel>atmVolatility_</edgelabel>
+        </childnode>
+      </node>
+      <node id="12930">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="12928" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12929" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12928">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12932">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12929">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12931">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="12927">
+        <label>SmileSection</label>
+        <link refid="class_quant_lib_1_1_smile_section"/>
+        <childnode refid="12928" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12929" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="37" bodyend="131"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a716a0d2ca9d72722419ae78a410cf5ec" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>actualStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>alpha</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a96c0f11fbeced8f51ee45a495d97e621" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>atmLevel</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad7d16cf5f9037c55802e545f22019544" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>atmVolatility_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a78a3f49ebd7612d4d23a640186b86140" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>beta</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a6483291df5e2a5a0d80b22cf68a96750" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a009bf9d8a731de8139ce0d613e3f4b54" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>createInterpolation</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1d9f2b1ebde30fde67b525c3d401068c" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>endCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aab7be0a2ef3486101fe70ac7ba229d17" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1aeaddbbb43f8f76d935da4a376ea1ec7c" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>exerciseDate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>exerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a0c6443cde3777242ce93ff244f90e896" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>forward_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a8191500956e6db000d6701aaf0cf02b0" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>forwardValue_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9d277c85c90ff19729d30edca652614c" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>hasFloatingStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>initializeExerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a561478316762a6647f12a1e358c3c1d1" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>isAlphaFixed_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a49f7321b27322013d21cff9c326f25b7" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>isBetaFixed_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a39e50370f6b721f2d31ae0123a06f2d6" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>isNuFixed_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a3a3ba101748053e18bb6f079e081cd56" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>isRhoFixed_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac4d9decda86622fb96bacef77cfc4424" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a123ff138deaad2d2c4b7496dce0e7945" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>method_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a69c12ede1099bb0263342867dd12e045" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>nu</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aa98338c783e2410f2e1fa6fce5f363e9" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>nu_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a48496bf12296efd2444759343a6b36f2" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9e74bed9ddc465f1211381d725c945bb" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>rho_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a575cfa031ce051c0f292518d6b0194e3" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>rmsError</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a144c2c04b6c92cf1479282c40b078f63" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>SabrInterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aaf9dac04211a3b13bfb6f9ee64ac9872" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>SabrInterpolatedSmileSection</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a4ed3e6eeecbde08aae4741f2725f4a67" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>sabrInterpolation_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>SmileSection</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>strikes_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>varianceImpl</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aa68519070d2409fbca4d7f59355583b2" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>vegaWeighted_</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1f86e1622e6c213484d1425c30ebb6ff" prot="public" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1aeaea77606805639211b9e0e7f29205d8" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>volHandles_</name></member>
+      <member refid="class_quant_lib_1_1_sabr_interpolated_smile_section_1ab7937ecfd211152c3f080c64380dfbd2" prot="protected" virt="non-virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>vols_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" virt="virtual"><scope>QuantLib::SabrInterpolatedSmileSection</scope><name>~SmileSection</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

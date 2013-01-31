@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::OneFactorModel::ShortRateDynamics</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics" prot="public" virt="non-virtual">BlackKarasinski::Dynamics</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public" virt="non-virtual">CoxIngersollRoss::Dynamics</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_hull_white_1_1_dynamics" prot="public" virt="non-virtual">HullWhite::Dynamics</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_vasicek_1_1_dynamics" prot="public" virt="non-virtual">Vasicek::Dynamics</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ShortRateDynamics</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process)</argsstring>
+        <name>ShortRateDynamics</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~ShortRateDynamics</definition>
+        <argsstring>()</argsstring>
+        <name>~ShortRateDynamics</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real variable</definition>
+        <argsstring>(Time t, Rate r) const =0</argsstring>
+        <name>variable</name>
+        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039">variable</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33">variable</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039">variable</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+<para>Compute state variable from short rate. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>virtual Rate shortRate</definition>
+        <argsstring>(Time t, Real variable) const =0</argsstring>
+        <name>shortRate</name>
+        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500">shortRate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_vasicek_1_1_dynamics_1af27a7a114190fb434f373a1427cca1fe">shortRate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2">shortRate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500">shortRate</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6">shortRate</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>variable</declname>
+        </param>
+        <briefdescription>
+<para>Compute short rate from state variable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+        <definition>const boost::shared_ptr&lt;StochasticProcess1D&gt;&amp; process</definition>
+        <argsstring>()</argsstring>
+        <name>process</name>
+        <briefdescription>
+<para>Returns the risk-neutral dynamics of the state variable. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class describing the short-rate dynamics. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11692">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
+        <childnode refid="11690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11694">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_hull_white_1_1_dynamics"/>
+        <childnode refid="11690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11695">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_vasicek_1_1_dynamics"/>
+        <childnode refid="11690" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11690">
+        <label>OneFactorModel::ShortRateDynamics</label>
+        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
+      </node>
+      <node id="11693">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics"/>
+        <childnode refid="11692" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11691">
+        <label>Dynamics</label>
+        <link refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics"/>
+        <childnode refid="11690" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodel.hpp" bodystart="53" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>process</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" virt="pure-virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>shortRate</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>ShortRateDynamics</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" virt="pure-virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>variable</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::OneFactorModel::ShortRateDynamics</scope><name>~ShortRateDynamics</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

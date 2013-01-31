@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_overnight_index" kind="class" prot="public">
+    <compoundname>QuantLib::OvernightIndex</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_ibor_index" prot="public" virt="non-virtual">IborIndex</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_eonia" prot="public" virt="non-virtual">Eonia</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_sonia" prot="public" virt="non-virtual">Sonia</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_overnight_index_1ac5d8f72e80d8e6a8cfd7f55b3dc9ba9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OvernightIndex</definition>
+        <argsstring>(const std::string &amp;familyName, Natural settlementDays, const Currency &amp;currency, const Calendar &amp;fixingCalendar, const DayCounter &amp;dayCounter, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
+        <name>OvernightIndex</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>familyName</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>currency</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>fixingCalendar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>h</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_overnight_index_1a1a7804d7c4d753ee70800b8913a50622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; clone</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h) const </argsstring>
+        <name>clone</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>h</declname>
+        </param>
+        <briefdescription>
+<para>returns a copy of itself linked to a different forwarding curve </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="11883">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="11884" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11884">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11887">
+        <label>Sonia</label>
+        <link refid="class_quant_lib_1_1_sonia"/>
+        <childnode refid="11880" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11881">
+        <label>IborIndex</label>
+        <link refid="class_quant_lib_1_1_ibor_index"/>
+        <childnode refid="11882" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11880">
+        <label>OvernightIndex</label>
+        <childnode refid="11881" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11882">
+        <label>InterestRateIndex</label>
+        <link refid="class_quant_lib_1_1_interest_rate_index"/>
+        <childnode refid="11883" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11885" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11885">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11886">
+        <label>Eonia</label>
+        <link refid="class_quant_lib_1_1_eonia"/>
+        <childnode refid="11880" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11891">
+        <label>Index</label>
+        <link refid="class_quant_lib_1_1_index"/>
+        <childnode refid="11892" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11895">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="11892">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11896">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="11897">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="11889">
+        <label>IborIndex</label>
+        <link refid="class_quant_lib_1_1_ibor_index"/>
+        <childnode refid="11890" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11897" relation="usage">
+          <edgelabel>termStructure_</edgelabel>
+        </childnode>
+      </node>
+      <node id="11888">
+        <label>OvernightIndex</label>
+        <childnode refid="11889" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11890">
+        <label>InterestRateIndex</label>
+        <link refid="class_quant_lib_1_1_interest_rate_index"/>
+        <childnode refid="11891" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11893" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11894" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+        <childnode refid="11895" relation="usage">
+          <edgelabel>currency_</edgelabel>
+        </childnode>
+        <childnode refid="11896" relation="usage">
+          <edgelabel>tenor_</edgelabel>
+        </childnode>
+      </node>
+      <node id="11893">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="11894">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/iborindex.hpp" bodystart="89" bodyend="101"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>addFixing</name></member>
+      <member refid="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>addFixings</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>businessDayConvention</name></member>
+      <member refid="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>clearFixings</name></member>
+      <member refid="class_quant_lib_1_1_overnight_index_1a1a7804d7c4d753ee70800b8913a50622" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a80921adec5b2e5641608d33585ec2a17" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>convention_</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1abc33baebf744532876f39f22cf971342" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>currency_</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a4bea961a3d8f31ed8c30118ed855cc92" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>endOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a0f9cce4f14d75f9e75dcba9a025ee764" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>endOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a270dc2fcae13173748f2f3edddd92727" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>familyName</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1acabfc12151f5d68c514dcea66310b07b" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>familyName_</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>fixing</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1abd47d61ed23fb73440b0c02534236330" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>fixingCalendar</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1ae9bc5cf19c2ae0701adf3cccbfb7f514" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>fixingDate</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>fixingDays</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a7b5758dc357368c9bcb7920c66084351" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>fixingDays_</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a31402c8dcd6c83166c07900d7f440bca" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>forecastFixing</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>forwardingTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1ac4c5fa744aa616d1eef9066ce19e12d7" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>IborIndex</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1aeb7d1f996a04d11f4ac16b353657e930" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>InterestRateIndex</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>isValidFixingDate</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>maturityDate</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::OvernightIndex</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::OvernightIndex</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_overnight_index_1ac5d8f72e80d8e6a8cfd7f55b3dc9ba9e" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>OvernightIndex</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a8c8876b15f54345f4c91f930498ad4bf" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>pastFixing</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1aa71982300427118fd251ac6bb7fa89da" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>tenor</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a6f1e4aec3cba6f7cea92368273728ec8" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>tenor_</name></member>
+      <member refid="class_quant_lib_1_1_ibor_index_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="protected" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>timeSeries</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::OvernightIndex</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_interest_rate_index_1a01fafdb3585a34706678b12af90b1cf9" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>valueDate</name></member>
+      <member refid="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>~Index</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::OvernightIndex</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

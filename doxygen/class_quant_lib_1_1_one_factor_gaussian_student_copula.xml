@@ -1,0 +1,297 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_one_factor_gaussian_student_copula" kind="class" prot="public">
+    <compoundname>QuantLib::OneFactorGaussianStudentCopula</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_one_factor_copula" prot="public" virt="non-virtual">OneFactorCopula</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1aabb938b56fdd5e6405f3db6d367286d6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
+        <definition>NormalDistribution density_</definition>
+        <argsstring></argsstring>
+        <name>density_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1af8176fbedaa19a90b95c63211ec07dd2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cumulative_student_distribution" kindref="compound">CumulativeStudentDistribution</ref></type>
+        <definition>CumulativeStudentDistribution cumulative_</definition>
+        <argsstring></argsstring>
+        <name>cumulative_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1acd1dac754e079daeb635aa09373b1065" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int nz_</definition>
+        <argsstring></argsstring>
+        <name>nz_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a37a4c02d77c92244eea1a25559c8aee7" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real scaleZ_</definition>
+        <argsstring></argsstring>
+        <name>scaleZ_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a0ac2371595391c41cfa9cf447fcbcd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OneFactorGaussianStudentCopula</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;correlation, int nz, Real maximum=10, Size integrationSteps=200)</argsstring>
+        <name>OneFactorGaussianStudentCopula</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>correlation</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nz</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>maximum</declname>
+          <defval>10</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>integrationSteps</declname>
+          <defval>200</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real density</definition>
+        <argsstring>(Real m) const </argsstring>
+        <name>density</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_copula_1a150d8a5373b942a7411cad42857ac0c2">density</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+<para>Density function of M. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="134" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real cumulativeZ</definition>
+        <argsstring>(Real z) const </argsstring>
+        <name>cumulativeZ</name>
+        <reimplements refid="class_quant_lib_1_1_one_factor_copula_1a4d78de201751058a580a4104b569252f">cumulativeZ</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+<para>Cumulative distribution of Z. </para>        </briefdescription>
+        <detaileddescription>
+<para>Derived classes must override this method and ensure zero mean and unit variance. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="138" bodyend="140"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
+        <briefdescription>
+<para><ref refid="class_quant_lib_1_1_observer" kindref="compound">Observer</ref> interface. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a8073a564a69fffcb46d729de62e32c5d" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real cumulativeYintegral</definition>
+        <argsstring>(Real y) const </argsstring>
+        <name>cumulativeYintegral</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>One-factor Gaussian-Student t-Copula. </para>    </briefdescription>
+    <detaileddescription>
+<para>The copula model <formula id="88">\[ Y_i = a_i\,M+\sqrt{1-a_i^2}\:Z_i \]</formula> <verbatim>  is specified here by setting the probability density functions
+  for \form#120 ( \form#121) to a Student t-distributions
+  with \form#124 degrees of freedom, and for \form#122
+  ( \form#123) to a Gaussian.
+
+  The variance of the Student t-distribution with \form#126
+  degrees of freedom is \form#127. Since the
+  copula approach requires zero mean and unit variance
+  distributions, \form#128 is scaled by \form#131@_fakenl
+</verbatim></para><para><xrefsect id="todo_1_todo000009"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Improve performance/accuracy of the calculation of inverse cumulative Y. Tabulate and store it for selected correlations? </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="11663">
+        <label>OneFactorCopula</label>
+        <link refid="class_quant_lib_1_1_one_factor_copula"/>
+        <childnode refid="11664" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11665">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11664">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11665" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11666" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11662">
+        <label>OneFactorGaussianStudentCopula</label>
+        <link refid="class_quant_lib_1_1_one_factor_gaussian_student_copula"/>
+        <childnode refid="11663" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11666">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11668">
+        <label>OneFactorCopula</label>
+        <link refid="class_quant_lib_1_1_one_factor_copula"/>
+        <childnode refid="11669" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11672" relation="usage">
+          <edgelabel>correlation_</edgelabel>
+        </childnode>
+      </node>
+      <node id="11670">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11669">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11670" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11671" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11667">
+        <label>OneFactorGaussianStudentCopula</label>
+        <link refid="class_quant_lib_1_1_one_factor_gaussian_student_copula"/>
+        <childnode refid="11668" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11672">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="11671">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/onefactorstudentcopula.hpp" bodystart="108" bodyend="132"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a3a370ec01879c1aafe26f2b74c305205" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>checkMoments</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a2f12fdc46df584c77c692449afb0f70f" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>conditionalProbability</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a43021a316d68b67fe3baacd8b41060ec" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>conditionalProbability</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>correlation</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a0bbb8459d54c70260f5dc06646c622fe" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>correlation_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1af8176fbedaa19a90b95c63211ec07dd2" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>cumulative_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1aa5a31f6c22dc65de5eefc911e33d230e" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>cumulativeY</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a6704dd8a7ed41ffcfd146c09c417b028" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>cumulativeY_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a8073a564a69fffcb46d729de62e32c5d" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>cumulativeYintegral</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a7f12eff80e70545a68af09aaab9a5bfa" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>cumulativeZ</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a87748e5305096b30afeeaa93ce59137c" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>density</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1aabb938b56fdd5e6405f3db6d367286d6" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>density_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a40441224027fda24cf5336b87a2803f5" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>densitydm</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1acccb56f699284835bfef4b5b46fa7b5d" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>dm</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a3466ad62259b66bd721d275d6f37b3b5" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>integral</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1ab0919dadc85dad55932aae6f76a373a5" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>integral</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1aa05d4372c6545648d67b4feac3ea358c" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>integral</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a37961e30f2d8786a4e4e6d1ef65516ed" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>inverseCumulativeY</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a68322c1f689d52daee478f92cfb267c1" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>m</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a5b014cf28588b976cafd9ef99bd90bdd" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>max_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a0109cc1a8c0dd24c6bac204843ca21ce" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>min_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1acd1dac754e079daeb635aa09373b1065" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>nz_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1af4fe1d014da6e427fc150e9b79864621" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>OneFactorCopula</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a0ac2371595391c41cfa9cf447fcbcd95" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>OneFactorGaussianStudentCopula</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a02b90bbfee3ee29627939544fb59ec93" prot="private" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_gaussian_student_copula_1a37a4c02d77c92244eea1a25559c8aee7" prot="private" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>scaleZ_</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1ae973b574644545ebcb1aa2a5a3aa6e5b" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>steps</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1ad193bceb88346d2755789a09afa91d86" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>steps_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_one_factor_copula_1a71a6c36122b9ef005c4c52bda3890e24" prot="protected" virt="non-virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>y_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::OneFactorGaussianStudentCopula</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

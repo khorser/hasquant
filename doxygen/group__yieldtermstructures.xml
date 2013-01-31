@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__yieldtermstructures" kind="group">
+    <compoundname>yieldtermstructures</compoundname>
+    <title>Term structures</title>
+    <innerclass refid="class_quant_lib_1_1_interpolated_discount_curve" prot="public">QuantLib::InterpolatedDiscountCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_fitted_bond_discount_curve" prot="public">QuantLib::FittedBondDiscountCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_flat_forward" prot="public">QuantLib::FlatForward</innerclass>
+    <innerclass refid="class_quant_lib_1_1_interpolated_forward_curve" prot="public">QuantLib::InterpolatedForwardCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_spreaded_term_structure" prot="public">QuantLib::ForwardSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_forward_rate_structure" prot="public">QuantLib::ForwardRateStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_implied_term_structure" prot="public">QuantLib::ImpliedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_piecewise_yield_curve" prot="public">QuantLib::PiecewiseYieldCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure" prot="public">QuantLib::PiecewiseZeroSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_interpolated_zero_curve" prot="public">QuantLib::InterpolatedZeroCurve</innerclass>
+    <innerclass refid="class_quant_lib_1_1_zero_spreaded_term_structure" prot="public">QuantLib::ZeroSpreadedTermStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_zero_yield_structure" prot="public">QuantLib::ZeroYieldStructure</innerclass>
+    <innerclass refid="class_quant_lib_1_1_yield_term_structure" prot="public">QuantLib::YieldTermStructure</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__yieldtermstructures_1ga4e538c822f698ad1c21bbe52deb30d29" prot="public" static="no">
+        <type>InterpolatedDiscountCurve&lt; LogLinear &gt;</type>
+        <definition>typedef InterpolatedDiscountCurve&lt;LogLinear&gt; DiscountCurve</definition>
+        <argsstring></argsstring>
+        <name>DiscountCurve</name>
+        <briefdescription>
+<para>Term structure based on log-linear interpolation of discount factors. </para>        </briefdescription>
+        <detaileddescription>
+<para>Log-linear interpolation guarantees piecewise-constant forward rates. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/discountcurve.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__yieldtermstructures_1ga44c13ddc64513ecbc1c0955253af96c5" prot="public" static="no">
+        <type>InterpolatedForwardCurve&lt; BackwardFlat &gt;</type>
+        <definition>typedef InterpolatedForwardCurve&lt;BackwardFlat&gt; ForwardCurve</definition>
+        <argsstring></argsstring>
+        <name>ForwardCurve</name>
+        <briefdescription>
+<para>Term structure based on flat interpolation of forward rates. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/forwardcurve.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__yieldtermstructures_1gab0fc9b631f36e7661b35642d67035aeb" prot="public" static="no">
+        <type>InterpolatedZeroCurve&lt; Linear &gt;</type>
+        <definition>typedef InterpolatedZeroCurve&lt;Linear&gt; ZeroCurve</definition>
+        <argsstring></argsstring>
+        <name>ZeroCurve</name>
+        <briefdescription>
+<para>Term structure based on linear interpolation of zero yields. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/zerocurve.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The abstract class <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">QuantLib::YieldTermStructure</ref> provides the common interface to concrete yield-rate term structure models. Among others, methods are declared which return instantaneous forward rate, discount factor, and zero rate at a given date. Adapter classes are provided which already implement part of the required methods, thus allowing the programmer to define only the non-redundant part. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

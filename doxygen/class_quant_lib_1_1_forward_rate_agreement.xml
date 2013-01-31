@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_forward_rate_agreement" kind="class" prot="public">
+    <compoundname>QuantLib::ForwardRateAgreement</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_forward" prot="public" virt="non-virtual">Forward</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>Calculations</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool isExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>isExpired</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A FRA expires/settles on the valueDate </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date settlementDate</definition>
+        <argsstring>() const </argsstring>
+        <name>settlementDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This returns evaluationDate + settlementDays (not FRA valueDate). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real spotIncome</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
+        <name>spotIncome</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>incomeDiscountCurve</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Income is zero for a FRA </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real spotValue</definition>
+        <argsstring>() const </argsstring>
+        <name>spotValue</name>
+        <briefdescription>
+<para>Spot value (NPV) of the underlying loan. </para>        </briefdescription>
+        <detaileddescription>
+<para>This has always a positive value (asset), even if short the FRA </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
+        <definition>InterestRate forwardRate</definition>
+        <argsstring>() const </argsstring>
+        <name>forwardRate</name>
+        <briefdescription>
+<para>Returns the relevant forward rate associated with the FRA term. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_rate_agreement_1a37b1d8c236b9c6aa5b638ab7116525c1" prot="protected" static="no" mutable="no">
+        <type>Position::Type</type>
+        <definition>Position::Type fraType_</definition>
+        <argsstring></argsstring>
+        <name>fraType_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_rate_agreement_1a4f2b17fe2dbe0ad6d82e5390ac162403" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
+        <definition>InterestRate forwardRate_</definition>
+        <argsstring></argsstring>
+        <name>forwardRate_</name>
+        <briefdescription>
+<para>aka FRA rate (the market forward rate) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_rate_agreement_1a1d09c6bb42f2e1ad73823bfa1ad6f5b3" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
+        <definition>InterestRate strikeForwardRate_</definition>
+        <argsstring></argsstring>
+        <name>strikeForwardRate_</name>
+        <briefdescription>
+<para>aka FRA fixing rate, contract rate </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_rate_agreement_1a0791bd889954caaaf829a9e5afc95a19" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real notionalAmount_</definition>
+        <argsstring></argsstring>
+        <name>notionalAmount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_forward_rate_agreement_1ac4d3193ede2b988faca5add6071ef3dc" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; index_</definition>
+        <argsstring></argsstring>
+        <name>index_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a0a18646e733f463c19240f886cd7230f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ForwardRateAgreement</definition>
+        <argsstring>(const Date &amp;valueDate, const Date &amp;maturityDate, Position::Type type, Rate strikeForwardRate, Real notionalAmount, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
+        <name>ForwardRateAgreement</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>valueDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>maturityDate</declname>
+        </param>
+        <param>
+          <type>Position::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strikeForwardRate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notionalAmount</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountCurve</declname>
+          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6605">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6604">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6605" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6606" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6602">
+        <label>Forward</label>
+        <link refid="class_quant_lib_1_1_forward"/>
+        <childnode refid="6603" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6606">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6601">
+        <label>ForwardRateAgreement</label>
+        <childnode refid="6602" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6603">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="6604" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6611">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6610">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="6611" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6612" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6616">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="6614">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="6608">
+        <label>Forward</label>
+        <link refid="class_quant_lib_1_1_forward"/>
+        <childnode refid="6609" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6614" relation="usage">
+          <edgelabel>incomeDiscountCurve_</edgelabel>
+          <edgelabel>discountCurve_</edgelabel>
+        </childnode>
+        <childnode refid="6615" relation="usage">
+          <edgelabel>dayCounter_</edgelabel>
+        </childnode>
+        <childnode refid="6613" relation="usage">
+          <edgelabel>valueDate_</edgelabel>
+          <edgelabel>maturityDate_</edgelabel>
+        </childnode>
+        <childnode refid="6616" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6612">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6613">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="6607">
+        <label>ForwardRateAgreement</label>
+        <childnode refid="6608" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6617" relation="usage">
+          <edgelabel>strikeForwardRate_</edgelabel>
+          <edgelabel>forwardRate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6615">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="6609">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="6610" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6613" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6617">
+        <label>InterestRate</label>
+        <link refid="class_quant_lib_1_1_interest_rate"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardrateagreement.hpp" bodystart="76" bodyend="113"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>businessDayConvention</name></member>
+      <member refid="class_quant_lib_1_1_forward_1afcd8e9f7982524cb0e8c3d7889a752b8" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>businessDayConvention_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a1dfea729100daaf17a5ac3b724c02556" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a1725ea0bf0762b6642c802532d8c546f" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a48989c032fd479610770da640ac0cdfd" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>discountCurve</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a188f6df4c42679c1c133919254e351c5" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>discountCurve_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a09e4aff32a7efb33b916266902ce1c75" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Forward</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>forwardRate</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a4f2b17fe2dbe0ad6d82e5390ac162403" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>forwardRate_</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a0a18646e733f463c19240f886cd7230f" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>ForwardRateAgreement</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a3b910af2aa00c99e596ec6a0f1e8e0dd" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>forwardValue</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a37b1d8c236b9c6aa5b638ab7116525c1" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>fraType_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a4c43d8ef9bdc2c5ba053471a9e3612d9" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>impliedYield</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a132db8214320701ae378e309dea4d463" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>incomeDiscountCurve</name></member>
+      <member refid="class_quant_lib_1_1_forward_1af7347848e4548d680592da556fe7fb28" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>incomeDiscountCurve_</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1ac4d3193ede2b988faca5add6071ef3dc" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_forward_1adca7c976b55e7bb2a6bf5ed335081100" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>maturityDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a0791bd889954caaaf829a9e5afc95a19" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>notionalAmount_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::ForwardRateAgreement</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::ForwardRateAgreement</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>settlementDate</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a8cb58608de54286272715a08a7492a7e" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>settlementDays_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>spotIncome</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>spotValue</name></member>
+      <member refid="class_quant_lib_1_1_forward_rate_agreement_1a1d09c6bb42f2e1ad73823bfa1ad6f5b3" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>strikeForwardRate_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1ade985afc594074c269371cc442f3c9b2" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>underlyingIncome_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1a1269c585e5e0bd28fb36d1fde51ddfc3" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>underlyingSpotValue_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_forward_1aebe1ee9fe8c4edd97894a5caec6cf370" prot="protected" virt="non-virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>valueDate_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::ForwardRateAgreement</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

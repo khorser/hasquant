@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_callable_bond_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::CallableBond::arguments</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Bond::arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; couponDates</definition>
+        <argsstring></argsstring>
+        <name>couponDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; couponAmounts</definition>
+        <argsstring></argsstring>
+        <name>couponAmounts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real redemption</definition>
+        <argsstring></argsstring>
+        <name>redemption</name>
+        <briefdescription>
+<para>redemption = face amount * redemption / 100. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a601dc4dc38e988014e1cc9b0ef14b166" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date redemptionDate</definition>
+        <argsstring></argsstring>
+        <name>redemptionDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a7d81ea56ac0fc41d1d2a49a2b1dc8bb8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter paymentDayCounter</definition>
+        <argsstring></argsstring>
+        <name>paymentDayCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a3beeffbb3df839c46c9c8b2f696e286f" prot="public" static="no" mutable="no">
+        <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+        <definition>Frequency frequency</definition>
+        <argsstring></argsstring>
+        <name>frequency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="123" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ae74ad1423fb273a8ad769b29dbb395bd" prot="public" static="no" mutable="no">
+        <type>CallabilitySchedule</type>
+        <definition>CallabilitySchedule putCallSchedule</definition>
+        <argsstring></argsstring>
+        <name>putCallSchedule</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="124" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; callabilityPrices</definition>
+        <argsstring></argsstring>
+        <name>callabilityPrices</name>
+        <briefdescription>
+<para>bond full/dirty/cash prices </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; callabilityDates</definition>
+        <argsstring></argsstring>
+        <name>callabilityDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="128"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1679">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="1678">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="1677">
+        <label>CallableBond::arguments</label>
+        <childnode refid="1678" relation="usage">
+          <edgelabel>paymentDayCounter</edgelabel>
+        </childnode>
+        <childnode refid="1679" relation="usage">
+          <edgelabel>redemptionDate</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="114" bodyend="129"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>callabilityDates</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>callabilityPrices</name></member>
+      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>cashflows</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>couponAmounts</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>couponDates</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a3beeffbb3df839c46c9c8b2f696e286f" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>frequency</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a7d81ea56ac0fc41d1d2a49a2b1dc8bb8" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>paymentDayCounter</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1ae74ad1423fb273a8ad769b29dbb395bd" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>putCallSchedule</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>redemption</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a601dc4dc38e988014e1cc9b0ef14b166" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>redemptionDate</name></member>
+      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>settlementDate</name></member>
+      <member refid="class_quant_lib_1_1_callable_bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::CallableBond::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

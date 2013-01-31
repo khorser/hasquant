@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_equal_probabilities_binomial_tree" kind="class" prot="public">
+    <compoundname>QuantLib::EqualProbabilitiesBinomialTree</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_binomial_tree" prot="public" virt="non-virtual">QuantLib::BinomialTree&lt; T &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1a6bdba80dd07eadaa79cdc7afceee47dd" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real up_</definition>
+        <argsstring></argsstring>
+        <name>up_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1afb56188621a62878fae52502b9f0e7dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>EqualProbabilitiesBinomialTree</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Time end, Size steps)</argsstring>
+        <name>EqualProbabilitiesBinomialTree</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>steps</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="67" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real underlying</definition>
+        <argsstring>(Size i, Size index) const </argsstring>
+        <name>underlying</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="72" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real probability</definition>
+        <argsstring>(Size, Size, Size) const </argsstring>
+        <name>probability</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for equal probabilities binomial tree. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="4159">
+        <label>EqualProbabilitiesBinomialTree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_equal_probabilities_binomial_tree"/>
+        <childnode refid="4160" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4162">
+        <label>CuriouslyRecurringTemplate&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
+      </node>
+      <node id="4161">
+        <label>Tree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_tree"/>
+        <childnode refid="4162" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4160">
+        <label>BinomialTree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_binomial_tree"/>
+        <childnode refid="4161" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="4163">
+        <label>EqualProbabilitiesBinomialTree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_equal_probabilities_binomial_tree"/>
+        <childnode refid="4164" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4166">
+        <label>CuriouslyRecurringTemplate&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
+      </node>
+      <node id="4165">
+        <label>Tree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_tree"/>
+        <childnode refid="4166" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4164">
+        <label>BinomialTree&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_binomial_tree"/>
+        <childnode refid="4165" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="65" bodyend="80"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a908728004a6f43e474d8dabca6305b44" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>BinomialTree</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>Branches</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0ac45748c7ad342476d13e14f6632203c1" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>branches</name></member>
+      <member refid="class_quant_lib_1_1_tree_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>columns</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>CuriouslyRecurringTemplate</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1aab3e236871d755fdfdd7c3dd22c52f9c" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>descendant</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a1f3db9657071c9b664b10313f33717ca" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>driftPerStep_</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a6be603d8547f31e72817d2aaf219e325" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>dt_</name></member>
+      <member refid="class_quant_lib_1_1_equal_probabilities_binomial_tree_1afb56188621a62878fae52502b9f0e7dd" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>EqualProbabilitiesBinomialTree</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>impl</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>impl</name></member>
+      <member refid="class_quant_lib_1_1_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>probability</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_tree_1a8fe1055f39c1f80fd420458fe249fd99" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>Tree</name></member>
+      <member refid="class_quant_lib_1_1_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>underlying</name></member>
+      <member refid="class_quant_lib_1_1_equal_probabilities_binomial_tree_1a6bdba80dd07eadaa79cdc7afceee47dd" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>up_</name></member>
+      <member refid="class_quant_lib_1_1_binomial_tree_1afb597b35edab96eecbcbf9a2df04f05d" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>x0_</name></member>
+      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" virt="non-virtual"><scope>QuantLib::EqualProbabilitiesBinomialTree</scope><name>~CuriouslyRecurringTemplate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

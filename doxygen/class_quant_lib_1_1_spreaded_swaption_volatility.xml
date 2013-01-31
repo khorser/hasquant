@@ -1,0 +1,450 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_spreaded_swaption_volatility" kind="class" prot="public">
+    <compoundname>QuantLib::SpreadedSwaptionVolatility</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_swaption_volatility_structure" prot="public" virt="non-virtual">SwaptionVolatilityStructure</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>TermStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dayCounter</definition>
+        <argsstring>() const </argsstring>
+        <name>dayCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date maxDate</definition>
+        <argsstring>() const </argsstring>
+        <name>maxDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time maxTime</definition>
+        <argsstring>() const </argsstring>
+        <name>maxTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="86" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        <definition>const Date &amp; referenceDate</definition>
+        <argsstring>() const </argsstring>
+        <name>referenceDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="90" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar</definition>
+        <argsstring>() const </argsstring>
+        <name>calendar</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="94" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural settlementDays</definition>
+        <argsstring>() const </argsstring>
+        <name>settlementDays</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>VolatilityTermStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate minStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>minStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate maxStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>maxStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>SwaptionVolatilityStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1aab612f40ee132a09e19f67c16e502cdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+        <definition>const Period &amp; maxSwapTenor</definition>
+        <argsstring>() const </argsstring>
+        <name>maxSwapTenor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="110" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ad755da1a3ef6e55fff3e0777ab075948" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
+        <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
+        <name>smileSectionImpl</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>optionDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>swapTenor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a04f2608add446a8af9cfe54291488e82" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
+        <argsstring>(Time optionTime, Time swapLength) const </argsstring>
+        <name>smileSectionImpl</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>optionTime</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>swapLength</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ad7c337ad2742139f606cdf738f4405b5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatilityImpl</definition>
+        <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor, Rate strike) const </argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>optionDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>swapTenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a8a847d5d307f3f57ade6263012526c31" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatilityImpl</definition>
+        <argsstring>(Time optionTime, Time swapLength, Rate strike) const </argsstring>
+        <name>volatilityImpl</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>optionTime</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>swapLength</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="71"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_spreaded_swaption_volatility_1ac593b5da4e70339d11b73a9a16bca6e8" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+        <definition>const Handle&lt;SwaptionVolatilityStructure&gt; baseVol_</definition>
+        <argsstring></argsstring>
+        <name>baseVol_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_spreaded_swaption_volatility_1a0f282e91dbd00752acbc31e5d6a94174" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>const Handle&lt;Quote&gt; spread_</definition>
+        <argsstring></argsstring>
+        <name>spread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_swaption_volatility_1aeb34bc570fb10f8dccabe9f054555409" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SpreadedSwaptionVolatility</definition>
+        <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
+        <name>SpreadedSwaptionVolatility</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>spread</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13294">
+        <label>SwaptionVolatilityStructure</label>
+        <link refid="class_quant_lib_1_1_swaption_volatility_structure"/>
+        <childnode refid="13295" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13298">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13295">
+        <label>VolatilityTermStructure</label>
+        <link refid="class_quant_lib_1_1_volatility_term_structure"/>
+        <childnode refid="13296" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13296">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="13297" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13298" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13299" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13299">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="13297">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13293">
+        <label>SpreadedSwaptionVolatility</label>
+        <childnode refid="13294" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13301">
+        <label>SwaptionVolatilityStructure</label>
+        <link refid="class_quant_lib_1_1_swaption_volatility_structure"/>
+        <childnode refid="13302" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13305">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13302">
+        <label>VolatilityTermStructure</label>
+        <link refid="class_quant_lib_1_1_volatility_term_structure"/>
+        <childnode refid="13303" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13307">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="13303">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="13304" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13305" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13306" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13307" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="13306">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="13304">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13300">
+        <label>SpreadedSwaptionVolatility</label>
+        <childnode refid="13301" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/spreadedswaptionvol.hpp" bodystart="34" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_extrapolator_1ad9e8911dd8792d5ec36f1ee071cfad7d" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>allowsExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ac593b5da4e70339d11b73a9a16bca6e8" prot="private" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>baseVol_</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a1d5ae88a7d7997481d7d965ae0599150" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a911ff222333ddba63245db6f70c76a27" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1af3e041f58bf6afb39d078ba37d336989" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1add21b028806cb2a4580bcf154dca7c9d" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1ab32dd4c4f56ada69235be3576c73d1ff" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a3ad9c753b18ab6db2ac73ce47dba66b5" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>blackVariance</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>businessDayConvention</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a46ffaeebfc997f51c70fe18e72c8bad5" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a63453af27c24ca1149b8c41d86174290" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a9bf3c3b4a973237738c770a8f9b520e9" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>checkStrike</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1acbcab74ca3bb09fa46e1ed463a787a41" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>checkSwapTenor</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1acb3237076958be8a134be392eeae5ded" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>checkSwapTenor</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>disableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ae60e793a77f44a9c022b103458fa993c" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>enableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>maxDate</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1af96d43a92083621b2e8e980ec2b666b9" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>maxStrike</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a38b52da2964337ebb4d219b5dc5c2a3f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>maxSwapLength</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1aab612f40ee132a09e19f67c16e502cdb" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>maxSwapTenor</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>maxTime</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a92f7194103698b0abf537479db1bab49" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>minStrike</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a3cfce9cb19de6f0604adee64b6d80a35" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>moving_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>optionDateFromTenor</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>referenceDate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ab6506da60fec85c6f146f1b43116de70" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>settlementDays</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a0b427df5b16da607d7e50bfcb16b1236" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a5562148e5f55d62fe6ae78d4c9b5aab6" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1afafd5aec2b3b9a2fc8ca66a090aafc61" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a332310ec815095e0dfb4025746ca580b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1aa589646106d7d71a88a5cbab03ca2928" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a20bcf094b437c62622b41cb54bcdaa7b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSection</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ad755da1a3ef6e55fff3e0777ab075948" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSectionImpl</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a04f2608add446a8af9cfe54291488e82" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>smileSectionImpl</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a0f282e91dbd00752acbc31e5d6a94174" prot="private" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>spread_</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1aeb34bc570fb10f8dccabe9f054555409" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>SpreadedSwaptionVolatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a5694433bc688de616d1bc9481729c44a" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>swapLength</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1afdde903c91d35c1f7991f416d7616ff8" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>swapLength</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1ac6fd129ebf717507b17923db697987d5" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>SwaptionVolatilityStructure</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a4ae32fc9ee5910b3da98ce36c581a121" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>SwaptionVolatilityStructure</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a93f2c97ee14dd4339867869e2ad3649f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>SwaptionVolatilityStructure</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1afe47b4b3a44530c5c1da6bba3c01945b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>SwaptionVolatilityStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a4a8e0f324391a12454f11f5f5d5e66e8" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a44918f70ab345cad67a287d46641f20f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1ab72309c6d49bd4b6dc5b9ed09b67c7b9" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>TermStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a56d243294c1b34335d067270796f5668" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>timeFromReference</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a56cd8ee45c3477740e0429f98758c935" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>updated_</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a1b60b73d75a953a5af8c24a1232268e0" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a365198aa837e06b6354629434b19998f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1abd2e2bad948127822dcdf3355bb24273" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1af51af70559b4ff4973a97db846db9157" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1ae08aa46a34407f64eb703fa3b60e1782" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1ad049a4be6f59b66ae64d7791b2738356" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1ad7c337ad2742139f606cdf738f4405b5" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_spreaded_swaption_volatility_1a8a847d5d307f3f57ade6263012526c31" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>volatilityImpl</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a5f30fa48a97a7299157730452b4034e6" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>VolatilityTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>~Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_swaption_volatility_structure_1a816d75a27ea3640e6c1b3e4102f2e588" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>~SwaptionVolatilityStructure</name></member>
+      <member refid="class_quant_lib_1_1_term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" virt="virtual"><scope>QuantLib::SpreadedSwaptionVolatility</scope><name>~TermStructure</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

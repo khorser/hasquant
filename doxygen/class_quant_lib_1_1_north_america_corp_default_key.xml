@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_north_america_corp_default_key" kind="class" prot="public">
+    <compoundname>QuantLib::NorthAmericaCorpDefaultKey</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_default_prob_key" prot="public" virt="non-virtual">DefaultProbKey</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_north_america_corp_default_key_1a4f6d41460045256b84628f1d4ea956b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NorthAmericaCorpDefaultKey</definition>
+        <argsstring>(const Currency &amp;currency, Seniority sen, Period graceFailureToPay=Period(30, Days), Real amountFailure=1.e6, Restructuring::Type resType=Restructuring::CR)</argsstring>
+        <name>NorthAmericaCorpDefaultKey</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>currency</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <declname>sen</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+          <declname>graceFailureToPay</declname>
+          <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>(30, Days)</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>amountFailure</declname>
+          <defval>1.e6</defval>
+        </param>
+        <param>
+          <type>Restructuring::Type</type>
+          <declname>resType</declname>
+          <defval>Restructuring::CR</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="80"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>ISDA standard default contractual key for corporate US debt. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10254">
+        <label>DefaultProbKey</label>
+        <link refid="class_quant_lib_1_1_default_prob_key"/>
+      </node>
+      <node id="10253">
+        <label>NorthAmericaCorpDefaultKey</label>
+        <link refid="class_quant_lib_1_1_north_america_corp_default_key"/>
+        <childnode refid="10254" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10257">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="10256">
+        <label>DefaultProbKey</label>
+        <link refid="class_quant_lib_1_1_default_prob_key"/>
+        <childnode refid="10257" relation="usage">
+          <edgelabel>obligationCurrency_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10255">
+        <label>NorthAmericaCorpDefaultKey</label>
+        <link refid="class_quant_lib_1_1_north_america_corp_default_key"/>
+        <childnode refid="10256" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="71" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_default_prob_key_1abc33baebf744532876f39f22cf971342" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1ac4c659fb55e01241af7aeb94f57a1375" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>DefaultProbKey</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1af3b96dcf5df37be84fae5fb34afc09d3" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>DefaultProbKey</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1ada1c87ba549de5a9ad051cf3da483370" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>eventTypes</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1a40f11e724bff923d71c396f947c0b2ed" prot="protected" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>eventTypes_</name></member>
+      <member refid="class_quant_lib_1_1_north_america_corp_default_key_1a4f6d41460045256b84628f1d4ea956b6" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>NorthAmericaCorpDefaultKey</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1a1ea2266a7b462db8d3a4ce2be61d65ca" prot="protected" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>obligationCurrency_</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>seniority</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1ae35b512424ab0cb35502f8dd976cb8aa" prot="protected" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>seniority_</name></member>
+      <member refid="class_quant_lib_1_1_default_prob_key_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::NorthAmericaCorpDefaultKey</scope><name>size</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

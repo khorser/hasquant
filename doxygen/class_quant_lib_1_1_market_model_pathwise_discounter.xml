@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_pathwise_discounter" kind="class" prot="public">
+    <compoundname>QuantLib::MarketModelPathwiseDiscounter</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a3c5bc5e28c4bbd1998cd26b5d449208d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size before_</definition>
+        <argsstring></argsstring>
+        <name>before_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberRates_</definition>
+        <argsstring></argsstring>
+        <name>numberRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1af2ec52c6d9db8f350c28765715b34839" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beforeWeight_</definition>
+        <argsstring></argsstring>
+        <name>beforeWeight_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1afd545e525eb338dc8ef0e1caa56543c0" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real postWeight_</definition>
+        <argsstring></argsstring>
+        <name>postWeight_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_market_model_pathwise_discounter_1adc2ef1f387b7b05f1c9b3f51c6a9ec83" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; taus_</definition>
+        <argsstring></argsstring>
+        <name>taus_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MarketModelPathwiseDiscounter</definition>
+        <argsstring>(Time paymentTime, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
+        <name>MarketModelPathwiseDiscounter</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>paymentTime</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a8c038aa3804b532c86d8847a003caea7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void getFactors</definition>
+        <argsstring>(const Matrix &amp;LIBORRates, const Matrix &amp;Discounts, Size currentStep, std::vector&lt; Real &gt; &amp;factors) const </argsstring>
+        <name>getFactors</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>LIBORRates</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>Discounts</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>currentStep</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>factors</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>this class returns the number of units of the discretely compounding money market account that 1 unit of cash at the payment can buy using the LIBOR rates from current step.</para><para>It also returns the derivative of this number with respect to each of the rates.</para><para>Discounting is purely based on the simulation LIBOR rates, to get a discounting back to zero you need to multiply by the discount factor of t_0. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisediscounter.hpp" bodystart="43" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1a3c5bc5e28c4bbd1998cd26b5d449208d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>before_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1af2ec52c6d9db8f350c28765715b34839" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>beforeWeight_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1a8c038aa3804b532c86d8847a003caea7" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>getFactors</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>MarketModelPathwiseDiscounter</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>numberRates_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1afd545e525eb338dc8ef0e1caa56543c0" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>postWeight_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_pathwise_discounter_1adc2ef1f387b7b05f1c9b3f51c6a9ec83" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseDiscounter</scope><name>taus_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

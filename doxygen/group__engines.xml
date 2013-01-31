@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__engines" kind="group">
+    <compoundname>engines</compoundname>
+    <title>Pricing engines</title>
+    <innergroup refid="group__asianengines">Asian option engines</innergroup>
+    <innergroup refid="group__barrierengines">Barrier option engines</innergroup>
+    <innergroup refid="group__basketengines">Basket option engines</innergroup>
+    <innergroup refid="group__capfloorengines">Cap/floor engines</innergroup>
+    <innergroup refid="group__cliquetengines">Cliquet option engines</innergroup>
+    <innergroup refid="group__forwardengines">Forward option engines</innergroup>
+    <innergroup refid="group__quantoengines">Quanto option engines</innergroup>
+    <innergroup refid="group__swaptionengines">Swaption engines</innergroup>
+    <innergroup refid="group__vanillaengines">Vanilla option engines</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

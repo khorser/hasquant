@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_exercise_adapter" kind="class" prot="public">
+    <compoundname>QuantLib::ExerciseAdapter</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_multi_product_multi_step" prot="public" virt="non-virtual">MultiProductMultiStep</basecompoundref>
+      <sectiondef kind="user-defined">
+      <header>MarketModelMultiProduct interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a6f8b552187132cf1314374dbdd1d8515" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt; Time &gt; possibleCashFlowTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>possibleCashFlowTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="60" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfProducts</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfProducts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="64" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <definition>const EvolutionDescription &amp; evolution</definition>
+        <argsstring>() const </argsstring>
+        <name>evolution</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxNumberOfCashFlowsPerProductPerStep</definition>
+        <argsstring>() const </argsstring>
+        <name>maxNumberOfCashFlowsPerProductPerStep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a283de6131ea2db647e886d8ec976c498" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool nextTimeStep</definition>
+        <argsstring>(const CurveState &amp;, std::vector&lt; Size &gt; &amp;, std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;)</argsstring>
+        <name>nextTimeStep</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>std::vector&lt; std::vector&lt; CashFlow &gt; &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_market_model_multi_product" kindref="compound">MarketModelMultiProduct</ref> &gt;</type>
+        <definition>std::auto_ptr&lt;MarketModelMultiProduct&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a1f9c2a90977676ea69cedac007f97447" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const MarketModelExerciseValue &amp;</type>
+        <definition>const MarketModelExerciseValue &amp; exerciseValue</definition>
+        <argsstring>() const </argsstring>
+        <name>exerciseValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="83" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a7e06897b6a17809d0d5041e4029b1ba8" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelExerciseValue &gt;</type>
+        <definition>Clone&lt;MarketModelExerciseValue&gt; exercise_</definition>
+        <argsstring></argsstring>
+        <name>exercise_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfProducts_</definition>
+        <argsstring></argsstring>
+        <name>numberOfProducts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" static="no" mutable="no">
+        <type>std::valarray&lt; bool &gt;</type>
+        <definition>std::valarray&lt;bool&gt; isExerciseTime_</definition>
+        <argsstring></argsstring>
+        <name>isExerciseTime_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_exercise_adapter_1a3495084176af63912be0fa34354c98a9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size currentIndex_</definition>
+        <argsstring></argsstring>
+        <name>currentIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_exercise_adapter_1a829098019ea3834bd074e13b7a2abfe4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ExerciseAdapter</definition>
+        <argsstring>(const Clone&lt; MarketModelExerciseValue &gt; &amp;exercise, Size numberOfProducts=1)</argsstring>
+        <name>ExerciseAdapter</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; MarketModelExerciseValue &gt; &amp;</type>
+          <declname>exercise</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfProducts</declname>
+          <defval>1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5387">
+        <label>MultiProductMultiStep</label>
+        <link refid="class_quant_lib_1_1_multi_product_multi_step"/>
+        <childnode refid="5388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5388">
+        <label>MarketModelMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
+      </node>
+      <node id="5386">
+        <label>ExerciseAdapter</label>
+        <childnode refid="5387" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5390">
+        <label>MultiProductMultiStep</label>
+        <link refid="class_quant_lib_1_1_multi_product_multi_step"/>
+        <childnode refid="5391" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5392" relation="usage">
+          <edgelabel>evolution_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5392">
+        <label>EvolutionDescription</label>
+        <link refid="class_quant_lib_1_1_evolution_description"/>
+      </node>
+      <node id="5391">
+        <label>MarketModelMultiProduct</label>
+        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
+      </node>
+      <node id="5389">
+        <label>ExerciseAdapter</label>
+        <childnode refid="5390" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/exerciseadapter.hpp" bodystart="30" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>currentIndex_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>evolution</name></member>
+      <member refid="class_quant_lib_1_1_multi_product_multi_step_1aa5fabad6baffe7913d7edf93e4017faa" prot="protected" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>evolution_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a7e06897b6a17809d0d5041e4029b1ba8" prot="private" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>exercise_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a829098019ea3834bd074e13b7a2abfe4" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>ExerciseAdapter</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a1f9c2a90977676ea69cedac007f97447" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>exerciseValue</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>isExerciseTime_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
+      <member refid="class_quant_lib_1_1_multi_product_multi_step_1a8646c435d8d2ae90f0b7fbb459701486" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>MultiProductMultiStep</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a283de6131ea2db647e886d8ec976c498" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>nextTimeStep</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>numberOfProducts</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a4031d0e4565b7af2c815a0b276e2efd8" prot="private" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>numberOfProducts_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1a6f8b552187132cf1314374dbdd1d8515" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>possibleCashFlowTimes</name></member>
+      <member refid="class_quant_lib_1_1_multi_product_multi_step_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="protected" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::ExerciseAdapter</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_multi_product_multi_step_1aaf801d7941a97da6022733449a2a0e24" prot="public" virt="virtual"><scope>QuantLib::ExerciseAdapter</scope><name>suggestedNumeraires</name></member>
+      <member refid="class_quant_lib_1_1_market_model_multi_product_1ae3c17a1eb33b8b6e6d5cad68e933df61" prot="public" virt="virtual"><scope>QuantLib::ExerciseAdapter</scope><name>~MarketModelMultiProduct</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,467 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_inverse_cumulative_normal" kind="class" prot="public">
+    <compoundname>QuantLib::InverseCumulativeNormal</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a5415a9e58d882b51ecedc8471c32667d" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
+        <definition>const CumulativeNormalDistribution f_</definition>
+        <argsstring></argsstring>
+        <name>f_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="149" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a3b0f31568bc0a5e9716532c73284f664" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a1_</definition>
+        <argsstring></argsstring>
+        <name>a1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1ae576e01bd95479c37982f7611184f328" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a2_</definition>
+        <argsstring></argsstring>
+        <name>a2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1af59c001e9d4df0e8733787318354e84b" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a3_</definition>
+        <argsstring></argsstring>
+        <name>a3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a3ed4e0e2394afcbb274ac24b47195ca3" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a4_</definition>
+        <argsstring></argsstring>
+        <name>a4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a90dba7708fb3619a8dfa43fc1c865575" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a5_</definition>
+        <argsstring></argsstring>
+        <name>a5_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1ad4f7c73b9230222202c8bfea4bd9a711" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a6_</definition>
+        <argsstring></argsstring>
+        <name>a6_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a5869f32005fc3fb71a0caab0bc402ef6" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b1_</definition>
+        <argsstring></argsstring>
+        <name>b1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a05d7aaa0946825b6889a7034bafebd38" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b2_</definition>
+        <argsstring></argsstring>
+        <name>b2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a831b68eac754d48a82177f76fab2f7ed" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b3_</definition>
+        <argsstring></argsstring>
+        <name>b3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a60c5b98cb96322601b9e0e71efc6a1ec" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b4_</definition>
+        <argsstring></argsstring>
+        <name>b4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1ad0f98551a73f763a4b3fad9f2f3476ed" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b5_</definition>
+        <argsstring></argsstring>
+        <name>b5_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="162" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a06a101ad2c388a89e98dffb9198524bd" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c1_</definition>
+        <argsstring></argsstring>
+        <name>c1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="163" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c2_</definition>
+        <argsstring></argsstring>
+        <name>c2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="164" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a302fa080d0424ffb023c3259315c9ef0" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c3_</definition>
+        <argsstring></argsstring>
+        <name>c3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1aff6828b9219a35779c7656f95f83b451" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c4_</definition>
+        <argsstring></argsstring>
+        <name>c4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a8b2d67e606c9a1949cb068093183966b" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c5_</definition>
+        <argsstring></argsstring>
+        <name>c5_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a8271c33b430d797267d12c4cf889c050" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real c6_</definition>
+        <argsstring></argsstring>
+        <name>c6_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a73a9fda962d125257142703719fcd1ce" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real d1_</definition>
+        <argsstring></argsstring>
+        <name>d1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a7b15aaccf3e82703aef7ad5cb6d647f3" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real d2_</definition>
+        <argsstring></argsstring>
+        <name>d2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1ac5f36b949bbe941a9727c28c0b73fe7c" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real d3_</definition>
+        <argsstring></argsstring>
+        <name>d3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a997f1493c9303948abfff7a39d862991" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real d4_</definition>
+        <argsstring></argsstring>
+        <name>d4_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a181ce5d8001d449180f474738eb893b6" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real x_low_</definition>
+        <argsstring></argsstring>
+        <name>x_low_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="173" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1af51f354aa9c753d8aba575124ef18a33" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real x_high_</definition>
+        <argsstring></argsstring>
+        <name>x_high_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="174" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="174" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real average_</definition>
+        <argsstring></argsstring>
+        <name>average_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_inverse_cumulative_normal_1a37293181f9beea97f75b133deb9d9119" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real sigma_</definition>
+        <argsstring></argsstring>
+        <name>sigma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InverseCumulativeNormal</definition>
+        <argsstring>(Real average=0.0, Real sigma=1.0)</argsstring>
+        <name>InverseCumulativeNormal</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>average</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sigma</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="270" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1adf56cbfabafe9c6bbf4366412f9ea7d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real standard_value</definition>
+        <argsstring>(Real x)</argsstring>
+        <name>standard_value</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="115" bodyend="138"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a62003f95d91e1fe22107cbf2668a31d1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>static Real tail_value</definition>
+        <argsstring>(Real x)</argsstring>
+        <name>tail_value</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="145"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Inverse cumulative normal distribution function. </para>    </briefdescription>
+    <detaileddescription>
+<para>Given x between zero and one as the integral value of a gaussian normal distribution this class provides the value y such that formula here ...</para><para>It use Acklam&apos;s approximation: by Peter J. Acklam, University of Oslo, Statistics Division. URL: <ulink url="http://home.online.no/~pjacklam/notes/invnorm/index.html">http://home.online.no/~pjacklam/notes/invnorm/index.html</ulink></para><para>This class can also be used to generate a gaussian normal distribution from a uniform distribution. This is especially useful when a gaussian normal distribution is generated from a low discrepancy uniform distribution: in this case the traditional Box-Muller approach and its variants would not preserve the sequence&apos;s low-discrepancy. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="101" bodyend="175"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a3b0f31568bc0a5e9716532c73284f664" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a1_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ae576e01bd95479c37982f7611184f328" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a2_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1af59c001e9d4df0e8733787318354e84b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a3_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a3ed4e0e2394afcbb274ac24b47195ca3" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a4_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a90dba7708fb3619a8dfa43fc1c865575" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a5_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ad4f7c73b9230222202c8bfea4bd9a711" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a6_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>average_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a5869f32005fc3fb71a0caab0bc402ef6" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b1_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a05d7aaa0946825b6889a7034bafebd38" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b2_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a831b68eac754d48a82177f76fab2f7ed" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b3_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a60c5b98cb96322601b9e0e71efc6a1ec" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b4_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ad0f98551a73f763a4b3fad9f2f3476ed" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b5_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a06a101ad2c388a89e98dffb9198524bd" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c1_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c2_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a302fa080d0424ffb023c3259315c9ef0" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c3_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1aff6828b9219a35779c7656f95f83b451" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c4_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8b2d67e606c9a1949cb068093183966b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c5_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8271c33b430d797267d12c4cf889c050" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c6_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a73a9fda962d125257142703719fcd1ce" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d1_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a7b15aaccf3e82703aef7ad5cb6d647f3" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d2_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ac5f36b949bbe941a9727c28c0b73fe7c" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d3_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a997f1493c9303948abfff7a39d862991" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d4_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a5415a9e58d882b51ecedc8471c32667d" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>InverseCumulativeNormal</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>sigma_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1adf56cbfabafe9c6bbf4366412f9ea7d5" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>standard_value</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a62003f95d91e1fe22107cbf2668a31d1" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>tail_value</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1af51f354aa9c753d8aba575124ef18a33" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>x_high_</name></member>
+      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a181ce5d8001d449180f474738eb893b6" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>x_low_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

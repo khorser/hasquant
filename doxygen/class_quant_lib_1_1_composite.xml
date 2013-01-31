@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_composite" kind="class" prot="public">
+    <compoundname>QuantLib::Composite</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">T</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_1aab63929d1bc832ba9301510b2dcd145d" prot="protected" static="no">
+        <type>std::list&lt; boost::shared_ptr&lt; T &gt; &gt;::iterator</type>
+        <definition>typedef std::list&lt;boost::shared_ptr&lt;T&gt; &gt;::iterator iterator</definition>
+        <argsstring></argsstring>
+        <name>iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_1a6c96f5d4ed2ea149249a6301e7e9c723" prot="protected" static="no">
+        <type>std::list&lt; boost::shared_ptr&lt; T &gt; &gt;::const_iterator</type>
+        <definition>typedef std::list&lt;boost::shared_ptr&lt;T&gt; &gt;::const_iterator const_iterator</definition>
+        <argsstring></argsstring>
+        <name>const_iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_composite_1ac7112762bd3b7e084c7afe2c7dd1c01a" prot="protected" static="no" mutable="no">
+        <type>std::list&lt; boost::shared_ptr&lt; T &gt; &gt;</type>
+        <definition>std::list&lt;boost::shared_ptr&lt;T&gt; &gt; components_</definition>
+        <argsstring></argsstring>
+        <name>components_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_composite_1aa160ca606fac5ea2d1eef5516bf5b02c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void add</definition>
+        <argsstring>(const boost::shared_ptr&lt; T &gt; &amp;c)</argsstring>
+        <name>add</name>
+        <param>
+          <type>const boost::shared_ptr&lt; T &gt; &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="50" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Composite pattern. </para>    </briefdescription>
+    <detaileddescription>
+<para>The typical use of this class is: <programlisting><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">CompositeFoo<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Composite&lt;Foo&gt;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting> which causes CompositeFoo to inherit from Foo and provides it with methods for adding components. Of course, any abstract Foo interface must still be implemented. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="47" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_composite_1aa160ca606fac5ea2d1eef5516bf5b02c" prot="protected" virt="non-virtual"><scope>QuantLib::Composite</scope><name>add</name></member>
+      <member refid="class_quant_lib_1_1_composite_1ac7112762bd3b7e084c7afe2c7dd1c01a" prot="protected" virt="non-virtual"><scope>QuantLib::Composite</scope><name>components_</name></member>
+      <member refid="class_quant_lib_1_1_composite_1a6c96f5d4ed2ea149249a6301e7e9c723" prot="protected" virt="non-virtual"><scope>QuantLib::Composite</scope><name>const_iterator</name></member>
+      <member refid="class_quant_lib_1_1_composite_1aab63929d1bc832ba9301510b2dcd145d" prot="protected" virt="non-virtual"><scope>QuantLib::Composite</scope><name>iterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

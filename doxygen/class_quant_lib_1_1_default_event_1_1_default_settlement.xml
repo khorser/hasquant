@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_default_event_1_1_default_settlement" kind="class" prot="public">
+    <compoundname>QuantLib::DefaultEvent::DefaultSettlement</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_event" prot="public" virt="non-virtual">Event</basecompoundref>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1aa83df1fd5966eae29c74571e258a5aa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class DefaultEvent</definition>
+        <argsstring></argsstring>
+        <name>DefaultEvent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1af212738530e45abd96efb0941375436e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date settlementDate_</definition>
+        <argsstring></argsstring>
+        <name>settlementDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a758cb3c78a40486a838807772645df50" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::map&lt;Seniority, Real&gt; recoveryRates_</definition>
+        <argsstring></argsstring>
+        <name>recoveryRates_</name>
+        <briefdescription>
+<para>Realized recovery rates. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a30b1a6152e3a39ecc41463b3a0c18d97" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DefaultSettlement</definition>
+        <argsstring>(const Date &amp;date, const std::map&lt; Seniority, Real &gt; &amp;recoveryRates)</argsstring>
+        <name>DefaultSettlement</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <param>
+          <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>recoveryRates</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Default settlement events encode the settlement date and the recovery rates for the affected seniorities. Specific events might require different sets of recoveries to be present. The way these objects are constructed is a prerogative of the particular event class. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1aa175bc4573a524e6dcbb0f47db171cd4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DefaultSettlement</definition>
+        <argsstring>(const Date &amp;date=Date(), Seniority seniority=NoSeniority, Real recoveryRate=0.4)</argsstring>
+        <name>DefaultSettlement</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <declname>seniority</declname>
+          <defval>NoSeniority</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+          <defval>0.4</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>When NoSeniority is passed all seniorities are assumed to have settled to the recovery passed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="69"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date</definition>
+        <argsstring>() const </argsstring>
+        <name>date</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a95749f00f4c7ae289280c2412829deeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real recoveryRate</definition>
+        <argsstring>(Seniority sen) const </argsstring>
+        <name>recoveryRate</name>
+        <param>
+          <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
+          <declname>sen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Returns the recovery rate of a default event which has already settled. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3398">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3399" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3399">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3397">
+        <label>DefaultEvent::DefaultSettlement</label>
+        <childnode refid="3398" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3401">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="3402" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3402">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3400">
+        <label>DefaultEvent::DefaultSettlement</label>
+        <childnode refid="3401" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="51" bodyend="81"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1a30b1a6152e3a39ecc41463b3a0c18d97" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>DefaultSettlement</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1aa175bc4573a524e6dcbb0f47db171cd4" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>DefaultSettlement</name></member>
+      <member refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" virt="virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1a95749f00f4c7ae289280c2412829deeb" prot="public" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>recoveryRate</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1a758cb3c78a40486a838807772645df50" prot="private" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>recoveryRates_</name></member>
+      <member refid="class_quant_lib_1_1_default_event_1_1_default_settlement_1af212738530e45abd96efb0941375436e" prot="private" virt="non-virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>settlementDate_</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::DefaultEvent::DefaultSettlement</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

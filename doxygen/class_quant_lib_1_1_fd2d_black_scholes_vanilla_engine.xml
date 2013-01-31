@@ -1,0 +1,288 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine" kind="class" prot="public">
+    <compoundname>QuantLib::Fd2dBlackScholesVanillaEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_basket_option_1_1engine" prot="public" virt="non-virtual">BasketOption::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a9b28f546051f3d0cc2b8b0bc7683baf3" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p1_</definition>
+        <argsstring></argsstring>
+        <name>p1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1acd777b137a676cdead0f190f166563a9" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>const boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; p2_</definition>
+        <argsstring></argsstring>
+        <name>p2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a7e99e192b1f8083fb9698974031ade6a" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real correlation_</definition>
+        <argsstring></argsstring>
+        <name>correlation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size xGrid_</definition>
+        <argsstring></argsstring>
+        <name>xGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size yGrid_</definition>
+        <argsstring></argsstring>
+        <name>yGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size tGrid_</definition>
+        <argsstring></argsstring>
+        <name>tGrid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size dampingSteps_</definition>
+        <argsstring></argsstring>
+        <name>dampingSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" static="no" mutable="no">
+        <type>const FdmSchemeDesc</type>
+        <definition>const FdmSchemeDesc schemeDesc_</definition>
+        <argsstring></argsstring>
+        <name>schemeDesc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ab3e55b6ce13d4487caf29d25516dfdfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Fd2dBlackScholesVanillaEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;p1, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;p2, Real correlation, Size xGrid=100, Size yGrid=100, Size tGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
+        <name>Fd2dBlackScholesVanillaEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>p1</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>p2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>correlation</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>xGrid</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>yGrid</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>tGrid</declname>
+          <defval>50</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>dampingSteps</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>const FdmSchemeDesc &amp;</type>
+          <declname>schemeDesc</declname>
+          <defval>FdmSchemeDesc::Hundsdorfer()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Two dimensional finite-differences Black Scholes vanilla option engine. </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="test_1_test000095"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature and comparison with Kirk approximation. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5764">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_basket_option_1_1engine"/>
+        <childnode refid="5765" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5767">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5768">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5766">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="5767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5765">
+        <label>GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="5766" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5768" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5763">
+        <label>Fd2dBlackScholesVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine"/>
+        <childnode refid="5764" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5770">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_basket_option_1_1engine"/>
+        <childnode refid="5771" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5773">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5774">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="5772">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="5773" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5771">
+        <label>GenericEngine&lt; BasketOption::arguments, BasketOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="5772" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5774" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5769">
+        <label>Fd2dBlackScholesVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine"/>
+        <childnode refid="5770" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/fd2dblackscholesvanillaengine.hpp" bodystart="42" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a7e99e192b1f8083fb9698974031ade6a" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>correlation_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a6bd15e30372a37068d0a0b867a4c1f15" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>dampingSteps_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ab3e55b6ce13d4487caf29d25516dfdfe" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>Fd2dBlackScholesVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1a9b28f546051f3d0cc2b8b0bc7683baf3" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>p1_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1acd777b137a676cdead0f190f166563a9" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>p2_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>schemeDesc_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1ad46ffe4bcb481097bf9a434bc053bb8e" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>tGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1adfc22ddaf906fc702e68b7847294a28e" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>xGrid_</name></member>
+      <member refid="class_quant_lib_1_1_fd2d_black_scholes_vanilla_engine_1aa5c25b430ebb3a344359b59a37f2cf85" prot="private" virt="non-virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>yGrid_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::Fd2dBlackScholesVanillaEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,240 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_projected_cost_function" kind="class" prot="public">
+    <compoundname>QuantLib::ProjectedCostFunction</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>CostFunction interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real value</definition>
+        <argsstring>(const Array &amp;freeParameters) const </argsstring>
+        <name>value</name>
+        <reimplements refid="class_quant_lib_1_1_cost_function_1a132cbe03016a6e22c2ad3eaef6baf6a1">value</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute the cost function value in x </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; values</definition>
+        <argsstring>(const Array &amp;freeParameters) const </argsstring>
+        <name>values</name>
+        <reimplements refid="class_quant_lib_1_1_cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff">values</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>method to overload to compute the cost function values in x </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1a8bda74a5aec81b42ce84d3110665a254" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfFreeParameters_</definition>
+        <argsstring></argsstring>
+        <name>numberOfFreeParameters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1a03bb44c14b10b9d468db8b13699979c7" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>const Array fixedParameters_</definition>
+        <argsstring></argsstring>
+        <name>fixedParameters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1ac9a17c23e4d1617568455beceaa3d7d4" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+        <definition>Array actualParameters_</definition>
+        <argsstring></argsstring>
+        <name>actualParameters_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1afd84a3cb5baa388d977f8d87dcb5f204" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; bool &gt; &amp;</type>
+        <definition>const std::vector&lt;bool&gt;&amp; parametersFreedoms_</definition>
+        <argsstring></argsstring>
+        <name>parametersFreedoms_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_projected_cost_function_1a3fbcb1659c22a689f2c8223653a60b8a" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+        <definition>const CostFunction&amp; costFunction_</definition>
+        <argsstring></argsstring>
+        <name>costFunction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1afe330cd54e6dab563f907d2e80b26879" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ProjectedCostFunction</definition>
+        <argsstring>(const CostFunction &amp;costFunction, const Array &amp;parametersValues, const std::vector&lt; bool &gt; &amp;parametersFreedoms)</argsstring>
+        <name>ProjectedCostFunction</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_cost_function" kindref="compound">CostFunction</ref> &amp;</type>
+          <declname>costFunction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>parametersValues</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; bool &gt; &amp;</type>
+          <declname>parametersFreedoms</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; project</definition>
+        <argsstring>(const Array &amp;parameters) const </argsstring>
+        <name>project</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+<para>returns the subset of free parameters corresponding </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; include</definition>
+        <argsstring>(const Array &amp;projectedParameters) const </argsstring>
+        <name>include</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>projectedParameters</declname>
+        </param>
+        <briefdescription>
+<para>returns whole set of parameters corresponding to the set </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_projected_cost_function_1a73a37dd933ba8751e4f98e9ba64f4911" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mapFreeParameters</definition>
+        <argsstring>(const Array &amp;parametersValues) const </argsstring>
+        <name>mapFreeParameters</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>parametersValues</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Parameterized cost function. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class creates a proxy cost function which can depend on any arbitrary subset of parameters (the other being fixed) </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12525">
+        <label>ProjectedCostFunction</label>
+        <link refid="class_quant_lib_1_1_projected_cost_function"/>
+        <childnode refid="12526" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12526">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12527">
+        <label>ProjectedCostFunction</label>
+        <link refid="class_quant_lib_1_1_projected_cost_function"/>
+        <childnode refid="12528" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12528">
+        <label>CostFunction</label>
+        <link refid="class_quant_lib_1_1_cost_function"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="37" bodyend="66"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1ac9a17c23e4d1617568455beceaa3d7d4" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>actualParameters_</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a3fbcb1659c22a689f2c8223653a60b8a" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>costFunction_</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>finiteDifferenceEpsilon</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a03bb44c14b10b9d468db8b13699979c7" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>fixedParameters_</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>gradient</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>include</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a73a37dd933ba8751e4f98e9ba64f4911" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>mapFreeParameters</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a8bda74a5aec81b42ce84d3110665a254" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>numberOfFreeParameters_</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1afd84a3cb5baa388d977f8d87dcb5f204" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>parametersFreedoms_</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>project</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1afe330cd54e6dab563f907d2e80b26879" prot="public" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>ProjectedCostFunction</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>valueAndGradient</name></member>
+      <member refid="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>values</name></member>
+      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>~CostFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

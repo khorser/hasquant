@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_garman_klass_sigma6" kind="class" prot="public">
+    <compoundname>QuantLib::GarmanKlassSigma6</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::GarmanKlassOpenClose&lt; GarmanKlassSigma4 &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_sigma6_1af5971b888992a3a78cf6eadbb92b4476" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GarmanKlassSigma6</definition>
+        <argsstring>(Real y, Real marketOpenFraction)</argsstring>
+        <name>GarmanKlassSigma6</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>marketOpenFraction</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="178" bodyend="181"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="175" bodyend="182"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a114bd3f70557109ba551776610bb2dc1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a99f7ee87e8f40de9970c6b41e76693a4" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>f_</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a50246f9252bf4759cae1f2661fc0a8c3" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>GarmanKlassOpenClose</name></member>
+      <member refid="class_quant_lib_1_1_garman_klass_sigma6_1af5971b888992a3a78cf6eadbb92b4476" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>GarmanKlassSigma6</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,370 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_interval_price" kind="class" prot="public">
+    <compoundname>QuantLib::IntervalPrice</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/prices.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a856a693a06d5afacb06355639a1abce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real open</definition>
+        <argsstring>() const </argsstring>
+        <name>open</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a760e68e04a1de187b12f14ed431d5b7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real close</definition>
+        <argsstring>() const </argsstring>
+        <name>close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1ae4747a97e5319952aad4d2fdcbd922fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real high</definition>
+        <argsstring>() const </argsstring>
+        <name>high</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="77" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a3885ecba4d75226d09b5da5b50219e3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real low</definition>
+        <argsstring>() const </argsstring>
+        <name>low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="78" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1acee7d35150d5eb317f1297520ab7ff03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(IntervalPrice::Type) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>IntervalPrice::Type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="79"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Modifiers</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a2bf443157a54b032c47c7d1bc4f9bd1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setValue</definition>
+        <argsstring>(Real value, IntervalPrice::Type)</argsstring>
+        <name>setValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>IntervalPrice::Type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1ad3ee0adc80b6bdc7e977553d09dced95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setValues</definition>
+        <argsstring>(Real open, Real close, Real high, Real low)</argsstring>
+        <name>setValues</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>open</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>close</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>high</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>low</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="85"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Helper functions</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1aa65c06d1f48a093f170765f5cb0d5d1a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt;</type>
+        <definition>static TimeSeries&lt;IntervalPrice&gt; makeSeries</definition>
+        <argsstring>(const std::vector&lt; Date &gt; &amp;d, const std::vector&lt; Real &gt; &amp;open, const std::vector&lt; Real &gt; &amp;close, const std::vector&lt; Real &gt; &amp;high, const std::vector&lt; Real &gt; &amp;low)</argsstring>
+        <name>makeSeries</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>open</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>close</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>high</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>low</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a5dd7dfe99440e13129f9b91c84ba1f75" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>static std::vector&lt;Real&gt; extractValues</definition>
+        <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, IntervalPrice::Type)</argsstring>
+        <name>extractValues</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>IntervalPrice::Type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>static TimeSeries&lt;Real&gt; extractComponent</definition>
+        <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;, enum IntervalPrice::Type)</argsstring>
+        <name>extractComponent</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>enum IntervalPrice::Type</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ac8e6944e998ac466c3cc4a648dde8291" prot="public">
+          <name>Open</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ab0d2fc8a61cc30fce240ad6df88447d4" prot="public">
+          <name>Close</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a24c57acd029e3f96fede49402ea01e6f" prot="public">
+          <name>High</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a7a352a3dd2accc1dd65a4538c3754ee8" prot="public">
+          <name>Low</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="68" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a532e2adef666f32acaa21b53834b42da" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real open_</definition>
+        <argsstring></argsstring>
+        <name>open_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1ab345b763ee4f5eeaef8a098c7c76b1e9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real close_</definition>
+        <argsstring></argsstring>
+        <name>close_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real high_</definition>
+        <argsstring></argsstring>
+        <name>high_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interval_price_1a390b29a166814f8834fa8caea46ee97c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real low_</definition>
+        <argsstring></argsstring>
+        <name>low_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a1e2311ac1194f01bc365460d8fab00d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IntervalPrice</definition>
+        <argsstring>()</argsstring>
+        <name>IntervalPrice</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interval_price_1a55fb9afa8813c4d56212a946fbb4527f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>IntervalPrice</definition>
+        <argsstring>(Real open, Real close, Real high, Real low)</argsstring>
+        <name>IntervalPrice</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>open</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>close</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>high</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>low</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>interval price </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="66" bodyend="105"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ab0d2fc8a61cc30fce240ad6df88447d4" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Close</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a760e68e04a1de187b12f14ed431d5b7f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>close</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1ab345b763ee4f5eeaef8a098c7c76b1e9" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>close_</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>extractComponent</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a5dd7dfe99440e13129f9b91c84ba1f75" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>extractValues</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a24c57acd029e3f96fede49402ea01e6f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>High</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1ae4747a97e5319952aad4d2fdcbd922fd" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>high</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>high_</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a1e2311ac1194f01bc365460d8fab00d1" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>IntervalPrice</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a55fb9afa8813c4d56212a946fbb4527f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>IntervalPrice</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a7a352a3dd2accc1dd65a4538c3754ee8" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Low</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a3885ecba4d75226d09b5da5b50219e3d" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>low</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a390b29a166814f8834fa8caea46ee97c" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>low_</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1aa65c06d1f48a093f170765f5cb0d5d1a" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>makeSeries</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ac8e6944e998ac466c3cc4a648dde8291" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Open</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a856a693a06d5afacb06355639a1abce5" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>open</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a532e2adef666f32acaa21b53834b42da" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>open_</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a2bf443157a54b032c47c7d1bc4f9bd1f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>setValue</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1ad3ee0adc80b6bdc7e977553d09dced95" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>setValues</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_interval_price_1acee7d35150d5eb317f1297520ab7ff03" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>value</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

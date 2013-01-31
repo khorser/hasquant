@@ -1,0 +1,225 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
+    <compoundname>QuantLib::CTSMMCapletMaxHomogeneityCalibration</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CTSMMCapletCalibration</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1a20c680d5c61a51c3e58a152b6385ea25" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real caplet0Swaption1Priority_</definition>
+        <argsstring></argsstring>
+        <name>caplet0Swaption1Priority_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa597190044054929641b5eb039340182" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real totalSwaptionError_</definition>
+        <argsstring></argsstring>
+        <name>totalSwaptionError_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CTSMMCapletMaxHomogeneityCalibration</definition>
+        <argsstring>(const EvolutionDescription &amp;evolution, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const boost::shared_ptr&lt; CurveState &gt; &amp;cs, Spread displacement, Real caplet0Swaption1Priority=1.0)</argsstring>
+        <name>CTSMMCapletMaxHomogeneityCalibration</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <declname>evolution</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;</type>
+          <declname>corr</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;</type>
+          <declname>displacedSwapVariances</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>capletVols</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>displacement</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>caplet0Swaption1Priority</declname>
+          <defval>1.0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aba9aa91bfbbc3221482caa0c9fdfba20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>static Natural capletMaxHomogeneityCalibration</definition>
+        <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const CurveState &amp;cs, const Spread displacement, Real caplet0Swaption1Priority, Size numberOfFactors, Size maxIterations, Real tolerance, Real &amp;deformationSize, Real &amp;totalSwaptionError, std::vector&lt; Matrix &gt; &amp;swapCovariancePseudoRoots)</argsstring>
+        <name>capletMaxHomogeneityCalibration</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <declname>evolution</declname>
+        </param>
+        <param>
+          <type>const PiecewiseConstantCorrelation &amp;</type>
+          <declname>corr</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;</type>
+          <declname>displacedSwapVariances</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &amp;</type>
+          <declname>capletVols</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>displacement</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>caplet0Swaption1Priority</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfFactors</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxIterations</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>deformationSize</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>totalSwaptionError</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <declname>swapCovariancePseudoRoots</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1afd37f1fcf607e6ee5349dce9a31e2ac0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural calibrationImpl_</definition>
+        <argsstring>(Natural numberOfFactors, Natural maxIterations, Real tolerance)</argsstring>
+        <name>calibrationImpl_</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>numberOfFactors</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>maxIterations</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tolerance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="62"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" bodystart="28" bodyend="67"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a5ad6bdeabec616587a3f1c51338f3ea1" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a1646eaccc25a24e71227a5b30af6b922" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>calibrated_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1afd37f1fcf607e6ee5349dce9a31e2ac0" prot="private" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>calibrationImpl_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1a20c680d5c61a51c3e58a152b6385ea25" prot="private" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>caplet0Swaption1Priority_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aa8689573419a1653fa9f9470095b09cc" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>capletMaxError</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1af3b8f823b0a58b7f55ae9424b1f1d4b3" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>capletMaxError_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aba9aa91bfbbc3221482caa0c9fdfba20" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>capletMaxHomogeneityCalibration</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a1d31ff4728042df52b12871f1d2a59a6" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>capletRmsError</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a53c07433cae3bf33e72090c79cbdd5a3" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>capletRmsError_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aaa1c2d0e1e49b7a39e37a2120f798c00" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>corr_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a2e25270c091a0210710c888c81c23a8c" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>cs_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1ac1ce71b5f88c4dbf3393de2e6b72626e" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>CTSMMCapletCalibration</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>CTSMMCapletMaxHomogeneityCalibration</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a11cc5e4f624a9d4634e25cb1c167d555" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>curveState</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1af15e9fdf6750b87f47c471306180ad0d" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>deformationSize</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1afd73b0f45bd0e1692f5dd10d01c91ae0" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>deformationSize_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1ae6447367fc12fdf99860188651ba7842" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>displacedSwapVariances_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a904de61d29065cca661632ee77a27a24" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>displacement_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a0d1e170c49e78ffa0241f2029d99ce41" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>displacements</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aa5fabad6baffe7913d7edf93e4017faa" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>evolution_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aba90b707f7ca49e69f1844719a4dcae5" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>failures</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a7095cf988e980a7d3e487626ec22bbcf" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>failures_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1ae933503f5a82fa0c39a69a11c9bb24cc" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mdlCapletVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1ad8d3f1c5e29f55f6b7a9c9ab32cbebde" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mdlCapletVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1af57f2a188816b058b5c9f8be9ed169af" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mdlSwaptionVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a86d5c29c2d937b52278caccba6648a05" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mdlSwaptionVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a4ae00ad2a9e9cec23597b58690fbac63" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mktCapletVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a1d214e02d1474c4bff9ed51ab4a371bb" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mktCapletVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a3cb5641b2e0e013cb23f4a1cc1dbfd67" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mktSwaptionVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a429f5e2c2367be5557dc1b38f0952879" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>mktSwaptionVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a9c042abcd446925e95dde36619f5bf6d" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a0189f73c7fe80beccb4f942c4b292c1e" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>performChecks</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1afcd27a28dd07855f6ffb73d5e8c40dcf" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swapCovariancePseudoRoots_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a0e951d99e728600541318b483549cbab" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swapPseudoRoot</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a7b8b438889bf94cdbd029fcc8bea7a35" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swapPseudoRoots</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1af209c29a62e454082e05a3034e112bb1" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swaptionMaxError</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a8873307a850dd8667dd73f099a7bd2e4" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swaptionMaxError_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a9ccaf082a300d6f7c25b1e9652dbabbb" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swaptionRmsError</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a8e848ba90d780b9164e2b50cd6605cbe" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>swaptionRmsError_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1ac0c7d68f808bcddfebd2a905390fdd92" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>timeDependentCalibratedSwaptionVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a0ece55926b8d06b630b69dd47ffe31f8" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>timeDependentCalibratedSwaptionVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1af512b6b8810ad223347d4770bc9330d8" prot="public" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>timeDependentUnCalibratedSwaptionVols</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa597190044054929641b5eb039340182" prot="private" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>totalSwaptionError_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1a96861eb4f8e35d5f8bbda89e975a8aa3" prot="protected" virt="non-virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>usedCapletVols_</name></member>
+      <member refid="class_quant_lib_1_1_c_t_s_m_m_caplet_calibration_1aa59e6c3028ea3aa011c95cffb3a1fb3b" prot="public" virt="virtual"><scope>QuantLib::CTSMMCapletMaxHomogeneityCalibration</scope><name>~CTSMMCapletCalibration</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__findiff" kind="group">
+    <compoundname>findiff</compoundname>
+    <title>Finite-differences framework</title>
+    <innerclass refid="class_quant_lib_1_1_boundary_condition" prot="public">QuantLib::BoundaryCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_neumann_b_c" prot="public">QuantLib::NeumannBC</innerclass>
+    <innerclass refid="class_quant_lib_1_1_dirichlet_b_c" prot="public">QuantLib::DirichletBC</innerclass>
+    <innerclass refid="class_quant_lib_1_1_b_s_m_operator" prot="public">QuantLib::BSMOperator</innerclass>
+    <innerclass refid="class_quant_lib_1_1_crank_nicolson" prot="public">QuantLib::CrankNicolson</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_minus" prot="public">QuantLib::DMinus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_plus" prot="public">QuantLib::DPlus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_plus_d_minus" prot="public">QuantLib::DPlusDMinus</innerclass>
+    <innerclass refid="class_quant_lib_1_1_d_zero" prot="public">QuantLib::DZero</innerclass>
+    <innerclass refid="class_quant_lib_1_1_explicit_euler" prot="public">QuantLib::ExplicitEuler</innerclass>
+    <innerclass refid="class_quant_lib_1_1_finite_difference_model" prot="public">QuantLib::FiniteDifferenceModel</innerclass>
+    <innerclass refid="class_quant_lib_1_1_implicit_euler" prot="public">QuantLib::ImplicitEuler</innerclass>
+    <innerclass refid="class_quant_lib_1_1_mixed_scheme" prot="public">QuantLib::MixedScheme</innerclass>
+    <innerclass refid="class_quant_lib_1_1_operator_factory" prot="public">QuantLib::OperatorFactory</innerclass>
+    <innerclass refid="class_quant_lib_1_1_step_condition_set" prot="public">QuantLib::StepConditionSet</innerclass>
+    <innerclass refid="class_quant_lib_1_1_step_condition" prot="public">QuantLib::StepCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_null_condition" prot="public">QuantLib::NullCondition</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_r_b_d_f2" prot="public">QuantLib::TRBDF2</innerclass>
+    <innerclass refid="class_quant_lib_1_1_tridiagonal_operator" prot="public">QuantLib::TridiagonalOperator</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__findiff_1ga99062cef45cec7825cfdf7b0f8e1344c" prot="public" static="no">
+        <type>PdeOperator&lt; PdeBSM &gt;</type>
+        <definition>typedef PdeOperator&lt;PdeBSM&gt; BSMTermOperator</definition>
+        <argsstring></argsstring>
+        <name>BSMTermOperator</name>
+        <briefdescription>
+<para>Black-Scholes-Merton differential operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="test_1_test000074"><xreftitle>Tests</xreftitle><xrefdescription><para>coefficients are tested against constant BSM operator </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/bsmtermoperator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/bsmtermoperator.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__findiff_1gab2342f59174f2223a9889acf4a86496a" prot="public" static="no">
+        <type>PdeOperator&lt; PdeShortRate &gt;</type>
+        <definition>typedef PdeOperator&lt;PdeShortRate&gt; OneFactorOperator</definition>
+        <argsstring></argsstring>
+        <name>OneFactorOperator</name>
+        <briefdescription>
+<para>Interest-rate single factor model differential operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/onefactoroperator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/onefactoroperator.hpp" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This framework (corresponding to the ql/FiniteDifferences directory) contains basic building blocks for the numerical solution of partial differential equations by means of finite-difference methods. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1quadratic" kind="class" prot="public">
+    <compoundname>QuantLib::quadratic</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1quadratic_1a114bd3f70557109ba551776610bb2dc1" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1quadratic_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1quadratic_1a04b890f917032156f955c80d329dbd80" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real c_</definition>
+        <argsstring></argsstring>
+        <name>c_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1aa085e099335ba0b1090969bc150ad349" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>quadratic</definition>
+        <argsstring>(Real a, Real b, Real c)</argsstring>
+        <name>quadratic</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1abe8fb0a2a1c5b293379f0c0274317b71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real turningPoint</definition>
+        <argsstring>() const </argsstring>
+        <name>turningPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a28c1d3143fea68b3d5df76203fd2e902" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real valueAtTurningPoint</definition>
+        <argsstring>() const </argsstring>
+        <name>valueAtTurningPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a4a45db715b7fd36de755b688828de9d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real discriminant</definition>
+        <argsstring>() const </argsstring>
+        <name>discriminant</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1quadratic_1a61760fc2bbfccfdf3ed1a00a52086913" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool roots</definition>
+        <argsstring>(Real &amp;x, Real &amp;y) const </argsstring>
+        <name>roots</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/quadratic.hpp" bodystart="32" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1quadratic_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a04b890f917032156f955c80d329dbd80" prot="private" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>c_</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a4a45db715b7fd36de755b688828de9d1" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>discriminant</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1aa085e099335ba0b1090969bc150ad349" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>quadratic</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a61760fc2bbfccfdf3ed1a00a52086913" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>roots</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1abe8fb0a2a1c5b293379f0c0274317b71" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>turningPoint</name></member>
+      <member refid="class_quant_lib_1_1quadratic_1a28c1d3143fea68b3d5df76203fd2e902" prot="public" virt="non-virtual"><scope>QuantLib::quadratic</scope><name>valueAtTurningPoint</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

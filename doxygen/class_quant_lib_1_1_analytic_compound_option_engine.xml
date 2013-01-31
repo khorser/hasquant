@@ -1,0 +1,619 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_analytic_compound_option_engine" kind="class" prot="public">
+    <compoundname>QuantLib::AnalyticCompoundOptionEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_compound_option_1_1engine" prot="public" virt="non-virtual">CompoundOption::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_compound_option_engine_1aed5386b77a66fa6e59bf16349d69e70d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
+        <definition>CumulativeNormalDistribution N_</definition>
+        <argsstring></argsstring>
+        <name>N_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_compound_option_engine_1a540e9cbeb6f359c08db4a6a6293ce229" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_normal_distribution" kindref="compound">NormalDistribution</ref></type>
+        <definition>NormalDistribution n_</definition>
+        <argsstring></argsstring>
+        <name>n_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_analytic_compound_option_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ac7ffd680902b85942ef1db0a0bb3e3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AnalyticCompoundOptionEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
+        <name>AnalyticCompoundOptionEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a073bee02af186265b07d43541642bbf3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time residualTimeMother</definition>
+        <argsstring>() const </argsstring>
+        <name>residualTimeMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1aabf1f39f88aeb3196afd4814c6bc7292" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time residualTimeDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>residualTimeDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a0e4bde9ce09d8e5d75504d075b4f8530" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time residualTimeMotherDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>residualTimeMotherDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a07c8685f7a9ed903a6bd2e71829e168b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date maturityMother</definition>
+        <argsstring>() const </argsstring>
+        <name>maturityMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ab4d9bab46a777eccc4413160ef3123d1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date maturityDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>maturityDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ada6ce483fc31c478e4f67e63c14b3888" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dPlus</definition>
+        <argsstring>() const </argsstring>
+        <name>dPlus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a9757c8757908d6edc250b2d4b419a628" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dMinus</definition>
+        <argsstring>() const </argsstring>
+        <name>dMinus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a6a70c5a4fdb221983d828fd4d06aa932" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dPlusTau12</definition>
+        <argsstring>(Real S) const </argsstring>
+        <name>dPlusTau12</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a9ba88ab8c0dace2614a38fa95fecdb1b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dMinusTau12</definition>
+        <argsstring>() const </argsstring>
+        <name>dMinusTau12</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ab314b0be169ab84632ba5758039f6090" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strikeDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>strikeDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ad18fb4a434b401c1cd615a29a0f28e66" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real strikeMother</definition>
+        <argsstring>() const </argsstring>
+        <name>strikeMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a0ce73ee4d1b560b5ec5714791b93a93b" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real spot</definition>
+        <argsstring>() const </argsstring>
+        <name>spot</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a3ffd978e6151af60cc50b666f97b2b85" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real volatilityDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>volatilityDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a8568629f83b64e174985764e0fbdc6df" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real volatilityMother</definition>
+        <argsstring>() const </argsstring>
+        <name>volatilityMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a112a467acd02018e1c31eefffebbd6e1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real riskFreeRateDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeRateDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a501c0689436ab5d6d5761327029908dc" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real dividendRateDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendRateDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ab91ed7587f182030192a3469a1a082a1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviationDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>stdDeviationDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a29ab0e1569eda70c98d9e2918e8f40d1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviationMother</definition>
+        <argsstring>() const </argsstring>
+        <name>stdDeviationMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a63a652c3a798527fead9e084a36b416f" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real typeDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>typeDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a1411a32277a8b7e1852ab6966b8ca54c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real typeMother</definition>
+        <argsstring>() const </argsstring>
+        <name>typeMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a09a61cd1cea9a53b73e91fe3a6d42b02" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real transformX</definition>
+        <argsstring>(Real X) const </argsstring>
+        <name>transformX</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>X</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a667b6f242adb6f15047afd2d7b0e5df1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real e</definition>
+        <argsstring>(Real X) const </argsstring>
+        <name>e</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>X</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a8c9039673d37c9d9abfad7a6858b6dc3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscountDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeDiscountDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a1210e55561a46631dc77bb9a389729a1" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscountMother</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeDiscountMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ae945de635e7c61929be4c1628d4f65db" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor riskFreeDiscountMotherDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeDiscountMotherDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a2f9c8022c61b950bad83fad602e56f0e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor dividendDiscountDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendDiscountDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a1d616d85c3f0a7bce644f65ce6b183f7" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor dividendDiscountMother</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendDiscountMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a28265cf8b6810cf570f6eed37890ce12" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor dividendDiscountMotherDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendDiscountMotherDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a45e3f7ddb383de3b8df22ccb3b61597e" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PlainVanillaPayoff&gt; payoffMother</definition>
+        <argsstring>() const </argsstring>
+        <name>payoffMother</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a559bcf75c5f39f8c568c340b53175972" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PlainVanillaPayoff&gt; payoffDaughter</definition>
+        <argsstring>() const </argsstring>
+        <name>payoffDaughter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for compound options using analytical formulae. </para>    </briefdescription>
+    <detaileddescription>
+<para>The formulas are taken from &quot;Foreign Exchange Risk&quot;, Uwe Wystup, Risk 2002, where closed form <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> are available. (not available in Haug 2007). Value: Page 84, <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref>: Pages 94-95.</para><para><xrefsect id="test_1_test000005"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="262">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="260">
+        <label>GenericEngine&lt; CompoundOption::arguments, CompoundOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="261" relation="public-inheritance">
+        </childnode>
+        <childnode refid="263" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="263">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="258">
+        <label>AnalyticCompoundOptionEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_compound_option_engine"/>
+        <childnode refid="259" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="259">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_compound_option_1_1engine"/>
+        <childnode refid="260" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="261">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="262" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="268">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="266">
+        <label>GenericEngine&lt; CompoundOption::arguments, CompoundOption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="267" relation="public-inheritance">
+        </childnode>
+        <childnode refid="269" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="269">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="264">
+        <label>AnalyticCompoundOptionEngine</label>
+        <link refid="class_quant_lib_1_1_analytic_compound_option_engine"/>
+        <childnode refid="265" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="265">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_compound_option_1_1engine"/>
+        <childnode refid="266" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="267">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="268" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="45" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ac7ffd680902b85942ef1db0a0bb3e3c8" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>AnalyticCompoundOptionEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a2f9c8022c61b950bad83fad602e56f0e" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dividendDiscountDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a1d616d85c3f0a7bce644f65ce6b183f7" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dividendDiscountMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a28265cf8b6810cf570f6eed37890ce12" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dividendDiscountMotherDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a501c0689436ab5d6d5761327029908dc" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dividendRateDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a9757c8757908d6edc250b2d4b419a628" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dMinus</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a9ba88ab8c0dace2614a38fa95fecdb1b" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dMinusTau12</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ada6ce483fc31c478e4f67e63c14b3888" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dPlus</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a6a70c5a4fdb221983d828fd4d06aa932" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>dPlusTau12</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a667b6f242adb6f15047afd2d7b0e5df1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>e</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ab4d9bab46a777eccc4413160ef3123d1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>maturityDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a07c8685f7a9ed903a6bd2e71829e168b" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>maturityMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a540e9cbeb6f359c08db4a6a6293ce229" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>n_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1aed5386b77a66fa6e59bf16349d69e70d" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>N_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a559bcf75c5f39f8c568c340b53175972" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>payoffDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a45e3f7ddb383de3b8df22ccb3b61597e" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>payoffMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1aabf1f39f88aeb3196afd4814c6bc7292" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>residualTimeDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a073bee02af186265b07d43541642bbf3" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>residualTimeMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a0e4bde9ce09d8e5d75504d075b4f8530" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>residualTimeMotherDaughter</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a8c9039673d37c9d9abfad7a6858b6dc3" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>riskFreeDiscountDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a1210e55561a46631dc77bb9a389729a1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>riskFreeDiscountMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ae945de635e7c61929be4c1628d4f65db" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>riskFreeDiscountMotherDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a112a467acd02018e1c31eefffebbd6e1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>riskFreeRateDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a0ce73ee4d1b560b5ec5714791b93a93b" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>spot</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ab91ed7587f182030192a3469a1a082a1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>stdDeviationDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a29ab0e1569eda70c98d9e2918e8f40d1" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>stdDeviationMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ab314b0be169ab84632ba5758039f6090" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>strikeDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1ad18fb4a434b401c1cd615a29a0f28e66" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>strikeMother</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a09a61cd1cea9a53b73e91fe3a6d42b02" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>transformX</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a63a652c3a798527fead9e084a36b416f" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>typeDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a1411a32277a8b7e1852ab6966b8ca54c" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>typeMother</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a3ffd978e6151af60cc50b666f97b2b85" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>volatilityDaughter</name></member>
+      <member refid="class_quant_lib_1_1_analytic_compound_option_engine_1a8568629f83b64e174985764e0fbdc6df" prot="private" virt="non-virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>volatilityMother</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::AnalyticCompoundOptionEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

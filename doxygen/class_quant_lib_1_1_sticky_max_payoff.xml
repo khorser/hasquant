@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_sticky_max_payoff" kind="class" prot="public">
+    <compoundname>QuantLib::StickyMaxPayoff</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_double_sticky_ratchet_payoff" prot="public" virt="non-virtual">DoubleStickyRatchetPayoff</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Payoff interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <reimplements refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="146" bodyend="146"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_sticky_max_payoff_1a0aa87631a2fb41687528d78674ce5aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>StickyMaxPayoff</definition>
+        <argsstring>(Real gearing1, Real gearing2, Real gearing3, Real spread1, Real spread2, Real spread3, Real initialValue1, Real initialValue2, Real accrualFactor)</argsstring>
+        <name>StickyMaxPayoff</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gearing1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gearing2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gearing3</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spread1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spread2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spread3</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>initialValue1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>initialValue2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accrualFactor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="143" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="135" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>StickyMax payoff (double option) </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13362">
+        <label>StickyMaxPayoff</label>
+        <link refid="class_quant_lib_1_1_sticky_max_payoff"/>
+        <childnode refid="13363" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13364">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+      <node id="13363">
+        <label>DoubleStickyRatchetPayoff</label>
+        <link refid="class_quant_lib_1_1_double_sticky_ratchet_payoff"/>
+        <childnode refid="13364" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13365">
+        <label>StickyMaxPayoff</label>
+        <link refid="class_quant_lib_1_1_sticky_max_payoff"/>
+        <childnode refid="13366" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13367">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+      <node id="13366">
+        <label>DoubleStickyRatchetPayoff</label>
+        <link refid="class_quant_lib_1_1_double_sticky_ratchet_payoff"/>
+        <childnode refid="13367" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/stickyratchet.hpp" bodystart="133" bodyend="148"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1ac10c63edf709c1a57e00fe717247f4c7" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>accrualFactor_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>description</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a18f246c0b1236a4b7c2ded97b8fa33ed" prot="public" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>DoubleStickyRatchetPayoff</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1ac418b2b5f0c54eede482b9d76d425b7a" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>gearing1_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a44b648247a153b4790881c9e4214e501" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>gearing2_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a988e383316b1ad9bbf01779d6d5507a2" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>gearing3_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a8600ffeada927b9bf1c0b11724bbbafc" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>initialValue1_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a949c24a98ae16d82a431a86f1a55a1a3" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>initialValue2_</name></member>
+      <member refid="class_quant_lib_1_1_sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a2880a6dfa22d5df6db76c086ae7721bf" prot="public" virt="virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a263fdfa7500dd221e5326e864d9a0015" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>spread1_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1aaa59c1ff658161fa911e029c9f21fa5f" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>spread2_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a774312451eb16226751af22306790298" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>spread3_</name></member>
+      <member refid="class_quant_lib_1_1_sticky_max_payoff_1a0aa87631a2fb41687528d78674ce5aee" prot="public" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>StickyMaxPayoff</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1abc8f25f88df7422f6b0b76e2f1c4927c" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>type1_</name></member>
+      <member refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a557463199e12b6b100feb90a5b62ac99" prot="protected" virt="non-virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>type2_</name></member>
+      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::StickyMaxPayoff</scope><name>~Payoff</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

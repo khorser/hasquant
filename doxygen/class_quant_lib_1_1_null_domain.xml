@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_null_domain" kind="class" prot="public">
+    <compoundname>QuantLib::NullDomain</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_domain" prot="public" virt="non-virtual">Domain</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_null_domain_1a4b59790868ade201c71f351044630dc0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool includes</definition>
+        <argsstring>(Real, Real) const </argsstring>
+        <name>includes</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="10312">
+        <label>Domain</label>
+        <link refid="class_quant_lib_1_1_domain"/>
+      </node>
+      <node id="10311">
+        <label>NullDomain</label>
+        <childnode refid="10312" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10314">
+        <label>Domain</label>
+        <link refid="class_quant_lib_1_1_domain"/>
+      </node>
+      <node id="10313">
+        <label>NullDomain</label>
+        <childnode refid="10314" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="46" bodyend="49"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_null_domain_1a4b59790868ade201c71f351044630dc0" prot="public" virt="non-virtual"><scope>QuantLib::NullDomain</scope><name>includes</name></member>
+      <member refid="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" virt="non-virtual"><scope>QuantLib::NullDomain</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" virt="virtual"><scope>QuantLib::NullDomain</scope><name>~Domain</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

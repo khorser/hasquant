@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1square" kind="class" prot="public">
+    <compoundname>QuantLib::square</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; T, T &gt;</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1square_1ad11d115f88f5f7bb049fb1da0904012d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T operator()</definition>
+        <argsstring>(const T &amp;t) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="53" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="51" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1square_1ad11d115f88f5f7bb049fb1da0904012d" prot="public" virt="non-virtual"><scope>QuantLib::square</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

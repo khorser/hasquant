@@ -1,0 +1,163 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_simple_quote" kind="class" prot="public">
+    <compoundname>QuantLib::SimpleQuote</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="non-virtual">Quote</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Quote interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>() const </argsstring>
+        <name>value</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <briefdescription>
+<para>returns the current value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool isValid</definition>
+        <argsstring>() const </argsstring>
+        <name>isValid</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <briefdescription>
+<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="61" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Modifiers</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real setValue</definition>
+        <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
+        <name>setValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>value</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+<para>returns the difference between the new value and the old value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="65" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_simple_quote_1a3750926f3db88561a589630027f75a97" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aa3842da21c4ba0b230d9481d63c3b06c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SimpleQuote</definition>
+        <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
+        <name>SimpleQuote</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>value</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="53" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>market element returning a stored value </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13128">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="13129" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13129">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13127">
+        <label>SimpleQuote</label>
+        <link refid="class_quant_lib_1_1_simple_quote"/>
+        <childnode refid="13128" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13131">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="13132" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13132">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13130">
+        <label>SimpleQuote</label>
+        <link refid="class_quant_lib_1_1_simple_quote"/>
+        <childnode refid="13131" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/simplequote.hpp" bodystart="33" bodyend="49"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::SimpleQuote</scope><name>isValid</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_simple_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>setValue</name></member>
+      <member refid="class_quant_lib_1_1_simple_quote_1aa3842da21c4ba0b230d9481d63c3b06c" prot="public" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>SimpleQuote</name></member>
+      <member refid="class_quant_lib_1_1_simple_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::SimpleQuote</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_simple_quote_1a3750926f3db88561a589630027f75a97" prot="private" virt="non-virtual"><scope>QuantLib::SimpleQuote</scope><name>value_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SimpleQuote</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::SimpleQuote</scope><name>~Quote</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

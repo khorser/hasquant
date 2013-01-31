@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_b_m_a_swap_rate_helper" kind="class" prot="public">
+    <compoundname>QuantLib::BMASwapRateHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_relative_date_bootstrap_helper" prot="public" virt="non-virtual">QuantLib::RelativeDateBootstrapHelper&lt; YieldTermStructure &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>RateHelper interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real impliedQuote</definition>
+        <argsstring>() const </argsstring>
+        <name>impliedQuote</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="295"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTermStructure</definition>
+        <argsstring>(YieldTermStructure *)</argsstring>
+        <name>setTermStructure</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="296"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="300"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period tenor_</definition>
+        <argsstring></argsstring>
+        <name>tenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="304" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="304" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a8cb58608de54286272715a08a7492a7e" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural settlementDays_</definition>
+        <argsstring></argsstring>
+        <name>settlementDays_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="305" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="305" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar calendar_</definition>
+        <argsstring></argsstring>
+        <name>calendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="306" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="306" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ab81df4b2e9b736497227866f1767c20c" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period bmaPeriod_</definition>
+        <argsstring></argsstring>
+        <name>bmaPeriod_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="307" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="307" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ac5fdbb08976be90cff4569affa14d4ab" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention bmaConvention_</definition>
+        <argsstring></argsstring>
+        <name>bmaConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="308" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="308" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a46e4ec206a727366e4fd9585e6429bae" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter bmaDayCount_</definition>
+        <argsstring></argsstring>
+        <name>bmaDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="309" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="309" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1afdd686b2c608360d080d9b18a2a9f4d6" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_m_a_index" kindref="compound">BMAIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;BMAIndex&gt; bmaIndex_</definition>
+        <argsstring></argsstring>
+        <name>bmaIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="310" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="310" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
+        <argsstring></argsstring>
+        <name>iborIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="311" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="311" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a618a68c69f9e0f0373ba9fe31c7d7925" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_m_a_swap" kindref="compound">BMASwap</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;BMASwap&gt; swap_</definition>
+        <argsstring></argsstring>
+        <name>swap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="313" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="313" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>RelinkableHandle&lt;YieldTermStructure&gt; termStructureHandle_</definition>
+        <argsstring></argsstring>
+        <name>termStructureHandle_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="314" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="314" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ab574ccbab5e1a5c5a44bf6666ce798fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BMASwapRateHelper</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;liborFraction, const Period &amp;tenor, Natural settlementDays, const Calendar &amp;calendar, const Period &amp;bmaPeriod, BusinessDayConvention bmaConvention, const DayCounter &amp;bmaDayCount, const boost::shared_ptr&lt; BMAIndex &gt; &amp;bmaIndex, const boost::shared_ptr&lt; IborIndex &gt; &amp;index)</argsstring>
+        <name>BMASwapRateHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>liborFraction</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>tenor</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>bmaPeriod</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bmaConvention</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>bmaDayCount</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <declname>bmaIndex</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="292"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a5b508edbd7d439284c55178fd681adb0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void initializeDates</definition>
+        <argsstring>()</argsstring>
+        <name>initializeDates</name>
+        <reimplements refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aac525f92a4e969388fe7563e8c2a2251">initializeDates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="303"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Rate helper for bootstrapping over BMA swap rates. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1325">
+        <label>BMASwapRateHelper</label>
+        <link refid="class_quant_lib_1_1_b_m_a_swap_rate_helper"/>
+        <childnode refid="1326" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1327">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="1328" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1329" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1326">
+        <label>RelativeDateRateHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="1327" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1329">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1328">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1330">
+        <label>BMASwapRateHelper</label>
+        <link refid="class_quant_lib_1_1_b_m_a_swap_rate_helper"/>
+        <childnode refid="1331" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1337" relation="usage">
+          <edgelabel>bmaDayCount_</edgelabel>
+        </childnode>
+        <childnode refid="1338" relation="usage">
+          <edgelabel>termStructureHandle_</edgelabel>
+        </childnode>
+        <childnode refid="1340" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+        <childnode refid="1341" relation="usage">
+          <edgelabel>tenor_</edgelabel>
+          <edgelabel>bmaPeriod_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1332">
+        <label>BootstrapHelper&lt; TS &gt;</label>
+        <link refid="class_quant_lib_1_1_bootstrap_helper"/>
+        <childnode refid="1333" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1334" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1335" relation="usage">
+          <edgelabel>latestDate_</edgelabel>
+          <edgelabel>earliestDate_</edgelabel>
+        </childnode>
+        <childnode refid="1336" relation="usage">
+          <edgelabel>quote_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1331">
+        <label>RelativeDateRateHelper</label>
+        <link refid="class_quant_lib_1_1_relative_date_bootstrap_helper"/>
+        <childnode refid="1332" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1335" relation="usage">
+          <edgelabel>evaluationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1334">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1341">
+        <label>Period</label>
+        <link refid="class_quant_lib_1_1_period"/>
+      </node>
+      <node id="1340">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="1339">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="1336">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="1333">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="1335">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="1337">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="1338">
+        <label>RelinkableHandle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_relinkable_handle"/>
+        <childnode refid="1339" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" line="280" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/ratehelpers.hpp" bodystart="280" bodyend="315"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ac5fdbb08976be90cff4569affa14d4ab" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>bmaConvention_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a46e4ec206a727366e4fd9585e6429bae" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>bmaDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1afdd686b2c608360d080d9b18a2a9f4d6" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>bmaIndex_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ab81df4b2e9b736497227866f1767c20c" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>bmaPeriod_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1ab574ccbab5e1a5c5a44bf6666ce798fa" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>BMASwapRateHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a1299b8acb0c37531455f26756650dcdd" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7e2d8f3f54ffbebf7627f11beb8b0dd2" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>calendar_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a4f214cc42c56e72b46e5eb1169d09c85" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>earliestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a32b2e7b78fba89f3b87e6c61b4e783a8" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>earliestDate_</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1aab7be0a2ef3486101fe70ac7ba229d17" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a211475384befbdc6d1d92bfe69635cd0" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>iborIndex_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>impliedQuote</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a5b508edbd7d439284c55178fd681adb0" prot="protected" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>initializeDates</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a222b6622639b9f88498559ff0cbc1cf5" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>latestDate</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a7b3b450e2412f03562f6e3f43020b876" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>latestDate_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BMASwapRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::BMASwapRateHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac5a35226b59767c5acae1382d10f72de" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>quote</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a5d87a388f17e28809793d3f796120ffe" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>quote_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1acc00c84d3345895f7c21eb647d1a165d" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>quoteError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a1fa46ec9a0cdf7a8bed120d969664a1b" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1a9c40799ff28c28591de0a7e6db4387da" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>RelativeDateBootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce" prot="public" virt="virtual" ambiguityscope="QuantLib::RelativeDateBootstrapHelper::"><scope>QuantLib::BMASwapRateHelper</scope><name>setTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a8cb58608de54286272715a08a7492a7e" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>settlementDays_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a618a68c69f9e0f0373ba9fe31c7d7925" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>swap_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a6f1e4aec3cba6f7cea92368273728ec8" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>tenor_</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1ab8dd7251ae853867524318d16decff5d" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_b_m_a_swap_rate_helper_1a2e8f394e2be5705b297a1316eea82056" prot="protected" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>termStructureHandle_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_relative_date_bootstrap_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_bootstrap_helper_1a3f2d9da8dfb625c0534c6c6e9480db6f" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>~BootstrapHelper</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BMASwapRateHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

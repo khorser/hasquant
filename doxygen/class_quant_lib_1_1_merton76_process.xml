@@ -1,0 +1,413 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_merton76_process" kind="class" prot="public">
+    <compoundname>QuantLib::Merton76Process</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>StochasticProcess1D interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real x0</definition>
+        <argsstring>() const </argsstring>
+        <name>x0</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
+        <briefdescription>
+<para>returns the initial value of the state variable </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a1ff4edad5a08359f18edf7f72a492317" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real drift</definition>
+        <argsstring>(Time, Real) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="51" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real diffusion</definition>
+        <argsstring>(Time, Real) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="53" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a556c2d99ae77d13156c6371c4faaf960" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real apply</definition>
+        <argsstring>(Real, Real) const </argsstring>
+        <name>apply</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a905bb2d5a924e5274035b0850c3e04fb">apply</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>dx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>applies a change to the asset value. By default, it returns <formula id="366">$ x + \Delta x $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="55" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a3fdbbd388a2432e1d8d9e94136acfdb8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;Quote&gt;&amp; stateVariable</definition>
+        <argsstring>() const </argsstring>
+        <name>stateVariable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
+        <argsstring>() const </argsstring>
+        <name>dividendYield</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
+        <argsstring>() const </argsstring>
+        <name>riskFreeRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a966c6dd76f94ceda5c3a344a8f3e3a8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;BlackVolTermStructure&gt;&amp; blackVolatility</definition>
+        <argsstring>() const </argsstring>
+        <name>blackVolatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a6f3890daa1679223c074f4b7adb0a598" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;Quote&gt;&amp; jumpIntensity</definition>
+        <argsstring>() const </argsstring>
+        <name>jumpIntensity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a56392a3f0897039bbaefecba5b4a641f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;Quote&gt;&amp; logMeanJump</definition>
+        <argsstring>() const </argsstring>
+        <name>logMeanJump</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a98eebd6ea2b4b5024c513787041cc016" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;Quote&gt;&amp; logJumpVolatility</definition>
+        <argsstring>() const </argsstring>
+        <name>logJumpVolatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a04115ce75740ada042f5cf59cd1ffb6e" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; blackProcess_</definition>
+        <argsstring></argsstring>
+        <name>blackProcess_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1ab25f150bbbe0ceb6ff5c9cb62b386af2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; jumpIntensity_</definition>
+        <argsstring></argsstring>
+        <name>jumpIntensity_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a4d4fa4d20ca79286b1b8e7ef95192c2f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; logMeanJump_</definition>
+        <argsstring></argsstring>
+        <name>logMeanJump_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_merton76_process_1a38d3e4aed5d81c4f561347f735e14300" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; logJumpVolatility_</definition>
+        <argsstring></argsstring>
+        <name>logJumpVolatility_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1a49ad1979d928f27eeae2b4a1251fc3a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Merton76Process</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;stateVariable, const Handle&lt; YieldTermStructure &gt; &amp;dividendTS, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeTS, const Handle&lt; BlackVolTermStructure &gt; &amp;blackVolTS, const Handle&lt; Quote &gt; &amp;jumpInt, const Handle&lt; Quote &gt; &amp;logJMean, const Handle&lt; Quote &gt; &amp;logJVol, const boost::shared_ptr&lt; discretization &gt; &amp;d=boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization))</argsstring>
+        <name>Merton76Process</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>stateVariable</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>dividendTS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>riskFreeTS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <declname>blackVolTS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>jumpInt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>logJMean</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>logJVol</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+          <declname>d</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_merton76_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time time</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>time</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef">time</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="59"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Merton-76 jump-diffusion process. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9847">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9845">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="9846" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9847" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9846">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9844">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="9845" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9843">
+        <label>Merton76Process</label>
+        <link refid="class_quant_lib_1_1_merton76_process"/>
+        <childnode refid="9844" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9852">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9850">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="9851" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9852" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9851">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9849">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="9850" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9848">
+        <label>Merton76Process</label>
+        <link refid="class_quant_lib_1_1_merton76_process"/>
+        <childnode refid="9849" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/merton76process.hpp" bodystart="36" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_merton76_process_1a556c2d99ae77d13156c6371c4faaf960" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a04115ce75740ada042f5cf59cd1ffb6e" prot="private" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>blackProcess_</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a966c6dd76f94ceda5c3a344a8f3e3a8b" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>blackVolatility</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>dividendYield</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a1ff4edad5a08359f18edf7f72a492317" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a6f3890daa1679223c074f4b7adb0a598" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>jumpIntensity</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1ab25f150bbbe0ceb6ff5c9cb62b386af2" prot="private" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>jumpIntensity_</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a98eebd6ea2b4b5024c513787041cc016" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>logJumpVolatility</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a38d3e4aed5d81c4f561347f735e14300" prot="private" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>logJumpVolatility_</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a56392a3f0897039bbaefecba5b4a641f" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>logMeanJump</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a4d4fa4d20ca79286b1b8e7ef95192c2f" prot="private" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>logMeanJump_</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a49ad1979d928f27eeae2b4a1251fc3a6" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>Merton76Process</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Merton76Process</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::Merton76Process</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>riskFreeRate</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a3fdbbd388a2432e1d8d9e94136acfdb8" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>stateVariable</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ad98007dd5c830d050dfb0d4205094b9e" prot="protected" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a704996c48f48a23c4db6a6549a094807" prot="protected" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1af8a1d4ca4369b3009d08291f1c2d7744" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Merton76Process</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_merton76_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>x0</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::Merton76Process</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

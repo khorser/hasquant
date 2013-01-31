@@ -1,0 +1,264 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cubic_b_splines_fitting" kind="class" prot="public">
+    <compoundname>QuantLib::CubicBSplinesFitting</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" prot="public" virt="non-virtual">FittedBondDiscountCurve::FittingMethod</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a5533497959e9af060b1c95e34e394fc6" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_b_spline" kindref="compound">BSpline</ref></type>
+        <definition>BSpline splines_</definition>
+        <argsstring></argsstring>
+        <name>splines_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size_</definition>
+        <argsstring></argsstring>
+        <name>size_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a357822f17eb0bd8c48f3e02fa0246093" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural N_</definition>
+        <argsstring></argsstring>
+        <name>N_</name>
+        <briefdescription>
+<para>N_th basis function coefficient to solve for when d(0)=1. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a980eea5e9fe83b0f615979eb72e3d723" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CubicBSplinesFitting</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;knotVector, bool constrainAtZero=true)</argsstring>
+        <name>CubicBSplinesFitting</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>knotVector</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>constrainAtZero</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7cf67a421608459910a700bac59ae3ba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real basisFunction</definition>
+        <argsstring>(Integer i, Time t) const </argsstring>
+        <name>basisFunction</name>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>cubic B-spline basis functions </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
+        <definition>std::auto_ptr&lt;FittedBondDiscountCurve::FittingMethod&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
+        <briefdescription>
+<para>clone of the current object </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="126"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <briefdescription>
+<para>total number of coefficients to fit/solve for </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cubic_b_splines_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discountFunction</definition>
+        <argsstring>(const Array &amp;x, Time t) const </argsstring>
+        <name>discountFunction</name>
+        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1ad0fd1b5e219977a0da00786e9077ca0a">discountFunction</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+<para>derived classes must set this </para>        </briefdescription>
+        <detaileddescription>
+<para>user-defined discount curve, as a function of time and an array of unknown fitting coefficients <formula id="35">$ x_i $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>CubicSpline B-splines fitting method. </para>    </briefdescription>
+    <detaileddescription>
+<para>Fits a discount function to a set of cubic B-splines <formula id="402">$ N_{i,3}(t) $</formula>, i.e., <formula id="403">\[ d(t) = \sum_{i=0}^{n} c_i * N_{i,3}(t) \]</formula> <verbatim>  See: McCulloch, J. 1971, &quot;Measuring the Term Structure of
+  Interest Rates.&quot; Journal of Business, 44: 19-31
+
+  McCulloch, J. 1975, &quot;The tax adjusted yield curve.&quot;
+  Journal of Finance, XXX811-30
+</verbatim></para><para><xrefsect id="caveats_1_caveats000140"><xreftitle>Warning</xreftitle><xrefdescription><para>"The results are extremely sensitive to the number and location of the knot points, and there is no optimal way of selecting them.&quot; James, J. and
+                 N. Webber, &quot;Interest Rate Modelling" John Wiley, 2000, pp. 440. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3056">
+        <label>CubicBSplinesFitting</label>
+        <link refid="class_quant_lib_1_1_cubic_b_splines_fitting"/>
+        <childnode refid="3057" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3057">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3067">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="3064" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3064">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="3068">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="3066">
+        <label>Calendar</label>
+        <link refid="class_quant_lib_1_1_calendar"/>
+      </node>
+      <node id="3062">
+        <label>TermStructure</label>
+        <link refid="class_quant_lib_1_1_term_structure"/>
+        <childnode refid="3063" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3064" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3065" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3066" relation="usage">
+          <edgelabel>calendar_</edgelabel>
+        </childnode>
+      </node>
+      <node id="3058">
+        <label>CubicBSplinesFitting</label>
+        <link refid="class_quant_lib_1_1_cubic_b_splines_fitting"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3060">
+        <label>FittedBondDiscountCurve</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve"/>
+        <childnode refid="3061" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3067" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3065">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="3063">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="3061">
+        <label>YieldTermStructure</label>
+        <link refid="class_quant_lib_1_1_yield_term_structure"/>
+        <childnode refid="3062" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3059">
+        <label>FittingMethod</label>
+        <link refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method"/>
+        <childnode refid="3060" relation="usage">
+          <edgelabel>curve_</edgelabel>
+        </childnode>
+        <childnode refid="3068" relation="usage">
+          <edgelabel>solution_</edgelabel>
+          <edgelabel>guessSolution_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/nonlinearfittingmethods.hpp" bodystart="119" bodyend="134"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a7cf67a421608459910a700bac59ae3ba" prot="public" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>basisFunction</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" virt="virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa1fc1e61ea2ebf0998ac056c0f9fe236" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>constrainAtZero_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1accb31bbfa6ee2bfd5725524a5074d5b1" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>costFunction_</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a980eea5e9fe83b0f615979eb72e3d723" prot="public" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>CubicBSplinesFitting</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a0065b55394f4efe0207a7da835aea5fe" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>curve_</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a7c7939af52dfcc616e44c3642c06ef49" prot="private" virt="virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>discountFunction</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a4332212ca948f9f0fd5dd8392e084977" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>FittingMethod</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a36b574df786ec85edcb9ae49b1c8f85d" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>guessSolution_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a02fd73d861ef2e4aabb38c0c9ff82947" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>init</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a18ca97750fc43204cacfab5c3b0f8a9e" prot="public" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>minimumCostValue</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a357822f17eb0bd8c48f3e02fa0246093" prot="private" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>N_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a5c1949bd3782a0492d484ce714eeee0f" prot="public" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>numberOfIterations</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="private" virt="virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a6d8cb9a904d7c3d52208120af8369e07" prot="public" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>solution</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aa0b993e23f5b95d9594323745aadd2be" prot="protected" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>solution_</name></member>
+      <member refid="class_quant_lib_1_1_cubic_b_splines_fitting_1a5533497959e9af060b1c95e34e394fc6" prot="private" virt="non-virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>splines_</name></member>
+      <member refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" virt="virtual"><scope>QuantLib::CubicBSplinesFitting</scope><name>~FittingMethod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

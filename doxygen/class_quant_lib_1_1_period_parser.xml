@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_period_parser" kind="class" prot="public">
+    <compoundname>QuantLib::PeriodParser</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>static Period parse</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>parse</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_period_parser_1a2325c91cbe4445b3da242c1de8ac9ad0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>static Period parseOnePeriod</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>parseOnePeriod</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="41" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" virt="non-virtual"><scope>QuantLib::PeriodParser</scope><name>parse</name></member>
+      <member refid="class_quant_lib_1_1_period_parser_1a2325c91cbe4445b3da242c1de8ac9ad0" prot="private" virt="non-virtual"><scope>QuantLib::PeriodParser</scope><name>parseOnePeriod</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_recursive_cdo_engine" kind="class" prot="public">
+    <compoundname>QuantLib::RecursiveCdoEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CDOEngine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>CDOEngine</declname>
+        <defname>CDOEngine</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>copulaT</declname>
+        <defname>copulaT</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1ae21eaab5535677e38677e7cad5fd4cfd" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>const Handle&lt;Quote&gt; correlQuote_</definition>
+        <argsstring></argsstring>
+        <name>correlQuote_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a2d05d24d5c72596ce42d8f21ac7f62f4" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; copulaT &gt;</type>
+        <definition>RelinkableHandle&lt;copulaT&gt; copula_</definition>
+        <argsstring></argsstring>
+        <name>copula_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size nBuckets_</definition>
+        <argsstring></argsstring>
+        <name>nBuckets_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a7d34f0604e09880515f7104cba7bfc7b" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_gauss_hermite_integration" kindref="compound">GaussHermiteIntegration</ref></type>
+        <definition>const GaussHermiteIntegration integral_</definition>
+        <argsstring></argsstring>
+        <name>integral_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a0eb730b3274e3a353d94cdcb4bc8c57c" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; wk_</definition>
+        <argsstring></argsstring>
+        <name>wk_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a8fefe1627bd6032c64d4d69c0c68278f" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real loss_unit_</definition>
+        <argsstring></argsstring>
+        <name>loss_unit_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_recursive_cdo_engine_1a4334d72caf7e92f73161ebcb19410f73" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; oneFactorCorrels_</definition>
+        <argsstring></argsstring>
+        <name>oneFactorCorrels_</name>
+        <briefdescription>
+<para>name to name factor loadings (betas). In the single factor copula: </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a784a4cae083c5b2fe8f118af0cefbb21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RecursiveCdoEngine</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;correl, Size nbuckets=1, Size quadOrder=20)</argsstring>
+        <name>RecursiveCdoEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>correl</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>nbuckets</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>quadOrder</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+<para>Single correlation construction. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="51" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ab3a6fadcd72020218969124dadf94b05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>RecursiveCdoEngine</definition>
+        <argsstring>(const Handle&lt; Quote &gt; &amp;correl, const Matrix &amp;correlMtrx, Size nbuckets=1, Size quadOrder=20)</argsstring>
+        <name>RecursiveCdoEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>correl</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>correlMtrx</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>nbuckets</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>quadOrder</declname>
+          <defval>20</defval>
+        </param>
+        <briefdescription>
+<para>Correlation name to name single factor construction. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="61" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="130" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a1de75d730452a11df096c7a0bad398fa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real expectedTrancheLoss</definition>
+        <argsstring>(const Date &amp;date) const </argsstring>
+        <name>expectedTrancheLoss</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="103" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a3660e034e2d6c3a470310130926c8a73" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initialize</definition>
+        <argsstring>() const </argsstring>
+        <name>initialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="137" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1a5551d80e6a3b5ec9e39037a9b55baad5" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integratorLoss</definition>
+        <argsstring>(const Date &amp;date, Real mktFactor) const </argsstring>
+        <name>integratorLoss</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>mktFactor</declname>
+        </param>
+        <briefdescription>
+<para>Weights the conditional portfolio loss by the mkt factor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="78" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_recursive_cdo_engine_1ac917b9b604a9ff450984e142deabb6d2" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real expectedConditionalLoss</definition>
+        <argsstring>(const Date &amp;date, Real mktFactor) const </argsstring>
+        <name>expectedConditionalLoss</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>mktFactor</declname>
+        </param>
+        <briefdescription>
+<para>Portfolio loss conditional to the market factor value. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="203" bodyend="287"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Recursive STCDO pricing for a heterogeneous pool of names. The pool names are heterogeneous in their default probabilities, notionals and recovery rates. Correlations are pairwise. The recursive pricing algorithm used here is described in Andersen, Sidenius and Basu; &quot;All your hedges in one basket&quot;, Risk, November 2003, pages 67-72</para><para>Notice that using copulas other than Gaussian it is only an approximation (see remark on p.68). </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="12738">
+        <label>Handle&lt; copulaT &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12739">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="12737">
+        <label>RelinkableHandle&lt; copulaT &gt;</label>
+        <link refid="class_quant_lib_1_1_relinkable_handle"/>
+        <childnode refid="12738" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12736">
+        <label>RecursiveCdoEngine&lt; CDOEngine, copulaT &gt;</label>
+        <link refid="class_quant_lib_1_1_recursive_cdo_engine"/>
+        <childnode refid="12737" relation="usage">
+          <edgelabel>copula_</edgelabel>
+        </childnode>
+        <childnode refid="12739" relation="usage">
+          <edgelabel>correlQuote_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="45" bodyend="126"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a2d05d24d5c72596ce42d8f21ac7f62f4" prot="protected" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>copula_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ae21eaab5535677e38677e7cad5fd4cfd" prot="protected" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>correlQuote_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ac917b9b604a9ff450984e142deabb6d2" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>expectedConditionalLoss</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a1de75d730452a11df096c7a0bad398fa" prot="public" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>expectedTrancheLoss</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a3660e034e2d6c3a470310130926c8a73" prot="protected" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a7d34f0604e09880515f7104cba7bfc7b" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>integral_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a5551d80e6a3b5ec9e39037a9b55baad5" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>integratorLoss</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a8fefe1627bd6032c64d4d69c0c68278f" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>loss_unit_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>nBuckets_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a4334d72caf7e92f73161ebcb19410f73" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>oneFactorCorrels_</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a784a4cae083c5b2fe8f118af0cefbb21" prot="public" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>RecursiveCdoEngine</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ab3a6fadcd72020218969124dadf94b05" prot="public" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>RecursiveCdoEngine</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a0eb730b3274e3a353d94cdcb4bc8c57c" prot="private" virt="non-virtual"><scope>QuantLib::RecursiveCdoEngine</scope><name>wk_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_issuer" kind="class" prot="public">
+    <compoundname>QuantLib::Issuer</compoundname>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+        <definition>const Handle&lt;DefaultProbabilityTermStructure&gt;&amp; defaultProbability</definition>
+        <argsstring>(const DefaultProbKey &amp;key) const </argsstring>
+        <name>defaultProbability</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="70"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Utilities</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1aa5fcaca208d3a18ee259122144495a06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_event" kindref="compound">DefaultEvent</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;DefaultEvent&gt; defaultedBetween</definition>
+        <argsstring>(const Date &amp;start, const Date &amp;end, const DefaultProbKey &amp;key, bool includeRefDate=false) const </argsstring>
+        <name>defaultedBetween</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeRefDate</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>If a default event with the required seniority and. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="84"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_issuer_1a3f1c8e1e41fdad27a733ed7a14560904" prot="public" static="no">
+        <type>std::pair&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>, <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt;</type>
+        <definition>typedef std::pair&lt;DefaultProbKey, Handle&lt;DefaultProbabilityTermStructure&gt; &gt; key_curve_pair</definition>
+        <argsstring></argsstring>
+        <name>key_curve_pair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_issuer_1a781aec0eade147fc39f96622465341c2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>, <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::pair&lt;DefaultProbKey, Handle&lt;DefaultProbabilityTermStructure&gt; &gt; &gt; probabilities_</definition>
+        <argsstring></argsstring>
+        <name>probabilities_</name>
+        <briefdescription>
+<para>probabilities of events for each bond collection </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_issuer_1a4f4ea0fafcd158ca0c220d2e4514c88c" prot="private" static="no" mutable="no">
+        <type>DefaultEventSet</type>
+        <definition>DefaultEventSet events_</definition>
+        <argsstring></argsstring>
+        <name>events_</name>
+        <briefdescription>
+<para>History of past events affecting this issuer. Notice it is possible. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Issuer</definition>
+        <argsstring>(const std::vector&lt; key_curve_pair &gt; &amp;probabilities=std::vector&lt; key_curve_pair &gt;(), const DefaultEventSet &amp;events=DefaultEventSet())</argsstring>
+        <name>Issuer</name>
+        <param>
+          <type>const std::vector&lt; key_curve_pair &gt; &amp;</type>
+          <declname>probabilities</declname>
+          <defval>std::vector&lt; key_curve_pair &gt;()</defval>
+        </param>
+        <param>
+          <type>const DefaultEventSet &amp;</type>
+          <declname>events</declname>
+          <defval>DefaultEventSet()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>The first argument represents the probability of an issuer of having any of its bonds with the given seniority, currency incurring in that particular event. The second argument represents the history of past events. Theres no check on wether the event list makes sense, events can occur several times and several of them can take place on the same date.</para><para>To do: add settlement event access </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Issuer</definition>
+        <argsstring>(const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; DefaultType &gt; &gt; &gt; &amp;eventTypes, const std::vector&lt; Currency &gt; &amp;currencies, const std::vector&lt; Seniority &gt; &amp;seniorities, const std::vector&lt; Handle&lt; DefaultProbabilityTermStructure &gt; &gt; &amp;curves, const DefaultEventSet &amp;events=DefaultEventSet())</argsstring>
+        <name>Issuer</name>
+        <param>
+          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &gt; &gt; &amp;</type>
+          <declname>eventTypes</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &gt; &amp;</type>
+          <declname>currencies</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref> &gt; &amp;</type>
+          <declname>seniorities</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &amp;</type>
+          <declname>curves</declname>
+        </param>
+        <param>
+          <type>const DefaultEventSet &amp;</type>
+          <declname>events</declname>
+          <defval>DefaultEventSet()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_event" kindref="compound">DefaultEvent</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;DefaultEvent&gt; &gt; defaultsBetween</definition>
+        <argsstring>(const Date &amp;start, const Date &amp;end, const DefaultProbKey &amp;contractKey, bool includeRefDate) const </argsstring>
+        <name>defaultsBetween</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <declname>contractKey</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeRefDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="92"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="40" bodyend="102"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_issuer_1aa5fcaca208d3a18ee259122144495a06" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultedBetween</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultProbability</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultsBetween</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a4f4ea0fafcd158ca0c220d2e4514c88c" prot="private" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>events_</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>Issuer</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>Issuer</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a3f1c8e1e41fdad27a733ed7a14560904" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>key_curve_pair</name></member>
+      <member refid="class_quant_lib_1_1_issuer_1a781aec0eade147fc39f96622465341c2" prot="private" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>probabilities_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

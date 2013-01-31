@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_historical_rates_analysis" kind="class" prot="public">
+    <compoundname>QuantLib::HistoricalRatesAnalysis</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_historical_rates_analysis_1a1d42000bb140219a9fcbb7b3cc5cacbe" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;SequenceStatistics&gt; stats_</definition>
+        <argsstring></argsstring>
+        <name>stats_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_historical_rates_analysis_1aa88299924157a2ff41d5ad78318b0054" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; skippedDates_</definition>
+        <argsstring></argsstring>
+        <name>skippedDates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_historical_rates_analysis_1af5d524c8f8687fd7dbb1bbb9a1290344" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>std::vector&lt;std::string&gt; skippedDatesErrorMessage_</definition>
+        <argsstring></argsstring>
+        <name>skippedDatesErrorMessage_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_historical_rates_analysis_1ac5e6f58be53bfb468327d133d809e146" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HistoricalRatesAnalysis</definition>
+        <argsstring>(const boost::shared_ptr&lt; SequenceStatistics &gt; &amp;stats, const Date &amp;startDate, const Date &amp;endDate, const Period &amp;step, const std::vector&lt; boost::shared_ptr&lt; InterestRateIndex &gt; &gt; &amp;indexes)</argsstring>
+        <name>HistoricalRatesAnalysis</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt; &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>startDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>endDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>step</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &gt; &amp;</type>
+          <declname>indexes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_historical_rates_analysis_1ac7b7b4a056f59698e84a724c5c372652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Date &gt; &amp; skippedDates</definition>
+        <argsstring>() const </argsstring>
+        <name>skippedDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_historical_rates_analysis_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; std::string &gt; &amp;</type>
+        <definition>const std::vector&lt; std::string &gt; &amp; skippedDatesErrorMessage</definition>
+        <argsstring>() const </argsstring>
+        <name>skippedDatesErrorMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_historical_rates_analysis_1a8390771933723c415674a10f1b91648e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a3e0db17aa18a4d3e837a3a93e8bb6ad5" kindref="member">SequenceStatistics</ref> &gt; &amp;</type>
+        <definition>const boost::shared_ptr&lt; SequenceStatistics &gt; &amp; stats</definition>
+        <argsstring>() const </argsstring>
+        <name>stats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Historical rate analysis class </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalratesanalysis.hpp" bodystart="45" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1ac5e6f58be53bfb468327d133d809e146" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>HistoricalRatesAnalysis</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1ac7b7b4a056f59698e84a724c5c372652" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>skippedDates</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1aa88299924157a2ff41d5ad78318b0054" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>skippedDates_</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>skippedDatesErrorMessage</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1af5d524c8f8687fd7dbb1bbb9a1290344" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>skippedDatesErrorMessage_</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1a8390771933723c415674a10f1b91648e" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>stats</name></member>
+      <member refid="class_quant_lib_1_1_historical_rates_analysis_1a1d42000bb140219a9fcbb7b3cc5cacbe" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalRatesAnalysis</scope><name>stats_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

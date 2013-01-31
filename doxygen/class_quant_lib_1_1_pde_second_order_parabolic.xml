@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_pde_second_order_parabolic" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::PdeSecondOrderParabolic</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_pde_b_s_m" prot="public" virt="non-virtual">PdeBSM</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_pde_constant_coeff" prot="public" virt="non-virtual">PdeConstantCoeff&lt; PdeClass &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_pde_short_rate" prot="public" virt="non-virtual">PdeShortRate</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~PdeSecondOrderParabolic</definition>
+        <argsstring>()</argsstring>
+        <name>~PdeSecondOrderParabolic</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_second_order_parabolic_1afaf479da3baa52185b369071b1689d89" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real diffusion</definition>
+        <argsstring>(Time t, Real x) const =0</argsstring>
+        <name>diffusion</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_second_order_parabolic_1a6bded8896a46fad4d189950552432cd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real drift</definition>
+        <argsstring>(Time t, Real x) const =0</argsstring>
+        <name>drift</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_second_order_parabolic_1a168ed175a79c15ab470648076394d63a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real discount</definition>
+        <argsstring>(Time t, Real x) const =0</argsstring>
+        <name>discount</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_pde_second_order_parabolic_1a90779cff69e3e385225278103b4fae97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void generateOperator</definition>
+        <argsstring>(Time t, const TransformedGrid &amp;tg, TridiagonalOperator &amp;L) const </argsstring>
+        <name>generateOperator</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_transformed_grid" kindref="compound">TransformedGrid</ref> &amp;</type>
+          <declname>tg</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <declname>L</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="38" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="32" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1afaf479da3baa52185b369071b1689d89" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a168ed175a79c15ab470648076394d63a" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>discount</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a6bded8896a46fad4d189950552432cd3" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a90779cff69e3e385225278103b4fae97" prot="public" virt="virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>generateOperator</name></member>
+      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" virt="virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>~PdeSecondOrderParabolic</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

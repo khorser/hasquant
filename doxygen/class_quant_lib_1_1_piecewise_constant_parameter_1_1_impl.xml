@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::PiecewiseConstantParameter::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_parameter_1_1_impl" prot="public" virt="non-virtual">Parameter::Impl</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; times_</definition>
+        <argsstring></argsstring>
+        <name>times_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb8dd2dfe083ed6b90690ba56c159623" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Impl</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;times)</argsstring>
+        <name>Impl</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="127" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb22a269fdbaae141c8105cad4236c15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>(const Array &amp;params, Time t) const </argsstring>
+        <name>value</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="130" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12154">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+      <node id="12153">
+        <label>PiecewiseConstantParameter::Impl</label>
+        <childnode refid="12154" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12156">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
+      </node>
+      <node id="12155">
+        <label>PiecewiseConstantParameter::Impl</label>
+        <childnode refid="12156" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="125" bodyend="140"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb8dd2dfe083ed6b90690ba56c159623" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>Impl</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>times_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb22a269fdbaae141c8105cad4236c15" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

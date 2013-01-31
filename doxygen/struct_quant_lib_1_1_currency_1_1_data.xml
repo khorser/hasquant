@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_currency_1_1_data" kind="struct" prot="public">
+    <compoundname>QuantLib::Currency::Data</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string code</definition>
+        <argsstring></argsstring>
+        <name>code</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a65e8398eacd4ac202862763b4874c3b7" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer numeric</definition>
+        <argsstring></argsstring>
+        <name>numeric</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a53d0a1e0ab09c43aece255c56ecd509d" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string symbol</definition>
+        <argsstring></argsstring>
+        <name>symbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a33079406f7244af1f272d8378f1e8f0b" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string fractionSymbol</definition>
+        <argsstring></argsstring>
+        <name>fractionSymbol</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a09a1ae4e1cdce4027d2694a726dd116b" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer fractionsPerUnit</definition>
+        <argsstring></argsstring>
+        <name>fractionsPerUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_rounding" kindref="compound">Rounding</ref></type>
+        <definition>Rounding rounding</definition>
+        <argsstring></argsstring>
+        <name>rounding</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1afa009cdefa581b4eb76555c7b28d20ef" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency triangulated</definition>
+        <argsstring></argsstring>
+        <name>triangulated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_currency_1_1_data_1a6620293bd13d77e2a561fb979e864089" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string formatString</definition>
+        <argsstring></argsstring>
+        <name>formatString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1_currency_1_1_data_1a2b0fd6aa19741b3f220155e1b692092f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const std::string &amp;name, const std::string &amp;code, Integer numericCode, const std::string &amp;symbol, const std::string &amp;fractionSymbol, Integer fractionsPerUnit, const Rounding &amp;rounding, const std::string &amp;formatString, const Currency &amp;triangulationCurrency=Currency())</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>numericCode</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>symbol</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fractionSymbol</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+          <declname>fractionsPerUnit</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_rounding" kindref="compound">Rounding</ref> &amp;</type>
+          <declname>rounding</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>formatString</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <declname>triangulationCurrency</declname>
+          <defval><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="95"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3182">
+        <label>Currency::Data</label>
+        <childnode refid="3183" relation="usage">
+          <edgelabel>triangulated</edgelabel>
+        </childnode>
+        <childnode refid="3184" relation="usage">
+          <edgelabel>rounding</edgelabel>
+        </childnode>
+      </node>
+      <node id="3183">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="3184">
+        <label>Rounding</label>
+        <link refid="class_quant_lib_1_1_rounding"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="78" bodyend="96"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>code</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a2b0fd6aa19741b3f220155e1b692092f" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>Data</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a6620293bd13d77e2a561fb979e864089" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>formatString</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a09a1ae4e1cdce4027d2694a726dd116b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>fractionsPerUnit</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a33079406f7244af1f272d8378f1e8f0b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>fractionSymbol</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>name</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a65e8398eacd4ac202862763b4874c3b7" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>numeric</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>rounding</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a53d0a1e0ab09c43aece255c56ecd509d" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>symbol</name></member>
+      <member refid="struct_quant_lib_1_1_currency_1_1_data_1afa009cdefa581b4eb76555c7b28d20ef" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>triangulated</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

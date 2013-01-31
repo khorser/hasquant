@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_abcd_vol" kind="class" prot="public">
+    <compoundname>QuantLib::AbcdVol</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_market_model" prot="public" virt="non-virtual">MarketModel</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>MarketModel interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1af28aec1bf0cbe34b36fd0ecc90fbb780" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Rate &gt; &amp; initialRates</definition>
+        <argsstring>() const </argsstring>
+        <name>initialRates</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1adc217a0c2cb706bc4f845d44424e1b06">initialRates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="69" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1a38bd6b5501b4957ac4effffc83be5ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Spread &gt; &amp; displacements</definition>
+        <argsstring>() const </argsstring>
+        <name>displacements</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1a77c3a5ee494fde88b9eca13f27fd28eb">displacements</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+        <definition>const EvolutionDescription &amp; evolution</definition>
+        <argsstring>() const </argsstring>
+        <name>evolution</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1a68dfe7446a0e67a069cc65607e33fba7">evolution</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="77" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfRates</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1ae0b5ee9b6e485b66f6cb44a08904136d">numberOfRates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="81" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfFactors</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfFactors</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1a23e12972a841e8410cafc8a15056196e">numberOfFactors</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="85" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfSteps</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfSteps</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1abe6f647dd9a9c3dc968ac76116801348">numberOfSteps</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="89" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <definition>const Matrix &amp; pseudoRoot</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>pseudoRoot</name>
+        <reimplements refid="class_quant_lib_1_1_market_model_1a6fba75f39ffbed5d1523150428b94d2b">pseudoRoot</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="93" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1ab08d17d726b407bc7365c916b7827528" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfFactors_</definition>
+        <argsstring></argsstring>
+        <name>numberOfFactors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates_</definition>
+        <argsstring></argsstring>
+        <name>numberOfRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1a7096f7840a57cff837d27141bc085e5c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfSteps_</definition>
+        <argsstring></argsstring>
+        <name>numberOfSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; initialRates_</definition>
+        <argsstring></argsstring>
+        <name>initialRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1a247c5d7048480396e3b561b6fb8193e9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt;</type>
+        <definition>std::vector&lt;Spread&gt; displacements_</definition>
+        <argsstring></argsstring>
+        <name>displacements_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref></type>
+        <definition>EvolutionDescription evolution_</definition>
+        <argsstring></argsstring>
+        <name>evolution_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_abcd_vol_1a4c0e90029768120dad570b182ae7e747" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>std::vector&lt;Matrix&gt; pseudoRoots_</definition>
+        <argsstring></argsstring>
+        <name>pseudoRoots_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_abcd_vol_1ab0103a5e0bc5a0d367a1b6f6bcca7c95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AbcdVol</definition>
+        <argsstring>(Real a, Real b, Real c, Real d, const std::vector&lt; Real &gt; &amp;ks, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const EvolutionDescription &amp;evolution, const Size numberOfFactors, const std::vector&lt; Rate &gt; &amp;initialRates, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
+        <name>AbcdVol</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>ks</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;</type>
+          <declname>corr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <declname>evolution</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numberOfFactors</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>initialRates</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
+          <declname>displacements</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abcd-interpolated volatility structure </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="29">
+        <label>AbcdVol</label>
+        <link refid="class_quant_lib_1_1_abcd_vol"/>
+        <childnode refid="30" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>MarketModel</label>
+        <link refid="class_quant_lib_1_1_market_model"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="31">
+        <label>AbcdVol</label>
+        <link refid="class_quant_lib_1_1_abcd_vol"/>
+        <childnode refid="32" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>MarketModel</label>
+        <link refid="class_quant_lib_1_1_market_model"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/abcdvol.hpp" bodystart="36" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_abcd_vol_1ab0103a5e0bc5a0d367a1b6f6bcca7c95" prot="public" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>AbcdVol</name></member>
+      <member refid="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>covariance</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a38bd6b5501b4957ac4effffc83be5ce5" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>displacements</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>displacements_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>evolution</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>evolution_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1af28aec1bf0cbe34b36fd0ecc90fbb780" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>initialRates</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>initialRates_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfFactors</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfFactors_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfRates</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfSteps</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a7096f7840a57cff837d27141bc085e5c" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>numberOfSteps_</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>pseudoRoot</name></member>
+      <member refid="class_quant_lib_1_1_abcd_vol_1a4c0e90029768120dad570b182ae7e747" prot="private" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>pseudoRoots_</name></member>
+      <member refid="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" virt="non-virtual"><scope>QuantLib::AbcdVol</scope><name>timeDependentVolatility</name></member>
+      <member refid="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>totalCovariance</name></member>
+      <member refid="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" virt="virtual"><scope>QuantLib::AbcdVol</scope><name>~MarketModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

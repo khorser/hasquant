@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_multi_period_engine" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::FDMultiPeriodEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_f_d_vanilla_engine" prot="public" virt="non-virtual">FDVanillaEngine</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_bermudan_engine" prot="public" virt="non-virtual">FDBermudanEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_dividend_engine_base" prot="public" virt="non-virtual">FDDividendEngineBase&lt; Scheme &gt;</derivedcompoundref>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>Scheme</declname>
+        <defname>Scheme</defname>
+        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_multi_period_engine_1aeb9ca28b3cb88fb673385716fe1e370b" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_finite_difference_model" kindref="compound">FiniteDifferenceModel</ref>&lt; Scheme&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &gt;</type>
+        <definition>typedef FiniteDifferenceModel&lt;Scheme&lt;TridiagonalOperator&gt; &gt; model_type</definition>
+        <argsstring></argsstring>
+        <name>model_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1ae8c0c2768e644e63de6a6afa65d7d317" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_event" kindref="compound">Event</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;Event&gt; &gt; events_</definition>
+        <argsstring></argsstring>
+        <name>events_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1a189f7cccf06d556536bc82aa0e426a13" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; stoppingTimes_</definition>
+        <argsstring></argsstring>
+        <name>stoppingTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1af021805a63a6c0524cf9e7df256c893d" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeStepPerPeriod_</definition>
+        <argsstring></argsstring>
+        <name>timeStepPerPeriod_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
+        <definition>SampledCurve prices_</definition>
+        <argsstring></argsstring>
+        <name>prices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1aaab1cfe563db2643afaf5b647757e51e" prot="protected" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="namespace_quant_lib_1a1a481730b77798735b31d2a815a5d242" kindref="member">StandardStepCondition</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StandardStepCondition &gt; stepCondition_</definition>
+        <argsstring></argsstring>
+        <name>stepCondition_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_multi_period_engine_1a1131f1a2d3cd54295309a6aaf88b098b" prot="protected" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_finite_difference_model" kindref="compound">model_type</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;model_type&gt; model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1a1df8835a69a0b5b3f1271fbeaa00a4ee" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FDMultiPeriodEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
+        <name>FDMultiPeriodEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+          <defval>100</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="91" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1a317a22dbd8b4d2d71d8eacf743419565" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setupArguments</definition>
+        <argsstring>(const PricingEngine::arguments *args, const std::vector&lt; boost::shared_ptr&lt; Event &gt; &gt; &amp;schedule) const </argsstring>
+        <name>setupArguments</name>
+        <param>
+          <type>const PricingEngine::arguments *</type>
+          <declname>args</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_event" kindref="compound">Event</ref> &gt; &gt; &amp;</type>
+          <declname>schedule</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="50" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1afc7179a1fad426de6521b32d75e4ca93" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setupArguments</definition>
+        <argsstring>(const PricingEngine::arguments *a) const </argsstring>
+        <name>setupArguments</name>
+        <param>
+          <type>const PricingEngine::arguments *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="62" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1a1fe4d9b38864bd09fed225810631c15b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>(PricingEngine::results *) const </argsstring>
+        <name>calculate</name>
+        <param>
+          <type>PricingEngine::results *</type>
+          <defname>r</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="98" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1aef21cb826cfa451157ad5961aac46191" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void executeIntermediateStep</definition>
+        <argsstring>(Size step) const =0</argsstring>
+        <name>executeIntermediateStep</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>step</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1a0e158a0c3d8c80a7f5793b031a13d15e" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void initializeStepCondition</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeStepCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="191" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1ab66afec2009c2a4523d861fa31e32e37" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void initializeModel</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="197" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_multi_period_engine_1aeaccf7e43dfb9ecd04bb14a8e771bc69" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time getDividendTime</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>getDividendTime</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6191">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+      </node>
+      <node id="6190">
+        <label>FDMultiPeriodEngine&lt; Scheme &gt;</label>
+        <childnode refid="6191" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6193">
+        <label>FDDividendEngineBase&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_engine_base"/>
+        <childnode refid="6190" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6194">
+        <label>FDDividendEngineMerton73&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_engine_merton73"/>
+        <childnode refid="6193" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6195">
+        <label>FDDividendEngineShiftScale&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_dividend_engine_shift_scale"/>
+        <childnode refid="6193" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6192">
+        <label>FDBermudanEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_bermudan_engine"/>
+        <childnode refid="6190" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6197">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+        <childnode refid="6198" relation="usage">
+          <edgelabel>intrinsicValues_</edgelabel>
+        </childnode>
+        <childnode refid="6199" relation="usage">
+          <edgelabel>exerciseDate_</edgelabel>
+        </childnode>
+        <childnode refid="6200" relation="usage">
+          <edgelabel>finiteDifferenceOperator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6200">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+        <childnode refid="6201" relation="usage">
+          <edgelabel>upperDiagonal_</edgelabel>
+          <edgelabel>lowerDiagonal_</edgelabel>
+          <edgelabel>temp_</edgelabel>
+          <edgelabel>diagonal_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6201">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="6196">
+        <label>FDMultiPeriodEngine&lt; Scheme &gt;</label>
+        <childnode refid="6197" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6198" relation="usage">
+          <edgelabel>prices_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6198">
+        <label>SampledCurve</label>
+        <link refid="class_quant_lib_1_1_sampled_curve"/>
+      </node>
+      <node id="6199">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="37" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>bc_type</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1af5ad104496c57fc44c7d043228540df3" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>BCs_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a1fe4d9b38864bd09fed225810631c15b" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a6d1498fa8ea69ec53974976d2de35a8e" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>center_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ae1dd3d1c5ca170640a5924b2ee281e41" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>ensureStrikeInGrid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1ae8c0c2768e644e63de6a6afa65d7d317" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>events_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1aef21cb826cfa451157ad5961aac46191" prot="protected" virt="pure-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>executeIntermediateStep</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a82043c5ad79ac1b7b969001c0fac6b01" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>exerciseDate_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a1df8835a69a0b5b3f1271fbeaa00a4ee" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>FDMultiPeriodEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>FDVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a339a08d2d842659617830840971da35e" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>finiteDifferenceOperator_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1aeaccf7e43dfb9ecd04bb14a8e771bc69" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>getDividendTime</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a674e7ea5e90acab0262d251898ff792d" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>getResidualTime</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>grid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a7145182f52df597ca8aa4d5866217c1e" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>gridPoints_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aec873e3e9f589c5f7450e44c176bba53" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>initializeBoundaryConditions</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a78e07ab8f1efe95af3620d4515bee51d" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>initializeInitialCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1ab66afec2009c2a4523d861fa31e32e37" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>initializeModel</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a11960243546eb3fbfd156bb356521f0c" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>initializeOperator</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a0e158a0c3d8c80a7f5793b031a13d15e" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>initializeStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a8edf65769664d4ebdccdf4570511510f" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>intrinsicValues_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a1131f1a2d3cd54295309a6aaf88b098b" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1aeb9ca28b3cb88fb673385716fe1e370b" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>model_type</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a68d5c67c88c1a217f21a0dbf253abaf4" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>prices_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a5a97f4313a9da6e57d378b06ffcb41a1" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>requiredGridValue_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aab2fa1494d4f4992fbfdbbc6df8328fc" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a95a121986a34191e5e0e79614f1291bc" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a317a22dbd8b4d2d71d8eacf743419565" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1afc7179a1fad426de6521b32d75e4ca93" prot="protected" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aa3e79b584dea15108e9e47722b105e03" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>sMax_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ad8993bc76e2e718431695d0ad5844f76" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>sMin_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1aaab1cfe563db2643afaf5b647757e51e" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>stepCondition_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1a189f7cccf06d556536bc82aa0e426a13" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>stoppingTimes_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1afe877f42f51da049474a29ca152f6e38" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>timeDependent_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_multi_period_engine_1af021805a63a6c0524cf9e7df256c893d" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>timeStepPerPeriod_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aaaf57b9fc05bb255d2d7f329fb445d5b" prot="public" virt="virtual"><scope>QuantLib::FDMultiPeriodEngine</scope><name>~FDVanillaEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

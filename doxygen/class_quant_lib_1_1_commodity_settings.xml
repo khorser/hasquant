@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_commodity_settings" kind="class" prot="public">
+    <compoundname>QuantLib::CommoditySettings</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_singleton" prot="public" virt="non-virtual">Singleton&lt; CommoditySettings &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_quant_lib_1_1_commodity_settings_1aa8bd9221df854949ed6e845f1a7f99d2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Singleton&lt; CommoditySettings &gt;</definition>
+        <argsstring></argsstring>
+        <name>Singleton&lt; CommoditySettings &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_settings_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+        <definition>Currency currency_</definition>
+        <argsstring></argsstring>
+        <name>currency_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_settings_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+        <definition>UnitOfMeasure unitOfMeasure_</definition>
+        <argsstring></argsstring>
+        <name>unitOfMeasure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1a64a502593a2ff038deb661cc6b698d11" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommoditySettings</definition>
+        <argsstring>()</argsstring>
+        <name>CommoditySettings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>Currency&amp; currency</definition>
+        <argsstring>()</argsstring>
+        <name>currency</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <definition>UnitOfMeasure&amp; unitOfMeasure</definition>
+        <argsstring>()</argsstring>
+        <name>unitOfMeasure</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>global repository for run-time library settings </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2359">
+        <label>Singleton&lt; CommoditySettings &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+      <node id="2358">
+        <label>CommoditySettings</label>
+        <link refid="class_quant_lib_1_1_commodity_settings"/>
+        <childnode refid="2359" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2361">
+        <label>Singleton&lt; CommoditySettings &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+      <node id="2360">
+        <label>CommoditySettings</label>
+        <link refid="class_quant_lib_1_1_commodity_settings"/>
+        <childnode refid="2361" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="34" bodyend="45"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_commodity_settings_1a64a502593a2ff038deb661cc6b698d11" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>CommoditySettings</name></member>
+      <member refid="class_quant_lib_1_1_commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>currency</name></member>
+      <member refid="class_quant_lib_1_1_commodity_settings_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>currency_</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>instance</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>Singleton</name></member>
+      <member refid="class_quant_lib_1_1_commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>unitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_commodity_settings_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>unitOfMeasure_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_spread_payoff_inner_value" kind="class" prot="public">
+    <compoundname>QuantLib::FdmSpreadPayoffInnerValue</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">FdmInnerValueCalculator</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1ad5c2741533c6bb9b68f48f38304d8870" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; BasketPayoff &gt;</type>
+        <definition>const boost::shared_ptr&lt;BasketPayoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a57815a443010afa35099ebe378677708" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calc1_</definition>
+        <argsstring></argsstring>
+        <name>calc1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a29a25d0a2a6dc814a96fe4a19155d640" prot="private" static="no" mutable="no">
+        <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
+        <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calc2_</definition>
+        <argsstring></argsstring>
+        <name>calc2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a82eb7abeef843df1f50603e0e7382588" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FdmSpreadPayoffInnerValue</definition>
+        <argsstring>(const boost::shared_ptr&lt; BasketPayoff &gt; &amp;payoff, const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;calc1, const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;calc2)</argsstring>
+        <name>FdmSpreadPayoffInnerValue</name>
+        <param>
+          <type>const boost::shared_ptr&lt; BasketPayoff &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
+          <declname>calc1</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;</type>
+          <declname>calc2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real innerValue</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)</argsstring>
+        <name>innerValue</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="42" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real avgInnerValue</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)</argsstring>
+        <name>avgInnerValue</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="49" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="32" bodyend="57"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>avgInnerValue</name></member>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a57815a443010afa35099ebe378677708" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>calc1_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a29a25d0a2a6dc814a96fe4a19155d640" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>calc2_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a82eb7abeef843df1f50603e0e7382588" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>FdmSpreadPayoffInnerValue</name></member>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>innerValue</name></member>
+      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1ad5c2741533c6bb9b68f48f38304d8870" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>~FdmInnerValueCalculator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

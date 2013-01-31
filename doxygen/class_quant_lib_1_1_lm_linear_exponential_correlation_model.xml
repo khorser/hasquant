@@ -1,0 +1,254 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lm_linear_exponential_correlation_model" kind="class" prot="public">
+    <compoundname>QuantLib::LmLinearExponentialCorrelationModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lm_correlation_model" prot="public" virt="non-virtual">LmCorrelationModel</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1ab72acef2ee1e4e2e6b171bca7d94fc12" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix corrMatrix_</definition>
+        <argsstring></argsstring>
+        <name>corrMatrix_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a33c70222af833ca31bbd2014bc01ab9d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix pseudoSqrt_</definition>
+        <argsstring></argsstring>
+        <name>pseudoSqrt_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a19357300f903f9594909f2aa2c729ac5" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>const Size factors_</definition>
+        <argsstring></argsstring>
+        <name>factors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a17c7b2f896510e15ceae04e65752a184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LmLinearExponentialCorrelationModel</definition>
+        <argsstring>(Size size, Real rho, Real beta, Size factors=Null&lt; Size &gt;())</argsstring>
+        <name>LmLinearExponentialCorrelationModel</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>factors</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; correlation</definition>
+        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>correlation</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a6ffd4397b3f271a1f2983b7bd9c8663f">correlation</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>Disposable&lt;Matrix&gt; pseudoSqrt</definition>
+        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>pseudoSqrt</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a76b6af06f81c4bb4a3a3ca10f98ffc1f">pseudoSqrt</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real correlation</definition>
+        <argsstring>(Size i, Size j, Time t, const Array &amp;x) const </argsstring>
+        <name>correlation</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a2163be175b4a3739ebfe7474bc85d708">correlation</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size factors</definition>
+        <argsstring>() const </argsstring>
+        <name>factors</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool isTimeIndependent</definition>
+        <argsstring>() const </argsstring>
+        <name>isTimeIndependent</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1ac0c142358bb6b07bc7dabb4489de7f84">isTimeIndependent</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void generateArguments</definition>
+        <argsstring>()</argsstring>
+        <name>generateArguments</name>
+        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>linear exponential correlation model </para>    </briefdescription>
+    <detaileddescription>
+<para>This class describes a exponential correlation model</para><para><formula id="163">\[ \rho_{i,j}=rho + (1-rho)*e^{(-\beta \|i-j\|)} \]</formula> <verbatim>  References:
+
+  Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003,
+  Different Covariance Parameterizations of Libor Market Model and Joint
+  Caps/Swaptions Calibration,
+  (&lt;http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf&gt;)</verbatim> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9135">
+        <label>LmLinearExponentialCorrelationModel</label>
+        <link refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model"/>
+        <childnode refid="9136" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9136">
+        <label>LmCorrelationModel</label>
+        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9137">
+        <label>LmLinearExponentialCorrelationModel</label>
+        <link refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model"/>
+        <childnode refid="9138" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9138">
+        <label>LmCorrelationModel</label>
+        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" bodystart="45" bodyend="65"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>correlation</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>correlation</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1ab72acef2ee1e4e2e6b171bca7d94fc12" prot="private" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>corrMatrix_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a19357300f903f9594909f2aa2c729ac5" prot="private" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>factors_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>isTimeIndependent</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a0d184c3012011e708072e787c9a639c7" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>LmCorrelationModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a17c7b2f896510e15ceae04e65752a184" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>LmLinearExponentialCorrelationModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>pseudoSqrt</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a33c70222af833ca31bbd2014bc01ab9d" prot="private" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>pseudoSqrt_</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1aa816fa6ea150c48362fa3b105866a96f" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_lm_correlation_model_1a2817622116ad383444aa06f36ee20ce8" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialCorrelationModel</scope><name>~LmCorrelationModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

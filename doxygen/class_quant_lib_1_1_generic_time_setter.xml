@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_generic_time_setter" kind="class" prot="public">
+    <compoundname>QuantLib::GenericTimeSetter</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter" prot="public" virt="non-virtual">TridiagonalOperator::TimeSetter</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>class PdeClass</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_generic_time_setter_1a053f900d0848669dd7456436fc674856" prot="private" static="no" mutable="no">
+        <type>PdeClass::grid_type</type>
+        <definition>PdeClass::grid_type grid_</definition>
+        <argsstring></argsstring>
+        <name>grid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_generic_time_setter_1a9c40ac6b2609150bc1d62f06b3bffad6" prot="private" static="no" mutable="no">
+        <type>PdeClass</type>
+        <definition>PdeClass pde_</definition>
+        <argsstring></argsstring>
+        <name>pde_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class T</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>GenericTimeSetter</definition>
+        <argsstring>(const Array &amp;grid, T process)</argsstring>
+        <name>GenericTimeSetter</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>process</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="84" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setTime</definition>
+        <argsstring>(Time t, TridiagonalOperator &amp;L) const </argsstring>
+        <name>setTime</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <declname>L</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7224">
+        <label>TimeSetter</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter"/>
+      </node>
+      <node id="7223">
+        <label>GenericTimeSetter&lt; PdeClass &gt;</label>
+        <childnode refid="7224" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7226">
+        <label>TimeSetter</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter"/>
+      </node>
+      <node id="7225">
+        <label>GenericTimeSetter&lt; PdeClass &gt;</label>
+        <childnode refid="7226" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="81" bodyend="93"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>GenericTimeSetter</name></member>
+      <member refid="class_quant_lib_1_1_generic_time_setter_1a053f900d0848669dd7456436fc674856" prot="private" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>grid_</name></member>
+      <member refid="class_quant_lib_1_1_generic_time_setter_1a9c40ac6b2609150bc1d62f06b3bffad6" prot="private" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>pde_</name></member>
+      <member refid="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>setTime</name></member>
+      <member refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" virt="virtual"><scope>QuantLib::GenericTimeSetter</scope><name>~TimeSetter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

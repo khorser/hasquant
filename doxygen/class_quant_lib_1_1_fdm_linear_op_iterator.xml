@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_fdm_linear_op_iterator" kind="class" prot="public">
+    <compoundname>QuantLib::FdmLinearOpIterator</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a8499544e603bf831c56d2c3414e456ae" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size index_</definition>
+        <argsstring></argsstring>
+        <name>index_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a6ac473dd7687ae18d5e55acff3154ab3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; dim_</definition>
+        <argsstring></argsstring>
+        <name>dim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_linear_op_iterator_1ae60c0309cad38cf3ad07c65964666f42" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; coordinates_</definition>
+        <argsstring></argsstring>
+        <name>coordinates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a357838f389ad3277a672bbe66223b39d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FdmLinearOpIterator</definition>
+        <argsstring>(Size index=0)</argsstring>
+        <name>FdmLinearOpIterator</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="38" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a481c89278e572fda4f028fbcac7ef18d" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FdmLinearOpIterator</definition>
+        <argsstring>(const std::vector&lt; Size &gt; &amp;dim)</argsstring>
+        <name>FdmLinearOpIterator</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>dim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="41" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a781f664ce59298f619c92b95c379bb29" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FdmLinearOpIterator</definition>
+        <argsstring>(const std::vector&lt; Size &gt; &amp;dim, const std::vector&lt; Size &gt; &amp;coordinates, Size index)</argsstring>
+        <name>FdmLinearOpIterator</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>dim</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>coordinates</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="46" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1ab40ce509ac21c2acad59338e4aba6508" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FdmLinearOpIterator</definition>
+        <argsstring>(const Disposable&lt; FdmLinearOpIterator &gt; &amp;from)</argsstring>
+        <name>FdmLinearOpIterator</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; FdmLinearOpIterator &gt; &amp;</type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="52" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a00f008b80917746917b874d00abd02a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void operator++</definition>
+        <argsstring>()</argsstring>
+        <name>operator++</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="56" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1ab2a3cac341bd50874c0572e974d41dcb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const FdmLinearOpIterator &amp;iterator)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const FdmLinearOpIterator &amp;</type>
+          <declname>iterator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="68" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1adae470bcef9c655cb38b0a328681fc3d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size index</definition>
+        <argsstring>() const </argsstring>
+        <name>index</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1a85425f7a1bf38c1d70ca6186438e9586" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Size&gt;&amp; coordinates</definition>
+        <argsstring>() const </argsstring>
+        <name>coordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="76" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_iterator_1ad1112879038a8012057aaa749a4d114d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void swap</definition>
+        <argsstring>(FdmLinearOpIterator &amp;iter)</argsstring>
+        <name>swap</name>
+        <param>
+          <type>FdmLinearOpIterator &amp;</type>
+          <declname>iter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="80" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="36" bodyend="90"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a85425f7a1bf38c1d70ca6186438e9586" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>coordinates</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ae60c0309cad38cf3ad07c65964666f42" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>coordinates_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a6ac473dd7687ae18d5e55acff3154ab3" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>dim_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a357838f389ad3277a672bbe66223b39d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a481c89278e572fda4f028fbcac7ef18d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a781f664ce59298f619c92b95c379bb29" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ab40ce509ac21c2acad59338e4aba6508" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1adae470bcef9c655cb38b0a328681fc3d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>index</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a8499544e603bf831c56d2c3414e456ae" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>index_</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ab2a3cac341bd50874c0572e974d41dcb" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a00f008b80917746917b874d00abd02a9" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>operator++</name></member>
+      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ad1112879038a8012057aaa749a4d114d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>swap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

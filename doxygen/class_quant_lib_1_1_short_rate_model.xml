@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_short_rate_model" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::ShortRateModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calibrated_model" prot="public" virt="non-virtual">CalibratedModel</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_one_factor_model" prot="public" virt="non-virtual">OneFactorModel</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_two_factor_model" prot="public" virt="non-virtual">TwoFactorModel</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ShortRateModel</definition>
+        <argsstring>(Size nArguments)</argsstring>
+        <name>ShortRateModel</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>nArguments</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+        <definition>virtual boost::shared_ptr&lt;Lattice&gt; tree</definition>
+        <argsstring>(const TimeGrid &amp;) const =0</argsstring>
+        <name>tree</name>
+        <reimplementedby refid="class_quant_lib_1_1_two_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="129"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract short-rate model class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13049">
+        <label>GeneralizedHullWhite</label>
+        <link refid="class_quant_lib_1_1_generalized_hull_white"/>
+        <childnode refid="13047" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13056">
+        <label>G2</label>
+        <link refid="class_quant_lib_1_1_g2"/>
+        <childnode refid="13055" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13046">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13047">
+        <label>OneFactorModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_model"/>
+        <childnode refid="13043" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13045">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13043">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="13044" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13053">
+        <label>Vasicek</label>
+        <link refid="class_quant_lib_1_1_vasicek"/>
+        <childnode refid="13050" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13055">
+        <label>TwoFactorModel</label>
+        <link refid="class_quant_lib_1_1_two_factor_model"/>
+        <childnode refid="13043" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13050">
+        <label>OneFactorAffineModel</label>
+        <link refid="class_quant_lib_1_1_one_factor_affine_model"/>
+        <childnode refid="13047" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13044">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="13045" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13046" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13054">
+        <label>HullWhite</label>
+        <link refid="class_quant_lib_1_1_hull_white"/>
+        <childnode refid="13053" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13048">
+        <label>BlackKarasinski</label>
+        <link refid="class_quant_lib_1_1_black_karasinski"/>
+        <childnode refid="13047" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13052">
+        <label>ExtendedCoxIngersollRoss</label>
+        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross"/>
+        <childnode refid="13051" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13051">
+        <label>CoxIngersollRoss</label>
+        <link refid="class_quant_lib_1_1_cox_ingersoll_ross"/>
+        <childnode refid="13050" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13060">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13059">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13057">
+        <label>ShortRateModel</label>
+        <link refid="class_quant_lib_1_1_short_rate_model"/>
+        <childnode refid="13058" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13058">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="13059" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13060" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="126" bodyend="130"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>CalibratedModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ae5ca439e5825287fbaa19c875d832021" prot="protected" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a2a6a0697363420cbf8673f8e61fe6d7e" prot="protected" virt="virtual"><scope>QuantLib::ShortRateModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::ShortRateModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::ShortRateModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" virt="virtual"><scope>QuantLib::ShortRateModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8705485af58de6eb300e980a627a0be0" prot="protected" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>shortRateEndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>ShortRateModel</name></member>
+      <member refid="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d" prot="public" virt="pure-virtual"><scope>QuantLib::ShortRateModel</scope><name>tree</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::ShortRateModel</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" virt="non-virtual"><scope>QuantLib::ShortRateModel</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::ShortRateModel</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::ShortRateModel</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

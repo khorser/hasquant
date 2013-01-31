@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_singleton" kind="class" prot="public">
+    <compoundname>QuantLib::Singleton</compoundname>
+    <basecompoundref prot="private" virt="non-virtual">noncopyable</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>T &amp;</type>
+        <definition>T &amp; instance</definition>
+        <argsstring>()</argsstring>
+        <name>instance</name>
+        <briefdescription>
+<para>access to the unique instance </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="77" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Singleton</definition>
+        <argsstring>()</argsstring>
+        <name>Singleton</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="71" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Basic support for the singleton pattern. </para>    </briefdescription>
+    <detaileddescription>
+<para>The typical use of this class is: <programlisting><codeline><highlight class="keyword">class<sp/></highlight><highlight class="normal">Foo<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Singleton&lt;Foo&gt;<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Singleton&lt;Foo&gt;;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Foo()<sp/>{}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>...</highlight></codeline>
+<codeline><highlight class="normal">};</highlight></codeline>
+</programlisting> which, albeit sub-optimal, frees one from the concerns of creating and managing the unique instance and can serve later as a single implemementation point should synchronization features be added. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="66" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::Singleton</scope><name>instance</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::Singleton</scope><name>Singleton</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

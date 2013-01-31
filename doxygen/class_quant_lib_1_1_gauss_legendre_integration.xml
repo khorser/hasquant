@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_gauss_legendre_integration" kind="class" prot="public">
+    <compoundname>QuantLib::GaussLegendreIntegration</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_gaussian_quadrature" prot="public" virt="non-virtual">GaussianQuadrature</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_gauss_legendre_integration_1aec50babcbe3875a19763fd214720558b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GaussLegendreIntegration</definition>
+        <argsstring>(Size n)</argsstring>
+        <name>GaussLegendreIntegration</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="148" bodyend="149"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Gauss-Legendre integration. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class performs a 1-dimensional Gauss-Legendre integration. <formula id="196">\[ \int_{-1}^{1} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="199">\[ w(x)=1 \]</formula> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7041">
+        <label>GaussLegendreIntegration</label>
+        <link refid="class_quant_lib_1_1_gauss_legendre_integration"/>
+        <childnode refid="7042" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7042">
+        <label>GaussianQuadrature</label>
+        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7043">
+        <label>GaussLegendreIntegration</label>
+        <link refid="class_quant_lib_1_1_gauss_legendre_integration"/>
+        <childnode refid="7044" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7044">
+        <label>GaussianQuadrature</label>
+        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="146" bodyend="150"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>GaussianQuadrature</name></member>
+      <member refid="class_quant_lib_1_1_gauss_legendre_integration_1aec50babcbe3875a19763fd214720558b" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>GaussLegendreIntegration</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>order</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>weights</name></member>
+      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussLegendreIntegration</scope><name>x</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

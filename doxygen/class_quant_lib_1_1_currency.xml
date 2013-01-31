@@ -1,0 +1,723 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_currency" kind="class" prot="public">
+    <compoundname>QuantLib::Currency</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_a_r_s_currency" prot="public" virt="non-virtual">ARSCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_a_t_s_currency" prot="public" virt="non-virtual">ATSCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_a_u_d_currency" prot="public" virt="non-virtual">AUDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_b_d_t_currency" prot="public" virt="non-virtual">BDTCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_b_e_f_currency" prot="public" virt="non-virtual">BEFCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_b_g_l_currency" prot="public" virt="non-virtual">BGLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_b_r_l_currency" prot="public" virt="non-virtual">BRLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_b_y_r_currency" prot="public" virt="non-virtual">BYRCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_a_d_currency" prot="public" virt="non-virtual">CADCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_h_f_currency" prot="public" virt="non-virtual">CHFCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_l_p_currency" prot="public" virt="non-virtual">CLPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_n_y_currency" prot="public" virt="non-virtual">CNYCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_o_p_currency" prot="public" virt="non-virtual">COPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_y_p_currency" prot="public" virt="non-virtual">CYPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_c_z_k_currency" prot="public" virt="non-virtual">CZKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_d_e_m_currency" prot="public" virt="non-virtual">DEMCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_d_k_k_currency" prot="public" virt="non-virtual">DKKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_e_e_k_currency" prot="public" virt="non-virtual">EEKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_e_s_p_currency" prot="public" virt="non-virtual">ESPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_e_u_r_currency" prot="public" virt="non-virtual">EURCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_i_m_currency" prot="public" virt="non-virtual">FIMCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_r_f_currency" prot="public" virt="non-virtual">FRFCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_g_b_p_currency" prot="public" virt="non-virtual">GBPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_g_r_d_currency" prot="public" virt="non-virtual">GRDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_h_k_d_currency" prot="public" virt="non-virtual">HKDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_h_u_f_currency" prot="public" virt="non-virtual">HUFCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_e_p_currency" prot="public" virt="non-virtual">IEPCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_l_s_currency" prot="public" virt="non-virtual">ILSCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_n_r_currency" prot="public" virt="non-virtual">INRCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_q_d_currency" prot="public" virt="non-virtual">IQDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_r_r_currency" prot="public" virt="non-virtual">IRRCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_s_k_currency" prot="public" virt="non-virtual">ISKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_i_t_l_currency" prot="public" virt="non-virtual">ITLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_j_p_y_currency" prot="public" virt="non-virtual">JPYCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_k_r_w_currency" prot="public" virt="non-virtual">KRWCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_k_w_d_currency" prot="public" virt="non-virtual">KWDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_l_t_l_currency" prot="public" virt="non-virtual">LTLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_l_u_f_currency" prot="public" virt="non-virtual">LUFCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_l_v_l_currency" prot="public" virt="non-virtual">LVLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_m_t_l_currency" prot="public" virt="non-virtual">MTLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_m_x_n_currency" prot="public" virt="non-virtual">MXNCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_n_l_g_currency" prot="public" virt="non-virtual">NLGCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_n_o_k_currency" prot="public" virt="non-virtual">NOKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_n_p_r_currency" prot="public" virt="non-virtual">NPRCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_n_z_d_currency" prot="public" virt="non-virtual">NZDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_e_h_currency" prot="public" virt="non-virtual">PEHCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_e_i_currency" prot="public" virt="non-virtual">PEICurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_e_n_currency" prot="public" virt="non-virtual">PENCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_k_r_currency" prot="public" virt="non-virtual">PKRCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_l_n_currency" prot="public" virt="non-virtual">PLNCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_p_t_e_currency" prot="public" virt="non-virtual">PTECurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_r_o_l_currency" prot="public" virt="non-virtual">ROLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_r_o_n_currency" prot="public" virt="non-virtual">RONCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_a_r_currency" prot="public" virt="non-virtual">SARCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_e_k_currency" prot="public" virt="non-virtual">SEKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_g_d_currency" prot="public" virt="non-virtual">SGDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_i_t_currency" prot="public" virt="non-virtual">SITCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_s_k_k_currency" prot="public" virt="non-virtual">SKKCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_t_h_b_currency" prot="public" virt="non-virtual">THBCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_t_r_l_currency" prot="public" virt="non-virtual">TRLCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_t_r_y_currency" prot="public" virt="non-virtual">TRYCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_t_t_d_currency" prot="public" virt="non-virtual">TTDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_t_w_d_currency" prot="public" virt="non-virtual">TWDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_u_s_d_currency" prot="public" virt="non-virtual">USDCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_v_e_b_currency" prot="public" virt="non-virtual">VEBCurrency</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_z_a_r_currency" prot="public" virt="non-virtual">ZARCurrency</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currency.hpp</includes>
+    <innerclass refid="struct_quant_lib_1_1_currency_1_1_data" prot="public">QuantLib::Currency::Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>currency name, e.g, &quot;U.S. Dollar&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; code</definition>
+        <argsstring>() const </argsstring>
+        <name>code</name>
+        <briefdescription>
+<para>ISO 4217 three-letter code, e.g, &quot;USD&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer numericCode</definition>
+        <argsstring>() const </argsstring>
+        <name>numericCode</name>
+        <briefdescription>
+<para>ISO 4217 numeric code, e.g, &quot;840&quot;. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="123" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; symbol</definition>
+        <argsstring>() const </argsstring>
+        <name>symbol</name>
+        <briefdescription>
+<para>symbol, e.g, &quot;$&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="127" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; fractionSymbol</definition>
+        <argsstring>() const </argsstring>
+        <name>fractionSymbol</name>
+        <briefdescription>
+<para>fraction symbol, e.g, &quot;¢&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="131" bodyend="133"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
+        <definition>Integer fractionsPerUnit</definition>
+        <argsstring>() const </argsstring>
+        <name>fractionsPerUnit</name>
+        <briefdescription>
+<para>number of fractionary parts in a unit, e.g, 100 </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="135" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_rounding" kindref="compound">Rounding</ref> &amp;</type>
+        <definition>const Rounding &amp; rounding</definition>
+        <argsstring>() const </argsstring>
+        <name>rounding</name>
+        <briefdescription>
+<para>rounding convention </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="139" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string format</definition>
+        <argsstring>() const </argsstring>
+        <name>format</name>
+        <briefdescription>
+<para>output format </para>        </briefdescription>
+        <detaileddescription>
+<para>The format will be fed three positional parameters, namely, value, code, and symbol, in this order. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="143" bodyend="145"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Other information</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool empty</definition>
+        <argsstring>() const </argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>is this a usable instance? </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        <definition>const Currency &amp; triangulationCurrency</definition>
+        <argsstring>() const </argsstring>
+        <name>triangulationCurrency</name>
+        <briefdescription>
+<para>currency used for triangulated exchange when required </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="151" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; Data &gt;</type>
+        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Currency</definition>
+        <argsstring>()</argsstring>
+        <name>Currency</name>
+        <briefdescription>
+<para>default constructor </para>        </briefdescription>
+        <detaileddescription>
+<para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="113" bodyend="113"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const Currency &amp;, const Currency &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="155" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const Currency &amp;, const Currency &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="159" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, const Currency &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Currency specification </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3123">
+        <label>CHFCurrency</label>
+        <link refid="class_quant_lib_1_1_c_h_f_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3163">
+        <label>PLNCurrency</label>
+        <link refid="class_quant_lib_1_1_p_l_n_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3127">
+        <label>CYPCurrency</label>
+        <link refid="class_quant_lib_1_1_c_y_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3178">
+        <label>VEBCurrency</label>
+        <link refid="class_quant_lib_1_1_v_e_b_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3162">
+        <label>PKRCurrency</label>
+        <link refid="class_quant_lib_1_1_p_k_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3129">
+        <label>DEMCurrency</label>
+        <link refid="class_quant_lib_1_1_d_e_m_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3167">
+        <label>SARCurrency</label>
+        <link refid="class_quant_lib_1_1_s_a_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3159">
+        <label>PEHCurrency</label>
+        <link refid="class_quant_lib_1_1_p_e_h_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3152">
+        <label>LVLCurrency</label>
+        <link refid="class_quant_lib_1_1_l_v_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3113">
+        <label>Currency</label>
+        <link refid="class_quant_lib_1_1_currency"/>
+      </node>
+      <node id="3170">
+        <label>SITCurrency</label>
+        <link refid="class_quant_lib_1_1_s_i_t_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3153">
+        <label>MTLCurrency</label>
+        <link refid="class_quant_lib_1_1_m_t_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3139">
+        <label>HUFCurrency</label>
+        <link refid="class_quant_lib_1_1_h_u_f_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3149">
+        <label>KWDCurrency</label>
+        <link refid="class_quant_lib_1_1_k_w_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3177">
+        <label>USDCurrency</label>
+        <link refid="class_quant_lib_1_1_u_s_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3173">
+        <label>TRLCurrency</label>
+        <link refid="class_quant_lib_1_1_t_r_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3166">
+        <label>RONCurrency</label>
+        <link refid="class_quant_lib_1_1_r_o_n_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3134">
+        <label>FIMCurrency</label>
+        <link refid="class_quant_lib_1_1_f_i_m_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3133">
+        <label>EURCurrency</label>
+        <link refid="class_quant_lib_1_1_e_u_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3150">
+        <label>LTLCurrency</label>
+        <link refid="class_quant_lib_1_1_l_t_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3117">
+        <label>BDTCurrency</label>
+        <link refid="class_quant_lib_1_1_b_d_t_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3116">
+        <label>AUDCurrency</label>
+        <link refid="class_quant_lib_1_1_a_u_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3156">
+        <label>NOKCurrency</label>
+        <link refid="class_quant_lib_1_1_n_o_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3136">
+        <label>GBPCurrency</label>
+        <link refid="class_quant_lib_1_1_g_b_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3157">
+        <label>NPRCurrency</label>
+        <link refid="class_quant_lib_1_1_n_p_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3158">
+        <label>NZDCurrency</label>
+        <link refid="class_quant_lib_1_1_n_z_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3143">
+        <label>IQDCurrency</label>
+        <link refid="class_quant_lib_1_1_i_q_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3124">
+        <label>CLPCurrency</label>
+        <link refid="class_quant_lib_1_1_c_l_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3160">
+        <label>PEICurrency</label>
+        <link refid="class_quant_lib_1_1_p_e_i_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3164">
+        <label>PTECurrency</label>
+        <link refid="class_quant_lib_1_1_p_t_e_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3137">
+        <label>GRDCurrency</label>
+        <link refid="class_quant_lib_1_1_g_r_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3142">
+        <label>INRCurrency</label>
+        <link refid="class_quant_lib_1_1_i_n_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3172">
+        <label>THBCurrency</label>
+        <link refid="class_quant_lib_1_1_t_h_b_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3155">
+        <label>NLGCurrency</label>
+        <link refid="class_quant_lib_1_1_n_l_g_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3174">
+        <label>TRYCurrency</label>
+        <link refid="class_quant_lib_1_1_t_r_y_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3119">
+        <label>BGLCurrency</label>
+        <link refid="class_quant_lib_1_1_b_g_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3125">
+        <label>CNYCurrency</label>
+        <link refid="class_quant_lib_1_1_c_n_y_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3179">
+        <label>ZARCurrency</label>
+        <link refid="class_quant_lib_1_1_z_a_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3176">
+        <label>TWDCurrency</label>
+        <link refid="class_quant_lib_1_1_t_w_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3161">
+        <label>PENCurrency</label>
+        <link refid="class_quant_lib_1_1_p_e_n_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3147">
+        <label>JPYCurrency</label>
+        <link refid="class_quant_lib_1_1_j_p_y_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3114">
+        <label>ARSCurrency</label>
+        <link refid="class_quant_lib_1_1_a_r_s_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3140">
+        <label>IEPCurrency</label>
+        <link refid="class_quant_lib_1_1_i_e_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3146">
+        <label>ITLCurrency</label>
+        <link refid="class_quant_lib_1_1_i_t_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3131">
+        <label>EEKCurrency</label>
+        <link refid="class_quant_lib_1_1_e_e_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3126">
+        <label>COPCurrency</label>
+        <link refid="class_quant_lib_1_1_c_o_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3148">
+        <label>KRWCurrency</label>
+        <link refid="class_quant_lib_1_1_k_r_w_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3144">
+        <label>IRRCurrency</label>
+        <link refid="class_quant_lib_1_1_i_r_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3175">
+        <label>TTDCurrency</label>
+        <link refid="class_quant_lib_1_1_t_t_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3165">
+        <label>ROLCurrency</label>
+        <link refid="class_quant_lib_1_1_r_o_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3168">
+        <label>SEKCurrency</label>
+        <link refid="class_quant_lib_1_1_s_e_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3118">
+        <label>BEFCurrency</label>
+        <link refid="class_quant_lib_1_1_b_e_f_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3120">
+        <label>BRLCurrency</label>
+        <link refid="class_quant_lib_1_1_b_r_l_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3151">
+        <label>LUFCurrency</label>
+        <link refid="class_quant_lib_1_1_l_u_f_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3130">
+        <label>DKKCurrency</label>
+        <link refid="class_quant_lib_1_1_d_k_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3141">
+        <label>ILSCurrency</label>
+        <link refid="class_quant_lib_1_1_i_l_s_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3121">
+        <label>BYRCurrency</label>
+        <link refid="class_quant_lib_1_1_b_y_r_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3171">
+        <label>SKKCurrency</label>
+        <link refid="class_quant_lib_1_1_s_k_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3132">
+        <label>ESPCurrency</label>
+        <link refid="class_quant_lib_1_1_e_s_p_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3138">
+        <label>HKDCurrency</label>
+        <link refid="class_quant_lib_1_1_h_k_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3128">
+        <label>CZKCurrency</label>
+        <link refid="class_quant_lib_1_1_c_z_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3169">
+        <label>SGDCurrency</label>
+        <link refid="class_quant_lib_1_1_s_g_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3122">
+        <label>CADCurrency</label>
+        <link refid="class_quant_lib_1_1_c_a_d_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3154">
+        <label>MXNCurrency</label>
+        <link refid="class_quant_lib_1_1_m_x_n_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3135">
+        <label>FRFCurrency</label>
+        <link refid="class_quant_lib_1_1_f_r_f_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3115">
+        <label>ATSCurrency</label>
+        <link refid="class_quant_lib_1_1_a_t_s_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3145">
+        <label>ISKCurrency</label>
+        <link refid="class_quant_lib_1_1_i_s_k_currency"/>
+        <childnode refid="3113" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="35" bodyend="76"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>Currency</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::Currency</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>format</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>fractionsPerUnit</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>fractionSymbol</name></member>
+      <member refid="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>numericCode</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>rounding</name></member>
+      <member refid="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>symbol</name></member>
+      <member refid="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" virt="non-virtual"><scope>QuantLib::Currency</scope><name>triangulationCurrency</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

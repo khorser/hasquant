@@ -1,0 +1,644 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_piecewise_yield_curve" kind="class" prot="public">
+    <compoundname>QuantLib::PiecewiseYieldCurve</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Traits::template curve::type&lt; Interpolator &gt;</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_lazy_object" prot="public" virt="non-virtual">LazyObject</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Traits</type>
+      </param>
+      <param>
+        <type>class Interpolator</type>
+      </param>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>Bootstrap</declname>
+        <defname>Bootstrap</defname>
+        <defval><ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>Constructors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a75ba9b03a2b10ba532be31612b2b0f20" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <declname>jumps</declname>
+          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>jumpDates</declname>
+          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-12</defval>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="70" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a1aea2e4071d832165b349e3c2995d51c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="86" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ae90b3c44242a55102aa39365f79f7241" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i, const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>referenceDate</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="100" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1af0d184352744040ac7781af9b6dcadf7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <declname>jumps</declname>
+          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>jumpDates</declname>
+          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-12</defval>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="126" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="113" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ae7e19a0e521d5b812e36e3680456e303" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator(), const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="129" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a312702b74eca72da685aee04f8cd40c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PiecewiseYieldCurve</definition>
+        <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i, const Bootstrap&lt; this_curve &gt; &amp;bootstrap=Bootstrap&lt; this_curve &gt;())</argsstring>
+        <name>PiecewiseYieldCurve</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>settlementDays</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>calendar</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;</type>
+          <declname>instruments</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type>const Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt; &amp;</type>
+          <declname>bootstrap</declname>
+          <defval>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="144" bodyend="157"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>TermStructure interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date maxDate</definition>
+        <argsstring>() const </argsstring>
+        <name>maxDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="161" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="199" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>base_curve interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Time &gt; &amp; times</definition>
+        <argsstring>() const </argsstring>
+        <name>times</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="205" bodyend="208"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
+        <argsstring>() const </argsstring>
+        <name>dates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="211" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt; Real &gt; &amp; data</definition>
+        <argsstring>() const </argsstring>
+        <name>data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="217" bodyend="220"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
+        <argsstring>() const </argsstring>
+        <name>nodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="224" bodyend="227"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="230" bodyend="241"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>LazyObject interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="251" bodyend="254"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a29beac208608e51d51138c44c79d77e2" prot="private" static="no">
+        <type>Traits::template curve&lt; Interpolator &gt;::type</type>
+        <definition>typedef Traits::template curve&lt;Interpolator&gt;::type base_curve</definition>
+        <argsstring></argsstring>
+        <name>base_curve</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a1f643aaa3bd9bdb21a0c7124038d5268" prot="private" static="no">
+        <type><ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">PiecewiseYieldCurve</ref>&lt; Traits, Interpolator, Bootstrap &gt;</type>
+        <definition>typedef PiecewiseYieldCurve&lt;Traits,Interpolator,Bootstrap&gt; this_curve</definition>
+        <argsstring></argsstring>
+        <name>this_curve</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
+        <type>Traits</type>
+        <definition>typedef Traits traits_type</definition>
+        <argsstring></argsstring>
+        <name>traits_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
+        <type>Interpolator</type>
+        <definition>typedef Interpolator interpolator_type</definition>
+        <argsstring></argsstring>
+        <name>interpolator_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1adc47136f5538e417c8dcca16854cac8d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;typename Traits::helper&gt; &gt; instruments_</definition>
+        <argsstring></argsstring>
+        <name>instruments_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="182" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real accuracy_</definition>
+        <argsstring></argsstring>
+        <name>accuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_piecewise_yield_curve_1a3dde59eaf2b97f4b7227dc0a92a26d64" prot="private" static="no" mutable="no">
+        <type>Bootstrap&lt; <ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">this_curve</ref> &gt;</type>
+        <definition>Bootstrap&lt;this_curve&gt; bootstrap_</definition>
+        <argsstring></argsstring>
+        <name>bootstrap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1ae111cb608a73ca819237b5c9f93f1088" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Bootstrap&lt; this_curve &gt;</definition>
+        <argsstring></argsstring>
+        <name>Bootstrap&lt; this_curve &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1a57e9e8eaf5be1d62515629611b40421e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class BootstrapError&lt; this_curve &gt;</definition>
+        <argsstring></argsstring>
+        <name>BootstrapError&lt; this_curve &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="190" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1aca3f88b9684e23193ac4481984646966" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class PenaltyFunction&lt; this_curve &gt;</definition>
+        <argsstring></argsstring>
+        <name>PenaltyFunction&lt; this_curve &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yield_curve_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor discountImpl</definition>
+        <argsstring>(Time) const </argsstring>
+        <name>discountImpl</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <defname>t</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="180" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="245" bodyend="248"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Piecewise yield term structure. </para>    </briefdescription>
+    <detaileddescription>
+<para>This term structure is bootstrapped on a number of interest rate instruments which are passed as a vector of handles to RateHelper instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Each segment is determined sequentially starting from the earliest period to the latest and is chosen so that the instrument whose maturity marks the end of such segment is correctly repriced on the curve.</para><para><xrefsect id="caveats_1_caveats000141"><xreftitle>Warning</xreftitle><xrefdescription><para>The bootstrapping algorithm will raise an exception if any two instruments have the same maturity date.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000142"><xreftitle>Tests</xreftitle><xrefdescription><para><itemizedlist>
+<listitem><para>the correctness of the returned values is tested by checking them against the original inputs.</para></listitem><listitem><para>the observability of the term structure is tested. </para></listitem></itemizedlist>
+</para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="12180">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12179">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="12180" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12181" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12181">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12178">
+        <label>PiecewiseYieldCurve&lt; Traits, Interpolator, Bootstrap &gt;</label>
+        <link refid="class_quant_lib_1_1_piecewise_yield_curve"/>
+        <childnode refid="12179" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12184">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="12183">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="12184" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12185" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12185">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="12182">
+        <label>PiecewiseYieldCurve&lt; Traits, Interpolator, Bootstrap &gt;</label>
+        <link refid="class_quant_lib_1_1_piecewise_yield_curve"/>
+        <childnode refid="12183" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="59" bodyend="193"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>accuracy_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a29beac208608e51d51138c44c79d77e2" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>base_curve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a3dde59eaf2b97f4b7227dc0a92a26d64" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>bootstrap_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>data</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>dates</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>discountImpl</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1adc47136f5538e417c8dcca16854cac8d" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>instruments_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>interpolator_type</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>maxDate</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>nodes</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::PiecewiseYieldCurve</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::PiecewiseYieldCurve</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a02b90bbfee3ee29627939544fb59ec93" prot="private" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a75ba9b03a2b10ba532be31612b2b0f20" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a1aea2e4071d832165b349e3c2995d51c" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1ae90b3c44242a55102aa39365f79f7241" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1af0d184352744040ac7781af9b6dcadf7" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1ae7e19a0e521d5b812e36e3680456e303" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a312702b74eca72da685aee04f8cd40c3" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>PiecewiseYieldCurve</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1a1f643aaa3bd9bdb21a0c7124038d5268" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>this_curve</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>times</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>traits_type</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_yield_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::PiecewiseYieldCurve</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

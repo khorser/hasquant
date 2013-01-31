@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_date_parser" kind="class" prot="public">
+    <compoundname>QuantLib::DateParser</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_date_parser_1a14f77ba5943bc79a7191c885621c8ab9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::string &gt;</type>
+        <definition>static std::vector&lt;std::string&gt; split</definition>
+        <argsstring>(const std::string &amp;str, char delim)</argsstring>
+        <name>split</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>delim</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_date_parser_1abc3be97ef097b3aa573b0d296a8ae0aa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date parse</definition>
+        <argsstring>(const std::string &amp;str, const std::string &amp;fmt)</argsstring>
+        <name>parse</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_date_parser_1ad402c113ffa7026c47b1332f04bbf6d6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>static Date parseISO</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>parseISO</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="48" bodyend="54"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_date_parser_1abc3be97ef097b3aa573b0d296a8ae0aa" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>parse</name></member>
+      <member refid="class_quant_lib_1_1_date_parser_1ad402c113ffa7026c47b1332f04bbf6d6" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>parseISO</name></member>
+      <member refid="class_quant_lib_1_1_date_parser_1a14f77ba5943bc79a7191c885621c8ab9" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>split</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

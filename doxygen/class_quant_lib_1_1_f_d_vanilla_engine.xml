@@ -1,0 +1,516 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_f_d_vanilla_engine" kind="class" prot="public">
+    <compoundname>QuantLib::FDVanillaEngine</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_european_engine" prot="public" virt="non-virtual">FDEuropeanEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_multi_period_engine" prot="public" virt="non-virtual">FDMultiPeriodEngine&lt; Scheme &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_f_d_step_condition_engine" prot="public" virt="non-virtual">FDStepConditionEngine&lt; Scheme &gt;</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp</includes>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">BoundaryCondition</ref>&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt;</type>
+        <definition>typedef BoundaryCondition&lt;TridiagonalOperator&gt; bc_type</definition>
+        <argsstring></argsstring>
+        <name>bc_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;GeneralizedBlackScholesProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeSteps_</definition>
+        <argsstring></argsstring>
+        <name>timeSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a7145182f52df597ca8aa4d5866217c1e" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size gridPoints_</definition>
+        <argsstring></argsstring>
+        <name>gridPoints_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1afe877f42f51da049474a29ca152f6e38" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool timeDependent_</definition>
+        <argsstring></argsstring>
+        <name>timeDependent_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a5a97f4313a9da6e57d378b06ffcb41a1" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real requiredGridValue_</definition>
+        <argsstring></argsstring>
+        <name>requiredGridValue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a82043c5ad79ac1b7b969001c0fac6b01" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date exerciseDate_</definition>
+        <argsstring></argsstring>
+        <name>exerciseDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a339a08d2d842659617830840971da35e" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref></type>
+        <definition>TridiagonalOperator finiteDifferenceOperator_</definition>
+        <argsstring></argsstring>
+        <name>finiteDifferenceOperator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a8edf65769664d4ebdccdf4570511510f" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref></type>
+        <definition>SampledCurve intrinsicValues_</definition>
+        <argsstring></argsstring>
+        <name>intrinsicValues_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1af5ad104496c57fc44c7d043228540df3" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">bc_type</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;boost::shared_ptr&lt;bc_type&gt; &gt; BCs_</definition>
+        <argsstring></argsstring>
+        <name>BCs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1ad8993bc76e2e718431695d0ad5844f76" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real sMin_</definition>
+        <argsstring></argsstring>
+        <name>sMin_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1a6d1498fa8ea69ec53974976d2de35a8e" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real center_</definition>
+        <argsstring></argsstring>
+        <name>center_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1aa3e79b584dea15108e9e47722b105e03" prot="protected" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real sMax_</definition>
+        <argsstring></argsstring>
+        <name>sMax_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1aa4c843f49b01849ec9263c9aeaa4e27a" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gridLogSpacing_</definition>
+        <argsstring></argsstring>
+        <name>gridLogSpacing_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1ab602c82b8b4c102c985b77298eb4c3d3" prot="private" static="yes" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real safetyZoneFactor_</definition>
+        <argsstring></argsstring>
+        <name>safetyZoneFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>FDVanillaEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps, Size gridPoints, bool timeDependent=false)</argsstring>
+        <name>FDVanillaEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>timeDependent</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="48" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1aaaf57b9fc05bb255d2d7f329fb445d5b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~FDVanillaEngine</definition>
+        <argsstring>()</argsstring>
+        <name>~FDVanillaEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+        <definition>const Array&amp; grid</definition>
+        <argsstring>() const </argsstring>
+        <name>grid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a962e8e99edd2b2802cb56cb06c572ec2" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setupArguments</definition>
+        <argsstring>(const PricingEngine::arguments *) const </argsstring>
+        <name>setupArguments</name>
+        <reimplementedby refid="class_quant_lib_1_1_f_d_dividend_engine_base_1acfd07450c2c4e53f13b374121aaedc08">setupArguments</reimplementedby>
+        <param>
+          <type>const PricingEngine::arguments *</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1aab2fa1494d4f4992fbfdbbc6df8328fc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setGridLimits</definition>
+        <argsstring>() const </argsstring>
+        <name>setGridLimits</name>
+        <reimplementedby refid="class_quant_lib_1_1_f_d_dividend_engine_base_1a1e6712a71412ac850e1068b04878d9a3">setGridLimits</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_f_d_dividend_engine_merton73_1a781bc1a5dab54b628a6ffceacff27587">setGridLimits</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_f_d_dividend_engine_shift_scale_1a781bc1a5dab54b628a6ffceacff27587">setGridLimits</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a95a121986a34191e5e0e79614f1291bc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void setGridLimits</definition>
+        <argsstring>(Real, Time) const </argsstring>
+        <name>setGridLimits</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a78e07ab8f1efe95af3620d4515bee51d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void initializeInitialCondition</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeInitialCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1aec873e3e9f589c5f7450e44c176bba53" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void initializeBoundaryConditions</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeBoundaryConditions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a11960243546eb3fbfd156bb356521f0c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void initializeOperator</definition>
+        <argsstring>() const </argsstring>
+        <name>initializeOperator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a674e7ea5e90acab0262d251898ff792d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>virtual Time getResidualTime</definition>
+        <argsstring>() const </argsstring>
+        <name>getResidualTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1ae1dd3d1c5ca170640a5924b2ee281e41" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ensureStrikeInGrid</definition>
+        <argsstring>() const </argsstring>
+        <name>ensureStrikeInGrid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="81"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1ab552e09b28193a2d8c53fa55a96ebd64" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size safeGridPoints</definition>
+        <argsstring>(Size gridPoints, Time residualTime) const </argsstring>
+        <name>safeGridPoints</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>gridPoints</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>residualTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Finite-differences pricing engine for BSM one asset options. </para>    </briefdescription>
+    <detaileddescription>
+<para>The name is a misnomer as this is a base class for any finite difference scheme. Its main job is to handle grid layout. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6260">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+      </node>
+      <node id="6262">
+        <label>FDStepConditionEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_step_condition_engine"/>
+        <childnode refid="6260" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6261">
+        <label>FDEuropeanEngine&lt; Scheme &gt;</label>
+        <link refid="class_quant_lib_1_1_f_d_european_engine"/>
+        <childnode refid="6260" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6263">
+        <label>FDVanillaEngine</label>
+        <link refid="class_quant_lib_1_1_f_d_vanilla_engine"/>
+        <childnode refid="6264" relation="usage">
+          <edgelabel>intrinsicValues_</edgelabel>
+        </childnode>
+        <childnode refid="6265" relation="usage">
+          <edgelabel>exerciseDate_</edgelabel>
+        </childnode>
+        <childnode refid="6266" relation="usage">
+          <edgelabel>finiteDifferenceOperator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6266">
+        <label>TridiagonalOperator</label>
+        <link refid="class_quant_lib_1_1_tridiagonal_operator"/>
+        <childnode refid="6267" relation="usage">
+          <edgelabel>upperDiagonal_</edgelabel>
+          <edgelabel>lowerDiagonal_</edgelabel>
+          <edgelabel>temp_</edgelabel>
+          <edgelabel>diagonal_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6267">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="6264">
+        <label>SampledCurve</label>
+        <link refid="class_quant_lib_1_1_sampled_curve"/>
+      </node>
+      <node id="6265">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="46" bodyend="88"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>bc_type</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1af5ad104496c57fc44c7d043228540df3" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>BCs_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a6d1498fa8ea69ec53974976d2de35a8e" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>center_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ae1dd3d1c5ca170640a5924b2ee281e41" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>ensureStrikeInGrid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a82043c5ad79ac1b7b969001c0fac6b01" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>exerciseDate_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>FDVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a339a08d2d842659617830840971da35e" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>finiteDifferenceOperator_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a674e7ea5e90acab0262d251898ff792d" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>getResidualTime</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a16c466291f64905ece2498448e304db1" prot="public" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>grid</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aa4c843f49b01849ec9263c9aeaa4e27a" prot="private" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>gridLogSpacing_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a7145182f52df597ca8aa4d5866217c1e" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>gridPoints_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aec873e3e9f589c5f7450e44c176bba53" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>initializeBoundaryConditions</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a78e07ab8f1efe95af3620d4515bee51d" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>initializeInitialCondition</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a11960243546eb3fbfd156bb356521f0c" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>initializeOperator</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a8edf65769664d4ebdccdf4570511510f" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>intrinsicValues_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a73cfad8707a6a802108b5bb7e04aca75" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a5a97f4313a9da6e57d378b06ffcb41a1" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>requiredGridValue_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ab552e09b28193a2d8c53fa55a96ebd64" prot="private" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>safeGridPoints</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ab602c82b8b4c102c985b77298eb4c3d3" prot="private" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>safetyZoneFactor_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aab2fa1494d4f4992fbfdbbc6df8328fc" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a95a121986a34191e5e0e79614f1291bc" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>setGridLimits</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a962e8e99edd2b2802cb56cb06c572ec2" prot="protected" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aa3e79b584dea15108e9e47722b105e03" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>sMax_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1ad8993bc76e2e718431695d0ad5844f76" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>sMin_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1afe877f42f51da049474a29ca152f6e38" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>timeDependent_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::FDVanillaEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_f_d_vanilla_engine_1aaaf57b9fc05bb255d2d7f329fb445d5b" prot="public" virt="virtual"><scope>QuantLib::FDVanillaEngine</scope><name>~FDVanillaEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2" kind="class" prot="public">
+    <compoundname>QuantLib::MonteCarloCDOEngine2</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine" prot="public" virt="non-virtual">SyntheticCDO::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a37c7ec3ed133d2d4a4e11455251f61c8" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;RandomDefaultModel&gt; rdm_</definition>
+        <argsstring></argsstring>
+        <name>rdm_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size samples_</definition>
+        <argsstring></argsstring>
+        <name>samples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a47ab7a2d9d91819b5520a4c2c328d7d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MonteCarloCDOEngine2</definition>
+        <argsstring>(boost::shared_ptr&lt; RandomDefaultModel &gt; rdm, Size samples)</argsstring>
+        <name>MonteCarloCDOEngine2</name>
+        <param>
+          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
+          <declname>rdm</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>samples</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="160" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="158" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="161"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6bf5cd8c204e8cef5fd9f29384438015" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real expectedTrancheLoss</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>expectedTrancheLoss</name>
+        <reimplements refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1a2e70e1d1ab3c68a3c6d4c5bb39820576">expectedTrancheLoss</reimplements>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="164" bodyend="164"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the sample payoff. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9998">
+        <label>GenericEngine&lt; SyntheticCDO::arguments, SyntheticCDO::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="9999" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10001" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10000">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="9997">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine"/>
+        <childnode refid="9998" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10001">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="9999">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="10000" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9996">
+        <label>MonteCarloCDOEngine2</label>
+        <link refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2"/>
+        <childnode refid="9997" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10004">
+        <label>GenericEngine&lt; SyntheticCDO::arguments, SyntheticCDO::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="10005" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10007" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10006">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10003">
+        <label>engine</label>
+        <link refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine"/>
+        <childnode refid="10004" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10007">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10005">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="10006" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10002">
+        <label>MonteCarloCDOEngine2</label>
+        <link refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2"/>
+        <childnode refid="10003" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="156" bodyend="168"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6bf5cd8c204e8cef5fd9f29384438015" prot="private" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>expectedTrancheLoss</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1aaac543552f17269d35397313c2387f9b" prot="protected" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a47ab7a2d9d91819b5520a4c2c328d7d4" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>MonteCarloCDOEngine2</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a37c7ec3ed133d2d4a4e11455251f61c8" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>rdm_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1engine_1a436de67d6f39402af3bbe7616c45edba" prot="protected" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>remainingBasket_</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_monte_carlo_c_d_o_engine2_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>samples_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::MonteCarloCDOEngine2</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

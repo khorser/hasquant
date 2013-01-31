@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lm_linear_exponential_volatility_model" kind="class" prot="public">
+    <compoundname>QuantLib::LmLinearExponentialVolatilityModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model" prot="public" virt="non-virtual">LmExtLinearExponentialVolModel</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8febdf88837e4cffc9f75ddf4da8e5d1" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>const std::vector&lt;Time&gt; fixingTimes_</definition>
+        <argsstring></argsstring>
+        <name>fixingTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8f5b4b645bd11c8f5a6e25f0d34fe6ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LmLinearExponentialVolatilityModel</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;fixingTimes, Real a, Real b, Real c, Real d)</argsstring>
+        <name>LmLinearExponentialVolatilityModel</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>fixingTimes</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>Disposable&lt;Array&gt; volatility</definition>
+        <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>volatility</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1abc5c862454998819a6b89ab41895528d">volatility</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a39d7d490201f2ef18de08691f8dd398a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+        <definition>Volatility volatility</definition>
+        <argsstring>(Size i, Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>volatility</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1aae8073ece95900dc7ce2738fb4eca1da">volatility</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real integratedVariance</definition>
+        <argsstring>(Size i, Size j, Time u, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
+        <name>integratedVariance</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1acc1cf9ab061974e46c30a61b4e8443af">integratedVariance</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>u</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void generateArguments</definition>
+        <argsstring>()</argsstring>
+        <name>generateArguments</name>
+        <reimplements refid="class_quant_lib_1_1_lm_volatility_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>linear exponential volatility model </para>    </briefdescription>
+    <detaileddescription>
+<para>This class describes a linear-exponential volatility model</para><para><formula id="164">\[ \sigma_i(t)=(a*(T_{i}-t)+d)*e^{-b(T_{i}-t)}+c \]</formula> <verbatim>  References:
+
+  Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003,
+  Different Covariance Parameterizations of Libor Market Model and Joint
+  Caps/Swaptions Calibration,
+  (&lt;http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf&gt;)</verbatim> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="9140">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9141">
+        <label>LmExtLinearExponentialVolModel</label>
+        <link refid="class_quant_lib_1_1_lm_ext_linear_exponential_vol_model"/>
+        <childnode refid="9139" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9139">
+        <label>LmLinearExponentialVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model"/>
+        <childnode refid="9140" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9143">
+        <label>LmVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
+      </node>
+      <node id="9142">
+        <label>LmLinearExponentialVolatilityModel</label>
+        <link refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model"/>
+        <childnode refid="9143" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmlinexpvolmodel.hpp" bodystart="46" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8febdf88837e4cffc9f75ddf4da8e5d1" prot="private" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>fixingTimes_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" virt="virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>integratedVariance</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a8f5b4b645bd11c8f5a6e25f0d34fe6ef" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>LmLinearExponentialVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1aadbf151af61e33a78daafdef33307386" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>LmVolatilityModel</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>size_</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_linear_exponential_volatility_model_1a39d7d490201f2ef18de08691f8dd398a" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_lm_volatility_model_1a05941543805ec3ef0b4dea387671af16" prot="public" virt="virtual"><scope>QuantLib::LmLinearExponentialVolatilityModel</scope><name>~LmVolatilityModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

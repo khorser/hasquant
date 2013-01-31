@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_region_1_1_data" kind="struct" prot="public">
+    <compoundname>QuantLib::Region::Data</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_quant_lib_1_1_region_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring></argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_quant_lib_1_1_region_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string code</definition>
+        <argsstring></argsstring>
+        <name>code</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_quant_lib_1_1_region_1_1_data_1a31bb15acdafb5cdd89aacbef0cec17fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Data</definition>
+        <argsstring>(const std::string &amp;name, const std::string &amp;code)</argsstring>
+        <name>Data</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="50" bodyend="51"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="47" bodyend="52"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1_region_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>code</name></member>
+      <member refid="struct_quant_lib_1_1_region_1_1_data_1a31bb15acdafb5cdd89aacbef0cec17fc" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>Data</name></member>
+      <member refid="struct_quant_lib_1_1_region_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_unit_of_measure" kind="class" prot="public">
+    <compoundname>QuantLib::UnitOfMeasure</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_barrel_unit_of_measure" prot="public" virt="non-virtual">BarrelUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_gallon_unit_of_measure" prot="public" virt="non-virtual">GallonUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_kilolitre_unit_of_measure" prot="public" virt="non-virtual">KilolitreUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_litre_unit_of_measure" prot="public" virt="non-virtual">LitreUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_lot_unit_of_measure" prot="public" virt="non-virtual">LotUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_m_b_unit_of_measure" prot="public" virt="non-virtual">MBUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_m_t_unit_of_measure" prot="public" virt="non-virtual">MTUnitOfMeasure</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_tokyo_kilolitre_unit_of_measure" prot="public" virt="non-virtual">TokyoKilolitreUnitOfMeasure</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp</includes>
+    <innerclass refid="struct_quant_lib_1_1_unit_of_measure_1_1_data" prot="public">QuantLib::UnitOfMeasure::Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>name, e.g, &quot;Barrels&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; code</definition>
+        <argsstring>() const </argsstring>
+        <name>code</name>
+        <briefdescription>
+<para>code, e.g, &quot;BBL&quot;, &quot;MT&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1aa0884bf693afec5332fdffb5458f5ede" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Type</type>
+        <definition>UnitOfMeasure::Type unitType</definition>
+        <argsstring>() const </argsstring>
+        <name>unitType</name>
+        <briefdescription>
+<para>unit type (mass, volume...) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="115" bodyend="117"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Other information</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool empty</definition>
+        <argsstring>() const </argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>is this a usable instance? </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="123" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a6a799b7b95e09cfb0d07488185108da1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_rounding" kindref="compound">Rounding</ref> &amp;</type>
+        <definition>const Rounding &amp; rounding</definition>
+        <argsstring>() const </argsstring>
+        <name>rounding</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="119" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1aeb506a9dedbc3874208f905c91982f34" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        <definition>const UnitOfMeasure &amp; triangulationUnitOfMeasure</definition>
+        <argsstring>() const </argsstring>
+        <name>triangulationUnitOfMeasure</name>
+        <briefdescription>
+<para>unit used for triangulation when required </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="128" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7ad6a7c05ee148611b428c59bbf905c819" prot="public">
+          <name>Mass</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a99d9a37107ba00eec7702a4683ed93e7" prot="public">
+          <name>Volume</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a52549afe87628ebdafaca441e36d0f54" prot="public">
+          <name>Energy</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a9c7c3d0a1c0a535dac79d101d2559a6d" prot="public">
+          <name>Quantity</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="39" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_unit_of_measure_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; Data &gt;</type>
+        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_unit_of_measure_1a8e52da6d59153d502eeb6649c922673c" prot="private" static="yes" mutable="no">
+        <type>std::map&lt; std::string, boost::shared_ptr&lt; UnitOfMeasure::Data &gt; &gt;</type>
+        <definition>std::map&lt;std::string, boost::shared_ptr&lt;UnitOfMeasure::Data&gt; &gt; unitsOfMeasure_</definition>
+        <argsstring></argsstring>
+        <name>unitsOfMeasure_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a0d331fdab7998ace4c8dd0db6e6bd2df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>UnitOfMeasure</definition>
+        <argsstring>()</argsstring>
+        <name>UnitOfMeasure</name>
+        <briefdescription>
+<para>default constructor </para>        </briefdescription>
+        <detaileddescription>
+<para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="105" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1ab8298d7a2df5c748273a284404203a49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>UnitOfMeasure</definition>
+        <argsstring>(const std::string &amp;name, const std::string &amp;code, Type unitType)</argsstring>
+        <name>UnitOfMeasure</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>unitType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="49"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a93b0e3b06bb3eff2e7f80864d32101b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const UnitOfMeasure &amp;, const UnitOfMeasure &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="132" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a7b072a8434094fec0d21f53346581ee4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const UnitOfMeasure &amp;, const UnitOfMeasure &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="136" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a5dc130ad7da6f32ebcc08e2018fe9f22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, const UnitOfMeasure &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Unit of measure specification </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="37" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a52549afe87628ebdafaca441e36d0f54" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>Energy</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7ad6a7c05ee148611b428c59bbf905c819" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>Mass</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a7b072a8434094fec0d21f53346581ee4" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a5dc130ad7da6f32ebcc08e2018fe9f22" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a93b0e3b06bb3eff2e7f80864d32101b2" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a9c7c3d0a1c0a535dac79d101d2559a6d" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>Quantity</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>rounding</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1aeb506a9dedbc3874208f905c91982f34" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>triangulationUnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a0d331fdab7998ace4c8dd0db6e6bd2df" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>UnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1ab8298d7a2df5c748273a284404203a49" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>UnitOfMeasure</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a8e52da6d59153d502eeb6649c922673c" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>unitsOfMeasure_</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1aa0884bf693afec5332fdffb5458f5ede" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>unitType</name></member>
+      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a99d9a37107ba00eec7702a4683ed93e7" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure</scope><name>Volume</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

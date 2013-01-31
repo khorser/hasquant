@@ -1,0 +1,364 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_futures_conv_adjustment_quote" kind="class" prot="public">
+    <compoundname>QuantLib::FuturesConvAdjustmentQuote</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_quote" prot="public" virt="non-virtual">Quote</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Quote interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real value</definition>
+        <argsstring>() const </argsstring>
+        <name>value</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <briefdescription>
+<para>returns the current value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool isValid</definition>
+        <argsstring>() const </argsstring>
+        <name>isValid</name>
+        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <briefdescription>
+<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a07eb681278aea3f0d6a5e66f3403ab56" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real futuresValue</definition>
+        <argsstring>() const </argsstring>
+        <name>futuresValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a9421e902ef410ac829bb244e14b4f81b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real volatility</definition>
+        <argsstring>() const </argsstring>
+        <name>volatility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a7c89093abfeb25762659fbc97a854ec3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real meanReversion</definition>
+        <argsstring>() const </argsstring>
+        <name>meanReversion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1aa93c5c7968992525a9492f57af367a66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date immDate</definition>
+        <argsstring>() const </argsstring>
+        <name>immDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a28c827de4ff4b301f3132bfb1cfb0903" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dc_</definition>
+        <argsstring></argsstring>
+        <name>dc_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a647cc03c550992a4fc1396d23322f663" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>const Date futuresDate_</definition>
+        <argsstring></argsstring>
+        <name>futuresDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a821a84c5a47689ea4bb050c4f14e2157" prot="protected" static="no" mutable="no">
+        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>const Date indexMaturityDate_</definition>
+        <argsstring></argsstring>
+        <name>indexMaturityDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a71fd0def8f15b04f5c1b0f63043a2d3c" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; futuresQuote_</definition>
+        <argsstring></argsstring>
+        <name>futuresQuote_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; volatility_</definition>
+        <argsstring></argsstring>
+        <name>volatility_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a2b50f8924eff549cb145d2ced86b9749" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; meanReversion_</definition>
+        <argsstring></argsstring>
+        <name>meanReversion_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a74556d262354726db58e8cb0118fd360" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FuturesConvAdjustmentQuote</definition>
+        <argsstring>(const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Date &amp;futuresDate, const Handle&lt; Quote &gt; &amp;futuresQuote, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
+        <name>FuturesConvAdjustmentQuote</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>futuresDate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>futuresQuote</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>volatility</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>meanReversion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1a4be7fddd8a0e04ca7303628884b95dd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FuturesConvAdjustmentQuote</definition>
+        <argsstring>(const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const std::string &amp;immCode, const Handle&lt; Quote &gt; &amp;futuresQuote, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
+        <name>FuturesConvAdjustmentQuote</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>immCode</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>futuresQuote</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>volatility</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>meanReversion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_futures_conv_adjustment_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="72" bodyend="74"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>quote for the futures-convexity adjustment of an index </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6776">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="6777" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6777">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6778">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6775">
+        <label>FuturesConvAdjustmentQuote</label>
+        <link refid="class_quant_lib_1_1_futures_conv_adjustment_quote"/>
+        <childnode refid="6776" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6778" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6780">
+        <label>Quote</label>
+        <link refid="class_quant_lib_1_1_quote"/>
+        <childnode refid="6781" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6781">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6784">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="6782">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6779">
+        <label>FuturesConvAdjustmentQuote</label>
+        <link refid="class_quant_lib_1_1_futures_conv_adjustment_quote"/>
+        <childnode refid="6780" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6782" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6783" relation="usage">
+          <edgelabel>dc_</edgelabel>
+        </childnode>
+        <childnode refid="6784" relation="usage">
+          <edgelabel>meanReversion_</edgelabel>
+          <edgelabel>futuresQuote_</edgelabel>
+          <edgelabel>volatility_</edgelabel>
+        </childnode>
+        <childnode refid="6785" relation="usage">
+          <edgelabel>futuresDate_</edgelabel>
+          <edgelabel>indexMaturityDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6785">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="6783">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/futuresconvadjustmentquote.hpp" bodystart="36" bodyend="68"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a28c827de4ff4b301f3132bfb1cfb0903" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>dc_</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a74556d262354726db58e8cb0118fd360" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>FuturesConvAdjustmentQuote</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a4be7fddd8a0e04ca7303628884b95dd7" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>FuturesConvAdjustmentQuote</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a647cc03c550992a4fc1396d23322f663" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>futuresDate_</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a71fd0def8f15b04f5c1b0f63043a2d3c" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>futuresQuote_</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a07eb681278aea3f0d6a5e66f3403ab56" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>futuresValue</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1aa93c5c7968992525a9492f57af367a66" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>immDate</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a821a84c5a47689ea4bb050c4f14e2157" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>indexMaturityDate_</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>isValid</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a7c89093abfeb25762659fbc97a854ec3" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>meanReversion</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a2b50f8924eff549cb145d2ced86b9749" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>meanReversion_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a9421e902ef410ac829bb244e14b4f81b" prot="public" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>volatility</name></member>
+      <member refid="class_quant_lib_1_1_futures_conv_adjustment_quote_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="protected" virt="non-virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>volatility_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::FuturesConvAdjustmentQuote</scope><name>~Quote</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

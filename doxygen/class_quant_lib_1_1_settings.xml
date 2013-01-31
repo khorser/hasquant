@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_settings" kind="class" prot="public">
+    <compoundname>QuantLib::Settings</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_singleton" prot="public" virt="non-virtual">Singleton&lt; Settings &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/settings.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_settings_1_1_date_proxy" prot="private">QuantLib::Settings::DateProxy</innerclass>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_quant_lib_1_1_settings_1a91c99b41b2e91d182b86ccc958e3248e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Singleton&lt; Settings &gt;</definition>
+        <argsstring></argsstring>
+        <name>Singleton&lt; Settings &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_quant_lib_1_1_settings_1a7372fd0b783fb5d23e60a661934d1203" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, const DateProxy &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const DateProxy &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="47"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1aa47eba642bb525608360293ca195866f" prot="private" static="no" mutable="no">
+        <type>DateProxy</type>
+        <definition>DateProxy evaluationDate_</definition>
+        <argsstring></argsstring>
+        <name>evaluationDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a9dc706f7bde495e92a2ead042696d763" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool includeReferenceDateEvents_</definition>
+        <argsstring></argsstring>
+        <name>includeReferenceDateEvents_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a8a3aacf41cab37be41ec441e1ee15ee9" prot="private" static="no" mutable="no">
+        <type>boost::optional&lt; bool &gt;</type>
+        <definition>boost::optional&lt;bool&gt; includeTodaysCashFlows_</definition>
+        <argsstring></argsstring>
+        <name>includeTodaysCashFlows_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_settings_1a8f231257ba45f5e8bff505c57007dbc7" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool enforcesTodaysHistoricFixings_</definition>
+        <argsstring></argsstring>
+        <name>enforcesTodaysHistoricFixings_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1ad9e75fc733b9d496f8003fb4725878c3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Settings</definition>
+        <argsstring>()</argsstring>
+        <name>Settings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>DateProxy &amp;</type>
+        <definition>Settings::DateProxy &amp; evaluationDate</definition>
+        <argsstring>()</argsstring>
+        <name>evaluationDate</name>
+        <briefdescription>
+<para>the date at which pricing is to be performed. </para>        </briefdescription>
+        <detaileddescription>
+<para>Client code can inspect the evaluation date, as in: <programlisting><codeline><highlight class="normal">Date<sp/>d<sp/>=<sp/><ref refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" kindref="member" tooltip="access to the unique instance">Settings::instance</ref>().<ref refid="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" kindref="member" tooltip="the date at which pricing is to be performed.">evaluationDate</ref>();</highlight></codeline>
+</programlisting> where today&apos;s date is returned if the evaluation date is set to the null date (its default value;) can set it to a new value, as in: <programlisting><codeline><highlight class="normal"><ref refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" kindref="member" tooltip="access to the unique instance">Settings::instance</ref>().<ref refid="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" kindref="member" tooltip="the date at which pricing is to be performed.">evaluationDate</ref>()<sp/>=<sp/>d;</highlight></codeline>
+</programlisting> and can register with it, as in: <programlisting><codeline><highlight class="normal">registerWith(<ref refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" kindref="member" tooltip="access to the unique instance">Settings::instance</ref>().<ref refid="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" kindref="member" tooltip="the date at which pricing is to be performed.">evaluationDate</ref>());</highlight></codeline>
+</programlisting> to be notified when it is set to a new value. <xrefsect id="caveats_1_caveats000106"><xreftitle>Warning</xreftitle><xrefdescription><para>a notification is not sent when the evaluation date changes for natural causes<mdash/>i.e., a date was not explicitly set (which results in today&apos;s date being used for pricing) and the current date changes as the clock strikes midnight. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="153" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1ae3189c550eea150ee68d731a28248ee2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const DateProxy &amp;</type>
+        <definition>const Settings::DateProxy &amp; evaluationDate</definition>
+        <argsstring>() const </argsstring>
+        <name>evaluationDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="157" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a9aa8356b35815cebac2f917f6d4e6b4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void anchorEvaluationDate</definition>
+        <argsstring>()</argsstring>
+        <name>anchorEvaluationDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call this to prevent the evaluation date to change at midnight (and, incidentally, to gain quite a bit of performance.) If no evaluation date was previously set, it is equivalent to setting the evaluation date to <ref refid="class_quant_lib_1_1_date_1aa3b3414c408337e640d21c0936602c66" kindref="member">Date::todaysDate()</ref>; if an evaluation date other than Date() was already set, it has no effect. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a3d83ddb191bf74ffee552d9dd9fc2d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void resetEvaluationDate</definition>
+        <argsstring>()</argsstring>
+        <name>resetEvaluationDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Call this to reset the evaluation date to <ref refid="class_quant_lib_1_1_date_1aa3b3414c408337e640d21c0936602c66" kindref="member">Date::todaysDate()</ref> and allow it to change at midnight. It is equivalent to setting the evaluation date to Date(). This comes at the price of losing some performance, since the evaluation date is re-evaluated each time it is read. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="88"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a42985b53935a1455fae87abac7897abe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool &amp;</type>
+        <definition>bool &amp; includeReferenceDateEvents</definition>
+        <argsstring>()</argsstring>
+        <name>includeReferenceDateEvents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This flag specifies whether or not Events occurring on the reference date should, by default, be taken into account as not happened yet. It can be overridden locally when calling the <ref refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="161" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a661c3f098e93123cf66b0435b1a5e0c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool includeReferenceDateEvents</definition>
+        <argsstring>() const </argsstring>
+        <name>includeReferenceDateEvents</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="165" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1ab02fe975a741a17aedf64c1904f73365" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool &amp;</type>
+        <definition>bool&amp; includeReferenceDateCashFlows</definition>
+        <argsstring>()</argsstring>
+        <name>includeReferenceDateCashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="98" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a12e32d242634ec425ce24f3186bf65bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool includeReferenceDateCashFlows</definition>
+        <argsstring>() const </argsstring>
+        <name>includeReferenceDateCashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="101" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1ae3bc274d0c10bfa3b2c27380eb000032" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::optional&lt; bool &gt; &amp;</type>
+        <definition>boost::optional&lt; bool &gt; &amp; includeTodaysCashFlows</definition>
+        <argsstring>()</argsstring>
+        <name>includeTodaysCashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>If set, this flag specifies whether or not <ref refid="class_quant_lib_1_1_cash_flows" kindref="compound">CashFlows</ref> occurring on today&apos;s date should enter the NPV. When the NPV date (i.e., the date at which the cash flows are discounted) equals today&apos;s date, this flag overrides the behavior chosen for includeReferenceDate. It cannot be overridden locally when calling the <ref refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" kindref="member">CashFlow::hasOccurred</ref> method. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="169" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1a1dbed895b6b7fa9c7c61a6618d55feac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::optional&lt; bool &gt;</type>
+        <definition>boost::optional&lt; bool &gt; includeTodaysCashFlows</definition>
+        <argsstring>() const </argsstring>
+        <name>includeTodaysCashFlows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="173" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1af595a253588ed5bb7d32db3ea376343a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool &amp;</type>
+        <definition>bool &amp; enforcesTodaysHistoricFixings</definition>
+        <argsstring>()</argsstring>
+        <name>enforcesTodaysHistoricFixings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="177" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_settings_1adda3a6a81339120e1ff517e66fc08420" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool enforcesTodaysHistoricFixings</definition>
+        <argsstring>() const </argsstring>
+        <name>enforcesTodaysHistoricFixings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="181" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>global repository for run-time library settings </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="13029">
+        <label>Settings</label>
+        <link refid="class_quant_lib_1_1_settings"/>
+        <childnode refid="13030" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13030">
+        <label>Singleton&lt; Settings &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13031">
+        <label>Settings</label>
+        <link refid="class_quant_lib_1_1_settings"/>
+        <childnode refid="13032" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13032">
+        <label>Singleton&lt; Settings &gt;</label>
+        <link refid="class_quant_lib_1_1_singleton"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="37" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_settings_1a9aa8356b35815cebac2f917f6d4e6b4f" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>anchorEvaluationDate</name></member>
+      <member refid="class_quant_lib_1_1_settings_1af595a253588ed5bb7d32db3ea376343a" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings</name></member>
+      <member refid="class_quant_lib_1_1_settings_1adda3a6a81339120e1ff517e66fc08420" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a8f231257ba45f5e8bff505c57007dbc7" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings_</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate</name></member>
+      <member refid="class_quant_lib_1_1_settings_1ae3189c550eea150ee68d731a28248ee2" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate</name></member>
+      <member refid="class_quant_lib_1_1_settings_1aa47eba642bb525608360293ca195866f" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate_</name></member>
+      <member refid="class_quant_lib_1_1_settings_1ab02fe975a741a17aedf64c1904f73365" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a12e32d242634ec425ce24f3186bf65bd" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a42985b53935a1455fae87abac7897abe" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a661c3f098e93123cf66b0435b1a5e0c6" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a9dc706f7bde495e92a2ead042696d763" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents_</name></member>
+      <member refid="class_quant_lib_1_1_settings_1ae3bc274d0c10bfa3b2c27380eb000032" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a1dbed895b6b7fa9c7c61a6618d55feac" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a8a3aacf41cab37be41ec441e1ee15ee9" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows_</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>instance</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a7372fd0b783fb5d23e60a661934d1203" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_settings_1a3d83ddb191bf74ffee552d9dd9fc2d3f" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>resetEvaluationDate</name></member>
+      <member refid="class_quant_lib_1_1_settings_1ad9e75fc733b9d496f8003fb4725878c3" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>Settings</name></member>
+      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::Settings</scope><name>Singleton</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

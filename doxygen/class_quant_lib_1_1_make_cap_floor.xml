@@ -1,0 +1,406 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_make_cap_floor" kind="class" prot="public">
+    <compoundname>QuantLib::MakeCapFloor</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1ad16ae34a3483f675942bf573ec4271ba" prot="private" static="no" mutable="no">
+        <type>CapFloor::Type</type>
+        <definition>CapFloor::Type capFloorType_</definition>
+        <argsstring></argsstring>
+        <name>capFloorType_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate strike_</definition>
+        <argsstring></argsstring>
+        <name>strike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool firstCapletExcluded_</definition>
+        <argsstring></argsstring>
+        <name>firstCapletExcluded_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool asOptionlet_</definition>
+        <argsstring></argsstring>
+        <name>asOptionlet_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1a7899615d541219d449d54a7784b56d9a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_make_vanilla_swap" kindref="compound">MakeVanillaSwap</ref></type>
+        <definition>MakeVanillaSwap makeVanillaSwap_</definition>
+        <argsstring></argsstring>
+        <name>makeVanillaSwap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
+        <argsstring></argsstring>
+        <name>engine_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1ab701fbc7fe43af2644d4d2eb35bf76c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MakeCapFloor</definition>
+        <argsstring>(CapFloor::Type capFloorType, const Period &amp;capFloorTenor, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, Rate strike=Null&lt; Rate &gt;(), const Period &amp;forwardStart=0 *Days)</argsstring>
+        <name>MakeCapFloor</name>
+        <param>
+          <type>CapFloor::Type</type>
+          <declname>capFloorType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>capFloorTenor</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>iborIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>strike</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>forwardStart</declname>
+          <defval>0 *Days</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a7bea6c0ff7c450cbb59ef34df4bffe99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator CapFloor</definition>
+        <argsstring>() const </argsstring>
+        <name>operator CapFloor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a51e4bc45473f4975db2c2e7cee76d3e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator boost::shared_ptr&lt; CapFloor &gt;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator boost::shared_ptr&lt; CapFloor &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a49da727eac49aa25b7049d97f450add8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withNominal</definition>
+        <argsstring>(Real n)</argsstring>
+        <name>withNominal</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a90ba16b56f1b503216c771b350995be5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withEffectiveDate</definition>
+        <argsstring>(const Date &amp;effectiveDate, bool firstCapletExcluded)</argsstring>
+        <name>withEffectiveDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>effectiveDate</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>firstCapletExcluded</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1ae1bd69239e87e1c167e9cfa744e5587f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withTenor</definition>
+        <argsstring>(const Period &amp;t)</argsstring>
+        <name>withTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1ac5964e56d440144efcdbdfa13a5283e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withCalendar</definition>
+        <argsstring>(const Calendar &amp;cal)</argsstring>
+        <name>withCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>cal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a886920e731cacfa311f5695959e87d3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a99bbc690fab22b6b152102edfa90a6c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a55c3222d9f533a17c06d0113ac1c6561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1ad96a772f128ed68485e6a9c8126fb861" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withEndOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withEndOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a65af3e47e417392a087d62e00cc14cb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1acbc7ed2ce81e3a290410c4d3c9719b5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a413b379fc70f316436cb7f5895d1262d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withDayCount</definition>
+        <argsstring>(const DayCounter &amp;dc)</argsstring>
+        <name>withDayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a0cf891fc8ae3104c048a54e50b329e41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; asOptionlet</definition>
+        <argsstring>(bool b=true)</argsstring>
+        <name>asOptionlet</name>
+        <param>
+          <type>bool</type>
+          <declname>b</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>only get last coupon </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cap_floor_1a13eea987eb1967c837d05e392bfe34b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cap_floor" kindref="compound">MakeCapFloor</ref> &amp;</type>
+        <definition>MakeCapFloor&amp; withPricingEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine)</argsstring>
+        <name>withPricingEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <declname>engine</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="65"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>helper class </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides a more comfortable way to instantiate standard market cap and floor. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="37" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a0cf891fc8ae3104c048a54e50b329e41" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>asOptionlet</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>asOptionlet_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1ad16ae34a3483f675942bf573ec4271ba" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>capFloorType_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>firstCapletExcluded_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1ab701fbc7fe43af2644d4d2eb35bf76c0" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>MakeCapFloor</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a7899615d541219d449d54a7784b56d9a" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>makeVanillaSwap_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a51e4bc45473f4975db2c2e7cee76d3e1" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>operator boost::shared_ptr&lt; CapFloor &gt;</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a7bea6c0ff7c450cbb59ef34df4bffe99" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>operator CapFloor</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1ac5964e56d440144efcdbdfa13a5283e4" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a886920e731cacfa311f5695959e87d3d" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a413b379fc70f316436cb7f5895d1262d" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withDayCount</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a90ba16b56f1b503216c771b350995be5" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withEffectiveDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1ad96a772f128ed68485e6a9c8126fb861" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a65af3e47e417392a087d62e00cc14cb7" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1acbc7ed2ce81e3a290410c4d3c9719b5e" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a49da727eac49aa25b7049d97f450add8" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withNominal</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a13eea987eb1967c837d05e392bfe34b1" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a55c3222d9f533a17c06d0113ac1c6561" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withRule</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1ae1bd69239e87e1c167e9cfa744e5587f" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_cap_floor_1a99bbc690fab22b6b152102edfa90a6c5" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withTerminationDateConvention</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

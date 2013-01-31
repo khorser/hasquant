@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_b_spline" kind="class" prot="public">
+    <compoundname>QuantLib::BSpline</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_spline_1a0721c24dda55860c131c52b340b15b87" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural p_</definition>
+        <argsstring></argsstring>
+        <name>p_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_spline_1a8270a52ff6c38572ccad4812b4c9b1b2" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural n_</definition>
+        <argsstring></argsstring>
+        <name>n_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_b_spline_1a6d7082b65c1289fc59fee9feb7568429" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; knots_</definition>
+        <argsstring></argsstring>
+        <name>knots_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_b_spline_1a98d1f469c2fccf68567d10f6919a28f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BSpline</definition>
+        <argsstring>(Natural p, Natural n, const std::vector&lt; Real &gt; &amp;knots)</argsstring>
+        <name>BSpline</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>knots</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_b_spline_1af4b5a32b1cb2ea56aea90bf5db3122b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Natural i, Real x) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_b_spline_1af8a0ff031f68085305af5856bbba7748" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real N</definition>
+        <argsstring>(Natural i, Natural p, Real x) const </argsstring>
+        <name>N</name>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="68"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>B-spline basis functions. </para>    </briefdescription>
+    <detaileddescription>
+<para>Follows treatment and notation from: <verbatim>   Weisstein, Eric W. &quot;B-Spline.&quot; From MathWorld--A Wolfram Web
+   Resource.  &lt;http://mathworld.wolfram.com/B-Spline.html&gt;
+</verbatim></para><para><formula id="170">$ (p+1) $</formula>-th order B-spline (or p degree polynomial) basis functions <formula id="171">$ N_{i,p}(x), i = 0,1,2 \ldots n $</formula>, with <formula id="172">$ n+1 $</formula> control points, or equivalently, an associated knot vector of size <formula id="173">$ p+n+2 $</formula> defined at the increasingly sorted points <formula id="174">$ (x_0, x_1 \ldots x_{n+p+1}) $</formula>. A linear B-spline has <formula id="175">$ p=1 $</formula>, quadratic B-spline has <formula id="176">$ p=2 $</formula>, a cubic B-spline has <formula id="177">$ p=3 $</formula>, etc.</para><para>The B-spline basis functions are defined recursively as follows:</para><para><formula id="178">\[ \begin{array}{rcl} N_{i,0}(x) &amp;=&amp; 1 \textrm{\ if\ } x_{i} \leq x &lt; x_{i+1} \\ &amp;=&amp; 0 \textrm{\ otherwise} \\ N_{i,p}(x) &amp;=&amp; N_{i,p-1}(x) \frac{(x - x_{i})}{ (x_{i+p-1} - x_{i})} + N_{i+1,p-1}(x) \frac{(x_{i+p} - x)}{(x_{i+p} - x_{i+1})} \end{array} \]</formula> </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="58" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_b_spline_1a98d1f469c2fccf68567d10f6919a28f3" prot="public" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>BSpline</name></member>
+      <member refid="class_quant_lib_1_1_b_spline_1a6d7082b65c1289fc59fee9feb7568429" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>knots_</name></member>
+      <member refid="class_quant_lib_1_1_b_spline_1af8a0ff031f68085305af5856bbba7748" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>N</name></member>
+      <member refid="class_quant_lib_1_1_b_spline_1a8270a52ff6c38572ccad4812b4c9b1b2" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>n_</name></member>
+      <member refid="class_quant_lib_1_1_b_spline_1af4b5a32b1cb2ea56aea90bf5db3122b2" prot="public" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_b_spline_1a0721c24dda55860c131c52b340b15b87" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>p_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

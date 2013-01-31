@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_generic_region" kind="class" prot="public">
+    <compoundname>QuantLib::GenericRegion</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_region" prot="public" virt="non-virtual">Region</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_generic_region_1aaa4ba18d1abf35234358b8140738313c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>GenericRegion</definition>
+        <argsstring>()</argsstring>
+        <name>GenericRegion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="34" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generic geographical/economic region. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="7214">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="7213">
+        <label>GenericRegion</label>
+        <link refid="class_quant_lib_1_1_generic_region"/>
+        <childnode refid="7214" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7216">
+        <label>Region</label>
+        <link refid="class_quant_lib_1_1_region"/>
+      </node>
+      <node id="7215">
+        <label>GenericRegion</label>
+        <link refid="class_quant_lib_1_1_generic_region"/>
+        <childnode refid="7216" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/genericindexes.hpp" bodystart="32" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_region_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_region_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_generic_region_1aaa4ba18d1abf35234358b8140738313c" prot="public" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>GenericRegion</name></member>
+      <member refid="class_quant_lib_1_1_region_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_region_1a91999f0d2a4817c3d44e56f8fa9b3a38" prot="public" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_region_1a2693369a6f504bb273441569e0487054" prot="public" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>operator==</name></member>
+      <member refid="class_quant_lib_1_1_region_1ab0affbdd5f40d4d9d7f4cd1fe6d816ca" prot="protected" virt="non-virtual"><scope>QuantLib::GenericRegion</scope><name>Region</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

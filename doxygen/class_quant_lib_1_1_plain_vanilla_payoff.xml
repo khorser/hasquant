@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_plain_vanilla_payoff" kind="class" prot="public">
+    <compoundname>QuantLib::PlainVanillaPayoff</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_striked_type_payoff" prot="public" virt="non-virtual">StrikedTypePayoff</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Payoff interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_plain_vanilla_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_plain_vanilla_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real price) const </argsstring>
+        <name>operator()</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a6d8b8d4f6c9e7904c5de2786903518b6">operator()</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>price</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_plain_vanilla_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="113"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_plain_vanilla_payoff_1a3f3f3368a66d62374abb58ca8f395fe6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PlainVanillaPayoff</definition>
+        <argsstring>(Option::Type type, Real strike)</argsstring>
+        <name>PlainVanillaPayoff</name>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="106" bodyend="108"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Plain-vanilla payoff. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12278">
+        <label>TypePayoff</label>
+        <link refid="class_quant_lib_1_1_type_payoff"/>
+        <childnode refid="12279" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12279">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+      <node id="12277">
+        <label>StrikedTypePayoff</label>
+        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
+        <childnode refid="12278" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12276">
+        <label>PlainVanillaPayoff</label>
+        <link refid="class_quant_lib_1_1_plain_vanilla_payoff"/>
+        <childnode refid="12277" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12282">
+        <label>TypePayoff</label>
+        <link refid="class_quant_lib_1_1_type_payoff"/>
+        <childnode refid="12283" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12283">
+        <label>Payoff</label>
+        <link refid="class_quant_lib_1_1_payoff"/>
+      </node>
+      <node id="12281">
+        <label>StrikedTypePayoff</label>
+        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
+        <childnode refid="12282" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12280">
+        <label>PlainVanillaPayoff</label>
+        <link refid="class_quant_lib_1_1_plain_vanilla_payoff"/>
+        <childnode refid="12281" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="104" bodyend="115"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_plain_vanilla_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>description</name></member>
+      <member refid="class_quant_lib_1_1_plain_vanilla_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_plain_vanilla_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>optionType</name></member>
+      <member refid="class_quant_lib_1_1_plain_vanilla_payoff_1a3f3f3368a66d62374abb58ca8f395fe6" prot="public" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>PlainVanillaPayoff</name></member>
+      <member refid="class_quant_lib_1_1_striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>strike</name></member>
+      <member refid="class_quant_lib_1_1_striked_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_striked_type_payoff_1afec468d37c982a37d0f403c629756770" prot="protected" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>StrikedTypePayoff</name></member>
+      <member refid="class_quant_lib_1_1_type_payoff_1abcdb1c11e3593354931e650dd3dd13f2" prot="protected" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_type_payoff_1a0d0b65c5c1a4c7df8618e75120c15c46" prot="protected" virt="non-virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>TypePayoff</name></member>
+      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::PlainVanillaPayoff</scope><name>~Payoff</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,590 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_geman_roncoroni_process" kind="class" prot="public">
+    <compoundname>QuantLib::GemanRoncoroniProcess</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a0131e858e8eaa9729f68d9e880a83ec8" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real x0_</definition>
+        <argsstring></argsstring>
+        <name>x0_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a3a5f60670b1c3273333467ce33939204" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real alpha_</definition>
+        <argsstring></argsstring>
+        <name>alpha_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a76055db42a544548a3d66eb9c8af95c9" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real gamma_</definition>
+        <argsstring></argsstring>
+        <name>gamma_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1ab93aabd725036e18018464e4d104a097" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real delta_</definition>
+        <argsstring></argsstring>
+        <name>delta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1ae28a260705ef5978c7b749fd7bd92219" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real eps_</definition>
+        <argsstring></argsstring>
+        <name>eps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1af09c161b9190c044ea727e043823de84" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real zeta_</definition>
+        <argsstring></argsstring>
+        <name>zeta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1adffcf48925e6e4c59ea605937a45c617" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real d_</definition>
+        <argsstring></argsstring>
+        <name>d_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a3f33c6a267f1a1cae2993cd869b14b69" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real k_</definition>
+        <argsstring></argsstring>
+        <name>k_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1ad4fb986e2e9f8db964ac46074dfe7f0c" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real tau_</definition>
+        <argsstring></argsstring>
+        <name>tau_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a942aa62ad46a7e4559d3984a91c9d148" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real sig2_</definition>
+        <argsstring></argsstring>
+        <name>sig2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a6305e6b18668b5582bab0f306f222915" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real a_</definition>
+        <argsstring></argsstring>
+        <name>a_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a0ee5e7ff6e451034cd818b28f808bc43" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real b_</definition>
+        <argsstring></argsstring>
+        <name>b_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a1f3d7087c1545ef1134d22d26cda5ac4" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real theta1_</definition>
+        <argsstring></argsstring>
+        <name>theta1_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a52d192b6df7691b202cf939e320c3c37" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real theta2_</definition>
+        <argsstring></argsstring>
+        <name>theta2_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a9bd6b135463aa952bd138d43e81cda3f" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real theta3_</definition>
+        <argsstring></argsstring>
+        <name>theta3_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1abc577b673038268711577416d9a87967" prot="private" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>const Real psi_</definition>
+        <argsstring></argsstring>
+        <name>psi_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_geman_roncoroni_process_1a330d75fe9b86303341a37989cb21b501" prot="private" static="no" mutable="yes">
+        <type>boost::shared_ptr&lt; PseudoRandom::urng_type &gt;</type>
+        <definition>boost::shared_ptr&lt;PseudoRandom::urng_type&gt; urng_</definition>
+        <argsstring></argsstring>
+        <name>urng_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1aaaf3ff8402082006065f57ea573d7d82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GemanRoncoroniProcess</definition>
+        <argsstring>(Real x0, Real alpha, Real beta, Real gamma, Real delta, Real eps, Real zeta, Real d, Real k, Real tau, Real sig2, Real a, Real b, Real theta1, Real theta2, Real theta3, Real psi)</argsstring>
+        <name>GemanRoncoroniProcess</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>gamma</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>delta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eps</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>zeta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>d</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>tau</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>sig2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta1</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta2</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>theta3</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>psi</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real x0</definition>
+        <argsstring>() const </argsstring>
+        <name>x0</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
+        <briefdescription>
+<para>returns the initial value of the state variable </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real drift</definition>
+        <argsstring>(Time t, Real x) const </argsstring>
+        <name>drift</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real diffusion</definition>
+        <argsstring>(Time t, Real x) const </argsstring>
+        <name>diffusion</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real stdDeviation</definition>
+        <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
+        <name>stdDeviation</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7">stdDeviation</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1a28916b3498be74dceb699ad1499a46c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real evolve</definition>
+        <argsstring>(Time t0, Real x0, Time dt, Real dw) const </argsstring>
+        <name>evolve</name>
+        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a690ddf2804c6862d281f9181bd2b633e">evolve</reimplements>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>dw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="365">\[ E(x_0,t_0,\Delta t) + S(x_0,t_0,\Delta t) \cdot \Delta w \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_geman_roncoroni_process_1ae4bfa4741c355bb19967d4181aa423c7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real evolve</definition>
+        <argsstring>(Time t0, Real x0, Time dt, Real dw, const Array &amp;du) const </argsstring>
+        <name>evolve</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>dw</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>du</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Geman-Roncoroni process class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class describes the Geman-Roncoroni process governed by <formula id="137">\[ \begin{array}{rcl} dE(t) &amp;=&amp; \left[ \frac{\partial}{\partial t} \mu(t) +\theta_1 \left(\mu(t)-E(t^-)\right)\right]dt +\sigma dW(t) + h(E(t^-))dJ(t) \\ \mu(t)&amp;=&amp; \alpha + \beta t +\gamma \cos(\epsilon+2\pi t) +\delta \cos(\zeta + 4\pi t) \end{array} \]</formula> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="7116">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7114">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="7115" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7116" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7112">
+        <label>GemanRoncoroniProcess</label>
+        <link refid="class_quant_lib_1_1_geman_roncoroni_process"/>
+        <childnode refid="7113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7115">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7113">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="7114" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7121">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="7119">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="7120" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7121" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7117">
+        <label>GemanRoncoroniProcess</label>
+        <link refid="class_quant_lib_1_1_geman_roncoroni_process"/>
+        <childnode refid="7118" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7120">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="7118">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="7119" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/processes/gemanroncoroniprocess.hpp" bodystart="46" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a6305e6b18668b5582bab0f306f222915" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>a_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a3a5f60670b1c3273333467ce33939204" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a905bb2d5a924e5274035b0850c3e04fb" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a0ee5e7ff6e451034cd818b28f808bc43" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>b_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1adffcf48925e6e4c59ea605937a45c617" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>d_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1ab93aabd725036e18018464e4d104a097" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>delta_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1ae28a260705ef5978c7b749fd7bd92219" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>eps_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a28916b3498be74dceb699ad1499a46c0" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1ae4bfa4741c355bb19967d4181aa423c7" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a76055db42a544548a3d66eb9c8af95c9" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>gamma_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1aaaf3ff8402082006065f57ea573d7d82" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>GemanRoncoroniProcess</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a3f33c6a267f1a1cae2993cd869b14b69" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>k_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::GemanRoncoroniProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::GemanRoncoroniProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1abc577b673038268711577416d9a87967" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>psi_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a942aa62ad46a7e4559d3984a91c9d148" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>sig2_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ad98007dd5c830d050dfb0d4205094b9e" prot="protected" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1a704996c48f48a23c4db6a6549a094807" prot="protected" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>StochasticProcess1D</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1ad4fb986e2e9f8db964ac46074dfe7f0c" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>tau_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a1f3d7087c1545ef1134d22d26cda5ac4" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>theta1_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a52d192b6df7691b202cf939e320c3c37" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>theta2_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a9bd6b135463aa952bd138d43e81cda3f" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>theta3_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a330d75fe9b86303341a37989cb21b501" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>urng_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>variance</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>x0</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1a0131e858e8eaa9729f68d9e880a83ec8" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>x0_</name></member>
+      <member refid="class_quant_lib_1_1_geman_roncoroni_process_1af09c161b9190c044ea727e043823de84" prot="private" virt="non-virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>zeta_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::GemanRoncoroniProcess</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

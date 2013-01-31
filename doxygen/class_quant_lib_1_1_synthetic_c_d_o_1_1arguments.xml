@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::SyntheticCDO::arguments</compoundname>
+    <basecompoundref prot="public" virt="virtual">PricingEngine::arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_basket" kindref="compound">Basket</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Basket&gt; basket</definition>
+        <argsstring></argsstring>
+        <name>basket</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="165" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" static="no" mutable="no">
+        <type>Protection::Side</type>
+        <definition>Protection::Side side</definition>
+        <argsstring></argsstring>
+        <name>side</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abcc78c7bb6b0af62152d52d5f11d620e" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+        <definition>Schedule schedule</definition>
+        <argsstring></argsstring>
+        <name>schedule</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="167" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abfc5afffe4070eb898c1db01caa33761" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate upfrontRate</definition>
+        <argsstring></argsstring>
+        <name>upfrontRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a4c23a2ea0416a2c14c7bc9655c027de9" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate runningRate</definition>
+        <argsstring></argsstring>
+        <name>runningRate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="169" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a51b76afe33f9f1374698265867954ac8" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dayCounter</definition>
+        <argsstring></argsstring>
+        <name>dayCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="170" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="170" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1af283a59bba1cd0b219a03e626632aa61" prot="public" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention paymentConvention</definition>
+        <argsstring></argsstring>
+        <name>paymentConvention</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="171" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a976857a811f2d9fb19d781b796097d1b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; yieldTS</definition>
+        <argsstring></argsstring>
+        <name>yieldTS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="172" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="162" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="160" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="163"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="13856">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="13858">
+        <label>Schedule</label>
+        <link refid="class_quant_lib_1_1_schedule"/>
+      </node>
+      <node id="13857">
+        <label>DayCounter</label>
+        <link refid="class_quant_lib_1_1_day_counter"/>
+      </node>
+      <node id="13855">
+        <label>SyntheticCDO::arguments</label>
+        <childnode refid="13856" relation="usage">
+          <edgelabel>yieldTS</edgelabel>
+        </childnode>
+        <childnode refid="13857" relation="usage">
+          <edgelabel>dayCounter</edgelabel>
+        </childnode>
+        <childnode refid="13858" relation="usage">
+          <edgelabel>schedule</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="158" bodyend="173"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>basket</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a51b76afe33f9f1374698265867954ac8" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1af283a59bba1cd0b219a03e626632aa61" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>paymentConvention</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a4c23a2ea0416a2c14c7bc9655c027de9" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>runningRate</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abcc78c7bb6b0af62152d52d5f11d620e" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>schedule</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>side</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abfc5afffe4070eb898c1db01caa33761" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>upfrontRate</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a976857a811f2d9fb19d781b796097d1b" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>yieldTS</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_claim" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Claim</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_face_value_accrual_claim" prot="public" virt="non-virtual">FaceValueAccrualClaim</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_face_value_claim" prot="public" virt="non-virtual">FaceValueClaim</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Claim</definition>
+        <argsstring>()</argsstring>
+        <name>~Claim</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_claim_1a72b7cb2651ac4d2b9143c54c49090d37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real amount</definition>
+        <argsstring>(const Date &amp;defaultDate, Real notional, Real recoveryRate) const =0</argsstring>
+        <name>amount</name>
+        <reimplementedby refid="class_quant_lib_1_1_face_value_claim_1acf1dfd8d88311d4ea2f5630de7b995e9">amount</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_face_value_accrual_claim_1acf1dfd8d88311d4ea2f5630de7b995e9">amount</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>defaultDate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>notional</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_claim_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> associated to a default event. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2171">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2174">
+        <label>FaceValueClaim</label>
+        <link refid="class_quant_lib_1_1_face_value_claim"/>
+        <childnode refid="2170" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2172">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2170">
+        <label>Claim</label>
+        <link refid="class_quant_lib_1_1_claim"/>
+        <childnode refid="2171" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2172" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2173">
+        <label>FaceValueAccrualClaim</label>
+        <link refid="class_quant_lib_1_1_face_value_accrual_claim"/>
+        <childnode refid="2170" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2176">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="2177">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="2175">
+        <label>Claim</label>
+        <link refid="class_quant_lib_1_1_claim"/>
+        <childnode refid="2176" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2177" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/claim.hpp" bodystart="32" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_claim_1a72b7cb2651ac4d2b9143c54c49090d37" prot="public" virt="pure-virtual"><scope>QuantLib::Claim</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Claim</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Claim</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Claim</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_claim_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::Claim</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" virt="virtual"><scope>QuantLib::Claim</scope><name>~Claim</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Claim</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Claim</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

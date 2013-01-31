@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_kernel_function" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::KernelFunction</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_gaussian_kernel" prot="public" virt="non-virtual">GaussianKernel</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_kernel_function_1a45b5bc5f0e6ad13abc0d53cb235d8cd3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~KernelFunction</definition>
+        <argsstring>()</argsstring>
+        <name>~KernelFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_kernel_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real operator()</definition>
+        <argsstring>(Real x) const =0</argsstring>
+        <name>operator()</name>
+        <reimplementedby refid="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d">operator()</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="39"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Kernel function in the statistical sense, e.g. a nonnegative, real-valued function which integrates to one and is symmetric.</para><para>Derived classes will serve as functors. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8728">
+        <label>KernelFunction</label>
+        <link refid="class_quant_lib_1_1_kernel_function"/>
+      </node>
+      <node id="8729">
+        <label>GaussianKernel</label>
+        <link refid="class_quant_lib_1_1_gaussian_kernel"/>
+        <childnode refid="8728" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="36" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_kernel_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" virt="pure-virtual"><scope>QuantLib::KernelFunction</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_kernel_function_1a45b5bc5f0e6ad13abc0d53cb235d8cd3" prot="public" virt="virtual"><scope>QuantLib::KernelFunction</scope><name>~KernelFunction</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_optionlet_stripper1" kind="class" prot="public">
+    <compoundname>QuantLib::OptionletStripper1</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_optionlet_stripper" prot="public" virt="non-virtual">OptionletStripper</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>LazyObject interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1ab4fde969a4b029ba1704439e1f22df82" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix capFloorPrices_</definition>
+        <argsstring></argsstring>
+        <name>capFloorPrices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1af2d0b7796fc40964e589803b1ead726e" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix optionletPrices_</definition>
+        <argsstring></argsstring>
+        <name>optionletPrices_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a9a0ace98409daaade73bcdca0ad840b5" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix capFloorVols_</definition>
+        <argsstring></argsstring>
+        <name>capFloorVols_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1afe4f8d37eeba6864aacb89ad9cd6d708" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix optionletStDevs_</definition>
+        <argsstring></argsstring>
+        <name>optionletStDevs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a09c22541035e6284f3844086235d5310" prot="private" static="no" mutable="yes">
+        <type>CapFloorMatrix</type>
+        <definition>CapFloorMatrix capFloors_</definition>
+        <argsstring></argsstring>
+        <name>capFloors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a466a8afe5ff9274c5aacd038cb31d7c6" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_simple_quote" kindref="compound">SimpleQuote</ref> &gt; &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;boost::shared_ptr&lt;SimpleQuote&gt; &gt; &gt; volQuotes_</definition>
+        <argsstring></argsstring>
+        <name>volQuotes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a1ece8faa4295fbdf86e6b69465f50162" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool floatingSwitchStrike_</definition>
+        <argsstring></argsstring>
+        <name>floatingSwitchStrike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a9319c88f6f53e2899b7b0e544c6e6fbd" prot="private" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool capFlooMatrixNotInitialized_</definition>
+        <argsstring></argsstring>
+        <name>capFlooMatrixNotInitialized_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1ad7c34d670f6f82d9464e5b18dd36d3e0" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate switchStrike_</definition>
+        <argsstring></argsstring>
+        <name>switchStrike_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real accuracy_</definition>
+        <argsstring></argsstring>
+        <name>accuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_optionlet_stripper1_1ae6c06ed67d150ec02baff8aa16f88004" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural maxIter_</definition>
+        <argsstring></argsstring>
+        <name>maxIter_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>OptionletStripper1</definition>
+        <argsstring>(const boost::shared_ptr&lt; CapFloorTermVolSurface &gt; &amp;, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Rate switchStrikes=Null&lt; Rate &gt;(), Real accuracy=1.0e-6, Natural maxIter=100)</argsstring>
+        <name>OptionletStripper1</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref> &gt; &amp;</type>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>switchStrikes</declname>
+          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>accuracy</declname>
+          <defval>1.0e-6</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+          <declname>maxIter</declname>
+          <defval>100</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a3f590eca85355aa1a98827c343c9ff72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <definition>const Matrix&amp; capFloorPrices</definition>
+        <argsstring>() const </argsstring>
+        <name>capFloorPrices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a6b86390f9bcc7e31227f4844560f0912" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <definition>const Matrix&amp; capFloorVolatilities</definition>
+        <argsstring>() const </argsstring>
+        <name>capFloorVolatilities</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a2f59de205665d90bc0556666dde3a4d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+        <definition>const Matrix&amp; optionletPrices</definition>
+        <argsstring>() const </argsstring>
+        <name>optionletPrices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1ae7071988d2b785277b38d596f7627f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate switchStrike</definition>
+        <argsstring>() const </argsstring>
+        <name>switchStrike</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a <ref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref>. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="11828">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11827">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11828" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11829" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11826">
+        <label>StrippedOptionletBase</label>
+        <link refid="class_quant_lib_1_1_stripped_optionlet_base"/>
+        <childnode refid="11827" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11824">
+        <label>OptionletStripper1</label>
+        <link refid="class_quant_lib_1_1_optionlet_stripper1"/>
+        <childnode refid="11825" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11825">
+        <label>OptionletStripper</label>
+        <link refid="class_quant_lib_1_1_optionlet_stripper"/>
+        <childnode refid="11826" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11829">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="11834">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="11833">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="11834" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11835" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11832">
+        <label>StrippedOptionletBase</label>
+        <link refid="class_quant_lib_1_1_stripped_optionlet_base"/>
+        <childnode refid="11833" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11830">
+        <label>OptionletStripper1</label>
+        <link refid="class_quant_lib_1_1_optionlet_stripper1"/>
+        <childnode refid="11831" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11831">
+        <label>OptionletStripper</label>
+        <link refid="class_quant_lib_1_1_optionlet_stripper"/>
+        <childnode refid="11832" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11835">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="43" bodyend="72"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>accuracy_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a23e84c781ddae11d094ab2efb1cb4198" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>atmOptionletRate_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a8f452b7201204399d0cfa566a9a7a7e8" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>atmOptionletRates</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>businessDayConvention</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>calendar</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a9319c88f6f53e2899b7b0e544c6e6fbd" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFlooMatrixNotInitialized_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a31a56f3f9b923dff0104681b4f234110" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloorLengths_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a3f590eca85355aa1a98827c343c9ff72" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloorPrices</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1ab4fde969a4b029ba1704439e1f22df82" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloorPrices_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a09c22541035e6284f3844086235d5310" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloors_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a6b86390f9bcc7e31227f4844560f0912" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloorVolatilities</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a9a0ace98409daaade73bcdca0ad840b5" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>capFloorVols_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a1ece8faa4295fbdf86e6b69465f50162" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>floatingSwitchStrike_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a39c9489a774110f2c9109243222f287e" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>iborIndex</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a0d81914beca9a7c39ae1b911f410aef6" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>iborIndex_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1ae6c06ed67d150ec02baff8aa16f88004" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>maxIter_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1af63bf0c780bf6fb48dca01de652bcd36" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>nOptionletTenors_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a67ae5ca8c9285c2e266d0472b1c1e7ad" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>nStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::OptionletStripper1</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::OptionletStripper1</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a29c1279cbcb231f1f7ebb9114e9594f6" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletAccrualPeriods</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a64f90db40b98e9207338979fdc18f6ae" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletAccrualPeriods_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a90d9e439fb5ebe3ecf3fece2945cce6f" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletDates_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a3a00159416293bc9559326540986aec2" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletFixingDates</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ae202892d94f34cdd9e988035e85ce7e8" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletFixingTenors</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ad47bd5a39f71c57c6784f6d623332886" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletFixingTimes</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a34bc094ec5d29c718b7e66cb6624a6db" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletMaturities</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a805f2578b0a6fda83dfe3bfa5f64a4ad" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletPaymentDates</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a62c7151370cd9b4466f5d20f35a99e12" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletPaymentDates_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a2f59de205665d90bc0556666dde3a4d5" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletPrices</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1af2d0b7796fc40964e589803b1ead726e" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletPrices_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1afe4f8d37eeba6864aacb89ad9cd6d708" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletStDevs_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a507e4c6ee7a50980ed6f3a110681d7e0" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletStrikes</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ad326a486270bf61958c6e5cfd41b4af6" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletStrikes_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a086966f71f9ea4261180018802902954" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>OptionletStripper</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>OptionletStripper1</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a6f6701abeb60a26972389b8ce0d52c0a" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletTenors_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a901d3034547526afa185e14c7232382e" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletTimes_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1abe7a67bc08b873c9a15a2144c821a9e3" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletVolatilities</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1a299a6625c5bfcf50287bbb43cd631175" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>optionletVolatilities_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ab6506da60fec85c6f146f1b43116de70" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>settlementDays</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1ae7071988d2b785277b38d596f7627f84" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>switchStrike</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1ad7c34d670f6f82d9464e5b18dd36d3e0" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>switchStrike_</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1ad502687af32ea28b4c73205ac4e4ede6" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>termVolSurface</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper_1af74a6d2207b53104a7af15d6c475f1e8" prot="protected" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>termVolSurface_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_optionlet_stripper1_1a466a8afe5ff9274c5aacd038cb31d7c6" prot="private" virt="non-virtual"><scope>QuantLib::OptionletStripper1</scope><name>volQuotes_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::OptionletStripper1</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

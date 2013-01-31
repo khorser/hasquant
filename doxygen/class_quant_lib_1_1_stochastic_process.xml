@@ -1,0 +1,658 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_stochastic_process" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::StochasticProcess</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observer" prot="public" virt="non-virtual">Observer</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" prot="public" virt="non-virtual">ExtOUWithJumpsProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_forward_measure_process" prot="public" virt="non-virtual">ForwardMeasureProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_g2_process" prot="public" virt="non-virtual">G2Process</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process" prot="public" virt="non-virtual">GJRGARCHProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_heston_process" prot="public" virt="non-virtual">HestonProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" prot="public" virt="non-virtual">HybridHestonHullWhiteProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_joint_stochastic_process" prot="public" virt="non-virtual">JointStochasticProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_kluge_ext_o_u_process" prot="public" virt="non-virtual">KlugeExtOUProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_libor_forward_model_process" prot="public" virt="non-virtual">LiborForwardModelProcess</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_stochastic_process1_d" prot="public" virt="non-virtual">StochasticProcess1D</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_stochastic_process_array" prot="public" virt="non-virtual">StochasticProcessArray</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp</includes>
+    <innerclass refid="class_quant_lib_1_1_stochastic_process_1_1discretization" prot="public">QuantLib::StochasticProcess::discretization</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Stochastic process interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size size</definition>
+        <argsstring>() const =0</argsstring>
+        <name>size</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a9d78a687cf2a391198bb3cbc08bc06cb">size</reimplementedby>
+        <briefdescription>
+<para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size factors</definition>
+        <argsstring>() const </argsstring>
+        <name>factors</name>
+        <reimplementedby refid="class_quant_lib_1_1_bates_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1af712ecab6d5754978fed3860efc7f661">factors</reimplementedby>
+        <briefdescription>
+<para>returns the number of independent factors of the process </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; initialValues</definition>
+        <argsstring>() const =0</argsstring>
+        <name>initialValues</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a00ce0583b0451d83b803b8a40cce1a2b">initialValues</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a52995c5d650b640095ade365420c42bc">initialValues</reimplementedby>
+        <briefdescription>
+<para>returns the initial values of the state variables </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; drift</definition>
+        <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
+        <name>drift</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_bates_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af971c27bf35db18d8e7e7374e7cf234c">drift</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a1d856e971c3addcd2d00e72532fce713">drift</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Matrix&gt; diffusion</definition>
+        <argsstring>(Time t, const Array &amp;x) const =0</argsstring>
+        <name>diffusion</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a4c79a85dc57b977a0eed8822b1fe487f">diffusion</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1ae248439226c0e7c8ae789befbcb3ea7d">diffusion</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+<para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a90f2fadbc2346fb7f6c94611215a068b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; expectation</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>expectation</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1a30a103c583af9320f08337052d38c622">expectation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a2251bf5abb3c75337aaae0e702c8612f">expectation</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the expectation <formula id="353">$ E(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1af60142c7a240fe9fa7a9458740815b9c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Matrix&gt; stdDeviation</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>stdDeviation</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1ab55b8ade4729f4509ad40bbaab050a0d">stdDeviation</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1ab57d44f7476ddb77778d2c64c986da67">stdDeviation</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the standard deviation <formula id="355">$ S(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a8ddfc241f0a0f0e37d2245bf2cde4354" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Matrix&gt; covariance</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt) const </argsstring>
+        <name>covariance</name>
+        <reimplementedby refid="class_quant_lib_1_1_g2_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g2_forward_process_1aa35146549bd167f407791342e89927e3">covariance</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a160c7d5ebac24951b3bf0ac86dd7674f">covariance</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the covariance <formula id="356">$ V(\mathrm{x}_{t_0 + \Delta t} | \mathrm{x}_{t_0} = \mathrm{x}_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; evolve</definition>
+        <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
+        <name>evolve</name>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_bates_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_kluge_ext_o_u_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ext_o_u_with_jumps_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a89ac97af7698aa193a9c0731dcdd9d8a">evolve</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a66053adca1c85012da97a7106f87fe10">evolve</reimplementedby>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>dt</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>dw</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a07090b508d659de1879284548f3ea344" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+        <definition>virtual Disposable&lt;Array&gt; apply</definition>
+        <argsstring>(const Array &amp;x0, const Array &amp;dx) const </argsstring>
+        <name>apply</name>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_libor_forward_model_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1a87d025fa8e0daa4e048320c7ac266bb3">apply</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process1_d_1a91dd3de6a35734e8ce91f1ff63ae4d0c">apply</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>x0</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>dx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>applies a change to the asset value. By default, it returns <formula id="359">$ \mathrm{x} + \Delta \mathrm{x} $</formula>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>utilities</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>virtual Time time</definition>
+        <argsstring>(const Date &amp;) const </argsstring>
+        <name>time</name>
+        <reimplementedby refid="class_quant_lib_1_1_stochastic_process_array_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_merton76_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_hybrid_heston_hull_white_process_1a748380f774765c5190c570c0c8a8091e">time</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_generalized_black_scholes_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_heston_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process_1af8a1d4ca4369b3009d08291f1c2d7744">time</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>returns the time value corresponding to the given date in the reference system of the stochastic process.</para><para><simplesect kind="note"><para>As a number of processes might not need this functionality, a default implementation is given which raises an exception. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="142"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Observer interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void update</definition>
+        <argsstring>()</argsstring>
+        <name>update</name>
+        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="147"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_stochastic_process_1aea3658beebc66268a48cf5273cce6abd" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;discretization&gt; discretization_</definition>
+        <argsstring></argsstring>
+        <name>discretization_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~StochasticProcess</definition>
+        <argsstring>()</argsstring>
+        <name>~StochasticProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="60" bodyend="60"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StochasticProcess</definition>
+        <argsstring>()</argsstring>
+        <name>StochasticProcess</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>StochasticProcess</definition>
+        <argsstring>(const boost::shared_ptr&lt; discretization &gt; &amp;)</argsstring>
+        <name>StochasticProcess</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>multi-dimensional stochastic process class. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class describes a stochastic process governed by <formula id="349">\[ d\mathrm{x}_t = \mu(t, x_t)\mathrm{d}t + \sigma(t, \mathrm{x}_t) \cdot d\mathrm{W}_t. \]</formula> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="13407">
+        <label>HullWhiteProcess</label>
+        <link refid="class_quant_lib_1_1_hull_white_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13402">
+        <label>ExtendedBlackScholesMertonProcess</label>
+        <link refid="class_quant_lib_1_1_extended_black_scholes_merton_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13387">
+        <label>GJRGARCHProcess</label>
+        <link refid="class_quant_lib_1_1_g_j_r_g_a_r_c_h_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13396">
+        <label>HullWhiteForwardProcess</label>
+        <link refid="class_quant_lib_1_1_hull_white_forward_process"/>
+        <childnode refid="13395" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13395">
+        <label>ForwardMeasureProcess1D</label>
+        <link refid="class_quant_lib_1_1_forward_measure_process1_d"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13382">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13392">
+        <label>LiborForwardModelProcess</label>
+        <link refid="class_quant_lib_1_1_libor_forward_model_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13386">
+        <label>G2Process</label>
+        <link refid="class_quant_lib_1_1_g2_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13390">
+        <label>HybridHestonHullWhiteProcess</label>
+        <link refid="class_quant_lib_1_1_hybrid_heston_hull_white_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13391">
+        <label>KlugeExtOUProcess</label>
+        <link refid="class_quant_lib_1_1_kluge_ext_o_u_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13403">
+        <label>GarmanKohlagenProcess</label>
+        <link refid="class_quant_lib_1_1_garman_kohlagen_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13401">
+        <label>BlackScholesProcess</label>
+        <link refid="class_quant_lib_1_1_black_scholes_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13399">
+        <label>BlackProcess</label>
+        <link refid="class_quant_lib_1_1_black_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13405">
+        <label>GeneralizedOrnsteinUhlenbeckProcess</label>
+        <link refid="class_quant_lib_1_1_generalized_ornstein_uhlenbeck_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13388">
+        <label>HestonProcess</label>
+        <link refid="class_quant_lib_1_1_heston_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13380">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="13381" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13382" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13397">
+        <label>GemanRoncoroniProcess</label>
+        <link refid="class_quant_lib_1_1_geman_roncoroni_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13381">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="13389">
+        <label>BatesProcess</label>
+        <link refid="class_quant_lib_1_1_bates_process"/>
+        <childnode refid="13388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13398">
+        <label>GeneralizedBlackScholesProcess</label>
+        <link refid="class_quant_lib_1_1_generalized_black_scholes_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13412">
+        <label>StochasticProcessArray</label>
+        <link refid="class_quant_lib_1_1_stochastic_process_array"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13383">
+        <label>ExtOUWithJumpsProcess</label>
+        <link refid="class_quant_lib_1_1_ext_o_u_with_jumps_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13384">
+        <label>ForwardMeasureProcess</label>
+        <link refid="class_quant_lib_1_1_forward_measure_process"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13394">
+        <label>ExtendedOrnsteinUhlenbeckProcess</label>
+        <link refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13409">
+        <label>OrnsteinUhlenbeckProcess</label>
+        <link refid="class_quant_lib_1_1_ornstein_uhlenbeck_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13385">
+        <label>G2ForwardProcess</label>
+        <link refid="class_quant_lib_1_1_g2_forward_process"/>
+        <childnode refid="13384" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13393">
+        <label>StochasticProcess1D</label>
+        <link refid="class_quant_lib_1_1_stochastic_process1_d"/>
+        <childnode refid="13380" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13404">
+        <label>VegaStressedBlackScholesProcess</label>
+        <link refid="class_quant_lib_1_1_vega_stressed_black_scholes_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13410">
+        <label>SquareRootProcess</label>
+        <link refid="class_quant_lib_1_1_square_root_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13406">
+        <label>GeometricBrownianMotionProcess</label>
+        <link refid="class_quant_lib_1_1_geometric_brownian_motion_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13400">
+        <label>BlackScholesMertonProcess</label>
+        <link refid="class_quant_lib_1_1_black_scholes_merton_process"/>
+        <childnode refid="13398" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13411">
+        <label>VarianceGammaProcess</label>
+        <link refid="class_quant_lib_1_1_variance_gamma_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13408">
+        <label>Merton76Process</label>
+        <link refid="class_quant_lib_1_1_merton76_process"/>
+        <childnode refid="13393" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13415">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13413">
+        <label>StochasticProcess</label>
+        <link refid="class_quant_lib_1_1_stochastic_process"/>
+        <childnode refid="13414" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13415" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13414">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="42" bodyend="153"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a07090b508d659de1879284548f3ea344" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>apply</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a8ddfc241f0a0f0e37d2245bf2cde4354" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>covariance</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess</scope><name>diffusion</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>discretization_</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess</scope><name>drift</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>evolve</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a90f2fadbc2346fb7f6c94611215a068b" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>expectation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>factors</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess</scope><name>initialValues</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::StochasticProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::StochasticProcess</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess</scope><name>size</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1af60142c7a240fe9fa7a9458740815b9c" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>stdDeviation</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>StochasticProcess</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1acb2c915740d2c20c6ee1f5c27b05caef" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>time</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::StochasticProcess</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess</scope><name>~StochasticProcess</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

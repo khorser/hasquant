@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_black_scholes_calculator" kind="class" prot="public">
+    <compoundname>QuantLib::BlackScholesCalculator</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_black_calculator" prot="public" virt="non-virtual">BlackCalculator</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_scholes_calculator_1ad368d415c7aa16fe7d97d156ecb70bff" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real spot_</definition>
+        <argsstring></argsstring>
+        <name>spot_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_black_scholes_calculator_1ae3a05a9c38f10bbcd2a4cbd91c344406" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+        <definition>DiscountFactor growth_</definition>
+        <argsstring></argsstring>
+        <name>growth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a24cca80a4d40ce5a348b9d11b566cde0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackScholesCalculator</definition>
+        <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, Real spot, DiscountFactor growth, Real stdDev, DiscountFactor discount)</argsstring>
+        <name>BlackScholesCalculator</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <declname>payoff</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spot</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>growth</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>stdDev</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>discount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a8154e95cbc2d2bd852e2394941136557" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BlackScholesCalculator</definition>
+        <argsstring>(Option::Type optionType, Real strike, Real spot, DiscountFactor growth, Real stdDev, DiscountFactor discount)</argsstring>
+        <name>BlackScholesCalculator</name>
+        <param>
+          <type>Option::Type</type>
+          <declname>optionType</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>spot</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>growth</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>stdDev</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
+          <declname>discount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a6ee5dc6bd250148da726adfbcd50cef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~BlackScholesCalculator</definition>
+        <argsstring>()</argsstring>
+        <name>~BlackScholesCalculator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real delta</definition>
+        <argsstring>() const </argsstring>
+        <name>delta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensitivity to change in the underlying spot price. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="66" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a789f1dd91bf031b93eecd46b14154c75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real elasticity</definition>
+        <argsstring>() const </argsstring>
+        <name>elasticity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensitivity in percent to a percent change in the underlying spot price. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="70" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real gamma</definition>
+        <argsstring>() const </argsstring>
+        <name>gamma</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Second order derivative with respect to change in the underlying spot price. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="74" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1acfadae38267887f344854fae069b38e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real theta</definition>
+        <argsstring>(Time maturity) const </argsstring>
+        <name>theta</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>maturity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensitivity to time to maturity. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a77ee03b6feb4bdd44acb8ef149f985d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real thetaPerDay</definition>
+        <argsstring>(Time maturity) const </argsstring>
+        <name>thetaPerDay</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>maturity</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sensitivity to time to maturity per day (assuming 365 day in a year). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="82" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Black-Scholes 1973 calculator class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1112">
+        <label>BlackScholesCalculator</label>
+        <link refid="class_quant_lib_1_1_black_scholes_calculator"/>
+        <childnode refid="1113" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1113">
+        <label>BlackCalculator</label>
+        <link refid="class_quant_lib_1_1_black_calculator"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1114">
+        <label>BlackScholesCalculator</label>
+        <link refid="class_quant_lib_1_1_black_scholes_calculator"/>
+        <childnode refid="1115" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1115">
+        <label>BlackCalculator</label>
+        <link refid="class_quant_lib_1_1_black_calculator"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackscholescalculator.hpp" bodystart="32" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_black_calculator_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>alpha</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a96c0f11fbeced8f51ee45a495d97e621" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a78a3f49ebd7612d4d23a640186b86140" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>beta</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a6483291df5e2a5a0d80b22cf68a96750" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a2e919a306924f31d9f6f89645d0d69b3" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>BlackCalculator</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a2920114426078b8deba090acbfcc90c3" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>BlackCalculator</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a24cca80a4d40ce5a348b9d11b566cde0" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>BlackScholesCalculator</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a8154e95cbc2d2bd852e2394941136557" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>BlackScholesCalculator</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1acf2aa28a8fcd6f66c0d3e49d019e7a6d" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>cum_d1_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a39a065eac6adb9f4b219476d8c0d7996" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>cum_d2_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a3d43cc7ff786a6730d87914d85b5f03f" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>d1_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a18e9bf2fdae9b34227ff9e9d82b368fb" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>d2_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a09bf58c29a716d125bd5a0ef81422697" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>DalphaDd1_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1af1e110eae91fab98ae1a7af92a2b2ff2" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>DbetaDd2_</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a2397bf69d6801e3328c9273143c87ce6" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1abd77e62b63781915cc05be90c29ade86" prot="public" virt="virtual" ambiguityscope="QuantLib::BlackCalculator::"><scope>QuantLib::BlackScholesCalculator</scope><name>delta</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>deltaForward</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1aea69a040116fac17d85f412ad3bade51" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>discount_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ab880a4d01e68c373077c2c6cf68af259" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>dividendRho</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a9828f16d68b37c2e2f23997cab608a04" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>DxDs_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a70eafc4ed3f5d3c8d56a40ec86685599" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>DxDstrike_</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a789f1dd91bf031b93eecd46b14154c75" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>elasticity</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ad1038ed391cff8fa11082293e2dd524c" prot="public" virt="virtual" ambiguityscope="QuantLib::BlackCalculator::"><scope>QuantLib::BlackScholesCalculator</scope><name>elasticity</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ae21b5d8931ed83b6ce0f8f80039f4789" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>elasticityForward</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a6080532cd8596049370f5002b384806a" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>forward_</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>gamma</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a50f95bfa73f23492b64d7de4b3274f71" prot="public" virt="virtual" ambiguityscope="QuantLib::BlackCalculator::"><scope>QuantLib::BlackScholesCalculator</scope><name>gamma</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ad11bcb2919c3355037ad2f3c9dadb26f" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>gammaForward</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1ae3a05a9c38f10bbcd2a4cbd91c344406" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>growth_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a5b590c6aab1d7cadd3fa6474f62643a6" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>initialize</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1abb479ae11d5c444f5ef42ac09dc14765" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>itmAssetProbability</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1aee3252e0cf020c5878f35dae85bd1107" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>itmCashProbability</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a414026f1b662299aae38cfa584ecc7d5" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>n_d1_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ad3d57971c6d69a95c4a872963517c573" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>n_d2_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1ad368d415c7aa16fe7d97d156ecb70bff" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>spot_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a558676275dc818fb808f33a998dfa3e1" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>stdDev_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>strike_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>strikeSensitivity</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1acfadae38267887f344854fae069b38e7" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1aaa4eafefa825f26cb526e13cdec63e1d" prot="public" virt="virtual" ambiguityscope="QuantLib::BlackCalculator::"><scope>QuantLib::BlackScholesCalculator</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a77ee03b6feb4bdd44acb8ef149f985d0" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>thetaPerDay</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a100e24c42cc4cd95b51242a6adf782ce" prot="public" virt="virtual" ambiguityscope="QuantLib::BlackCalculator::"><scope>QuantLib::BlackScholesCalculator</scope><name>thetaPerDay</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a24129c87c49238b3cfb21fe9478f0a07" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>variance_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a0c37734c53fa52703c6f0d22677b05ed" prot="public" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>vega</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1ab010c414801c67b5a609cbf6346afacb" prot="protected" virt="non-virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>x_</name></member>
+      <member refid="class_quant_lib_1_1_black_calculator_1a3cfb065da998301703ed796e399a4e15" prot="public" virt="virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>~BlackCalculator</name></member>
+      <member refid="class_quant_lib_1_1_black_scholes_calculator_1a6ee5dc6bd250148da726adfbcd50cef9" prot="public" virt="virtual"><scope>QuantLib::BlackScholesCalculator</scope><name>~BlackScholesCalculator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_poisson_distribution" kind="class" prot="public">
+    <compoundname>QuantLib::PoissonDistribution</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::unary_function&lt; Real, Real &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_poisson_distribution_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real mu_</definition>
+        <argsstring></argsstring>
+        <name>mu_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_poisson_distribution_1ae5a65bc3b6e86c64637e8017d0d20edb" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real logMu_</definition>
+        <argsstring></argsstring>
+        <name>logMu_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>PoissonDistribution</definition>
+        <argsstring>(Real mu)</argsstring>
+        <name>PoissonDistribution</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>mu</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="90" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(BigNatural k) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="99" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Poisson distribution function. </para>    </briefdescription>
+    <detaileddescription>
+<para>Given an integer <formula id="184">$ k $</formula>, it returns its probability in a Poisson distribution.</para><para><xrefsect id="test_1_test000032"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="40" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_poisson_distribution_1ae5a65bc3b6e86c64637e8017d0d20edb" prot="private" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>logMu_</name></member>
+      <member refid="class_quant_lib_1_1_poisson_distribution_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>mu_</name></member>
+      <member refid="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>PoissonDistribution</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl" kind="class" prot="private">
+    <compoundname>QuantLib::ActualActual::ISDA_Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_day_counter_1_1_impl" prot="public" virt="non-virtual">DayCounter::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>Time yearFraction</definition>
+        <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;, const Date &amp;) const </argsstring>
+        <name>yearFraction</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="59">
+        <label>ActualActual::ISDA_Impl</label>
+        <childnode refid="60" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="60">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="61">
+        <label>ActualActual::ISDA_Impl</label>
+        <childnode refid="62" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="62">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="65" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" virt="virtual"><scope>QuantLib::ActualActual::ISDA_Impl</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::ActualActual::ISDA_Impl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" virt="non-virtual"><scope>QuantLib::ActualActual::ISDA_Impl</scope><name>yearFraction</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::ActualActual::ISDA_Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

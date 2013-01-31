@@ -1,0 +1,208 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_g2_swaption_engine" kind="class" prot="public">
+    <compoundname>QuantLib::G2SwaptionEngine</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_generic_model_engine" prot="public" virt="non-virtual">GenericModelEngine&lt; G2, Swaption::arguments, Swaption::results &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_g2_swaption_engine_1ad9fa7aa0dc856c887646c3c7c848981c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real range_</definition>
+        <argsstring></argsstring>
+        <name>range_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_g2_swaption_engine_1aef3259d7b7dae8e2f1754e749abac94b" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size intervals_</definition>
+        <argsstring></argsstring>
+        <name>intervals_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_g2_swaption_engine_1a9a21159dd8f78f1728aff7aca6aec513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>G2SwaptionEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; G2 &gt; &amp;model, Real range, Size intervals)</argsstring>
+        <name>G2SwaptionEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_g2" kindref="compound">G2</ref> &gt; &amp;</type>
+          <declname>model</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>range</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>intervals</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" bodystart="45" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_g2_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" bodystart="50" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Swaption priced by means of the Black formula </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="caveats_1_caveats000101"><xreftitle>Warning</xreftitle><xrefdescription><para>The engine assumes that the exercise date equals the start date of the passed swap. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="6866">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6864">
+        <label>GenericEngine&lt; Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="6865" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6867" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6862">
+        <label>G2SwaptionEngine</label>
+        <link refid="class_quant_lib_1_1_g2_swaption_engine"/>
+        <childnode refid="6863" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6867">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6863">
+        <label>GenericModelEngine&lt; G2, Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="6864" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6865">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="6866" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6872">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="6870">
+        <label>GenericEngine&lt; Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_engine"/>
+        <childnode refid="6871" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6873" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6874" relation="usage">
+          <edgelabel>arguments_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6874">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
+        <childnode refid="6875" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6876" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6868">
+        <label>G2SwaptionEngine</label>
+        <link refid="class_quant_lib_1_1_g2_swaption_engine"/>
+        <childnode refid="6869" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6873">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="6869">
+        <label>GenericModelEngine&lt; G2, Swaption::arguments, Swaption::results &gt;</label>
+        <link refid="class_quant_lib_1_1_generic_model_engine"/>
+        <childnode refid="6870" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6877" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="6876">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
+      </node>
+      <node id="6871">
+        <label>PricingEngine</label>
+        <link refid="class_quant_lib_1_1_pricing_engine"/>
+        <childnode refid="6872" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6875">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_vanilla_swap_1_1arguments"/>
+      </node>
+      <node id="6877">
+        <label>Handle&lt; G2 &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/swaption/g2swaptionengine.hpp" bodystart="39" bodyend="70"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_g2_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_g2_swaption_engine_1a9a21159dd8f78f1728aff7aca6aec513" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>G2SwaptionEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>GenericModelEngine</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_g2_swaption_engine_1aef3259d7b7dae8e2f1754e749abac94b" prot="private" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>intervals_</name></member>
+      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>model_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::G2SwaptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::G2SwaptionEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_g2_swaption_engine_1ad9fa7aa0dc856c887646c3c7c848981c" prot="private" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>range_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::G2SwaptionEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

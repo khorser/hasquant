@@ -1,0 +1,320 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_interpolated_curve" kind="class" prot="public">
+    <compoundname>QuantLib::InterpolatedCurve</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_default_density_curve" prot="protected" virt="non-virtual">InterpolatedDefaultDensityCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_discount_curve" prot="protected" virt="non-virtual">InterpolatedDiscountCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_forward_curve" prot="protected" virt="non-virtual">InterpolatedForwardCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_hazard_rate_curve" prot="protected" virt="non-virtual">InterpolatedHazardRateCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_survival_probability_curve" prot="protected" virt="non-virtual">InterpolatedSurvivalProbabilityCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve" prot="protected" virt="non-virtual">InterpolatedYoYInflationCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_zero_curve" prot="protected" virt="non-virtual">InterpolatedZeroCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_interpolated_zero_inflation_curve" prot="protected" virt="non-virtual">InterpolatedZeroInflationCurve&lt; Interpolator &gt;</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class Interpolator</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="user-defined">
+      <header>Building</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a84cbe87fa8e8b64ada801479fa7e2ee1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedCurve</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;times, const std::vector&lt; Real &gt; &amp;data, const Interpolator &amp;i=Interpolator())</argsstring>
+        <name>InterpolatedCurve</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="42" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1af65ba2657e570befd6d47b554d41be2c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedCurve</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;times, const Interpolator &amp;i=Interpolator())</argsstring>
+        <name>InterpolatedCurve</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="47" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a3fce8f7f7406e558c914ada1f040b2d9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedCurve</definition>
+        <argsstring>(Size n, const Interpolator &amp;i=Interpolator())</argsstring>
+        <name>InterpolatedCurve</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="51" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a1f1a36b149b457570e7fe01bc5b6370f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedCurve</definition>
+        <argsstring>(const Interpolator &amp;i=Interpolator())</argsstring>
+        <name>InterpolatedCurve</name>
+        <param>
+          <type>const Interpolator &amp;</type>
+          <declname>i</declname>
+          <defval>Interpolator()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="55" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Copying</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1ad09da2c682c289e3568976b51ca4b27c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatedCurve</definition>
+        <argsstring>(const InterpolatedCurve &amp;c)</argsstring>
+        <name>InterpolatedCurve</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a05f5195d566a3ab81f70a8e67001934c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+        <definition>InterpolatedCurve&amp; operator=</definition>
+        <argsstring>(const InterpolatedCurve &amp;c)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="66" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; times_</definition>
+        <argsstring></argsstring>
+        <name>times_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <definition>Interpolation interpolation_</definition>
+        <argsstring></argsstring>
+        <name>interpolation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_curve_1a4b466578f592f91a3a636714cbcdfa20" prot="protected" static="no" mutable="no">
+        <type>Interpolator</type>
+        <definition>Interpolator interpolator_</definition>
+        <argsstring></argsstring>
+        <name>interpolator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a7964d9db3a9cdeab3d13d99e7feff1fe" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void setupInterpolation</definition>
+        <argsstring>()</argsstring>
+        <name>setupInterpolation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="75" bodyend="79"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Helper class to build interpolated term structures. </para>    </briefdescription>
+    <detaileddescription>
+<para>Interpolated term structures can use proected or private inheritance from this class to obtain the relevant data members and implement correct copy behavior. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="8280">
+        <label>InterpolatedHazardRateCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_hazard_rate_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8285">
+        <label>InterpolatedZeroInflationCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_zero_inflation_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8277">
+        <label>InterpolatedDefaultDensityCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_default_density_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8286">
+        <label>PiecewiseZeroInflationCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_piecewise_zero_inflation_curve"/>
+        <childnode refid="8285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8278">
+        <label>InterpolatedDiscountCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_discount_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8283">
+        <label>PiecewiseYoYInflationCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_piecewise_yo_y_inflation_curve"/>
+        <childnode refid="8282" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8276">
+        <label>InterpolatedCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_curve"/>
+      </node>
+      <node id="8279">
+        <label>InterpolatedForwardCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_forward_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8284">
+        <label>InterpolatedZeroCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_zero_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8281">
+        <label>InterpolatedSurvivalProbabilityCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_survival_probability_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+      <node id="8282">
+        <label>InterpolatedYoYInflationCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve"/>
+        <childnode refid="8276" relation="protected-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="8288">
+        <label>Interpolation</label>
+        <link refid="class_quant_lib_1_1_interpolation"/>
+        <childnode refid="8289" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8289">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="8287">
+        <label>InterpolatedCurve&lt; Interpolator &gt;</label>
+        <link refid="class_quant_lib_1_1_interpolated_curve"/>
+        <childnode refid="8288" relation="usage">
+          <edgelabel>interpolation_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/interpolatedcurve.hpp" bodystart="38" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a84cbe87fa8e8b64ada801479fa7e2ee1" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>InterpolatedCurve</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1af65ba2657e570befd6d47b554d41be2c" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>InterpolatedCurve</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a3fce8f7f7406e558c914ada1f040b2d9" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>InterpolatedCurve</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a1f1a36b149b457570e7fe01bc5b6370f" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>InterpolatedCurve</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1ad09da2c682c289e3568976b51ca4b27c" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>InterpolatedCurve</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>interpolation_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a4b466578f592f91a3a636714cbcdfa20" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>interpolator_</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a05f5195d566a3ab81f70a8e67001934c" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a7964d9db3a9cdeab3d13d99e7feff1fe" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>setupInterpolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolated_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedCurve</scope><name>times_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

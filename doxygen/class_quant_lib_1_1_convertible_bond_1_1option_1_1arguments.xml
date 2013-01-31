@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments" kind="class" prot="public">
+    <compoundname>QuantLib::ConvertibleBond::option::arguments</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_option_1_1arguments" prot="public" virt="non-virtual">Option::arguments</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a622b37ef6d3405018df2cc51486385c1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real conversionRatio</definition>
+        <argsstring></argsstring>
+        <name>conversionRatio</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acac2188288b9fbb8c056a17dc3e9d046" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;</type>
+        <definition>Handle&lt;Quote&gt; creditSpread</definition>
+        <argsstring></argsstring>
+        <name>creditSpread</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a2acc3fd17e817c230e7f54d66b5b130b" prot="public" static="no" mutable="no">
+        <type>DividendSchedule</type>
+        <definition>DividendSchedule dividends</definition>
+        <argsstring></argsstring>
+        <name>dividends</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="193" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ff411bfd99ee153705d4ca61c53cad9" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; dividendDates</definition>
+        <argsstring></argsstring>
+        <name>dividendDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; callabilityDates</definition>
+        <argsstring></argsstring>
+        <name>callabilityDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acd5424754e3f8c0f78ff950954b23e7b" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Callability::Type</ref> &gt;</type>
+        <definition>std::vector&lt;Callability::Type&gt; callabilityTypes</definition>
+        <argsstring></argsstring>
+        <name>callabilityTypes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="196" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; callabilityPrices</definition>
+        <argsstring></argsstring>
+        <name>callabilityPrices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="197" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a96ee5b280321bdb70d4fa75ace56f896" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; callabilityTriggers</definition>
+        <argsstring></argsstring>
+        <name>callabilityTriggers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="198" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+        <definition>std::vector&lt;Date&gt; couponDates</definition>
+        <argsstring></argsstring>
+        <name>couponDates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="199" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="199" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; couponAmounts</definition>
+        <argsstring></argsstring>
+        <name>couponAmounts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="200" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a8215f9a580af435bd18853921d4d59f3" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date issueDate</definition>
+        <argsstring></argsstring>
+        <name>issueDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="201" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="201" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date settlementDate</definition>
+        <argsstring></argsstring>
+        <name>settlementDate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="202" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a93f9d5dd85d395e9ae1ab204d53ba89f" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
+        <definition>Natural settlementDays</definition>
+        <argsstring></argsstring>
+        <name>settlementDays</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="204" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="204" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real redemption</definition>
+        <argsstring></argsstring>
+        <name>redemption</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="205" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>arguments</definition>
+        <argsstring>()</argsstring>
+        <name>arguments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="187" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void validate</definition>
+        <argsstring>() const </argsstring>
+        <name>validate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="206"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2680">
+        <label>ConvertibleBond::option::arguments</label>
+        <childnode refid="2681" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2681">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2682">
+        <label>ConvertibleBond::option::arguments</label>
+        <childnode refid="2683" relation="public-inheritance">
+        </childnode>
+        <childnode refid="2684" relation="usage">
+          <edgelabel>issueDate</edgelabel>
+          <edgelabel>settlementDate</edgelabel>
+        </childnode>
+        <childnode refid="2685" relation="usage">
+          <edgelabel>creditSpread</edgelabel>
+        </childnode>
+      </node>
+      <node id="2685">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="2684">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="2683">
+        <label>arguments</label>
+        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="184" bodyend="207"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>arguments</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityDates</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityPrices</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a96ee5b280321bdb70d4fa75ace56f896" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityTriggers</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acd5424754e3f8c0f78ff950954b23e7b" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityTypes</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a622b37ef6d3405018df2cc51486385c1" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>conversionRatio</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>couponAmounts</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>couponDates</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acac2188288b9fbb8c056a17dc3e9d046" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>creditSpread</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ff411bfd99ee153705d4ca61c53cad9" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>dividendDates</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a2acc3fd17e817c230e7f54d66b5b130b" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>dividends</name></member>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a8215f9a580af435bd18853921d4d59f3" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>issueDate</name></member>
+      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>payoff</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>redemption</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>settlementDate</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a93f9d5dd85d395e9ae1ab204d53ba89f" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>settlementDays</name></member>
+      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>validate</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>~arguments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

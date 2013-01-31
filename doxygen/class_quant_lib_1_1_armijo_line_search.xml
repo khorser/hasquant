@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_armijo_line_search" kind="class" prot="public">
+    <compoundname>QuantLib::ArmijoLineSearch</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_line_search" prot="public" virt="non-virtual">LineSearch</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha_</definition>
+        <argsstring></argsstring>
+        <name>alpha_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_armijo_line_search_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>ArmijoLineSearch</definition>
+        <argsstring>(Real eps=1e-8, Real alpha=0.05, Real beta=0.65)</argsstring>
+        <name>ArmijoLineSearch</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>eps</declname>
+          <defval>1e-8</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+          <defval>0.05</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+          <defval>0.65</defval>
+        </param>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)</argsstring>
+        <name>operator()</name>
+        <reimplements refid="class_quant_lib_1_1_line_search_1a97d8cb294aaa9a7bc88678370e80f31e">operator()</reimplements>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <declname>P</declname>
+        </param>
+        <param>
+          <type>EndCriteria::Type &amp;</type>
+          <declname>ecType</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>t_ini</declname>
+        </param>
+        <briefdescription>
+<para>Perform line search. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="60"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Armijo line search. </para>    </briefdescription>
+    <detaileddescription>
+<para>Let <formula id="3">$ \alpha $</formula> and <formula id="220">$ \beta $</formula> be 2 scalars in <formula id="221">$ [0,1] $</formula>. Let <formula id="134">$ x $</formula> be the current value of the unknown, <formula id="222">$ d $</formula> the search direction and <formula id="147">$ t $</formula> the step. Let <formula id="37">$ f $</formula> be the function to minimize. The line search stops when <formula id="147">$ t $</formula> verifies <formula id="223">\[ f(x + t \cdot d) - f(x) \leq -\alpha t f&apos;(x+t \cdot d) \]</formula> and <formula id="224">\[ f(x+\frac{t}{\beta} \cdot d) - f(x) &gt; -\frac{\alpha}{\beta} t f&apos;(x+t \cdot d) \]</formula> <verbatim>  (see Polak, Algorithms and consistent approximations, Optimization,
+  volume 124 of Applied Mathematical Sciences, Springer-Verlag, NY,
+  1997)</verbatim> </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="508">
+        <label>ArmijoLineSearch</label>
+        <link refid="class_quant_lib_1_1_armijo_line_search"/>
+        <childnode refid="509" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="509">
+        <label>LineSearch</label>
+        <link refid="class_quant_lib_1_1_line_search"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="512">
+        <label>Array</label>
+        <link refid="class_quant_lib_1_1_array"/>
+      </node>
+      <node id="510">
+        <label>ArmijoLineSearch</label>
+        <link refid="class_quant_lib_1_1_armijo_line_search"/>
+        <childnode refid="511" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="511">
+        <label>LineSearch</label>
+        <link refid="class_quant_lib_1_1_line_search"/>
+        <childnode refid="512" relation="usage">
+          <edgelabel>gradient_</edgelabel>
+          <edgelabel>xtd_</edgelabel>
+          <edgelabel>searchDirection_</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/armijo.hpp" bodystart="48" bodyend="63"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_armijo_line_search_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1_armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>ArmijoLineSearch</name></member>
+      <member refid="class_quant_lib_1_1_armijo_line_search_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a28dad9f0113c33c5641f4c87b6c5208c" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>gradient_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1af69b05a05ba75aa93dad2aa580f192d0" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>lastFunctionValue</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a0a99d489f61c963d573fb9eb2a404c1d" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>lastGradient</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a54f1c9dd805235c94fb4145a860411d4" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>lastGradientNorm2</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a73029249454596185357bd919ecc66e7" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>lastX</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1abf6329e7e510004f936417b572cd3feb" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>LineSearch</name></member>
+      <member refid="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" virt="virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1aca10938722a51a63857d6bc7bc1f4717" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>qpt_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1af784d8fad068c2fcb91696bd7a7346c3" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>qt_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1ab43e31a0f04f11a616b9a1b08dbac7c7" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>searchDirection</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a8925a1dc9b83be8f1181b1c638804a1f" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>searchDirection</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a2279b9a5a0693be810780a356ce2593f" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>searchDirection_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a493a40ac48f746089050c94b6b01ca52" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>succeed</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a1bdb6aaa82b6a980db5312bcc3c86c3a" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>succeed_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a5014094d4595b63fad08d361f70bea98" prot="public" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1a633de5cce68edbe62dcc0104c92e69c1" prot="protected" virt="non-virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>xtd_</name></member>
+      <member refid="class_quant_lib_1_1_line_search_1aa1525d9d1f8f851f1371337be8d9a587" prot="public" virt="virtual"><scope>QuantLib::ArmijoLineSearch</scope><name>~LineSearch</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

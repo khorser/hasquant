@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_european_exercise" kind="class" prot="public">
+    <compoundname>QuantLib::EuropeanExercise</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_exercise" prot="public" virt="non-virtual">Exercise</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/exercise.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_european_exercise_1a72068eb57111fb51be908217a99b9d3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>EuropeanExercise</definition>
+        <argsstring>(const Date &amp;date)</argsstring>
+        <name>EuropeanExercise</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="97"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>European exercise. </para>    </briefdescription>
+    <detaileddescription>
+<para>A European option can only be exercised at one (expiry) date. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5253">
+        <label>EuropeanExercise</label>
+        <link refid="class_quant_lib_1_1_european_exercise"/>
+        <childnode refid="5254" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5254">
+        <label>Exercise</label>
+        <link refid="class_quant_lib_1_1_exercise"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5255">
+        <label>EuropeanExercise</label>
+        <link refid="class_quant_lib_1_1_european_exercise"/>
+        <childnode refid="5256" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5256">
+        <label>Exercise</label>
+        <link refid="class_quant_lib_1_1_exercise"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="95" bodyend="98"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a6443a7d3e2731d6476a84492e0bf66cc" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>American</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7acb4ca18a2ea7ea68f2c1e2a7c4e8181a" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>Bermudan</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a688725346fb170983161428872458ff5" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>dates</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>dates_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>European</name></member>
+      <member refid="class_quant_lib_1_1_european_exercise_1a72068eb57111fb51be908217a99b9d3e" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>EuropeanExercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1ae6eb8cdd955b34ee2bc2a6ada6c80df5" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>Exercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>lastDate</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1ae96b07c06ceff094f476fd92cbe89e10" prot="protected" virt="non-virtual"><scope>QuantLib::EuropeanExercise</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a319eac5256bf348c4cbfcddbec689b09" prot="public" virt="virtual"><scope>QuantLib::EuropeanExercise</scope><name>~Exercise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

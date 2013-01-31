@@ -1,0 +1,221 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_cap_helper" kind="class" prot="public">
+    <compoundname>QuantLib::CapHelper</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_calibration_helper" prot="public" virt="non-virtual">CalibrationHelper</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_cap_helper_1a2f7c13445f59945979522fe08bab00e9" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap" kindref="compound">Cap</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Cap&gt; cap_</definition>
+        <argsstring></argsstring>
+        <name>cap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1ad609e5c96b766cbcd4b63c6ad1f14bcf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CapHelper</definition>
+        <argsstring>(const Period &amp;length, const Handle&lt; Quote &gt; &amp;volatility, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Frequency fixedLegFrequency, const DayCounter &amp;fixedLegDayCounter, bool includeFirstSwaplet, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, CalibrationHelper::CalibrationErrorType errorType=CalibrationHelper::RelativePriceError)</argsstring>
+        <name>CapHelper</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <declname>volatility</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
+          <declname>fixedLegFrequency</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>fixedLegDayCounter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>includeFirstSwaplet</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>termStructure</declname>
+        </param>
+        <param>
+          <type>CalibrationHelper::CalibrationErrorType</type>
+          <declname>errorType</declname>
+          <defval>CalibrationHelper::RelativePriceError</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void addTimesTo</definition>
+        <argsstring>(std::list&lt; Time &gt; &amp;times) const </argsstring>
+        <name>addTimesTo</name>
+        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
+        <param>
+          <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>times</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real modelValue</definition>
+        <argsstring>() const </argsstring>
+        <name>modelValue</name>
+        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
+        <briefdescription>
+<para>returns the price of the instrument according to the model </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_cap_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real blackPrice</definition>
+        <argsstring>(Volatility volatility) const </argsstring>
+        <name>blackPrice</name>
+        <reimplements refid="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
+          <declname>volatility</declname>
+        </param>
+        <briefdescription>
+<para>Black price given a volatility. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>calibration helper for ATM cap </para>    </briefdescription>
+    <detaileddescription>
+<para><xrefsect id="bug_1_bug000005"><xreftitle>Bug</xreftitle><xrefdescription><para>This helper does not register with the passed IBOR index and with the evaluation date. Furthermore, the ATM strike rate is not recalculated when any of its observables change. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1883">
+        <label>CapHelper</label>
+        <link refid="class_quant_lib_1_1_cap_helper"/>
+        <childnode refid="1884" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1886">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1884">
+        <label>CalibrationHelper</label>
+        <link refid="class_quant_lib_1_1_calibration_helper"/>
+        <childnode refid="1885" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1886" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1885">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1887">
+        <label>CapHelper</label>
+        <link refid="class_quant_lib_1_1_cap_helper"/>
+        <childnode refid="1888" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1890">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="1891">
+        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="1888">
+        <label>CalibrationHelper</label>
+        <link refid="class_quant_lib_1_1_calibration_helper"/>
+        <childnode refid="1889" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1890" relation="public-inheritance">
+        </childnode>
+        <childnode refid="1891" relation="usage">
+          <edgelabel>termStructure_</edgelabel>
+        </childnode>
+        <childnode refid="1892" relation="usage">
+          <edgelabel>volatility_</edgelabel>
+        </childnode>
+      </node>
+      <node id="1892">
+        <label>Handle&lt; QuantLib::Quote &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+      <node id="1889">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/calibrationhelpers/caphelper.hpp" bodystart="38" bodyend="55"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_cap_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>addTimesTo</name></member>
+      <member refid="class_quant_lib_1_1_cap_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>blackPrice</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1ac9e6e106b8ad56b7bf89a48b8a004857" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>calibrationError</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>CalibrationErrorType</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a1c1f699e86af3c7d725555ee8640d319" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>CalibrationHelper</name></member>
+      <member refid="class_quant_lib_1_1_cap_helper_1a2f7c13445f59945979522fe08bab00e9" prot="private" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>cap_</name></member>
+      <member refid="class_quant_lib_1_1_cap_helper_1ad609e5c96b766cbcd4b63c6ad1f14bcf" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>CapHelper</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a83cd0c8293969d49634c639a632141f0" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>impliedVolatility</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf711a9a55e986cdd866fc61bd1d65b6" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>ImpliedVolError</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>marketValue</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a371bd616cf2cbbac47b0e6263fd6d79f" prot="protected" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>marketValue_</name></member>
+      <member refid="class_quant_lib_1_1_cap_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>modelValue</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::CapHelper</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033a83494bc1850f0e4c4802e2b8d2e4aa51" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>PriceError</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf604e0665fd047d7badbdaf88ddfc61" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>RelativePriceError</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a5ef2cc90f16cf902829ac616f7b5278c" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="protected" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>termStructure_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_calibration_helper_1a14cc04bf8608e1205f4796cbb54fd7f5" prot="protected" virt="non-virtual"><scope>QuantLib::CapHelper</scope><name>volatility_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CapHelper</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__calendars" kind="group">
+    <compoundname>calendars</compoundname>
+    <title>Calendars</title>
+    <innerclass refid="class_quant_lib_1_1_argentina" prot="public">QuantLib::Argentina</innerclass>
+    <innerclass refid="class_quant_lib_1_1_australia" prot="public">QuantLib::Australia</innerclass>
+    <innerclass refid="class_quant_lib_1_1_bespoke_calendar" prot="public">QuantLib::BespokeCalendar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_brazil" prot="public">QuantLib::Brazil</innerclass>
+    <innerclass refid="class_quant_lib_1_1_canada" prot="public">QuantLib::Canada</innerclass>
+    <innerclass refid="class_quant_lib_1_1_china" prot="public">QuantLib::China</innerclass>
+    <innerclass refid="class_quant_lib_1_1_czech_republic" prot="public">QuantLib::CzechRepublic</innerclass>
+    <innerclass refid="class_quant_lib_1_1_denmark" prot="public">QuantLib::Denmark</innerclass>
+    <innerclass refid="class_quant_lib_1_1_finland" prot="public">QuantLib::Finland</innerclass>
+    <innerclass refid="class_quant_lib_1_1_germany" prot="public">QuantLib::Germany</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hong_kong" prot="public">QuantLib::HongKong</innerclass>
+    <innerclass refid="class_quant_lib_1_1_hungary" prot="public">QuantLib::Hungary</innerclass>
+    <innerclass refid="class_quant_lib_1_1_iceland" prot="public">QuantLib::Iceland</innerclass>
+    <innerclass refid="class_quant_lib_1_1_india" prot="public">QuantLib::India</innerclass>
+    <innerclass refid="class_quant_lib_1_1_indonesia" prot="public">QuantLib::Indonesia</innerclass>
+    <innerclass refid="class_quant_lib_1_1_italy" prot="public">QuantLib::Italy</innerclass>
+    <innerclass refid="class_quant_lib_1_1_japan" prot="public">QuantLib::Japan</innerclass>
+    <innerclass refid="class_quant_lib_1_1_joint_calendar" prot="public">QuantLib::JointCalendar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_mexico" prot="public">QuantLib::Mexico</innerclass>
+    <innerclass refid="class_quant_lib_1_1_new_zealand" prot="public">QuantLib::NewZealand</innerclass>
+    <innerclass refid="class_quant_lib_1_1_norway" prot="public">QuantLib::Norway</innerclass>
+    <innerclass refid="class_quant_lib_1_1_null_calendar" prot="public">QuantLib::NullCalendar</innerclass>
+    <innerclass refid="class_quant_lib_1_1_poland" prot="public">QuantLib::Poland</innerclass>
+    <innerclass refid="class_quant_lib_1_1_russia" prot="public">QuantLib::Russia</innerclass>
+    <innerclass refid="class_quant_lib_1_1_saudi_arabia" prot="public">QuantLib::SaudiArabia</innerclass>
+    <innerclass refid="class_quant_lib_1_1_singapore" prot="public">QuantLib::Singapore</innerclass>
+    <innerclass refid="class_quant_lib_1_1_slovakia" prot="public">QuantLib::Slovakia</innerclass>
+    <innerclass refid="class_quant_lib_1_1_south_africa" prot="public">QuantLib::SouthAfrica</innerclass>
+    <innerclass refid="class_quant_lib_1_1_south_korea" prot="public">QuantLib::SouthKorea</innerclass>
+    <innerclass refid="class_quant_lib_1_1_sweden" prot="public">QuantLib::Sweden</innerclass>
+    <innerclass refid="class_quant_lib_1_1_switzerland" prot="public">QuantLib::Switzerland</innerclass>
+    <innerclass refid="class_quant_lib_1_1_taiwan" prot="public">QuantLib::Taiwan</innerclass>
+    <innerclass refid="class_quant_lib_1_1_t_a_r_g_e_t" prot="public">QuantLib::TARGET</innerclass>
+    <innerclass refid="class_quant_lib_1_1_turkey" prot="public">QuantLib::Turkey</innerclass>
+    <innerclass refid="class_quant_lib_1_1_ukraine" prot="public">QuantLib::Ukraine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_united_kingdom" prot="public">QuantLib::UnitedKingdom</innerclass>
+    <innerclass refid="class_quant_lib_1_1_united_states" prot="public">QuantLib::UnitedStates</innerclass>
+    <innerclass refid="class_quant_lib_1_1_weekends_only" prot="public">QuantLib::WeekendsOnly</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>The class <computeroutput><ref refid="class_quant_lib_1_1_calendar" kindref="compound">QuantLib::Calendar</ref></computeroutput> provides the interface for determining whether a date is a business day or a holiday for a given exchange or a given country, and for incrementing/decrementing a date of a given number of business days. A number of calendars is contained in the <computeroutput>ql/Calendars</computeroutput> directory. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

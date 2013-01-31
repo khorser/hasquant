@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_commodity_type" kind="class" prot="public">
+    <compoundname>QuantLib::CommodityType</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_null_commodity_type" prot="public" virt="non-virtual">NullCommodityType</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp</includes>
+    <innerclass refid="struct_quant_lib_1_1_commodity_type_1_1_data" prot="protected">QuantLib::CommodityType::Data</innerclass>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; code</definition>
+        <argsstring>() const </argsstring>
+        <name>code</name>
+        <briefdescription>
+<para>commodity code, e.g, &quot;HO&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="95" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string &amp; name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+<para>name, e.g, &quot;Heating Oil&quot; </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="99" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Other information</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool empty</definition>
+        <argsstring>() const </argsstring>
+        <name>empty</name>
+        <briefdescription>
+<para>is this a usable instance? </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="103" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_type_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; Data &gt;</type>
+        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_type_1a832b66991a7ea52f0f85282001e39917" prot="protected" static="yes" mutable="no">
+        <type>std::map&lt; std::string, boost::shared_ptr&lt; Data &gt; &gt;</type>
+        <definition>std::map&lt;std::string, boost::shared_ptr&lt;Data&gt; &gt; commodityTypes_</definition>
+        <argsstring></argsstring>
+        <name>commodityTypes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a09c2a6e182b14dee1fa4190dd20359b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CommodityType</definition>
+        <argsstring>()</argsstring>
+        <name>CommodityType</name>
+        <briefdescription>
+<para>default constructor </para>        </briefdescription>
+        <detaileddescription>
+<para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a8b6363fe49172948d3e690db183123de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CommodityType</definition>
+        <argsstring>(const std::string &amp;code, const std::string &amp;name)</argsstring>
+        <name>CommodityType</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>code</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="related">
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a672fd02545f740f194d879cb2b260456" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a77a9b9f71c1ed95bd31d2ad73dcc3202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="111" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1ae9b4ce5917c9d8624983d67323e0b081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream &amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;, const CommodityType &amp;)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>commodity type </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="36" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>code</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a09c2a6e182b14dee1fa4190dd20359b2" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>CommodityType</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a8b6363fe49172948d3e690db183123de" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>CommodityType</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a832b66991a7ea52f0f85282001e39917" prot="protected" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>commodityTypes_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>data_</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a77a9b9f71c1ed95bd31d2ad73dcc3202" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>operator!=</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1ae9b4ce5917c9d8624983d67323e0b081" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>operator&lt;&lt;</name></member>
+      <member refid="class_quant_lib_1_1_commodity_type_1a672fd02545f740f194d879cb2b260456" prot="public" virt="non-virtual"><scope>QuantLib::CommodityType</scope><name>operator==</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

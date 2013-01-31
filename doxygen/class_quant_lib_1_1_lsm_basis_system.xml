@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_lsm_basis_system" kind="class" prot="public">
+    <compoundname>QuantLib::LsmBasisSystem</compoundname>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976" prot="public" static="no">
+        <name>PolynomType</name>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7c01f7381672fb21e07a117905330c1c" prot="public">
+          <name>Monomial</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a015a2716731f6a19d56100b6a646fb96" prot="public">
+          <name>Laguerre</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a5555a8115594e3b505c06e54cd2fc54c" prot="public">
+          <name>Hermite</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7d1f37bf9f42ce07c38cab40b84c9585" prot="public">
+          <name>Hyperbolic</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a6ace8ece96add1b9b17fd5b0103c9d71" prot="public">
+          <name>Legendre</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976aa533459c08077e92f289693540d77e6a" prot="public">
+          <name>Chebyshev</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a3ce92b4b6d937a9894e671024c848e80" prot="public">
+          <name>Chebyshev2nd</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="39" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_lsm_basis_system_1aa571df7488a8b45d1442b5b4f5c546c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+        <definition>static std::vector&lt;boost::function1&lt;Real, Real&gt; &gt; pathBasisSystem</definition>
+        <argsstring>(Size order, PolynomType polyType)</argsstring>
+        <name>pathBasisSystem</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>PolynomType</type>
+          <declname>polyType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt;</type>
+        <definition>static std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; multiPathBasisSystem</definition>
+        <argsstring>(Size dim, Size order, PolynomType polyType)</argsstring>
+        <name>multiPathBasisSystem</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>dim</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>order</declname>
+        </param>
+        <param>
+          <type>PolynomType</type>
+          <declname>polyType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/lsmbasissystem.hpp" bodystart="37" bodyend="47"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976aa533459c08077e92f289693540d77e6a" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Chebyshev</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a3ce92b4b6d937a9894e671024c848e80" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Chebyshev2nd</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a5555a8115594e3b505c06e54cd2fc54c" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Hermite</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7d1f37bf9f42ce07c38cab40b84c9585" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Hyperbolic</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a015a2716731f6a19d56100b6a646fb96" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Laguerre</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a6ace8ece96add1b9b17fd5b0103c9d71" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Legendre</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976a7c01f7381672fb21e07a117905330c1c" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>Monomial</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1ac02a57fb6a6848fa94d470723b442943" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>multiPathBasisSystem</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aa571df7488a8b45d1442b5b4f5c546c7" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>pathBasisSystem</name></member>
+      <member refid="class_quant_lib_1_1_lsm_basis_system_1aeb6a6c942f7565469985fce372446976" prot="public" virt="non-virtual"><scope>QuantLib::LsmBasisSystem</scope><name>PolynomType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

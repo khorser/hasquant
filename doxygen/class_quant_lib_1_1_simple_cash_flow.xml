@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_simple_cash_flow" kind="class" prot="public">
+    <compoundname>QuantLib::SimpleCashFlow</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_amortizing_payment" prot="public" virt="non-virtual">AmortizingPayment</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_redemption" prot="public" virt="non-virtual">Redemption</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Event interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date</definition>
+        <argsstring>() const </argsstring>
+        <name>date</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="40" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>CashFlow interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount</definition>
+        <argsstring>() const </argsstring>
+        <name>amount</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <briefdescription>
+<para>returns the amount of the cash flow </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>The amount is not discounted, i.e., it is the actual amount paid at the cash flow date. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="44" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplements refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplementedby refid="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <defname>v</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="89" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_simple_cash_flow_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real amount_</definition>
+        <argsstring></argsstring>
+        <name>amount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_simple_cash_flow_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date date_</definition>
+        <argsstring></argsstring>
+        <name>date_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_simple_cash_flow_1a0bd25764268be43d0c23bfbe8aba2b0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SimpleCashFlow</definition>
+        <argsstring>(Real amount, const Date &amp;date)</argsstring>
+        <name>SimpleCashFlow</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>amount</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>date</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="37"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Predetermined cash flow. </para>    </briefdescription>
+    <detaileddescription>
+<para>This cash flow pays a predetermined amount at a given date. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="13065">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="13066" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13066">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13068">
+        <label>Redemption</label>
+        <link refid="class_quant_lib_1_1_redemption"/>
+        <childnode refid="13063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13067">
+        <label>AmortizingPayment</label>
+        <link refid="class_quant_lib_1_1_amortizing_payment"/>
+        <childnode refid="13063" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13063">
+        <label>SimpleCashFlow</label>
+        <link refid="class_quant_lib_1_1_simple_cash_flow"/>
+        <childnode refid="13064" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13064">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="13065" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13071">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="13072" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13072">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="13069">
+        <label>SimpleCashFlow</label>
+        <link refid="class_quant_lib_1_1_simple_cash_flow"/>
+        <childnode refid="13070" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13070">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="13071" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/simplecashflow.hpp" bodystart="34" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>amount</name></member>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>amount_</name></member>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="private" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>date_</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_simple_cash_flow_1a0bd25764268be43d0c23bfbe8aba2b0f" prot="public" virt="non-virtual"><scope>QuantLib::SimpleCashFlow</scope><name>SimpleCashFlow</name></member>
+      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>~CashFlow</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SimpleCashFlow</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

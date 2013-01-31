@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_zero_condition" kind="class" prot="public">
+    <compoundname>QuantLib::ZeroCondition</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">QuantLib::StepCondition&lt; array_type &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class array_type</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void applyTo</definition>
+        <argsstring>(array_type &amp;a, Time) const </argsstring>
+        <name>applyTo</name>
+        <reimplements refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
+        <param>
+          <type>array_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="37" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Zero exercise condition. </para>    </briefdescription>
+    <detaileddescription>
+<para>Used in CEV models </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="15482">
+        <label>ZeroCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_zero_condition"/>
+        <childnode refid="15483" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15483">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="15484">
+        <label>ZeroCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_zero_condition"/>
+        <childnode refid="15485" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15485">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="35" bodyend="42"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" virt="virtual"><scope>QuantLib::ZeroCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::ZeroCondition</scope><name>~StepCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_time_homogeneous_forward_correlation" kind="class" prot="public">
+    <compoundname>QuantLib::TimeHomogeneousForwardCorrelation</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">PiecewiseConstantCorrelation</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates_</definition>
+        <argsstring></argsstring>
+        <name>numberOfRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1aa5838f75259c2d950fe4dada91bf6ca5" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix fwdCorrelation_</definition>
+        <argsstring></argsstring>
+        <name>fwdCorrelation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; rateTimes_</definition>
+        <argsstring></argsstring>
+        <name>rateTimes_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; times_</definition>
+        <argsstring></argsstring>
+        <name>times_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ae14fcd7d95a0db7e6c6f0935d7b802af" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>std::vector&lt;Matrix&gt; correlations_</definition>
+        <argsstring></argsstring>
+        <name>correlations_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a2f98d65f92cd56767dd6ffe898c67e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TimeHomogeneousForwardCorrelation</definition>
+        <argsstring>(const Matrix &amp;fwdCorrelation, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
+        <name>TimeHomogeneousForwardCorrelation</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>fwdCorrelation</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a1caecd902d2960755b349a552a9b92f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; times</definition>
+        <argsstring>() const </argsstring>
+        <name>times</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Time&gt;&amp; rateTimes</definition>
+        <argsstring>() const </argsstring>
+        <name>rateTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1af728002c216f1dbca020531bae19a0f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Matrix&gt;&amp; correlations</definition>
+        <argsstring>() const </argsstring>
+        <name>correlations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a8e3b9f1a8a687f9db320a0a7e7c0cce6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <definition>static std::vector&lt;Matrix&gt; evolvedMatrices</definition>
+        <argsstring>(const Matrix &amp;fwdCorrelation)</argsstring>
+        <name>evolvedMatrices</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>fwdCorrelation</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="40"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/timehomogeneousforwardcorrelation.hpp" bodystart="30" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1ae08bef1d9e2af46227740be2eed7bd98" prot="public" virt="virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>correlation</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1af728002c216f1dbca020531bae19a0f7" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>correlations</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ae14fcd7d95a0db7e6c6f0935d7b802af" prot="private" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>correlations_</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a8e3b9f1a8a687f9db320a0a7e7c0cce6" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>evolvedMatrices</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1aa5838f75259c2d950fe4dada91bf6ca5" prot="private" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>fwdCorrelation_</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>numberOfRates</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>rateTimes</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a2f98d65f92cd56767dd6ffe898c67e88" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>TimeHomogeneousForwardCorrelation</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a1caecd902d2960755b349a552a9b92f2" prot="public" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>times</name></member>
+      <member refid="class_quant_lib_1_1_time_homogeneous_forward_correlation_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>times_</name></member>
+      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1a8ba187765333e99f9b1f5d3990daf08c" prot="public" virt="virtual"><scope>QuantLib::TimeHomogeneousForwardCorrelation</scope><name>~PiecewiseConstantCorrelation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

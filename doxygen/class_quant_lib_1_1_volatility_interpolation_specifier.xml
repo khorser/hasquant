@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_volatility_interpolation_specifier" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::VolatilityInterpolationSpecifier</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_volatility_interpolation_specifierabcd" prot="public" virt="non-virtual">VolatilityInterpolationSpecifierabcd</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1aa62d5eb7b21dcca2b0a4d3a037687ec8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>VolatilityInterpolationSpecifier</definition>
+        <argsstring>()</argsstring>
+        <name>VolatilityInterpolationSpecifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="42"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a895a85ad5121939bfb28d6dfeb4f1981" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ~VolatilityInterpolationSpecifier</definition>
+        <argsstring>()</argsstring>
+        <name>~VolatilityInterpolationSpecifier</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a9afa1df8525233c08226fbc4dedd5a87" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void setScalingFactors</definition>
+        <argsstring>(const std::vector&lt; Real &gt; &amp;scales)=0</argsstring>
+        <name>setScalingFactors</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>scales</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a2487e98e6fd7fb1f39c08050c5864e88" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void setLastCapletVol</definition>
+        <argsstring>(Real vol)=0</argsstring>
+        <name>setLastCapletVol</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>vol</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a83bccb4fe3c4f8fb848169dcdca03e45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;</type>
+        <definition>virtual const std::vector&lt;boost::shared_ptr&lt;PiecewiseConstantVariance&gt; &gt;&amp; interpolatedVariances</definition>
+        <argsstring>() const =0</argsstring>
+        <name>interpolatedVariances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a49f3e0b30e5e349c708d6b10927bea7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;</type>
+        <definition>virtual const std::vector&lt;boost::shared_ptr&lt;PiecewiseConstantVariance&gt; &gt;&amp; originalVariances</definition>
+        <argsstring>() const =0</argsstring>
+        <name>originalVariances</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1ae725886f037f7f8867498283b4ecbadb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size getPeriod</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getPeriod</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1ad9800e5048c7f90efb6e81ccf6ea3ab6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size getOffset</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1a9aefa4466580cc1ca01b37a0b86354da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size getNoBigRates</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getNoBigRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_volatility_interpolation_specifier_1ac8a3fada1d4eb4970f135ea0d67b9d7a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>virtual Size getNoSmallRates</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getNoSmallRates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" bodystart="39" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a9aefa4466580cc1ca01b37a0b86354da" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getNoBigRates</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ac8a3fada1d4eb4970f135ea0d67b9d7a" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getNoSmallRates</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ad9800e5048c7f90efb6e81ccf6ea3ab6" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getOffset</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ae725886f037f7f8867498283b4ecbadb" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getPeriod</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a83bccb4fe3c4f8fb848169dcdca03e45" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>interpolatedVariances</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a49f3e0b30e5e349c708d6b10927bea7c" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>originalVariances</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a2487e98e6fd7fb1f39c08050c5864e88" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>setLastCapletVol</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a9afa1df8525233c08226fbc4dedd5a87" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>setScalingFactors</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1aa62d5eb7b21dcca2b0a4d3a037687ec8" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>VolatilityInterpolationSpecifier</name></member>
+      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a895a85ad5121939bfb28d6dfeb4f1981" prot="public" virt="virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>~VolatilityInterpolationSpecifier</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__patterns" kind="group">
+    <compoundname>patterns</compoundname>
+    <title>Design patterns</title>
+    <innerclass refid="class_quant_lib_1_1_composite" prot="public">QuantLib::Composite</innerclass>
+    <innerclass refid="class_quant_lib_1_1_curiously_recurring_template" prot="public">QuantLib::CuriouslyRecurringTemplate</innerclass>
+    <innerclass refid="class_quant_lib_1_1_lazy_object" prot="public">QuantLib::LazyObject</innerclass>
+    <innerclass refid="class_quant_lib_1_1_observable" prot="public">QuantLib::Observable</innerclass>
+    <innerclass refid="class_quant_lib_1_1_observer" prot="public">QuantLib::Observer</innerclass>
+    <innerclass refid="class_quant_lib_1_1_singleton" prot="public">QuantLib::Singleton</innerclass>
+    <innerclass refid="class_quant_lib_1_1_acyclic_visitor" prot="public">QuantLib::AcyclicVisitor</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

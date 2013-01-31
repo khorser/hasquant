@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="group__asianengines" kind="group">
+    <compoundname>asianengines</compoundname>
+    <title>Asian option engines</title>
+    <innerclass refid="class_quant_lib_1_1_analytic_continuous_geometric_average_price_asian_engine" prot="public">QuantLib::AnalyticContinuousGeometricAveragePriceAsianEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine" prot="public">QuantLib::AnalyticDiscreteGeometricAveragePriceAsianEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_analytic_discrete_geometric_average_strike_asian_engine" prot="public">QuantLib::AnalyticDiscreteGeometricAverageStrikeAsianEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine" prot="public">QuantLib::MCDiscreteArithmeticAPEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_discrete_arithmetic_a_s_engine" prot="public">QuantLib::MCDiscreteArithmeticASEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine" prot="public">QuantLib::MCDiscreteGeometricAPEngine</innerclass>
+    <innerclass refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" prot="public">QuantLib::MCDiscreteAveragingAsianEngine</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

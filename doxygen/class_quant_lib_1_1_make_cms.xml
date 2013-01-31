@@ -1,0 +1,1010 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_make_cms" kind="class" prot="public">
+    <compoundname>QuantLib::MakeCms</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period swapTenor_</definition>
+        <argsstring></argsstring>
+        <name>swapTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a3a0b946fc98b025f246b77d6c2751f41" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;SwapIndex&gt; swapIndex_</definition>
+        <argsstring></argsstring>
+        <name>swapIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a211475384befbdc6d1d92bfe69635cd0" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex_</definition>
+        <argsstring></argsstring>
+        <name>iborIndex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a0345bbd4ae427a1cf58060e39ff6dadf" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread iborSpread_</definition>
+        <argsstring></argsstring>
+        <name>iborSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a5b5dca6a8d8639f8f2f59d3f9b4ba4fb" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool useAtmSpread_</definition>
+        <argsstring></argsstring>
+        <name>useAtmSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period forwardStart_</definition>
+        <argsstring></argsstring>
+        <name>forwardStart_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a60710561bf15484681bf7131c92775b4" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+        <definition>Spread cmsSpread_</definition>
+        <argsstring></argsstring>
+        <name>cmsSpread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a0e31db52429ae59da2cedc0c9ebe20d5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real cmsGearing_</definition>
+        <argsstring></argsstring>
+        <name>cmsGearing_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1ab7fc77862820aeed12d4a6e46c22e7f2" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate cmsCap_</definition>
+        <argsstring></argsstring>
+        <name>cmsCap_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a3fa3933d0f58056ee306c6d5d01323ca" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate cmsFloor_</definition>
+        <argsstring></argsstring>
+        <name>cmsFloor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date effectiveDate_</definition>
+        <argsstring></argsstring>
+        <name>effectiveDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1ace8a105b10929f2ca197d48ad291b0f9" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar cmsCalendar_</definition>
+        <argsstring></argsstring>
+        <name>cmsCalendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1ad54b0e95fac9bae9da86553998d153ae" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+        <definition>Calendar floatCalendar_</definition>
+        <argsstring></argsstring>
+        <name>floatCalendar_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a820df850984aae386ae95493a618a692" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool payCms_</definition>
+        <argsstring></argsstring>
+        <name>payCms_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal_</definition>
+        <argsstring></argsstring>
+        <name>nominal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a482cb158429ac8a11928b638ce40a94e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period cmsTenor_</definition>
+        <argsstring></argsstring>
+        <name>cmsTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a3c7dc1eb48904104d0fc5a9ce84c31b2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period floatTenor_</definition>
+        <argsstring></argsstring>
+        <name>floatTenor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1af7b977f48ef1de133e7d3c2b21b66975" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention cmsConvention_</definition>
+        <argsstring></argsstring>
+        <name>cmsConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a13825b96a64840d07fc8b1a74f2d941c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention cmsTerminationDateConvention_</definition>
+        <argsstring></argsstring>
+        <name>cmsTerminationDateConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1ae60a07c9bc2ad615a4e024154188c328" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention floatConvention_</definition>
+        <argsstring></argsstring>
+        <name>floatConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a6e546717f702497ebb8d5a5664576850" prot="private" static="no" mutable="no">
+        <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        <definition>BusinessDayConvention floatTerminationDateConvention_</definition>
+        <argsstring></argsstring>
+        <name>floatTerminationDateConvention_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1aee954a0a305474bf3779f3dc00113356" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        <definition>DateGeneration::Rule cmsRule_</definition>
+        <argsstring></argsstring>
+        <name>cmsRule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a3e83ad896e9c8aad6d53d1caa231a6c2" prot="private" static="no" mutable="no">
+        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+        <definition>DateGeneration::Rule floatRule_</definition>
+        <argsstring></argsstring>
+        <name>floatRule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a414045a9bf72dbdf10a064bba09bbfef" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool cmsEndOfMonth_</definition>
+        <argsstring></argsstring>
+        <name>cmsEndOfMonth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a084ebd72604fe38dc9d9b0d7b2b6c809" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool floatEndOfMonth_</definition>
+        <argsstring></argsstring>
+        <name>floatEndOfMonth_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a3ee8cf11ac244b12cebcb92395902c75" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date cmsFirstDate_</definition>
+        <argsstring></argsstring>
+        <name>cmsFirstDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1adaefa15aff6d330c2322a5d1769cbdbf" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date cmsNextToLastDate_</definition>
+        <argsstring></argsstring>
+        <name>cmsNextToLastDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a180c162ce826f7849d3717c2560e1389" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date floatFirstDate_</definition>
+        <argsstring></argsstring>
+        <name>floatFirstDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a2e6d503cc98a1c473a7469f90a113b70" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>Date floatNextToLastDate_</definition>
+        <argsstring></argsstring>
+        <name>floatNextToLastDate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1aa529440a4ea214eda0ec6cc52b77c410" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter cmsDayCount_</definition>
+        <argsstring></argsstring>
+        <name>cmsDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a52317f2d9d20fcdf6da1753974274a67" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter floatDayCount_</definition>
+        <argsstring></argsstring>
+        <name>floatDayCount_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1aec8a3d48bdab47e807560f973bfa1569" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;PricingEngine&gt; engine_</definition>
+        <argsstring></argsstring>
+        <name>engine_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_make_cms_1a1f7c6c6478ce4810c3e168957b699f5e" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cms_coupon_pricer" kindref="compound">CmsCouponPricer</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;CmsCouponPricer&gt; couponPricer_</definition>
+        <argsstring></argsstring>
+        <name>couponPricer_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a5e9642c6c47bfe0eb04fb5f6557e15c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MakeCms</definition>
+        <argsstring>(const Period &amp;swapTenor, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, Spread iborSpread=0.0, const Period &amp;forwardStart=0 *Days)</argsstring>
+        <name>MakeCms</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>swapTenor</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <declname>swapIndex</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <declname>iborIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>iborSpread</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>forwardStart</declname>
+          <defval>0 *Days</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a9666dcaf183598006687827bf7fefc50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MakeCms</definition>
+        <argsstring>(const Period &amp;swapTenor, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, Spread iborSpread=0.0, const Period &amp;forwardStart=0 *Days)</argsstring>
+        <name>MakeCms</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>swapTenor</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <declname>swapIndex</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
+          <declname>iborSpread</declname>
+          <defval>0.0</defval>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>forwardStart</declname>
+          <defval>0 *Days</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ac6bc3d78d2015982e1279472d84c86d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator Swap</definition>
+        <argsstring>() const </argsstring>
+        <name>operator Swap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a488a88c3a9889296ca7258294717279c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>operator boost::shared_ptr&lt; Swap &gt;</definition>
+        <argsstring>() const </argsstring>
+        <name>operator boost::shared_ptr&lt; Swap &gt;</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ab0f7faf86e9261f9597b46876e79b466" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; receiveCms</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>receiveCms</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ad7d5d6165064265534afd842e0fe6804" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withNominal</definition>
+        <argsstring>(Real n)</argsstring>
+        <name>withNominal</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a11915b9c508bb8e88b00a744e82b2f51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withEffectiveDate</definition>
+        <argsstring>(const Date &amp;)</argsstring>
+        <name>withEffectiveDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ad203ea727caeaec318015647b2a7cdd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegTenor</definition>
+        <argsstring>(const Period &amp;t)</argsstring>
+        <name>withCmsLegTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a5cd26d419ef5cd1cb7460bcc0e757226" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegCalendar</definition>
+        <argsstring>(const Calendar &amp;cal)</argsstring>
+        <name>withCmsLegCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>cal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a1ab033853e762d6e427211423dde3b75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withCmsLegConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a72d52c7d144264547e403cd5714923aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention)</argsstring>
+        <name>withCmsLegTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a0cb91870cf48558daa02d3e464dae62a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withCmsLegRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a071d34edc3bfce03d79441517643593a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegEndOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withCmsLegEndOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1aa614d90057ae970e19f5403feab6036e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withCmsLegFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1afbb3d30c7e669b6ffcbdddb7baa67eda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withCmsLegNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a20faf83065f1513b16f95e20f6b1fe8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsLegDayCount</definition>
+        <argsstring>(const DayCounter &amp;dc)</argsstring>
+        <name>withCmsLegDayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="68"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1aa39eec8e08d6dfdd6379e367c0d83d72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegTenor</definition>
+        <argsstring>(const Period &amp;t)</argsstring>
+        <name>withFloatingLegTenor</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>t</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a44d17e40c70f63f9432dd001dc0f7312" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegCalendar</definition>
+        <argsstring>(const Calendar &amp;cal)</argsstring>
+        <name>withFloatingLegCalendar</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <declname>cal</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a5c18064997ea1476e6b403c9653bc92a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFloatingLegConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ac983f2ea03c1d729cc1f3c1cd84b8358" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegTerminationDateConvention</definition>
+        <argsstring>(BusinessDayConvention bdc)</argsstring>
+        <name>withFloatingLegTerminationDateConvention</name>
+        <param>
+          <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
+          <declname>bdc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a686ed516427ed95da47589913b5332a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegRule</definition>
+        <argsstring>(DateGeneration::Rule r)</argsstring>
+        <name>withFloatingLegRule</name>
+        <param>
+          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a147d945b75fa0206ec5e602f52e34821" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegEndOfMonth</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withFloatingLegEndOfMonth</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ab88c7e4f80ccf3739f8b6704f6f93300" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegFirstDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFloatingLegFirstDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a98c1a2d5b56897a6a45e3b495ce1f513" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegNextToLastDate</definition>
+        <argsstring>(const Date &amp;d)</argsstring>
+        <name>withFloatingLegNextToLastDate</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a37a3bca070fbeff246a23d7ae1d9db16" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withFloatingLegDayCount</definition>
+        <argsstring>(const DayCounter &amp;dc)</argsstring>
+        <name>withFloatingLegDayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a684ebc404def403468bc17600d5765c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withAtmSpread</definition>
+        <argsstring>(bool flag=true)</argsstring>
+        <name>withAtmSpread</name>
+        <param>
+          <type>bool</type>
+          <declname>flag</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1ac65c5a07ac7e03607acd9da8cf67d938" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withDiscountingTermStructure</definition>
+        <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountingTermStructure)</argsstring>
+        <name>withDiscountingTermStructure</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>discountingTermStructure</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_make_cms_1a37e649eb23ca49fea2b250b120fa1ec4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_make_cms" kindref="compound">MakeCms</ref> &amp;</type>
+        <definition>MakeCms&amp; withCmsCouponPricer</definition>
+        <argsstring>(const boost::shared_ptr&lt; CmsCouponPricer &gt; &amp;couponPricer)</argsstring>
+        <name>withCmsCouponPricer</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cms_coupon_pricer" kindref="compound">CmsCouponPricer</ref> &gt; &amp;</type>
+          <declname>couponPricer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>helper class for instantiating CMS </para>    </briefdescription>
+    <detaileddescription>
+<para>This class provides a more comfortable way to instantiate standard market constant maturity swap. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecms.hpp" bodystart="40" bodyend="116"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_make_cms_1ace8a105b10929f2ca197d48ad291b0f9" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsCalendar_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ab7fc77862820aeed12d4a6e46c22e7f2" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsCap_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1af7b977f48ef1de133e7d3c2b21b66975" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1aa529440a4ea214eda0ec6cc52b77c410" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a414045a9bf72dbdf10a064bba09bbfef" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsEndOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a3ee8cf11ac244b12cebcb92395902c75" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsFirstDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a3fa3933d0f58056ee306c6d5d01323ca" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsFloor_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a0e31db52429ae59da2cedc0c9ebe20d5" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsGearing_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1adaefa15aff6d330c2322a5d1769cbdbf" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsNextToLastDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1aee954a0a305474bf3779f3dc00113356" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsRule_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a60710561bf15484681bf7131c92775b4" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsSpread_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a482cb158429ac8a11928b638ce40a94e" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a13825b96a64840d07fc8b1a74f2d941c" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>cmsTerminationDateConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a1f7c6c6478ce4810c3e168957b699f5e" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>couponPricer_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>effectiveDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ad54b0e95fac9bae9da86553998d153ae" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatCalendar_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ae60a07c9bc2ad615a4e024154188c328" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a52317f2d9d20fcdf6da1753974274a67" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatDayCount_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a084ebd72604fe38dc9d9b0d7b2b6c809" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatEndOfMonth_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a180c162ce826f7849d3717c2560e1389" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatFirstDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a2e6d503cc98a1c473a7469f90a113b70" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatNextToLastDate_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a3e83ad896e9c8aad6d53d1caa231a6c2" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatRule_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a3c7dc1eb48904104d0fc5a9ce84c31b2" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a6e546717f702497ebb8d5a5664576850" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>floatTerminationDateConvention_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>forwardStart_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a211475384befbdc6d1d92bfe69635cd0" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>iborIndex_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a0345bbd4ae427a1cf58060e39ff6dadf" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>iborSpread_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a5e9642c6c47bfe0eb04fb5f6557e15c7" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>MakeCms</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a9666dcaf183598006687827bf7fefc50" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>MakeCms</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a488a88c3a9889296ca7258294717279c" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>operator boost::shared_ptr&lt; Swap &gt;</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ac6bc3d78d2015982e1279472d84c86d6" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>operator Swap</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a820df850984aae386ae95493a618a692" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>payCms_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ab0f7faf86e9261f9597b46876e79b466" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>receiveCms</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a3a0b946fc98b025f246b77d6c2751f41" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>swapIndex_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>swapTenor_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a5b5dca6a8d8639f8f2f59d3f9b4ba4fb" prot="private" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>useAtmSpread_</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a684ebc404def403468bc17600d5765c3" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withAtmSpread</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a37e649eb23ca49fea2b250b120fa1ec4" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsCouponPricer</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a5cd26d419ef5cd1cb7460bcc0e757226" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a1ab033853e762d6e427211423dde3b75" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a20faf83065f1513b16f95e20f6b1fe8a" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegDayCount</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a071d34edc3bfce03d79441517643593a" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1aa614d90057ae970e19f5403feab6036e" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1afbb3d30c7e669b6ffcbdddb7baa67eda" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a0cb91870cf48558daa02d3e464dae62a" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegRule</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ad203ea727caeaec318015647b2a7cdd3" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a72d52c7d144264547e403cd5714923aa" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withCmsLegTerminationDateConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ac65c5a07ac7e03607acd9da8cf67d938" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withDiscountingTermStructure</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a11915b9c508bb8e88b00a744e82b2f51" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withEffectiveDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a44d17e40c70f63f9432dd001dc0f7312" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegCalendar</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a5c18064997ea1476e6b403c9653bc92a" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a37a3bca070fbeff246a23d7ae1d9db16" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegDayCount</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a147d945b75fa0206ec5e602f52e34821" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegEndOfMonth</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ab88c7e4f80ccf3739f8b6704f6f93300" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegFirstDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a98c1a2d5b56897a6a45e3b495ce1f513" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegNextToLastDate</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1a686ed516427ed95da47589913b5332a4" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegRule</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1aa39eec8e08d6dfdd6379e367c0d83d72" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegTenor</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ac983f2ea03c1d729cc1f3c1cd84b8358" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withFloatingLegTerminationDateConvention</name></member>
+      <member refid="class_quant_lib_1_1_make_cms_1ad7d5d6165064265534afd842e0fe6804" prot="public" virt="non-virtual"><scope>QuantLib::MakeCms</scope><name>withNominal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

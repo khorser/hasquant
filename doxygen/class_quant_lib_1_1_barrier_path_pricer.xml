@@ -1,0 +1,203 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_barrier_path_pricer" kind="class" prot="public">
+    <compoundname>QuantLib::BarrierPathPricer</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; Path &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" static="no" mutable="no">
+        <type>Barrier::Type</type>
+        <definition>Barrier::Type barrierType_</definition>
+        <argsstring></argsstring>
+        <name>barrierType_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="153" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="153" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real barrier_</definition>
+        <argsstring></argsstring>
+        <name>barrier_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rebate_</definition>
+        <argsstring></argsstring>
+        <name>rebate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StochasticProcess1D&gt; diffProcess_</definition>
+        <argsstring></argsstring>
+        <name>diffProcess_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref></type>
+        <definition>PseudoRandom::ursg_type sequenceGen_</definition>
+        <argsstring></argsstring>
+        <name>sequenceGen_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref></type>
+        <definition>PlainVanillaPayoff payoff_</definition>
+        <argsstring></argsstring>
+        <name>payoff_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
+        <definition>std::vector&lt;DiscountFactor&gt; discounts_</definition>
+        <argsstring></argsstring>
+        <name>discounts_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="159" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_barrier_path_pricer_1af13c0ed93ae2ee2a191d6d165f652852" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BarrierPathPricer</definition>
+        <argsstring>(Barrier::Type barrierType, Real barrier, Real rebate, Option::Type type, Real strike, const std::vector&lt; DiscountFactor &gt; &amp;discounts, const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;diffProcess, const PseudoRandom::ursg_type &amp;sequenceGen)</argsstring>
+        <name>BarrierPathPricer</name>
+        <param>
+          <type>Barrier::Type</type>
+          <declname>barrierType</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>barrier</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rebate</declname>
+        </param>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt; &amp;</type>
+          <declname>discounts</declname>
+        </param>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <declname>diffProcess</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">PseudoRandom::ursg_type</ref> &amp;</type>
+          <declname>sequenceGen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="150"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_barrier_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(const Path &amp;path) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="151"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="717">
+        <label>BarrierPathPricer</label>
+        <childnode refid="718" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="718">
+        <label>PathPricer&lt; Path &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="719">
+        <label>BarrierPathPricer</label>
+        <childnode refid="720" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="720">
+        <label>PathPricer&lt; Path &gt;</label>
+        <link refid="class_quant_lib_1_1_path_pricer"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="140" bodyend="160"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>barrier_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1af13c0ed93ae2ee2a191d6d165f652852" prot="public" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>BarrierPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>barrierType_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>diffProcess_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>discounts_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>payoff_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>rebate_</name></member>
+      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>sequenceGen_</name></member>
+      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::BarrierPathPricer</scope><name>~PathPricer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_coterminal_swap_curve_state" kind="class" prot="public">
+    <compoundname>QuantLib::CoterminalSwapCurveState</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_curve_state" prot="public" virt="non-virtual">CurveState</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Modifiers</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a2115c4cefbd3cc3c8d54915da341253e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void setOnCoterminalSwapRates</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;swapRates, Size firstValidIndex=0)</argsstring>
+        <name>setOnCoterminalSwapRates</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>swapRates</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>firstValidIndex</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Inspectors</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aba827b05a0086533a68c6c2862351d08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real discountRatio</definition>
+        <argsstring>(Size i, Size j) const </argsstring>
+        <name>discountRatio</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1ae1be6d8a46ccb12032638385f87d737a">discountRatio</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>j</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate forwardRate</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>forwardRate</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a42852cb51178279c92bd2398c86bf7f0">forwardRate</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate coterminalSwapRate</definition>
+        <argsstring>(Size i) const </argsstring>
+        <name>coterminalSwapRate</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a9d510c8b5f658567dff23eb907d118b5">coterminalSwapRate</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate coterminalSwapAnnuity</definition>
+        <argsstring>(Size numeraire, Size i) const </argsstring>
+        <name>coterminalSwapAnnuity</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a1feea35a2e0a42dfc806cb124b569128">coterminalSwapAnnuity</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numeraire</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="66"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate cmSwapRate</definition>
+        <argsstring>(Size i, Size spanningForwards) const </argsstring>
+        <name>cmSwapRate</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a26ad3c6d5d3c59dace9997d18251f733">cmSwapRate</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>spanningForwards</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate cmSwapAnnuity</definition>
+        <argsstring>(Size numeraire, Size i, Size spanningForwards) const </argsstring>
+        <name>cmSwapAnnuity</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1aad39df5f2eb1d2e82e27bfd7cbf7bfde">cmSwapAnnuity</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numeraire</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>spanningForwards</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Rate&gt;&amp; forwardRates</definition>
+        <argsstring>() const </argsstring>
+        <name>forwardRates</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a943f9270e4109d9730df315863246349">forwardRates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Rate&gt;&amp; coterminalSwapRates</definition>
+        <argsstring>() const </argsstring>
+        <name>coterminalSwapRates</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1af917754216210a5e5ffca04bff64bebd">coterminalSwapRates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Rate&gt;&amp; cmSwapRates</definition>
+        <argsstring>(Size spanningForwards) const </argsstring>
+        <name>cmSwapRates</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1a7dc0f55707fcc9c01bd6a8610b0da7c5">cmSwapRates</reimplements>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>spanningForwards</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="73"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ac7372fad315f02b5c7baa1362d9d0f88" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size first_</definition>
+        <argsstring></argsstring>
+        <name>first_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab8d29fabefdf5e5204a438a31c5fc3b2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
+        <definition>std::vector&lt;DiscountFactor&gt; discRatios_</definition>
+        <argsstring></argsstring>
+        <name>discRatios_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a218b3ef267a412453606bf24443f6895" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; forwardRates_</definition>
+        <argsstring></argsstring>
+        <name>forwardRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a808e0b8f5ace9bf605daacd91d771cfa" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; cmSwapRates_</definition>
+        <argsstring></argsstring>
+        <name>cmSwapRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1ab296e61d38edd3b52e2f204b1b3797d3" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; cmSwapAnnuities_</definition>
+        <argsstring></argsstring>
+        <name>cmSwapAnnuities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1aa2fd64eca22c89d70009196c51e707f3" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
+        <definition>std::vector&lt;Rate&gt; cotSwapRates_</definition>
+        <argsstring></argsstring>
+        <name>cotSwapRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_coterminal_swap_curve_state_1adfb5766f14d0211cca86ab652bce182f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; cotAnnuities_</definition>
+        <argsstring></argsstring>
+        <name>cotAnnuities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a2970d6c5b819e43d5c28c4ba5cb9bd3e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CoterminalSwapCurveState</definition>
+        <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
+        <name>CoterminalSwapCurveState</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>rateTimes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_coterminal_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt;</type>
+        <definition>std::auto_ptr&lt;CurveState&gt; clone</definition>
+        <argsstring>() const </argsstring>
+        <name>clone</name>
+        <reimplements refid="class_quant_lib_1_1_curve_state_1ac4251f8df2d9997d128346d29af2080a">clone</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="75" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Curve state for coterminal-swap market models </para>    </briefdescription>
+    <detaileddescription>
+<para>This class stores the state of the yield curve associated to the fixed calendar times within the simulation. This is the workhorse discounting object associated to the rate times of the simulation. It&apos;s important to pass the rates via an object like this to the product rather than directly to make it easier to switch to other engines such as a coterminal swap rate engine. Many products will not need expired rates and others will only require the first rate. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2765">
+        <label>CurveState</label>
+        <link refid="class_quant_lib_1_1_curve_state"/>
+      </node>
+      <node id="2764">
+        <label>CoterminalSwapCurveState</label>
+        <link refid="class_quant_lib_1_1_coterminal_swap_curve_state"/>
+        <childnode refid="2765" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2767">
+        <label>CurveState</label>
+        <link refid="class_quant_lib_1_1_curve_state"/>
+      </node>
+      <node id="2766">
+        <label>CoterminalSwapCurveState</label>
+        <link refid="class_quant_lib_1_1_coterminal_swap_curve_state"/>
+        <childnode refid="2767" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/coterminalswapcurvestate.hpp" bodystart="39" bodyend="87"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a8c46c0cde27036afcca8fe94bf19101d" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1ab296e61d38edd3b52e2f204b1b3797d3" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cmSwapAnnuities_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cmSwapAnnuity</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cmSwapRate</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a2c2d3c56715486e94144c87531f19fcc" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cmSwapRates</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a808e0b8f5ace9bf605daacd91d771cfa" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cmSwapRates_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1adfb5766f14d0211cca86ab652bce182f" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cotAnnuities_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aea7368686f038e0fdbc9341faf4003a6" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>coterminalSwapAnnuity</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a2970d6c5b819e43d5c28c4ba5cb9bd3e" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>CoterminalSwapCurveState</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>coterminalSwapRate</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>coterminalSwapRates</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aa2fd64eca22c89d70009196c51e707f3" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>cotSwapRates_</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a88fd3af37567d6296eb23d2712a9079a" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>CurveState</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aba827b05a0086533a68c6c2862351d08" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>discountRatio</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1ab8d29fabefdf5e5204a438a31c5fc3b2" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>discRatios_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1ac7372fad315f02b5c7baa1362d9d0f88" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>first_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1aac1391a5c503e87b171babebba6d4a60" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>forwardRate</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>forwardRates</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a218b3ef267a412453606bf24443f6895" prot="private" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>forwardRates_</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>numberOfRates</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a9c042abcd446925e95dde36619f5bf6d" prot="protected" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a354ca1793c355a773e185886211db03a" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>rateTaus</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1aa688289997396acdd1ad9b7c64735213" prot="protected" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>rateTaus_</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>rateTimes</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="protected" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>rateTimes_</name></member>
+      <member refid="class_quant_lib_1_1_coterminal_swap_curve_state_1a2115c4cefbd3cc3c8d54915da341253e" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>setOnCoterminalSwapRates</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a7cabb9353f71c83cffb42b0fc489a5c2" prot="public" virt="non-virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>swapRate</name></member>
+      <member refid="class_quant_lib_1_1_curve_state_1a778310bcc6510018d1fd4b2db88aec3a" prot="public" virt="virtual"><scope>QuantLib::CoterminalSwapCurveState</scope><name>~CurveState</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

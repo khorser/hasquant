@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bates_double_exp_model" kind="class" prot="public">
+    <compoundname>QuantLib::BatesDoubleExpModel</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_heston_model" prot="public" virt="non-virtual">HestonModel</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_bates_double_exp_det_jump_model" prot="public" virt="non-virtual">BatesDoubleExpDetJumpModel</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a1edcd78e3677bd8752104bd277159bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BatesDoubleExpModel</definition>
+        <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;process, Real lambda=0.1, Real nuUp=0.1, Real nuDown=0.1, Real p=0.5)</argsstring>
+        <name>BatesDoubleExpModel</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <declname>process</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>lambda</declname>
+          <defval>0.1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nuUp</declname>
+          <defval>0.1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nuDown</declname>
+          <defval>0.1</defval>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>p</declname>
+          <defval>0.5</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="71"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1ac0a375ee03ecb1eebd62648f8aaa38e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real p</definition>
+        <argsstring>() const </argsstring>
+        <name>p</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="73" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1aecbaa94cf482cd93bcc9e60fa3a69434" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nuDown</definition>
+        <argsstring>() const </argsstring>
+        <name>nuDown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="74" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a54e6a38c08af90b015809f708b7bd194" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nuUp</definition>
+        <argsstring>() const </argsstring>
+        <name>nuUp</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real lambda</definition>
+        <argsstring>() const </argsstring>
+        <name>lambda</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="76" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="814">
+        <label>BatesDoubleExpModel</label>
+        <childnode refid="815" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="818">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="817">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="815">
+        <label>HestonModel</label>
+        <link refid="class_quant_lib_1_1_heston_model"/>
+        <childnode refid="816" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="816">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="817" relation="public-inheritance">
+        </childnode>
+        <childnode refid="818" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="819">
+        <label>BatesDoubleExpModel</label>
+        <childnode refid="820" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="823">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="822">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="820">
+        <label>HestonModel</label>
+        <link refid="class_quant_lib_1_1_heston_model"/>
+        <childnode refid="821" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="821">
+        <label>CalibratedModel</label>
+        <link refid="class_quant_lib_1_1_calibrated_model"/>
+        <childnode refid="822" relation="public-inheritance">
+        </childnode>
+        <childnode refid="823" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/equity/batesmodel.hpp" bodystart="67" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_bates_double_exp_model_1a1edcd78e3677bd8752104bd277159bf1" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>BatesDoubleExpModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>calibrate</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>CalibratedModel</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>constraint</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ae5ca439e5825287fbaa19c875d832021" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>constraint_</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>endCriteria</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>generateArguments</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1ae97050524301ec4c399a197e447dbd4f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>HestonModel</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a925b952838ecbba1d743cab564c69dc9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>kappa</name></member>
+      <member refid="class_quant_lib_1_1_bates_double_exp_model_1a24cb1182953e872918829ca60b348e54" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>lambda</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_bates_double_exp_model_1aecbaa94cf482cd93bcc9e60fa3a69434" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>nuDown</name></member>
+      <member refid="class_quant_lib_1_1_bates_double_exp_model_1a54e6a38c08af90b015809f708b7bd194" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>nuUp</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BatesDoubleExpModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::BatesDoubleExpModel</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_bates_double_exp_model_1ac0a375ee03ecb1eebd62648f8aaa38e4" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>p</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>params</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a57e932938bc12589eb93ad22a7402d2e" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>process</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a913c0bb126440b8eebb19cb20ed021a2" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a9e74bed9ddc465f1211381d725c945bb" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>rho</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>setParams</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1a8705485af58de6eb300e980a627a0be0" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>shortRateEndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a78bca11664a7d403bde6a9842f72ae61" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>sigma</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>theta</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_heston_model_1a30fd40988a93faccca807dd016f8c5e3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>v0</name></member>
+      <member refid="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpModel</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine" kind="class" prot="public">
+    <compoundname>QuantLib::InterpolatingCPICapFloorEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">CPICapFloor::engine</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a215d496e0eedd3d3bcde568f52718dd4" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt;</type>
+        <definition>Handle&lt;CPICapFloorTermPriceSurface&gt; priceSurf_</definition>
+        <argsstring></argsstring>
+        <name>priceSurf_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a242990321b88c5ebe1002057f8301bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>InterpolatingCPICapFloorEngine</definition>
+        <argsstring>(const Handle&lt; CPICapFloorTermPriceSurface &gt; &amp;)</argsstring>
+        <name>InterpolatingCPICapFloorEngine</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt; &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="46"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::string</type>
+        <definition>virtual std::string name</definition>
+        <argsstring>() const </argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a1a3030dcbcf6db7748b562616f2b06b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~InterpolatingCPICapFloorEngine</definition>
+        <argsstring>()</argsstring>
+        <name>~InterpolatingCPICapFloorEngine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="49" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>This engine only adds timing functionality (e.g. different lag) w.r.t. an existing interpolated price surface. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="8504">
+        <label>InterpolatingCPICapFloorEngine</label>
+        <link refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine"/>
+        <childnode refid="8505" relation="usage">
+          <edgelabel>priceSurf_</edgelabel>
+        </childnode>
+      </node>
+      <node id="8505">
+        <label>Handle&lt; QuantLib::CPICapFloorTermPriceSurface &gt;</label>
+        <link refid="class_quant_lib_1_1_handle"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/cpicapfloorengines.hpp" bodystart="42" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>arguments_</name></member>
+      <member refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>getArguments</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>getResults</name></member>
+      <member refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a242990321b88c5ebe1002057f8301bd7" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>InterpolatingCPICapFloorEngine</name></member>
+      <member refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a215d496e0eedd3d3bcde568f52718dd4" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>priceSurf_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>results_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a1a3030dcbcf6db7748b562616f2b06b2" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>~InterpolatingCPICapFloorEngine</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>~Observer</name></member>
+      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::InterpolatingCPICapFloorEngine</scope><name>~PricingEngine</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

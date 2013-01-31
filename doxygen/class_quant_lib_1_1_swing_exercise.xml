@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_swing_exercise" kind="class" prot="public">
+    <compoundname>QuantLib::SwingExercise</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_bermudan_exercise" prot="public" virt="non-virtual">BermudanExercise</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_swing_exercise_1a032b9910f340bbe66e91dd8403df2a11" prot="private" static="no" mutable="no">
+        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>const std::vector&lt;Size&gt; seconds_</definition>
+        <argsstring></argsstring>
+        <name>seconds_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a3d33fb3ddbacd3ab8c1b4bb3c8a785a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SwingExercise</definition>
+        <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Size &gt; &amp;seconds=std::vector&lt; Size &gt;())</argsstring>
+        <name>SwingExercise</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <declname>dates</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+          <declname>seconds</declname>
+          <defval>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="40"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a86a73dda254c228aa836fc63225035e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>SwingExercise</definition>
+        <argsstring>(const Date &amp;from, const Date &amp;to, Size stepSizeSecs)</argsstring>
+        <name>SwingExercise</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>stepSizeSecs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="41"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a4a96ab5e0b859956a62bd5ecebe9e3d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
+        <definition>const std::vector&lt;Size&gt;&amp; seconds</definition>
+        <argsstring>() const </argsstring>
+        <name>seconds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1acac4050de15bd932950bb7cce7056791" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
+        <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
+        <argsstring>(const DayCounter &amp;dc, const Date &amp;refDate) const </argsstring>
+        <name>exerciseTimes</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dc</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refDate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="46"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Swing exercise. </para>    </briefdescription>
+    <detaileddescription>
+<para>A Swing option can only be exercised at a set of fixed date times </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="13824">
+        <label>BermudanExercise</label>
+        <link refid="class_quant_lib_1_1_bermudan_exercise"/>
+        <childnode refid="13825" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13825">
+        <label>EarlyExercise</label>
+        <link refid="class_quant_lib_1_1_early_exercise"/>
+        <childnode refid="13826" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13826">
+        <label>Exercise</label>
+        <link refid="class_quant_lib_1_1_exercise"/>
+      </node>
+      <node id="13823">
+        <label>SwingExercise</label>
+        <link refid="class_quant_lib_1_1_swing_exercise"/>
+        <childnode refid="13824" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="13828">
+        <label>BermudanExercise</label>
+        <link refid="class_quant_lib_1_1_bermudan_exercise"/>
+        <childnode refid="13829" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13829">
+        <label>EarlyExercise</label>
+        <link refid="class_quant_lib_1_1_early_exercise"/>
+        <childnode refid="13830" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13830">
+        <label>Exercise</label>
+        <link refid="class_quant_lib_1_1_exercise"/>
+      </node>
+      <node id="13827">
+        <label>SwingExercise</label>
+        <link refid="class_quant_lib_1_1_swing_exercise"/>
+        <childnode refid="13828" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="37" bodyend="50"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a6443a7d3e2731d6476a84492e0bf66cc" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>American</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7acb4ca18a2ea7ea68f2c1e2a7c4e8181a" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>Bermudan</name></member>
+      <member refid="class_quant_lib_1_1_bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>BermudanExercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a688725346fb170983161428872458ff5" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>dates</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>dates_</name></member>
+      <member refid="class_quant_lib_1_1_early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>EarlyExercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>European</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1ae6eb8cdd955b34ee2bc2a6ada6c80df5" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>Exercise</name></member>
+      <member refid="class_quant_lib_1_1_swing_exercise_1acac4050de15bd932950bb7cce7056791" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>exerciseTimes</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>lastDate</name></member>
+      <member refid="class_quant_lib_1_1_early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>payoffAtExpiry</name></member>
+      <member refid="class_quant_lib_1_1_swing_exercise_1a4a96ab5e0b859956a62bd5ecebe9e3d4" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>seconds</name></member>
+      <member refid="class_quant_lib_1_1_swing_exercise_1a032b9910f340bbe66e91dd8403df2a11" prot="private" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>seconds_</name></member>
+      <member refid="class_quant_lib_1_1_swing_exercise_1a3d33fb3ddbacd3ab8c1b4bb3c8a785a1" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>SwingExercise</name></member>
+      <member refid="class_quant_lib_1_1_swing_exercise_1a86a73dda254c228aa836fc63225035e7" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>SwingExercise</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>Type</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>type</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1ae96b07c06ceff094f476fd92cbe89e10" prot="protected" virt="non-virtual"><scope>QuantLib::SwingExercise</scope><name>type_</name></member>
+      <member refid="class_quant_lib_1_1_exercise_1a319eac5256bf348c4cbfcddbec689b09" prot="public" virt="virtual"><scope>QuantLib::SwingExercise</scope><name>~Exercise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

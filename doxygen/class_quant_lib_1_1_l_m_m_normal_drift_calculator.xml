@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_l_m_m_normal_drift_calculator" kind="class" prot="public">
+    <compoundname>QuantLib::LMMNormalDriftCalculator</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfRates_</definition>
+        <argsstring></argsstring>
+        <name>numberOfRates_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numberOfFactors_</definition>
+        <argsstring></argsstring>
+        <name>numberOfFactors_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool isFullFactor_</definition>
+        <argsstring></argsstring>
+        <name>isFullFactor_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size numeraire_</definition>
+        <argsstring></argsstring>
+        <name>numeraire_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size alive_</definition>
+        <argsstring></argsstring>
+        <name>alive_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; oneOverTaus_</definition>
+        <argsstring></argsstring>
+        <name>oneOverTaus_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix C_</definition>
+        <argsstring></argsstring>
+        <name>C_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix pseudo_</definition>
+        <argsstring></argsstring>
+        <name>pseudo_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; tmp_</definition>
+        <argsstring></argsstring>
+        <name>tmp_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aafd988ebee2e08e62013a163680ffa56" prot="private" static="no" mutable="yes">
+        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix e_</definition>
+        <argsstring></argsstring>
+        <name>e_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1acb5a1fd659fe9187af1fffa2c9c781a9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; downs_</definition>
+        <argsstring></argsstring>
+        <name>downs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad58b798be98e08a9fa31b8291add7945" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; ups_</definition>
+        <argsstring></argsstring>
+        <name>ups_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ac4afed6ea5372106deceebd4fb9c030f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LMMNormalDriftCalculator</definition>
+        <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
+        <name>LMMNormalDriftCalculator</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>pseudo</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
+          <declname>taus</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>numeraire</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>alive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compute</definition>
+        <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>compute</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+<para>Computes the drifts. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void compute</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>compute</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>fwds</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void computePlain</definition>
+        <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>computePlain</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the drifts without factor reduction as in eqs. 2, 4 of ref. [1], modified for normal forward rates dynamic (uses the covariance matrix directly). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void computePlain</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>computePlain</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>fwds</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void computeReduced</definition>
+        <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>computeReduced</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <declname>cs</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Computes the drifts with factor reduction as in eq. 7 of ref. [1], modified for normal forward rates dynamic (uses pseudo square root of the covariance matrix). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="64"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void computeReduced</definition>
+        <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
+        <name>computeReduced</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
+          <declname>fwds</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <declname>drifts</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="66"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Drift computation for normal Libor market models. </para>    </briefdescription>
+    <detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="40" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>alive_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>C_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>compute</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>compute</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computePlain</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computePlain</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computeReduced</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computeReduced</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1acb5a1fd659fe9187af1fffa2c9c781a9" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>downs_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aafd988ebee2e08e62013a163680ffa56" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>e_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>isFullFactor_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ac4afed6ea5372106deceebd4fb9c030f" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>LMMNormalDriftCalculator</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numberOfFactors_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numberOfRates_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numeraire_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>oneOverTaus_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>pseudo_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>tmp_</name></member>
+      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad58b798be98e08a9fa31b8291add7945" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>ups_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

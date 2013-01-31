@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_positive_constraint_1_1_impl" kind="class" prot="private">
+    <compoundname>QuantLib::PositiveConstraint::Impl</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_constraint_1_1_impl" prot="public" virt="non-virtual">Constraint::Impl</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_positive_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool test</definition>
+        <argsstring>(const Array &amp;params) const </argsstring>
+        <name>test</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="72" bodyend="78"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="12317">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+      <node id="12316">
+        <label>PositiveConstraint::Impl</label>
+        <childnode refid="12317" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="12319">
+        <label>Impl</label>
+        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
+      </node>
+      <node id="12318">
+        <label>PositiveConstraint::Impl</label>
+        <childnode refid="12319" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="70" bodyend="79"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_positive_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::PositiveConstraint::Impl</scope><name>test</name></member>
+      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::PositiveConstraint::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

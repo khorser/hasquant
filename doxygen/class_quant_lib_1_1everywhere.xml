@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1everywhere" kind="class" prot="public">
+    <compoundname>QuantLib::everywhere</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QuantLib::constant&lt; Real, bool &gt;</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1everywhere_1a4f23eaa7f619d56b7a9afad8c0d654c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>everywhere</definition>
+        <argsstring>()</argsstring>
+        <name>everywhere</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="72" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="70" bodyend="73"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" virt="non-virtual"><scope>QuantLib::everywhere</scope><name>constant</name></member>
+      <member refid="class_quant_lib_1_1everywhere_1a4f23eaa7f619d56b7a9afad8c0d654c3" prot="public" virt="non-virtual"><scope>QuantLib::everywhere</scope><name>everywhere</name></member>
+      <member refid="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" virt="non-virtual"><scope>QuantLib::everywhere</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

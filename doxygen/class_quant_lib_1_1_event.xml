@@ -1,0 +1,319 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_event" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::Event</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_observable" prot="public" virt="non-virtual">Observable</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_callability" prot="public" virt="non-virtual">Callability</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_cash_flow" prot="public" virt="non-virtual">CashFlow</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_default_event" prot="public" virt="non-virtual">DefaultEvent</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_default_event_1_1_default_settlement" prot="public" virt="non-virtual">DefaultEvent::DefaultSettlement</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1simple__event" prot="public" virt="non-virtual">simple_event</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/event.hpp</includes>
+      <sectiondef kind="user-defined">
+      <header>Event interface</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+        <definition>virtual Date date</definition>
+        <argsstring>() const =0</argsstring>
+        <name>date</name>
+        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_callability_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_default_event_1a10f7d7687d98bfb4979aaa4c86c86a54">date</reimplementedby>
+        <briefdescription>
+<para>returns the date at which the event occurs </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool hasOccurred</definition>
+        <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
+        <name>hasOccurred</name>
+        <reimplementedby refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064">hasOccurred</reimplementedby>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refDate</declname>
+          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+        </param>
+        <param>
+          <type>boost::optional&lt; bool &gt;</type>
+          <declname>includeRefDate</declname>
+          <defval>boost::none</defval>
+        </param>
+        <briefdescription>
+<para>returns true if an event has already occurred before a date </para>        </briefdescription>
+        <detaileddescription>
+<para>If includeRefDate is true, then an event has not occurred if its date is the same as the refDate, i.e. this method returns false if the event date is the same as the refDate. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Visitability</header>
+      <memberdef kind="function" id="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void accept</definition>
+        <argsstring>(AcyclicVisitor &amp;)</argsstring>
+        <name>accept</name>
+        <reimplementedby refid="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_dividend_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_ibor_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_fixed_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_indexed_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_average_b_m_a_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_amortizing_payment_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplementedby>
+        <reimplementedby refid="class_quant_lib_1_1_default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplementedby>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Event</definition>
+        <argsstring>()</argsstring>
+        <name>~Event</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="41" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for event. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class acts as a base class for the actual event implementations. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="5316">
+        <label>FractionalDividend</label>
+        <link refid="class_quant_lib_1_1_fractional_dividend"/>
+        <childnode refid="5314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5310">
+        <label>InflationCoupon</label>
+        <link refid="class_quant_lib_1_1_inflation_coupon"/>
+        <childnode refid="5299" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5318">
+        <label>CPICashFlow</label>
+        <link refid="class_quant_lib_1_1_c_p_i_cash_flow"/>
+        <childnode refid="5317" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5294">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="5295" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5300">
+        <label>FixedRateCoupon</label>
+        <link refid="class_quant_lib_1_1_fixed_rate_coupon"/>
+        <childnode refid="5299" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5295">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="5322">
+        <label>DefaultEvent</label>
+        <link refid="class_quant_lib_1_1_default_event"/>
+        <childnode refid="5294" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5321">
+        <label>Redemption</label>
+        <link refid="class_quant_lib_1_1_redemption"/>
+        <childnode refid="5319" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5315">
+        <label>FixedDividend</label>
+        <link refid="class_quant_lib_1_1_fixed_dividend"/>
+        <childnode refid="5314" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5317">
+        <label>IndexedCashFlow</label>
+        <link refid="class_quant_lib_1_1_indexed_cash_flow"/>
+        <childnode refid="5298" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5320">
+        <label>AmortizingPayment</label>
+        <link refid="class_quant_lib_1_1_amortizing_payment"/>
+        <childnode refid="5319" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5309">
+        <label>OvernightIndexedCoupon</label>
+        <link refid="class_quant_lib_1_1_overnight_indexed_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5302">
+        <label>AverageBMACoupon</label>
+        <link refid="class_quant_lib_1_1_average_b_m_a_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5313">
+        <label>CappedFlooredYoYInflationCoupon</label>
+        <link refid="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon"/>
+        <childnode refid="5312" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5301">
+        <label>FloatingRateCoupon</label>
+        <link refid="class_quant_lib_1_1_floating_rate_coupon"/>
+        <childnode refid="5299" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5311">
+        <label>CPICoupon</label>
+        <link refid="class_quant_lib_1_1_c_p_i_coupon"/>
+        <childnode refid="5310" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5307">
+        <label>DigitalIborCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_ibor_coupon"/>
+        <childnode refid="5305" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5303">
+        <label>CappedFlooredCoupon</label>
+        <link refid="class_quant_lib_1_1_capped_floored_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5319">
+        <label>SimpleCashFlow</label>
+        <link refid="class_quant_lib_1_1_simple_cash_flow"/>
+        <childnode refid="5298" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5304">
+        <label>CmsCoupon</label>
+        <link refid="class_quant_lib_1_1_cms_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5312">
+        <label>YoYInflationCoupon</label>
+        <link refid="class_quant_lib_1_1_yo_y_inflation_coupon"/>
+        <childnode refid="5310" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5298">
+        <label>CashFlow</label>
+        <link refid="class_quant_lib_1_1_cash_flow"/>
+        <childnode refid="5294" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5299">
+        <label>Coupon</label>
+        <link refid="class_quant_lib_1_1_coupon"/>
+        <childnode refid="5298" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5308">
+        <label>IborCoupon</label>
+        <link refid="class_quant_lib_1_1_ibor_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5314">
+        <label>Dividend</label>
+        <link refid="class_quant_lib_1_1_dividend"/>
+        <childnode refid="5298" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5296">
+        <label>Callability</label>
+        <link refid="class_quant_lib_1_1_callability"/>
+        <childnode refid="5294" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5306">
+        <label>DigitalCmsCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_cms_coupon"/>
+        <childnode refid="5305" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5305">
+        <label>DigitalCoupon</label>
+        <link refid="class_quant_lib_1_1_digital_coupon"/>
+        <childnode refid="5301" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5297">
+        <label>SoftCallability</label>
+        <link refid="class_quant_lib_1_1_soft_callability"/>
+        <childnode refid="5296" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5323">
+        <label>Event</label>
+        <link refid="class_quant_lib_1_1_event"/>
+        <childnode refid="5324" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5324">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/event.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/event.hpp" bodystart="39" bodyend="61"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::Event</scope><name>accept</name></member>
+      <member refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" virt="pure-virtual"><scope>QuantLib::Event</scope><name>date</name></member>
+      <member refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" virt="virtual"><scope>QuantLib::Event</scope><name>hasOccurred</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Event</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Event</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Event</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::Event</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::Event</scope><name>~Event</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Event</scope><name>~Observable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

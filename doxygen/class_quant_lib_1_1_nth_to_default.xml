@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_nth_to_default" kind="class" prot="public">
+    <compoundname>QuantLib::NthToDefault</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_instrument" prot="public" virt="non-virtual">Instrument</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a9bedbbacb0b82a55c579510cee137603" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size n_</definition>
+        <argsstring></argsstring>
+        <name>n_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="105" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a74206f0ab3c7f95525385a07019c306d" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt;</type>
+        <definition>std::vector&lt;Handle&lt;DefaultProbabilityTermStructure&gt; &gt; probabilities_</definition>
+        <argsstring></argsstring>
+        <name>probabilities_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real recoveryRate_</definition>
+        <argsstring></argsstring>
+        <name>recoveryRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a7a9b7801c4fe86a2235450249920cb26" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+        <definition>Handle&lt;OneFactorCopula&gt; copula_</definition>
+        <argsstring></argsstring>
+        <name>copula_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a9c93f5707fa78510a2dcc2948d832504" prot="private" static="no" mutable="no">
+        <type>Protection::Side</type>
+        <definition>Protection::Side side_</definition>
+        <argsstring></argsstring>
+        <name>side_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal_</definition>
+        <argsstring></argsstring>
+        <name>nominal_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1ad2510ccaca31c61c6927dcc3a89a272e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+        <definition>Schedule premiumSchedule_</definition>
+        <argsstring></argsstring>
+        <name>premiumSchedule_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8f051f3bb1486007dbfd306cdbaa21d8" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate premiumRate_</definition>
+        <argsstring></argsstring>
+        <name>premiumRate_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dayCounter_</definition>
+        <argsstring></argsstring>
+        <name>dayCounter_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a96f39a98e0770eae6a81a93ea6084a56" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool settlePremiumAccrual_</definition>
+        <argsstring></argsstring>
+        <name>settlePremiumAccrual_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1afede98ee249f0d9a977891edf19a1708" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+        <definition>Handle&lt;YieldTermStructure&gt; yieldTS_</definition>
+        <argsstring></argsstring>
+        <name>yieldTS_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1ac87492227a6f6469bcab91963eab9db7" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+        <definition>Period integrationStepSize_</definition>
+        <argsstring></argsstring>
+        <name>integrationStepSize_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a8d19136c2677124e6f87b96097270f5d" prot="private" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;Claim&gt; claim_</definition>
+        <argsstring></argsstring>
+        <name>claim_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a3494faa9bfd38cf757fb2565f5c8ba41" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
+        <definition>Leg premiumLeg_</definition>
+        <argsstring></argsstring>
+        <name>premiumLeg_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="119" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_nth_to_default_1a4ef18b7aac482387c839f0fee6be66be" prot="private" static="no" mutable="yes">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairPremium_</definition>
+        <argsstring></argsstring>
+        <name>fairPremium_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a4337e6f7c077f1cf068894f35fa76a74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>NthToDefault</definition>
+        <argsstring>(Size n, const std::vector&lt; Handle&lt; DefaultProbabilityTermStructure &gt; &gt; &amp;probabilities, Real recoveryRate, const Handle&lt; OneFactorCopula &gt; &amp;copula, Protection::Side side, Real nominal, const Schedule &amp;premiumSchedule, Rate premiumRate, const DayCounter &amp;dayCounter, bool settlePremiumAccrual, const Handle&lt; YieldTermStructure &gt; &amp;yieldTS, const Period &amp;integrationStepSize, boost::shared_ptr&lt; Claim &gt; claim=boost::shared_ptr&lt; Claim &gt;())</argsstring>
+        <name>NthToDefault</name>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &amp;</type>
+          <declname>probabilities</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>recoveryRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt; &amp;</type>
+          <declname>copula</declname>
+        </param>
+        <param>
+          <type>Protection::Side</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nominal</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <declname>premiumSchedule</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+          <declname>premiumRate</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <declname>dayCounter</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>settlePremiumAccrual</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <declname>yieldTS</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <declname>integrationStepSize</declname>
+        </param>
+        <param>
+          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;</type>
+          <declname>claim</declname>
+          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool isExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>isExpired</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <briefdescription>
+<para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="87"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a439b4331763c1772af92bec6b182c62c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate fairPremium</definition>
+        <argsstring>() const </argsstring>
+        <name>fairPremium</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a31d3d825697988d20419edfd4483d8fe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
+        <definition>Rate premium</definition>
+        <argsstring>() const </argsstring>
+        <name>premium</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nominal</definition>
+        <argsstring>() const </argsstring>
+        <name>nominal</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="93" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+        <definition>DayCounter dayCounter</definition>
+        <argsstring>() const </argsstring>
+        <name>dayCounter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="94" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>Protection::Side</type>
+        <definition>Protection::Side side</definition>
+        <argsstring>() const </argsstring>
+        <name>side</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a392c795adb43821ad813f80cfaa88823" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size rank</definition>
+        <argsstring>() const </argsstring>
+        <name>rank</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="96" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="96" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1abf42f0c06e4fc9d3a800e752ffdb0f1c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size basketSize</definition>
+        <argsstring>() const </argsstring>
+        <name>basketSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="97" bodyend="97"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a29bc66b674e825637389d2a55e1f3ff3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1gad9817a6a21dfcb91429f0152c99d6313" kindref="member">Probability</ref></type>
+        <definition>Probability defaultProbability</definition>
+        <argsstring>(const Date &amp;d) const </argsstring>
+        <name>defaultProbability</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void setupExpired</definition>
+        <argsstring>() const </argsstring>
+        <name>setupExpired</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_nth_to_default_1a02b90bbfee3ee29627939544fb59ec93" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void performCalculations</definition>
+        <argsstring>() const </argsstring>
+        <name>performCalculations</name>
+        <reimplements refid="class_quant_lib_1_1_instrument_1a02b90bbfee3ee29627939544fb59ec93">performCalculations</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>In case a pricing engine is <bold>not</bold> used, this method must be overridden to perform the actual calculations and set any needed results. In case a pricing engine is used, the default implementation can be used. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="103"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>N-th to default swap. </para>    </briefdescription>
+    <detaileddescription>
+<para>A NTD instrument exchanges protection against the nth default in a basket of underlying credits for premium payments based on the protected notional amount.</para><para>The pricing is analogous to the pricing of a CDS instrument which represents protection against default of a single underlying credit. The only difference is the calculation of the probability of default. In the CDS case, it is the probabilty of single name default; in the NTD case the probability of at least N defaults in the portfolio of underlying credits.</para><para>This probability is computed using the algorithm in John Hull and Alan White, &quot;Valuation of a CDO and nth to
+       default CDS without Monte Carlo simulation&quot;, Journal of Derivatives 12, 2, 2004.</para><para>The algorithm allows for varying probability of default across the basket. Otherwise, for identical probabilities of default, the probability of n defaults is given by the binomial distribution.</para><para>Default correlation is modeled using a one-factor Gaussian copula approach.</para><para>The class is tested against data in Hull-White (see reference above.) </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="10279">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10278">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="10279" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10280" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10280">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10277">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="10278" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10276">
+        <label>NthToDefault</label>
+        <link refid="class_quant_lib_1_1_nth_to_default"/>
+        <childnode refid="10277" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="10284">
+        <label>Observable</label>
+        <link refid="class_quant_lib_1_1_observable"/>
+      </node>
+      <node id="10283">
+        <label>LazyObject</label>
+        <link refid="class_quant_lib_1_1_lazy_object"/>
+        <childnode refid="10284" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10285" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10285">
+        <label>Observer</label>
+        <link refid="class_quant_lib_1_1_observer"/>
+      </node>
+      <node id="10286">
+        <label>Date</label>
+        <link refid="class_quant_lib_1_1_date"/>
+      </node>
+      <node id="10282">
+        <label>Instrument</label>
+        <link refid="class_quant_lib_1_1_instrument"/>
+        <childnode refid="10283" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10286" relation="usage">
+          <edgelabel>valuationDate_</edgelabel>
+        </childnode>
+      </node>
+      <node id="10281">
+        <label>NthToDefault</label>
+        <link refid="class_quant_lib_1_1_nth_to_default"/>
+        <childnode refid="10282" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/nthtodefault.hpp" bodystart="69" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_instrument_1acf71758cad703eb3e151e4c9df184866" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>additionalResults</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a943dca9fb2114bd8a5fa4d5802ac6bba" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>additionalResults_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1abf42f0c06e4fc9d3a800e752ffdb0f1c" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>basketSize</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>calculated_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a8d19136c2677124e6f87b96097270f5d" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>claim_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a7a9b7801c4fe86a2235450249920cb26" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>copula_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>dayCounter</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>dayCounter_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a29bc66b674e825637389d2a55e1f3ff3" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>defaultProbability</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aec8a3d48bdab47e807560f973bfa1569" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>engine_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a1e9067e3af34538ab0ff6d744ff712ca" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>errorEstimate_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a439b4331763c1772af92bec6b182c62c" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>fairPremium</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a4ef18b7aac482387c839f0fee6be66be" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>fairPremium_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>fetchResults</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>freeze</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>frozen_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af24aea89eec21b1caba7216b01bcb018" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>Instrument</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1ac87492227a6f6469bcab91963eab9db7" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>integrationStepSize_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>isExpired</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a9bedbbacb0b82a55c579510cee137603" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>n_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>nominal</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>nominal_</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>notifyObservers</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>NPV</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1abb995b099094913d099029f2fd3936b8" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>NPV_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a4337e6f7c077f1cf068894f35fa76a74" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>NthToDefault</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>Observer</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::NthToDefault</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::NthToDefault</scope><name>operator=</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a02b90bbfee3ee29627939544fb59ec93" prot="private" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>performCalculations</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a31d3d825697988d20419edfd4483d8fe" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>premium</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a3494faa9bfd38cf757fb2565f5c8ba41" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>premiumLeg_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a8f051f3bb1486007dbfd306cdbaa21d8" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>premiumRate_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1ad2510ccaca31c61c6927dcc3a89a272e" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>premiumSchedule_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a74206f0ab3c7f95525385a07019c306d" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>probabilities_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a392c795adb43821ad813f80cfaa88823" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>rank</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>recalculate</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>recoveryRate_</name></member>
+      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>registerWith</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1acc310c2b59d80ac4acea89ab6209ed6d" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>result</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1af259149d11ddda95328d6a41be778078" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>setPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a96f39a98e0770eae6a81a93ea6084a56" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>settlePremiumAccrual_</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>setupArguments</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="private" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>setupExpired</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1acc92405f554372b2ac8be49b9c052908" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>side</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1a9c93f5707fa78510a2dcc2948d832504" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>side_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>unfreeze</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>unregisterWith</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>unregisterWithAll</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a99aff03ddebfd886dc56c828b37d0ce8" prot="public" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>valuationDate</name></member>
+      <member refid="class_quant_lib_1_1_instrument_1a70132e458102c58b30afbb59122fa68b" prot="protected" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>valuationDate_</name></member>
+      <member refid="class_quant_lib_1_1_nth_to_default_1afede98ee249f0d9a977891edf19a1708" prot="private" virt="non-virtual"><scope>QuantLib::NthToDefault</scope><name>yieldTS_</name></member>
+      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>~LazyObject</name></member>
+      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>~Observable</name></member>
+      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::NthToDefault</scope><name>~Observer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

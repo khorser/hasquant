@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_curve_dependent_step_condition" kind="class" prot="public">
+    <compoundname>QuantLib::CurveDependentStepCondition</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_step_condition" prot="public" virt="non-virtual">QuantLib::StepCondition&lt; array_type &gt;</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_american_condition" prot="public" virt="non-virtual">AmericanCondition</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_shout_condition" prot="public" virt="non-virtual">ShoutCondition</derivedcompoundref>
+    <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::ArrayWrapper</innerclass>
+    <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::CurveWrapper</innerclass>
+    <innerclass refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper" prot="protected">QuantLib::CurveDependentStepCondition::PayoffWrapper</innerclass>
+    <templateparamlist>
+      <param>
+        <type>class array_type</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_curve_dependent_step_condition_1a867880aab93727e17df22adcc6b60d93" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; CurveWrapper &gt;</type>
+        <definition>boost::shared_ptr&lt;CurveWrapper&gt; curveItem_</definition>
+        <argsstring></argsstring>
+        <name>curveItem_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void applyTo</definition>
+        <argsstring>(Array &amp;a, Time) const </argsstring>
+        <name>applyTo</name>
+        <param>
+          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="47" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1a4ce0ef9bea67a237bb048a6555df22ec" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CurveDependentStepCondition</definition>
+        <argsstring>(Option::Type type, Real strike)</argsstring>
+        <name>CurveDependentStepCondition</name>
+        <param>
+          <type>Option::Type</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>strike</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="54" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1a3e2ba425513a0601d4e5aacd993a3d62" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CurveDependentStepCondition</definition>
+        <argsstring>(const Payoff *p)</argsstring>
+        <name>CurveDependentStepCondition</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="56" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1abd7f8a74564ed49a4fe8a6075418aaaf" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CurveDependentStepCondition</definition>
+        <argsstring>(const array_type &amp;a)</argsstring>
+        <name>CurveDependentStepCondition</name>
+        <param>
+          <type>const array_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="58" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1a803294542460c8a9ecce1c4c3d8991cc" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real getValue</definition>
+        <argsstring>(const array_type &amp;a, Size index) const </argsstring>
+        <name>getValue</name>
+        <param>
+          <type>const array_type &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="63" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_curve_dependent_step_condition_1a49cd4769dadde31f8357bb563adcced2" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>virtual Real applyToValue</definition>
+        <argsstring>(Real, Real) const </argsstring>
+        <name>applyToValue</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="67" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3187">
+        <label>CurveDependentStepCondition&lt; array_type &gt;</label>
+        <childnode refid="3188" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3189">
+        <label>AmericanCondition&lt; Array &gt;</label>
+        <link refid="class_quant_lib_1_1_american_condition"/>
+        <childnode refid="3187" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3188">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+      <node id="3190">
+        <label>ShoutCondition&lt; Array &gt;</label>
+        <link refid="class_quant_lib_1_1_shout_condition"/>
+        <childnode refid="3187" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3191">
+        <label>CurveDependentStepCondition&lt; array_type &gt;</label>
+        <childnode refid="3192" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3192">
+        <label>StepCondition&lt; array_type &gt;</label>
+        <link refid="class_quant_lib_1_1_step_condition"/>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="44" bodyend="103"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::StepCondition::"><scope>QuantLib::CurveDependentStepCondition</scope><name>applyTo</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a49cd4769dadde31f8357bb563adcced2" prot="protected" virt="virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>applyToValue</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a4ce0ef9bea67a237bb048a6555df22ec" prot="protected" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a3e2ba425513a0601d4e5aacd993a3d62" prot="protected" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1abd7f8a74564ed49a4fe8a6075418aaaf" prot="protected" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>CurveDependentStepCondition</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a867880aab93727e17df22adcc6b60d93" prot="protected" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>curveItem_</name></member>
+      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a803294542460c8a9ecce1c4c3d8991cc" prot="protected" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>getValue</name></member>
+      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::CurveDependentStepCondition</scope><name>~StepCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

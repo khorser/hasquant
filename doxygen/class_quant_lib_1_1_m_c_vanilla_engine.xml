@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_m_c_vanilla_engine" kind="class" prot="public">
+    <compoundname>QuantLib::MCVanillaEngine</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">engine</basecompoundref>
+    <basecompoundref refid="class_quant_lib_1_1_mc_simulation" prot="public" virt="non-virtual">QuantLib::McSimulation&lt; MC, RNG, S &gt;</basecompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>template&lt; class &gt; class</type>
+        <declname>MC</declname>
+        <defname>MC</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>RNG</declname>
+        <defname>RNG</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>S</declname>
+        <defname>S</defname>
+        <defval><ref refid="namespace_quant_lib_1a235b6c8805adaa743cc845aae9c05946" kindref="member">Statistics</ref></defval>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>Inst</declname>
+        <defname>Inst</defname>
+        <defval><ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref></defval>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="protected-type">
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a2e301ff1e9761ffd43e2e8a626d5ae90" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="class_quant_lib_1_1_multi_path_generator" kindref="compound">path_generator_type</ref></type>
+        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
+        <argsstring></argsstring>
+        <name>path_generator_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="class_quant_lib_1_1_path_pricer" kindref="compound">path_pricer_type</ref></type>
+        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
+        <argsstring></argsstring>
+        <name>path_pricer_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::stats_type</type>
+        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
+        <argsstring></argsstring>
+        <name>stats_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a07e1e84bbe02891bd31885fe3fc4c181" prot="protected" static="no">
+        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::result_type</type>
+        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::result_type result_type</definition>
+        <argsstring></argsstring>
+        <name>result_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1aa94312a20d5fdd30808a9c44fea1c986" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;StochasticProcess&gt; process_</definition>
+        <argsstring></argsstring>
+        <name>process_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeSteps_</definition>
+        <argsstring></argsstring>
+        <name>timeSteps_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1a9c25c7000e01433677e04eae138ff831" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size timeStepsPerYear_</definition>
+        <argsstring></argsstring>
+        <name>timeStepsPerYear_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1a937ea3e2dae694ac2df5226b1b349b22" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size requiredSamples_</definition>
+        <argsstring></argsstring>
+        <name>requiredSamples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+        <definition>Size maxSamples_</definition>
+        <argsstring></argsstring>
+        <name>maxSamples_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1aa336fe20be7a7fe0b17df1565bbc2f1a" prot="protected" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real requiredTolerance_</definition>
+        <argsstring></argsstring>
+        <name>requiredTolerance_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1a237ba632601944316deef578c245e825" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool brownianBridge_</definition>
+        <argsstring></argsstring>
+        <name>brownianBridge_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_m_c_vanilla_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+        <definition>BigNatural seed_</definition>
+        <argsstring></argsstring>
+        <name>seed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void calculate</definition>
+        <argsstring>() const </argsstring>
+        <name>calculate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="40" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1a3d11eebbcfadb9a90ca661cd0bac2b4e" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>MCVanillaEngine</definition>
+        <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
+        <name>MCVanillaEngine</name>
+        <param>
+          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <defname>process</defname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeSteps</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>timeStepsPerYear</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>brownianBridge</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>antitheticVariate</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>controlVariate</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>requiredSamples</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>requiredTolerance</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
+          <declname>maxSamples</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="95" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1aac0bc663d50bdc0fd6771bb1ad2481e5" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref></type>
+        <definition>TimeGrid timeGrid</definition>
+        <argsstring>() const </argsstring>
+        <name>timeGrid</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1a6ae51c5540a0f80f270a0f9a66eb6df3">timeGrid</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="157" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1a7751aec86337c68f4b4ee807247f5648" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_multi_path_generator" kindref="compound">path_generator_type</ref> &gt;</type>
+        <definition>boost::shared_ptr&lt;path_generator_type&gt; pathGenerator</definition>
+        <argsstring>() const </argsstring>
+        <name>pathGenerator</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1a014c4e8a7f294e9c447b3a7dec739596">pathGenerator</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="71" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1ad1d5fe32e9a013aec098bba40e63bc37" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>result_type</type>
+        <definition>MCVanillaEngine&lt; MC, RNG, S, Inst &gt;::result_type controlVariateValue</definition>
+        <argsstring>() const </argsstring>
+        <name>controlVariateValue</name>
+        <reimplements refid="class_quant_lib_1_1_mc_simulation_1adcaeed031f5385c78a0c1214e198b68c">controlVariateValue</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="129" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Pricing engine for vanilla options using Monte Carlo simulation. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9821">
+        <label>McSimulation&lt; MC, RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_mc_simulation"/>
+      </node>
+      <node id="9820">
+        <label>MCVanillaEngine&lt; MC, RNG, S, Inst &gt;</label>
+        <link refid="class_quant_lib_1_1_m_c_vanilla_engine"/>
+        <childnode refid="9821" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9823">
+        <label>McSimulation&lt; MC, RNG, S &gt;</label>
+        <link refid="class_quant_lib_1_1_mc_simulation"/>
+      </node>
+      <node id="9822">
+        <label>MCVanillaEngine&lt; MC, RNG, S, Inst &gt;</label>
+        <link refid="class_quant_lib_1_1_m_c_vanilla_engine"/>
+        <childnode refid="9823" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="37" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a3f79786890b8283d011bf31f3b325311" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>antitheticVariate_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a237ba632601944316deef578c245e825" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>brownianBridge_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a778f370c51e99a9f99dc8eb03cbe6140" prot="public" virt="non-virtual" ambiguityscope="QuantLib::McSimulation::"><scope>QuantLib::MCVanillaEngine</scope><name>calculate</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a1042ecfdf238d90cef5634540387ee64" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>controlPathGenerator</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a0f51bdda15eb669a6b73a9bfa1d5642e" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>controlPathPricer</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a14e616889c4ee17d7e4277952bf85ed0" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>controlPricingEngine</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a1c27fd78e44f207125a15990d39ad4f5" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>controlVariate_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1ad1d5fe32e9a013aec098bba40e63bc37" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>controlVariateValue</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1aedf5500bc16aadda7266e3d70e86102c" prot="public" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>errorEstimate</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a6e88fa36deb63e5bf40cad0082068f57" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1ab8fcdfbea80f9ee9882c197655216b2d" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>maxError</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>maxSamples_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a578bfc5052dad419af0dafb920aff02d" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>mcModel_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1ab494776b2804de3802deefd3b35e2503" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>McSimulation</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a3d11eebbcfadb9a90ca661cd0bac2b4e" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>MCVanillaEngine</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a2e301ff1e9761ffd43e2e8a626d5ae90" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>path_generator_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>path_pricer_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a7751aec86337c68f4b4ee807247f5648" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>pathGenerator</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a365db6627d7db47cf842a9f816ab299b" prot="protected" virt="pure-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>pathPricer</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1aa94312a20d5fdd30808a9c44fea1c986" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>process_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a937ea3e2dae694ac2df5226b1b349b22" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>requiredSamples_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1aa336fe20be7a7fe0b17df1565bbc2f1a" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>requiredTolerance_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a07e1e84bbe02891bd31885fe3fc4c181" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a97a9254d199bc4ea4a78d11eaf2d713d" prot="public" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>sampleAccumulator</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>seed_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>stats_type</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1aac0bc663d50bdc0fd6771bb1ad2481e5" prot="protected" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>timeGrid</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a02b035f6fcde4fb3cc9964c0518964ae" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>timeSteps_</name></member>
+      <member refid="class_quant_lib_1_1_m_c_vanilla_engine_1a9c25c7000e01433677e04eae138ff831" prot="protected" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>timeStepsPerYear_</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1af5af70b152b72f235dc275464058ef69" prot="public" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>value</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1acabb99b71d14507ebd13797c9d904ffc" prot="public" virt="non-virtual"><scope>QuantLib::MCVanillaEngine</scope><name>valueWithSamples</name></member>
+      <member refid="class_quant_lib_1_1_mc_simulation_1a5db0fd3bf528716e23dbd7d7013fad44" prot="public" virt="virtual"><scope>QuantLib::MCVanillaEngine</scope><name>~McSimulation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

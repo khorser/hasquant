@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_t" kind="class" prot="public">
+    <compoundname>T</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_composite" prot="public" virt="non-virtual">Composite&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_convergence_statistics" prot="public" virt="non-virtual">ConvergenceStatistics&lt; T, U &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_disposable" prot="public" virt="non-virtual">Disposable&lt; T &gt;</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_garman_klass_open_close" prot="public" virt="non-virtual">GarmanKlassOpenClose&lt; T &gt;</derivedcompoundref>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="15649">
+        <label>T</label>
+      </node>
+      <node id="15650">
+        <label>Composite&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_composite"/>
+        <childnode refid="15649" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15652">
+        <label>Disposable&lt; T &gt;</label>
+        <link refid="class_quant_lib_1_1_disposable"/>
+        <childnode refid="15649" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15651">
+        <label>ConvergenceStatistics&lt; T, U &gt;</label>
+        <link refid="class_quant_lib_1_1_convergence_statistics"/>
+        <childnode refid="15649" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="58"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

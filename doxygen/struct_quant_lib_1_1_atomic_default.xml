@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="struct_quant_lib_1_1_atomic_default" kind="struct" prot="public">
+    <compoundname>QuantLib::AtomicDefault</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+        <name>Type</name>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a1354312e01b4e541f0ac04636aec58ba" prot="public">
+          <name>Restructuring</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a88af6abc23425b9e769200075490ad73" prot="public">
+          <name>Bankruptcy</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7aa614732eeef71d99bbde0167cabb855c" prot="public">
+          <name>FailureToPay</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7aca77d554b982214b3fdaa830a657d386" prot="public">
+          <name>RepudiationMoratorium</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7ad010ac89da4d44cbbf41737863570045" prot="public">
+          <name>Acceleration</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a79935518a3889663d8688b6b01fff051" prot="public">
+          <name>Default</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7ac620309331fb8843228ab83f967a95b0" prot="public">
+          <name>ObligationAcceleration</name>
+          <initializer>= Acceleration</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a0ee7f06e1b4b3ad05ee380524592dd11" prot="public">
+          <name>ObligationDefault</name>
+          <initializer>= Default</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a76547e5e5958214c3c394dc944992bc1" prot="public">
+          <name>CrossDefault</name>
+          <initializer>= Default</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a5545586b4299a05fc67e5f3b0d5b0a1e" prot="public">
+          <name>Downgrade</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a60f688fee7e93c6cb670a1a4a3e6ad97" prot="public">
+          <name>MergerEvent</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="61" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Atomic (single contractual event) default events. </para>    </briefdescription>
+    <detaileddescription>
+<para>Default types defined as enum to allow easy aggregation of types. Theres an event algebra logic by default provided by <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref>. If your new type requires more sofisticated test you need to derive from it as in <ref refid="class_quant_lib_1_1_failure_to_pay" kindref="compound">FailureToPay</ref> </para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="60" bodyend="77"/>
+    <listofallmembers>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7ad010ac89da4d44cbbf41737863570045" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Acceleration</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a88af6abc23425b9e769200075490ad73" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Bankruptcy</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a76547e5e5958214c3c394dc944992bc1" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>CrossDefault</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a79935518a3889663d8688b6b01fff051" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Default</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a5545586b4299a05fc67e5f3b0d5b0a1e" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Downgrade</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7aa614732eeef71d99bbde0167cabb855c" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>FailureToPay</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a60f688fee7e93c6cb670a1a4a3e6ad97" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>MergerEvent</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7ac620309331fb8843228ab83f967a95b0" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>ObligationAcceleration</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a0ee7f06e1b4b3ad05ee380524592dd11" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>ObligationDefault</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7aca77d554b982214b3fdaa830a657d386" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>RepudiationMoratorium</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7a1354312e01b4e541f0ac04636aec58ba" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Restructuring</name></member>
+      <member refid="struct_quant_lib_1_1_atomic_default_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::AtomicDefault</scope><name>Type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

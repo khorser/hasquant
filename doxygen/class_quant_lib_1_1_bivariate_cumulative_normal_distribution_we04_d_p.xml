@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p" kind="class" prot="public">
+    <compoundname>QuantLib::BivariateCumulativeNormalDistributionWe04DP</compoundname>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real correlation_</definition>
+        <argsstring></argsstring>
+        <name>correlation_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a686775bd2175a0b1b03cb7abaddbeab1" prot="private" static="no" mutable="no">
+        <type><ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">CumulativeNormalDistribution</ref></type>
+        <definition>CumulativeNormalDistribution cumnorm_</definition>
+        <argsstring></argsstring>
+        <name>cumnorm_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="99" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1ad77e715ae0200927ddf5c6702eda95ac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BivariateCumulativeNormalDistributionWe04DP</definition>
+        <argsstring>(Real rho)</argsstring>
+        <name>BivariateCumulativeNormalDistributionWe04DP</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="94"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a5cd84d61c9a61614c49dacf063bca822" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real operator()</definition>
+        <argsstring>(Real a, Real b) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Cumulative bivariate normal distibution function (West 2004) </para>    </briefdescription>
+    <detaileddescription>
+<para>The implementation derives from the article &quot;Better
+       Approximations To Cumulative Normal Distibutions&quot;, Graeme West, Dec 2004 available at www.finmod.co.za. Also available in Wilmott Magazine, 2005, (May), 70-76, The main code is a port of the C++ code at www.finmod.co.za/cumfunctions.zip.</para><para>The algorithm is based on the near double-precision algorithm described in &quot;Numerical Computation of Rectangular Bivariate
+       an Trivariate Normal and t Probabilities&quot;, Genz (2004), Statistics and Computing 14, 151-160. (available at www.sci.wsu.edu/math/faculty/henz/homepage)</para><para>The <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref> implementation mainly differs from the original code in two regards;<itemizedlist>
+<listitem><para>The implementation of the cumulative normal distribution is <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">QuantLib::CumulativeNormalDistribution</ref></para></listitem><listitem><para>The arrays XX and W are zero-based</para></listitem></itemizedlist>
+</para><para><xrefsect id="test_1_test000029"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="92" bodyend="100"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1ad77e715ae0200927ddf5c6702eda95ac" prot="public" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>BivariateCumulativeNormalDistributionWe04DP</name></member>
+      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>correlation_</name></member>
+      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a686775bd2175a0b1b03cb7abaddbeab1" prot="private" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>cumnorm_</name></member>
+      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a5cd84d61c9a61614c49dacf063bca822" prot="public" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>operator()</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_market_model_parametric_exercise" kind="class" prot="public" abstract="yes">
+    <compoundname>QuantLib::MarketModelParametricExercise</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MarketModelNodeDataProvider</basecompoundref>
+    <basecompoundref prot="public" virt="non-virtual">ParametricExercise</basecompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_triggered_swap_exercise" prot="public" virt="non-virtual">TriggeredSwapExercise</derivedcompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_parametric_exercise_1a4152ba33a9f707f0d161f18b8343df05" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
+        <definition>std::vector&lt;Size&gt; numberOfData</definition>
+        <argsstring>() const </argsstring>
+        <name>numberOfData</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="33" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_market_model_parametric_exercise_1aa55e9d06cf62fcc3cbd3514ecdeffa51" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::auto_ptr&lt; MarketModelParametricExercise &gt;</type>
+        <definition>virtual std::auto_ptr&lt;MarketModelParametricExercise&gt; clone</definition>
+        <argsstring>() const =0</argsstring>
+        <name>clone</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelparametricexercise.hpp" bodystart="30" bodyend="37"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_market_model_parametric_exercise_1aa55e9d06cf62fcc3cbd3514ecdeffa51" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>clone</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>evolution</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_1a822efedf4d7068cc5459d7b42d0cfd35" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>exercise</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_1a0288ca0fc3c64d5e58ef425b5597eec8" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>guess</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a40f3fe604a09125d6707b7d2128339fa" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>isExerciseTime</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1afd20cc76c83b8c0275df7603761c6dce" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>nextStep</name></member>
+      <member refid="class_quant_lib_1_1_market_model_parametric_exercise_1a4152ba33a9f707f0d161f18b8343df05" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>numberOfData</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1aaf50b073c0431c39c47f9efe491dcb89" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>numberOfExercises</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_1a481aea0570868bc7dd5eccf38018e355" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>numberOfParameters</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_1aa0653eaa27e5de4fb5764485f7e8c70c" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>numberOfVariables</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>reset</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a200e3c18dd442cb53120f1e732f80cc3" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>values</name></member>
+      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1ac955e186a3d091ef31b5e2cca89965c8" prot="public" virt="virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>~MarketModelNodeDataProvider</name></member>
+      <member refid="class_quant_lib_1_1_parametric_exercise_1a8d2ff902c8964463258b419c4dc7b016" prot="public" virt="virtual"><scope>QuantLib::MarketModelParametricExercise</scope><name>~ParametricExercise</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

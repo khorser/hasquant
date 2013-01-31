@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_day_counter_1_1_impl" kind="class" prot="protected" abstract="yes">
+    <compoundname>QuantLib::DayCounter::Impl</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1_actual360_1_1_impl" prot="public" virt="non-virtual">Actual360::Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_actual365_fixed_1_1_impl" prot="public" virt="non-virtual">Actual365Fixed::Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_a_f_b___impl" prot="public" virt="non-virtual">ActualActual::AFB_Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_i_s_d_a___impl" prot="public" virt="non-virtual">ActualActual::ISDA_Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_actual_actual_1_1_i_s_m_a___impl" prot="public" virt="non-virtual">ActualActual::ISMA_Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_business252_1_1_impl" prot="public" virt="non-virtual">Business252::Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_one_day_counter_1_1_impl" prot="public" virt="non-virtual">OneDayCounter::Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_simple_day_counter_1_1_impl" prot="public" virt="non-virtual">SimpleDayCounter::Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl" prot="public" virt="non-virtual">Thirty360::EU_Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_i_t___impl" prot="public" virt="non-virtual">Thirty360::IT_Impl</derivedcompoundref>
+    <derivedcompoundref refid="class_quant_lib_1_1_thirty360_1_1_u_s___impl" prot="public" virt="non-virtual">Thirty360::US_Impl</derivedcompoundref>
+    <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~Impl</definition>
+        <argsstring>()</argsstring>
+        <name>~Impl</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::string</type>
+        <definition>virtual std::string name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="49"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
+        <definition>virtual BigInteger dayCount</definition>
+        <argsstring>(const Date &amp;d1, const Date &amp;d2) const </argsstring>
+        <name>dayCount</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d2</declname>
+        </param>
+        <briefdescription>
+<para>to be overloaded by more complex day counters </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+        <definition>virtual Time yearFraction</definition>
+        <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;refPeriodStart, const Date &amp;refPeriodEnd) const =0</argsstring>
+        <name>yearFraction</name>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>d2</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refPeriodStart</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <declname>refPeriodEnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="58"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>abstract base class for day counter implementations </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="46" bodyend="59"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" virt="virtual"><scope>QuantLib::DayCounter::Impl</scope><name>dayCount</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::DayCounter::Impl</scope><name>name</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" virt="pure-virtual"><scope>QuantLib::DayCounter::Impl</scope><name>yearFraction</name></member>
+      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::DayCounter::Impl</scope><name>~Impl</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

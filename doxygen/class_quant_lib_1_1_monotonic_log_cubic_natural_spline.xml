@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1_monotonic_log_cubic_natural_spline" kind="class" prot="public">
+    <compoundname>QuantLib::MonotonicLogCubicNaturalSpline</compoundname>
+    <basecompoundref refid="class_quant_lib_1_1_log_cubic_interpolation" prot="public" virt="non-virtual">LogCubicInterpolation</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1_monotonic_log_cubic_natural_spline_1abd242ebc21c39fa1a7a7deec8e8704e9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>class I1</type>
+          </param>
+          <param>
+            <type>class I2</type>
+          </param>
+        </templateparamlist>
+        <type></type>
+        <definition>MonotonicLogCubicNaturalSpline</definition>
+        <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin)</argsstring>
+        <name>MonotonicLogCubicNaturalSpline</name>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xBegin</declname>
+        </param>
+        <param>
+          <type>const I1 &amp;</type>
+          <declname>xEnd</declname>
+        </param>
+        <param>
+          <type>const I2 &amp;</type>
+          <declname>yBegin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="pre"><para>the <formula id="134">$ x $</formula> values must be sorted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="183" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="177" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9960">
+        <label>Interpolation</label>
+        <link refid="class_quant_lib_1_1_interpolation"/>
+        <childnode refid="9961" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9961">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="9959">
+        <label>LogCubicInterpolation</label>
+        <link refid="class_quant_lib_1_1_log_cubic_interpolation"/>
+        <childnode refid="9960" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9958">
+        <label>MonotonicLogCubicNaturalSpline</label>
+        <childnode refid="9959" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9964">
+        <label>Interpolation</label>
+        <link refid="class_quant_lib_1_1_interpolation"/>
+        <childnode refid="9965" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9965">
+        <label>Extrapolator</label>
+        <link refid="class_quant_lib_1_1_extrapolator"/>
+      </node>
+      <node id="9963">
+        <label>LogCubicInterpolation</label>
+        <link refid="class_quant_lib_1_1_log_cubic_interpolation"/>
+        <childnode refid="9964" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9962">
+        <label>MonotonicLogCubicNaturalSpline</label>
+        <childnode refid="9963" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="173" bodyend="184"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1_extrapolator_1ad9e8911dd8792d5ec36f1ee071cfad7d" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>allowsExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1af498733f2fd0abef2f5f1071a1b9354a" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>argument_type</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ab1128d789d8186b63cb7f9ab2d6d0402" prot="protected" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>checkRange</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a762f31d09f9c70ceffb183248d3ef8ba" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>derivative</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1abab5047522a68771f2b1d51d1ac78383" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>disableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>empty</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ae60e793a77f44a9c022b103458fa993c" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>enableExtrapolation</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1ac799544aa04b6a67f067b21ad88147bb" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>impl_</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a4d268120480ee9ab42b43c05b2573144" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>Interpolation</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>isInRange</name></member>
+      <member refid="class_quant_lib_1_1_log_cubic_interpolation_1a8fddd246edfd7fdfd081dc4f3a67fbbe" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>LogCubicInterpolation</name></member>
+      <member refid="class_quant_lib_1_1_monotonic_log_cubic_natural_spline_1abd242ebc21c39fa1a7a7deec8e8704e9" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>MonotonicLogCubicNaturalSpline</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac180804bcc9bccca4deca3246968e4f3" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>operator()</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1a61e81104809d2137d59ace5e6c0688d0" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>primitive</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1abd4b619e88e62e8c704bc850340fc078" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>result_type</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1aa261e6fbcb8c5436d3bb791e2b94f7b9" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>secondDerivative</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>update</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>xMax</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="non-virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>xMin</name></member>
+      <member refid="class_quant_lib_1_1_extrapolator_1a73300245f5c6c28e6b91da76454c00fb" prot="public" virt="virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>~Extrapolator</name></member>
+      <member refid="class_quant_lib_1_1_interpolation_1ae01f84bd82b48ada57388023da514f5d" prot="public" virt="virtual"><scope>QuantLib::MonotonicLogCubicNaturalSpline</scope><name>~Interpolation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

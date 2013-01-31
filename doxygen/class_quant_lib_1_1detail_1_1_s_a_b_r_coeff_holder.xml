@@ -1,0 +1,282 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
+  <compounddef id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder" kind="class" prot="public">
+    <compoundname>QuantLib::detail::SABRCoeffHolder</compoundname>
+    <derivedcompoundref refid="class_quant_lib_1_1detail_1_1_s_a_b_r_interpolation_impl" prot="public" virt="non-virtual">SABRInterpolationImpl&lt; I1, I2 &gt;</derivedcompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a931e64f3622c930365c16a9670060cc1" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real t_</definition>
+        <argsstring></argsstring>
+        <name>t_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> expiry </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a11bb2e42f766fea06e9209a55f29e1d9" prot="public" static="no" mutable="no">
+        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+        <definition>const Real&amp; forward_</definition>
+        <argsstring></argsstring>
+        <name>forward_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a96c0f11fbeced8f51ee45a495d97e621" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real alpha_</definition>
+        <argsstring></argsstring>
+        <name>alpha_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sabr parameters </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a6483291df5e2a5a0d80b22cf68a96750" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real beta_</definition>
+        <argsstring></argsstring>
+        <name>beta_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aa98338c783e2410f2e1fa6fce5f363e9" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real nu_</definition>
+        <argsstring></argsstring>
+        <name>nu_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real rho_</definition>
+        <argsstring></argsstring>
+        <name>rho_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aabc809251428ae77306db319f0a8c290" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool alphaIsFixed_</definition>
+        <argsstring></argsstring>
+        <name>alphaIsFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a4f444b9bfdcf7fb26a8916a3c72dbe8e" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool betaIsFixed_</definition>
+        <argsstring></argsstring>
+        <name>betaIsFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a743ceeaea161f1422875829cac0a36fe" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool nuIsFixed_</definition>
+        <argsstring></argsstring>
+        <name>nuIsFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aee5aac416b1f5f12c5fa8fa770b360d6" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool rhoIsFixed_</definition>
+        <argsstring></argsstring>
+        <name>rhoIsFixed_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aaa10e053085ec93c9731779170933b1d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; weights_</definition>
+        <argsstring></argsstring>
+        <name>weights_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1adb52fcbcc8dd8f6de377b8fa9f96eb94" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real error_</definition>
+        <argsstring></argsstring>
+        <name>error_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Sabr interpolation results </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a8c83417b5e4ba89e4a17a328d984cd42" prot="public" static="no" mutable="no">
+        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+        <definition>Real maxError_</definition>
+        <argsstring></argsstring>
+        <name>maxError_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="97" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ab4392f41e117e3fd7242e59113136af9" prot="public" static="no" mutable="no">
+        <type>EndCriteria::Type</type>
+        <definition>EndCriteria::Type SABREndCriteria_</definition>
+        <argsstring></argsstring>
+        <name>SABREndCriteria_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ae0ed6e86645b33e2497aa5c24f9d2dc9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SABRCoeffHolder</definition>
+        <argsstring>(Time t, const Real &amp;forward, Real alpha, Real beta, Real nu, Real rho, bool alphaIsFixed, bool betaIsFixed, bool nuIsFixed, bool rhoIsFixed)</argsstring>
+        <name>SABRCoeffHolder</name>
+        <param>
+          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
+          <declname>t</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
+          <declname>forward</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>nu</declname>
+        </param>
+        <param>
+          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
+          <declname>rho</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>alphaIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>betaIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>nuIsFixed</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>rhoIsFixed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="49" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a88e6cb6008b62ac21e6537bfc5a701cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual ~SABRCoeffHolder</definition>
+        <argsstring>()</argsstring>
+        <name>~SABRCoeffHolder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="86" bodyend="86"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="47" bodyend="99"/>
+    <listofallmembers>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a96c0f11fbeced8f51ee45a495d97e621" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>alpha_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aabc809251428ae77306db319f0a8c290" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>alphaIsFixed_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a6483291df5e2a5a0d80b22cf68a96750" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>beta_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a4f444b9bfdcf7fb26a8916a3c72dbe8e" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>betaIsFixed_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1adb52fcbcc8dd8f6de377b8fa9f96eb94" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>error_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a11bb2e42f766fea06e9209a55f29e1d9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>forward_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a8c83417b5e4ba89e4a17a328d984cd42" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>maxError_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aa98338c783e2410f2e1fa6fce5f363e9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>nu_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a743ceeaea161f1422875829cac0a36fe" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>nuIsFixed_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>rho_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aee5aac416b1f5f12c5fa8fa770b360d6" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>rhoIsFixed_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ae0ed6e86645b33e2497aa5c24f9d2dc9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>SABRCoeffHolder</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ab4392f41e117e3fd7242e59113136af9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>SABREndCriteria_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a931e64f3622c930365c16a9670060cc1" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>t_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aaa10e053085ec93c9731779170933b1d" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>weights_</name></member>
+      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a88e6cb6008b62ac21e6537bfc5a701cd" prot="public" virt="virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>~SABRCoeffHolder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
