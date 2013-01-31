@@ -307,26 +307,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="130" bodyend="152"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ae18eeb7143e7fc3359a13f9ac3fd7a6e" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>MakeMCVarianceSwapEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a7072ee19477604939044a6471738d6be" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ac22a99cea718a8950d6a5297bd4982c8" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ae67e5cb87695be72f71f88ed31cf2df3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1aa9431da0d0c0017d2b2a7c913af9c838" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a9165a2415788fb1ae96791047c207ed3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1a25f1787def8a050fb179baae01eee75f" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1aa4aaae950a11f33bfff98d0dc079ccf3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_variance_swap_engine_1ab126034510c0e2344eb41b0d222c8ca4" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCVarianceSwapEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

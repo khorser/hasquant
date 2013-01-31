@@ -111,37 +111,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="504">
-        <label>ArithmeticASOPathPricer</label>
-        <childnode refid="505" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="505">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="506">
-        <label>ArithmeticASOPathPricer</label>
-        <childnode refid="507" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="507">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="59" bodyend="71"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1a919aa7dad06ade4de8feab30b71b7ece" prot="public" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>ArithmeticASOPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1af7b74f117d77bca61083800382057efe" prot="private" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>pastFixings_</name></member>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1aaee5bbffb5384cd94617c3afbf6fb824" prot="private" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>runningSum_</name></member>
-      <member refid="class_quant_lib_1_1_arithmetic_a_s_o_path_pricer_1abcdb1c11e3593354931e650dd3dd13f2" prot="private" virt="non-virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::ArithmeticASOPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

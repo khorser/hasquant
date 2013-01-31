@@ -123,15 +123,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="110" bodyend="135"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a9c7c3284c8e6c261029491a3ac406e21" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>ComboHelper</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1ac655dd49abd898f1005d9916d822dab1" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>convMonoHelper_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>fNext</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a1277f00c1bc0ff19d0c8f095ff396ca1" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>quadraticHelper_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1af9e0c2f35d25f2d15ae116fe2910ce5c" prot="private" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>quadraticity_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_combo_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::ComboHelper</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::ComboHelper</scope><name>~SectionHelper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -22,48 +22,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9334">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="9333">
-        <label>LotUnitOfMeasure</label>
-        <childnode refid="9334" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9336">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="9335">
-        <label>LotUnitOfMeasure</label>
-        <childnode refid="9336" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="140" bodyend="147"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>code</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a52549afe87628ebdafaca441e36d0f54" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>Energy</name></member>
-      <member refid="class_quant_lib_1_1_lot_unit_of_measure_1a53a4f73210eb0380e7e826ff3d351fad" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>LotUnitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7ad6a7c05ee148611b428c59bbf905c819" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>Mass</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a7b072a8434094fec0d21f53346581ee4" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a5dc130ad7da6f32ebcc08e2018fe9f22" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a93b0e3b06bb3eff2e7f80864d32101b2" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a9c7c3d0a1c0a535dac79d101d2559a6d" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>Quantity</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>rounding</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1aeb506a9dedbc3874208f905c91982f34" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>triangulationUnitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a0d331fdab7998ace4c8dd0db6e6bd2df" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>UnitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1ab8298d7a2df5c748273a284404203a49" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>UnitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1aa0884bf693afec5332fdffb5458f5ede" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>unitType</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_1a1d1cfd8ffb84e947f82999c682b666a7a99d9a37107ba00eec7702a4683ed93e7" prot="public" virt="non-virtual"><scope>QuantLib::LotUnitOfMeasure</scope><name>Volume</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

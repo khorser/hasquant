@@ -58,10 +58,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/region.hpp" bodystart="47" bodyend="52"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_region_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>code</name></member>
-      <member refid="struct_quant_lib_1_1_region_1_1_data_1a31bb15acdafb5cdd89aacbef0cec17fc" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_region_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::Region::Data</scope><name>name</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

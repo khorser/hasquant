@@ -236,20 +236,5 @@
     <detaileddescription>
 <para>This class wraps a somewhat generic statistic tool and adds a number of gaussian risk measures (e.g.: value-at-risk, expected shortfall, etc.) based on the mean and variance provided by the underlying statistic tool. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="40" bodyend="107"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1acabfa0f881208aff4a8d0490637c05dd" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianAverageShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a2be50d3e88601f790cf85128decdde3f" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianDownsideDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1af3cbbc20c55a893d61eb65aef528ff06" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianDownsideVariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a2276577eda78bd4a09353a3d917d3071" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianExpectedShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1ac43553dfb9cb5f223bfd64e7b8e072b7" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianPercentile</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a6ecbb1924516db89455dcd67b0755fe9" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianPotentialUpside</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1aa4b3556e8967cf8f3da9e998b7c9c8f9" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianRegret</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1ada88dfccfdbf634b983c47a081784753" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1ab00ed695ce6547ce34fb0e88288b7a58" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianTopPercentile</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a4d77f5f2ac9ea852e79f46f0001f1c2e" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>gaussianValueAtRisk</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a1bcd30d28725b74f422e735de4f87814" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>GenericGaussianStatistics</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a98a57141b893f44999280b7e5007f39d" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>GenericGaussianStatistics</name></member>
-      <member refid="class_quant_lib_1_1_generic_gaussian_statistics_1a7f69b339f59d747116c662a0a6b922be" prot="public" virt="non-virtual"><scope>QuantLib::GenericGaussianStatistics</scope><name>value_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

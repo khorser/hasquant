@@ -171,65 +171,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="11752">
-        <label>MultiProductOneStep</label>
-        <link refid="class_quant_lib_1_1_multi_product_one_step"/>
-        <childnode refid="11753" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11751">
-        <label>OneStepOptionlets</label>
-        <childnode refid="11752" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11753">
-        <label>MarketModelMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="11755">
-        <label>MultiProductOneStep</label>
-        <link refid="class_quant_lib_1_1_multi_product_one_step"/>
-        <childnode refid="11756" relation="public-inheritance">
-        </childnode>
-        <childnode refid="11757" relation="usage">
-          <edgelabel>evolution_</edgelabel>
-        </childnode>
-      </node>
-      <node id="11754">
-        <label>OneStepOptionlets</label>
-        <childnode refid="11755" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11757">
-        <label>EvolutionDescription</label>
-        <link refid="class_quant_lib_1_1_evolution_description"/>
-      </node>
-      <node id="11756">
-        <label>MarketModelMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepoptionlets.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/onestep/onestepoptionlets.hpp" bodystart="32" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1aeb8981967234c763295b4c901abf52fb" prot="private" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>accruals_</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_one_step_1afa0882cb7e47518f285e2bc573d954a9" prot="public" virt="virtual"><scope>QuantLib::OneStepOptionlets</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_one_step_1aa5fabad6baffe7913d7edf93e4017faa" prot="protected" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_one_step_1a7d223812ee9e02b46172d1770aa71570" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>MultiProductOneStep</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1adba9c878616b5752df14a701a13b2bb5" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>OneStepOptionlets</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a0fa00dfc19817fe667f6a4418f692880" prot="private" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>paymentTimes_</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1ab447a3ce694c189458446faa90938385" prot="private" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>payoffs_</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1a6f8b552187132cf1314374dbdd1d8515" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_one_step_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="protected" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_one_step_optionlets_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::OneStepOptionlets</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_one_step_1aaf801d7941a97da6022733449a2a0e24" prot="public" virt="virtual"><scope>QuantLib::OneStepOptionlets</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_multi_product_1ae3c17a1eb33b8b6e6d5cad68e933df61" prot="public" virt="virtual"><scope>QuantLib::OneStepOptionlets</scope><name>~MarketModelMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

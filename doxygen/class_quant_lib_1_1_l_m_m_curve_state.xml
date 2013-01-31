@@ -371,62 +371,6 @@
 <para>Curve state for Libor market models </para>    </briefdescription>
     <detaileddescription>
 <para>This class stores the state of the yield curve associated to the fixed calendar times within the simulation. This is the workhorse discounting object associated to the rate times of the simulation. It&apos;s important to pass the rates via an object like this to the product rather than directly to make it easier to switch to other engines such as a coterminal swap rate engine. Many products will not need expired rates and others will only require the first rate. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9145">
-        <label>CurveState</label>
-        <link refid="class_quant_lib_1_1_curve_state"/>
-      </node>
-      <node id="9144">
-        <label>LMMCurveState</label>
-        <link refid="class_quant_lib_1_1_l_m_m_curve_state"/>
-        <childnode refid="9145" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9147">
-        <label>CurveState</label>
-        <link refid="class_quant_lib_1_1_curve_state"/>
-      </node>
-      <node id="9146">
-        <label>LMMCurveState</label>
-        <link refid="class_quant_lib_1_1_l_m_m_curve_state"/>
-        <childnode refid="9147" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/lmmcurvestate.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/curvestates/lmmcurvestate.hpp" bodystart="39" bodyend="94"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a8c46c0cde27036afcca8fe94bf19101d" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1ab296e61d38edd3b52e2f204b1b3797d3" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>cmSwapAnnuities_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1ae62cf5e5050a7c480b620a7ec2d104d1" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>cmSwapAnnuity</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aee06bd7c4e552385a9f4e9720b5e6b01" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>cmSwapRate</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a2c2d3c56715486e94144c87531f19fcc" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>cmSwapRates</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a808e0b8f5ace9bf605daacd91d771cfa" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>cmSwapRates_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1adfb5766f14d0211cca86ab652bce182f" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>cotAnnuities_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aea7368686f038e0fdbc9341faf4003a6" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>coterminalSwapAnnuity</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1abec96ff6545d6cd3be5d3eaef0dbd0a8" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>coterminalSwapRate</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1abe78d2bc9f2687c5e31baa486ad2ace5" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>coterminalSwapRates</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aa2fd64eca22c89d70009196c51e707f3" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>cotSwapRates_</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a88fd3af37567d6296eb23d2712a9079a" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>CurveState</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aba827b05a0086533a68c6c2862351d08" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>discountRatio</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1ab8d29fabefdf5e5204a438a31c5fc3b2" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>discRatios_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1ac7372fad315f02b5c7baa1362d9d0f88" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>first_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a51646e75a9cad29df12a71314f92a4b2" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>firstCotAnnuityComped_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aac1391a5c503e87b171babebba6d4a60" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>forwardRate</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a5cc6fb17a2d2d3c52a5cb79ff094d184" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>forwardRates</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a218b3ef267a412453606bf24443f6895" prot="private" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>forwardRates_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1aa16287775199c7833a917a13056d6ba3" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>LMMCurveState</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a9c042abcd446925e95dde36619f5bf6d" prot="protected" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a354ca1793c355a773e185886211db03a" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>rateTaus</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1aa688289997396acdd1ad9b7c64735213" prot="protected" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>rateTaus_</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>rateTimes</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="protected" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a2d678ab710d9435a15077fe053ed758b" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>setOnDiscountRatios</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_curve_state_1a2a7efc69b227a42bdd3f004156bdfe4e" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>setOnForwardRates</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a7cabb9353f71c83cffb42b0fc489a5c2" prot="public" virt="non-virtual"><scope>QuantLib::LMMCurveState</scope><name>swapRate</name></member>
-      <member refid="class_quant_lib_1_1_curve_state_1a778310bcc6510018d1fd4b2db88aec3a" prot="public" virt="virtual"><scope>QuantLib::LMMCurveState</scope><name>~CurveState</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

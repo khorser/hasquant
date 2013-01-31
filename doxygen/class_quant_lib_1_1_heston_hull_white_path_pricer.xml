@@ -92,36 +92,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7368">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="7367">
-        <label>HestonHullWhitePathPricer</label>
-        <childnode refid="7368" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7370">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="7369">
-        <label>HestonHullWhitePathPricer</label>
-        <childnode refid="7370" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="95" bodyend="108"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_heston_hull_white_path_pricer_1a57fcc5db9ef9fd7447a6fa4e3a9e64f9" prot="private" virt="non-virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>exerciseTime_</name></member>
-      <member refid="class_quant_lib_1_1_heston_hull_white_path_pricer_1aa54db1f87b00e439a66fee4c3f9e3be2" prot="public" virt="non-virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>HestonHullWhitePathPricer</name></member>
-      <member refid="class_quant_lib_1_1_heston_hull_white_path_pricer_1a2ecf590215498be156b97e02b2bc327c" prot="public" virt="non-virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_heston_hull_white_path_pricer_1a73cfad8707a6a802108b5bb7e04aca75" prot="private" virt="non-virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_heston_hull_white_path_pricer_1a916e217d41c78e01caf44eab39c2f47d" prot="private" virt="non-virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::HestonHullWhitePathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -307,26 +307,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="70" bodyend="92"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1ab16863281e39daee751638a3c2f911a9" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>MakeMCEuropeanEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a7aabe62cd84705afffb83ff2aba675a8" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a904f8eb77adacda92181ec73cc53532f" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1aec565ac20e9b1b6df8cd9a1c401a1077" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a2d67c2d7fd86d8acd7079bc7403d897d" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1aec510d9e16db456214238d61040ca4e3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a1a5dd10d3fb3c3a09f14a6279b73e8a0" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1a781235eb7666133dde356f041784e37b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_engine_1ac4640d4f755432828c1eeb54a70b7b44" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

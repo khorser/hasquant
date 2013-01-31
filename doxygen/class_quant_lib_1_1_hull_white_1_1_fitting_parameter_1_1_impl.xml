@@ -95,36 +95,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7510">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="7509">
-        <label>HullWhite::FittingParameter::Impl</label>
-        <childnode refid="7510" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7512">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="7511">
-        <label>HullWhite::FittingParameter::Impl</label>
-        <childnode refid="7512" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="125" bodyend="142"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1afbbb5996bdf677db0d4873658076fb87" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>sigma_</name></member>
-      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>termStructure_</name></member>
-      <member refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter_1_1_impl_1ae8b7f7095eb4359d77e946884117e3c2" prot="public" virt="non-virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::HullWhite::FittingParameter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

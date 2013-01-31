@@ -234,21 +234,5 @@
 </programlisting></para><para><simplesect kind="pre"><para>LDS and PRS must have the same dimension <formula id="32">$ N $</formula></para></simplesect>
 <xrefsect id="caveats_1_caveats000072"><xreftitle>Warning</xreftitle><xrefdescription><para>Inverting LDS and PRS is possible, but it doesn&apos;t make sense.</para></xrefdescription></xrefsect></para><para><xrefsect id="todo_1_todo000035"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>implement the other randomization algorithms</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000055"><xreftitle>Tests</xreftitle><xrefdescription><para>correct initialization is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomizedlds.hpp" bodystart="58" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a101ac2fd4059964925dda5d18055f99c" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>dimension_</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a2c457099d2857c50d57d1c924c552328" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>ldsg_</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1aa917583553cf612af05e8b75e7e161dc" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>nextRandomizer</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a2ea25ac8138d4099afda3642057335ff" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a1f5db3849f6c7fb351346e5687d1b048" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>pristineldsg_</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a12741f316babcec57022ce10d15dc1d4" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>prsg_</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1ab9c8b1032e33e44aab7d913df6b30a2a" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>RandomizedLDS</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1afd982aebe39f5fb3b1d5b556c3909859" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>RandomizedLDS</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1ad5cd3bf450cb608c0a9c7c516a5d5009" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>RandomizedLDS</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1a8ffc66dfe45ee8f2180feaa67e6ea02c" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>randomizer_</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_randomized_l_d_s_1ae1f845a270331b98285cfdd363dee595" prot="private" virt="non-virtual"><scope>QuantLib::RandomizedLDS</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

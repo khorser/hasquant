@@ -319,33 +319,5 @@
 <listitem><para>the correctness of the returned values is tested by reproducing known good values.</para></listitem><listitem><para>the correctness of the returned values is tested by checking their discrepancy against known good values. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="106" bodyend="138"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a8730b54eabb730eb3b5a7da3eac60448" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>bits_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>dimensionality_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90d" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>DirectionIntegers</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1aa2ccc5125225436ecd2e50ae12f2c427" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>directionIntegers_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a30ed145520654b162ae4cad78aaa58cb" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>firstDraw_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a228f3ec68a8a4f5acd1b198f97af836b" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>integerSequence_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da4ae3ff929e6a1cef9e6c14dda463e16b" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>Jaeckel</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da69cc9afeae0b27bcb3e9defca2fe296a" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>JoeKuoD5</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da7cd1a4c30bcf626f95b6f238172e8e31" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>JoeKuoD6</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da9c0517ee8394ad2447ebe27f96e82149" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>JoeKuoD7</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da7b23fc01566ad446d88df0d8c7995ccf" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>Kuo</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da3c3d8ce5123f5b45fabac7cdd60acc1c" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>Kuo2</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90dadc2684495f4c8a276a265b8e002cb470" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>Kuo3</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a12298c913deb1e1134ac23f669b1b294" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>nextInt32Sequence</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a24eb8d9ace7d89bd65c3767bdc1edf57" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a4c3e1fa530cf971227e1ef07d3be06e9" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>normalizationFactor_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>sequence_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1ab783e3c845d54c712226757076a4cccb" prot="private" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>sequenceCounter_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1aaa2d30eb47ba0545410f2a87ebbacf1a" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>skipTo</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da65b68fd9131dd5c982bf5e82cf797b00" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>SobolLevitan</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90da165aeba9131f3f1bf8cad1b362b6e80d" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>SobolLevitanLemieux</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1a517494ec668ecd36efffc01912e484c0" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>SobolRsg</name></member>
-      <member refid="class_quant_lib_1_1_sobol_rsg_1af5254f10d63ffdac50ac07c6df7cc90daebf9ffe9d10430ea38c1cda6f0880935" prot="public" virt="non-virtual"><scope>QuantLib::SobolRsg</scope><name>Unit</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

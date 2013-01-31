@@ -60,10 +60,5 @@
     <detaileddescription>
 <para>Probability density function for <formula id="181">$ n $</formula> degrees of freedom (see mathworld.wolfram.com or wikipedia.org): <formula id="185">\[ f(x) = \frac {\Gamma\left(\frac{n+1}{2}\right)} {\sqrt{n\pi} \, \Gamma\left(\frac{n}{2}\right)}\: \frac {1} {\left(1+\frac{x^2}{n}\right)^{(n+1)/2}} \]</formula> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="42" bodyend="50"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_student_distribution_1ae7498ef3fa9e3da5bc35ee3bd6e71a5d" prot="private" virt="non-virtual"><scope>QuantLib::StudentDistribution</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::StudentDistribution</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_student_distribution_1a72fd4ee923827897f994b08cd4b1e57c" prot="public" virt="non-virtual"><scope>QuantLib::StudentDistribution</scope><name>StudentDistribution</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

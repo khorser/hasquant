@@ -168,17 +168,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="261" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="261" bodyend="278"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a77d015539f2a2a09c89a8aa0a5727da5" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>d2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a582a83fcbbf2db2f8d51c5ae749c5b5e" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>d_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1aa91b0ef834fa3ce8c160e7fcd85d6285" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>data_table</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a8733ec13e7348dddf398be84ea1bd3ad" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>n_cubic_spline</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1acfc455c96d779248db3eff8e5da03ab2" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>output_data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1afec3f9c9ad784475758c6c245d0e8686" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a50d523b30e828df6c4123843e7737e67" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>y2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>y_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__spline_1a236ae487a46d1dbfab700dbd6eb4a642" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_spline</scope><name>~n_cubic_spline</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

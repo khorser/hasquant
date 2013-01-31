@@ -62,65 +62,6 @@
 <para>Early-exercise base class. </para>    </briefdescription>
     <detaileddescription>
 <para>The payoff can be at exercise (the default) or at expiry </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="4038">
-        <label>BermudanExercise</label>
-        <link refid="class_quant_lib_1_1_bermudan_exercise"/>
-        <childnode refid="4035" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4035">
-        <label>EarlyExercise</label>
-        <link refid="class_quant_lib_1_1_early_exercise"/>
-        <childnode refid="4036" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4037">
-        <label>AmericanExercise</label>
-        <link refid="class_quant_lib_1_1_american_exercise"/>
-        <childnode refid="4035" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4036">
-        <label>Exercise</label>
-        <link refid="class_quant_lib_1_1_exercise"/>
-      </node>
-      <node id="4039">
-        <label>SwingExercise</label>
-        <link refid="class_quant_lib_1_1_swing_exercise"/>
-        <childnode refid="4038" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="4040">
-        <label>EarlyExercise</label>
-        <link refid="class_quant_lib_1_1_early_exercise"/>
-        <childnode refid="4041" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4041">
-        <label>Exercise</label>
-        <link refid="class_quant_lib_1_1_exercise"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exercise.hpp" bodystart="56" bodyend="64"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a6443a7d3e2731d6476a84492e0bf66cc" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>American</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7acb4ca18a2ea7ea68f2c1e2a7c4e8181a" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>Bermudan</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a688725346fb170983161428872458ff5" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>date</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a6a149d4beeac42703f37f63defbff974" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>dates</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>dates_</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>EarlyExercise</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7a44fbacd0de93fa25f6ca3b44e0c426c2" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>European</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1ae6eb8cdd955b34ee2bc2a6ada6c80df5" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>Exercise</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>lastDate</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>payoffAtExpiry</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_1a22a68e7cde8039d87abf3c7811ee7277" prot="private" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>payoffAtExpiry_</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1ae96b07c06ceff094f476fd92cbe89e10" prot="protected" virt="non-virtual"><scope>QuantLib::EarlyExercise</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_exercise_1a319eac5256bf348c4cbfcddbec689b09" prot="public" virt="virtual"><scope>QuantLib::EarlyExercise</scope><name>~Exercise</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

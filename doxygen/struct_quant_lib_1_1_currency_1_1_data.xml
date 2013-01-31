@@ -177,37 +177,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="3182">
-        <label>Currency::Data</label>
-        <childnode refid="3183" relation="usage">
-          <edgelabel>triangulated</edgelabel>
-        </childnode>
-        <childnode refid="3184" relation="usage">
-          <edgelabel>rounding</edgelabel>
-        </childnode>
-      </node>
-      <node id="3183">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="3184">
-        <label>Rounding</label>
-        <link refid="class_quant_lib_1_1_rounding"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currency.hpp" bodystart="78" bodyend="96"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>code</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a2b0fd6aa19741b3f220155e1b692092f" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a6620293bd13d77e2a561fb979e864089" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>formatString</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a09a1ae4e1cdce4027d2694a726dd116b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>fractionsPerUnit</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a33079406f7244af1f272d8378f1e8f0b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>fractionSymbol</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>name</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a65e8398eacd4ac202862763b4874c3b7" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>numeric</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>rounding</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1a53d0a1e0ab09c43aece255c56ecd509d" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>symbol</name></member>
-      <member refid="struct_quant_lib_1_1_currency_1_1_data_1afa009cdefa581b4eb76555c7b28d20ef" prot="public" virt="non-virtual"><scope>QuantLib::Currency::Data</scope><name>triangulated</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

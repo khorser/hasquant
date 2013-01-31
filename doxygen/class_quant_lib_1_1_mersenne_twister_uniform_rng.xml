@@ -229,22 +229,5 @@
 <para>Mersenne Twister random number generator of period 2**19937-1 <verbatim>   For more details see http://www.math.keio.ac.jp/matumoto/emt.html
 </verbatim></para><para><xrefsect id="test_1_test000054"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/mt19937uniformrng.hpp" bodystart="41" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a7fb3c1e33e9a85be6b95e55a3ffd15bd" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>LOWER_MASK</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1abc87b880bad973b4298d524f70a60337" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>M</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aae6bd956f0258c269712512790cc2ac7" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>MATRIX_A</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aef3c88d0c299ac67776029d65f00617f" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>MersenneTwisterUniformRng</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a46caedf21e71280f2aec10497d054cfc" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>MersenneTwisterUniformRng</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aff3cefd0011b487c57a7af7cb3bc499f" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>mt</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a64d8071a5dc5f8fb14953be5395013f5" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>mti</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a8c9252468299eb1ed5bbbb0a0a98d83b" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>N</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1ae929c4400225267d39ac32d4bd99caf1" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>nextInt32</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a7a373094f55dbe4015ab0ccfe21c01de" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>nextReal</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a0b33d7b27061c8c129f07040a40b076b" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>seedInitialization</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a61b55f5db7fdcca2b05ee35105554b65" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>twist</name></member>
-      <member refid="class_quant_lib_1_1_mersenne_twister_uniform_rng_1a377fc4326ff55bfb0a133460a9af6a0f" prot="private" virt="non-virtual"><scope>QuantLib::MersenneTwisterUniformRng</scope><name>UPPER_MASK</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

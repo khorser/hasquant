@@ -59,10 +59,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000035"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/factorial.hpp" bodystart="35" bodyend="41"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_factorial_1a9e05bb75a771251a38bb1e7f2d324271" prot="private" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>Factorial</name></member>
-      <member refid="class_quant_lib_1_1_factorial_1a08a6c1c9fa512656b34c5b146a2c7786" prot="public" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>get</name></member>
-      <member refid="class_quant_lib_1_1_factorial_1a521d12fb2a1218b7b4bf59b1bcabb767" prot="public" virt="non-virtual"><scope>QuantLib::Factorial</scope><name>ln</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

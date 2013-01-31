@@ -91,11 +91,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000118"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/baroneadesiwhaleyengine.hpp" bodystart="39" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1af2bac5403ba35d337fa1ec9fdfc77b42" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>BaroneAdesiWhaleyApproximationEngine</name></member>
-      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a83d913a20019f285a302512dfd934bb0" prot="public" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>criticalPrice</name></member>
-      <member refid="class_quant_lib_1_1_barone_adesi_whaley_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::BaroneAdesiWhaleyApproximationEngine</scope><name>process_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

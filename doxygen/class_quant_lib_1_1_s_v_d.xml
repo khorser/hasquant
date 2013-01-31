@@ -213,22 +213,5 @@
     <detaileddescription>
 <para>Refer to Golub and Van Loan: <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> computation, The Johns Hopkins University Press</para><para><xrefsect id="test_1_test000047"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking their properties. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/svd.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/svd.hpp" bodystart="54" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_s_v_d_1a0ccf4b713fe583627979ee6fbe46c140" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>cond</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1ae2d4af2ae2ab41f7dcfc4182600cc7f4" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>m_</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1ae7498ef3fa9e3da5bc35ee3bd6e71a5d" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a09ad511dc0d670a7dd43065f34ed8e59" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>norm2</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a392c795adb43821ad813f80cfaa88823" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>rank</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1ac87544e79dc16ebb5e5f817de16db7c3" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>S</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1aa38eae568a8634f9c0e40246f612d272" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>s_</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1ad8f0e8a5b6fecbc661dfeef719b55b20" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>singularValues</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a916926b8489a4d1eb478bdad4d225b68" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>solveFor</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1ac8125892f6de59a7ab472af6383e5fb0" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>SVD</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1aaf2038143133822d6938811b511335da" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>transpose_</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a92a552a544e890a3c4d3c13c8bf8cf20" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>U</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a7cd915b9f75b17cbcbc4c6e3dcaf31af" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>U_</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1a097db1a287a519c7e08928092e0a8207" prot="public" virt="non-virtual"><scope>QuantLib::SVD</scope><name>V</name></member>
-      <member refid="class_quant_lib_1_1_s_v_d_1abe8d790ece020034f26c24baa7f5be8c" prot="private" virt="non-virtual"><scope>QuantLib::SVD</scope><name>V_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -338,28 +338,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="221" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="221" bodyend="243"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>controlVariate_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1ae402f69f5ce990d1ac666b938ed9b258" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>MakeMCPathBasketEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a012cfff5b787ce5b69e20d584bd8e913" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1aa1abd36c8f1c5aba56f120f50113ca84" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1aed50d4606d4687113213a7034e7c7c22" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1ab5f46ed5ae929a6b3f376d6bacf04082" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a68a5f134ab1092dfa648f59134588e2e" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withControlVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a7d0b2b263a3a38ea6761302672cc0134" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a2c2fffe360cf5cf3c2989f1914aeed42" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a8b5fff1288594b44bc3da462beeb5c63" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a9d80686fe60b0d92bfc8f7a8b577bd45" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_path_basket_engine_1a789ff3c35bf180ae7340c7a33543e74b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCPathBasketEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

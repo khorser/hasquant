@@ -468,37 +468,5 @@
     <detaileddescription>
 <para>This class provides a more comfortable way to instantiate overnight indexed swaps. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeois.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeois.hpp" bodystart="37" bodyend="82"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>effectiveDate_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a0f9cce4f14d75f9e75dcba9a025ee764" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>endOfMonth_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>engine_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a417ce99525ff934e161e933d540c0409" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>fixedDayCount_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a35f1722ae3128f5c12e6df0709b7d09d" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>fixedRate_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a7b5758dc357368c9bcb7920c66084351" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>fixingDays_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>forwardStart_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a741c3294769bcf8d475a4ffed39e9285" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>MakeOIS</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>nominal_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a9da4e190519c6154ce8f5b51eda519e8" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>operator boost::shared_ptr&lt; OvernightIndexedSwap &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1afced41062a8929f64f149f94fd71f182" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>operator OvernightIndexedSwap</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a692e32fbdb1ea4abf8e1fd5620a699fa" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>overnightIndex_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ad29bed1f148e09da6722f05b1093fd44" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>overnightSpread_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1acc825d201592eecbe5533798ba3b5760" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>paymentFrequency_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a7d5775ccdbabaf2f2456692956943039" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>receiveFixed</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a8a0428b85c9033946cc024aa41a482eb" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>rule_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>swapTenor_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a4fd303bf9a2fb197696acf7d8481b77b" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>terminationDate_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a7d958ab211aab9ed8a1e15c512e07004" prot="private" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ad7f965fc989542928b87e64762fa03f8" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withDiscountingTermStructure</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ab632824366e557d2d116b5602f29b130" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withEffectiveDate</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1af816ac5447424c405110aab42a0a6c56" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withEndOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a3f076c90189543b767c96dde3850d712" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withFixedLegDayCount</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a9b141ba11e71b1e689b002c62a5ac24b" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withNominal</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1aa4f625e4347caab311038aacf5c448d7" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withOvernightLegSpread</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a86cbaac4a1d5bcfeb401279e4d96aae1" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withPaymentFrequency</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ae662df7600d4903f3189370399996657" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withRule</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a0121bcf02c7b0b399eff63f82b8087cf" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withSettlementDays</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1ad8ade1614ea8af8309670f4d49abba49" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withTerminationDate</name></member>
-      <member refid="class_quant_lib_1_1_make_o_i_s_1a99f412fda71c62f09a49178a97c32435" prot="public" virt="non-virtual"><scope>QuantLib::MakeOIS</scope><name>withType</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

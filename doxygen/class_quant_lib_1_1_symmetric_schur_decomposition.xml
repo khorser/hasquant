@@ -125,13 +125,5 @@
     <detaileddescription>
 <para>Given a real symmetric matrix S, the Schur decomposition finds the eigenvalues and eigenvectors of S. If D is the diagonal matrix formed by the eigenvalues and U the unitarian matrix of the eigenvectors we can write the Schur decomposition as <formula id="214">\[ S = U \cdot D \cdot U^T \, ,\]</formula> where <formula id="215">$ \cdot $</formula> is the standard matrix product and <formula id="216">$ ^T $</formula> is the transpose operator. This class implements the Schur decomposition using the symmetric threshold Jacobi algorithm. For details on the different Jacobi transfomations see &quot;Matrix computation,&quot; second edition, by Golub and Van Loan, The Johns Hopkins University Press</para><para><xrefsect id="test_1_test000048"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking their properties. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/symmetricschurdecomposition.hpp" bodystart="50" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1af5530947e239dbe2770cc68b00be1c5d" prot="private" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>diagonal_</name></member>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>eigenvalues</name></member>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>eigenvectors</name></member>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1a567fec5753f16416f938273edd3c99fc" prot="private" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>eigenVectors_</name></member>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1a324f9c25ac3ec04b4d12d4e187a198fa" prot="private" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>jacobiRotate_</name></member>
-      <member refid="class_quant_lib_1_1_symmetric_schur_decomposition_1a43ff4c0e9abb6877c224127f7b70e8e6" prot="public" virt="non-virtual"><scope>QuantLib::SymmetricSchurDecomposition</scope><name>SymmetricSchurDecomposition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

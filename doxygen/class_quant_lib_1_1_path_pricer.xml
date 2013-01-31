@@ -56,9 +56,5 @@
     <detaileddescription>
 <para>Returns the value of an option on a given path. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathpricer.hpp" bodystart="40" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_path_pricer_1a8d202422e04c42b1c33fe366569a4ef5" prot="public" virt="pure-virtual"><scope>QuantLib::PathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::PathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

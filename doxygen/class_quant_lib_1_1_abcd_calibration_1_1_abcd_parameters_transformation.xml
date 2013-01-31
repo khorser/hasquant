@@ -85,13 +85,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="67" bodyend="91"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1aa572a88c3477fff22866327409f014b8" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>AbcdParametersTransformation</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1a467ed2015ce5093965c2366f93d5fe3a" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>direct</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1aca53ae2cfd5d7d1f6818a5eb62506d54" prot="private" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>eps1_</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1a6d26ddb73ac5936d26c9b89109dd3b08" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>inverse</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_parameters_transformation_1a0a792d2ec89747f199b3f37afa85c8b3" prot="private" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>y_</name></member>
-      <member refid="class_quant_lib_1_1_parameters_transformation_1ab78413e4bcca36b38d5827d165bb5db5" prot="public" virt="virtual"><scope>QuantLib::AbcdCalibration::AbcdParametersTransformation</scope><name>~ParametersTransformation</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

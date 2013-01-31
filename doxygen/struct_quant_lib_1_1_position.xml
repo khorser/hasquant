@@ -54,11 +54,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/position.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/position.hpp" bodystart="32" bodyend="34"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7afbe5087b942deaaa3202c7ca87dbc327" prot="public" virt="non-virtual"><scope>QuantLib::Position</scope><name>Long</name></member>
-      <member refid="struct_quant_lib_1_1_position_1aea636746ca886a585d34e10004cc9b43" prot="public" virt="non-virtual"><scope>QuantLib::Position</scope><name>operator&lt;&lt;</name></member>
-      <member refid="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7af5a4874501b800b316e5817874430c98" prot="public" virt="non-virtual"><scope>QuantLib::Position</scope><name>Short</name></member>
-      <member refid="struct_quant_lib_1_1_position_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Position</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

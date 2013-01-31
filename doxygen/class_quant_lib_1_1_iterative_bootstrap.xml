@@ -233,23 +233,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="40" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>alive_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a37c009395d7dbdebd9298cbcf398b1ff" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>errors_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a2d56fb03f1b7e96e4004362bfce39741" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>firstAliveHelper_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a9d782cce9bd2c14c761521049aa97cf2" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>firstSolver_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a3660e034e2d6c3a470310130926c8a73" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1aef7436a220692b5b863db4e9d8b870a3" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>initialized_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>Interpolator</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1ab7b9c96215e7b0b8b9b46284cd0ae603" prot="public" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>IterativeBootstrap</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a9bedbbacb0b82a55c579510cee137603" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a08ce8d50ccd86dad95bd2145e00556e2" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>previousData_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>setup</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1afd10421579a712b806598275d5e7f7c8" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>solver_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>Traits</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1aa1c2b6a55e098a66c64ac699025eda08" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>ts_</name></member>
-      <member refid="class_quant_lib_1_1_iterative_bootstrap_1ae7e37a0cd72e79fc76ff937158c608b6" prot="private" virt="non-virtual"><scope>QuantLib::IterativeBootstrap</scope><name>validCurve_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

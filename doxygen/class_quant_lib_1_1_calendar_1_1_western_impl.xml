@@ -44,25 +44,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_united_states_1_1_settlement_impl" prot="public" virt="non-virtual">UnitedStates::SettlementImpl</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_weekends_only_1_1_impl" prot="public" virt="non-virtual">WeekendsOnly::Impl</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_western_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>bool</type>
-        <definition>bool isWeekend</definition>
-        <argsstring>(Weekday) const </argsstring>
-        <name>isWeekend</name>
-        <reimplements refid="class_quant_lib_1_1_calendar_1_1_impl_1a5a7ad21cda86451725622b5d32783548">isWeekend</reimplements>
-        <param>
-          <type><ref refid="group__datetime_1gaec3d5ec6653b2c392d449500b8f5cb3a" kindref="member">Weekday</ref></type>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="154"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="protected-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__datetime_1ga91214837fb837828e91ce17de9eaa43c" kindref="member">Day</ref></type>
@@ -85,39 +66,6 @@
 <para>partial calendar implementation </para>    </briefdescription>
     <detaileddescription>
 <para>This class provides the means of determining the Easter Monday for a given year, as well as specifying Saturdays and Sundays as weekend days. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="1601">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="1600">
-        <label>Calendar::WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="1601" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1603">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="1602">
-        <label>Calendar::WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="1603" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="152" bodyend="157"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>addedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" virt="non-virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>easterMonday</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a1291315ff78a8c6c1d8b21d99e724a2f" prot="public" virt="pure-virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="protected" virt="virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>removedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Calendar::WesternImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

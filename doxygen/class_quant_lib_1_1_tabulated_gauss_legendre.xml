@@ -291,27 +291,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="203" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="203" bodyend="256"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a21d318ef79ea282694f4c95eebbffca7" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>n12</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1acb06b149a66f4d551e2e30f85568ac5f" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>n20</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a0744a1149a803ead956331c068b19dee" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>n6</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a5e8048c3414c3d87798ffa1a62c2f4f3" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>n7</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a9bedbbacb0b82a55c579510cee137603" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a64fd5c4d322e0d8d4160fa59b79628b0" prot="public" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a50a275e949663a79f4ae4dbc264aff30" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>order_</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a2720b47fd53c707f8cf669dea4d28861" prot="public" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>TabulatedGaussLegendre</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a76f1c36c58237b527cfd2acc7256f903" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>w12</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a71a9d75df1219bb117cdfaea1a6f4ebf" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>w20</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a7f8ce3afeccf396b9b6352f6fd9129be" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>w6</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a6011e6db3c0ca3e6d3d53ceb1f2feeb1" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>w7</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a7224479b2679870fad1a3f9383d2b7e9" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>w_</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a43ef7ae9ddd7a52b143125e8156082f2" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>x12</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1ada09d6813bf33201f22b49ab0c3c9493" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>x20</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1aa2e2ff9f46f9642a5ae8910170ff928e" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>x6</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1a8b0e622c7463954b0415b45fd36611c1" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>x7</name></member>
-      <member refid="class_quant_lib_1_1_tabulated_gauss_legendre_1ad66b620fee7854688e3ec37c9d435d0a" prot="private" virt="non-virtual"><scope>QuantLib::TabulatedGaussLegendre</scope><name>x_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

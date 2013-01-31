@@ -195,19 +195,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/pool.hpp" bodystart="32" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_pool_1a9d2d4c566fe08564a3458c96fc6030c7" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_pool_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>clear</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a874bbc5b3000d84f699a0badb252ea32" prot="private" virt="non-virtual"><scope>QuantLib::Pool</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a79fb7a2e3d3215adb63c99bcf611ed34" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>get</name></member>
-      <member refid="class_quant_lib_1_1_pool_1adadede9310fa9603982ad9d6f867d6b7" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>getTime</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a11f7868ebc12b98cb7c2cc4a44d7d6f2" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>has</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a5b0387412c808499b36a396389c29a83" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>names</name></member>
-      <member refid="class_quant_lib_1_1_pool_1ab0040ffc4275fed51da172ce1ee71f8b" prot="private" virt="non-virtual"><scope>QuantLib::Pool</scope><name>names_</name></member>
-      <member refid="class_quant_lib_1_1_pool_1af71e2c9e63c7a14525b20806f3c40c23" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>Pool</name></member>
-      <member refid="class_quant_lib_1_1_pool_1aa4a828f3ad25a750a311f4495766cb52" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::Pool</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_pool_1a4a4e8d4b717c21589a060b4a2d56c4ce" prot="private" virt="non-virtual"><scope>QuantLib::Pool</scope><name>time_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

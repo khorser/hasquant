@@ -270,27 +270,5 @@
     <detaileddescription>
 <para>Incremental Brownian generator using a Sobol generator, inverse-cumulative Gaussian method, and Brownian bridging. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" bodystart="37" bodyend="77"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1aea687ac47cfd8568535acd0580462dcb" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>bridge_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a897bcbf4b4973608d6e38f591c3e8564" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>bridgedVariates_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355a1672896c50dec2b32ed9117cff36c49d" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>Diagonal</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355a80d941f67956dd1f25b0c208987ddd31" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>Factors</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1ae4c62e683d522da1374d82aba6f87188" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>generator_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a45292ca181e869917dba27eac99633e0" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>lastStep_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a924332975ee95db8a63daf02e10d3bdc" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>nextPath</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a5a8ee20027256cd968b0561e1bb071c9" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1aa78e0abd73a8e3a70ed10bdd5f8828c9" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>orderedIndices</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a13bfb8d0a2f4b68d3fda9ab326387d7e" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>orderedIndices_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>Ordering</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1ad459786d18f349449d937588c6e0c1e1" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>ordering_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1ac5dfcb8aa64d8ce8ad70052e4d0e9fc7" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>SobolBrownianGenerator</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355a56c6baeb3f6de237e26365daff6ca73f" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>Steps</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_sobol_brownian_generator_1a07778a8e18549b87a04708a03ff8106e" prot="public" virt="non-virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>transform</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1a447c523c246b53547f6723d481620f92" prot="public" virt="virtual"><scope>QuantLib::SobolBrownianGenerator</scope><name>~BrownianGenerator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

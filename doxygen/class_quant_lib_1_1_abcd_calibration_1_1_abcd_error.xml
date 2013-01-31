@@ -75,38 +75,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="19">
-        <label>AbcdCalibration::AbcdError</label>
-        <childnode refid="20" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="21">
-        <label>AbcdCalibration::AbcdError</label>
-        <childnode refid="22" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcdcalibration.hpp" bodystart="43" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1a51690e10d7b30ca2476f855a643866e6" prot="private" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>abcd_</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1ae9b81d17cea43b9da06ea8e92b42a288" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>AbcdError</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_abcd_calibration_1_1_abcd_error_1a24bca93c2bbe35871e279fd8a935143d" prot="public" virt="non-virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::AbcdCalibration::AbcdError</scope><name>~CostFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

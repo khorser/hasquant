@@ -11,47 +11,6 @@
         <defname>T</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_equal_jumps_binomial_tree_1ad8c571c3fb4003f56e31ff01a371fe30" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real dx_</definition>
-        <argsstring></argsstring>
-        <name>dx_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_equal_jumps_binomial_tree_1a12eb865f529d1a229999534c74fee43b" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real pu_</definition>
-        <argsstring></argsstring>
-        <name>pu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_equal_jumps_binomial_tree_1a50ade66877e89aa9b7d723ecb6d9d428" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real pd_</definition>
-        <argsstring></argsstring>
-        <name>pd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="102" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_equal_jumps_binomial_tree_1ada90a59444c140cee5ae153a5e6ef367" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -127,76 +86,6 @@
 <para>Base class for equal jumps binomial tree. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="4154">
-        <label>CuriouslyRecurringTemplate&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
-      </node>
-      <node id="4153">
-        <label>Tree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_tree"/>
-        <childnode refid="4154" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4152">
-        <label>BinomialTree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_binomial_tree"/>
-        <childnode refid="4153" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4151">
-        <label>EqualJumpsBinomialTree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_equal_jumps_binomial_tree"/>
-        <childnode refid="4152" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="4158">
-        <label>CuriouslyRecurringTemplate&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
-      </node>
-      <node id="4157">
-        <label>Tree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_tree"/>
-        <childnode refid="4158" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4156">
-        <label>BinomialTree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_binomial_tree"/>
-        <childnode refid="4157" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="4155">
-        <label>EqualJumpsBinomialTree&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_equal_jumps_binomial_tree"/>
-        <childnode refid="4156" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="86" bodyend="103"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a908728004a6f43e474d8dabca6305b44" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>BinomialTree</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0ac45748c7ad342476d13e14f6632203c1" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>branches</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>Branches</name></member>
-      <member refid="class_quant_lib_1_1_tree_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>columns</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>CuriouslyRecurringTemplate</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1aab3e236871d755fdfdd7c3dd22c52f9c" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>descendant</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a1f3db9657071c9b664b10313f33717ca" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>driftPerStep_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a6be603d8547f31e72817d2aaf219e325" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1ad8c571c3fb4003f56e31ff01a371fe30" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>dx_</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1ada90a59444c140cee5ae153a5e6ef367" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>EqualJumpsBinomialTree</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1a50ade66877e89aa9b7d723ecb6d9d428" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>pd_</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1aaad4caa3a86af086a7032fec98c26182" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>probability</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1a12eb865f529d1a229999534c74fee43b" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>pu_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_tree_1a8fe1055f39c1f80fd420458fe249fd99" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>Tree</name></member>
-      <member refid="class_quant_lib_1_1_equal_jumps_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>underlying</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1afb597b35edab96eecbcbf9a2df04f05d" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>x0_</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" virt="non-virtual"><scope>QuantLib::EqualJumpsBinomialTree</scope><name>~CuriouslyRecurringTemplate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

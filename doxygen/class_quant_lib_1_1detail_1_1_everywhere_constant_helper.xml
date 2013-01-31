@@ -122,15 +122,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="137" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="137" bodyend="156"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af451d01880fa199372a6b8d8b5042893" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>EverywhereConstantHelper</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>fNext</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>prevPrimitive_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a183a38ca3e73199aae47a6d24274e2fb" prot="public" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1a3750926f3db88561a589630027f75a97" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>value_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_everywhere_constant_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" virt="non-virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>xPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::EverywhereConstantHelper</scope><name>~SectionHelper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

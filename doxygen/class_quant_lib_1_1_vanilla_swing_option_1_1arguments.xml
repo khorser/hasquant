@@ -90,14 +90,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswingoption.hpp" bodystart="71" bodyend="80"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a1204ab2ec997bab927b19ae6d87921b0" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1ad4769ff6bc7e2519550a7d2e9931ebda" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>maxExerciseRights</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a18b9520d9656ddb560d8840a36516d56" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>minExerciseRights</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a1172f6d21c290340779ee088d2530cd1" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::VanillaSwingOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

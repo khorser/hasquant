@@ -235,22 +235,5 @@
     <detaileddescription>
 <para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, Lorenzo Liesch, <emphasis>Effective Implementation Of Generic Market Models</emphasis>. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" bodystart="40" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>alive_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>C_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>compute</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>isFullFactor_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>numeraire_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>oneOverTaus_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>pseudo_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>SMMDriftCalculator</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>tmp_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a3869bd911dd3ff55982d6c1b68ac4368" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkaj_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a1edb0064c59b742bf7377071c706dc34" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkajshifted_</name></member>
-      <member refid="class_quant_lib_1_1_s_m_m_drift_calculator_1a40688c5a094973bbb4d829d0f56628b1" prot="private" virt="non-virtual"><scope>QuantLib::SMMDriftCalculator</scope><name>wkpj_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

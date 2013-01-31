@@ -36,34 +36,6 @@
 <para>Zero exercise condition. </para>    </briefdescription>
     <detaileddescription>
 <para>Used in CEV models </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="15482">
-        <label>ZeroCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_zero_condition"/>
-        <childnode refid="15483" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="15483">
-        <label>StepCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="15484">
-        <label>ZeroCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_zero_condition"/>
-        <childnode refid="15485" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="15485">
-        <label>StepCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/zerocondition.hpp" bodystart="35" bodyend="42"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" virt="virtual"><scope>QuantLib::ZeroCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::ZeroCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

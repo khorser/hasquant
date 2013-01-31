@@ -75,35 +75,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2376">
-        <label>CompositeConstraint::Impl</label>
-        <childnode refid="2377" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2377">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2378">
-        <label>CompositeConstraint::Impl</label>
-        <childnode refid="2379" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2379">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="112" bodyend="122"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1af52f657d5950bd668e858a718936b9d3" prot="private" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>c1_</name></member>
-      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1ab3621e87adf3a9b3086633435deeb327" prot="private" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>c2_</name></member>
-      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1a97371fef8a4150c4928c1f976cd6fd05" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_composite_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::CompositeConstraint::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

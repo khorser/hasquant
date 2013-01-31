@@ -145,22 +145,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="54"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_exponential_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>void generateArguments</definition>
-        <argsstring>()</argsstring>
-        <name>generateArguments</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a88bf4673a29cef102cf58706906dc001">generateArguments</reimplements>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="57"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>exponential correlation model </para>    </briefdescription>
     <detaileddescription>
@@ -170,48 +154,6 @@
   Different Covariance Parameterizations of Libor Market Model and Joint
   Caps/Swaptions Calibration,
   (&lt;http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf&gt;)</verbatim> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9121">
-        <label>LmExponentialCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_exponential_correlation_model"/>
-        <childnode refid="9122" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9122">
-        <label>LmCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9123">
-        <label>LmExponentialCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_exponential_correlation_model"/>
-        <childnode refid="9124" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9124">
-        <label>LmCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmexpcorrmodel.hpp" bodystart="45" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1ab72acef2ee1e4e2e6b171bca7d94fc12" prot="private" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>corrMatrix_</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1abc633d3c7227b3f3454b7af5272bd3f4" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>factors</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>generateArguments</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>isTimeIndependent</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a0d184c3012011e708072e787c9a639c7" prot="public" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>LmCorrelationModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1acbabab2b213a446829faa8200314cd5c" prot="public" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>LmExponentialCorrelationModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>params</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>pseudoSqrt</name></member>
-      <member refid="class_quant_lib_1_1_lm_exponential_correlation_model_1a33c70222af833ca31bbd2014bc01ab9d" prot="private" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>pseudoSqrt_</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>setParams</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1aa816fa6ea150c48362fa3b105866a96f" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a2817622116ad383444aa06f36ee20ce8" prot="public" virt="virtual"><scope>QuantLib::LmExponentialCorrelationModel</scope><name>~LmCorrelationModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -2,73 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonHullWhiteRatesPart</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1ae10660f3b964d88f488c5fc9c9395656" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>const Array rates_</definition>
-        <argsstring></argsstring>
-        <name>rates_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a505e5bedc8bb41f423b95b2469cb49a0" prot="protected" static="no" mutable="no">
-        <type>const TripleBandLinearOp</type>
-        <definition>const TripleBandLinearOp dzMap_</definition>
-        <argsstring></argsstring>
-        <name>dzMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a8018e75a37e665bc42e250eee7b4e816" prot="protected" static="no" mutable="no">
-        <type>const TripleBandLinearOp</type>
-        <definition>const TripleBandLinearOp dzzMap_</definition>
-        <argsstring></argsstring>
-        <name>dzzMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" static="no" mutable="no">
-        <type>TripleBandLinearOp</type>
-        <definition>TripleBandLinearOp mapT_</definition>
-        <argsstring></argsstring>
-        <name>mapT_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a714c59061823c674131b96e33bda273b" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white_process" kindref="compound">HullWhiteProcess</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;HullWhiteProcess&gt; hwProcess_</definition>
-        <argsstring></argsstring>
-        <name>hwProcess_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a32f97d4edac11157fe5bc9fe2361d65c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -130,28 +63,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="6075">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="6074">
-        <label>FdmHestonHullWhiteRatesPart</label>
-        <childnode refid="6075" relation="usage">
-          <edgelabel>rates_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="70" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a505e5bedc8bb41f423b95b2469cb49a0" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>dzMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a8018e75a37e665bc42e250eee7b4e816" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>dzzMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a32f97d4edac11157fe5bc9fe2361d65c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>FdmHestonHullWhiteRatesPart</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>getMap</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a714c59061823c674131b96e33bda273b" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>hwProcess_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>mapT_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1ae10660f3b964d88f488c5fc9c9395656" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>rates_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_rates_part_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteRatesPart</scope><name>setTime</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

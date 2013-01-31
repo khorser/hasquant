@@ -222,25 +222,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" bodystart="35" bodyend="53"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a6e312abeba2d1b3f0b7cae540801d36f" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>CraigSneyd</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a3fb12bfbb4f42c81aec7bbbb0610521c" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>CraigSneydType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a10fb0e0daf2b630c4ec61845606f5c59" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>Douglas</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a5c1a3e290f125ac052d1e9b0ac19ba41" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>DouglasType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a9696d9642bc713b001ee47f728ae73a1" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ExplicitEuler</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179abda58cfadc362ab3e3fe96819977dcf9" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ExplicitEulerType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a17302b47b3870d31d178b95dd5fff755" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>FdmSchemeDesc</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>FdmSchemeType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1afce89f5c626893465b70dce3ebf77935" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>Hundsdorfer</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179af588792bcf9942c15fa476ea27434941" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>HundsdorferType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1af47acad1f645e1147c623bf9a72c9bab" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ImplicitEuler</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a9e59b10cff30dfcc07c3d90ba9e03ce4" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ImplicitEulerType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a1462340e051d7c2af547c29b77b11459" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ModifiedCraigSneyd</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a082c31f9add21898b74fdc1caa069179a817bb12ff21d3a054c9a300e3b792f6b" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ModifiedCraigSneydType</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1adc090a4531b22012522231b528340e97" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>ModifiedHundsdorfer</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a6040775a62badb3287320f921e52aac0" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>mu</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a10f468e7786f066e29f562fcae039a87" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>theta</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_scheme_desc_1a8c2401345608a42b18b9d8b58d7d887e" prot="public" virt="non-virtual"><scope>QuantLib::FdmSchemeDesc</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -3,47 +3,6 @@
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionStandard</compoundname>
     <basecompoundref prot="public" virt="non-virtual">GFunction</basecompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a299aabd470616f61db8312a843db6030" prot="protected" static="no" mutable="no">
-        <type>const int</type>
-        <definition>const int q_</definition>
-        <argsstring></argsstring>
-        <name>q_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="101" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a01517fec56e5a81589c2b6f4b5681c45" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1ae54a52b379cb771dc46733df81dc0849" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size swapLength_</definition>
-        <argsstring></argsstring>
-        <name>swapLength_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="106" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a68f23aa4bdf5d39805c0434a36675dab" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -127,15 +86,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="90" bodyend="107"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a01517fec56e5a81589c2b6f4b5681c45" prot="protected" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>delta_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a2b0e508fbef761b58361ccb516db59ac" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>firstDerivative</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a68f23aa4bdf5d39805c0434a36675dab" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>GFunctionStandard</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a9442defbbad440139e420aa43415e7ec" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1a299aabd470616f61db8312a843db6030" prot="protected" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>q_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1aa0c141f9a05d4e49ee3750a947bb1cd7" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>secondDerivative</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard_1ae54a52b379cb771dc46733df81dc0849" prot="protected" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>swapLength_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_1a2093b4ceca15348323db42ad5b8aedf1" prot="public" virt="virtual"><scope>QuantLib::GFunctionFactory::GFunctionStandard</scope><name>~GFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

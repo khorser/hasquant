@@ -378,29 +378,5 @@
     <detaileddescription>
 <para>This class provides a more comfortable way to instantiate standard market cap and floor. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makecapfloor.hpp" bodystart="37" bodyend="74"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a0cf891fc8ae3104c048a54e50b329e41" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>asOptionlet</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>asOptionlet_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1ad16ae34a3483f675942bf573ec4271ba" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>capFloorType_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>engine_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>firstCapletExcluded_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1ab701fbc7fe43af2644d4d2eb35bf76c0" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>MakeCapFloor</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a7899615d541219d449d54a7784b56d9a" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>makeVanillaSwap_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a51e4bc45473f4975db2c2e7cee76d3e1" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>operator boost::shared_ptr&lt; CapFloor &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a7bea6c0ff7c450cbb59ef34df4bffe99" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>operator CapFloor</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1ac5964e56d440144efcdbdfa13a5283e4" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withCalendar</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a886920e731cacfa311f5695959e87d3d" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withConvention</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a413b379fc70f316436cb7f5895d1262d" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withDayCount</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a90ba16b56f1b503216c771b350995be5" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withEffectiveDate</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1ad96a772f128ed68485e6a9c8126fb861" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withEndOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a65af3e47e417392a087d62e00cc14cb7" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withFirstDate</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1acbc7ed2ce81e3a290410c4d3c9719b5e" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withNextToLastDate</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a49da727eac49aa25b7049d97f450add8" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withNominal</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a13eea987eb1967c837d05e392bfe34b1" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withPricingEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a55c3222d9f533a17c06d0113ac1c6561" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withRule</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1ae1bd69239e87e1c167e9cfa744e5587f" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withTenor</name></member>
-      <member refid="class_quant_lib_1_1_make_cap_floor_1a99bbc690fab22b6b152102edfa90a6c5" prot="public" virt="non-virtual"><scope>QuantLib::MakeCapFloor</scope><name>withTerminationDateConvention</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

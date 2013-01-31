@@ -86,44 +86,6 @@
 <para>Dynamics of the short-rate under the Cox-Ingersoll-Ross model </para>    </briefdescription>
     <detaileddescription>
 <para>The state variable <formula id="297">$ y_t $</formula> will here be the square-root of the short-rate. It satisfies the following stochastic equation <formula id="298">\[ dy_t=\left[ (\frac{k\theta }{2}+\frac{\sigma ^2}{8})\frac{1}{y_t}- \frac{k}{2}y_t \right] d_t+ \frac{\sigma }{2}dW_{t} \]</formula>. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="2824">
-        <label>CoxIngersollRoss::Dynamics</label>
-        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="2825" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2825">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="2826">
-        <label>Dynamics</label>
-        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="2824" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2827">
-        <label>CoxIngersollRoss::Dynamics</label>
-        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="2828" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2828">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="108" bodyend="124"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>Dynamics</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>process</name></member>
-      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>shortRate</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>ShortRateDynamics</name></member>
-      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>variable</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::CoxIngersollRoss::Dynamics</scope><name>~ShortRateDynamics</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

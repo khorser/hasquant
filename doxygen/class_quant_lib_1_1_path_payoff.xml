@@ -120,13 +120,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathpayoff.hpp" bodystart="36" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_path_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::PathPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_path_payoff_1a04619d6110aa5a91bd45584e3cb76681" prot="public" virt="pure-virtual"><scope>QuantLib::PathPayoff</scope><name>basisSystemDimension</name></member>
-      <member refid="class_quant_lib_1_1_path_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" virt="pure-virtual"><scope>QuantLib::PathPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_path_payoff_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::PathPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_path_payoff_1a9febbc13f6d1310bada5929dde07e411" prot="public" virt="pure-virtual"><scope>QuantLib::PathPayoff</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_path_payoff_1a444a94ef33e9aebb6daffdd30b35d931" prot="public" virt="virtual"><scope>QuantLib::PathPayoff</scope><name>~PathPayoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

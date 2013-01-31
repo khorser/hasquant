@@ -92,40 +92,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="126" bodyend="130"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_day_counter_1_1_impl" kindref="compound">Impl</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Impl&gt; impl_</definition>
-        <argsstring></argsstring>
-        <name>impl_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="60" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>DayCounter</definition>
-        <argsstring>(const boost::shared_ptr&lt; Impl &gt; &amp;impl)</argsstring>
-        <name>DayCounter</name>
-        <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_day_counter_1_1_impl" kindref="compound">Impl</ref> &gt; &amp;</type>
-          <declname>impl</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>This constructor can be invoked by derived classes which define a given implementation. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="64" bodyend="64"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -204,66 +170,6 @@
 <para>day counter class </para>    </briefdescription>
     <detaileddescription>
 <para>This class provides methods for determining the length of a time period according to given market convention, both as a number of days and as a year fraction.</para><para>The Bridge pattern is used to provide the base behavior of the day counter. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="3364">
-        <label>Thirty360</label>
-        <link refid="class_quant_lib_1_1_thirty360"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3358">
-        <label>Actual360</label>
-        <link refid="class_quant_lib_1_1_actual360"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3361">
-        <label>Business252</label>
-        <link refid="class_quant_lib_1_1_business252"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3360">
-        <label>ActualActual</label>
-        <link refid="class_quant_lib_1_1_actual_actual"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3359">
-        <label>Actual365Fixed</label>
-        <link refid="class_quant_lib_1_1_actual365_fixed"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3357">
-        <label>DayCounter</label>
-        <link refid="class_quant_lib_1_1_day_counter"/>
-      </node>
-      <node id="3362">
-        <label>OneDayCounter</label>
-        <link refid="class_quant_lib_1_1_one_day_counter"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3363">
-        <label>SimpleDayCounter</label>
-        <link refid="class_quant_lib_1_1_simple_day_counter"/>
-        <childnode refid="3357" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="43" bodyend="89"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>DayCounter</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>DayCounter</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" virt="non-virtual"><scope>QuantLib::DayCounter</scope><name>yearFraction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

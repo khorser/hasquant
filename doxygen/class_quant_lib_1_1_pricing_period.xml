@@ -93,45 +93,6 @@
 <para>Time pricingperiod described by a number of a given time unit. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12511">
-        <label>DateInterval</label>
-        <link refid="class_quant_lib_1_1_date_interval"/>
-      </node>
-      <node id="12510">
-        <label>PricingPeriod</label>
-        <link refid="class_quant_lib_1_1_pricing_period"/>
-        <childnode refid="12511" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12513">
-        <label>DateInterval</label>
-        <link refid="class_quant_lib_1_1_date_interval"/>
-      </node>
-      <node id="12512">
-        <label>PricingPeriod</label>
-        <link refid="class_quant_lib_1_1_pricing_period"/>
-        <childnode refid="12513" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/pricingperiod.hpp" bodystart="35" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_date_interval_1a1072dc506a9f6bf6ba7b89745e7719cc" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>DateInterval</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1aa5cd194487771e9d789b71ffa1f36f70" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>DateInterval</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1a6cb26aaac364e1cb4f93e17c25aa95aa" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>endDate</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1abdfb3e737873bfe0574dba6d10c267f4" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>intersection</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1ae0695714fad43ad67b8a1f79a96dcb15" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>isDateBetween</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1a1a914561187c93257ba716185dfe633b" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1a718bd373cb3114db3887a2f5d3a0c6a0" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_pricing_period_1afbb01189661a04d625dca0e40b60481d" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>paymentDate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_period_1a292ad9c54719780e61282ddeeac02410" prot="private" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>paymentDate_</name></member>
-      <member refid="class_quant_lib_1_1_pricing_period_1a0bbfdd8aebce3a0ef7699b865100c636" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>PricingPeriod</name></member>
-      <member refid="class_quant_lib_1_1_pricing_period_1ad8cfcb13eeb6b4122711b52bf1f5c5d3" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>quantity</name></member>
-      <member refid="class_quant_lib_1_1_pricing_period_1ab6b30088882e06f81614dabbecb34a3e" prot="private" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>quantity_</name></member>
-      <member refid="class_quant_lib_1_1_date_interval_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" virt="non-virtual"><scope>QuantLib::PricingPeriod</scope><name>startDate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

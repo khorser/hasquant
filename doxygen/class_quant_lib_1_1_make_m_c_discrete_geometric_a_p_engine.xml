@@ -246,22 +246,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="136" bodyend="156"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a3594a21d9020375b8f1c5c2c71a1c548" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>MakeMCDiscreteGeometricAPEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1aad2d997277aacde290024aae4efa8fa3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1aa580cf72c584dae27c4833050f99069c" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a6696604e1b17ce806adf7a3ca082e7d2" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ad63f28ef34ba1f7d30f5565a2e571ab5" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1ac47c2b01099e3c1a0febd8780c00953d" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_geometric_a_p_engine_1a923a37c35a088b3d3dd43ea2fbd2e697" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteGeometricAPEngine</scope><name>withSeed</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

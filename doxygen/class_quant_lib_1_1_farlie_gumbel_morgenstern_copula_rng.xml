@@ -107,13 +107,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/farliegumbelmorgensterncopularng.hpp" bodystart="36" bodyend="46"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1a17bb1ad743439a304ed64de9e6892b75" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>FarlieGumbelMorgensternCopulaRng</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1a889661f8909e4c999ff8ce0f20d88ca1" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>uniformGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopulaRng</scope><name>urng_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

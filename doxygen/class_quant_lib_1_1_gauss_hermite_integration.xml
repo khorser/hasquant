@@ -32,38 +32,6 @@
 <para>generalized Gauss-Hermite integration </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Hermite integration. <formula id="193">\[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="194">\[ w(x;\mu)=|x|^{2\mu} \exp{-x*x} \]</formula> and <formula id="195">\[ \mu &gt; -0.5 \]</formula> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="6962">
-        <label>GaussHermiteIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hermite_integration"/>
-        <childnode refid="6963" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6963">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6964">
-        <label>GaussHermiteIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hermite_integration"/>
-        <childnode refid="6965" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6965">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="98" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gauss_hermite_integration_1a41809a1dde79b9e76202139c03b5062c" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>GaussHermiteIntegration</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussHermiteIntegration</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -34,10 +34,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/averagetype.hpp" bodystart="34" bodyend="36"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_average_1a1d1cfd8ffb84e947f82999c682b666a7a45e14e29137d6b26fe4ac37d2cf3158c" prot="public" virt="non-virtual"><scope>QuantLib::Average</scope><name>Arithmetic</name></member>
-      <member refid="struct_quant_lib_1_1_average_1a1d1cfd8ffb84e947f82999c682b666a7a46d8d47701b60203d023c1c14c87e3a2" prot="public" virt="non-virtual"><scope>QuantLib::Average</scope><name>Geometric</name></member>
-      <member refid="struct_quant_lib_1_1_average_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Average</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -92,36 +92,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12122">
-        <label>PerformanceOptionPathPricer</label>
-        <childnode refid="12123" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12123">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12124">
-        <label>PerformanceOptionPathPricer</label>
-        <childnode refid="12125" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12125">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" line="107" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/cliquet/mcperformanceengine.hpp" bodystart="107" bodyend="117"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_performance_option_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" virt="non-virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>discounts_</name></member>
-      <member refid="class_quant_lib_1_1_performance_option_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_performance_option_path_pricer_1a99f9cb4c6fe92a806a9f33e1eeb5f846" prot="public" virt="non-virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>PerformanceOptionPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_performance_option_path_pricer_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" virt="non-virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_performance_option_path_pricer_1abcdb1c11e3593354931e650dd3dd13f2" prot="private" virt="non-virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::PerformanceOptionPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -187,19 +187,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="38" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>expiry</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a35a6031d373fd3a059caa000189a7b37" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>expiry_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a8ec1750ec5666ad6ac99e955ce196170" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>impliedVolatility</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a8192c66d14a3d9fee44e82ecf27c0f97" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>impliedVolatility_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a48895cd8fda9324a2e4878c2152c429d" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>inputModel_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1aa816dc2db612e172040dfcb99ac95bc1" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>SwaptionPseudoDerivative</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>variance</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a24129c87c49238b3cfb21fe9478f0a07" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>variance_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a061575e2908a30f5f646b4f4297db0bb" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>varianceDerivative</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1ac06562f94b91e275e1fb8d2541b98c33" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>varianceDerivatives_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>volatilityDerivative</name></member>
-      <member refid="class_quant_lib_1_1_swaption_pseudo_derivative_1aa1ffcd296066282de075b6649a0e0dff" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionPseudoDerivative</scope><name>volatilityDerivatives_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

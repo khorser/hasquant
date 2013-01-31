@@ -465,28 +465,5 @@
     <detaileddescription>
 <para>This class encapsulate the interest rate compounding algebra. It manages day-counting conventions, compounding conventions, conversion between different conventions, discount/compound factor calculations, and implied/equivalent rate calculations.</para><para><xrefsect id="test_1_test000023"><xreftitle>Tests</xreftitle><xrefdescription><para>Converted rates are checked against known good results </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/interestrate.hpp" bodystart="40" bodyend="189"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_interest_rate_1acf57dd9de966efed783083d0d4dacbf5" prot="private" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>comp_</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1aac316c9ade1203219bfab37e91726386" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>compoundFactor</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1ac86ed2ab8a602bfc623d65af6b85f2ff" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>compoundFactor</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a6968bd096b10d7259e742fa324abade3" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>compounding</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>dayCounter</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a28c827de4ff4b301f3132bfb1cfb0903" prot="private" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>dc_</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a009346f1741a384db90b95e6f02b7a36" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>discountFactor</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a155da734e9f9d00dbc775644f176adff" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>discountFactor</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a3dda956718db96b302e4023950c6f409" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>equivalentRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a2b03fbc97a8faff6eb6695e10f83cc27" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>equivalentRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1ae594b335935559979aa1fe648061b52c" prot="private" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>freq_</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1acc815ee6278a0efaf4eee14ab425f806" prot="private" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>freqMakesSense_</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a70fafd3d3f212d824101e977784dbcf5" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>frequency</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a9805f175eeb2f7eb24689d784df29470" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>impliedRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a779d7cefddffa0b2fd85199c840dd3c3" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>impliedRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1aa302b38a9a595c752fb01fcb473e2924" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>InterestRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1ab8a1baa4ac690cf1e2cf6da375b3f11e" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>InterestRate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a00223984215971fb8036aec3aedcc2bb" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>operator Rate</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a470e6cf45fe6bf07123c0ba59f292814" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1ae82158a816c03ee5401734e9af8ebdc1" prot="private" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>r_</name></member>
-      <member refid="class_quant_lib_1_1_interest_rate_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" virt="non-virtual"><scope>QuantLib::InterestRate</scope><name>rate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

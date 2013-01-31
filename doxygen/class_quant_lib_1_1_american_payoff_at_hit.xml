@@ -426,37 +426,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000050"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>calculate greeks </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffathit.hpp" bodystart="33" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>alpha_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a5620e13a1cbf69c0d2a85c75d6781065" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>AmericanPayoffAtHit</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>beta_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1acf2aa28a8fcd6f66c0d3e49d019e7a6d" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>cum_d1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a39a065eac6adb9f4b219476d8c0d7996" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>cum_d2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1aeb53f7624e898bd863b63f4f1456420b" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>D1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1af4a5645e6b8741c3da46581b94693438" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>D2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a09bf58c29a716d125bd5a0ef81422697" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>DalphaDd1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1af1e110eae91fab98ae1a7af92a2b2ff2" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>DbetaDd2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a2397bf69d6801e3328c9273143c87ce6" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>delta</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>dividendDiscount_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1ac1cf3296c83d8cde3e794018de4c3470" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>DKDstrike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a433beb006c85c4ce7eb801559f157c83" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>DXDstrike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a6080532cd8596049370f5002b384806a" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>forward_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>gamma</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1aa42afe84a98eee8702bd363d0ca44d7d" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>inTheMoney_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a629e5965bc4384a1ecaa02f7dd40371f" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>K_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>lambda_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a3f9f8a52c6032fa1654ffb09a3a08655" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>log_H_S_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>mu_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a67588f1d2f5a43bcbe81baf25b5d0dcc" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>muMinusLambda_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a003e8fb419c8753ee29cfaa9a42bf059" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>muPlusLambda_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>rho</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1ad368d415c7aa16fe7d97d156ecb70bff" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>spot_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1ae2772c4dc7dc87e946c2d53f7be8673f" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>stdDev_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a24129c87c49238b3cfb21fe9478f0a07" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>variance_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_hit_1a495d7956053f82f3c199fce368666905" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtHit</scope><name>X_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

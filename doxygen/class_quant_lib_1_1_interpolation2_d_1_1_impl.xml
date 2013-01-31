@@ -214,33 +214,6 @@
 <para>abstract base class for 2-D interpolation implementations </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8529">
-        <label>templateImpl&lt; I1, I2, M &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl"/>
-        <childnode refid="8528" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8528">
-        <label>Interpolation2D::Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation2_d_1_1_impl"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp" bodystart="47" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a26813a0c21109b0a052542f725f88d83" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a33626bf0b191571367cc6c0cf97f4f59" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>isInRange</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a062c9f965c87d9295a8d17f401ccfba8" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>locateX</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a50c3515366911ef7efc911087577c647" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>locateY</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a737ab835f21079ea2fa4c685d3b578d1" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>xMax</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a55a9dc8ca1fcece87abe8e4a8e075cbc" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>xMin</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>xValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1aef6ca12cfd5ef96200c70e46a8f1d878" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>yMax</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a456dc137e57b9e6c2c942c19446b589d" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>yMin</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>yValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1a2ffa5169a058d900c4503c6b59c315ab" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>zData</name></member>
-      <member refid="class_quant_lib_1_1_interpolation2_d_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Interpolation2D::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -31,38 +31,6 @@
 <para>Gauss-Gegenbauer integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Gegenbauer integration. <formula id="196">\[ \int_{-1}^{1} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="202">\[ w(x)=(1-x^2)^{\lambda-1/2} \]</formula> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="6952">
-        <label>GaussGegenbauerIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_gegenbauer_integration"/>
-        <childnode refid="6953" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6953">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6954">
-        <label>GaussGegenbauerIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_gegenbauer_integration"/>
-        <childnode refid="6955" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6955">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="194" bodyend="199"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gauss_gegenbauer_integration_1ae6929ed5e1a0d9d3faccabffab3abd73" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>GaussGegenbauerIntegration</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussGegenbauerIntegration</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

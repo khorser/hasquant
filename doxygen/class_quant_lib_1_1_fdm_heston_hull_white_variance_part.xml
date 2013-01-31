@@ -2,21 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonHullWhiteVariancePart</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a5fcf2c1bf3e4eb77a1fdccadfcdb8d75" prot="protected" static="no" mutable="no">
-        <type>const TripleBandLinearOp</type>
-        <definition>const TripleBandLinearOp dyMap_</definition>
-        <argsstring></argsstring>
-        <name>dyMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a28383606eda70b46b073161291dd7bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -66,10 +51,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="58" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a5fcf2c1bf3e4eb77a1fdccadfcdb8d75" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteVariancePart</scope><name>dyMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a28383606eda70b46b073161291dd7bd3" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteVariancePart</scope><name>FdmHestonHullWhiteVariancePart</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteVariancePart</scope><name>getMap</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

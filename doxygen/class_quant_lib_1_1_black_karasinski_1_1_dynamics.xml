@@ -94,39 +94,6 @@
 <para>Short-rate dynamics in the Black-Karasinski model. </para>    </briefdescription>
     <detaileddescription>
 <para>The short-rate is here <formula id="293">\[ r_t = e^{\varphi(t) + x_t} \]</formula> where <formula id="294">$ \varphi(t) $</formula> is the deterministic time-dependent parameter (which can not be determined analytically) used for term-structure fitting and <formula id="295">$ x_t $</formula> is the state variable following an Ornstein-Uhlenbeck process. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="1097">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="1096">
-        <label>BlackKarasinski::Dynamics</label>
-        <link refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics"/>
-        <childnode refid="1097" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1099">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="1098">
-        <label>BlackKarasinski::Dynamics</label>
-        <link refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics"/>
-        <childnode refid="1099" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="74" bodyend="91"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a1c2cb05637115bc5bdb52fb348bc7704" prot="public" virt="non-virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>Dynamics</name></member>
-      <member refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" virt="non-virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>fitting_</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>process</name></member>
-      <member refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" virt="virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>shortRate</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>ShortRateDynamics</name></member>
-      <member refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" virt="virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>variable</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::BlackKarasinski::Dynamics</scope><name>~ShortRateDynamics</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

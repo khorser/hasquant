@@ -172,57 +172,6 @@
 <para>Christmas, December 25th (moved to Monday if Sunday) </para></listitem>
 </itemizedlist>
 </para><para><xrefsect id="test_1_test000152"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="14404">
-        <label>UnitedStates</label>
-        <link refid="class_quant_lib_1_1_united_states"/>
-        <childnode refid="14405" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14405">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14406">
-        <label>UnitedStates</label>
-        <link refid="class_quant_lib_1_1_united_states"/>
-        <childnode refid="14407" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14407">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp" bodystart="121" bodyend="153"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1a656020bddfdb2d9f48c9f0dc12b26597" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>addHoliday</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>adjust</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>advance</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>advance</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>businessDaysBetween</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1af5714af8cb45a29153e0fd53ee5e7241" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>Calendar</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>endOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a561f5c560b2b1a55abd84072867a8016" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>GovernmentBond</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>holidayList</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a85aed4d5b4c114bdd47766ef9e52e2f7" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a406c43181bd59e07a145a4722fdf2480" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>isEndOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aa529b7298ba96b90261ed56c34f015f8" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>isHoliday</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a9c1941e4f95b1d74d7f9b2e772174c73" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>Market</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a6a00c6db1276885bef0cc051c47e095c" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>NERC</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a3f2821f9809075eb575505bcc2525103" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>NYSE</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1af842d77a8aacbc167a64749dba1a3a87" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aab055e8665c0e69976ecbe4aebd47a8f" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ae9d6f7766f633f5d75cc3acd7826bc9f" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a4c682210881efe66d463cc0907f00722" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>removeHoliday</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>Settlement</name></member>
-      <member refid="class_quant_lib_1_1_united_states_1a3ebaa0e0dd38c024125606c66ecf1697" prot="public" virt="non-virtual"><scope>QuantLib::UnitedStates</scope><name>UnitedStates</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -188,22 +188,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapratetrigger.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapratetrigger.hpp" bodystart="29" bodyend="46"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1acd9318273e52073d486e779f628ca372" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1af66beb74da59fb4825934b77b8d2c469" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::SwapRateTrigger</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1aa8dcb0de162131db7bd1609d221445ea" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>exerciseTimes</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1aa010100d61810501bed98b1773802fe5" prot="private" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>exerciseTimes_</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1aec2d702d48459594eb8f12eaec1920bd" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::SwapRateTrigger</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1a0e6b881d8f8f11a9b53c51056f185ba0" prot="private" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>rateIndex_</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>relevantTimes</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1a318b08f230f541f21df3be6d6bead337" prot="public" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>SwapRateTrigger</name></member>
-      <member refid="class_quant_lib_1_1_swap_rate_trigger_1a410a858f5e8626bc3f12acad06213eca" prot="private" virt="non-virtual"><scope>QuantLib::SwapRateTrigger</scope><name>swapTriggers_</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a131d63d54acfaaee85f99d675cb83fa8" prot="public" virt="virtual"><scope>QuantLib::SwapRateTrigger</scope><name>~ExerciseStrategy</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

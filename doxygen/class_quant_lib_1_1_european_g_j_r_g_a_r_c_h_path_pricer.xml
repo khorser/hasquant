@@ -79,35 +79,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5258">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="5257">
-        <label>EuropeanGJRGARCHPathPricer</label>
-        <childnode refid="5258" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5260">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="5259">
-        <label>EuropeanGJRGARCHPathPricer</label>
-        <childnode refid="5260" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeangjrgarchengine.hpp" bodystart="80" bodyend="89"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanGJRGARCHPathPricer</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1a28f97f523ce51dc22d0338ea15dc67d0" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanGJRGARCHPathPricer</scope><name>EuropeanGJRGARCHPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1ad417fc96cc2be719a7adfc60ca77d4bf" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanGJRGARCHPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_european_g_j_r_g_a_r_c_h_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanGJRGARCHPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::EuropeanGJRGARCHPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

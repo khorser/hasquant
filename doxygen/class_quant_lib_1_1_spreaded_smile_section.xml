@@ -150,109 +150,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="37"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
-        <definition>Volatility volatilityImpl</definition>
-        <argsstring>(Rate strike) const </argsstring>
-        <name>volatilityImpl</name>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>strike</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="52"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13285">
-        <label>SpreadedSmileSection</label>
-        <childnode refid="13286" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13287">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="13288">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="13286">
-        <label>SmileSection</label>
-        <link refid="class_quant_lib_1_1_smile_section"/>
-        <childnode refid="13287" relation="public-inheritance">
-        </childnode>
-        <childnode refid="13288" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13289">
-        <label>SpreadedSmileSection</label>
-        <childnode refid="13290" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13291">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="13292">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="13290">
-        <label>SmileSection</label>
-        <link refid="class_quant_lib_1_1_smile_section"/>
-        <childnode refid="13291" relation="public-inheritance">
-        </childnode>
-        <childnode refid="13292" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/spreadedsmilesection.hpp" bodystart="34" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>atmLevel</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a1725ea0bf0762b6642c802532d8c546f" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>dayCounter</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1aa3f1474389737c0b802f27e03656abb3" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>exerciseDate</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a0dd89caf6d5f685c479d266d32cc7146" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>exerciseTime</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1ae4bc9b3e3bb66dbd4ddc2a258b6df07f" prot="protected" virt="virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>initializeExerciseTime</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>maxStrike</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>minStrike</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::SpreadedSmileSection</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::SpreadedSmileSection</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a5662908c63119a3b347a7e0ec8544afa" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>referenceDate</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1af20784bdbcd6f66d1ed30f5dd728c5ae" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>SmileSection</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a2f1c0e31f86a1b962d54ce1d01a88b1c" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>SmileSection</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a5ff57ab31bd4c1a085566dc2c24901fa" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>SmileSection</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a0f282e91dbd00752acbc31e5d6a94174" prot="private" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>spread_</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a4349fb827238bb228b5e94cd7e91982e" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>SpreadedSmileSection</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1a8efb4ba6cc428f87834233aa1c1a479f" prot="private" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>underlyingSection_</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a2cd4ee35012e118552e330c1af05fb2d" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>variance</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="protected" virt="virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>varianceImpl</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a98ff7d335a6b6b02e54e67e66c86f20b" prot="public" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>volatility</name></member>
-      <member refid="class_quant_lib_1_1_spreaded_smile_section_1af871b9faf83959bd9e9a5e3f96fabc45" prot="protected" virt="non-virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>volatilityImpl</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>~Observer</name></member>
-      <member refid="class_quant_lib_1_1_smile_section_1a724f6a7cd3f0779fdb034fe6c20bb0e5" prot="public" virt="virtual"><scope>QuantLib::SpreadedSmileSection</scope><name>~SmileSection</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -113,14 +113,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/gaussianstatistics.hpp" bodystart="114" bodyend="125"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_stats_holder_1a962ffe5a3593be370d5c883365c060f4" prot="public" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>mean</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1a4f1ca7ffabd93bf9fffb9b368222a961" prot="private" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>mean_</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1af728e0bfb80c48d44424d590cbfda34e" prot="public" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>standardDeviation</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1ab2dfc9b536e75b5097734f081c3b4716" prot="private" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>standardDeviation_</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1a6ffe3e3452edb113d713860b0367c1bf" prot="public" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>StatsHolder</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1a64a1ba313ad4c1fd58bf5887c366df5a" prot="public" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>value_type</name></member>
-      <member refid="class_quant_lib_1_1_stats_holder_1a4326ad970569773a96659561239688a1" prot="public" virt="non-virtual"><scope>QuantLib::StatsHolder</scope><name>~StatsHolder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

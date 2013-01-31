@@ -45,9 +45,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="112" bodyend="117"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1afe6b35c7276438094855ba4bf9f6290b" prot="public" virt="pure-virtual"><scope>QuantLib::TridiagonalOperator::TimeSetter</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" virt="virtual"><scope>QuantLib::TridiagonalOperator::TimeSetter</scope><name>~TimeSetter</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -195,17 +195,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="128" bodyend="156"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_log_cubic_1a01a59794e4d2ee97747285d2948f7d22" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>da_</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a288e578670054bd80e88dffe71d28b7b" prot="public" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>global</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a51dd5c56d90da172e213d17a6d74550c" prot="public" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>interpolate</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a820a774ea04c6c1ec4df64e4a7ce26cf" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>leftType_</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a2b8746419d279974ca34ef65d3aa80f9" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>leftValue_</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1af1ffb206e7367aab7d9541404e73c05f" prot="public" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>LogCubic</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a49d945dc193acbcea43c3f0572a9469c" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>monotonic_</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1abe404d63ad88b3b804b458aa23052be5" prot="public" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>requiredPoints</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1a51645ba519df3134cb5c26c778132e40" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>rightType_</name></member>
-      <member refid="class_quant_lib_1_1_log_cubic_1ab7ae2a0cb5b514dcc8f2612d21d2b316" prot="private" virt="non-virtual"><scope>QuantLib::LogCubic</scope><name>rightValue_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

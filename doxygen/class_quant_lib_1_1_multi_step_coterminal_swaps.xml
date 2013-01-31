@@ -215,68 +215,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10102">
-        <label>MultiProductMultiStep</label>
-        <link refid="class_quant_lib_1_1_multi_product_multi_step"/>
-        <childnode refid="10103" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="10103">
-        <label>MarketModelMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
-      </node>
-      <node id="10101">
-        <label>MultiStepCoterminalSwaps</label>
-        <childnode refid="10102" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10105">
-        <label>MultiProductMultiStep</label>
-        <link refid="class_quant_lib_1_1_multi_product_multi_step"/>
-        <childnode refid="10106" relation="public-inheritance">
-        </childnode>
-        <childnode refid="10107" relation="usage">
-          <edgelabel>evolution_</edgelabel>
-        </childnode>
-      </node>
-      <node id="10107">
-        <label>EvolutionDescription</label>
-        <link refid="class_quant_lib_1_1_evolution_description"/>
-      </node>
-      <node id="10106">
-        <label>MarketModelMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_multi_product"/>
-      </node>
-      <node id="10104">
-        <label>MultiStepCoterminalSwaps</label>
-        <childnode refid="10105" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" line="28" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/multistep/multistepcoterminalswaps.hpp" bodystart="28" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a09a087fe4917a8a9d1e6233c6ccd48fc" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_multi_step_1afa0882cb7e47518f285e2bc573d954a9" prot="public" virt="virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_multi_step_1aa5fabad6baffe7913d7edf93e4017faa" prot="protected" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1ad3aae77deea2299a19a323693babc367" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>fixedAccruals_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1ad95df7ff70abb810f7e848c7d25d8321" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>fixedRate_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a27ab05f4ebf0871b131b91330353d146" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>floatingAccruals_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a4db1170620701c092375336c1c0427d7" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>lastIndex_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a4a4d8a31726a6fa648a7d3b2cf282eaa" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_multi_step_1a8646c435d8d2ae90f0b7fbb459701486" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>MultiProductMultiStep</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a124a7d28a908df45de3256e1e272d14a" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>MultiStepCoterminalSwaps</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a5ba8c0749807b349f90cbc0465907c3a" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a3953c271f6d26d5bb53f98ffa417c3af" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a0fa00dfc19817fe667f6a4418f692880" prot="private" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>paymentTimes_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1a6f8b552187132cf1314374dbdd1d8515" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_multi_step_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="protected" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_multi_step_coterminal_swaps_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_multi_product_multi_step_1aaf801d7941a97da6022733449a2a0e24" prot="public" virt="virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_multi_product_1ae3c17a1eb33b8b6e6d5cad68e933df61" prot="public" virt="virtual"><scope>QuantLib::MultiStepCoterminalSwaps</scope><name>~MarketModelMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

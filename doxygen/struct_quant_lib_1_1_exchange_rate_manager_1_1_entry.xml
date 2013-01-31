@@ -87,33 +87,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="5376">
-        <label>ExchangeRateManager::Entry</label>
-        <childnode refid="5377" relation="usage">
-          <edgelabel>startDate</edgelabel>
-          <edgelabel>endDate</edgelabel>
-        </childnode>
-        <childnode refid="5378" relation="usage">
-          <edgelabel>rate</edgelabel>
-        </childnode>
-      </node>
-      <node id="5377">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="5378">
-        <label>ExchangeRate</label>
-        <link refid="class_quant_lib_1_1_exchange_rate"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="72" bodyend="79"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1ac342ae2125b437a76ece3ac962e0d9a3" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager::Entry</scope><name>endDate</name></member>
-      <member refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1a39deb917068018b4c69ffb32652454ab" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager::Entry</scope><name>Entry</name></member>
-      <member refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1a5d93217bb594db2ad36e25a084e5daea" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager::Entry</scope><name>Entry</name></member>
-      <member refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1aee5f2dc297f8395d027f3dfba22f3948" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager::Entry</scope><name>rate</name></member>
-      <member refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager::Entry</scope><name>startDate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

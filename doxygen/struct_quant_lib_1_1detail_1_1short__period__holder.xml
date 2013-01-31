@@ -40,22 +40,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="3688">
-        <label>Period</label>
-        <link refid="class_quant_lib_1_1_period"/>
-      </node>
-      <node id="3687">
-        <label>short_period_holder</label>
-        <childnode refid="3688" relation="usage">
-          <edgelabel>p</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="117" bodyend="120"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1short__period__holder_1a72dd363a04cf664c3558274bfaaff4ea" prot="public" virt="non-virtual"><scope>QuantLib::detail::short_period_holder</scope><name>p</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1short__period__holder_1a96e9faccf51494a0fb94b8104f5e4a33" prot="public" virt="non-virtual"><scope>QuantLib::detail::short_period_holder</scope><name>short_period_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

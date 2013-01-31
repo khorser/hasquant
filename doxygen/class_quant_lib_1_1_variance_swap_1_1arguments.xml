@@ -103,30 +103,6 @@
 <para>Arguments for forward fair-variance calculation </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="14742">
-        <label>VarianceSwap::arguments</label>
-        <link refid="class_quant_lib_1_1_variance_swap_1_1arguments"/>
-        <childnode refid="14743" relation="usage">
-          <edgelabel>startDate</edgelabel>
-          <edgelabel>maturityDate</edgelabel>
-        </childnode>
-      </node>
-      <node id="14743">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/varianceswap.hpp" bodystart="81" bodyend="90"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1ad5d32c50036fcd18c7ac2e251914c0d4" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>maturityDate</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>notional</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1a27a2ef90f4771c24e8bea14a52db4260" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>position</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>startDate</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1a882480a23151c878062d7d03add8c8d8" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>strike</name></member>
-      <member refid="class_quant_lib_1_1_variance_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::VarianceSwap::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -23,60 +23,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="66" bodyend="67"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_simple_sigma_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real calculatePoint</definition>
-        <argsstring>(const IntervalPrice &amp;p)</argsstring>
-        <name>calculatePoint</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &amp;</type>
-          <declname>p</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="69" bodyend="72"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6917">
-        <label>GarmanKlassAbstract</label>
-        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
-      </node>
-      <node id="6916">
-        <label>GarmanKlassSimpleSigma</label>
-        <childnode refid="6917" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6919">
-        <label>GarmanKlassAbstract</label>
-        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
-      </node>
-      <node id="6918">
-        <label>GarmanKlassSimpleSigma</label>
-        <childnode refid="6919" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="63" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_simple_sigma_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>calculatePoint</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>GarmanKlassAbstract</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_simple_sigma_1a98b637de5408d7ca4780643f8fbe77f1" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>GarmanKlassSimpleSigma</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a685ec69bc8fa930e820390e5d34b06f1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>yearFraction_</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::GarmanKlassSimpleSigma</scope><name>~LocalVolatilityEstimator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

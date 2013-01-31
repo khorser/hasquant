@@ -72,10 +72,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="36" bodyend="42"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" virt="non-virtual"><scope>QuantLib::constant</scope><name>constant</name></member>
-      <member refid="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" virt="non-virtual"><scope>QuantLib::constant</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1constant_1a1595f1eed6e7358f3b73ff9e86e9b26f" prot="private" virt="non-virtual"><scope>QuantLib::constant</scope><name>u_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

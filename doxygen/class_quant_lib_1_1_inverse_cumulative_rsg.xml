@@ -172,17 +172,5 @@
 <codeline><highlight class="normal"><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member" tooltip="real number">Real</ref><sp/>IC::operator()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativersg.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativersg.hpp" bodystart="56" bodyend="71"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1a101ac2fd4059964925dda5d18055f99c" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>dimension_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1ab591f7ec3d70d59c63d69289b1b36dee" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>ICD_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1a23eac1260e2d993498bd6dfe74993b1b" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>InverseCumulativeRsg</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1af017e7f142be2fc69eb956293fd74a2c" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>InverseCumulativeRsg</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1aadadd6dc6ad0a8242f2b9a20e18b7391" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1a327da1d683f794be010fe00b4d7bf6a1" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>uniformSequenceGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rsg_1ae51d1e3a4c0e61ebf2d83d1d8ecb250d" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRsg</scope><name>x_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

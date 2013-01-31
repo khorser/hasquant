@@ -91,13 +91,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/asianoption.hpp" bodystart="76" bodyend="87"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1a956f95e66c116ce6eec88b6f7c3dd0fd" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>averageType</name></member>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>fixingDates</name></member>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1acd6dc39629e5a260cd762de12e442068" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>pastFixings</name></member>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1a25f99153630ae11f24e0a2c321545d0b" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>runningAccumulator</name></member>
-      <member refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::DiscreteAveragingAsianOption::arguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

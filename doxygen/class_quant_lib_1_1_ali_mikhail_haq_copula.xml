@@ -64,10 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/alimikhailhaqcopula.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/alimikhailhaqcopula.hpp" bodystart="34" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_ali_mikhail_haq_copula_1afbf916dbbd10bb3eaf2d873b8ba753d8" prot="public" virt="non-virtual"><scope>QuantLib::AliMikhailHaqCopula</scope><name>AliMikhailHaqCopula</name></member>
-      <member refid="class_quant_lib_1_1_ali_mikhail_haq_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::AliMikhailHaqCopula</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_ali_mikhail_haq_copula_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::AliMikhailHaqCopula</scope><name>theta_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

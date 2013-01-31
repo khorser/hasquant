@@ -74,15 +74,5 @@
 
    User has to provide line-search method and optimization end criteria.</verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/bfgs.hpp" bodystart="39" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_b_f_g_s_1ad16a72492104729c191a62e0ab7546a5" prot="public" virt="non-virtual"><scope>QuantLib::BFGS</scope><name>BFGS</name></member>
-      <member refid="class_quant_lib_1_1_b_f_g_s_1a1be451cbbfe4c8c513264452919248f8" prot="private" virt="non-virtual"><scope>QuantLib::BFGS</scope><name>getUpdatedDirection</name></member>
-      <member refid="class_quant_lib_1_1_b_f_g_s_1a5d99af2d22111c8e81b37c1b609b8496" prot="private" virt="non-virtual"><scope>QuantLib::BFGS</scope><name>inverseHessian_</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a2eb34f5697270e3826031c399c402ac0" prot="protected" virt="non-virtual"><scope>QuantLib::BFGS</scope><name>lineSearch_</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" virt="non-virtual"><scope>QuantLib::BFGS</scope><name>LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::BFGS</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" virt="virtual"><scope>QuantLib::BFGS</scope><name>~LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::BFGS</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

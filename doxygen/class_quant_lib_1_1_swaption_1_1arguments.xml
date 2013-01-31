@@ -65,64 +65,6 @@
 <para>Arguments for swaption calculation </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13729">
-        <label>Swaption::arguments</label>
-        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
-        <childnode refid="13730" relation="public-inheritance">
-        </childnode>
-        <childnode refid="13731" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13731">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-      <node id="13730">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_vanilla_swap_1_1arguments"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13732">
-        <label>Swaption::arguments</label>
-        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
-        <childnode refid="13733" relation="public-inheritance">
-        </childnode>
-        <childnode refid="13734" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13734">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-      <node id="13733">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_vanilla_swap_1_1arguments"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="103" bodyend="110"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swaption_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1af3b796aad3df6d60ab2749eb66836af6" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>fixedCoupons</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a9ae1b87c848fe690cc0fb8aae7a1ad53" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>fixedPayDates</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1ac087ed31c7c86f346a554482c05e01bd" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>fixedResetDates</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1af1b3c69bb089af944f809949cc9b5f34" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingAccrualTimes</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1ae2f96326e1598927863981facf1f31e5" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingCoupons</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a732fd5612eea5324a0246b31f7119141" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingFixingDates</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1affddd738e0a1ca4074d4742686ce7e7c" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingPayDates</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a0c1a8eb80d3c37a524935c7519d008e0" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingResetDates</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a217747684dc5dfb5f77382787c63182e" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>floatingSpreads</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>legs</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>nominal</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>payer</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_swaption_1_1arguments_1adbc9e8d5ea5da78fba7924bc32cfb25c" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>settlementType</name></member>
-      <member refid="class_quant_lib_1_1_swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>swap</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_swap_1_1arguments_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_swaption_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::Swaption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::Swaption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -348,29 +348,5 @@
     <detaileddescription>
 <para>This class computes the histogram of a given data set. The caller can specify the number of bins, the breaks, or the algorithm for determining these quantities in computing the histogram. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/histogram.hpp" bodystart="38" bodyend="93"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Algorithm</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a7e4af7419144ae5528fa318b30752a42" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>algorithm</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a164fa2dab796159956a76aab07e30697" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>algorithm_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a18099aedcd39e72c751cc7cd30dba0d7" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>bins</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a3302347dceaaf00ca09365623b6ea1e5" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>bins_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a76063bc3f4d54bbabe5ffac5b43845a3" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>breaks</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a14ca6561ae3a61e765345417cfcb0dd5" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>breaks_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1afe1d8348c24e6589bc7c0b3f689316a7" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1ac985675085bbe718933ca1db2b3b005d" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>counts</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a4d1392f1f19c1c12f148c903249fd01b" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>counts_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1af9c626db41e269447653dcc7cc126d35" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691af6cb3036978c564d260f5016cac04f85" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>FD</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a7bb6aa81b5de0ababfb432c3cb346b5c" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>frequency</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a2ddaa0bf3b6283122b23bafa9f0549c9" prot="private" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>frequency_</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1af51c4df08524a7d196bd62f31e4bc50f" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Histogram</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1af063d6ae60bbc0f1dc23141faf837dfa" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Histogram</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a209d7787d8f50bd1c8adf7612be8dbaf" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Histogram</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a8d8c1526af99504d0b87a320504f9e06" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Histogram</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>None</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691a8f50e622a8b9ff156308dbda611daad2" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Scott</name></member>
-      <member refid="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691ad053b3f1bf23d7f7231caa563b51eb00" prot="public" virt="non-virtual"><scope>QuantLib::Histogram</scope><name>Sturges</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

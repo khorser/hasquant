@@ -210,64 +210,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3629">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
-      </node>
-      <node id="3627">
-        <label>MixedInterpolationImpl&lt; I1, I2, Interpolator1, Interpolator2 &gt;</label>
-        <childnode refid="3628" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3628">
-        <label>templateImpl&lt; I1, I2 &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
-        <childnode refid="3629" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3632">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
-      </node>
-      <node id="3630">
-        <label>MixedInterpolationImpl&lt; I1, I2, Interpolator1, Interpolator2 &gt;</label>
-        <childnode refid="3631" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3631">
-        <label>templateImpl&lt; I1, I2 &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
-        <childnode refid="3632" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/mixedinterpolation.hpp" bodystart="36" bodyend="88"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1aee25a51434e64527c2a50f7800523fcb" prot="private" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>interpolation1_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1acebdb5c92fc297f9490a0a1e11d0d066" prot="private" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>interpolation2_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>isInRange</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1aa5248794b02829ab37c22f19f5232400" prot="protected" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>locate</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a17203ac2d665c31656247a76e2701def" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>MixedInterpolationImpl</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9bedbbacb0b82a55c579510cee137603" prot="private" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>secondDerivative</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9f6eaafbc5eb99a39fdb32ca6e71f732" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>switchIndex</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a0ff844014a170384d262231f91ec970b" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>templateImpl</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a8fe1dde39fae3fa5464d8f5c56d0fedd" prot="private" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xBegin2_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a10aaa529bbf849a034c64dd3d6bcfa45" prot="protected" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xBegin_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a948e1e0e08b57467fba9406d23c16222" prot="protected" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xEnd_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xMax</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xMin</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1abd3804c44239a53b3697f463c999550b" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>xValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac3763f3814c4764c20937e50d5211b67" prot="protected" virt="non-virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>yBegin_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>yValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::detail::MixedInterpolationImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

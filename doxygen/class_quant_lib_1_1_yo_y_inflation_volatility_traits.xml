@@ -194,15 +194,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="35" bodyend="95"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a3d588d285d1bab9713203106b9b86a9a" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>guess</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1af6dd552e8da51da502d6ac15297497fd" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>helper</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a9d9b04d84ff17b4f24e39c77be490a59" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>initialDate</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1add60ca0b8e145256dc34660cc9315fb1" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>initialValue</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>maxIterations</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1a37bffa13fcb33069d36109f4c7d7119a" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>maxValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1adb45509f2b9bad68dc02d371a2f5664b" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>minValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits_1add4d45aa8267ecbd478ea4e9bca49429" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationVolatilityTraits</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

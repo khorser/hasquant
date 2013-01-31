@@ -129,38 +129,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5516">
-        <label>ExtendedCoxIngersollRoss::FittingParameter::Impl</label>
-        <childnode refid="5517" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5517">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5518">
-        <label>ExtendedCoxIngersollRoss::FittingParameter::Impl</label>
-        <childnode refid="5519" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5519">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="115" bodyend="136"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1af45f134687bf58a35c7df79eaba3738e" prot="public" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a9fd062c3257b97efb131dd9a0c168a38" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>k_</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>sigma_</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>termStructure_</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1ae8b7f7095eb4359d77e946884117e3c2" prot="public" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1_1_impl_1afb597b35edab96eecbcbf9a2df04f05d" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>x0_</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::FittingParameter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -70,34 +70,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14017">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-      <node id="14016">
-        <label>Thirty360::EU_Impl</label>
-        <childnode refid="14017" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14019">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-      <node id="14018">
-        <label>Thirty360::EU_Impl</label>
-        <childnode refid="14019" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp" bodystart="71" bodyend="81"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" virt="non-virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>yearFraction</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Thirty360::EU_Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

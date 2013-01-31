@@ -27,8 +27,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" line="219" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" bodystart="219" bodyend="221"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_forward_rate_1_1curve_1a4af2543231103c7abf95f970c9aa103c" prot="public" virt="non-virtual"><scope>QuantLib::ForwardRate::curve</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

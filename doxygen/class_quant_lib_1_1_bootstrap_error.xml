@@ -126,14 +126,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="36" bodyend="51"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>BootstrapError</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1a16444cd27eb4b1924b4403e73c7a3812" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>curve_</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1a7d03a9f9dde0af34767ef0344d62ad74" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>helper</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1ab3a7601ef334012d4178ce63c6354c5a" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>helper_</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1aa3438bfc9dbacb97b128366d96bf4702" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>segment_</name></member>
-      <member refid="class_quant_lib_1_1_bootstrap_error_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::BootstrapError</scope><name>Traits</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

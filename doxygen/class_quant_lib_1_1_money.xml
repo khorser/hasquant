@@ -629,58 +629,6 @@
 <para>amount of cash </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000085"><xreftitle>Tests</xreftitle><xrefdescription><para>money arithmetic is tested with and without currency conversions. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <collaborationgraph>
-      <node id="9949">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="9948">
-        <label>Money</label>
-        <link refid="class_quant_lib_1_1_money"/>
-        <childnode refid="9949" relation="usage">
-          <edgelabel>baseCurrency</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/money.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/money.hpp" bodystart="36" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_money_1ac32291f3a839fe01ad0708ab8c53d107ad49f32edf8f7bca53bf83458dd499f39" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>AutomatedConversion</name></member>
-      <member refid="class_quant_lib_1_1_money_1a5a5c56ec648313fa5ddadf7a4fb0d025" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>baseCurrency</name></member>
-      <member refid="class_quant_lib_1_1_money_1ac32291f3a839fe01ad0708ab8c53d107ac8cddb972a63f1d6c5f642aa14b82212" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>BaseCurrencyConversion</name></member>
-      <member refid="class_quant_lib_1_1_money_1a2a41991b16dc3c024a6e10d61a1ba47f" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>close</name></member>
-      <member refid="class_quant_lib_1_1_money_1ac5af9d7a914bb1d00f3beb1076228755" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>close_enough</name></member>
-      <member refid="class_quant_lib_1_1_money_1adf033835af8d96a070082ca9ee78ce30" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>conversionType</name></member>
-      <member refid="class_quant_lib_1_1_money_1ac32291f3a839fe01ad0708ab8c53d107" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>ConversionType</name></member>
-      <member refid="class_quant_lib_1_1_money_1ae1a84781300fdb3e7b7f3b719fda0610" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>currency</name></member>
-      <member refid="class_quant_lib_1_1_money_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" virt="non-virtual"><scope>QuantLib::Money</scope><name>currency_</name></member>
-      <member refid="class_quant_lib_1_1_money_1ad42da4051bd5057c7005febc348f0e63" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>Money</name></member>
-      <member refid="class_quant_lib_1_1_money_1ab253ce5621aba9d70aa0b6122c930e0a" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>Money</name></member>
-      <member refid="class_quant_lib_1_1_money_1ae4cc8448b08dd3e729e0ce0208d92c5d" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>Money</name></member>
-      <member refid="class_quant_lib_1_1_money_1ac32291f3a839fe01ad0708ab8c53d107a72ed6bc56b64c8b02948e4208525cca7" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>NoConversion</name></member>
-      <member refid="class_quant_lib_1_1_money_1a3097af686d116996f32c88433b488f51" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_money_1a20f80bc20add19d64b899d4a21718fb6" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_money_1a5db337044220e3f8028bb303fc9d4f80" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_money_1aab8bfd679e42b4d3393e3580188018aa" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_money_1a2827c6a704bb2f426e5c49a826949304" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_money_1a3c9b2690f1b8248331fb66fecf4e6bef" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator*=</name></member>
-      <member refid="class_quant_lib_1_1_money_1ab9091b078e346746ed4e67a9fa25f0ff" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_money_1a1f495f020f64c7b177b9e1bc0f99139c" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_money_1a0e3fec38ee32ca690a0c9f601783417c" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_money_1aa2189964ca1f13e92a69a9f31c1bd169" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_money_1a4a130afeac5bc99d0a00e6005dd2fce0" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_money_1ab38f99b9868982e3ca0b51a25f23fb3c" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_money_1a91bb0ba24a70226c3a6dd585ffb15537" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator/</name></member>
-      <member refid="class_quant_lib_1_1_money_1a31eae46b487ee5e972e0e598351edfa6" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator/</name></member>
-      <member refid="class_quant_lib_1_1_money_1ac9dd98528eebd18e42868b0297f3fcd1" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator/=</name></member>
-      <member refid="class_quant_lib_1_1_money_1a1dac0cd307438b7659c9af74bb50b4ee" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator&lt;</name></member>
-      <member refid="class_quant_lib_1_1_money_1a867d4d15a525b67992fceb19eaf832b0" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_money_1a567e24d5625a08c9c0685a51df245cce" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator&lt;=</name></member>
-      <member refid="class_quant_lib_1_1_money_1a2f2e363600f64a5a2447cd706a4718fc" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_money_1afcb0842cc75edc7a10019e72709a249e" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator&gt;</name></member>
-      <member refid="class_quant_lib_1_1_money_1af8258e94ec653301a5d6e7b68c85c24f" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>operator&gt;=</name></member>
-      <member refid="class_quant_lib_1_1_money_1ab64abc57c1e05a27f679aca2f86ebb05" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>rounded</name></member>
-      <member refid="class_quant_lib_1_1_money_1a036a84462f8e441d97e3a13088ac2961" prot="public" virt="non-virtual"><scope>QuantLib::Money</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_money_1a1ddeb37fc39453c586998ce654dcfeea" prot="private" virt="non-virtual"><scope>QuantLib::Money</scope><name>value_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

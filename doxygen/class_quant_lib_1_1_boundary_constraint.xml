@@ -32,38 +32,6 @@
 <para>Constraint imposing all arguments to be in [low,high] </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1428">
-        <label>BoundaryConstraint</label>
-        <link refid="class_quant_lib_1_1_boundary_constraint"/>
-        <childnode refid="1429" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1429">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1430">
-        <label>BoundaryConstraint</label>
-        <link refid="class_quant_lib_1_1_boundary_constraint"/>
-        <childnode refid="1431" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1431">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="87" bodyend="107"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_boundary_constraint_1a4fed5101cc304d63bf230b3cef44fe2e" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>BoundaryConstraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>Constraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint</scope><name>update</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

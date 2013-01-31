@@ -109,13 +109,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000031"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Find/implement an efficient algorithm for evaluating the cumulative Student t-distribution, replacing the <ref refid="class_quant_lib_1_1_newton" kindref="compound">Newton</ref> iteration </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/studenttdistribution.hpp" bodystart="80" bodyend="94"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a9ee5ac7e44b518c6da03615672cb6e9b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>accuracy_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a8d06535f9bae5b629f83cb7261f5913f" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>d_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a73c57033dc1cf3e6bfc24785b43e0733" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a4f10e6a2b86412632d0b563b756b9bb3" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>InverseCumulativeStudent</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1af75d2bb304cdff446e507879467b2582" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>maxIterations_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_student_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeStudent</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

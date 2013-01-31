@@ -247,22 +247,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="156" bodyend="175"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1aa130ee9fa534775fb416c11eb7f1b06b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>MakeMCHullWhiteCapFloorEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1ae17cd1f7f9373246a88cdb16ec452491" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>model_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a0ac4722dad01fe766312ab5bee4dcd27" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1af8777b15f6047620b363a9c7e0772bb5" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a561b650f68d63b0253e9a70eb24b8629" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a5329106a7328ca78e2e0bdc07b5729a6" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a661a71d5a5d8a881eae2732b2cc9a029" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_hull_white_cap_floor_engine_1a4d3f6f24cfa93768f217524ed04cac46" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHullWhiteCapFloorEngine</scope><name>withSeed</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

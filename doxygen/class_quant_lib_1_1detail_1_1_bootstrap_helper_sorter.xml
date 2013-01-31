@@ -35,8 +35,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" line="182" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraphelper.hpp" bodystart="182" bodyend="190"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter_1accc37d0e149204259fca6ae8ab0778de" prot="public" virt="non-virtual"><scope>QuantLib::detail::BootstrapHelperSorter</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

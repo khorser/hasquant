@@ -196,15 +196,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" bodystart="192" bodyend="265"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_default_density_1a3d588d285d1bab9713203106b9b86a9a" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>guess</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a1dce7ca6c1d8734da6e5fe573a39da0d" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>helper</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a890046fcd687c87e12108839dcabda70" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>initialDate</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a42a600043cd5340f4a37f72a8a8cf92f" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>initialValue</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>maxIterations</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a200bd0761b356ff09780d29d02596334" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>maxValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1a60602e5158558f6d9e4db350086c4975" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>minValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_default_density_1ae2cb2f08f352999be171a59b6f7fc150" prot="public" virt="non-virtual"><scope>QuantLib::DefaultDensity</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -89,35 +89,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7224">
-        <label>TimeSetter</label>
-        <link refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter"/>
-      </node>
-      <node id="7223">
-        <label>GenericTimeSetter&lt; PdeClass &gt;</label>
-        <childnode refid="7224" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7226">
-        <label>TimeSetter</label>
-        <link refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter"/>
-      </node>
-      <node id="7225">
-        <label>GenericTimeSetter&lt; PdeClass &gt;</label>
-        <childnode refid="7226" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="81" bodyend="93"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>GenericTimeSetter</name></member>
-      <member refid="class_quant_lib_1_1_generic_time_setter_1a053f900d0848669dd7456436fc674856" prot="private" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>grid_</name></member>
-      <member refid="class_quant_lib_1_1_generic_time_setter_1a9c40ac6b2609150bc1d62f06b3bffad6" prot="private" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>pde_</name></member>
-      <member refid="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" virt="non-virtual"><scope>QuantLib::GenericTimeSetter</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" virt="virtual"><scope>QuantLib::GenericTimeSetter</scope><name>~TimeSetter</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

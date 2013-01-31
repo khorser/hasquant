@@ -246,22 +246,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_strike.hpp" bodystart="125" bodyend="145"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1af8a74a384c570cd2299bd21551fb6c90" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>MakeMCDiscreteArithmeticASEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a82f634d6b3daf36e3b2ffcdc2bf1f314" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1ac96718e61c75447a4533780868c8e552" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a72655deb4f15a1b2c819c1e80651aec6" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a5759e50eb0e93e9898f7886ac8d02afb" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1adcfe14b35104c5d8367a222b1f406ade" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_s_engine_1a38584856949deea1be44c6b87b249db7" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticASEngine</scope><name>withSeed</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

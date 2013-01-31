@@ -185,44 +185,6 @@
     <detaileddescription>
 <para><simplesect kind="note"><para>index names are case insensitive </para></simplesect>
 </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7877">
-        <label>Singleton&lt; IndexManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="7876">
-        <label>IndexManager</label>
-        <link refid="class_quant_lib_1_1_index_manager"/>
-        <childnode refid="7877" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7879">
-        <label>Singleton&lt; IndexManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="7878">
-        <label>IndexManager</label>
-        <link refid="class_quant_lib_1_1_index_manager"/>
-        <childnode refid="7879" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="36" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_index_manager_1a86d5defd0569fa7fe6c33f358a50a7e8" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>clearHistories</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1aefc1fd999512aefe154064e77d3c5a18" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>clearHistory</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a4e969c1b5fd69a14385063b40b2f9c03" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1aaebb8c5c9e8fd14aa534659ab9defff3" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>getHistory</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a5bc396af9eb1d49d50c4b0bd6e03c03b" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>hasHistory</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a43ed480ac14a9943843719bdf928c64d" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>histories</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a4cfdb53fc4ba50a284863d232c0ac5db" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>history_map</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a5cafa02d4aafb676b8bda53204b93dd7" prot="private" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>IndexManager</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a996c0c436b3d99f1ccf6449bd588f608" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>notifier</name></member>
-      <member refid="class_quant_lib_1_1_index_manager_1a9ec05a3736796561dedbc52be053940b" prot="public" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>setHistory</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::IndexManager</scope><name>Singleton</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

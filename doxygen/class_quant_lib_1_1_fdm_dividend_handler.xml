@@ -182,42 +182,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6044">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-      <node id="6043">
-        <label>FdmDividendHandler</label>
-        <childnode refid="6044" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6046">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-      <node id="6045">
-        <label>FdmDividendHandler</label>
-        <childnode refid="6046" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdividendhandler.hpp" bodystart="37" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a437e8f80fe90518c362999111be8ed63" prot="public" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividendDates</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a2d1416fab0743038578c305aab4b1fe0" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividendDates_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a3baca721afe17fd9e82bff459bfde07f" prot="public" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividends</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1aa20b7f78e19666c51a3c5a3ab2d56536" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividends_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a0a837f2115f72e3be03837a7a5b7c8b2" prot="public" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividendTimes</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a75c16fcd88d78a795aee52f84f65ad38" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>dividendTimes_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a4811dfbbc9dfb36b4560d2f6826d6d23" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>equityDirection_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a85de6ca5372c93adfabedadf187e7bf7" prot="public" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>FdmDividendHandler</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dividend_handler_1aa17c3bd9fcf002dcb2dbfb5efc269c8c" prot="private" virt="non-virtual"><scope>QuantLib::FdmDividendHandler</scope><name>x_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmDividendHandler</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

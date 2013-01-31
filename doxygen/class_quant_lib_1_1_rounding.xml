@@ -206,60 +206,6 @@
 <para>basic rounding class </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000060"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="12905">
-        <label>DownRounding</label>
-        <link refid="class_quant_lib_1_1_down_rounding"/>
-        <childnode refid="12902" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12906">
-        <label>FloorTruncation</label>
-        <link refid="class_quant_lib_1_1_floor_truncation"/>
-        <childnode refid="12902" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12907">
-        <label>UpRounding</label>
-        <link refid="class_quant_lib_1_1_up_rounding"/>
-        <childnode refid="12902" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12903">
-        <label>CeilingTruncation</label>
-        <link refid="class_quant_lib_1_1_ceiling_truncation"/>
-        <childnode refid="12902" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12902">
-        <label>Rounding</label>
-        <link refid="class_quant_lib_1_1_rounding"/>
-      </node>
-      <node id="12904">
-        <label>ClosestRounding</label>
-        <link refid="class_quant_lib_1_1_closest_rounding"/>
-        <childnode refid="12902" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/rounding.hpp" bodystart="35" bodyend="87"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a0d419a70fa5708b3735db741f20316c9" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Ceiling</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a32c94a47509871edf49d5c3936689d30" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Closest</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a7f21d021140e2448288b2bfd5691cd5e" prot="private" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>digit_</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7abcf8c79e9a5f5f9d606fb35645a0fb27" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Down</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Floor</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>None</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a9835436c4cf8e92f0f7d8a3ed4643983" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a242cddb670f123b7cf2ec6b244514c8b" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>precision</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a2703c4b421326ff43d8af5cdf0e77ed8" prot="private" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>precision_</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a935bf504beb13c384b6bf2b57337b60c" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Rounding</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a2a79742b3f2854a95befbd58cf917341" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Rounding</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1abdd70a56bfd67e3da02c16706ea1898d" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>roundingDigit</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_rounding_1a1d1cfd8ffb84e947f82999c682b666a7a57a7edcbc04d6175683383cad5c3e0a2" prot="public" virt="non-virtual"><scope>QuantLib::Rounding</scope><name>Up</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

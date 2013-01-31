@@ -4,73 +4,6 @@
     <compoundname>QuantLib::TransformedGrid</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_log_grid" prot="public" virt="non-virtual">LogGrid</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_transformed_grid_1a31ca2c1a1fa378e372c6b6d3b60ee995" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array grid_</definition>
-        <argsstring></argsstring>
-        <name>grid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_transformed_grid_1adf86be6e2d15c27d1b39def2ca6c715a" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array transformedGrid_</definition>
-        <argsstring></argsstring>
-        <name>transformedGrid_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="79" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_transformed_grid_1a36d5f36f7a773e42dfdb27ab5cf7c112" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array dxm_</definition>
-        <argsstring></argsstring>
-        <name>dxm_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_transformed_grid_1ab2dd732b8e8f13583ba8fdd3ad43b515" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array dxp_</definition>
-        <argsstring></argsstring>
-        <name>dxp_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_transformed_grid_1a55b6e9026f354b8f5c4a5a6e37e266c0" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array dx_</definition>
-        <argsstring></argsstring>
-        <name>dx_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_transformed_grid_1a12ce3b3e6a782279c69419173018a261" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -283,43 +216,6 @@
 <para>transformed grid </para>    </briefdescription>
     <detaileddescription>
 <para>This package encapuslates an array of grid points. It is used primarily in PDE calculations. </para>    </detaileddescription>
-    <collaborationgraph>
-      <node id="14071">
-        <label>TransformedGrid</label>
-        <link refid="class_quant_lib_1_1_transformed_grid"/>
-        <childnode refid="14072" relation="usage">
-          <edgelabel>dxp_</edgelabel>
-          <edgelabel>transformedGrid_</edgelabel>
-          <edgelabel>grid_</edgelabel>
-          <edgelabel>dxm_</edgelabel>
-          <edgelabel>dx_</edgelabel>
-        </childnode>
-      </node>
-      <node id="14072">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/transformedgrid.hpp" bodystart="37" bodyend="83"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_transformed_grid_1aa4bb94c633d219d75bb5b590fe6b23b7" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dx</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a55b6e9026f354b8f5c4a5a6e37e266c0" prot="protected" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dx_</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a0698254851435078ed50e193625f8e9d" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxArray</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a29ca65e97dd2740404ddbe692eb3d6dc" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxm</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a36d5f36f7a773e42dfdb27ab5cf7c112" prot="protected" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxm_</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1ad37ef3486c3243b1fbc64f3ea94e279c" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxmArray</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a17516fb1980a2b9c5f77884593c6a312" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxp</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1ab2dd732b8e8f13583ba8fdd3ad43b515" prot="protected" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxp_</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a084b84fde047bdb650ef9b5a4a858a6f" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>dxpArray</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a341fa2c2432092a75028959e2fd2e3a8" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>grid</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a31ca2c1a1fa378e372c6b6d3b60ee995" prot="protected" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>grid_</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a4cbd77ed1c746ea552adcac3904183e5" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>gridArray</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a74cb3f3e6911a253fbbcc269b6076ad7" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>transformedGrid</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a12ce3b3e6a782279c69419173018a261" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>TransformedGrid</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a6e9ae69a42894abfe32627b16170f7bf" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>TransformedGrid</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1adf86be6e2d15c27d1b39def2ca6c715a" prot="protected" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>transformedGrid_</name></member>
-      <member refid="class_quant_lib_1_1_transformed_grid_1a35ee316e8ba9d310da256d231e73206a" prot="public" virt="non-virtual"><scope>QuantLib::TransformedGrid</scope><name>transformedGridArray</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

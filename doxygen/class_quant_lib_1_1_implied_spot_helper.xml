@@ -126,14 +126,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="104" bodyend="118"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>dividendDiscount_</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1a7b3d43cf263798d7c26a754bfed48aa0" prot="public" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>ImpliedSpotHelper</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1afe77231bdde0e45330c5c0fe5c7bbc92" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1aa638469d31148178272450a0a3aa49dc" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>riskFreeDiscount_</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1ab2dfc9b536e75b5097734f081c3b4716" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>standardDeviation_</name></member>
-      <member refid="class_quant_lib_1_1_implied_spot_helper_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" virt="non-virtual"><scope>QuantLib::ImpliedSpotHelper</scope><name>strike_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

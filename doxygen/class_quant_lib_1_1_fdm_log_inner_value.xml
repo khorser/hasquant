@@ -151,16 +151,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="49" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1a7206bb7a6d96928abd9e64238636a05a" prot="public" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>avgInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1a4658c7a79f4ba6f7be652987a7ea901e" prot="private" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>avgInnerValueCalc</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1aafa84a460087dd2fe822ec3d7016341a" prot="private" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>avgInnerValues_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1ac187ad7b9bfcbdec0261f48ac578d162" prot="private" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>direction_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1a5aa65b4dffcce9be8754a373c553319f" prot="public" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>FdmLogInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1af4289de69a24fdda61b56f5049bbc585" prot="public" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>innerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_log_inner_value_1ac641fb99b5820ca1d07577c57f4d57c9" prot="private" virt="non-virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmLogInnerValue</scope><name>~FdmInnerValueCalculator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

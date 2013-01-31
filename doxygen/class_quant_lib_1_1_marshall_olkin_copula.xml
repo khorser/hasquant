@@ -81,11 +81,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/marshallolkincopula.hpp" bodystart="33" bodyend="39"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a7808bed616def7f344acacb1b9b48f77" prot="private" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>a1_</name></member>
-      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1afeaad24aaccd1fa2c6d91b92be41e4e0" prot="private" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>a2_</name></member>
-      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a1043cb418214310a8e762bb72a6d5b69" prot="public" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>MarshallOlkinCopula</name></member>
-      <member refid="class_quant_lib_1_1_marshall_olkin_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::MarshallOlkinCopula</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

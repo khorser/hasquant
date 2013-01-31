@@ -126,13 +126,5 @@
    Resource.  &lt;http://mathworld.wolfram.com/B-Spline.html&gt;
 </verbatim></para><para><formula id="170">$ (p+1) $</formula>-th order B-spline (or p degree polynomial) basis functions <formula id="171">$ N_{i,p}(x), i = 0,1,2 \ldots n $</formula>, with <formula id="172">$ n+1 $</formula> control points, or equivalently, an associated knot vector of size <formula id="173">$ p+n+2 $</formula> defined at the increasingly sorted points <formula id="174">$ (x_0, x_1 \ldots x_{n+p+1}) $</formula>. A linear B-spline has <formula id="175">$ p=1 $</formula>, quadratic B-spline has <formula id="176">$ p=2 $</formula>, a cubic B-spline has <formula id="177">$ p=3 $</formula>, etc.</para><para>The B-spline basis functions are defined recursively as follows:</para><para><formula id="178">\[ \begin{array}{rcl} N_{i,0}(x) &amp;=&amp; 1 \textrm{\ if\ } x_{i} \leq x &lt; x_{i+1} \\ &amp;=&amp; 0 \textrm{\ otherwise} \\ N_{i,p}(x) &amp;=&amp; N_{i,p-1}(x) \frac{(x - x_{i})}{ (x_{i+p-1} - x_{i})} + N_{i+1,p-1}(x) \frac{(x_{i+p} - x)}{(x_{i+p} - x_{i+1})} \end{array} \]</formula> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bspline.hpp" bodystart="58" bodyend="74"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_b_spline_1a98d1f469c2fccf68567d10f6919a28f3" prot="public" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>BSpline</name></member>
-      <member refid="class_quant_lib_1_1_b_spline_1a6d7082b65c1289fc59fee9feb7568429" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>knots_</name></member>
-      <member refid="class_quant_lib_1_1_b_spline_1af8a0ff031f68085305af5856bbba7748" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>N</name></member>
-      <member refid="class_quant_lib_1_1_b_spline_1a8270a52ff6c38572ccad4812b4c9b1b2" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_b_spline_1af4b5a32b1cb2ea56aea90bf5db3122b2" prot="public" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_b_spline_1a0721c24dda55860c131c52b340b15b87" prot="private" virt="non-virtual"><scope>QuantLib::BSpline</scope><name>p_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

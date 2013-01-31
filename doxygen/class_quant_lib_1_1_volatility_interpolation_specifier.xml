@@ -148,17 +148,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/volatilityinterpolationspecifier.hpp" bodystart="39" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a9aefa4466580cc1ca01b37a0b86354da" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getNoBigRates</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ac8a3fada1d4eb4970f135ea0d67b9d7a" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getNoSmallRates</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ad9800e5048c7f90efb6e81ccf6ea3ab6" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getOffset</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1ae725886f037f7f8867498283b4ecbadb" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>getPeriod</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a83bccb4fe3c4f8fb848169dcdca03e45" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>interpolatedVariances</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a49f3e0b30e5e349c708d6b10927bea7c" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>originalVariances</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a2487e98e6fd7fb1f39c08050c5864e88" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>setLastCapletVol</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a9afa1df8525233c08226fbc4dedd5a87" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>setScalingFactors</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1aa62d5eb7b21dcca2b0a4d3a037687ec8" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>VolatilityInterpolationSpecifier</name></member>
-      <member refid="class_quant_lib_1_1_volatility_interpolation_specifier_1a895a85ad5121939bfb28d6dfeb4f1981" prot="public" virt="virtual"><scope>QuantLib::VolatilityInterpolationSpecifier</scope><name>~VolatilityInterpolationSpecifier</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

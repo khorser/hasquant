@@ -46,9 +46,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="35" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1a8efc263c16ea9e44152789acc3b87166" prot="public" virt="pure-virtual"><scope>QuantLib::Constraint::Impl</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Constraint::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

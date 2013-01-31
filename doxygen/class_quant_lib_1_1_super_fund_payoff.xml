@@ -56,21 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="223"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_super_fund_payoff_1a41d41bf0e3428293d076ce1f4314bf98" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real secondStrike_</definition>
-        <argsstring></argsstring>
-        <name>secondStrike_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="227" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="227" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1ade1dffd2bbafb10a7f164e1a9787455c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -111,70 +96,6 @@
 <para>Binary supershare and superfund payoffs. </para>    </briefdescription>
     <detaileddescription>
 <para>Binary superfund payoff</para><para>Superfund sometimes also called &quot;supershare&quot;, which can lead to ambiguity; within <ref refid="namespace_quant_lib" kindref="compound">QuantLib</ref> the terms supershare and superfund are used consistently according to the definitions in Bloomberg OVX function&apos;s help pages.</para><para>This payoff is equivalent to being (1/lowerstrike) a) long (short) an AssetOrNothing Call (Put) at the lower strike and b) short (long) an AssetOrNothing Call (Put) at the higher strike </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="13569">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="13570" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13570">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="13567">
-        <label>SuperFundPayoff</label>
-        <link refid="class_quant_lib_1_1_super_fund_payoff"/>
-        <childnode refid="13568" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13568">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="13569" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13573">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="13574" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13574">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="13571">
-        <label>SuperFundPayoff</label>
-        <link refid="class_quant_lib_1_1_super_fund_payoff"/>
-        <childnode refid="13572" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13572">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="13573" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="206" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="206" bodyend="228"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::SuperFundPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::SuperFundPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::SuperFundPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::SuperFundPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>optionType</name></member>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1a64eedb2ee7b46110f6c2b5e6d3ed025e" prot="public" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>secondStrike</name></member>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1a41d41bf0e3428293d076ce1f4314bf98" prot="protected" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>secondStrike_</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>strike</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1afec468d37c982a37d0f403c629756770" prot="protected" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>StrikedTypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_super_fund_payoff_1ade1dffd2bbafb10a7f164e1a9787455c" prot="public" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>SuperFundPayoff</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1abcdb1c11e3593354931e650dd3dd13f2" prot="protected" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1a0d0b65c5c1a4c7df8618e75120c15c46" prot="protected" virt="non-virtual"><scope>QuantLib::SuperFundPayoff</scope><name>TypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::SuperFundPayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

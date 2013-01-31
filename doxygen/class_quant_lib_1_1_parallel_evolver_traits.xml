@@ -79,12 +79,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="73" bodyend="80"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parallel_evolver_traits_1a6481fde6be054971a5f62f0c8bf1c917" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolverTraits</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_traits_1a8326041f10e2a86c105f003382341dbc" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolverTraits</scope><name>bc_set</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_traits_1abf468e2c1e1531c9b1e0caee3bf49cd2" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolverTraits</scope><name>bc_type</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_traits_1a45df0d8169ed3e36b292a57d8b1dd06f" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolverTraits</scope><name>condition_type</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_traits_1ab8c3c3096d90df85367ed8b287c4b1eb" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolverTraits</scope><name>operator_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

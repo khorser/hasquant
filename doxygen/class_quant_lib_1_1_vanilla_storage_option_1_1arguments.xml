@@ -103,15 +103,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillastorageoption.hpp" bodystart="54" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a3cf17821f2a14490d8e2dc2f8d103edb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>capacity</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a83ca0e34f53a40a1708f110891b9f763" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>changeRate</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1aaa4d302145955765f8141768c7d194f9" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a954b9214299475271558fbf4e49437bb" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>load</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a836af412aa7d7c7465c2f3650774173d" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::VanillaStorageOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

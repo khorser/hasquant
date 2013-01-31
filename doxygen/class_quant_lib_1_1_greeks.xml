@@ -105,40 +105,6 @@
 <para>additional option results </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7309">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_margrabe_option_1_1results"/>
-        <childnode refid="7308" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7310">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_one_asset_option_1_1results"/>
-        <childnode refid="7307" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7307">
-        <label>Greeks</label>
-        <link refid="class_quant_lib_1_1_greeks"/>
-      </node>
-      <node id="7308">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_multi_asset_option_1_1results"/>
-        <childnode refid="7307" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="69" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_greeks_1a6e815cecfc8bf0ee83558d5bfd70c2d1" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>delta</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1a7c5d299a74a83de4dd1b4ef52afb6209" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>dividendRho</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1aeb695f823ca39262c951705759792d22" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>gamma</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1ae07d6de71cc56577f5d379b54839ba8c" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>rho</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1a2c52330fe605e3d67b38b448db51a49c" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>theta</name></member>
-      <member refid="class_quant_lib_1_1_greeks_1af9da45f4580b5165ceb0da994368b510" prot="public" virt="non-virtual"><scope>QuantLib::Greeks</scope><name>vega</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::Greeks</scope><name>~results</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

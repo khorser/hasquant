@@ -65,49 +65,6 @@
 <para>Arguments for CDS-option calculation </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2097">
-        <label>CdsOption::arguments</label>
-        <link refid="class_quant_lib_1_1_cds_option_1_1arguments"/>
-        <childnode refid="2098" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2098">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2099">
-        <label>CdsOption::arguments</label>
-        <link refid="class_quant_lib_1_1_cds_option_1_1arguments"/>
-        <childnode refid="2100" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2100">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/cdsoption.hpp" bodystart="89" bodyend="97"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cds_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a18413ecec9c466dda682cf41bf487c06" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>claim</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_cds_option_1_1arguments_1ad4b97040286e199db1b128138004ca42" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>knocksOut</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1adffba73d0dcc9a873d443fd164ebeeee" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>leg</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>notional</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a311f71376f55902ec2d0e6dbef3afb8d" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>paysAtDefaultTime</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1ab649d1beb7709df7e6d3927dc0c9b509" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>protectionStart</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a551e820a8ced6416917f142a51e8ec54" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>settlesAccrual</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>side</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1ae05176c7b5728214ae2e69543c588fc3" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>spread</name></member>
-      <member refid="class_quant_lib_1_1_cds_option_1_1arguments_1ae610b4d1f2d89bbd26e02cef63066191" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>swap</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a4e2f97acaaa3f335e064dec8c620c705" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>upfront</name></member>
-      <member refid="class_quant_lib_1_1_credit_default_swap_1_1arguments_1a9ea03369e1b929157342f92dce97b3c9" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>upfrontPayment</name></member>
-      <member refid="class_quant_lib_1_1_cds_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CdsOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::CdsOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

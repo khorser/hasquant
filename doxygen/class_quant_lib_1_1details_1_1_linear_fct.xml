@@ -64,10 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="37" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fct_1a6225dd5553d49e23bdf041508f0fd253" prot="private" virt="non-virtual"><scope>QuantLib::details::LinearFct</scope><name>i_</name></member>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fct_1a3fc5d911bfd9e103f113df96c9475393" prot="public" virt="non-virtual"><scope>QuantLib::details::LinearFct</scope><name>LinearFct</name></member>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fct_1a4dc2723ee1b3a4d080cae7096730f92b" prot="public" virt="non-virtual"><scope>QuantLib::details::LinearFct</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

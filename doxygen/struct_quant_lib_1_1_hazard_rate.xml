@@ -196,15 +196,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" bodystart="115" bodyend="188"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a3d588d285d1bab9713203106b9b86a9a" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>guess</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a1dce7ca6c1d8734da6e5fe573a39da0d" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>helper</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a890046fcd687c87e12108839dcabda70" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>initialDate</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a42a600043cd5340f4a37f72a8a8cf92f" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>initialValue</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>maxIterations</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a200bd0761b356ff09780d29d02596334" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>maxValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a60602e5158558f6d9e4db350086c4975" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>minValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1a10cf842b3d600521931551f3d8b0876c" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

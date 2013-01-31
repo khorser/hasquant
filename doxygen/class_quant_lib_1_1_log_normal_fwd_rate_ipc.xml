@@ -422,62 +422,6 @@
 <para>Iterative Predictor-Corrector. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9280">
-        <label>MarketModelEvolver</label>
-        <link refid="class_quant_lib_1_1_market_model_evolver"/>
-      </node>
-      <node id="9279">
-        <label>LogNormalFwdRateIpc</label>
-        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc"/>
-        <childnode refid="9280" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9282">
-        <label>MarketModelEvolver</label>
-        <link refid="class_quant_lib_1_1_market_model_evolver"/>
-      </node>
-      <node id="9281">
-        <label>LogNormalFwdRateIpc</label>
-        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc"/>
-        <childnode refid="9282" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateipc.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/lognormalfwdrateipc.hpp" bodystart="35" bodyend="71"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a280269ace6d9053b78eeb52702cef9d1" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>advanceStep</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a79d3778caa2d7b0d876b76afaa68b058" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>alive_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a4e6cfba5f09362ebbdf11c6bb68003ef" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>brownians_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1aecf84880f22ae637244412074e20fd72" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>calculators_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1ac3c44b232b2cdfbb356431f5f723f3a0" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>correlatedBrownians_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a521e8787acede5b2ee0a6c797cb31da5" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>currentState</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a3c05dea1b785c4581cfc8488127805b1" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>currentStep</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a0cd1da9c234a65843ed1783da733f913" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>currentStep_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1af03a866c064eef1f841e0395fdfb8582" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>curveState_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a0ff28d4cf71ea5bea960268ee6fc2c89" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a0a1b95fd58220e0a663105ab22783beb" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>drifts1_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a661b4ebc9fed408f3518d5e717f3405a" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>fixedDrifts_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a48f5e747bbfd6c8bab08b9253aec1d32" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>forwards_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1aed970e68f9cad140742ea547e6ad530f" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>g_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1aa9436790c59c414be1ef5cc407aa035f" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>generator_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1aa52994fe79637e0446f0e842409bf19c" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>initialDrifts_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a8d06ed0ed37519a8639bd99eff62eed4" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>initialLogForwards_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1abc9c05a6469d174fc9a1051c5bbf2c84" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>initialStep_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a5b4f2af94595cbe1e6cc2e0fae6e2bb8" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>logForwards_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a8cb7f50fe6715988f37d8fca3b3cb4e9" prot="public" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>LogNormalFwdRateIpc</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a02c27076c46c977d7b3729f02449bfdd" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>marketModel_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a70e220bffe590588fae688df4700ca84" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>numeraires</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1abb7156564b68949da210cac6b9a562dd" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>numeraires_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1aa688289997396acdd1ad9b7c64735213" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>rateTaus_</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a4ca7105cb99e3899da5173f305227732" prot="private" virt="non-virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>setForwards</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1ad2a4cd43598d0be484849363691856cc" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>setInitialState</name></member>
-      <member refid="class_quant_lib_1_1_log_normal_fwd_rate_ipc_1a4dc8779ddad08edbbfddd716df9d5bd3" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>startNewPath</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1a4c1f152fb923561c3e6739d30e55a4c4" prot="public" virt="virtual"><scope>QuantLib::LogNormalFwdRateIpc</scope><name>~MarketModelEvolver</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

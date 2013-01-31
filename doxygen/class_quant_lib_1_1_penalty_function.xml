@@ -185,45 +185,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12106">
-        <label>PenaltyFunction&lt; Curve &gt;</label>
-        <childnode refid="12107" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12107">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12108">
-        <label>PenaltyFunction&lt; Curve &gt;</label>
-        <childnode refid="12109" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12109">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="40" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_penalty_function_1ae48628359537d2f1fc62e147ca8d1b0c" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>curve_</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1a29ce88ec2013c3de7a04fbee85c27624" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>helper</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1a1802435247f5ee780a0408e67697d286" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>helper_iterator</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1a8aa0f17cb3da1db49cadbf7e514e0505" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>initialIndex_</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1aaafa151c3c244b107a148e67b39cdc61" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>localisation_</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>PenaltyFunction</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1a6ed49e6fc958b5d80c212ed807773d99" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>rateHelpersEnd_</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1acd95d5dd3a890eff5e905c8f71bc3425" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>rateHelpersStart_</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>Traits</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" virt="non-virtual"><scope>QuantLib::PenaltyFunction</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::PenaltyFunction</scope><name>~CostFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

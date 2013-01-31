@@ -148,41 +148,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="763">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="762">
-        <label>BasketPayoff</label>
-        <childnode refid="763" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="765">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="764">
-        <label>BasketPayoff</label>
-        <childnode refid="765" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="35" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::BasketPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1ae04dcd96c5a2ea87a6d09a4f7b77c7f3" prot="public" virt="pure-virtual"><scope>QuantLib::BasketPayoff</scope><name>accumulate</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a440d118e6b1d4c8a91b66f39338b4c17" prot="public" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>basePayoff</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1affd63fef9f9cb61474132d02a3366bc5" prot="private" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>basePayoff_</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>BasketPayoff</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="non-virtual"><scope>QuantLib::BasketPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" virt="virtual"><scope>QuantLib::BasketPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a9b8b91f2b5d451870eecd88a14db32bf" prot="public" virt="virtual"><scope>QuantLib::BasketPayoff</scope><name>~BasketPayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::BasketPayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

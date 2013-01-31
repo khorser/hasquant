@@ -28,33 +28,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14449">
-        <label>Domain</label>
-        <link refid="class_quant_lib_1_1_domain"/>
-      </node>
-      <node id="14448">
-        <label>UniversalDomain</label>
-        <childnode refid="14449" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14451">
-        <label>Domain</label>
-        <link refid="class_quant_lib_1_1_domain"/>
-      </node>
-      <node id="14450">
-        <label>UniversalDomain</label>
-        <childnode refid="14451" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="41" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_universal_domain_1a4b59790868ade201c71f351044630dc0" prot="public" virt="non-virtual"><scope>QuantLib::UniversalDomain</scope><name>includes</name></member>
-      <member refid="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" virt="non-virtual"><scope>QuantLib::UniversalDomain</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" virt="virtual"><scope>QuantLib::UniversalDomain</scope><name>~Domain</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

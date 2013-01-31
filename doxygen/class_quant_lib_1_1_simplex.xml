@@ -130,40 +130,6 @@
 <para>Multi-dimensional simplex class. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13134">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="13133">
-        <label>Simplex</label>
-        <link refid="class_quant_lib_1_1_simplex"/>
-        <childnode refid="13134" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13136">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="13135">
-        <label>Simplex</label>
-        <link refid="class_quant_lib_1_1_simplex"/>
-        <childnode refid="13136" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/simplex.hpp" bodystart="39" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_simplex_1ab5b2a304139601514d7d7216aee12257" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>extrapolate</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1a5656079ae087f3f4c7a004e45c89c7ee" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>lambda_</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::Simplex</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>Simplex</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1aa17da009a6611e09a96444ce08b6ea18" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>sum_</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1a99a3a78defaeab5ede226107da665b96" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>values_</name></member>
-      <member refid="class_quant_lib_1_1_simplex_1a9bb28cdfff977585169d516b07f42a10" prot="private" virt="non-virtual"><scope>QuantLib::Simplex</scope><name>vertices_</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::Simplex</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

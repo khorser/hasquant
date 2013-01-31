@@ -128,17 +128,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/cotswapfromfwdcorrelation.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/correlations/cotswapfromfwdcorrelation.hpp" bodystart="31" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1ae08bef1d9e2af46227740be2eed7bd98" prot="public" virt="virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1af728002c216f1dbca020531bae19a0f7" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>correlations</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1aff93ceacd0f32297080d38a44f5a981d" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>CotSwapFromFwdCorrelation</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1a09083d1e4c8bcebbcdbb307de6133f62" prot="private" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>fwdCorr_</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1ab2d70b43df80ed4117064171d7a09cc3" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>rateTimes</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1a5c1a74490f62b9d774dc718c8e65a965" prot="private" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>swapCorrMatrices_</name></member>
-      <member refid="class_quant_lib_1_1_cot_swap_from_fwd_correlation_1a1caecd902d2960755b349a552a9b92f2" prot="public" virt="non-virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>times</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1a8ba187765333e99f9b1f5d3990daf08c" prot="public" virt="virtual"><scope>QuantLib::CotSwapFromFwdCorrelation</scope><name>~PiecewiseConstantCorrelation</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

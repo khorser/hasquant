@@ -9,34 +9,6 @@
         <type>class CDOEngine</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1ab30c093c138e55870ab79587961401d6" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
-        <definition>const Handle&lt;OneFactorCopula&gt; copula_</definition>
-        <argsstring></argsstring>
-        <name>copula_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="214" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="212" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1aec681bdcc2a8f7d46664f2e51620f854" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nBuckets_</definition>
-        <argsstring></argsstring>
-        <name>nBuckets_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="215" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1a4b0ab21d52efe3c730a981278b5c15d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -83,25 +55,6 @@
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, loss disctribution bucketing for finite inhomogeneous pool. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="7988">
-        <label>Handle&lt; QuantLib::OneFactorCopula &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="7987">
-        <label>InhomogeneousPoolCDOEngine&lt; CDOEngine &gt;</label>
-        <link refid="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine"/>
-        <childnode refid="7988" relation="usage">
-          <edgelabel>copula_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="197" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="197" bodyend="216"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1ab30c093c138e55870ab79587961401d6" prot="protected" virt="non-virtual"><scope>QuantLib::InhomogeneousPoolCDOEngine</scope><name>copula_</name></member>
-      <member refid="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1a6d163efc5ceadc563dd267641d754a0e" prot="private" virt="non-virtual"><scope>QuantLib::InhomogeneousPoolCDOEngine</scope><name>expectedTrancheLoss</name></member>
-      <member refid="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1a4b0ab21d52efe3c730a981278b5c15d7" prot="public" virt="non-virtual"><scope>QuantLib::InhomogeneousPoolCDOEngine</scope><name>InhomogeneousPoolCDOEngine</name></member>
-      <member refid="class_quant_lib_1_1_inhomogeneous_pool_c_d_o_engine_1aec681bdcc2a8f7d46664f2e51620f854" prot="protected" virt="non-virtual"><scope>QuantLib::InhomogeneousPoolCDOEngine</scope><name>nBuckets_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

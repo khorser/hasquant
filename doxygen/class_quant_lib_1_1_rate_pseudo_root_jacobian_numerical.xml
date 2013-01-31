@@ -211,19 +211,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="43" bodyend="75"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a6e0aebb30b163f9873c2dd0eadd78708" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>aliveIndex_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a63d1eab607645e71a8acd4cc68c48579" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>bumpedRates_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ac2bcba6756969892c65b5a8773cbd2b2" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>drifts_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1ae97ee69ed41320364e20a8f52d27f289" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>driftsComputers_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1aaa4d2804830043113c5009392f8f0ce0" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>getBumps</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67921ca7df824b046fc691bc45270d4a" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>numberBumps_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a67d680073efd6c1a4eb1934daae4d036" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>pseudoBumped_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a287d7f45f243847879108986a5785263" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>pseudoRoot_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a963ff17fbf89669cb603fc2a7077dd6b" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>RatePseudoRootJacobianNumerical</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_numerical_1a7faf504f2e153c71fac455aca1fab4aa" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobianNumerical</scope><name>taus_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

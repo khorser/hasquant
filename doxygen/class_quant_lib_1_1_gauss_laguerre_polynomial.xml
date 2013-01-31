@@ -111,41 +111,6 @@
 <para>Gauss-Laguerre polynomial. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7038">
-        <label>GaussianOrthogonalPolynomial</label>
-        <link refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial"/>
-      </node>
-      <node id="7037">
-        <label>GaussLaguerrePolynomial</label>
-        <link refid="class_quant_lib_1_1_gauss_laguerre_polynomial"/>
-        <childnode refid="7038" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7040">
-        <label>GaussianOrthogonalPolynomial</label>
-        <link refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial"/>
-      </node>
-      <node id="7039">
-        <label>GaussLaguerrePolynomial</label>
-        <link refid="class_quant_lib_1_1_gauss_laguerre_polynomial"/>
-        <childnode refid="7040" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="63" bodyend="74"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5636c42b75b9162dfc03348bdf0e46db" prot="public" virt="virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>alpha</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1aef8dfcc10e1813645475edd1b30ca109" prot="public" virt="virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>beta</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a456101578a839053db922b5e866be063" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>GaussLaguerrePolynomial</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a2ad28899a5762c677631c246bbd07d7e" prot="public" virt="virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>mu_0</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a1a92b86505d10b0bbc0120d8b2305d2d" prot="private" virt="non-virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>s_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a452af47b58099bbec68537241bd743f7" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_polynomial_1a5b42ee3db05851ba3158febcdcdc5bcf" prot="public" virt="virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>w</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1aef33067e7357c2c91caa62c6f38ecaa1" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>weightedValue</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1ad23187cb308f85ea0dea7911b6c0546d" prot="public" virt="virtual"><scope>QuantLib::GaussLaguerrePolynomial</scope><name>~GaussianOrthogonalPolynomial</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -256,23 +256,5 @@
 <para>Random number generator by Knuth. For more details see Knuth, Seminumerical Algorithms, 3rd edition, Section 3.6. <simplesect kind="note"><para>This is <bold>not</bold> Knuth&apos;s original implementation which is available at <ulink url="http://www-cs-faculty.stanford.edu/~knuth/programs.html,">http://www-cs-faculty.stanford.edu/~knuth/programs.html,</ulink> but rather a slightly modified version wrapped in a C++ class. Such modifications did not affect the code but only the data structures used, which were converted to their standard C++ equivalents. </para></simplesect>
 </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="44" bodyend="63"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a86236eec6550f4ededb316702aeb4737" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>is_odd</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a1d1fdba8713a5bb37860f0dada78e26f" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>KK</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1ab59db514c5c64ebd20105fd6eba4e0a2" prot="public" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>KnuthUniformRng</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a3fa29894b3e9df3203709263624c2ae5" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>LL</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a600f323493a28e6a309e15d624122e29" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>mod_sum</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a54d52bd9fcbf209b55759eaee7c151bb" prot="public" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a8a8e6d3c89612379da2e03f5c8c326b6" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>QUALITY</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1ad94d865ffdb9379861c87971c108c4a3" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ran_u</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1af0b604c5aaee57f070870e3663c0f4bb" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_arr_buf</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a0a78eb5869e3410a1be126acd1c95384" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_arr_cycle</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1aa6017a161f4d9540bb75013ab4c58099" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_arr_ptr</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1ad91754e0cba3b8728c8d47a87e9d747f" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_arr_sentinel</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1abe6fa9d5f6533fe227a20bf89d8beb8c" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_array</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1a4f0a28eea782bdf9b9c9cc5d66845c0d" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>ranf_start</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_knuth_uniform_rng_1aa9783a3056ae8a4f5bca1220444787b8" prot="private" virt="non-virtual"><scope>QuantLib::KnuthUniformRng</scope><name>TT</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

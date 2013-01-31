@@ -81,11 +81,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="51" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fcts_1a122926722deac54918277d415b3fe694" prot="public" virt="non-virtual"><scope>QuantLib::details::LinearFcts</scope><name>ArgumentType</name></member>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fcts_1a5f84e474aca6cd7b9de3c7a4963c7b63" prot="public" virt="non-virtual"><scope>QuantLib::details::LinearFcts</scope><name>fcts</name></member>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fcts_1a1aa55cf772d33c64b491cf0978981e18" prot="public" virt="non-virtual"><scope>QuantLib::details::LinearFcts</scope><name>LinearFcts</name></member>
-      <member refid="class_quant_lib_1_1details_1_1_linear_fcts_1a629cd77b499dfe61c107f412bec4a20e" prot="private" virt="non-virtual"><scope>QuantLib::details::LinearFcts</scope><name>v</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -173,31 +173,6 @@
 <para>abstract base class for interpolation implementations </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8535">
-        <label>Interpolation::Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
-      </node>
-      <node id="8536">
-        <label>templateImpl&lt; I1, I2 &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
-        <childnode refid="8535" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolation.hpp" bodystart="45" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1aa9b3d52912b522cf1e92faf6b9303f8b" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a93b4952f0cf5b8e8dfb2580e0f638372" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>isInRange</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ac648b9d3443bd0bdf66a726466b26d17" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a2210d23e8e649096c89494facf217fb4" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>secondDerivative</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a99b02345a8a15d3c5ea2844a2253f510" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a3b5ae807c2e8aa314861fda7a86c859e" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>xMax</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a55a9dc8ca1fcece87abe8e4a8e075cbc" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>xMin</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>xValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63" prot="public" virt="pure-virtual"><scope>QuantLib::Interpolation::Impl</scope><name>yValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Interpolation::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

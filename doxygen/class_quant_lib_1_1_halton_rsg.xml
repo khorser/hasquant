@@ -166,17 +166,5 @@
 <listitem><para>the correctness of the returned values is tested by reproducing known good values.</para></listitem><listitem><para>the correctness of the returned values is tested by checking their discrepancy against known good values. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/haltonrsg.hpp" bodystart="43" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_halton_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>dimensionality_</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a197b5902a994dc7e037eb5bd22814af1" prot="public" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>HaltonRsg</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a15b541124ea01ca45ea29f675c261246" prot="public" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a4ad3eaadb7e859808391a4ffb297b8ef" prot="private" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>randomShift_</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1af78944c275dc32d08635d6d5dec95b5a" prot="private" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>randomStart_</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>sequence_</name></member>
-      <member refid="class_quant_lib_1_1_halton_rsg_1ab783e3c845d54c712226757076a4cccb" prot="private" virt="non-virtual"><scope>QuantLib::HaltonRsg</scope><name>sequenceCounter_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

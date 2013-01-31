@@ -68,10 +68,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="81" bodyend="89"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1equal__within_1a3030b846ab02a5c26213e0a4a9d77495" prot="private" virt="non-virtual"><scope>QuantLib::equal_within</scope><name>eps_</name></member>
-      <member refid="class_quant_lib_1_1equal__within_1aba10874b24bb791afbb80c466b07dd80" prot="public" virt="non-virtual"><scope>QuantLib::equal_within</scope><name>equal_within</name></member>
-      <member refid="class_quant_lib_1_1equal__within_1ab4d9bad9ac6c628cadf62cbea4eec9e0" prot="public" virt="non-virtual"><scope>QuantLib::equal_within</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

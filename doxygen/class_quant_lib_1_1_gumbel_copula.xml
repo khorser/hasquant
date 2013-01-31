@@ -64,10 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gumbelcopula.hpp" bodystart="33" bodyend="39"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gumbel_copula_1aa6fc9c2c0ec3fa6304ee4f2f84bce970" prot="public" virt="non-virtual"><scope>QuantLib::GumbelCopula</scope><name>GumbelCopula</name></member>
-      <member refid="class_quant_lib_1_1_gumbel_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::GumbelCopula</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gumbel_copula_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::GumbelCopula</scope><name>theta_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -71,25 +71,6 @@
 <para>Arguments for forward (strike-resetting) option calculation </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="6582">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="6581">
-        <label>ForwardOptionArguments&lt; ArgumentsType &gt;</label>
-        <link refid="class_quant_lib_1_1_forward_option_arguments"/>
-        <childnode refid="6582" relation="usage">
-          <edgelabel>resetDate</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/forwardvanillaoption.hpp" bodystart="37" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_forward_option_arguments_1aff7e089c17aed3790040e0d4f520e8b7" prot="public" virt="non-virtual"><scope>QuantLib::ForwardOptionArguments</scope><name>ForwardOptionArguments</name></member>
-      <member refid="class_quant_lib_1_1_forward_option_arguments_1a6032d77a6dece5bc46d14d76e329f7eb" prot="public" virt="non-virtual"><scope>QuantLib::ForwardOptionArguments</scope><name>moneyness</name></member>
-      <member refid="class_quant_lib_1_1_forward_option_arguments_1acce77eb25acc2dd928c6728a14602ad3" prot="public" virt="non-virtual"><scope>QuantLib::ForwardOptionArguments</scope><name>resetDate</name></member>
-      <member refid="class_quant_lib_1_1_forward_option_arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::ForwardOptionArguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

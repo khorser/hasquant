@@ -48,29 +48,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" bodystart="54" bodyend="58"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_shout_condition_1a0e158a0c3d8c80a7f5793b031a13d15e" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void initializeStepCondition</definition>
-        <argsstring>() const </argsstring>
-        <name>initializeStepCondition</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" bodystart="60" bodyend="70"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdconditions.hpp" bodystart="52" bodyend="71"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_shout_condition_1a3ca38d680322e3217c8846cd7ebfe788" prot="public" virt="non-virtual"><scope>QuantLib::FDShoutCondition</scope><name>FDShoutCondition</name></member>
-      <member refid="class_quant_lib_1_1_f_d_shout_condition_1a0e158a0c3d8c80a7f5793b031a13d15e" prot="protected" virt="non-virtual"><scope>QuantLib::FDShoutCondition</scope><name>initializeStepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

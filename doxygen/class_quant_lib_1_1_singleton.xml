@@ -26,21 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="77" bodyend="88"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>Singleton</definition>
-        <argsstring>()</argsstring>
-        <name>Singleton</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="71" bodyend="71"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Basic support for the singleton pattern. </para>    </briefdescription>
     <detaileddescription>
@@ -53,9 +38,5 @@
 <codeline><highlight class="normal">};</highlight></codeline>
 </programlisting> which, albeit sub-optimal, frees one from the concerns of creating and managing the unique instance and can serve later as a single implemementation point should synchronization features be added. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/singleton.hpp" bodystart="66" bodyend="72"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::Singleton</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::Singleton</scope><name>Singleton</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

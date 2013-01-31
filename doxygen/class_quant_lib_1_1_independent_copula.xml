@@ -32,8 +32,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/independentcopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/independentcopula.hpp" bodystart="33" bodyend="36"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_independent_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::IndependentCopula</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

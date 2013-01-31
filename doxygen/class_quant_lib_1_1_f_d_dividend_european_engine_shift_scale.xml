@@ -65,10 +65,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="73" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale_1ad6731f4a2176b1c79fb94ba0e4737e05" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngineShiftScale</scope><name>FDDividendEuropeanEngineShiftScale</name></member>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngineShiftScale</scope><name>FDEngineAdapter</name></member>
-      <member refid="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale_1a18abb46e32bcf7ee8c3da9a86b0e3763" prot="private" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngineShiftScale</scope><name>super</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -278,22 +278,5 @@
 </para><para>the intersection may be empty! </para></listitem></itemizedlist>
 </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/spherecylinder.hpp" bodystart="40" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>alpha_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a83c931cd76f3b141aa726a7e513f8d83" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>bottomValue_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1ae1eda24db01e95018b8bba94b9a54e27" prot="public" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>findByProjection</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a8b8ec5617c0a4397e24553320e08f9f2" prot="public" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>findClosest</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a160f8b811bc08b1ecbd4cd75e23d66d9" prot="public" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>isIntersectionNonEmpty</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a94f12c63459a1d2a6d1ef243cdc5f713" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>nonEmpty_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1abe924fb8ebd3703b15d120679128e0c1" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>objectiveFunction</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a6a78d0f0b24e5f4ce144260c34d7ddeb" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>r_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a507f1cb5e8d3c26e97417c966505e6e1" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>s_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1ab418732e2b63785866f16eeb4b522276" prot="public" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>SphereCylinderOptimizer</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a4d4fc69d7ec3f1bfbd291a2fe75385cd" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>topValue_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1add99fb5ad202284d88314279dd079fe4" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>z1_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a74d70043063d15c5f7c88dd75a8af6f4" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>z2_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a428f9ca38b11ebf0b076df57ed145b05" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>z3_</name></member>
-      <member refid="class_quant_lib_1_1_sphere_cylinder_optimizer_1a03949db495c5123468b45840905ef928" prot="private" virt="non-virtual"><scope>QuantLib::SphereCylinderOptimizer</scope><name>zweight_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

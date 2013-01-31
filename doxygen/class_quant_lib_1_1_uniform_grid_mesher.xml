@@ -137,18 +137,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/uniformgridmesher.hpp" bodystart="34" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a3b1a44b0b29d619d966246423e77346b" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dminus</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ad6116d14d2287697638fee156cc1a829" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dplus</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ac0e29ba443e48544494c7f32c043ca3d" prot="private" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>dx_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>FdmMesher</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a6b36f4c5ff72e78891a8a0debfe2de35" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>layout</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a755865a8f3fcb686b26718c57dbc4cef" prot="protected" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>layout_</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ac75f3b532910f0e8af46e5811fb37783" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>location</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1ab2fc59ff4ab60aa3c6e6f37c4171b005" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>locations</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a1ffb050911a38093f0d1074b3bf77ec5" prot="private" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>locations_</name></member>
-      <member refid="class_quant_lib_1_1_uniform_grid_mesher_1a1c3a3750ddbd38e4002a88e878b5d3b2" prot="public" virt="non-virtual"><scope>QuantLib::UniformGridMesher</scope><name>UniformGridMesher</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1ac2b15cf3ca5f5499e5306151207cf0c0" prot="public" virt="virtual"><scope>QuantLib::UniformGridMesher</scope><name>~FdmMesher</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

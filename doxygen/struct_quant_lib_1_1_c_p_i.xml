@@ -40,11 +40,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cpicoupon.hpp" bodystart="34" bodyend="41"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa001e44004d8d85d1a98f7a1fb01ea79c" prot="public" virt="non-virtual"><scope>QuantLib::CPI</scope><name>AsIndex</name></member>
-      <member refid="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa5a9e3347876551cd38b961213ff1ccde" prot="public" virt="non-virtual"><scope>QuantLib::CPI</scope><name>Flat</name></member>
-      <member refid="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1ea" prot="public" virt="non-virtual"><scope>QuantLib::CPI</scope><name>InterpolationType</name></member>
-      <member refid="struct_quant_lib_1_1_c_p_i_1a8472f01c511d77bbfb981a46618ea1eaa1a1f3bc55fefa098d9034cc46e2e7a2b" prot="public" virt="non-virtual"><scope>QuantLib::CPI</scope><name>Linear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

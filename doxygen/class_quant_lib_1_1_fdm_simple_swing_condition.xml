@@ -113,37 +113,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6174">
-        <label>FdmSimpleSwingCondition</label>
-        <childnode refid="6175" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6175">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6176">
-        <label>FdmSimpleSwingCondition</label>
-        <childnode refid="6177" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6177">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsimpleswingcondition.hpp" bodystart="33" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>calculator_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a74056d41a3aa1d300d6b427829cb63c4" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>exerciseTimes_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a30981b8fe14ebb07ff498e27e43bf3dd" prot="public" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>FdmSimpleSwingCondition</name></member>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_simple_swing_condition_1a3175cb5110707258d2f5075e49ee7d8c" prot="private" virt="non-virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>swingDirection_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmSimpleSwingCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -6,21 +6,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_b_f_g_s" prot="public" virt="non-virtual">BFGS</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_conjugate_gradient" prot="public" virt="non-virtual">ConjugateGradient</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_steepest_descent" prot="public" virt="non-virtual">SteepestDescent</derivedcompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_line_search_based_method_1a2eb34f5697270e3826031c399c402ac0" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;LineSearch&gt; lineSearch_</definition>
-        <argsstring></argsstring>
-        <name>lineSearch_</name>
-        <briefdescription>
-<para>line search </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -75,85 +60,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a841463a07a15419f9c3bae03f68e3610" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>virtual Disposable&lt;Array&gt; getUpdatedDirection</definition>
-        <argsstring>(const Problem &amp;P, Real gold2, const Array &amp;gradient)=0</argsstring>
-        <name>getUpdatedDirection</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
-          <declname>P</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>gold2</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>gradient</declname>
-        </param>
-        <briefdescription>
-<para>computes the new search direction </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="49"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9098">
-        <label>LineSearchBasedMethod</label>
-        <childnode refid="9099" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9099">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="9101">
-        <label>ConjugateGradient</label>
-        <link refid="class_quant_lib_1_1_conjugate_gradient"/>
-        <childnode refid="9098" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9100">
-        <label>BFGS</label>
-        <link refid="class_quant_lib_1_1_b_f_g_s"/>
-        <childnode refid="9098" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9102">
-        <label>SteepestDescent</label>
-        <link refid="class_quant_lib_1_1_steepest_descent"/>
-        <childnode refid="9098" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9103">
-        <label>LineSearchBasedMethod</label>
-        <childnode refid="9104" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9104">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/linesearchbasedmethod.hpp" bodystart="36" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a841463a07a15419f9c3bae03f68e3610" prot="protected" virt="pure-virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>getUpdatedDirection</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a2eb34f5697270e3826031c399c402ac0" prot="protected" virt="non-virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>lineSearch_</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" virt="non-virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" virt="virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>~LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::LineSearchBasedMethod</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

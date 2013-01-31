@@ -67,10 +67,5 @@
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine with analytical expected tranche loss for a large homogeneous pool with Gaussian one-factor copula. See for example &quot;The Normal Inverse Gaussian Distribution for Synthetic CDO pricing.&quot;, Anna Kalemanova, Bernd Schmid, Ralf Werner, Journal of Derivatives, Vol. 14, No. 3, (Spring 2007), pp. 80-93. <ulink url="http://www.defaultrisk.com/pp_crdrv_91.htm">http://www.defaultrisk.com/pp_crdrv_91.htm</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" line="228" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdoengines.hpp" bodystart="228" bodyend="273"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1ab30c093c138e55870ab79587961401d6" prot="private" virt="non-virtual"><scope>QuantLib::GaussianLHPCDOEngine</scope><name>copula_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1a6d163efc5ceadc563dd267641d754a0e" prot="private" virt="non-virtual"><scope>QuantLib::GaussianLHPCDOEngine</scope><name>expectedTrancheLoss</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_l_h_p_c_d_o_engine_1a874500da3cd99da4ff301c3ac259a18c" prot="public" virt="non-virtual"><scope>QuantLib::GaussianLHPCDOEngine</scope><name>GaussianLHPCDOEngine</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

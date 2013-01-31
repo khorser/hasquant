@@ -27,8 +27,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" bodystart="45" bodyend="47"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_discount_1_1curve_1a695d9e096fa12af510d3241e594da989" prot="public" virt="non-virtual"><scope>QuantLib::Discount::curve</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

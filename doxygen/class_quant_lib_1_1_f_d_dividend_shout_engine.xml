@@ -66,10 +66,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendshoutengine.hpp" bodystart="38" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_dividend_shout_engine_1a1db14ef8520912c9bc6b4590984d6e29" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendShoutEngine</scope><name>FDDividendShoutEngine</name></member>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendShoutEngine</scope><name>FDEngineAdapter</name></member>
-      <member refid="class_quant_lib_1_1_f_d_dividend_shout_engine_1ac9ecff7d4f8b1a3300c1b456aa8291c0" prot="private" virt="non-virtual"><scope>QuantLib::FDDividendShoutEngine</scope><name>super</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

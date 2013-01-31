@@ -83,68 +83,6 @@
 <para>Payoff with strike expressed as percentage </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12116">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="12117" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12117">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="12115">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="12116" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12114">
-        <label>PercentageStrikePayoff</label>
-        <link refid="class_quant_lib_1_1_percentage_strike_payoff"/>
-        <childnode refid="12115" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12120">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="12121" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12121">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="12119">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="12120" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12118">
-        <label>PercentageStrikePayoff</label>
-        <link refid="class_quant_lib_1_1_percentage_strike_payoff"/>
-        <childnode refid="12119" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="118" bodyend="129"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_percentage_strike_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_percentage_strike_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_percentage_strike_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>optionType</name></member>
-      <member refid="class_quant_lib_1_1_percentage_strike_payoff_1a758fb72dafc6b0c16a924360fb76a30e" prot="public" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>PercentageStrikePayoff</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>strike</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1afec468d37c982a37d0f403c629756770" prot="protected" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>StrikedTypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1abcdb1c11e3593354931e650dd3dd13f2" prot="protected" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1a0d0b65c5c1a4c7df8618e75120c15c46" prot="protected" virt="non-virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>TypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::PercentageStrikePayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

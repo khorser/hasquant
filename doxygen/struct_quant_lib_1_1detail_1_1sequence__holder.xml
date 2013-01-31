@@ -63,10 +63,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="61" bodyend="65"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a26aaf5c66fa3d5e11ac43edd61390701" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>begin</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a8877f759cfc55450f57fee7e9d92711c" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>end</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1sequence__holder_1a712b749387d8591b045ca599d3415ac3" prot="public" virt="non-virtual"><scope>QuantLib::detail::sequence_holder</scope><name>sequence_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

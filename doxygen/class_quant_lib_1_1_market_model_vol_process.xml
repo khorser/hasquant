@@ -138,29 +138,6 @@
     </briefdescription>
     <detaileddescription>
 <para>Displaced diffusion LMM with uncorrelated vol process. Called &quot;Shifted BGM&quot; with Heston vol by Brace in &quot;Engineering BGM.&quot; Vol process is an external input. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9551">
-        <label>SquareRootAndersen</label>
-        <link refid="class_quant_lib_1_1_square_root_andersen"/>
-        <childnode refid="9550" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9550">
-        <label>MarketModelVolProcess</label>
-        <link refid="class_quant_lib_1_1_market_model_vol_process"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/marketmodelvolprocess.hpp" bodystart="34" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a61d017960d55f63ae47efe0cafdef517" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>MarketModelVolProcess</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1abe94347b5b3b934a1484879af7175e78" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>nextPath</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a5889656dac25cff3583f7cf97b95d1f4" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>nextstep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a80b1fcbda138cec23753e2c78a0b7008" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>numberStateVariables</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a252a356cbc3fa869736761ac3f3fdb0f" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>numberSteps</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1ab8e2637cfe42113a8a7386dd18277a26" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>stateVariables</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a855f726db559fa3b8d89c0fcc7b0d028" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>stepSd</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a30b3195890d4684837576013f12dc480" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>variatesPerStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a0d022be0cc10ca0e82cc3e3d98bea81f" prot="public" virt="virtual"><scope>QuantLib::MarketModelVolProcess</scope><name>~MarketModelVolProcess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

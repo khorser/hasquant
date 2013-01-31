@@ -105,12 +105,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/abcd.hpp" bodystart="118" bodyend="127"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_abcd_squared_1a79cff342588358998302705659dc574c" prot="private" virt="non-virtual"><scope>QuantLib::AbcdSquared</scope><name>abcd_</name></member>
-      <member refid="class_quant_lib_1_1_abcd_squared_1a07c4f592ddba254bb068f7304d985029" prot="public" virt="non-virtual"><scope>QuantLib::AbcdSquared</scope><name>AbcdSquared</name></member>
-      <member refid="class_quant_lib_1_1_abcd_squared_1a9736183e84f061ad08b6d595e2c293bf" prot="public" virt="non-virtual"><scope>QuantLib::AbcdSquared</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_abcd_squared_1ae01a35542c1152f133620fbfe04e7c0d" prot="private" virt="non-virtual"><scope>QuantLib::AbcdSquared</scope><name>S_</name></member>
-      <member refid="class_quant_lib_1_1_abcd_squared_1a0a04e1aa89ae3670613ee52a136b31dd" prot="private" virt="non-virtual"><scope>QuantLib::AbcdSquared</scope><name>T_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

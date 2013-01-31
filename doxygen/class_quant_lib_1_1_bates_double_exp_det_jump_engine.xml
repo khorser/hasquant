@@ -52,75 +52,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="151"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_det_jump_engine_1aa10b245f3027db04aabb719f95dae0c6" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::complex&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::complex&lt;Real&gt; addOnTerm</definition>
-        <argsstring>(Real phi, Time t, Size j) const </argsstring>
-        <name>addOnTerm</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>phi</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>j</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="154"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/batesengine.hpp" bodystart="144" bodyend="155"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bates_double_exp_det_jump_engine_1aa10b245f3027db04aabb719f95dae0c6" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>addOnTerm</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>AnalyticHestonEngine</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>AnalyticHestonEngine</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>AnalyticHestonEngine</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1afee5e1b26214353757b120d9f5ad2169" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_bates_double_exp_det_jump_engine_1ac5a72a1e436341c845bef1fc5e8962f0" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>BatesDoubleExpDetJumpEngine</name></member>
-      <member refid="class_quant_lib_1_1_bates_double_exp_det_jump_engine_1a394ddc89bd3ba9a2e4b29b7ae38d98d4" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>BatesDoubleExpDetJumpEngine</name></member>
-      <member refid="class_quant_lib_1_1_bates_double_exp_engine_1a8dae98edf4dc2831d29e6524b5cdbdb8" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>BatesDoubleExpEngine</name></member>
-      <member refid="class_quant_lib_1_1_bates_double_exp_engine_1ac59673b938a11b6c81b03ee08378a1c9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>BatesDoubleExpEngine</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>BranchCorrection</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>ComplexLogFormula</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>doCalculation</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>Gatheral</name></member>
-      <member refid="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>GenericModelEngine</name></member>
-      <member refid="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>GenericModelEngine</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>getArguments</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>getResults</name></member>
-      <member refid="class_quant_lib_1_1_generic_model_engine_1a6864e2664edc95964c8d3c6325fbd30e" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>model_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>numberOfEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1ac34e18c69939ed8140f8cccc00ace941" prot="protected" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>results_</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>~Observer</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" virt="virtual"><scope>QuantLib::BatesDoubleExpDetJumpEngine</scope><name>~PricingEngine</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

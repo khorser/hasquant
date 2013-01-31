@@ -204,48 +204,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6801">
-        <label>MarketModel</label>
-        <link refid="class_quant_lib_1_1_market_model"/>
-      </node>
-      <node id="6800">
-        <label>FwdToCotSwapAdapter</label>
-        <childnode refid="6801" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6803">
-        <label>MarketModel</label>
-        <link refid="class_quant_lib_1_1_market_model"/>
-      </node>
-      <node id="6802">
-        <label>FwdToCotSwapAdapter</label>
-        <childnode refid="6803" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/fwdtocotswapadapter.hpp" bodystart="31" bodyend="50"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" virt="virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a38bd6b5501b4957ac4effffc83be5ce5" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>displacements</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a00cbe042fcbdf0b6ab1366858f9d89b3" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>fwdModel_</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a43cdaa4ae8bf0bdffbc5fa3c41c83059" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>FwdToCotSwapAdapter</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1af28aec1bf0cbe34b36fd0ecc90fbb780" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>initialRates</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>initialRates_</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a7096f7840a57cff837d27141bc085e5c" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>numberOfSteps_</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>pseudoRoot</name></member>
-      <member refid="class_quant_lib_1_1_fwd_to_cot_swap_adapter_1a4c0e90029768120dad570b182ae7e747" prot="private" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>pseudoRoots_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" virt="non-virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>timeDependentVolatility</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" virt="virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>totalCovariance</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" virt="virtual"><scope>QuantLib::FwdToCotSwapAdapter</scope><name>~MarketModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

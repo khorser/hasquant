@@ -134,16 +134,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/exercisevalue.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/exercisevalue.hpp" bodystart="35" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1abbcaaec704cb3577c2c808a4e37011b8" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1a40f3fe604a09125d6707b7d2128339fa" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>isExerciseTime</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1afd20cc76c83b8c0275df7603761c6dce" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1aaf50b073c0431c39c47f9efe491dcb89" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>numberOfExercises</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1ae76494005108a03d01db60b6bb685116" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1a719fbceda03f48608b8bc2f6974cee47" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_market_model_exercise_value_1af9fc810be9548f932c1be63f5062e581" prot="public" virt="virtual"><scope>QuantLib::MarketModelExerciseValue</scope><name>~MarketModelExerciseValue</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

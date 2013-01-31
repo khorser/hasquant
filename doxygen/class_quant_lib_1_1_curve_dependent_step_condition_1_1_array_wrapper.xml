@@ -62,11 +62,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="78" bodyend="88"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1aa2cfc8b112c887bcf3d13474691adedb" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::ArrayWrapper</scope><name>ArrayWrapper</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1a4e9946556302a943da9cb097af581af1" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::ArrayWrapper</scope><name>getValue</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_array_wrapper_1a1d703c8631d2e72b6276a36f8daea445" prot="private" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::ArrayWrapper</scope><name>value_</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1ada5322ace3e6e7194879abfa92bede90" prot="public" virt="virtual"><scope>QuantLib::CurveDependentStepCondition::ArrayWrapper</scope><name>~CurveWrapper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

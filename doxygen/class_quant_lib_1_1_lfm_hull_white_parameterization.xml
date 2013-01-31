@@ -4,47 +4,6 @@
     <compoundname>QuantLib::LfmHullWhiteParameterization</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_lfm_covariance_parameterization" prot="public" virt="non-virtual">LfmCovarianceParameterization</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a9e55213e724d95c783519226f9931af7" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix diffusion_</definition>
-        <argsstring></argsstring>
-        <name>diffusion_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a3c4a5f11b286a206fe151fbc131b6dd0" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix covariance_</definition>
-        <argsstring></argsstring>
-        <name>covariance_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1ab8d80d95c018986943e14d484b6ff9c6" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; fixingTimes_</definition>
-        <argsstring></argsstring>
-        <name>fixingTimes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="59" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0a9d92c9beb820af6e0e6379490d2ce9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -147,77 +106,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="53"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lfm_hull_white_parameterization_1a50e781d78a77b91b09d63af7be8370e7" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size nextIndexReset</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>nextIndexReset</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="56"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Libor market model parameterization based on Hull White paper </para>    </briefdescription>
     <detaileddescription>
 <para>Hull, John, White, Alan, 1999, <ref refid="class_quant_lib_1_1_forward" kindref="compound">Forward</ref> Rate Volatilities, <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> Rate Volatilities and the Implementation of the <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model (<ulink url="http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf">http://www.rotman.utoronto.ca/~amackay/fin/libormktmodel2.pdf</ulink>)</para><para><xrefsect id="test_1_test000024"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested by Monte-Carlo reproduction of caplet &amp; ratchet npvs and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9013">
-        <label>LfmCovarianceParameterization</label>
-        <link refid="class_quant_lib_1_1_lfm_covariance_parameterization"/>
-      </node>
-      <node id="9012">
-        <label>LfmHullWhiteParameterization</label>
-        <link refid="class_quant_lib_1_1_lfm_hull_white_parameterization"/>
-        <childnode refid="9013" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9016">
-        <label>Matrix</label>
-        <link refid="class_quant_lib_1_1_matrix"/>
-      </node>
-      <node id="9015">
-        <label>LfmCovarianceParameterization</label>
-        <link refid="class_quant_lib_1_1_lfm_covariance_parameterization"/>
-      </node>
-      <node id="9014">
-        <label>LfmHullWhiteParameterization</label>
-        <link refid="class_quant_lib_1_1_lfm_hull_white_parameterization"/>
-        <childnode refid="9015" relation="public-inheritance">
-        </childnode>
-        <childnode refid="9016" relation="usage">
-          <edgelabel>diffusion_</edgelabel>
-          <edgelabel>covariance_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lfmhullwhiteparam.hpp" bodystart="41" bodyend="60"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0278d24739a9bfc281246d6172530b49" prot="public" virt="virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a3c4a5f11b286a206fe151fbc131b6dd0" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>covariance_</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a98f01d842b650489da3c57e779f73c93" prot="public" virt="virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a9e55213e724d95c783519226f9931af7" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>diffusion_</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>factors</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1a19357300f903f9594909f2aa2c729ac5" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1ab8d80d95c018986943e14d484b6ff9c6" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>fixingTimes_</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1abadf15cf4c8136891d2e91d8f36a0baf" prot="public" virt="virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>integratedCovariance</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1a28186f7bbcc9ede01363ab8bf7a70d44" prot="public" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>LfmCovarianceParameterization</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a0a9d92c9beb820af6e0e6379490d2ce9" prot="public" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>LfmHullWhiteParameterization</name></member>
-      <member refid="class_quant_lib_1_1_lfm_hull_white_parameterization_1a50e781d78a77b91b09d63af7be8370e7" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>nextIndexReset</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_lfm_covariance_parameterization_1a82f0f4f3a7a9282db41a093a0399d127" prot="public" virt="virtual"><scope>QuantLib::LfmHullWhiteParameterization</scope><name>~LfmCovarianceParameterization</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

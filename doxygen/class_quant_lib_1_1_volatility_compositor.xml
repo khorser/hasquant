@@ -57,28 +57,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14815">
-        <label>Garch11</label>
-        <link refid="class_quant_lib_1_1_garch11"/>
-        <childnode refid="14813" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14814">
-        <label>ConstantEstimator</label>
-        <link refid="class_quant_lib_1_1_constant_estimator"/>
-        <childnode refid="14813" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14813">
-        <label>VolatilityCompositor</label>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="41" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_volatility_compositor_1ae4670ccf94cd30655af28ebe54299721" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityCompositor</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_volatility_compositor_1ae400d3120e1f60ad4a0f959778efff61" prot="public" virt="pure-virtual"><scope>QuantLib::VolatilityCompositor</scope><name>calibrate</name></member>
-      <member refid="class_quant_lib_1_1_volatility_compositor_1a5e304d417b3145a7458d6fc2cd97fe6a" prot="public" virt="virtual"><scope>QuantLib::VolatilityCompositor</scope><name>~VolatilityCompositor</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

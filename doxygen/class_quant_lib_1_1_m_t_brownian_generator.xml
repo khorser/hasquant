@@ -160,18 +160,5 @@
 <para>Incremental Brownian generator using a Mersenne-twister uniform generator and inverse-cumulative Gaussian method.</para><para><simplesect kind="note"><para>At this time, generation of the underlying uniform sequence is eager, while its transformation into Gaussian variates is lazy. Further optimization might be possible by using the Mersenne twister directly instead of a <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>; however, it is not clear how much of a difference this would make when compared to the inverse-cumulative Gaussian calculation. </para></simplesect>
 </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="43" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1a2f14213f44b1e944e20e92ad8a9c6217" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>generator_</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1ae9cb0a5e7a05c76a7d9ee384da384ff1" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>inverseCumulative_</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1a45292ca181e869917dba27eac99633e0" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>lastStep_</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1ace032769d4c059283496dd6aa3b75767" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>MTBrownianGenerator</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1a924332975ee95db8a63daf02e10d3bdc" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>nextPath</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1a5a8ee20027256cd968b0561e1bb071c9" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1a447c523c246b53547f6723d481620f92" prot="public" virt="virtual"><scope>QuantLib::MTBrownianGenerator</scope><name>~BrownianGenerator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

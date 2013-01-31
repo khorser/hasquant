@@ -209,33 +209,6 @@
 <para>base class for market models </para>    </briefdescription>
     <detaileddescription>
 <para>For each time step, generates the pseudo-square root of the covariance matrix for that time step. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9450">
-        <label>AbcdVol</label>
-        <link refid="class_quant_lib_1_1_abcd_vol"/>
-        <childnode refid="9449" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9449">
-        <label>MarketModel</label>
-        <link refid="class_quant_lib_1_1_market_model"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="39" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" virt="virtual"><scope>QuantLib::MarketModel</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a838d79b5b77e88ed560610ceb5d79df2" prot="private" virt="non-virtual"><scope>QuantLib::MarketModel</scope><name>covariance_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a77c3a5ee494fde88b9eca13f27fd28eb" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>displacements</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1adc217a0c2cb706bc4f845d44424e1b06" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>initialRates</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a23e12972a841e8410cafc8a15056196e" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1abe6f647dd9a9c3dc968ac76116801348" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a6fba75f39ffbed5d1523150428b94d2b" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModel</scope><name>pseudoRoot</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" virt="non-virtual"><scope>QuantLib::MarketModel</scope><name>timeDependentVolatility</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" virt="virtual"><scope>QuantLib::MarketModel</scope><name>totalCovariance</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a5a5a420aa8690c2b903b0f4ca8956294" prot="private" virt="non-virtual"><scope>QuantLib::MarketModel</scope><name>totalCovariance_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" virt="virtual"><scope>QuantLib::MarketModel</scope><name>~MarketModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

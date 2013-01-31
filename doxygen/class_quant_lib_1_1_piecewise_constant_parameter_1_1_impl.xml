@@ -62,34 +62,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12154">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="12153">
-        <label>PiecewiseConstantParameter::Impl</label>
-        <childnode refid="12154" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12156">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="12155">
-        <label>PiecewiseConstantParameter::Impl</label>
-        <childnode refid="12156" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="125" bodyend="140"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb8dd2dfe083ed6b90690ba56c159623" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>times_</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl_1acb22a269fdbaae141c8105cad4236c15" prot="public" virt="non-virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::PiecewiseConstantParameter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

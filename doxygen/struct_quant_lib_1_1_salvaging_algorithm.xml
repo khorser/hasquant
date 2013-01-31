@@ -55,13 +55,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/pseudosqrt.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/pseudosqrt.hpp" bodystart="32" bodyend="34"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7a54f7c6cb990bf6fc143cc2d797a961c3" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>Higham</name></member>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7a64774f5807b917f4c4259bc4f652d92e" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>Hypersphere</name></member>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7af4e61a4d8deccf62472a49e4fc152c79" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>LowerDiagonal</name></member>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>None</name></member>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7af2e65f0848a7d6c4d5056284da2bb9a5" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>Spectral</name></member>
-      <member refid="struct_quant_lib_1_1_salvaging_algorithm_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::SalvagingAlgorithm</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -134,15 +134,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="35" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>avgInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a9b2fa67786ab7695ac9c86229c606973" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>FdmExtOUJumpModelInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>innerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1ac641fb99b5820ca1d07577c57f4d57c9" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a5473e5fd78d535844f5f297f680685b9" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>Shape</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a03eaa61142f7435ea76aa4ccfbf60c09" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>shape_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpModelInnerValue</scope><name>~FdmInnerValueCalculator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

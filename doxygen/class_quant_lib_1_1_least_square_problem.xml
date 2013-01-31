@@ -90,11 +90,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="38" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_least_square_problem_1a6c7ce2556129af8c0e1081fa87bfe83c" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_least_square_problem_1a11233390acce28369d1979816543f542" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>targetAndValue</name></member>
-      <member refid="class_quant_lib_1_1_least_square_problem_1a5329bc9538315cd8ef49584ad144c526" prot="public" virt="pure-virtual"><scope>QuantLib::LeastSquareProblem</scope><name>targetValueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_least_square_problem_1a2a78b6ec5fe09058edac6d74c9939d7c" prot="public" virt="virtual"><scope>QuantLib::LeastSquareProblem</scope><name>~LeastSquareProblem</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

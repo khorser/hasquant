@@ -247,22 +247,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" bodystart="92" bodyend="111"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a601a1bded3cbf1242047bddd5f95bd45" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>MakeMCHimalayaEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a012cfff5b787ce5b69e20d584bd8e913" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a75359c6e4340ce1aab7b6ceb20a358be" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a148b648e252e9a52ca8a05f91db509c6" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1af6d076d6efedc85cf0cc59fbb1c7702f" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a117efe0275c68682f7631f23252861bd" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a4fac4b2f2946e94c48fc54d5eb6daa0e" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_himalaya_engine_1a99dbf0b595a9d1ed985280c4cfaf2aaa" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCHimalayaEngine</scope><name>withSeed</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

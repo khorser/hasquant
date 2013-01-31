@@ -170,17 +170,5 @@
     <detaileddescription>
 <para>In order to compute market vegas, we need a class that gives the derivative of a cap implied vol against changes in pseudo-root elements. This is that class.</para><para>The operation is non-trivial because the cap implied vol has a complicated relationship with the caplet implied vols.</para><para>This is tested in the pathwise vegas routine in MarketModels.cpp </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" bodystart="78" bodyend="108"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1af756570767561f1145bd01177c17c8c1" prot="public" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>CapPseudoDerivative</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a2fb2293cf300094987d6188fec71fe94" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>firstDF_</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a8ec1750ec5666ad6ac99e955ce196170" prot="public" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>impliedVolatility</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a8192c66d14a3d9fee44e82ecf27c0f97" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>impliedVolatility_</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a48895cd8fda9324a2e4878c2152c429d" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>inputModel_</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a829a10064ebde805736e1ce3ec8214f8" prot="public" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>priceDerivative</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1ac80ab446709be3ba0b1a51c5b8994de6" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>priceDerivatives_</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a7c212193f9c0fd38b46c202f42e9ec5b" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>vega_</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>volatilityDerivative</name></member>
-      <member refid="class_quant_lib_1_1_cap_pseudo_derivative_1aa1ffcd296066282de075b6649a0e0dff" prot="private" virt="non-virtual"><scope>QuantLib::CapPseudoDerivative</scope><name>volatilityDerivatives_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

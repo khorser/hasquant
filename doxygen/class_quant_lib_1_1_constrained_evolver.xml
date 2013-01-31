@@ -68,48 +68,6 @@
 <para>Constrained market-model evolver. </para>    </briefdescription>
     <detaileddescription>
 <para>Abstract base class. Requires extra methods above that of marketmodelevolver to let you fix rates via importance sampling.</para><para>The evolver does the actual gritty work of evolving the forward rates from one time to the next.</para><para>This is intended to be used for the Fries-Joshi proxy simulation approach to <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="2532">
-        <label>ConstrainedEvolver</label>
-        <link refid="class_quant_lib_1_1_constrained_evolver"/>
-        <childnode refid="2533" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2533">
-        <label>MarketModelEvolver</label>
-        <link refid="class_quant_lib_1_1_market_model_evolver"/>
-      </node>
-      <node id="2534">
-        <label>LogNormalFwdRateEulerConstrained</label>
-        <link refid="class_quant_lib_1_1_log_normal_fwd_rate_euler_constrained"/>
-        <childnode refid="2532" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2535">
-        <label>ConstrainedEvolver</label>
-        <link refid="class_quant_lib_1_1_constrained_evolver"/>
-        <childnode refid="2536" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2536">
-        <label>MarketModelEvolver</label>
-        <link refid="class_quant_lib_1_1_market_model_evolver"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/constrainedevolver.hpp" bodystart="39" bodyend="50"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1a6aee9def9c9ccdc14907fb93fb96631c" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>advanceStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1ac7e44f09b21966a9dab1e65674346ecd" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>currentState</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1ac01af761e87531c158e375b36520bdcf" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>currentStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1adb4ceea26c9274fc282a70be25a6b619" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>numeraires</name></member>
-      <member refid="class_quant_lib_1_1_constrained_evolver_1a72f1f210b87697658d04a4580e8d451c" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>setConstraintType</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1ad5880f2c1b2a8457b76064ffe83e2590" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>setInitialState</name></member>
-      <member refid="class_quant_lib_1_1_constrained_evolver_1a39d0015d10b643e28baba86edcd66b0a" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>setThisConstraint</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1ad1c69e6aa71f890350ca8abcb15b0763" prot="public" virt="pure-virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>startNewPath</name></member>
-      <member refid="class_quant_lib_1_1_constrained_evolver_1a32649c4f0b2e209ac89fd34e0eee454f" prot="public" virt="virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>~ConstrainedEvolver</name></member>
-      <member refid="class_quant_lib_1_1_market_model_evolver_1a4c1f152fb923561c3e6739d30e55a4c4" prot="public" virt="virtual"><scope>QuantLib::ConstrainedEvolver</scope><name>~MarketModelEvolver</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

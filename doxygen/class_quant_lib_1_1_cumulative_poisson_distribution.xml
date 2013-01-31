@@ -60,10 +60,5 @@
     <detaileddescription>
 <para>This function provides an approximation of the integral of the Poisson distribution.</para><para>For this implementation see &quot;Numerical Recipes in C&quot;, 2nd edition, Press, Teukolsky, Vetterling, Flannery, chapter 6</para><para><xrefsect id="test_1_test000033"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="61" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cumulative_poisson_distribution_1afef08c1785dc638a5639d03f29628180" prot="public" virt="non-virtual"><scope>QuantLib::CumulativePoissonDistribution</scope><name>CumulativePoissonDistribution</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_poisson_distribution_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" virt="non-virtual"><scope>QuantLib::CumulativePoissonDistribution</scope><name>mu_</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" virt="non-virtual"><scope>QuantLib::CumulativePoissonDistribution</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -24,86 +24,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a2bf0af9827386f85f987316431e81711" prot="protected" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool calibrationPhase_</definition>
-        <argsstring></argsstring>
-        <name>calibrationPhase_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1aae6fc85412d430df60e5a9a6f75adb0b" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_early_exercise_path_pricer" kindref="compound">EarlyExercisePathPricer</ref>&lt; PathType &gt; &gt;</type>
-        <definition>const boost::shared_ptr&lt;EarlyExercisePathPricer&lt;PathType&gt; &gt; pathPricer_</definition>
-        <argsstring></argsstring>
-        <name>pathPricer_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="65" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a41a0f0d111413d6b14e5ee6c0b49bc04" prot="protected" static="no" mutable="no">
-        <type>boost::scoped_array&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>boost::scoped_array&lt;Array&gt; coeff_</definition>
-        <argsstring></argsstring>
-        <name>coeff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1aa5da556975f74f50a2e9efc043e616f0" prot="protected" static="no" mutable="no">
-        <type>boost::scoped_array&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
-        <definition>boost::scoped_array&lt;DiscountFactor&gt; dF_</definition>
-        <argsstring></argsstring>
-        <name>dF_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a725caf1043d9257b4fe46ff5bfce78f4" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; PathType &gt;</type>
-        <definition>std::vector&lt;PathType&gt; paths_</definition>
-        <argsstring></argsstring>
-        <name>paths_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a9fc199a3fca80adc28ac11ca88e71a82" prot="protected" static="no" mutable="no">
-        <type>const std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, StateType &gt; &gt;</type>
-        <definition>const std::vector&lt;boost::function1&lt;Real, StateType&gt; &gt; v_</definition>
-        <argsstring></argsstring>
-        <name>v_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a916ae89df9f44e1ffcc92c261a602c5d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -169,43 +89,6 @@
    by Simulation: A Simple Least-Squares Approach, The Review of
    Financial Studies, Volume 14, No. 1, 113-147
 </verbatim></para><para><xrefsect id="test_1_test000078"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9306">
-        <label>PathPricer&lt; PathType &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="9305">
-        <label>LongstaffSchwartzPathPricer&lt; PathType &gt;</label>
-        <link refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer"/>
-        <childnode refid="9306" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9308">
-        <label>PathPricer&lt; PathType &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="9307">
-        <label>LongstaffSchwartzPathPricer&lt; PathType &gt;</label>
-        <link refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer"/>
-        <childnode refid="9308" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/longstaffschwartzpathpricer.hpp" bodystart="50" bodyend="72"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1ad4a7316a51b17d0f691bb3e33b95a5ad" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>calibrate</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a2bf0af9827386f85f987316431e81711" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>calibrationPhase_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a41a0f0d111413d6b14e5ee6c0b49bc04" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>coeff_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1aa5da556975f74f50a2e9efc043e616f0" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>dF_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a916ae89df9f44e1ffcc92c261a602c5d" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>LongstaffSchwartzPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a973b5f4a40082fdcd2ccbb91e5116756" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1aae6fc85412d430df60e5a9a6f75adb0b" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>pathPricer_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a725caf1043d9257b4fe46ff5bfce78f4" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>paths_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a8f1d307035ca52ae82e4c13aa0cfe635" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>StateType</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_path_pricer_1a9fc199a3fca80adc28ac11ca88e71a82" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

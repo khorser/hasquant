@@ -431,37 +431,5 @@
     <detaileddescription>
 <para>Given x between zero and one as the integral value of a gaussian normal distribution this class provides the value y such that formula here ...</para><para>It use Acklam&apos;s approximation: by Peter J. Acklam, University of Oslo, Statistics Division. URL: <ulink url="http://home.online.no/~pjacklam/notes/invnorm/index.html">http://home.online.no/~pjacklam/notes/invnorm/index.html</ulink></para><para>This class can also be used to generate a gaussian normal distribution from a uniform distribution. This is especially useful when a gaussian normal distribution is generated from a low discrepancy uniform distribution: in this case the traditional Box-Muller approach and its variants would not preserve the sequence&apos;s low-discrepancy. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="101" bodyend="175"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a3b0f31568bc0a5e9716532c73284f664" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a1_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ae576e01bd95479c37982f7611184f328" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a2_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1af59c001e9d4df0e8733787318354e84b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a3_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a3ed4e0e2394afcbb274ac24b47195ca3" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a4_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a90dba7708fb3619a8dfa43fc1c865575" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a5_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ad4f7c73b9230222202c8bfea4bd9a711" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>a6_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>average_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a5869f32005fc3fb71a0caab0bc402ef6" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b1_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a05d7aaa0946825b6889a7034bafebd38" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b2_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a831b68eac754d48a82177f76fab2f7ed" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b3_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a60c5b98cb96322601b9e0e71efc6a1ec" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b4_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ad0f98551a73f763a4b3fad9f2f3476ed" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>b5_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a06a101ad2c388a89e98dffb9198524bd" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c1_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c2_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a302fa080d0424ffb023c3259315c9ef0" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c3_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1aff6828b9219a35779c7656f95f83b451" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c4_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8b2d67e606c9a1949cb068093183966b" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c5_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a8271c33b430d797267d12c4cf889c050" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>c6_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a73a9fda962d125257142703719fcd1ce" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d1_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a7b15aaccf3e82703aef7ad5cb6d647f3" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d2_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1ac5f36b949bbe941a9727c28c0b73fe7c" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d3_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a997f1493c9303948abfff7a39d862991" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>d4_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a5415a9e58d882b51ecedc8471c32667d" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>InverseCumulativeNormal</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>sigma_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1adf56cbfabafe9c6bbf4366412f9ea7d5" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>standard_value</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a62003f95d91e1fe22107cbf2668a31d1" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>tail_value</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1af51f354aa9c753d8aba575124ef18a33" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>x_high_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_normal_1a181ce5d8001d449180f474738eb893b6" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeNormal</scope><name>x_low_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

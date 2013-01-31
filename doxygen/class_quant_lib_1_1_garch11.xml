@@ -198,18 +198,5 @@
     <detaileddescription>
 <para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garch.hpp" bodystart="35" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_garch11_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>alpha_</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>beta_</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a32fdfa0e49d602f4f56814ee4fcb0bd1" prot="public" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a2639692cf9c864c3ea4a5e05a70ec6aa" prot="public" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a7e3c6f9b2879fae5094226692b4b26d9" prot="public" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>calibrate</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a87b8e8e007393982e8b58a8918c1bb83" prot="private" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>costFunction</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a88c6756db7fb1136217d5e4f3fe88885" prot="private" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>gamma_</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a5f96f517b814e7fa452aa77234f95d3a" prot="public" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>Garch11</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1a62c9ab7102b3c64bdbc952d4e1807929" prot="public" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>Garch11</name></member>
-      <member refid="class_quant_lib_1_1_garch11_1ae5ed07c9b4fc4588f840b65fac6ebcbf" prot="private" virt="non-virtual"><scope>QuantLib::Garch11</scope><name>vl_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_compositor_1a5e304d417b3145a7458d6fc2cd97fe6a" prot="public" virt="virtual"><scope>QuantLib::Garch11</scope><name>~VolatilityCompositor</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

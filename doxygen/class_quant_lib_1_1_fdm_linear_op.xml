@@ -57,10 +57,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearop.hpp" bodystart="33" bodyend="38"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1adbd8c74d39db458bcb26da7d42d0039d" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOp</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOp</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmLinearOp</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

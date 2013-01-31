@@ -58,34 +58,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14726">
-        <label>VariancePathPricer</label>
-        <childnode refid="14727" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14727">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14728">
-        <label>VariancePathPricer</label>
-        <childnode refid="14729" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14729">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" line="154" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="154" bodyend="162"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_variance_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::VariancePathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_variance_path_pricer_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::VariancePathPricer</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_variance_path_pricer_1af2d8f1d7e5d80affbada2863a839a749" prot="public" virt="non-virtual"><scope>QuantLib::VariancePathPricer</scope><name>VariancePathPricer</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::VariancePathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

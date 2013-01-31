@@ -323,26 +323,5 @@
     <detaileddescription>
 <para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/lmmnormaldriftcalculator.hpp" bodystart="40" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>alive_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>C_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>compute</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>compute</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computePlain</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computePlain</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computeReduced</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>computeReduced</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1acb5a1fd659fe9187af1fffa2c9c781a9" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>downs_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aafd988ebee2e08e62013a163680ffa56" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>e_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>isFullFactor_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ac4afed6ea5372106deceebd4fb9c030f" prot="public" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>LMMNormalDriftCalculator</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>numeraire_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>oneOverTaus_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>pseudo_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>tmp_</name></member>
-      <member refid="class_quant_lib_1_1_l_m_m_normal_drift_calculator_1ad58b798be98e08a9fa31b8291add7945" prot="private" virt="non-virtual"><scope>QuantLib::LMMNormalDriftCalculator</scope><name>ups_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

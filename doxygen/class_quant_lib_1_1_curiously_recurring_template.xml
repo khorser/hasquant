@@ -12,100 +12,10 @@
         <defname>Impl</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>CuriouslyRecurringTemplate</definition>
-        <argsstring>()</argsstring>
-        <name>CuriouslyRecurringTemplate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" bodystart="42" bodyend="42"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>~CuriouslyRecurringTemplate</definition>
-        <argsstring>()</argsstring>
-        <name>~CuriouslyRecurringTemplate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" bodystart="43" bodyend="43"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>Impl &amp;</type>
-        <definition>Impl&amp; impl</definition>
-        <argsstring>()</argsstring>
-        <name>impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" bodystart="45" bodyend="47"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const Impl &amp;</type>
-        <definition>const Impl&amp; impl</definition>
-        <argsstring>() const </argsstring>
-        <name>impl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" bodystart="48" bodyend="50"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Support for the curiously recurring template pattern. </para>    </briefdescription>
     <detaileddescription>
 <para>See James O. Coplien. A Curiously Recurring Template Pattern. In Stanley B. Lippman, editor, C++ Gems, 135-144. Cambridge University Press, New York, New York, 1996. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="3111">
-        <label>TreeLattice2D&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice2_d"/>
-        <childnode refid="3109" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3107">
-        <label>CuriouslyRecurringTemplate&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
-      </node>
-      <node id="3108">
-        <label>Solver1D&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_solver1_d"/>
-        <childnode refid="3107" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3109">
-        <label>TreeLattice&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice"/>
-        <childnode refid="3107" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3110">
-        <label>TreeLattice1D&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice1_d"/>
-        <childnode refid="3109" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/curiouslyrecurring.hpp" bodystart="39" bodyend="51"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" virt="non-virtual"><scope>QuantLib::CuriouslyRecurringTemplate</scope><name>CuriouslyRecurringTemplate</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" virt="non-virtual"><scope>QuantLib::CuriouslyRecurringTemplate</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" virt="non-virtual"><scope>QuantLib::CuriouslyRecurringTemplate</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" virt="non-virtual"><scope>QuantLib::CuriouslyRecurringTemplate</scope><name>~CuriouslyRecurringTemplate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

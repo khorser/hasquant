@@ -202,48 +202,6 @@
 <para>Probability formulas and algorithms. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9313">
-        <label>LossDistBucketing</label>
-        <link refid="class_quant_lib_1_1_loss_dist_bucketing"/>
-        <childnode refid="9311" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9314">
-        <label>LossDistHomogeneous</label>
-        <link refid="class_quant_lib_1_1_loss_dist_homogeneous"/>
-        <childnode refid="9311" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9311">
-        <label>LossDist</label>
-        <link refid="class_quant_lib_1_1_loss_dist"/>
-      </node>
-      <node id="9312">
-        <label>LossDistBinomial</label>
-        <link refid="class_quant_lib_1_1_loss_dist_binomial"/>
-        <childnode refid="9311" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9315">
-        <label>LossDistMonteCarlo</label>
-        <link refid="class_quant_lib_1_1_loss_dist_monte_carlo"/>
-        <childnode refid="9311" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="37" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_loss_dist_1acf9cea8bbac2609ec13be76d762ea137" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>binomialProbabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab82fe26fbce3b5569b04c89ff1323940" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>binomialProbabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab143530071a3af08da7f3df1640d33e5" prot="public" virt="pure-virtual"><scope>QuantLib::LossDist</scope><name>buckets</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab1ed2340c94e1792f0d63fca3f5b1b7e" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>LossDist</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a6adb04174b3fd47dcf4a4d6a401d563e" prot="public" virt="pure-virtual"><scope>QuantLib::LossDist</scope><name>maximum</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a750367f603a71c5a87707600f677ea41" prot="public" virt="pure-virtual"><scope>QuantLib::LossDist</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aaed4b6db418b52611e4fb134d0cb6b8d" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>probabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a2d7794e813cefafdac6576166cbdd06b" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aa00098d738a49d32f49d9e57a76bd984" prot="public" virt="non-virtual"><scope>QuantLib::LossDist</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a5546766df1db78def3db23dd75033fe9" prot="public" virt="virtual"><scope>QuantLib::LossDist</scope><name>~LossDist</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

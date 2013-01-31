@@ -123,15 +123,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="29" bodyend="41"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>addVector</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>BasisIncompleteOrdered</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>basisSize</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a2123b524ed01f4b11c34f0bfb397694f" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>currentBasis_</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>euclideanDimension</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a9db2ba0acb3b1825f382b8beea3ec1f1" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>euclideanDimension_</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>getBasisAsRowsInMatrix</name></member>
-      <member refid="class_quant_lib_1_1_basis_incomplete_ordered_1aee6154e3e164ca3ef05c2e36505f12c0" prot="private" virt="non-virtual"><scope>QuantLib::BasisIncompleteOrdered</scope><name>newVector_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

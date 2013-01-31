@@ -89,13 +89,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="127" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="127" bodyend="136"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_saved_settings_1a8f231257ba45f5e8bff505c57007dbc7" prot="private" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>enforcesTodaysHistoricFixings_</name></member>
-      <member refid="class_quant_lib_1_1_saved_settings_1aab7be0a2ef3486101fe70ac7ba229d17" prot="private" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>evaluationDate_</name></member>
-      <member refid="class_quant_lib_1_1_saved_settings_1a9dc706f7bde495e92a2ead042696d763" prot="private" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>includeReferenceDateEvents_</name></member>
-      <member refid="class_quant_lib_1_1_saved_settings_1a8a3aacf41cab37be41ec441e1ee15ee9" prot="private" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>includeTodaysCashFlows_</name></member>
-      <member refid="class_quant_lib_1_1_saved_settings_1abcb9f20c75d08c5309a4f869ab575c25" prot="public" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>SavedSettings</name></member>
-      <member refid="class_quant_lib_1_1_saved_settings_1a100f3cf9b650378eaf80ffa9f87255c5" prot="public" virt="non-virtual"><scope>QuantLib::SavedSettings</scope><name>~SavedSettings</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

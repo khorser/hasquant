@@ -276,24 +276,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mceuropeanhestonengine.hpp" bodystart="59" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a0d710ebecf8e0b383e568b7aeaa8020d" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>MakeMCEuropeanHestonEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a913c0bb126440b8eebb19cb20ed021a2" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a6a278114d4f743d284bbedd1a9d44630" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a38c4a9331c53bea1ca225a8cb0a9327b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a77ab658b8177ebc016b06265e570bff4" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a1be680422686a3d012e7b0dd11612cbd" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1afc6a6cd86adf610e724a8d245bc34913" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a3e30448d79c8538f031a5c439485e0fd" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_european_heston_engine_1a7c0df3e302f8cf2a0018aba54184b10b" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCEuropeanHestonEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -23,42 +23,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/coupons/subperiodcoupons.hpp" bodystart="132" bodyend="135"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac10c63edf709c1a57e00fe717247f4c7" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>accrualFactor_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>capletPrice</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>capletRate</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a1e54a110bffcfdf846317f0aec65ada6" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>coupon_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1aea69a040116fac17d85f412ad3bade51" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a0b07582d94c76dac428b440ab88c6339" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>endTime_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>floorletPrice</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>floorletRate</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ac49985ed0b7d726bb87fe57577cd6d3d" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>gearing_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a886033c6497a874cf75f449632553464" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a1a5680106af428c3896552f9911bddd6" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>initialValues_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a2c4ab91113758b218453215459296570" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>observationCvg_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ad803f5ffc61748da05c3a6d3a06bb035" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>observationIndexEndDates_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1adcb93039a5073e458d19ec931090a7c4" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>observationIndexStartDates_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1ab2d4e5d738e1d20ccf4242ceb027eca4" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>observations_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a0c2145cfda3466bf375b7d1917a15bcf" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>observationTimes_</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::CompoundingRatePricer</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::CompoundingRatePricer</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1aa6db15cb8f4db71dbdd282eb1a4a9bcd" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>spread_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a13e8e0bbdf635458d4b3b32fc3d2a817" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>spreadLegValue_</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a6b4dfb2aef0717c1cc3b47544c5c6f1f" prot="protected" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>startTime_</name></member>
-      <member refid="class_quant_lib_1_1_compounding_rate_pricer_1a0e471aae59dd8422ead76d75123236db" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>swapletPrice</name></member>
-      <member refid="class_quant_lib_1_1_sub_periods_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>swapletRate</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1ac65d2910ffc9a596d3cf548aef90d06a" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>~FloatingRateCouponPricer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::CompoundingRatePricer</scope><name>~Observer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

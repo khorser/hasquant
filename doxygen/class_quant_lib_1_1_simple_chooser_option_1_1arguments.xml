@@ -51,24 +51,6 @@
 <para>Extra arguments for single chooser option. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="13090">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="13089">
-        <label>SimpleChooserOption::arguments</label>
-        <link refid="class_quant_lib_1_1_simple_chooser_option_1_1arguments"/>
-        <childnode refid="13090" relation="usage">
-          <edgelabel>choosingDate</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/simplechooseroption.hpp" bodystart="50" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::SimpleChooserOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a6e45a884968308c9560f663b4a1be847" prot="public" virt="non-virtual"><scope>QuantLib::SimpleChooserOption::arguments</scope><name>choosingDate</name></member>
-      <member refid="class_quant_lib_1_1_simple_chooser_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::SimpleChooserOption::arguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

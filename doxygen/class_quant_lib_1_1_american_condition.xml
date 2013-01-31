@@ -72,18 +72,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000041"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>unify the intrinsicValues/Payoff thing </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/americancondition.hpp" bodystart="36" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_american_condition_1aff67f7f6768010452bb295e89923b85a" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>AmericanCondition</name></member>
-      <member refid="class_quant_lib_1_1_american_condition_1aff6af0dd69f21e0c9ab7978eaa3df156" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>AmericanCondition</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::StepCondition::"><scope>QuantLib::AmericanCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_american_condition_1ad5076fc2089a30506dcd12c87c32e43e" prot="private" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>applyToValue</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a4ce0ef9bea67a237bb048a6555df22ec" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a3e2ba425513a0601d4e5aacd993a3d62" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1abd7f8a74564ed49a4fe8a6075418aaaf" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>CurveDependentStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a867880aab93727e17df22adcc6b60d93" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>curveItem_</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1a803294542460c8a9ecce1c4c3d8991cc" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanCondition</scope><name>getValue</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::AmericanCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

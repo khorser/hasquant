@@ -214,16 +214,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/swapforwardmappings.hpp" bodystart="35" bodyend="97"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1a917ba728451dabd321881a22831fe6e5" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>annuity</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1a1c7da6df009ef66bc1f5dce4485f13d8" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>cmSwapForwardJacobian</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1a4d62b4cfbe182923a867b97597168947" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>cmSwapZedMatrix</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1ab2535fdf165dae0bc5b40cedaa3b4baa" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>coinitialSwapForwardJacobian</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1aba40ea0c703b159921cce8c1312bd854" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>coinitialSwapZedMatrix</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1ac52d83cc4d9c5a1a0551bb546d79cfc4" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>coterminalSwapForwardJacobian</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1a847fa61ca5255b5b073c3389e6212f74" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>coterminalSwapZedMatrix</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1a657a498e2add58b42f5468150aeb2450" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>swapDerivative</name></member>
-      <member refid="class_quant_lib_1_1_swap_forward_mappings_1ab94dc92f45208e3609d9d512151a23cb" prot="public" virt="non-virtual"><scope>QuantLib::SwapForwardMappings</scope><name>swaptionImpliedVolatility</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

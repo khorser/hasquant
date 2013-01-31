@@ -65,12 +65,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="61" bodyend="69"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::PathMultiAssetOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" virt="non-virtual"><scope>QuantLib::PathMultiAssetOption::arguments</scope><name>fixingDates</name></member>
-      <member refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a48e8d7b985dd28de0fc21c1da11d890e" prot="public" virt="non-virtual"><scope>QuantLib::PathMultiAssetOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::PathMultiAssetOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::PathMultiAssetOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -111,13 +111,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="93" bodyend="104"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1clipped__function_1a13867152e938c32ac76e39ccaf25ca8c" prot="public" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>argument_type</name></member>
-      <member refid="class_quant_lib_1_1clipped__function_1a6df61fe8997dc8521e2bcc61f88265a2" prot="public" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>clipped_function</name></member>
-      <member refid="class_quant_lib_1_1clipped__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1clipped__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1clipped__function_1a4e968b72f94d7c187cd24488dcb0e39d" prot="private" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>r_</name></member>
-      <member refid="class_quant_lib_1_1clipped__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" virt="non-virtual"><scope>QuantLib::clipped_function</scope><name>result_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

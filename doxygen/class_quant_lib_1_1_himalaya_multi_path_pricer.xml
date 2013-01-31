@@ -75,35 +75,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7407">
-        <label>HimalayaMultiPathPricer</label>
-        <childnode refid="7408" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7408">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7409">
-        <label>HimalayaMultiPathPricer</label>
-        <childnode refid="7410" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7410">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/mchimalayaengine.hpp" bodystart="114" bodyend="122"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_himalaya_multi_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::HimalayaMultiPathPricer</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_himalaya_multi_path_pricer_1a1780eda6da0b1555382674048ce1f03c" prot="public" virt="non-virtual"><scope>QuantLib::HimalayaMultiPathPricer</scope><name>HimalayaMultiPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_himalaya_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="non-virtual"><scope>QuantLib::HimalayaMultiPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_himalaya_multi_path_pricer_1a73cfad8707a6a802108b5bb7e04aca75" prot="private" virt="non-virtual"><scope>QuantLib::HimalayaMultiPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::HimalayaMultiPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

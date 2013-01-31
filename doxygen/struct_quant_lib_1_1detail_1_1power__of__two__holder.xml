@@ -46,9 +46,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="47" bodyend="50"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1power__of__two__holder_1abbc3c20a04361e87d59468d33f935a97" prot="public" virt="non-virtual"><scope>QuantLib::detail::power_of_two_holder</scope><name>n</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1power__of__two__holder_1a8d9cdbda1a70ca1d0adf0b65896b0313" prot="public" virt="non-virtual"><scope>QuantLib::detail::power_of_two_holder</scope><name>power_of_two_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

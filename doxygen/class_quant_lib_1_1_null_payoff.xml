@@ -74,37 +74,6 @@
 <para>Dummy payoff class. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10326">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="10325">
-        <label>NullPayoff</label>
-        <link refid="class_quant_lib_1_1_null_payoff"/>
-        <childnode refid="10326" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10328">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="10327">
-        <label>NullPayoff</label>
-        <link refid="class_quant_lib_1_1_null_payoff"/>
-        <childnode refid="10328" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="36" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_null_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::NullPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_null_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::NullPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_null_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::NullPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_null_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::NullPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::NullPayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

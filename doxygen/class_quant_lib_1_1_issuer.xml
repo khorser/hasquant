@@ -191,15 +191,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/issuer.hpp" bodystart="40" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_issuer_1aa5fcaca208d3a18ee259122144495a06" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultedBetween</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultProbability</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>defaultsBetween</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a4f4ea0fafcd158ca0c220d2e4514c88c" prot="private" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>events_</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>Issuer</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>Issuer</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a3f1c8e1e41fdad27a733ed7a14560904" prot="public" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>key_curve_pair</name></member>
-      <member refid="class_quant_lib_1_1_issuer_1a781aec0eade147fc39f96622465341c2" prot="private" virt="non-virtual"><scope>QuantLib::Issuer</scope><name>probabilities_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -146,15 +146,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="67" bodyend="83"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1a082ef8c44efadc2504e4cdde1437e45c" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>data_table_</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1addb7133af62c35720c4069d2250ed7e2" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1a0b7ebb222c2323ce7c2e2ba08db06aca" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1ad6cd2d1fd53d4e0ed53112cb127fb55b" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1ab82590214dc3a7524551efeed581d5e3" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1aef3cb5dd84a28dad7bfae21cc3542574" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1acc625e48a9453662b5a742ce32b2c7ef" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_3_01_real_01_4_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable&lt; Real &gt;</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

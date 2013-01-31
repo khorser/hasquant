@@ -215,16 +215,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="38" bodyend="121"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a913d365024003817bdf148a238c1de9e" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>bit_reverse</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1aa69043ccd264c92f74f238f9986e9665" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>cs_</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a243e8c292e9c05646ca997a5aca19044" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>FastFourierTransform</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a38b5f227d390596a7ccfd835d7803bcf" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>inverse_transform</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a52f3db7d80c4e276e8aad3336e5e5040" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>min_order</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a75e2c0c0deb0a74fdb9df4d2767a0a29" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>output_size</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1a1e8a188246324c2c8b4094329f03f012" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>sn_</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1ad295b84fb61f06da7058f34c4021e7c6" prot="public" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>transform</name></member>
-      <member refid="class_quant_lib_1_1_fast_fourier_transform_1af5cd3ea31ebe82dc353ca835e79f710e" prot="private" virt="non-virtual"><scope>QuantLib::FastFourierTransform</scope><name>transform_impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

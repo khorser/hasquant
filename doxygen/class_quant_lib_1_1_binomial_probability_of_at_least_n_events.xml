@@ -59,10 +59,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="89" bodyend="95"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_binomial_probability_of_at_least_n_events_1a6322e99b3427d6b1b803b0d6d3ac94f5" prot="public" virt="non-virtual"><scope>QuantLib::BinomialProbabilityOfAtLeastNEvents</scope><name>BinomialProbabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_binomial_probability_of_at_least_n_events_1ae68b32adf588e61ef5472f52a16098d3" prot="private" virt="non-virtual"><scope>QuantLib::BinomialProbabilityOfAtLeastNEvents</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_probability_of_at_least_n_events_1a92a26b21f56ce2d0cbaf54cb581c164c" prot="public" virt="non-virtual"><scope>QuantLib::BinomialProbabilityOfAtLeastNEvents</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

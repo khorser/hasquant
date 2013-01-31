@@ -213,23 +213,5 @@
    Press, Teukolsky, Vetterling, Flannery,
 </verbatim></para><para><xrefsect id="test_1_test000051"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tqreigendecomposition.hpp" bodystart="44" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8ac55ee6f1c45713fc2fac98d55a855510" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>CloseEigenValue</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a33612b94911b81d25624e2e23dc0ed75" prot="private" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>d_</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1aeb9833fe31a4739b5075f2a4cbd5dddd" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>eigenvalues</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549ad" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>EigenVectorCalculation</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a41aa0134fde9e36a14c3a0938903e4b1" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>eigenvectors</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a1f5d1bd856c8fc4430d3008d84527016" prot="private" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>ev_</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a31d004981946bc377e36ddddcb5c77a8" prot="private" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>iter_</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a62e40545c017ca57d94675198005e7ec" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>iterations</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8aa2e5600b6f6ab205afa31836b054eb0c" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>NoShift</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1abacb19a5316f0482275536215f84764e" prot="private" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>offDiagIsZero</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549adaa7a3aeedaa7d2f92678e6648ca0638bc" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>OnlyFirstRowEigenVector</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8a4f7a88f5385af3f8ccff35b8f5dbf7f5" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>Overrelaxation</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a3ebda221f3f2bc082da703548c869df8" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>ShiftStrategy</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a6794a0e945332a99dc6f7a831bdffdf9" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>TqrEigenDecomposition</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549adaff11501f171c0d1c4fb6554536beea86" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>WithEigenVector</name></member>
-      <member refid="class_quant_lib_1_1_tqr_eigen_decomposition_1a6bfdb3af44355f01054f8c49a3b549ada43a59946b2803d94976db2b93900d9ce" prot="public" virt="non-virtual"><scope>QuantLib::TqrEigenDecomposition</scope><name>WithoutEigenVector</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

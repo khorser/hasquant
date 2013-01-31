@@ -10,21 +10,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_positive_constraint" prot="public" virt="non-virtual">PositiveConstraint</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_constraint_1_1_impl" prot="protected">QuantLib::Constraint::Impl</innerclass>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constraint_1_1_impl" kindref="compound">Impl</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Impl&gt; impl_</definition>
-        <argsstring></argsstring>
-        <name>impl_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
@@ -104,43 +89,6 @@
 <para>Base constraint class. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2539">
-        <label>CompositeConstraint</label>
-        <link refid="class_quant_lib_1_1_composite_constraint"/>
-        <childnode refid="2537" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2541">
-        <label>PositiveConstraint</label>
-        <link refid="class_quant_lib_1_1_positive_constraint"/>
-        <childnode refid="2537" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2540">
-        <label>NoConstraint</label>
-        <link refid="class_quant_lib_1_1_no_constraint"/>
-        <childnode refid="2537" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2538">
-        <label>BoundaryConstraint</label>
-        <link refid="class_quant_lib_1_1_boundary_constraint"/>
-        <childnode refid="2537" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2537">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="32" bodyend="50"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::Constraint</scope><name>Constraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Constraint</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Constraint</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::Constraint</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::Constraint</scope><name>update</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

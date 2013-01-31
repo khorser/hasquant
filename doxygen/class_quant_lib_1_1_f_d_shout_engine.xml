@@ -66,10 +66,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000129"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" bodystart="41" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDShoutEngine</scope><name>FDEngineAdapter</name></member>
-      <member refid="class_quant_lib_1_1_f_d_shout_engine_1aa26a7ddb67722bc5f6a3fe0807da6b04" prot="public" virt="non-virtual"><scope>QuantLib::FDShoutEngine</scope><name>FDShoutEngine</name></member>
-      <member refid="class_quant_lib_1_1_f_d_shout_engine_1a37db3538052cef5735b9c1611d8f9b4d" prot="private" virt="non-virtual"><scope>QuantLib::FDShoutEngine</scope><name>super</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

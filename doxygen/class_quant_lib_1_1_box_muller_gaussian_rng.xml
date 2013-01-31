@@ -169,18 +169,5 @@
 <para>It uses the well-known Box-Muller transformation to return a normal distributed Gaussian deviate with average 0.0 and standard deviation of 1.0, from a uniform deviate in (0,1) supplied by RNG.</para><para>Class RNG must implement the following interface: <programlisting><codeline><highlight class="normal">RNG::sample_type<sp/>RNG::next()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/boxmullergaussianrng.hpp" bodystart="44" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a50a05a812fbcf031a1e7e3d21d29c13b" prot="public" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>BoxMullerGaussianRng</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a81192de3cd67ffcc64fef65390d76404" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>firstValue_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a34c6ebea157c9bb540320a989b358c19" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>firstWeight_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a4a64ccd36c2dcd7e844dcd3ae37698bc" prot="public" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a9d3ab0815e2e17da9f48e7698084b349" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>returnFirst_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a69b570e69a6eaf258006d69e3205f13c" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>secondValue_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a920ab08f5edd00f11d3e94b4dff806fe" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>secondWeight_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>uniformGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>urng_type</name></member>
-      <member refid="class_quant_lib_1_1_box_muller_gaussian_rng_1a80d0fcd3822859ef62fc293b8f83c8d4" prot="private" virt="non-virtual"><scope>QuantLib::BoxMullerGaussianRng</scope><name>weight_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

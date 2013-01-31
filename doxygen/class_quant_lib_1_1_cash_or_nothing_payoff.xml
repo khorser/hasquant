@@ -70,21 +70,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="162"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_cash_or_nothing_payoff_1a826fc0267983b40d8a3a05ce80a54826" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real cashPayoff_</definition>
-        <argsstring></argsstring>
-        <name>cashPayoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="166" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="166" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_cash_or_nothing_payoff_1afeb67fb6a0f48a80a84975ff4007bacd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -129,70 +114,6 @@
 <para>Binary cash-or-nothing payoff. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2014">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="2015" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2012">
-        <label>CashOrNothingPayoff</label>
-        <link refid="class_quant_lib_1_1_cash_or_nothing_payoff"/>
-        <childnode refid="2013" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2015">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="2013">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="2014" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2018">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="2019" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2016">
-        <label>CashOrNothingPayoff</label>
-        <link refid="class_quant_lib_1_1_cash_or_nothing_payoff"/>
-        <childnode refid="2017" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2019">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="2017">
-        <label>StrikedTypePayoff</label>
-        <link refid="class_quant_lib_1_1_striked_type_payoff"/>
-        <childnode refid="2018" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="151" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="151" bodyend="167"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1afeb67fb6a0f48a80a84975ff4007bacd" prot="public" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>CashOrNothingPayoff</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a45c7a9c6c8feb5df9bd796da3c3da7a5" prot="public" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>cashPayoff</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a826fc0267983b40d8a3a05ce80a54826" prot="protected" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>cashPayoff_</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_cash_or_nothing_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>optionType</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>strike</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1af4df09cd4cbe06f6558dc5777c23e106" prot="protected" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_striked_type_payoff_1afec468d37c982a37d0f403c629756770" prot="protected" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>StrikedTypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1abcdb1c11e3593354931e650dd3dd13f2" prot="protected" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1a0d0b65c5c1a4c7df8618e75120c15c46" prot="protected" virt="non-virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>TypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::CashOrNothingPayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

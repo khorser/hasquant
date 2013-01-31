@@ -114,14 +114,5 @@
 <para>Extracts the correlation matrix and the vector of variances out of the input covariance matrix.</para><para>Note that only the lower symmetric part of the covariance matrix is used.</para><para><simplesect kind="pre"><para>The covariance matrix must be symmetric.</para></simplesect>
 <xrefsect id="test_1_test000045"><xreftitle>Tests</xreftitle><xrefdescription><para>cross checked with getCovariance </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/getcovariance.hpp" bodystart="95" bodyend="110"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1ae5ed4f9cce250d01778cf8d213fa8309" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>correlationMatrix</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1a3d5aeaf3b3e2c9ac3abefa191f9d387a" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>correlationMatrix_</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1a91fc136055dc917754c5238edb5bc138" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>CovarianceDecomposition</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1ac552baaa07f4c0775024d08fd5dd55a7" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>standardDeviations</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1aac09b3a47c6403bf02aedef03612ac4c" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>stdDevs_</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1acc058c47207cbd07511c380d0c4e4eb6" prot="public" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>variances</name></member>
-      <member refid="class_quant_lib_1_1_covariance_decomposition_1a056cd2cd8c8177ec2aafdcd9c7077ecd" prot="private" virt="non-virtual"><scope>QuantLib::CovarianceDecomposition</scope><name>variances_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

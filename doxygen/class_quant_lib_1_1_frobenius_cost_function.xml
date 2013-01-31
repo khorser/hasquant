@@ -126,41 +126,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6771">
-        <label>FrobeniusCostFunction</label>
-        <childnode refid="6772" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6772">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6773">
-        <label>FrobeniusCostFunction</label>
-        <childnode refid="6774" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6774">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/tapcorrelations.hpp" bodystart="94" bodyend="111"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1a052311f11f978b897a7d12958ae84b6a" prot="private" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1a86a7ac8b72d4a3a6b35d8716756cf881" prot="public" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>FrobeniusCostFunction</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1a0ae3c43efd6fef9f1e16ae1492c4b6ee" prot="private" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>matrixSize_</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1ae8d235aab390eef61896897045f5d2c2" prot="private" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>rank_</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1ab19ae36d6d9c3ce8b3e83c52d2779dfe" prot="private" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>target_</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_frobenius_cost_function_1a24bca93c2bbe35871e279fd8a935143d" prot="public" virt="non-virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::FrobeniusCostFunction</scope><name>~CostFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

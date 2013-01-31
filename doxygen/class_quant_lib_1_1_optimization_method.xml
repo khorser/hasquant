@@ -48,28 +48,6 @@
 <para>Abstract class for constrained optimization method. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="11762">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="11764">
-        <label>Simplex</label>
-        <link refid="class_quant_lib_1_1_simplex"/>
-        <childnode refid="11762" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11763">
-        <label>LevenbergMarquardt</label>
-        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
-        <childnode refid="11762" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/method.hpp" bodystart="36" bodyend="43"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" virt="pure-virtual"><scope>QuantLib::OptimizationMethod</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::OptimizationMethod</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

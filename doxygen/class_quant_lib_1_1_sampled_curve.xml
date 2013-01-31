@@ -523,37 +523,5 @@
     <detaileddescription>
 <para>Initially the class will contain one indexed curve </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/sampledcurve.hpp" bodystart="35" bodyend="145"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_sampled_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a08ebad730457427955f35413acddf0a4" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>firstDerivativeAtCenter</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a18f3fc173b257b53b10911b63b976b32" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>grid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1ab2403367ab00aa783f1b2363ce78ad66" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>grid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a31ca2c1a1fa378e372c6b6d3b60ee995" prot="private" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>grid_</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1ab1170f0b03996acbcd156d1cc7166eef" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>gridValue</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1add903f848b9c8d2774faa6b889df17bf" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>gridValue</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a5a799d2bcd0380a60b89efa5136167ca" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1aca8ca42a58186edd15f8b818add852e5" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>regrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a5e14acdfed84bb5cc2e9348a6b6f0176" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>regrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a53965cd422c566d8110b1802dcf2b34c" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>regridLogGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a3fd0d675b2e09c390f9ea21b18db972f" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>sample</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a33580ac5a3826007cedae397d3886ec0" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>SampledCurve</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a3395bc686f94369e618e3a3d2a78739e" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>SampledCurve</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a01e5fcc3c4d63dd57d2e6c65bc1f22bd" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>scaleGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a9a3cbb8bccf5dd436d46d5c6104ed220" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>secondDerivativeAtCenter</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a8541de208eee38913c00afe9175ec8eb" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>setGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1ac4a6e242726d5fed17b0743597dd10eb" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>setLogGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a7c1fbd82fbe23f43016e4ef5ee6a8dc0" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>setValues</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1aa2a50c920940b35011c5b3bf4d035cbf" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>shiftGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1aebf6f19f1f00c1ec7f4e7528cc668535" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>swap</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1ad08ef2bfaf108f3a89235de5766cf955" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>transform</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a150de76325d6e770c15ddfed23e5078f" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>transformGrid</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a72ae2e219d43e0a6d8c0e16dec878bad" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a0fddf660c31f55b9332f76c1c9c1c63c" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a0896401cdaf8f83ed681dbdbfa899de5" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>valueAtCenter</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1aff5a50a26cd2ee8637b577aa67e76415" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a961568dd33ca3eabc742f02ee4b49e22" prot="public" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_sampled_curve_1a99a3a78defaeab5ede226107da665b96" prot="private" virt="non-virtual"><scope>QuantLib::SampledCurve</scope><name>values_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

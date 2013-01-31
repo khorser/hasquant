@@ -39,9 +39,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="33" bodyend="37"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_doubling_convergence_steps_1a15799b509c68b53e020146a6a42c713c" prot="public" virt="non-virtual"><scope>QuantLib::DoublingConvergenceSteps</scope><name>initialSamples</name></member>
-      <member refid="class_quant_lib_1_1_doubling_convergence_steps_1a667e1a2c13a65ad09095b8cf7b800848" prot="public" virt="non-virtual"><scope>QuantLib::DoublingConvergenceSteps</scope><name>nextSamples</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

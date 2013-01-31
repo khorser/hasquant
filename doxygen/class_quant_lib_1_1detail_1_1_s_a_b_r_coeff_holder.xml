@@ -260,23 +260,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/sabrinterpolation.hpp" bodystart="47" bodyend="99"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a96c0f11fbeced8f51ee45a495d97e621" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>alpha_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aabc809251428ae77306db319f0a8c290" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>alphaIsFixed_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a6483291df5e2a5a0d80b22cf68a96750" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>beta_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a4f444b9bfdcf7fb26a8916a3c72dbe8e" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>betaIsFixed_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1adb52fcbcc8dd8f6de377b8fa9f96eb94" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>error_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a11bb2e42f766fea06e9209a55f29e1d9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>forward_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a8c83417b5e4ba89e4a17a328d984cd42" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>maxError_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aa98338c783e2410f2e1fa6fce5f363e9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>nu_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a743ceeaea161f1422875829cac0a36fe" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>nuIsFixed_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>rho_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aee5aac416b1f5f12c5fa8fa770b360d6" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>rhoIsFixed_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ae0ed6e86645b33e2497aa5c24f9d2dc9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>SABRCoeffHolder</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1ab4392f41e117e3fd7242e59113136af9" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>SABREndCriteria_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a931e64f3622c930365c16a9670060cc1" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>t_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1aaa10e053085ec93c9731779170933b1d" prot="public" virt="non-virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>weights_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_s_a_b_r_coeff_holder_1a88e6cb6008b62ac21e6537bfc5a701cd" prot="public" virt="virtual"><scope>QuantLib::detail::SABRCoeffHolder</scope><name>~SABRCoeffHolder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

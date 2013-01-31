@@ -196,18 +196,5 @@
     <detaileddescription>
 <para>This class wraps a somewhat generic statistic tool and adds a number of risk measures (e.g.: value-at-risk, expected shortfall, etc.) based on the data distribution as reported by the underlying statistic tool.</para><para><xrefsect id="todo_1_todo000040"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add historical annualized volatility</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/riskstatistics.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/riskstatistics.hpp" bodystart="42" bodyend="117"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a48f20722a46e929532f3fe29d05f38b9" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>averageShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a0d6c0d73e07b78236d6b36bf17603783" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>downsideDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a96208da819b87577a64a939239038fee" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>downsideVariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1ad8217a9c215c1fd0674ae4b4357fa035" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>expectedShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a7054629fa3befb2fe170756750fc05a5" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>potentialUpside</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1af214276fcd65cb61f1213848bc37bcec" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>regret</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a248a8283cddbe62eb1effbd5ee38a83a" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>semiDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a1fc992d2d5933a547499c497d9e09b63" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>semiVariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1aef5cddadc0fc859f9036eddb837a6ef0" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>shortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1acec15026159cf469320e8a533d2a0bb7" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>value_type</name></member>
-      <member refid="class_quant_lib_1_1_generic_risk_statistics_1a53b553c9124491efa37dc8494453bc75" prot="public" virt="non-virtual"><scope>QuantLib::GenericRiskStatistics</scope><name>valueAtRisk</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

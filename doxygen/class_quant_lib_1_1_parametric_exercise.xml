@@ -95,12 +95,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/parametricexercise.hpp" bodystart="29" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parametric_exercise_1a822efedf4d7068cc5459d7b42d0cfd35" prot="public" virt="pure-virtual"><scope>QuantLib::ParametricExercise</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_1a0288ca0fc3c64d5e58ef425b5597eec8" prot="public" virt="pure-virtual"><scope>QuantLib::ParametricExercise</scope><name>guess</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_1a481aea0570868bc7dd5eccf38018e355" prot="public" virt="pure-virtual"><scope>QuantLib::ParametricExercise</scope><name>numberOfParameters</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_1aa0653eaa27e5de4fb5764485f7e8c70c" prot="public" virt="pure-virtual"><scope>QuantLib::ParametricExercise</scope><name>numberOfVariables</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_1a8d2ff902c8964463258b419c4dc7b016" prot="public" virt="virtual"><scope>QuantLib::ParametricExercise</scope><name>~ParametricExercise</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -44,9 +44,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="40" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_visitor_1a6d7e98e3f298924633a9ba9bf5b04a83" prot="public" virt="pure-virtual"><scope>QuantLib::Visitor</scope><name>visit</name></member>
-      <member refid="class_quant_lib_1_1_visitor_1a9c1f95b9888f8b7a2778b470ef7a9be3" prot="public" virt="virtual"><scope>QuantLib::Visitor</scope><name>~Visitor</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

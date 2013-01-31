@@ -122,14 +122,5 @@
     <detaileddescription>
 <para>Given x it provides an approximation to the integral of the gaussian normal distribution: formula here ...</para><para>For this implementation see M. Abramowitz and I. Stegun, Handbook of Mathematical Functions, Dover Publications, New York (1972) </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/normaldistribution.hpp" bodystart="68" bodyend="80"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a6e9fb4b1d19230086a74a58a245497e5" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>average_</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a156cf72a9a0fd5ef1f994ce00ad1535c" prot="public" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>CumulativeNormalDistribution</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a58a80e4d4151666a081b2ce4ed6c2746" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>errorFunction_</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a900e47436ec8f5d0a1e25ce9853bd78e" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>gaussian_</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_normal_distribution_1a37293181f9beea97f75b133deb9d9119" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeNormalDistribution</scope><name>sigma_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

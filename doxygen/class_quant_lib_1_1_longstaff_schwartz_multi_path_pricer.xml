@@ -5,125 +5,6 @@
     <basecompoundref refid="class_quant_lib_1_1_path_pricer" prot="public" virt="non-virtual">PathPricer&lt; MultiPath &gt;</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info" prot="protected">QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</innerclass>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a2bf0af9827386f85f987316431e81711" prot="protected" static="no" mutable="no">
-        <type>bool</type>
-        <definition>bool calibrationPhase_</definition>
-        <argsstring></argsstring>
-        <name>calibrationPhase_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8e0be5ed298260798b537947c3401ba5" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;PathPayoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="75" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a41a0f0d111413d6b14e5ee6c0b49bc04" prot="protected" static="no" mutable="no">
-        <type>boost::scoped_array&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>boost::scoped_array&lt;Array&gt; coeff_</definition>
-        <argsstring></argsstring>
-        <name>coeff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a4c83a74c28f6f43adf7181d43e4f4639" prot="protected" static="no" mutable="no">
-        <type>boost::scoped_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>boost::scoped_array&lt;Real&gt; lowerBounds_</definition>
-        <argsstring></argsstring>
-        <name>lowerBounds_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="78" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a31ad858ee0c5b623439a83a0d8a7fc16" prot="protected" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>const std::vector&lt;Size&gt; timePositions_</definition>
-        <argsstring></argsstring>
-        <name>timePositions_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a3c1079af8ec4efe3d4ea5c7cf66aec5e" prot="protected" static="no" mutable="no">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt;</type>
-        <definition>const std::vector&lt;Handle&lt;YieldTermStructure&gt; &gt; forwardTermStructures_</definition>
-        <argsstring></argsstring>
-        <name>forwardTermStructures_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab475263d5c74fbe580446bbff84d2164" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>const Array dF_</definition>
-        <argsstring></argsstring>
-        <name>dF_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a88f9ff35b42c5494901216339f716a6c" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; PathInfo &gt;</type>
-        <definition>std::vector&lt;PathInfo&gt; paths_</definition>
-        <argsstring></argsstring>
-        <name>paths_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="84" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a35c1271728ff0408d42092f1d8ef3a0e" prot="protected" static="no" mutable="no">
-        <type>const std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt;</type>
-        <definition>const std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; v_</definition>
-        <argsstring></argsstring>
-        <name>v_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -188,25 +69,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="58"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a519a2df854099e9633ee870217f35bdb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>PathInfo</type>
-        <definition>PathInfo transformPath</definition>
-        <argsstring>(const MultiPath &amp;path) const </argsstring>
-        <name>transformPath</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
-          <declname>path</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="71"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Longstaff-Schwarz path pricer for early exercise options. </para>    </briefdescription>
     <detaileddescription>
@@ -214,53 +76,6 @@
    by Simulation: A Simple Least-Squares Approach, The Review of
    Financial Studies, Volume 14, No. 1, 113-147
 </verbatim></para><para><xrefsect id="test_1_test000008"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9298">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="9297">
-        <label>LongstaffSchwartzMultiPathPricer</label>
-        <link refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer"/>
-        <childnode refid="9298" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9301">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="9300">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="9299">
-        <label>LongstaffSchwartzMultiPathPricer</label>
-        <link refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer"/>
-        <childnode refid="9300" relation="public-inheritance">
-        </childnode>
-        <childnode refid="9301" relation="usage">
-          <edgelabel>dF_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="46" bodyend="86"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>calibrate</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a2bf0af9827386f85f987316431e81711" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>calibrationPhase_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a41a0f0d111413d6b14e5ee6c0b49bc04" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>coeff_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab475263d5c74fbe580446bbff84d2164" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>dF_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a3c1079af8ec4efe3d4ea5c7cf66aec5e" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>forwardTermStructures_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>LongstaffSchwartzMultiPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a4c83a74c28f6f43adf7181d43e4f4639" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>lowerBounds_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a88f9ff35b42c5494901216339f716a6c" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>paths_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8e0be5ed298260798b537947c3401ba5" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a31ad858ee0c5b623439a83a0d8a7fc16" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>timePositions_</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a519a2df854099e9633ee870217f35bdb" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>transformPath</name></member>
-      <member refid="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a35c1271728ff0408d42092f1d8ef3a0e" prot="protected" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

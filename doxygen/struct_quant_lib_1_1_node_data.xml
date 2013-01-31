@@ -74,12 +74,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/nodedata.hpp" bodystart="29" bodyend="35"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_node_data_1a6b73a7fc0ea701fc4c21189e5e70a200" prot="public" virt="non-virtual"><scope>QuantLib::NodeData</scope><name>controlValue</name></member>
-      <member refid="struct_quant_lib_1_1_node_data_1a8d06cad9924953471d0f94b47480e3be" prot="public" virt="non-virtual"><scope>QuantLib::NodeData</scope><name>cumulatedCashFlows</name></member>
-      <member refid="struct_quant_lib_1_1_node_data_1a8586edbdeb1a5949012c91f3bb484c21" prot="public" virt="non-virtual"><scope>QuantLib::NodeData</scope><name>exerciseValue</name></member>
-      <member refid="struct_quant_lib_1_1_node_data_1a8cc8d1cb67b70386f41455552f3a56f4" prot="public" virt="non-virtual"><scope>QuantLib::NodeData</scope><name>isValid</name></member>
-      <member refid="struct_quant_lib_1_1_node_data_1a5b35b61cd4da6b33787016a2c5c1fede" prot="public" virt="non-virtual"><scope>QuantLib::NodeData</scope><name>values</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

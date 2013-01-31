@@ -13,34 +13,6 @@
         <defname>T</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_garman_klass_open_close_1a99f7ee87e8f40de9970c6b41e76693a4" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real f_</definition>
-        <argsstring></argsstring>
-        <name>f_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_garman_klass_open_close_1a114bd3f70557109ba551776610bb2dc1" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_open_close_1a50246f9252bf4759cae1f2661fc0a8c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -90,11 +62,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="79" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="79" bodyend="106"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a114bd3f70557109ba551776610bb2dc1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassOpenClose</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassOpenClose</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a99f7ee87e8f40de9970c6b41e76693a4" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassOpenClose</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a50246f9252bf4759cae1f2661fc0a8c3" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassOpenClose</scope><name>GarmanKlassOpenClose</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

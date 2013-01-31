@@ -60,12 +60,5 @@
     <detaileddescription>
 <para>Volatilities are assumed to be expressed on an annual basis. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/simplelocalestimator.hpp" bodystart="35" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_simple_local_estimator_1a2ff585a7a780ab4d7275a408e86b4642" prot="public" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::SimpleLocalEstimator</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_simple_local_estimator_1a7f45f02ee06c173a5926ac70f23f3d3b" prot="public" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>SimpleLocalEstimator</name></member>
-      <member refid="class_quant_lib_1_1_simple_local_estimator_1a685ec69bc8fa930e820390e5d34b06f1" prot="private" virt="non-virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>yearFraction_</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::SimpleLocalEstimator</scope><name>~LocalVolatilityEstimator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

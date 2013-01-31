@@ -123,32 +123,6 @@
 <para>Cost function abstract class for optimization problem. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2762">
-        <label>ProjectedCostFunction</label>
-        <link refid="class_quant_lib_1_1_projected_cost_function"/>
-        <childnode refid="2760" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2761">
-        <label>LeastSquareFunction</label>
-        <link refid="class_quant_lib_1_1_least_square_function"/>
-        <childnode refid="2760" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2760">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="32" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a132cbe03016a6e22c2ad3eaef6baf6a1" prot="public" virt="pure-virtual"><scope>QuantLib::CostFunction</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a81d6a6e85cd18eea72bb0b7d6c6fd8ff" prot="public" virt="pure-virtual"><scope>QuantLib::CostFunction</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::CostFunction</scope><name>~CostFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

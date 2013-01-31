@@ -95,11 +95,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="85" bodyend="101"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a5891bc0dca87b71ab42dc20f41eef112" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>bdc_</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a6d7137518df6f679f1acbbb53d270b2e" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>BlackDeltaPremiumAdjustedSolverClass</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a01517fec56e5a81589c2b6f4b5681c45" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>delta_</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedSolverClass</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

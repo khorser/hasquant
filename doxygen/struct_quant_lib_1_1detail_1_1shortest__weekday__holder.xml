@@ -41,9 +41,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/weekday.hpp" bodystart="74" bodyend="77"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1shortest__weekday__holder_1af240a9239243cf2927e2a9693e89b6bc" prot="public" virt="non-virtual"><scope>QuantLib::detail::shortest_weekday_holder</scope><name>d</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1shortest__weekday__holder_1a0672f37d81ae2302c0b49399a2d638ae" prot="public" virt="non-virtual"><scope>QuantLib::detail::shortest_weekday_holder</scope><name>shortest_weekday_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -200,58 +200,6 @@
 <para>New Year&apos;s Eve, December 31st </para></listitem>
 </itemizedlist>
 </para><para><xrefsect id="test_1_test000147"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned results is tested against a list of known holidays. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7242">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-      <node id="7241">
-        <label>Germany</label>
-        <link refid="class_quant_lib_1_1_germany"/>
-        <childnode refid="7242" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7244">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-      <node id="7243">
-        <label>Germany</label>
-        <link refid="class_quant_lib_1_1_germany"/>
-        <childnode refid="7244" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp" bodystart="116" bodyend="153"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1a656020bddfdb2d9f48c9f0dc12b26597" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>addHoliday</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aee7c18511c7ee1bcda6124f43a37aa28" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>adjust</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ac47bb82bf7b147cfacf373991c2905ea" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>advance</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aff3da5f18d09db3745c371b8679bd5ee" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>advance</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a19727b525ba0493943d84e29459b65a0" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>businessDaysBetween</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1af5714af8cb45a29153e0fd53ee5e7241" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Calendar</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a19b6ae524d9688302a3d133d9a8eaf67" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>endOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a563ccad8cd2c9459a3fff06290054160" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Eurex</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a2bbb60d45dbb80a79c0b1dd828af92db" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Euwax</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42ae0e12eee5eb2e2598e1ef9c6a8652e67" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>FrankfurtStockExchange</name></member>
-      <member refid="class_quant_lib_1_1_germany_1aba93f43bb30d5bd2efd3702a5f4c7950" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Germany</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a0b6fcbea4559480b4dc3df0abbf64766" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>holidayList</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::Germany</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a85aed4d5b4c114bdd47766ef9e52e2f7" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a406c43181bd59e07a145a4722fdf2480" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>isEndOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aa529b7298ba96b90261ed56c34f015f8" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>isHoliday</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a9c1941e4f95b1d74d7f9b2e772174c73" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Market</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1af842d77a8aacbc167a64749dba1a3a87" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1aab055e8665c0e69976ecbe4aebd47a8f" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1ae9d6f7766f633f5d75cc3acd7826bc9f" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1a4c682210881efe66d463cc0907f00722" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>removeHoliday</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Settlement</name></member>
-      <member refid="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42a9a85bf5d2876a88b66d3f2439c1a6af9" prot="public" virt="non-virtual"><scope>QuantLib::Germany</scope><name>Xetra</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -4,47 +4,6 @@
     <compoundname>QuantLib::DefaultProbKey</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_north_america_corp_default_key" prot="public" virt="non-virtual">NorthAmericaCorpDefaultKey</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_prob_key_1a40f11e724bff923d71c396f947c0b2ed" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;DefaultType&gt; &gt; eventTypes_</definition>
-        <argsstring></argsstring>
-        <name>eventTypes_</name>
-        <briefdescription>
-<para>aggregation of event types for which the contract is sensitive. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="44" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_prob_key_1a1ea2266a7b462db8d3a4ce2be61d65ca" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
-        <definition>Currency obligationCurrency_</definition>
-        <argsstring></argsstring>
-        <name>obligationCurrency_</name>
-        <briefdescription>
-<para><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> of the bond and protection leg payment. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_prob_key_1ae35b512424ab0cb35502f8dd976cb8aa" prot="protected" static="no" mutable="no">
-        <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
-        <definition>Seniority seniority_</definition>
-        <argsstring></argsstring>
-        <name>seniority_</name>
-        <briefdescription>
-<para>Reference bonds seniority. </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_default_prob_key_1ac4c659fb55e01241af7aeb94f57a1375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -141,42 +100,6 @@
     </briefdescription>
     <detaileddescription>
 <para>Used to index market implied credit curve probabilities. It is a proxy to the defaultable bond or class of bonds which determines the credit contract conditions. It aggregates the atomic default types in a group defining the contract conditions and which serves to index the probability curves calibrated to the market. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="3423">
-        <label>DefaultProbKey</label>
-        <link refid="class_quant_lib_1_1_default_prob_key"/>
-      </node>
-      <node id="3424">
-        <label>NorthAmericaCorpDefaultKey</label>
-        <link refid="class_quant_lib_1_1_north_america_corp_default_key"/>
-        <childnode refid="3423" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3426">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="3425">
-        <label>DefaultProbKey</label>
-        <link refid="class_quant_lib_1_1_default_prob_key"/>
-        <childnode refid="3426" relation="usage">
-          <edgelabel>obligationCurrency_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultprobabilitykey.hpp" bodystart="41" bodyend="64"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_default_prob_key_1abc33baebf744532876f39f22cf971342" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>currency</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1ac4c659fb55e01241af7aeb94f57a1375" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>DefaultProbKey</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1af3b96dcf5df37be84fae5fb34afc09d3" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>DefaultProbKey</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1ada1c87ba549de5a9ad051cf3da483370" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>eventTypes</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1a40f11e724bff923d71c396f947c0b2ed" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>eventTypes_</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1a1ea2266a7b462db8d3a4ce2be61d65ca" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>obligationCurrency_</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>seniority</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1ae35b512424ab0cb35502f8dd976cb8aa" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>seniority_</name></member>
-      <member refid="class_quant_lib_1_1_default_prob_key_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::DefaultProbKey</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

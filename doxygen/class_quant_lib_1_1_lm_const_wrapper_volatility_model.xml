@@ -4,21 +4,6 @@
     <compoundname>QuantLib::LmConstWrapperVolatilityModel</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_lm_volatility_model" prot="public" virt="non-virtual">LmVolatilityModel</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ac748714686dada0dd648d79cfde12d9d" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;LmVolatilityModel&gt; volaModel_</definition>
-        <argsstring></argsstring>
-        <name>volaModel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -138,46 +123,6 @@
 <para>caplet const volatility model </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9114">
-        <label>LmVolatilityModel</label>
-        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
-      </node>
-      <node id="9113">
-        <label>LmConstWrapperVolatilityModel</label>
-        <link refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model"/>
-        <childnode refid="9114" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9116">
-        <label>LmVolatilityModel</label>
-        <link refid="class_quant_lib_1_1_lm_volatility_model"/>
-      </node>
-      <node id="9115">
-        <label>LmConstWrapperVolatilityModel</label>
-        <link refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model"/>
-        <childnode refid="9116" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappervolmodel.hpp" bodystart="32" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="private" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>generateArguments</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ae9a2e2fd9e07eb49cab6280a76781a5c" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>integratedVariance</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a6014ca30f372740ff06659eb19292e74" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>LmConstWrapperVolatilityModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1aadbf151af61e33a78daafdef33307386" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>LmVolatilityModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>params</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>setParams</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1ac748714686dada0dd648d79cfde12d9d" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volaModel_</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_volatility_model_1a91c06b3f5c1a0426b7a871e1cd103799" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1aae8073ece95900dc7ce2738fb4eca1da" prot="public" virt="virtual" ambiguityscope="QuantLib::LmVolatilityModel::"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>volatility</name></member>
-      <member refid="class_quant_lib_1_1_lm_volatility_model_1a05941543805ec3ef0b4dea387671af16" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperVolatilityModel</scope><name>~LmVolatilityModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

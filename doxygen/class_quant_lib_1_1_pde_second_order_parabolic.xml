@@ -113,12 +113,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pde.hpp" bodystart="32" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1afaf479da3baa52185b369071b1689d89" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a168ed175a79c15ab470648076394d63a" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>discount</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a6bded8896a46fad4d189950552432cd3" prot="public" virt="pure-virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a90779cff69e3e385225278103b4fae97" prot="public" virt="virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>generateOperator</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" virt="virtual"><scope>QuantLib::PdeSecondOrderParabolic</scope><name>~PdeSecondOrderParabolic</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

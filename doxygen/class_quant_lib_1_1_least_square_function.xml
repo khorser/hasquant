@@ -4,21 +4,6 @@
     <compoundname>QuantLib::LeastSquareFunction</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_cost_function" prot="public" virt="non-virtual">CostFunction</basecompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_least_square_function_1a9ca97a82dfecae75d32b5bbbf9e8f6db" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_least_square_problem" kindref="compound">LeastSquareProblem</ref> &amp;</type>
-        <definition>LeastSquareProblem&amp; lsp_</definition>
-        <argsstring></argsstring>
-        <name>lsp_</name>
-        <briefdescription>
-<para>least square problem </para>        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_least_square_function_1a91ae7b7c34f4f00ae7272c5e5cbf8ead" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -135,48 +120,6 @@
 <para>Cost function for least-square problems. </para>    </briefdescription>
     <detaileddescription>
 <para>Implements a cost function using the interface provided by the <ref refid="class_quant_lib_1_1_least_square_problem" kindref="compound">LeastSquareProblem</ref> class. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="8981">
-        <label>LeastSquareFunction</label>
-        <link refid="class_quant_lib_1_1_least_square_function"/>
-        <childnode refid="8982" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8982">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="8983">
-        <label>LeastSquareFunction</label>
-        <link refid="class_quant_lib_1_1_least_square_function"/>
-        <childnode refid="8984" relation="public-inheritance">
-        </childnode>
-        <childnode refid="8985" relation="usage">
-          <edgelabel>lsp_</edgelabel>
-        </childnode>
-      </node>
-      <node id="8985">
-        <label>LeastSquareProblem</label>
-        <link refid="class_quant_lib_1_1_least_square_problem"/>
-      </node>
-      <node id="8984">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/leastsquare.hpp" bodystart="60" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1a5606a9f56d4bf8a1b09386234ac220a1" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1a91ae7b7c34f4f00ae7272c5e5cbf8ead" prot="public" virt="non-virtual"><scope>QuantLib::LeastSquareFunction</scope><name>LeastSquareFunction</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1a9ca97a82dfecae75d32b5bbbf9e8f6db" prot="protected" virt="non-virtual"><scope>QuantLib::LeastSquareFunction</scope><name>lsp_</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1aa96b19df61cc4e727372ce7f9abb60c9" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1a35a37dbf4155454c382e433e5183ba2f" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1aefd0ff60f2c43e34293b14ff785035d1" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>~CostFunction</name></member>
-      <member refid="class_quant_lib_1_1_least_square_function_1a4c9195cf76ac701b3e3e667d568dec6c" prot="public" virt="virtual"><scope>QuantLib::LeastSquareFunction</scope><name>~LeastSquareFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

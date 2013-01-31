@@ -131,15 +131,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="43" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1a53a9bb8024f985df7e17d53667da6b71" prot="public" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>BlackVanillaOptionPricer</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1affd57471af222907e43abc97892df61b" prot="private" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>expiryDate_</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1a81853c9bdb1951cd079d96970ad8600a" prot="private" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>forwardValue_</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1aca654004dde0110e7771eaa4d73c7c85" prot="public" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1acab37f011edc56c1d580e4de057fb006" prot="private" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>smile_</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1a018a0d461762dbeef33e4838d7fb56c1" prot="private" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>swapTenor_</name></member>
-      <member refid="class_quant_lib_1_1_black_vanilla_option_pricer_1a5c8039209365321fec77966c5c047269" prot="private" virt="non-virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>volatilityStructure_</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_option_pricer_1a226ba38945451dd181b28c0c23c2ee9b" prot="public" virt="virtual"><scope>QuantLib::BlackVanillaOptionPricer</scope><name>~VanillaOptionPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

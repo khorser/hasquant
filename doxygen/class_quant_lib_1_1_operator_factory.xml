@@ -60,9 +60,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000077"><xreftitle>Tests</xreftitle><xrefdescription><para>coefficients are tested against constant BSM operator </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatorfactory.hpp" bodystart="40" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_operator_factory_1a7c2180e4cde4bd0f4e1df30309e7d0b7" prot="public" virt="non-virtual"><scope>QuantLib::OperatorFactory</scope><name>getOperator</name></member>
-      <member refid="class_quant_lib_1_1_operator_factory_1ac47308c3e6d7c57eaa87b9309afe68b2" prot="public" virt="non-virtual"><scope>QuantLib::OperatorFactory</scope><name>getOperator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

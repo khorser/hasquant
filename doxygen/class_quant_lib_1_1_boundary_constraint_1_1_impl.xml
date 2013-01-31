@@ -75,35 +75,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1433">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-      <node id="1432">
-        <label>BoundaryConstraint::Impl</label>
-        <childnode refid="1433" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1435">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-      <node id="1434">
-        <label>BoundaryConstraint::Impl</label>
-        <childnode refid="1435" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="89" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" virt="non-virtual"><scope>QuantLib::BoundaryConstraint::Impl</scope><name>high_</name></member>
-      <member refid="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a739166be6bd0e04c1fc00f58f5bd8717" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a390b29a166814f8834fa8caea46ee97c" prot="private" virt="non-virtual"><scope>QuantLib::BoundaryConstraint::Impl</scope><name>low_</name></member>
-      <member refid="class_quant_lib_1_1_boundary_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::BoundaryConstraint::Impl</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::BoundaryConstraint::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

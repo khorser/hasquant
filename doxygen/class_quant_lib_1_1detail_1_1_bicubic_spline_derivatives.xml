@@ -115,12 +115,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bicubicsplineinterpolation.hpp" bodystart="35" bodyend="42"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1a08792cb09924e13486839fa681d7b5a8" prot="public" virt="pure-virtual"><scope>QuantLib::detail::BicubicSplineDerivatives</scope><name>derivativeX</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1a1c0f0ef5212904e492e33fd6fdb14091" prot="public" virt="pure-virtual"><scope>QuantLib::detail::BicubicSplineDerivatives</scope><name>derivativeXY</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1ae4658865fc158dea0ad12516c6395f36" prot="public" virt="pure-virtual"><scope>QuantLib::detail::BicubicSplineDerivatives</scope><name>derivativeY</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1a4d5b478514e460bddc9e5edfd78e4897" prot="public" virt="pure-virtual"><scope>QuantLib::detail::BicubicSplineDerivatives</scope><name>secondDerivativeX</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_bicubic_spline_derivatives_1a50fe931ede57f0d5a3ec09900ecc84ee" prot="public" virt="pure-virtual"><scope>QuantLib::detail::BicubicSplineDerivatives</scope><name>secondDerivativeY</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

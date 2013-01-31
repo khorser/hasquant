@@ -3,34 +3,6 @@
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionExactYield</compoundname>
     <basecompoundref prot="public" virt="non-virtual">GFunction</basecompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a01517fec56e5a81589c2b6f4b5681c45" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real delta_</definition>
-        <argsstring></argsstring>
-        <name>delta_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="118" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a52f8a64708ab13ec421bfbd29e2c254a" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
-        <definition>std::vector&lt;Time&gt; accruals_</definition>
-        <argsstring></argsstring>
-        <name>accruals_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="120" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1ac7f5a684459af28cde57ef1ee2854aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -106,14 +78,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="109" bodyend="121"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a52f8a64708ab13ec421bfbd29e2c254a" prot="protected" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>accruals_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a01517fec56e5a81589c2b6f4b5681c45" prot="protected" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>delta_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a2b0e508fbef761b58361ccb516db59ac" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>firstDerivative</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1ac7f5a684459af28cde57ef1ee2854aa0" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>GFunctionExactYield</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1a9442defbbad440139e420aa43415e7ec" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield_1aa0c141f9a05d4e49ee3750a947bb1cd7" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>secondDerivative</name></member>
-      <member refid="class_quant_lib_1_1_g_function_1a2093b4ceca15348323db42ad5b8aedf1" prot="public" virt="virtual"><scope>QuantLib::GFunctionFactory::GFunctionExactYield</scope><name>~GFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

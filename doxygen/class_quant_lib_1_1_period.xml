@@ -554,38 +554,5 @@
     <detaileddescription>
 <para>This class provides a <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> (length + TimeUnit) class and implements a limited algebra.</para><para><xrefsect id="test_1_test000156"><xreftitle>Tests</xreftitle><xrefdescription><para>self-consistency of algebra is checked. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/period.hpp" bodystart="44" bodyend="61"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_period_1a4fe4dabf0407c1c808b1ca5a6f2b8c79" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>days</name></member>
-      <member refid="class_quant_lib_1_1_period_1a70fafd3d3f212d824101e977784dbcf5" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>frequency</name></member>
-      <member refid="class_quant_lib_1_1_period_1a6f3e347103a4b81c251e87334fe595ae" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>length</name></member>
-      <member refid="class_quant_lib_1_1_period_1ae79e25765568ee1380f10acfeeb69d25" prot="private" virt="non-virtual"><scope>QuantLib::Period</scope><name>length_</name></member>
-      <member refid="class_quant_lib_1_1_period_1a92a562ccbc1e5c902fd4bd4576bb12aa" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>months</name></member>
-      <member refid="class_quant_lib_1_1_period_1acd0de676568888d848beb97dcc53ae47" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>normalize</name></member>
-      <member refid="class_quant_lib_1_1_period_1a4e4d73db93d1b0421b234e4986f02f65" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_period_1a34e24f3304fe9ac4e4228ec0aa5865e5" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_period_1ae9caddf04a150ae3bab5c97d5a4d48ff" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_period_1a180303cf15f77ffa79f9b538d9d53585" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_period_1adea95d933011d667b70490b0ecbf4642" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_period_1a90976f7bfed01855ca09c29295fe6f75" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_period_1a9828487974fb5befd359451a88c4a29c" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_period_1a5fd528466f1b41de52d892efff387880" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_period_1ad2cf128e5a3ad32209f6ba15af554d07" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_period_1a9ce1050a6b6eb2e1963a77af54595b92" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_period_1a0d21ac755a75c581ad757b81ed775841" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator/</name></member>
-      <member refid="class_quant_lib_1_1_period_1ac85d3ca81816b69f1643c1bc6b1f2c73" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator/=</name></member>
-      <member refid="class_quant_lib_1_1_period_1a6047127848f77402654c5f6969543d39" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator&lt;</name></member>
-      <member refid="class_quant_lib_1_1_period_1a687e398ee8fc4236d4a6d5b402ca09a6" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_period_1a433aff0d16401de60895f1866e128c0b" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator&lt;=</name></member>
-      <member refid="class_quant_lib_1_1_period_1a8db8f3ab9172629c5b4c4bf9fead21e4" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_period_1a7031b0e272677d2c3058d6c6961dd718" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator&gt;</name></member>
-      <member refid="class_quant_lib_1_1_period_1add05770a8cd5ae8c9e8fb16bc5e32dbc" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>operator&gt;=</name></member>
-      <member refid="class_quant_lib_1_1_period_1ae8d0cd55e4166146e5ebee66c5a0838c" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>Period</name></member>
-      <member refid="class_quant_lib_1_1_period_1a0bf75950ab5d83b1704df5536a6831c4" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>Period</name></member>
-      <member refid="class_quant_lib_1_1_period_1abe1a6aa2d51812855297dabf1566dced" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>Period</name></member>
-      <member refid="class_quant_lib_1_1_period_1a53c1c52f86bbf030eceb226aed7ed255" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>units</name></member>
-      <member refid="class_quant_lib_1_1_period_1ade3053af8ab758d10f427575c7324c9a" prot="private" virt="non-virtual"><scope>QuantLib::Period</scope><name>units_</name></member>
-      <member refid="class_quant_lib_1_1_period_1a81fdea029a8d7c598c96d298889d4b5d" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>weeks</name></member>
-      <member refid="class_quant_lib_1_1_period_1a06a4ee62bb93be97b4753ab5fa263f78" prot="public" virt="non-virtual"><scope>QuantLib::Period</scope><name>years</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

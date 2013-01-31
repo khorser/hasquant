@@ -35,38 +35,6 @@
 <para>Gauss-Jacobi integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Jacobi integration. <formula id="196">\[ \int_{-1}^{1} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="197">\[ w(x;\alpha,\beta)=(1-x)^\alpha (1+x)^\beta \]</formula> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7018">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-      <node id="7017">
-        <label>GaussJacobiIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_jacobi_integration"/>
-        <childnode refid="7018" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7020">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-      <node id="7019">
-        <label>GaussJacobiIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_jacobi_integration"/>
-        <childnode refid="7020" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="114" bodyend="118"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gauss_jacobi_integration_1a284a6500e1a0b65fd67e38a177dc2346" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>GaussJacobiIntegration</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussJacobiIntegration</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

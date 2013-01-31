@@ -77,11 +77,5 @@
     <detaileddescription>
 <para>Given an integer k it provides the cumulative probability of observing kk&lt;=k: formula here ... </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" bodystart="67" bodyend="81"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cumulative_binomial_distribution_1a3ebe8cfaf6427e48d81ac070c18335c6" prot="public" virt="non-virtual"><scope>QuantLib::CumulativeBinomialDistribution</scope><name>CumulativeBinomialDistribution</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_binomial_distribution_1ab045fb029116c7ba3b737aa0460b8966" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeBinomialDistribution</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_binomial_distribution_1a860deba0e182257980641badf4554fde" prot="public" virt="non-virtual"><scope>QuantLib::CumulativeBinomialDistribution</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_cumulative_binomial_distribution_1a9240c051245987806f3bc3aefdfde5fe" prot="private" virt="non-virtual"><scope>QuantLib::CumulativeBinomialDistribution</scope><name>p_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

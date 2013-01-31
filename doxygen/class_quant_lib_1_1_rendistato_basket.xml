@@ -212,68 +212,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12782">
-        <label>RendistatoBasket</label>
-        <childnode refid="12783" relation="public-inheritance">
-        </childnode>
-        <childnode refid="12784" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12784">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12783">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12785">
-        <label>RendistatoBasket</label>
-        <childnode refid="12786" relation="public-inheritance">
-        </childnode>
-        <childnode refid="12787" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12787">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12786">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="93" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="92" bodyend="118"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a6a8b20951583ba00b93b21f116ef6122" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>btps</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a0c7e918b7f7d29e377bbda9b96053515" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>btps_</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1ad21e8f5ed789ee96327386bca6eb08ec" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>cleanPriceQuotes</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a9bedbbacb0b82a55c579510cee137603" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::RendistatoBasket</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::RendistatoBasket</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a22d90e90edebfef547c4fcba1a76296c" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>outstanding</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a228d805234a9be4bea5159d0f19baefb" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>outstanding_</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a8605d6bcc154514448692b0eb305668f" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>outstandings</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1ab9c36249af7a917dc745daa1c0ffc662" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>outstandings_</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1ac61a095b89dde0494f5f7316eb32efdc" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>quotes_</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a9bfe667c347ed402111532f899753d40" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>RendistatoBasket</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1af188ed1bb2d72ec34e3c15041d54c1b5" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_basket_1aaa10e053085ec93c9731779170933b1d" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoBasket</scope><name>weights_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::RendistatoBasket</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::RendistatoBasket</scope><name>~Observer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

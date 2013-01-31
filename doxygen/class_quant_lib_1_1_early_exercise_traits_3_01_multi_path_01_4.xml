@@ -43,9 +43,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/earlyexercisepathpricer.hpp" bodystart="49" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_early_exercise_traits_3_01_multi_path_01_4_1aff4e87e485aff4c406807f1aea5b30ce" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExerciseTraits&lt; MultiPath &gt;</scope><name>pathLength</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_traits_3_01_multi_path_01_4_1ae32593f3d7c3d67df2399b593bc1df6d" prot="public" virt="non-virtual"><scope>QuantLib::EarlyExerciseTraits&lt; MultiPath &gt;</scope><name>StateType</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

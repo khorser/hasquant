@@ -68,10 +68,5 @@
 <listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives.</para></listitem><listitem><para>the invariance of the results upon addition of null dividends is tested. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="42" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_dividend_european_engine_1a259c3d4f54c9fdd2b9243f737511048a" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngine</scope><name>FDDividendEuropeanEngine</name></member>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngine</scope><name>FDEngineAdapter</name></member>
-      <member refid="class_quant_lib_1_1_f_d_dividend_european_engine_1ad6d8c1917d0f389eeb0d57a7009cd599" prot="private" virt="non-virtual"><scope>QuantLib::FDDividendEuropeanEngine</scope><name>super</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

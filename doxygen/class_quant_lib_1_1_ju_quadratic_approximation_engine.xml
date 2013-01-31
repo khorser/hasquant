@@ -55,10 +55,5 @@
     <detaileddescription>
 <para>Reference: An Approximate Formula for Pricing American Options, Journal of Derivatives Winter 1999, Ju, N.</para><para><xrefsect id="caveats_1_caveats000104"><xreftitle>Warning</xreftitle><xrefdescription><para>Barone-Adesi-Whaley critical commodity price calculation is used, it has not been modified to see whether the method of Ju is faster. Ju does not say how he solves the equation for the critical stock price, e.g. <ref refid="class_quant_lib_1_1_newton" kindref="compound">Newton</ref> method. He just gives the solution. The method of BAW gives answers to the same accuracy as in Ju (1999).</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000131"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/juquadraticengine.hpp" bodystart="52" bodyend="60"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a140983fad68b7dcbbf122222f9ffaba3" prot="public" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>JuQuadraticApproximationEngine</name></member>
-      <member refid="class_quant_lib_1_1_ju_quadratic_approximation_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::JuQuadraticApproximationEngine</scope><name>process_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

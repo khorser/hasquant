@@ -2,60 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_exchange_contract" kind="class" prot="public">
     <compoundname>QuantLib::ExchangeContract</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_contract_1a0af5d00804ca309ebdaf55e7f0aa70d6" prot="protected" static="no" mutable="no">
-        <type>std::string</type>
-        <definition>std::string code_</definition>
-        <argsstring></argsstring>
-        <name>code_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_contract_1a51fdc9c0dd32d6bd86802be5975e4c40" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date expirationDate_</definition>
-        <argsstring></argsstring>
-        <name>expirationDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_contract_1a5836fd6ec35c739f197967a555d962a3" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date underlyingStartDate_</definition>
-        <argsstring></argsstring>
-        <name>underlyingStartDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_exchange_contract_1a9a868d9cb9328d2865295ac10b62ea5f" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date underlyingEndDate_</definition>
-        <argsstring></argsstring>
-        <name>underlyingEndDate_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_contract_1a03ace8c902bb8ec876fd808d8ae710ea" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -156,32 +102,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="5368">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="5367">
-        <label>ExchangeContract</label>
-        <childnode refid="5368" relation="usage">
-          <edgelabel>underlyingEndDate_</edgelabel>
-          <edgelabel>expirationDate_</edgelabel>
-          <edgelabel>underlyingStartDate_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/exchangecontract.hpp" bodystart="32" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>code</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a0af5d00804ca309ebdaf55e7f0aa70d6" prot="protected" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>code_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a03ace8c902bb8ec876fd808d8ae710ea" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>ExchangeContract</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a0b4f988db4375fadf6e5edaa4c644d92" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>ExchangeContract</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1ac739e63239160e19b2966f2b4e6633ae" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>expirationDate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a51fdc9c0dd32d6bd86802be5975e4c40" prot="protected" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>expirationDate_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a13d5cf7d79bb8518be7001833044b0c8" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>underlyingEndDate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a9a868d9cb9328d2865295ac10b62ea5f" prot="protected" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>underlyingEndDate_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a67bfc88e4dabb491decb148a640f8096" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>underlyingStartDate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_contract_1a5836fd6ec35c739f197967a555d962a3" prot="protected" virt="non-virtual"><scope>QuantLib::ExchangeContract</scope><name>underlyingStartDate_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

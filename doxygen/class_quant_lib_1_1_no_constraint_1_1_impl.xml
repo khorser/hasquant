@@ -25,32 +25,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10234">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-      <node id="10233">
-        <label>NoConstraint::Impl</label>
-        <childnode refid="10234" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10236">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-      <node id="10235">
-        <label>NoConstraint::Impl</label>
-        <childnode refid="10236" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="55" bodyend="60"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_no_constraint_1_1_impl_1ad7ad64454914c6eb4bb42c4c1cb1cd63" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint::Impl</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::NoConstraint::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

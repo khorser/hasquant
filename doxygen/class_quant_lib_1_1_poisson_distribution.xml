@@ -73,11 +73,5 @@
     <detaileddescription>
 <para>Given an integer <formula id="184">$ k $</formula>, it returns its probability in a Poisson distribution.</para><para><xrefsect id="test_1_test000032"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/poissondistribution.hpp" bodystart="40" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_poisson_distribution_1ae5a65bc3b6e86c64637e8017d0d20edb" prot="private" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>logMu_</name></member>
-      <member refid="class_quant_lib_1_1_poisson_distribution_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>mu_</name></member>
-      <member refid="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" virt="non-virtual"><scope>QuantLib::PoissonDistribution</scope><name>PoissonDistribution</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

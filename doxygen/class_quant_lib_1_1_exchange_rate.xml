@@ -238,23 +238,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000003"><xreftitle>Tests</xreftitle><xrefdescription><para>application of direct and derived exchange rate is tested against calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/exchangerate.hpp" bodystart="38" bodyend="81"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>chain</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Derived</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Direct</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>exchange</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>ExchangeRate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>ExchangeRate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rate</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1ad703eabf3d6721eec6b70c2740aa7e9d" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rate_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a8e6128017d2b6da84d09f3bb5c5a0474" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>rateChain_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>source</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a2123a75e857ef4992df40cfb5d67a4cc" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>source_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>target</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1abed39c4c6f2a12f9f6774c7c15334ff9" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>target_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRate</scope><name>type_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

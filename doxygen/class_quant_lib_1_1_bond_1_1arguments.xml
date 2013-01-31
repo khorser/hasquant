@@ -64,32 +64,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="1374">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-      <node id="1373">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="1372">
-        <label>Bond::arguments</label>
-        <childnode refid="1373" relation="usage">
-          <edgelabel>settlementDate</edgelabel>
-        </childnode>
-        <childnode refid="1374" relation="usage">
-          <edgelabel>calendar</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" line="271" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bond.hpp" bodystart="271" bodyend="277"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" virt="non-virtual"><scope>QuantLib::Bond::arguments</scope><name>calendar</name></member>
-      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" virt="non-virtual"><scope>QuantLib::Bond::arguments</scope><name>cashflows</name></member>
-      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" virt="non-virtual"><scope>QuantLib::Bond::arguments</scope><name>settlementDate</name></member>
-      <member refid="class_quant_lib_1_1_bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::Bond::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::Bond::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

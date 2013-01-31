@@ -78,30 +78,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1471">
-        <label>MTBrownianGenerator</label>
-        <link refid="class_quant_lib_1_1_m_t_brownian_generator"/>
-        <childnode refid="1470" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1472">
-        <label>SobolBrownianGenerator</label>
-        <link refid="class_quant_lib_1_1_sobol_brownian_generator"/>
-        <childnode refid="1470" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1470">
-        <label>BrownianGenerator</label>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="30" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_brownian_generator_1a1b34c2bf79cf305c195e2a46152abbd8" prot="public" virt="pure-virtual"><scope>QuantLib::BrownianGenerator</scope><name>nextPath</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1aec19e8e69b57772a3636d2e83d268d27" prot="public" virt="pure-virtual"><scope>QuantLib::BrownianGenerator</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1a23e12972a841e8410cafc8a15056196e" prot="public" virt="pure-virtual"><scope>QuantLib::BrownianGenerator</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1abe6f647dd9a9c3dc968ac76116801348" prot="public" virt="pure-virtual"><scope>QuantLib::BrownianGenerator</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_1a447c523c246b53547f6723d481620f92" prot="public" virt="virtual"><scope>QuantLib::BrownianGenerator</scope><name>~BrownianGenerator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -212,20 +212,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp" bodystart="66" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab4fabe8e08237f19708696793524622a" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a6440a938bab4c653572cc4415b17c18e" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>Branching</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a902d61ea4fb27f53ba4b2afe10c3576c" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>descendant</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d1f1a8a465fea89e53b1885a64532b3" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMax</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a31c7ecd71c5c6f5546deacba7d354d24" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMax_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9f8fe03de342db031b659926a0e0d8ef" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMin</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a524d8e24987352df34903a1a9b261ea1" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>jMin_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a86da9394b278f33027480c8bc1007ee9" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>k_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1ab7db9bc49f542ebe4cd33c1a4430cf06" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>kMax_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a4d8ef3bc0a662a82efe16c6fdbbc7549" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>kMin_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a145add76f9c73ff983e8f4cf6300fe7e" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>probability</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a57b7fb8ccdbe4f391e6f8d22efae05c6" prot="private" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>probs_</name></member>
-      <member refid="class_quant_lib_1_1_trinomial_tree_1_1_branching_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::TrinomialTree::Branching</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

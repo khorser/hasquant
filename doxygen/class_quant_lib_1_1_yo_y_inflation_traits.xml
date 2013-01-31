@@ -196,15 +196,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="116" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="116" bodyend="188"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a7294c4c8176cb7457257f7e7aba42bf7" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>guess</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a94bf7b79a5f6927eb6eb94c3776f77dc" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>helper</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a5ab3415b388a2d0538743ecc47e5221a" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>initialDate</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a75cd67fbc851f9f0b8b376f781c87d78" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>initialValue</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>maxIterations</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a8f11fc9dca635edbbb7424d10f695e92" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>maxValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1a87906e2142d8588a4a165d7cdc0e3e2d" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>minValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_yo_y_inflation_traits_1aa877ec13ccf528fc5e3dabb78f7545ef" prot="public" virt="non-virtual"><scope>QuantLib::YoYInflationTraits</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

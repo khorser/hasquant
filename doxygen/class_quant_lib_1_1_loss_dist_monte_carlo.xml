@@ -162,48 +162,6 @@
 <para>Loss distribution with Monte Carlo simulation. </para>    </briefdescription>
     <detaileddescription>
 <para>Loss distribution for varying volumes and probabilities of default via Monte Carlo simulation of independent default events. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9330">
-        <label>LossDist</label>
-        <link refid="class_quant_lib_1_1_loss_dist"/>
-      </node>
-      <node id="9329">
-        <label>LossDistMonteCarlo</label>
-        <link refid="class_quant_lib_1_1_loss_dist_monte_carlo"/>
-        <childnode refid="9330" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9332">
-        <label>LossDist</label>
-        <link refid="class_quant_lib_1_1_loss_dist"/>
-      </node>
-      <node id="9331">
-        <label>LossDistMonteCarlo</label>
-        <link refid="class_quant_lib_1_1_loss_dist_monte_carlo"/>
-        <childnode refid="9332" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="208" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="208" bodyend="224"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_loss_dist_1acf9cea8bbac2609ec13be76d762ea137" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>binomialProbabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab82fe26fbce3b5569b04c89ff1323940" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>binomialProbabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a01ac704c1d58d3c0b62457aebf7097c3" prot="public" virt="virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>buckets</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a0c2c8b8d85c2ef2a8ea5afb1855a7bd7" prot="private" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>epsilon_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab1ed2340c94e1792f0d63fca3f5b1b7e" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>LossDist</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a4cc4a7e22bcf289d87d3bb7be0ab03c1" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>LossDistMonteCarlo</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1ad7e73faa199a16d3c9dc6a7a7295c295" prot="public" virt="virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>maximum</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1abff8e9929d1de11ec2ddeae1146c19b2" prot="private" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>maximum_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>nBuckets_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a0c71a619a048f010109b9d01231394d8" prot="public" virt="virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aaed4b6db418b52611e4fb134d0cb6b8d" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>probabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a2d7794e813cefafdac6576166cbdd06b" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aa00098d738a49d32f49d9e57a76bd984" prot="public" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1a9ad21b943e0b26e7e635844cb88707ae" prot="private" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_monte_carlo_1af7a45062b55c2f26bd081a8e94673c95" prot="private" virt="non-virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>simulations_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a5546766df1db78def3db23dd75033fe9" prot="public" virt="virtual"><scope>QuantLib::LossDistMonteCarlo</scope><name>~LossDist</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

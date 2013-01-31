@@ -332,29 +332,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" bodystart="86" bodyend="116"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply_direction</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>apply_mixed</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1abd885c0a35893418dec411177ab55f44" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dxMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1affedf5350c9ee4c405e182c101d1b052" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dyMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a5ef75c0195e39240bcdc5b19ccad942c" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>dzMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ad8ea4f82cdd6c3ddcf356d1857f0396c" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>equityIrCorrMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a0abc93f46f943fa2bd827bb7328ac04c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>FdmHestonHullWhiteOp</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a3e263c2fcc114b89a3cd8c24009ca908" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>hestonCorrMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a714c59061823c674131b96e33bda273b" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>hwProcess_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a328e605f9c145cecc2d08eea52496fad" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>kappa_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>preconditioner</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1ae10660f3b964d88f488c5fc9c9395656" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>rates_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a350ede3211a53486a5fb393ec23d4a21" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>rho_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a234b1e4d557bbd7144d3a72344ee9da5" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>sigma_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>solve_splitting</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1a290a7be767e7d6796da0962c2462d785" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_hull_white_op_1abc5f38e28831168fb58f00ecae2f0f15" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>v0_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmHestonHullWhiteOp</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

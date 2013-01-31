@@ -64,11 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/everestoption.hpp" bodystart="49" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_everest_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_everest_option_1_1arguments_1a7643684d28332a3f3956ea6404d2c9d2" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::arguments</scope><name>guarantee</name></member>
-      <member refid="class_quant_lib_1_1_everest_option_1_1arguments_1a120e19fab4c30279f6f0428ea7c27a04" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::arguments</scope><name>notional</name></member>
-      <member refid="class_quant_lib_1_1_everest_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::EverestOption::arguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

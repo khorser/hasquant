@@ -86,39 +86,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6829">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="6828">
-        <label>G2::Dynamics</label>
-        <childnode refid="6829" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6831">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="6830">
-        <label>G2::Dynamics</label>
-        <childnode refid="6831" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" line="122" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodels/g2.hpp" bodystart="122" bodyend="143"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_g2_1_1_dynamics_1a0513bda7e06cc1fac8a057176d377efc" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>Dynamics</name></member>
-      <member refid="class_quant_lib_1_1_g2_1_1_dynamics_1aa35c51be43b0896f649218e00d18334e" prot="private" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>fitting_</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1afd0ad032a77834548769cc5f19c3c75f" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>process</name></member>
-      <member refid="class_quant_lib_1_1_g2_1_1_dynamics_1a5214cecca17100330a48b406d11aa1d3" prot="public" virt="virtual"><scope>QuantLib::G2::Dynamics</scope><name>shortRate</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a355ae86a43fc31ac1a073994cd003cd0" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>ShortRateDynamics</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a8172c305c4c368a1edd673b4ca62f371" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>xProcess</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1aa16b95136209eb87d8450dcba1d7cc3b" prot="public" virt="non-virtual"><scope>QuantLib::G2::Dynamics</scope><name>yProcess</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::G2::Dynamics</scope><name>~ShortRateDynamics</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

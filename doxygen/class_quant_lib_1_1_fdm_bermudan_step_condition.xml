@@ -117,37 +117,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6021">
-        <label>FdmBermudanStepCondition</label>
-        <childnode refid="6022" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6022">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6023">
-        <label>FdmBermudanStepCondition</label>
-        <childnode refid="6024" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6024">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmbermudanstepcondition.hpp" bodystart="35" bodyend="51"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>calculator_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1a2177257d39b93abc737e0063d1dd0e79" prot="public" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>exerciseTimes</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1aa010100d61810501bed98b1773802fe5" prot="private" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>exerciseTimes_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1afeda3574cd33f00ec0c73a70e609d72a" prot="public" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>FdmBermudanStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bermudan_step_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmBermudanStepCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

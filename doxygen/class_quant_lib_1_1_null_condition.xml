@@ -35,34 +35,6 @@
 <para>null step condition </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10308">
-        <label>StepCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-      <node id="10307">
-        <label>NullCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_null_condition"/>
-        <childnode refid="10308" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10310">
-        <label>StepCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-      <node id="10309">
-        <label>NullCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_null_condition"/>
-        <childnode refid="10310" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="109" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="109" bodyend="112"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_null_condition_1a878bab06de00a1b5dfee2a25928f75ba" prot="public" virt="virtual"><scope>QuantLib::NullCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::NullCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

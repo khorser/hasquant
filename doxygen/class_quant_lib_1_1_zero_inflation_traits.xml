@@ -196,15 +196,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/inflationtraits.hpp" bodystart="41" bodyend="113"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a7294c4c8176cb7457257f7e7aba42bf7" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>guess</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a7d484b9078df4e28c4808c2817cf7b5e" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>helper</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a5cba234257e3f118ca90cd93dfc4e56e" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>initialDate</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1abe0607de46b1262e2ea2b636e20d33b1" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>initialValue</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>maxIterations</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a8f11fc9dca635edbbb7424d10f695e92" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>maxValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1a87906e2142d8588a4a165d7cdc0e3e2d" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>minValueAfter</name></member>
-      <member refid="class_quant_lib_1_1_zero_inflation_traits_1aa877ec13ccf528fc5e3dabb78f7545ef" prot="public" virt="non-virtual"><scope>QuantLib::ZeroInflationTraits</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

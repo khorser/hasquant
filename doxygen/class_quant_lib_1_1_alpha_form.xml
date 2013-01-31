@@ -58,10 +58,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaform.hpp" line="27" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphaform.hpp" bodystart="27" bodyend="32"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_alpha_form_1a587be0279d72e2b70a3918f02f6d88ef" prot="public" virt="pure-virtual"><scope>QuantLib::AlphaForm</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_alpha_form_1a866e0aa714c57d7ec779cb7c3976bbf4" prot="public" virt="pure-virtual"><scope>QuantLib::AlphaForm</scope><name>setAlpha</name></member>
-      <member refid="class_quant_lib_1_1_alpha_form_1a34759557c2dd9970a96b6ad522c6a16b" prot="public" virt="virtual"><scope>QuantLib::AlphaForm</scope><name>~AlphaForm</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

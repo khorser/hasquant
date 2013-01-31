@@ -45,9 +45,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="41" bodyend="46"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" virt="non-virtual"><scope>QuantLib::PeriodParser</scope><name>parse</name></member>
-      <member refid="class_quant_lib_1_1_period_parser_1a2325c91cbe4445b3da242c1de8ac9ad0" prot="private" virt="non-virtual"><scope>QuantLib::PeriodParser</scope><name>parseOnePeriod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -508,30 +508,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/alphafinder.hpp" bodystart="29" bodyend="92"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a31ab05f9e319e7305dac9a4a7a944552" prot="public" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>AlphaFinder</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1ae5ca413ba17cb12331e27171989369ca" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>computeLinearPart</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1aa97e0dffa183daaf976a57227f3c65a5" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>computeQuadraticPart</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a742cbb3ac6a59c2db97859f0d75bc538" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>constantPart_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1ada4f8cc3621cb2f7cf1f862d84a12e36" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>correlations_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a8b723899019c2a4263311ff807a0b3cf" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>finalPart</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a3654c063da2d77bf862261a195d4ba4b" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>homogeneityfailure</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a259777fb52d4f05f08f4124fe11a3016" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>linearPart_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a345e7197a2021d76bfa4e61a30360b64" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>minusValueAtTurningPoint</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a29d67fcecca87407f7feaa22246d21cd" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>parametricform_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1ae81a858e3e4a2eec3c89ce328848c451" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>putativevols_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1afe40a2459b32971cf578cff6e5a8156b" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>quadraticPart_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1ac93b0c0f1cd43c2e872e7833f0034d23" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>rateonevols_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a4567e1f98916f4b45c24a638cb5ad868" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>ratetwohomogeneousvols_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1aa3db6f08205aef4ed57648df26d1b476" prot="public" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>solve</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a81960a8ba8173e3c03d53c98aa770c4c" prot="public" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>solveWithMaxHomogeneity</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1aac779282137a827ce6b053ec54d398d5" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>stepindex_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a59e81e623fe87d7d1f3ebdc70b09c524" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>targetVariance_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a5c629cfdc3057d05be0320ed4ca499b5" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>testIfSolutionExists</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a782b02c377e6d725635df314cb19a3cd" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>totalVar_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a6b4085087edcc88993ab9168db09358a" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>valueAtTurningPoint</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a28aa6ce1d9fdd988aafbb94299018ec9" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>w0_</name></member>
-      <member refid="class_quant_lib_1_1_alpha_finder_1a9f487a5c26e28c66af672d3543ab3761" prot="private" virt="non-virtual"><scope>QuantLib::AlphaFinder</scope><name>w1_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

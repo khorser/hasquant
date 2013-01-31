@@ -5,112 +5,6 @@
     <basecompoundref prot="public" virt="non-virtual">FdmLinearOp</basecompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_first_derivative_op" prot="public" virt="non-virtual">FirstDerivativeOp</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_second_derivative_op" prot="public" virt="non-virtual">SecondDerivativeOp</derivedcompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a96516b03470962d9eff93d27223c44f2" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size direction_</definition>
-        <argsstring></argsstring>
-        <name>direction_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="67" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a0ecee0e3694b58631a885817b3a176df" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Size&gt; i0_</definition>
-        <argsstring></argsstring>
-        <name>i0_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1ae32f8edbf5ce64baaadd1273ddd9f17b" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Size&gt; i2_</definition>
-        <argsstring></argsstring>
-        <name>i2_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="68" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a7959ed0f802ea95fba99b2be00ecb696" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Size&gt; reverseIndex_</definition>
-        <argsstring></argsstring>
-        <name>reverseIndex_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a4794d93523251a3dfe18c4aade430a0c" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Real&gt; lower_</definition>
-        <argsstring></argsstring>
-        <name>lower_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a0707551e611fbc51a27c4fdfe873bb5f" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Real&gt; diag_</definition>
-        <argsstring></argsstring>
-        <name>diag_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1abebb69558fe50ed6e58bb36032427a86" prot="protected" static="no" mutable="no">
-        <type>boost::shared_array&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>boost::shared_array&lt;Real&gt; upper_</definition>
-        <argsstring></argsstring>
-        <name>upper_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_triple_band_linear_op_1a6173a18083f066a89cbf39fe65ca3e69" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; FdmMesher &gt;</type>
-        <definition>boost::shared_ptr&lt;FdmMesher&gt; mesher_</definition>
-        <argsstring></argsstring>
-        <name>mesher_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1aa88d5f966f192ea7ac9e68fb5de37288" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -342,50 +236,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="62"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_triple_band_linear_op_1af7d1b4d267d34f5a6eb98097016521cb" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type></type>
-        <definition>TripleBandLinearOp</definition>
-        <argsstring>()</argsstring>
-        <name>TripleBandLinearOp</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="65" bodyend="65"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/triplebandlinearop.hpp" bodystart="40" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1aceb2c2e48cf546c87dd85b17cc6b1a87" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a2d8a9665e40e497d6002f382ec9654fb" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a5b3cacf9588f76379b365403874a3ae1" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>axpyb</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a0707551e611fbc51a27c4fdfe873bb5f" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>diag_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a96516b03470962d9eff93d27223c44f2" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>direction_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a0ecee0e3694b58631a885817b3a176df" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>i0_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1ae32f8edbf5ce64baaadd1273ddd9f17b" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>i2_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a4794d93523251a3dfe18c4aade430a0c" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>lower_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a6173a18083f066a89cbf39fe65ca3e69" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a5c2399c01dda1dc7a7a644bf952be9d3" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>mult</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a572b1e1e16afcea51552436497fbb7d4" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a585060eaa7e0eea2cf8fd5cfeb1001f3" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a7959ed0f802ea95fba99b2be00ecb696" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>reverseIndex_</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1ab600bd5bcc452143dc9a119770105596" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>solve_splitting</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1ac58acdb9da28bd0608d8996a51d99242" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>swap</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1aa88d5f966f192ea7ac9e68fb5de37288" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>TripleBandLinearOp</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a11bab5c39534effd2a44c4e4d509e37d" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>TripleBandLinearOp</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1a9122005cf83508433737ae6e442fd482" prot="public" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>TripleBandLinearOp</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1af7d1b4d267d34f5a6eb98097016521cb" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>TripleBandLinearOp</name></member>
-      <member refid="class_quant_lib_1_1_triple_band_linear_op_1abebb69558fe50ed6e58bb36032427a86" prot="protected" virt="non-virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>upper_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::TripleBandLinearOp</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

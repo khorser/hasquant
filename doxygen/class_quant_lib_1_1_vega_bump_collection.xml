@@ -198,20 +198,5 @@
     <detaileddescription>
 <para>There are too many pseudo-root elements to allow bumping them all independently so we cluster them together and then divide all elements into a collection of such clusters. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="99" bodyend="132"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a4d1f10402c8899701f98b86b09233b28" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>allBumps</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1affd121eddbb9d65ee290d1995ef17788" prot="private" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>allBumps_</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1af630bf4038f58f37c8dc2aaca33043c6" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>associatedModel</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a54142273841155884704623946521692" prot="private" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>associatedVolStructure_</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a8d3cb58f00982412ad02c027e3f130ff" prot="private" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>checked_</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1ab2ef1002d7fa98d2a5123f5546565488" prot="private" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>full_</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a7ffe8a6212a0eb3fc7bbc8e9bc51dfcd" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>isFull</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a2d80b7ff7f5079612af444b6bf528d1a" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>isNonOverlapping</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a32c4f3ea89e1a400b29a505a410ef98e" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>isSensible</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1ac565c89bb47d2f63a4a0c6ff43761875" prot="private" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>nonOverlapped_</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a0a87126359f062bf1cf7e3b1f5388d11" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>numberBumps</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a9aa96483524a13761fc851a225faf50f" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>VegaBumpCollection</name></member>
-      <member refid="class_quant_lib_1_1_vega_bump_collection_1a675f35cec38522cbb7819d855cc01293" prot="public" virt="non-virtual"><scope>QuantLib::VegaBumpCollection</scope><name>VegaBumpCollection</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

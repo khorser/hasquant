@@ -33,8 +33,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="188" bodyend="193"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1earlier__than_3_01_default_event_01_4_1accd095aa3f08adeb9dd69aff7e5b2ed9" prot="public" virt="non-virtual"><scope>QuantLib::earlier_than&lt; DefaultEvent &gt;</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

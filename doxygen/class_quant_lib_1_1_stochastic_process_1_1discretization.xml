@@ -114,30 +114,6 @@
 <para>discretization of a stochastic process over a given time interval </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13447">
-        <label>EndEulerDiscretization</label>
-        <link refid="class_quant_lib_1_1_end_euler_discretization"/>
-        <childnode refid="13446" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13446">
-        <label>StochasticProcess::discretization</label>
-        <link refid="class_quant_lib_1_1_stochastic_process_1_1discretization"/>
-      </node>
-      <node id="13448">
-        <label>EulerDiscretization</label>
-        <link refid="class_quant_lib_1_1_euler_discretization"/>
-        <childnode refid="13446" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/stochasticprocess.hpp" bodystart="45" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a8c5e010d99024e4340bf7f694f3abcb5" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess::discretization</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a2ba0ace71b0d2f7b758d1685e59e7c40" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess::discretization</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a34bda8631ccdcbafb2dc5da0fc4d05ce" prot="public" virt="pure-virtual"><scope>QuantLib::StochasticProcess::discretization</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" virt="virtual"><scope>QuantLib::StochasticProcess::discretization</scope><name>~discretization</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

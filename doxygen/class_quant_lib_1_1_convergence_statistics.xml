@@ -238,19 +238,5 @@
 <codeline><highlight class="normal"><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member" tooltip="size of a container">Size</ref><sp/>nextSamples(<ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member" tooltip="size of a container">Size</ref><sp/>currentSamples)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> as well as a copy constructor.</para><para><xrefsect id="test_1_test000069"><xreftitle>Tests</xreftitle><xrefdescription><para>results are tested against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" bodystart="58" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a0fd2224497ce267aa05d4fe5915aa11d" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a536b63938a662f0138ab4f1e87669eef" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>addSequence</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1acd78fc587eb7cf80dd145cb3adda5ae8" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>addSequence</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1aabab33bdd825123d705d469b60362455" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>ConvergenceStatistics</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1afc2f09312916217fea1ec35a927a3edc" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>ConvergenceStatistics</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a2c9c98dfbddea40f5d6add9c239632e7" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>convergenceTable</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a93237d609f8c6f66cfb22c55c004d210" prot="private" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>nextSampleSize_</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1ad06d24a790fafb1770b8c14bae47a376" prot="private" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>samplingRule_</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a3a711f71ef21cdd6f21b158893a05584" prot="private" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>table_</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1a1c8168a0d88468e6516d4641ef378a60" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>table_type</name></member>
-      <member refid="class_quant_lib_1_1_convergence_statistics_1aa8160fae99860b361fb09336cb2478e7" prot="public" virt="non-virtual"><scope>QuantLib::ConvergenceStatistics</scope><name>value_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

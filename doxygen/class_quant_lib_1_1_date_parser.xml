@@ -68,10 +68,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="48" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_date_parser_1abc3be97ef097b3aa573b0d296a8ae0aa" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>parse</name></member>
-      <member refid="class_quant_lib_1_1_date_parser_1ad402c113ffa7026c47b1332f04bbf6d6" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>parseISO</name></member>
-      <member refid="class_quant_lib_1_1_date_parser_1a14f77ba5943bc79a7191c885621c8ab9" prot="public" virt="non-virtual"><scope>QuantLib::DateParser</scope><name>split</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

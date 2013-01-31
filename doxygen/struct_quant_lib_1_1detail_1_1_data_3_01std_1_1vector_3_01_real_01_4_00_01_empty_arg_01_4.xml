@@ -154,16 +154,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="102" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="102" bodyend="118"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a51d806137473e32bc8e082f8beb3133a" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ad82d1c69dd7b887e9a5c19f1b588ab8e" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ab6e5e8c6d57239626e7e7dcb76ff6d24" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a0a14377a14f739b0ea4f2d84efec419e" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1a100388a436e3d2c5736c7a7e351009e3" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>first</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1aef3cb5dd84a28dad7bfae21cc3542574" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1acc625e48a9453662b5a742ce32b2c7ef" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1af13611d5a975d042a1a8a4912d411015" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>second</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_3_01std_1_1vector_3_01_real_01_4_00_01_empty_arg_01_4_1ae467fef7a023aaa0714c07d22506ad42" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data&lt; std::vector&lt; Real &gt;, EmptyArg &gt;</scope><name>swap</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

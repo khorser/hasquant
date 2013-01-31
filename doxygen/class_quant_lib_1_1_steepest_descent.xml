@@ -57,14 +57,5 @@
     <detaileddescription>
 <para>User has to provide line-search method and optimization end criteria <verbatim>   search direction \form#237</verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/steepestdescent.hpp" bodystart="37" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_steepest_descent_1a1be451cbbfe4c8c513264452919248f8" prot="private" virt="non-virtual"><scope>QuantLib::SteepestDescent</scope><name>getUpdatedDirection</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a2eb34f5697270e3826031c399c402ac0" prot="protected" virt="non-virtual"><scope>QuantLib::SteepestDescent</scope><name>lineSearch_</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" virt="non-virtual"><scope>QuantLib::SteepestDescent</scope><name>LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::SteepestDescent</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_steepest_descent_1a0fb9d9ddd466839e076ca8f55b1a1b94" prot="public" virt="non-virtual"><scope>QuantLib::SteepestDescent</scope><name>SteepestDescent</name></member>
-      <member refid="class_quant_lib_1_1_line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" virt="virtual"><scope>QuantLib::SteepestDescent</scope><name>~LineSearchBasedMethod</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::SteepestDescent</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

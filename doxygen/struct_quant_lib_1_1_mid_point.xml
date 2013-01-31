@@ -55,9 +55,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" bodystart="101" bodyend="117"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_mid_point_1a5bbf41d59a868c0c8a4d32b18bff31e4" prot="public" virt="non-virtual"><scope>QuantLib::MidPoint</scope><name>integrate</name></member>
-      <member refid="struct_quant_lib_1_1_mid_point_1ad833945fb7a72736b84cc84928cbec0f" prot="public" virt="non-virtual"><scope>QuantLib::MidPoint</scope><name>nbEvalutions</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

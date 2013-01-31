@@ -81,38 +81,6 @@
 <para>Random seed generator. </para>    </briefdescription>
     <detaileddescription>
 <para>Random number generator used for automatic generation of initialization seeds.</para><para><xrefsect id="test_1_test000058"><xreftitle>Tests</xreftitle><xrefdescription><para>correct initialization of the single instance is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="13002">
-        <label>Singleton&lt; SeedGenerator &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="13001">
-        <label>SeedGenerator</label>
-        <link refid="class_quant_lib_1_1_seed_generator"/>
-        <childnode refid="13002" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13004">
-        <label>Singleton&lt; SeedGenerator &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="13003">
-        <label>SeedGenerator</label>
-        <link refid="class_quant_lib_1_1_seed_generator"/>
-        <childnode refid="13004" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="38" bodyend="46"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_seed_generator_1a957d5ec5d69c9644228fe2eca5cd08e9" prot="public" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>get</name></member>
-      <member refid="class_quant_lib_1_1_seed_generator_1a25a40b6614565f755233080a384c35f1" prot="private" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_seed_generator_1a897450e49b1c8dde68a3f84ebf321bc7" prot="private" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>rng_</name></member>
-      <member refid="class_quant_lib_1_1_seed_generator_1aa00e356714c34ba83dbff23c610d57e3" prot="private" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>SeedGenerator</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::SeedGenerator</scope><name>Singleton</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

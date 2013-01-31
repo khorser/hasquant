@@ -125,14 +125,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="43" bodyend="59"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1adf764cbdea00d65edcd07bb9953ad2b7a4cf0a75076c0e93010640ad9b584b0ce" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>allowsErrorEstimate</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1add6654799b779fd05bdbd3943f58e8e3" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>icInstance</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>make_sequence_generator</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1a08c9676c6d5c428bded535a24877c8d5" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>rng_type</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1a171ed387822763dc8c95e3f638cc8de0" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>rsg_type</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1a7f43c45ed1b5ee0bc58d04c8f43146de" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>urng_type</name></member>
-      <member refid="struct_quant_lib_1_1_generic_pseudo_random_1a9ec0daac1a5df690cfb0e14bcef2c36e" prot="public" virt="non-virtual"><scope>QuantLib::GenericPseudoRandom</scope><name>ursg_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

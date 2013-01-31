@@ -9,47 +9,6 @@
     <derivedcompoundref refid="class_quant_lib_1_1_fdm_heston_variance_mesher" prot="public" virt="non-virtual">FdmHestonVarianceMesher</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_fdm_simple_process1d_mesher" prot="public" virt="non-virtual">FdmSimpleProcess1dMesher</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_uniform1d_mesher" prot="public" virt="non-virtual">Uniform1dMesher</derivedcompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm1d_mesher_1a2e993815b92a6d8d46c5212de911b331" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; locations_</definition>
-        <argsstring></argsstring>
-        <name>locations_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="46" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm1d_mesher_1ac9eac9d51ed573fa746ca81e2f5be9af" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; dplus_</definition>
-        <argsstring></argsstring>
-        <name>dplus_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm1d_mesher_1ae1847e5b28f379fb26166e9be7ee8015" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; dminus_</definition>
-        <argsstring></argsstring>
-        <name>dminus_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -150,28 +109,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5971">
-        <label>ExponentialJump1dMesher</label>
-        <link refid="class_quant_lib_1_1_exponential_jump1d_mesher"/>
-        <childnode refid="5970" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5970">
-        <label>Fdm1dMesher</label>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="34" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a1155518c087ec4af6ff6109358df607a" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>dminus</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ae1847e5b28f379fb26166e9be7ee8015" prot="protected" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>dminus_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a0726574713e89fcc5ec41b656172270c" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>dplus</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ac9eac9d51ed573fa746ca81e2f5be9af" prot="protected" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>dplus_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>Fdm1dMesher</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a419dfb57dd2688876897560d8e9d8dd6" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>location</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a66c06bbb278d9d165875f6c099a52db1" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>locations</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a2e993815b92a6d8d46c5212de911b331" prot="protected" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>locations_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::Fdm1dMesher</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

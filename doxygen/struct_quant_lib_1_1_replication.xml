@@ -62,12 +62,5 @@
     <detaileddescription>
 <para>Specification of replication strategies used to price the embedded digital option in a digital coupon. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/replication.hpp" bodystart="36" bodyend="38"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a7ab3a5cea583da15b13bfe3742dca4f8" prot="public" virt="non-virtual"><scope>QuantLib::Replication</scope><name>Central</name></member>
-      <member refid="struct_quant_lib_1_1_replication_1a5fc01e44efe48314e6f91e7dc20e075d" prot="public" virt="non-virtual"><scope>QuantLib::Replication</scope><name>operator&lt;&lt;</name></member>
-      <member refid="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a3e53f06234367d0e453fa5ea0ad2ab34" prot="public" virt="non-virtual"><scope>QuantLib::Replication</scope><name>Sub</name></member>
-      <member refid="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7a3993abca9102c73083a66e9e0bf08fba" prot="public" virt="non-virtual"><scope>QuantLib::Replication</scope><name>Super</name></member>
-      <member refid="struct_quant_lib_1_1_replication_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Replication</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

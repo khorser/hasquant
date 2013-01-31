@@ -3,21 +3,6 @@
   <compounddef id="class_quant_lib_1_1_lm_const_wrapper_correlation_model" kind="class" prot="public">
     <compoundname>QuantLib::LmConstWrapperCorrelationModel</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_lm_correlation_model" prot="public" virt="non-virtual">LmCorrelationModel</basecompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a6613ae0514e19a136799fa00e25cc437" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;LmCorrelationModel&gt; corrModel_</definition>
-        <argsstring></argsstring>
-        <name>corrModel_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="62" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="62" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a4a007c9376714d579fb3712556125a8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -137,64 +122,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>void</type>
-        <definition>void generateArguments</definition>
-        <argsstring>()</argsstring>
-        <name>generateArguments</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="60" bodyend="60"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9109">
-        <label>LmConstWrapperCorrelationModel</label>
-        <childnode refid="9110" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9110">
-        <label>LmCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9111">
-        <label>LmConstWrapperCorrelationModel</label>
-        <childnode refid="9112" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9112">
-        <label>LmCorrelationModel</label>
-        <link refid="class_quant_lib_1_1_lm_correlation_model"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/legacy/libormarketmodels/lmconstwrappercorrmodel.hpp" bodystart="31" bodyend="63"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a8d6cb3b36a2e282c440aad042035196a" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1ac4dc4daa2ec1a0b126b8b3598d7b237f" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a6613ae0514e19a136799fa00e25cc437" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>corrModel_</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>factors</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a4d8a7e8e132cf1dd8d1d9eac02f2bfae" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>generateArguments</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>isTimeIndependent</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a4a007c9376714d579fb3712556125a8b" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>LmConstWrapperCorrelationModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a0d184c3012011e708072e787c9a639c7" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>LmCorrelationModel</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a9393e4f98c78782667ac0fad8955b460" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>params</name></member>
-      <member refid="class_quant_lib_1_1_lm_const_wrapper_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>pseudoSqrt</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a35af8c3af10f3ea4e44ccc5e370074bb" prot="public" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>setParams</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1aa816fa6ea150c48362fa3b105866a96f" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a6bc74a91ed4c6cb51d2fa5b1f8cdaf60" prot="protected" virt="non-virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_lm_correlation_model_1a2817622116ad383444aa06f36ee20ce8" prot="public" virt="virtual"><scope>QuantLib::LmConstWrapperCorrelationModel</scope><name>~LmCorrelationModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

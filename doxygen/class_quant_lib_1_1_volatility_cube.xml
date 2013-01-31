@@ -2,34 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_volatility_cube" kind="class" prot="public">
     <compoundname>QuantLib::VolatilityCube</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_cube_1a6e7a724f6202b4c7ecd2044b0728e830" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_interest_rate_vol_surface" kindref="compound">InterestRateVolSurface</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;InterestRateVolSurface&gt; &gt; surfaces_</definition>
-        <argsstring></argsstring>
-        <name>surfaces_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_volatility_cube_1a996ae80b5ceb720fe2973bbdc0c7c54b" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_abcd_atm_vol_curve" kindref="compound">AbcdAtmVolCurve</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;Handle&lt;AbcdAtmVolCurve&gt; &gt; curves_</definition>
-        <argsstring></argsstring>
-        <name>curves_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_volatility_cube_1adce4d6ca2982231663e7e0286a52e78c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -108,14 +80,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/volatility/volcube.hpp" bodystart="38" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a14ae4fdbe17db4dad087de2066aa8b73" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>curves</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a996ae80b5ceb720fe2973bbdc0c7c54b" prot="protected" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>curves_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a676d9c5de79914715b7b92f274d659e4" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>maxIndexTenor</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a2329e8b141cc4e4a5619fa0eeb7adf95" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>minIndexTenor</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a99f391f568838917d9c56254e3100f74" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>surfaces</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1a6e7a724f6202b4c7ecd2044b0728e830" prot="protected" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>surfaces_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_cube_1adce4d6ca2982231663e7e0286a52e78c" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityCube</scope><name>VolatilityCube</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

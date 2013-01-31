@@ -212,23 +212,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapbasissystem.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/swapbasissystem.hpp" bodystart="29" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1af5f0c9adadc877be7f156eccce2f6d8c" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1afa0882cb7e47518f285e2bc573d954a9" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1aa010100d61810501bed98b1773802fe5" prot="private" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>exerciseTimes_</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1aadcdfbd9bd7b7f0ac735eee073ac16c8" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>isExerciseTime</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1aa10274c0393aff9841d8518b3d839d2b" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_basis_system_1a4152ba33a9f707f0d161f18b8343df05" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>numberOfData</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1a5065f03e9f9e90f1a6ca2a593ab037b9" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>numberOfExercises</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1affc4cb235f5204ff23418e080281700d" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>numberOfFunctions</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1a0e6b881d8f8f11a9b53c51056f185ba0" prot="private" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>rateIndex_</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1a7c5eaa190a38d0d5e7e28ce0a5dafc6f" prot="private" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1af204509c0cd86e32806486f1043ae1f2" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>SwapBasisSystem</name></member>
-      <member refid="class_quant_lib_1_1_swap_basis_system_1af07b2f61cfdaf5aa88726afc22aea5c0" prot="public" virt="non-virtual"><scope>QuantLib::SwapBasisSystem</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1ac955e186a3d091ef31b5e2cca89965c8" prot="public" virt="virtual"><scope>QuantLib::SwapBasisSystem</scope><name>~MarketModelNodeDataProvider</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

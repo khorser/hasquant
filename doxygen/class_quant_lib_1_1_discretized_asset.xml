@@ -228,60 +228,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="123"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1ae97b689c7df7487279f31ab5af9b3762" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time time_</definition>
-        <argsstring></argsstring>
-        <name>time_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="134" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="134" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1afb82cc42be705c48a8351e203748b02d" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time latestPreAdjustment_</definition>
-        <argsstring></argsstring>
-        <name>latestPreAdjustment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1abb9ebdedf694d081a3763668136bfc7f" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time latestPostAdjustment_</definition>
-        <argsstring></argsstring>
-        <name>latestPostAdjustment_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="135" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1a99a3a78defaeab5ede226107da665b96" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
-        <definition>Array values_</definition>
-        <argsstring></argsstring>
-        <name>values_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="136" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="136" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_discretized_asset_1a9b59c4b1fe57dba3b5f7826f38b6fe56" prot="private" static="no" mutable="no">
         <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
@@ -325,113 +271,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1ae39867f35c28df8a77f62d659f6b7ad5" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>bool</type>
-        <definition>bool isOnTime</definition>
-        <argsstring>(Time t) const </argsstring>
-        <name>isOnTime</name>
-        <param>
-          <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-          <declname>t</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>This method checks whether the asset was rolled at the given time. </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="128" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="215" bodyend="218"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a1cd0989529ea6494ee706dd772506455" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>virtual void preAdjustValuesImpl</definition>
-        <argsstring>()</argsstring>
-        <name>preAdjustValuesImpl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>This method performs the actual pre-adjustment </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="130" bodyend="130"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a371a4f1247c8ff3fc41d288a3ab3164a" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
-        <type>void</type>
-        <definition>virtual void postAdjustValuesImpl</definition>
-        <argsstring>()</argsstring>
-        <name>postAdjustValuesImpl</name>
-        <reimplementedby refid="class_quant_lib_1_1_discretized_option_1a85429fd2334469ecf405ecf57a624b73">postAdjustValuesImpl</reimplementedby>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-<para>This method performs the actual post-adjustment </para>        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="132" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="132" bodyend="132"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Discretized asset class used by numerical methods. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3825">
-        <label>DiscretizedDiscountBond</label>
-        <link refid="class_quant_lib_1_1_discretized_discount_bond"/>
-        <childnode refid="3824" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3824">
-        <label>DiscretizedAsset</label>
-        <link refid="class_quant_lib_1_1_discretized_asset"/>
-      </node>
-      <node id="3826">
-        <label>DiscretizedOption</label>
-        <link refid="class_quant_lib_1_1_discretized_option"/>
-        <childnode refid="3824" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3827">
-        <label>DiscretizedAsset</label>
-        <link refid="class_quant_lib_1_1_discretized_asset"/>
-        <childnode refid="3828" relation="usage">
-          <edgelabel>values_</edgelabel>
-        </childnode>
-      </node>
-      <node id="3828">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/discretizedasset.hpp" bodystart="35" bodyend="139"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>adjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1afad0751d0bfc43043efa52445e6f40e2" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>DiscretizedAsset</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a6cef7fe12b71383095431da763298442" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ae39867f35c28df8a77f62d659f6b7ad5" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>isOnTime</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1abb9ebdedf694d081a3763668136bfc7f" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>latestPostAdjustment_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1afb82cc42be705c48a8351e203748b02d" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>latestPreAdjustment_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ace8de2f1297ce9bfbfb64cdf13f98ddc" prot="public" virt="pure-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>mandatoryTimes</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>method</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a9b59c4b1fe57dba3b5f7826f38b6fe56" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>method_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aa2f3ac04333282912860221a3b90e23b" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>partialRollback</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>postAdjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a371a4f1247c8ff3fc41d288a3ab3164a" prot="protected" virt="virtual"><scope>QuantLib::DiscretizedAsset</scope><name>postAdjustValuesImpl</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>preAdjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a1cd0989529ea6494ee706dd772506455" prot="protected" virt="virtual"><scope>QuantLib::DiscretizedAsset</scope><name>preAdjustValuesImpl</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a6c08e31d5f5a5d45b311bae8c7f4b0f2" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>presentValue</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a95238187618927d950bb01e363f772dd" prot="public" virt="pure-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aef4cbc1d4c3994be66cc8b8a943e5151" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>rollback</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a5868da364bb0ac7ca08b2c72d3fb2f78" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>time</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a252c914b2d10cfe6e7d555128185d5d7" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>time</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ae97b689c7df7487279f31ab5af9b3762" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>time_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a99a3a78defaeab5ede226107da665b96" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedAsset</scope><name>values_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a2790be8448a44e9a466515cec789566d" prot="public" virt="virtual"><scope>QuantLib::DiscretizedAsset</scope><name>~DiscretizedAsset</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

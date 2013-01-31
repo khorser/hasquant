@@ -29,32 +29,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2489">
-        <label>ConstantParameter::Impl</label>
-        <childnode refid="2490" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2490">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2491">
-        <label>ConstantParameter::Impl</label>
-        <childnode refid="2492" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2492">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="73" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_constant_parameter_1_1_impl_1a73f1b9e59f8e3e079031f1c93118da66" prot="public" virt="non-virtual"><scope>QuantLib::ConstantParameter::Impl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::ConstantParameter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

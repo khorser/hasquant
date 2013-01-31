@@ -273,52 +273,6 @@
 <para>global repository for run-time library settings </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13029">
-        <label>Settings</label>
-        <link refid="class_quant_lib_1_1_settings"/>
-        <childnode refid="13030" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13030">
-        <label>Singleton&lt; Settings &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13031">
-        <label>Settings</label>
-        <link refid="class_quant_lib_1_1_settings"/>
-        <childnode refid="13032" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13032">
-        <label>Singleton&lt; Settings &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="37" bodyend="123"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_settings_1a9aa8356b35815cebac2f917f6d4e6b4f" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>anchorEvaluationDate</name></member>
-      <member refid="class_quant_lib_1_1_settings_1af595a253588ed5bb7d32db3ea376343a" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings</name></member>
-      <member refid="class_quant_lib_1_1_settings_1adda3a6a81339120e1ff517e66fc08420" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a8f231257ba45f5e8bff505c57007dbc7" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>enforcesTodaysHistoricFixings_</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate</name></member>
-      <member refid="class_quant_lib_1_1_settings_1ae3189c550eea150ee68d731a28248ee2" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate</name></member>
-      <member refid="class_quant_lib_1_1_settings_1aa47eba642bb525608360293ca195866f" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>evaluationDate_</name></member>
-      <member refid="class_quant_lib_1_1_settings_1ab02fe975a741a17aedf64c1904f73365" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateCashFlows</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a12e32d242634ec425ce24f3186bf65bd" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateCashFlows</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a42985b53935a1455fae87abac7897abe" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a661c3f098e93123cf66b0435b1a5e0c6" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a9dc706f7bde495e92a2ead042696d763" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeReferenceDateEvents_</name></member>
-      <member refid="class_quant_lib_1_1_settings_1ae3bc274d0c10bfa3b2c27380eb000032" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a1dbed895b6b7fa9c7c61a6618d55feac" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a8a3aacf41cab37be41ec441e1ee15ee9" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>includeTodaysCashFlows_</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a7372fd0b783fb5d23e60a661934d1203" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_settings_1a3d83ddb191bf74ffee552d9dd9fc2d3f" prot="public" virt="non-virtual"><scope>QuantLib::Settings</scope><name>resetEvaluationDate</name></member>
-      <member refid="class_quant_lib_1_1_settings_1ad9e75fc733b9d496f8003fb4725878c3" prot="private" virt="non-virtual"><scope>QuantLib::Settings</scope><name>Settings</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::Settings</scope><name>Singleton</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

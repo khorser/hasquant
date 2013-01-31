@@ -111,13 +111,5 @@
 <codeline><highlight class="normal"><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member" tooltip="real number">Real</ref><sp/>IC::operator()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/inversecumulativerng.hpp" bodystart="54" bodyend="64"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1a1684a2d3d4771a19b38a400bf87c2b69" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>ICND_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1a94c3ceb8818a466b6bd20dcb49d2665f" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>InverseCumulativeRng</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1a9a9a593ede5bb876841ba3bd87f5b8f9" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>uniformGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_cumulative_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" virt="non-virtual"><scope>QuantLib::InverseCumulativeRng</scope><name>urng_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

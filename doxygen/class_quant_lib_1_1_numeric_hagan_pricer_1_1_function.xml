@@ -41,9 +41,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="263" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="263" bodyend="267"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" virt="pure-virtual"><scope>QuantLib::NumericHaganPricer::Function</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1af90995647e802e28f0a10dec00761500" prot="public" virt="virtual"><scope>QuantLib::NumericHaganPricer::Function</scope><name>~Function</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -274,50 +274,6 @@
     </briefdescription>
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap" kindref="compound">MarketModelPathwiseMultiDeflatedCap</ref> to price several caps and get their derivatives simultaneously. Mainly useful for testing pathwise market vegas code. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9527">
-        <label>MarketModelPathwiseMultiDeflatedCap</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap"/>
-        <childnode refid="9528" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9528">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9529">
-        <label>MarketModelPathwiseMultiDeflatedCap</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap"/>
-        <childnode refid="9530" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9530">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcaplet.hpp" bodystart="148" bodyend="198"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>alreadyDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1abeb1a8ee9da6950e3365c02437adaeaa" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>innerCashFlowsGenerated_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1adac99cf3cb23e8689fc4696c7054a1ce" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>innerCashFlowSizes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a78244d84483c4622f276510fbaad07c9" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>MarketModelPathwiseMultiDeflatedCap</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>numberRates_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a870e0a0d986b7ed1294b2f78e023945f" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>startsAndEnds_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a6360827251f6201fc1dd67f994411177" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>underlyingCaplets_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap_1a4468c95aed52d59422a24440f52e6a25" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>~MarketModelPathwiseMultiDeflatedCap</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiDeflatedCap</scope><name>~MarketModelPathwiseMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

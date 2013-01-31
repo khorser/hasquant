@@ -158,61 +158,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3615">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
-      </node>
-      <node id="3614">
-        <label>templateImpl&lt; I1, I2 &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
-        <childnode refid="3615" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3613">
-        <label>LogInterpolationImpl&lt; I1, I2, Interpolator &gt;</label>
-        <childnode refid="3614" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3618">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1_impl"/>
-      </node>
-      <node id="3617">
-        <label>templateImpl&lt; I1, I2 &gt;</label>
-        <link refid="class_quant_lib_1_1_interpolation_1_1template_impl"/>
-        <childnode refid="3618" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3616">
-        <label>LogInterpolationImpl&lt; I1, I2, Interpolator &gt;</label>
-        <childnode refid="3617" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/loginterpolation.hpp" bodystart="37" bodyend="74"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a6633ee38a9d12ce3e342081d39e98fd0" prot="private" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>interpolation_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a065ac2d8b15048bb846f8fddc789c46b" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>isInRange</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1aa5248794b02829ab37c22f19f5232400" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>locate</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a4183da57d8b82e00ff817a2d139d021d" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>LogInterpolationImpl</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a7afe998cb08635d359ce79adce5b5e5b" prot="private" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>logY_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a507366f504ec3d518920b39da4243edc" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>secondDerivative</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a0ff844014a170384d262231f91ec970b" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>templateImpl</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_log_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a10aaa529bbf849a034c64dd3d6bcfa45" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>xBegin_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a948e1e0e08b57467fba9406d23c16222" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>xEnd_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac5bfc70b2ea8397a47c13cbfe397345b" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>xMax</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ae464439f613889645330b4fefbf66ab2" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>xMin</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1abd3804c44239a53b3697f463c999550b" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>xValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1ac3763f3814c4764c20937e50d5211b67" prot="protected" virt="non-virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>yBegin_</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1template_impl_1a3a528ec1ab50863605d4aec3a44f8caa" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>yValues</name></member>
-      <member refid="class_quant_lib_1_1_interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::detail::LogInterpolationImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

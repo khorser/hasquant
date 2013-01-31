@@ -23,48 +23,6 @@
 <para>Colombian peso. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code is COP; the numeric code is 170. It is divided in 100 centavos. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="2757">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="2756">
-        <label>COPCurrency</label>
-        <link refid="class_quant_lib_1_1_c_o_p_currency"/>
-        <childnode refid="2757" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2759">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="2758">
-        <label>COPCurrency</label>
-        <link refid="class_quant_lib_1_1_c_o_p_currency"/>
-        <childnode refid="2759" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/america.hpp" bodystart="112" bodyend="122"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>code</name></member>
-      <member refid="class_quant_lib_1_1_c_o_p_currency_1ad9613b64c10fbae55fdbb19522f785d2" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>COPCurrency</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>Currency</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>format</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>fractionsPerUnit</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>fractionSymbol</name></member>
-      <member refid="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>numericCode</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>rounding</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>symbol</name></member>
-      <member refid="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" virt="non-virtual"><scope>QuantLib::COPCurrency</scope><name>triangulationCurrency</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

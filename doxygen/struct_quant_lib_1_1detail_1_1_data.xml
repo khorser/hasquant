@@ -109,13 +109,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="87" bodyend="100"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1a51d806137473e32bc8e082f8beb3133a" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1ad82d1c69dd7b887e9a5c19f1b588ab8e" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1ab6e5e8c6d57239626e7e7dcb76ff6d24" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1ac8645d87d67ba49d59f316cc30901d1d" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>first</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1a2bcf66e10478bfdf9fb2514fe62d06c3" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>second</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_1a89a9da8303a5494a74379ef08936c620" prot="public" virt="non-virtual"><scope>QuantLib::detail::Data</scope><name>swap</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

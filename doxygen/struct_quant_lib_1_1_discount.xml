@@ -196,15 +196,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/bootstraptraits.hpp" bodystart="42" bodyend="119"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_discount_1a3d588d285d1bab9713203106b9b86a9a" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>guess</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a09c234ce45b88538f09ea7ccabe6ff68" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>helper</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a2a3bd55634d7ff29668fbc80d0815117" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>initialDate</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a394c5bcdbf5a94b7c6183cfa9d37ab9d" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>initialValue</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a94f6bccfa587a673afc9e72fb5a3a1ca" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>maxIterations</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a200bd0761b356ff09780d29d02596334" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>maxValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a60602e5158558f6d9e4db350086c4975" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>minValueAfter</name></member>
-      <member refid="struct_quant_lib_1_1_discount_1a240ceb59c3769eb1f98d3189d4289753" prot="public" virt="non-virtual"><scope>QuantLib::Discount</scope><name>updateGuess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

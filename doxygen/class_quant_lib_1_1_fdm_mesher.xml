@@ -4,21 +4,6 @@
     <compoundname>QuantLib::FdmMesher</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_fdm_mesher_composite" prot="public" virt="non-virtual">FdmMesherComposite</derivedcompoundref>
     <derivedcompoundref refid="class_quant_lib_1_1_uniform_grid_mesher" prot="public" virt="non-virtual">UniformGridMesher</derivedcompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_mesher_1a755865a8f3fcb686b26718c57dbc4cef" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmLinearOpLayout &gt;</type>
-        <definition>const boost::shared_ptr&lt;FdmLinearOpLayout&gt; layout_</definition>
-        <argsstring></argsstring>
-        <name>layout_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmmesher.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmmesher.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -149,15 +134,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmmesher.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/fdmmesher.hpp" bodystart="36" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a6b09e3a90550a856ca19c93dc23388b1" prot="public" virt="pure-virtual"><scope>QuantLib::FdmMesher</scope><name>dminus</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1ae308aa3ade328279676c13fee733e8cc" prot="public" virt="pure-virtual"><scope>QuantLib::FdmMesher</scope><name>dplus</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" virt="non-virtual"><scope>QuantLib::FdmMesher</scope><name>FdmMesher</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a6b36f4c5ff72e78891a8a0debfe2de35" prot="public" virt="non-virtual"><scope>QuantLib::FdmMesher</scope><name>layout</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a755865a8f3fcb686b26718c57dbc4cef" prot="protected" virt="non-virtual"><scope>QuantLib::FdmMesher</scope><name>layout_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a3de23f4bdc91890b9ee984d8f61f98a3" prot="public" virt="pure-virtual"><scope>QuantLib::FdmMesher</scope><name>location</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1a0be368cb77d0f5ef59dcef81a427cc4e" prot="public" virt="pure-virtual"><scope>QuantLib::FdmMesher</scope><name>locations</name></member>
-      <member refid="class_quant_lib_1_1_fdm_mesher_1ac2b15cf3ca5f5499e5306151207cf0c0" prot="public" virt="virtual"><scope>QuantLib::FdmMesher</scope><name>~FdmMesher</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

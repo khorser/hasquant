@@ -446,35 +446,5 @@
     <detaileddescription>
 <para>Helper class building a sequence of capped/floored yoy inflation coupons payoff is: spread + gearing x index </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/yoyinflationcoupon.hpp" bodystart="91" bodyend="123"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a10080ad4c6e5f0802de4be3f9b9f84ab" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>caps_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ab4519af9898c63acd1d36a6739de7b63" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>fixingDays_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1acd876ee3d356ffcaaef0a61ac6292d68" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>floors_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1af77fc0fe02bab066c28215c065db2326" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>gearings_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a501723adcbda98a1b1dc8594a298153b" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>index_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a6bbb9ef180bf5ecb750bbb9a698708c7" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>notionals_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a2f0b22e1c17db6dd8f558f4dfc8dfff6" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>observationLag_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>operator Leg</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a0ec2a9dc099c63b9124c80bad34ead6d" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>paymentAdjustment_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a3b1e6756aa408474fd0342eb87ace307" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>paymentCalendar_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1afb22873f87d413d6123c023880f8938f" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>paymentDayCounter_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a070ed82c6cab5f05e2874979f4193388" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>schedule_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a71d6f7cb6f461db8ea78b6c5105feea0" prot="private" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>spreads_</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1af43a86faa0b8336ac02c96f9c9ecd1bc" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withCaps</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a30046e6f3bf8d317ceda2080f23cc85d" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withCaps</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1aa6194db8b805fa867dc818d076a53da7" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withFixingDays</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ac4925a046a107b056d421fd70cb4ef21" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withFixingDays</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a4a3abb6a20a78090f76e2fe5ebd1de1e" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withFloors</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ae72aff41707a5af84fd45691a750cebd" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withFloors</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a12151082e60a1062ab45eaef6d2c4fd7" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withGearings</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ace2be3b0400dcddc22649e7957b557d5" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withGearings</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1ab379502458ebfc4cde32f8e5311247eb" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withNotionals</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a627ba057dc6a5eacda6bb7c2c9854039" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withNotionals</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a33ea957beadfa517713395abf88675fe" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withPaymentAdjustment</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a8c73102540c1de534dec363bf2659a32" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withPaymentDayCounter</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1affb44aec9c5f7c8fae308a709f752c94" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withSpreads</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a2a283234fc5cd30891bb747b2c5a5964" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>withSpreads</name></member>
-      <member refid="class_quant_lib_1_1yoy_inflation_leg_1a5d7dd9ac512856220767b206043f26ba" prot="public" virt="non-virtual"><scope>QuantLib::yoyInflationLeg</scope><name>yoyInflationLeg</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

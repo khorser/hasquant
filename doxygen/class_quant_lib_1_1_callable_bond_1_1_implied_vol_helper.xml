@@ -101,13 +101,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="101" bodyend="111"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>engine_</name></member>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1a81c7ca079e9587647cfa25419f41c9d6" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>ImpliedVolHelper</name></member>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1a9fc10223441f4b891bba4f2633ef790c" prot="public" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1afeb3e8b4e6ab6604c185b2ea55bbc728" prot="private" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>results_</name></member>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1ae65be73f5312f6a5ac410f2e7a1ddf4d" prot="private" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>targetValue_</name></member>
-      <member refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1a3968d2038f4bd3945996800aa331a214" prot="private" virt="non-virtual"><scope>QuantLib::CallableBond::ImpliedVolHelper</scope><name>vol_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

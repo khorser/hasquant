@@ -304,25 +304,5 @@
     <detaileddescription>
 <para>The template arguments of this class correspond to available policies for the particular model to be instantiated<mdash/>i.e., whether it is single- or multi-asset, or whether it should use pseudo-random or low-discrepancy numbers for path generation. Such decisions are grouped in trait classes so as to be orthogonal<mdash/>see <ref refid="mctraits_8hpp" kindref="compound">mctraits.hpp</ref> for examples.</para><para>The constructor accepts two safe references, i.e. two smart pointers, one to a path generator and the other to a path pricer. In case of control variate technique the user should provide the additional control option, namely the option path pricer and the option value. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/montecarlomodel.hpp" bodystart="51" bodyend="92"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a77cd545c02ed7037a3e8d582ca1069c3" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>addSamples</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a3ea880608e5e6404f2f6a969300cc162" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>cvOptionValue_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1acc193b06e58b5c7f2afd266ec5ad87c4" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>cvPathGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a82f8475920e75f3c10435e91023a0e77" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>cvPathPricer_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1ad6f5b38979426163fe632f9a81245fd3" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>isAntitheticVariate_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a3662c0ea28a589e29b8cc3aa4d651491" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>isControlVariate_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a9792aacbaa395d164fe71c19940a35cf" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>mc_traits</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1ac333491bacb2f08888afa1d98ae29d50" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>MonteCarloModel</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1aab11530354ed62b0a419f90803f7a647" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>path_generator_type</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a37efbc67c5d5bcba2ad1e5a6bc382563" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>path_pricer_type</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1adaa914cf3317cde625a653d4b9e7d8a8" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>pathGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a8e0b51e1c08eedc79df3817ec206eed0" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>pathPricer_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1ad8e5fd95c87e9d6a3657dc6083452142" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>result_type</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a3b06460378c6160a0308efbecfc7a63f" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>rng_traits</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a204507d73ca2954ec4c0b27373d2c40c" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a4e28dddeca06f8b74c814ace5b4fac58" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>sampleAccumulator</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1a9574df4dda4bb996d0b1562a16ed4969" prot="private" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>sampleAccumulator_</name></member>
-      <member refid="class_quant_lib_1_1_monte_carlo_model_1ac9e2bc84dc5b8fed59e079e42208e74c" prot="public" virt="non-virtual"><scope>QuantLib::MonteCarloModel</scope><name>stats_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

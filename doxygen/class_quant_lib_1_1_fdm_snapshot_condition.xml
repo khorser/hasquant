@@ -101,37 +101,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6178">
-        <label>FdmSnapshotCondition</label>
-        <childnode refid="6179" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6179">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6180">
-        <label>FdmSnapshotCondition</label>
-        <childnode refid="6181" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6181">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmsnapshotcondition.hpp" bodystart="33" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1ab0d2d23e05d15e613a386d5bc64190c9" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>FdmSnapshotCondition</name></member>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a8dc33007ac597d89370bd88ee8a88293" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>getTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1abe712a06664d7c2e825e4f2ff8fdbac6" prot="public" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>getValues</name></member>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a457f33ba3cae0a866042833846c84a81" prot="private" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>t_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_snapshot_condition_1a99a3a78defaeab5ede226107da665b96" prot="private" virt="non-virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>values_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmSnapshotCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

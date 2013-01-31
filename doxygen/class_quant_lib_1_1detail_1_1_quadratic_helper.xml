@@ -226,22 +226,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="359" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="359" bodyend="390"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>b_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a04b890f917032156f955c80d329dbd80" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>c_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a2c57b25fdbd1e203829cb074da399677" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>fAverage_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>fNext</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1ac10f717ba9b15ab09b9a97a181bc627c" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>fNext_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1af3d64f6e70b2ae7c4de97bb7b06facd4" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>fPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>prevPrimitive_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a088e484d8defe6403cffd07fda8ec120" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>QuadraticHelper</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1aa3e9c8f2f096bfa97ce6f370da974b0e" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>xNext_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>xPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_helper_1a7e707ac6591cf0467e500cf4fe7a5f04" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>xScaling_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::QuadraticHelper</scope><name>~SectionHelper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

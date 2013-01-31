@@ -39,9 +39,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/lookbackoption.hpp" bodystart="74" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a7d7892274fd67168a5eeddb4bd161587" prot="public" virt="non-virtual"><scope>QuantLib::ContinuousFixedLookbackOption::arguments</scope><name>minmax</name></member>
-      <member refid="class_quant_lib_1_1_continuous_fixed_lookback_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::ContinuousFixedLookbackOption::arguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

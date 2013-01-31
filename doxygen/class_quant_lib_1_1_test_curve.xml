@@ -26,32 +26,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14000">
-        <label>TestCurve</label>
-        <childnode refid="14001" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14001">
-        <label>Curve</label>
-        <link refid="class_quant_lib_1_1_curve"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14002">
-        <label>TestCurve</label>
-        <childnode refid="14003" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14003">
-        <label>Curve</label>
-        <link refid="class_quant_lib_1_1_curve"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="39" bodyend="42"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_test_curve_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::TestCurve</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_curve_1ac18558a7f7b08085261782f72b65ce26" prot="public" virt="virtual"><scope>QuantLib::TestCurve</scope><name>~Curve</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

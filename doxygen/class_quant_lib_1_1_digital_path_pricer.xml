@@ -126,38 +126,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3767">
-        <label>DigitalPathPricer</label>
-        <childnode refid="3768" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3768">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3769">
-        <label>DigitalPathPricer</label>
-        <childnode refid="3770" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3770">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="112" bodyend="127"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>diffProcess_</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1a44a8dc80b3e08d8c711dff736368f163" prot="public" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>DigitalPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1a9a6e1109fcdac96e12417721c9041ce8" prot="private" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>discountTS_</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1a01fc48156161326ae94fa67cc6c11601" prot="private" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>exercise_</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1a1ef130613f9d1fa82a5d54d277083e99" prot="private" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_digital_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" virt="non-virtual"><scope>QuantLib::DigitalPathPricer</scope><name>sequenceGen_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::DigitalPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

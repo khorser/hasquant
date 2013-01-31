@@ -185,52 +185,6 @@
 <para>Euler discretization for stochastic processes. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="4226">
-        <label>discretization</label>
-        <link refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization"/>
-      </node>
-      <node id="4225">
-        <label>discretization</label>
-        <link refid="class_quant_lib_1_1_stochastic_process_1_1discretization"/>
-      </node>
-      <node id="4224">
-        <label>EulerDiscretization</label>
-        <link refid="class_quant_lib_1_1_euler_discretization"/>
-        <childnode refid="4225" relation="public-inheritance">
-        </childnode>
-        <childnode refid="4226" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="4229">
-        <label>discretization</label>
-        <link refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization"/>
-      </node>
-      <node id="4228">
-        <label>discretization</label>
-        <link refid="class_quant_lib_1_1_stochastic_process_1_1discretization"/>
-      </node>
-      <node id="4227">
-        <label>EulerDiscretization</label>
-        <link refid="class_quant_lib_1_1_euler_discretization"/>
-        <childnode refid="4228" relation="public-inheritance">
-        </childnode>
-        <childnode refid="4229" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/eulerdiscretization.hpp" bodystart="33" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" virt="virtual"><scope>QuantLib::EulerDiscretization</scope><name>variance</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" virt="virtual" ambiguityscope="QuantLib::"><scope>QuantLib::EulerDiscretization</scope><name>~discretization</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a84827bd6839c5bbd73ad9d9bd9dbd6b9" prot="public" virt="virtual" ambiguityscope="QuantLib::StochasticProcess1D::discretization::"><scope>QuantLib::EulerDiscretization</scope><name>~discretization</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

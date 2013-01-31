@@ -642,46 +642,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="37" bodyend="123"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_distribution_1a66988e47ca0a8186d7af846cf2378e53" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1afee087822aef4b6a05ca1e04c5e81676" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>addAverage</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aebb76be371542621628f2f6c069d0fa6" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>addDensity</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1ab32a13d6f1b280b69c0385faaf9d1e97" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>average</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1afe7b2838c18683eb6d4b1088f7f0bb39" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>average_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a8a70402157f35d0454e13badfb207b59" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>confidenceLevel</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a96ecb7e6ad50d525c4b07494f64d7866" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>count_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a0592aa888c132e0f1dc49b1de21cb84d" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulative</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a63e7c55b99cf2ad663454ed08bd0051e" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulativeDensity</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a9ac1c0f9ec7435a8d2304dc44bc9167b" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulativeDensity_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aa417d2a314b7c5e49fc719513d1a47ce" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulativeExcess</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a86293df508fd9aca424cf12eaefd6d2c" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulativeExcessProbability</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aa6f7b4c47a89dc6d37539c6d0c87ca8b" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>cumulativeExcessProbability_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a5b6e140a751abc4ecf26029fe449dc13" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>density</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a150b4ae3fb02cc740cd3112578c7921a" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>density_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a9c7947ad1d202a98f76341b8b81b64f0" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>Distribution</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a97e7a46e54c1954b71dbf6e135c469ac" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>Distribution</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a28040c7c6c6eb0308e009db2fe8da501" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>dx</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a596f92c473957228b1f9a858cf24740e" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>dx</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1ad0376574654f71c420ff995da814076f" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>dx</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aef7f39f95dbbf62fd365a1ec2a0e70bf" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>dx_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a5fe27432421977a8fc63d81c6c7b6de0" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>excess</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a29203f81351411e68e51fedb2adee42e" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>excessProbability_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aae04a7d4811a84de1b765c12da82b574" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>expectedValue</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a7defc9abf3488674b0dc8c241b995331" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>expectedValue</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aa68d5acd9cd8cd63dca6540e62a612f3" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>isNormalized_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a76c7f4735a8763cd10f83c9fb6985b41" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>locate</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1acd0de676568888d848beb97dcc53ae47" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>normalize</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a26c64d36a5605abf6971d7fa054c36dc" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>overFlow_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a6947fa5d6ba628dd62d59ffbad8b8d80" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a0c23b12d3541a5cbd498c9045879a822" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>tranche</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aa995fbb949e9bebc3b965179ca5a4dbc" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>trancheExpectedValue</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a3b0372e8ffdc6a3b4385c842ac248e8f" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>underFlow_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a9767c3368d909fa4808154888039d303" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>x</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1ad5f0a3ed2a9e197cd9f52a79bea4bd3b" prot="public" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>x</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1aebf1678a4b6fdac6c3b3bf2c8dba9bee" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>x_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1ad884cafafc283f54e01b05278541fb3a" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>xmax_</name></member>
-      <member refid="class_quant_lib_1_1_distribution_1a5553f94e6524a15d7facb5e49b71d36a" prot="private" virt="non-virtual"><scope>QuantLib::Distribution</scope><name>xmin_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

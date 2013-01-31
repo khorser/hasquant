@@ -30,8 +30,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" line="125" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/distribution.hpp" bodystart="125" bodyend="129"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_manipulate_distribution_1a0cde0aed242e3ce242178a592d37d406" prot="public" virt="non-virtual"><scope>QuantLib::ManipulateDistribution</scope><name>convolve</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

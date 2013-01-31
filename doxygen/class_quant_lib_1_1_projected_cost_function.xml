@@ -194,47 +194,6 @@
 <para>Parameterized cost function. </para>    </briefdescription>
     <detaileddescription>
 <para>This class creates a proxy cost function which can depend on any arbitrary subset of parameters (the other being fixed) </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="12525">
-        <label>ProjectedCostFunction</label>
-        <link refid="class_quant_lib_1_1_projected_cost_function"/>
-        <childnode refid="12526" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12526">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12527">
-        <label>ProjectedCostFunction</label>
-        <link refid="class_quant_lib_1_1_projected_cost_function"/>
-        <childnode refid="12528" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12528">
-        <label>CostFunction</label>
-        <link refid="class_quant_lib_1_1_cost_function"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/projectedcostfunction.hpp" bodystart="37" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1ac9a17c23e4d1617568455beceaa3d7d4" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>actualParameters_</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a3fbcb1659c22a689f2c8223653a60b8a" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>costFunction_</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a66ef2bf7179eda5017589d6f8fc90ed7" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>finiteDifferenceEpsilon</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a03bb44c14b10b9d468db8b13699979c7" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>fixedParameters_</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1ab6eb1b006aa9ceb4327ec7d4dd56f899" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>gradient</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a345a5a5e4b2957ac72edb57ec2f43728" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>include</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a73a37dd933ba8751e4f98e9ba64f4911" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>mapFreeParameters</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a8bda74a5aec81b42ce84d3110665a254" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>numberOfFreeParameters_</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1afd84a3cb5baa388d977f8d87dcb5f204" prot="private" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>parametersFreedoms_</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a53236e8f6234e3ee642043cd1229ea83" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>project</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1afe330cd54e6dab563f907d2e80b26879" prot="public" virt="non-virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>ProjectedCostFunction</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1a1333520b710a945f475fc3c7382d1462" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a74bd7b501afc6cf31871d208ef57fe0a" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>valueAndGradient</name></member>
-      <member refid="class_quant_lib_1_1_projected_cost_function_1acff7246a26608378638550ab57075273" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_cost_function_1a06c2ff16fdfd2fceed9aacc9120ec6e9" prot="public" virt="virtual"><scope>QuantLib::ProjectedCostFunction</scope><name>~CostFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

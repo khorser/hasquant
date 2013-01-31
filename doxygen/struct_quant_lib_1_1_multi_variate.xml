@@ -101,13 +101,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="50" bodyend="57"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_multi_variate_1adc29c2ff13d900c2f185ee95427fb06ca4cf0a75076c0e93010640ad9b584b0ce" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>allowsErrorEstimate</name></member>
-      <member refid="struct_quant_lib_1_1_multi_variate_1ae6f580a75647b72817eb460f42452d10" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>path_generator_type</name></member>
-      <member refid="struct_quant_lib_1_1_multi_variate_1af0d94abd55c1f5d59f118fb07b43de07" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>path_pricer_type</name></member>
-      <member refid="struct_quant_lib_1_1_multi_variate_1a16e486fdf1e30631811426f90dbf5d69" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>path_type</name></member>
-      <member refid="struct_quant_lib_1_1_multi_variate_1a3b06460378c6160a0308efbecfc7a63f" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>rng_traits</name></member>
-      <member refid="struct_quant_lib_1_1_multi_variate_1a6048845f2c9ca8e5856abbd3eda84f6e" prot="public" virt="non-virtual"><scope>QuantLib::MultiVariate</scope><name>rsg_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -10,31 +10,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="15649">
-        <label>T</label>
-      </node>
-      <node id="15650">
-        <label>Composite&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_composite"/>
-        <childnode refid="15649" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="15652">
-        <label>Disposable&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_disposable"/>
-        <childnode refid="15649" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="15651">
-        <label>ConvergenceStatistics&lt; T, U &gt;</label>
-        <link refid="class_quant_lib_1_1_convergence_statistics"/>
-        <childnode refid="15649" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/convergencestatistics.hpp" line="58"/>
-    <listofallmembers>
-    </listofallmembers>
   </compounddef>
 </doxygen>

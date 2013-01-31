@@ -3,60 +3,6 @@
   <compounddef id="class_quant_lib_1_1_joshi4" kind="class" prot="public">
     <compoundname>QuantLib::Joshi4</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_binomial_tree" prot="public" virt="non-virtual">BinomialTree&lt; Joshi4 &gt;</basecompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_joshi4_1a6bdba80dd07eadaa79cdc7afceee47dd" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real up_</definition>
-        <argsstring></argsstring>
-        <name>up_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="207" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_joshi4_1a6b276e1f7c8cbcc32a209ac36f328d40" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real down_</definition>
-        <argsstring></argsstring>
-        <name>down_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="207" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_joshi4_1a12eb865f529d1a229999534c74fee43b" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real pu_</definition>
-        <argsstring></argsstring>
-        <name>pu_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="207" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_joshi4_1a50ade66877e89aa9b7d723ecb6d9d428" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real pd_</definition>
-        <argsstring></argsstring>
-        <name>pd_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="207" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joshi4_1a1476bae49ede5e638358b3b03799aa7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -131,103 +77,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="202" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_joshi4_1a13423d07cd0e423261aaec48784e4af9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real computeUpProb</definition>
-        <argsstring>(Real k, Real dj) const </argsstring>
-        <name>computeUpProb</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>k</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>dj</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="206"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8660">
-        <label>Joshi4</label>
-        <childnode refid="8661" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8661">
-        <label>BinomialTree&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_binomial_tree"/>
-        <childnode refid="8662" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8663">
-        <label>CuriouslyRecurringTemplate&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
-      </node>
-      <node id="8662">
-        <label>Tree&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_tree"/>
-        <childnode refid="8663" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="8664">
-        <label>Joshi4</label>
-        <childnode refid="8665" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8665">
-        <label>BinomialTree&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_binomial_tree"/>
-        <childnode refid="8666" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8667">
-        <label>CuriouslyRecurringTemplate&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_curiously_recurring_template"/>
-      </node>
-      <node id="8666">
-        <label>Tree&lt; Joshi4 &gt;</label>
-        <link refid="class_quant_lib_1_1_tree"/>
-        <childnode refid="8667" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" line="192" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/lattices/binomialtree.hpp" bodystart="192" bodyend="208"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a908728004a6f43e474d8dabca6305b44" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>BinomialTree</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>Branches</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0ac45748c7ad342476d13e14f6632203c1" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>branches</name></member>
-      <member refid="class_quant_lib_1_1_tree_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>columns</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a13423d07cd0e423261aaec48784e4af9" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>computeUpProb</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a889e3d9e41d90b2e9ea350c2801a9c2c" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>CuriouslyRecurringTemplate</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1aab3e236871d755fdfdd7c3dd22c52f9c" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>descendant</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a6b276e1f7c8cbcc32a209ac36f328d40" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>down_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a1f3db9657071c9b664b10313f33717ca" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>driftPerStep_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a6be603d8547f31e72817d2aaf219e325" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1af644e65b081eafdcfdf59fed1e0d50ff" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a553bf5180f5f95c3b18aea1a56a8869c" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>impl</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a1476bae49ede5e638358b3b03799aa7b" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>Joshi4</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a50ade66877e89aa9b7d723ecb6d9d428" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>pd_</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1aaad4caa3a86af086a7032fec98c26182" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>probability</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a12eb865f529d1a229999534c74fee43b" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>pu_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1a2609b991dbefe939a4749c7cb101fcb5" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_tree_1a8fe1055f39c1f80fd420458fe249fd99" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>Tree</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1aadac025a5f64f237485fd45611a1b2d9" prot="public" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>underlying</name></member>
-      <member refid="class_quant_lib_1_1_joshi4_1a6bdba80dd07eadaa79cdc7afceee47dd" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>up_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_tree_1afb597b35edab96eecbcbf9a2df04f05d" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>x0_</name></member>
-      <member refid="class_quant_lib_1_1_curiously_recurring_template_1a8fa10e44eb15a93042b7f37e4e774375" prot="protected" virt="non-virtual"><scope>QuantLib::Joshi4</scope><name>~CuriouslyRecurringTemplate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

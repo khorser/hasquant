@@ -118,14 +118,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmspreadpayoffinnervalue.hpp" bodystart="32" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>avgInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a57815a443010afa35099ebe378677708" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>calc1_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a29a25d0a2a6dc814a96fe4a19155d640" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>calc2_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a82eb7abeef843df1f50603e0e7382588" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>FdmSpreadPayoffInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>innerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_spread_payoff_inner_value_1ad5c2741533c6bb9b68f48f38304d8870" prot="private" virt="non-virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmSpreadPayoffInnerValue</scope><name>~FdmInnerValueCalculator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

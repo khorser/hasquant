@@ -200,19 +200,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopiterator.hpp" bodystart="36" bodyend="90"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a85425f7a1bf38c1d70ca6186438e9586" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>coordinates</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ae60c0309cad38cf3ad07c65964666f42" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>coordinates_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a6ac473dd7687ae18d5e55acff3154ab3" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>dim_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a357838f389ad3277a672bbe66223b39d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a481c89278e572fda4f028fbcac7ef18d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a781f664ce59298f619c92b95c379bb29" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ab40ce509ac21c2acad59338e4aba6508" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>FdmLinearOpIterator</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1adae470bcef9c655cb38b0a328681fc3d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>index</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a8499544e603bf831c56d2c3414e456ae" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>index_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ab2a3cac341bd50874c0572e974d41dcb" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1a00f008b80917746917b874d00abd02a9" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>operator++</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_iterator_1ad1112879038a8012057aaa749a4d114d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpIterator</scope><name>swap</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

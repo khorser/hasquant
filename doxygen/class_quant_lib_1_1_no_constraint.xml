@@ -24,38 +24,6 @@
 <para>No constraint. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10229">
-        <label>NoConstraint</label>
-        <link refid="class_quant_lib_1_1_no_constraint"/>
-        <childnode refid="10230" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="10230">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10231">
-        <label>NoConstraint</label>
-        <link refid="class_quant_lib_1_1_no_constraint"/>
-        <childnode refid="10232" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="10232">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp" bodystart="53" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>Constraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_no_constraint_1a0710638b6c7cbb4f1e6cc83a5d129114" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>NoConstraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::NoConstraint</scope><name>update</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

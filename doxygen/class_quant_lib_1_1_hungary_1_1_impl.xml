@@ -38,49 +38,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7545">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="7544">
-        <label>WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="7545" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7543">
-        <label>Hungary::Impl</label>
-        <childnode refid="7544" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7548">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="7547">
-        <label>WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="7548" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7546">
-        <label>Hungary::Impl</label>
-        <childnode refid="7547" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hungary.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/hungary.hpp" bodystart="52" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Hungary::Impl</scope><name>addedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" virt="non-virtual"><scope>QuantLib::Hungary::Impl</scope><name>easterMonday</name></member>
-      <member refid="class_quant_lib_1_1_hungary_1_1_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::Hungary::Impl</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="protected" virt="virtual"><scope>QuantLib::Hungary::Impl</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_hungary_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Hungary::Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Hungary::Impl</scope><name>removedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Hungary::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

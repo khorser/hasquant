@@ -46,9 +46,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="34" bodyend="37"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1null__checker_1a1cf79e8e4b6d2d921e52fe8974a25030" prot="public" virt="non-virtual"><scope>QuantLib::detail::null_checker</scope><name>null_checker</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1null__checker_1a4fc7f59e3113e19697159919a5aad095" prot="public" virt="non-virtual"><scope>QuantLib::detail::null_checker</scope><name>value</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -137,13 +137,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="280" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="280" bodyend="297"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a317bc8b22a139aadfb60f580fb57b959" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>base_cubic_splint</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a40e1ff99ae6254a8809dff87dd7e4cd5" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a3b807ce7052068570437321cbe598705" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>data_table</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1aa9c30a74d2ffcf6540a56edb0eb1b0c7" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>dimensions</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1ad2eb9da029f604acb1ef1477859265f2" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>output_data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1base__cubic__splint_1a60c09994815f11b59d5c6590cddf1539" prot="public" virt="non-virtual"><scope>QuantLib::detail::base_cubic_splint</scope><name>return_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

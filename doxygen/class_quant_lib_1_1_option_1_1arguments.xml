@@ -72,49 +72,6 @@
 <para>basic option arguments </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="11806">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_cds_option_1_1arguments"/>
-        <childnode refid="11805" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11809">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
-        <childnode refid="11805" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11807">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_cliquet_option_1_1arguments"/>
-        <childnode refid="11805" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11808">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_margrabe_option_1_1arguments"/>
-        <childnode refid="11805" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11810">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments"/>
-        <childnode refid="11805" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11805">
-        <label>Option::arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="57" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::Option::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::Option::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

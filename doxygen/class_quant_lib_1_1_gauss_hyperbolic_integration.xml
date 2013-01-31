@@ -27,38 +27,6 @@
 <para>Gauss-Hyperbolic integration. </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Hyperbolic integration. <formula id="193">\[ \int_{-\inf}^{\inf} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="198">\[ w(x)=1/cosh(x) \]</formula> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="6970">
-        <label>GaussHyperbolicIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hyperbolic_integration"/>
-        <childnode refid="6971" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6971">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6972">
-        <label>GaussHyperbolicIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hyperbolic_integration"/>
-        <childnode refid="6973" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6973">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="130" bodyend="134"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gauss_hyperbolic_integration_1a136a2b6b92136bea7ddaef3b3e440eb3" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>GaussHyperbolicIntegration</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussHyperbolicIntegration</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

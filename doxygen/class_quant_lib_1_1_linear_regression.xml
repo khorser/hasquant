@@ -79,56 +79,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9089">
-        <label>LinearRegression</label>
-        <childnode refid="9090" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9090">
-        <label>GeneralLinearLeastSquares</label>
-        <link refid="class_quant_lib_1_1_general_linear_least_squares"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9093">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="9091">
-        <label>LinearRegression</label>
-        <childnode refid="9092" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9092">
-        <label>GeneralLinearLeastSquares</label>
-        <link refid="class_quant_lib_1_1_general_linear_least_squares"/>
-        <childnode refid="9093" relation="usage">
-          <edgelabel>standardErrors_</edgelabel>
-          <edgelabel>err_</edgelabel>
-          <edgelabel>residuals_</edgelabel>
-          <edgelabel>a_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/linearleastsquaresregression.hpp" bodystart="89" bodyend="99"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a203fe3243a3de44e98f050f96c7eb9cb" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>a</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a6ffc447ad0b001ceac4dfb00d5eddc7d" prot="protected" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a8d53e9f9ba49f28c7225743f14281fd1" prot="protected" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a850ee065655ad4c6801782bcea67c2b7" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>coefficients</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1afa84867f88524a9a9a96915dcc644f85" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>dim</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a2ea9ffc00d7c89b5e4c07055e0ed8141" prot="protected" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>err_</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a0787f8e1f87d04dceb6b20b946e0a7f4" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>error</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1af5a37c7acf5ad8854042b4eda291216d" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>GeneralLinearLeastSquares</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a5637741cbd3150cf1590687f484d9806" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>GeneralLinearLeastSquares</name></member>
-      <member refid="class_quant_lib_1_1_linear_regression_1a5af104f1f93e4f02753fae7d0855fbcf" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>LinearRegression</name></member>
-      <member refid="class_quant_lib_1_1_linear_regression_1ab16acb1ffaa57d83c0125772f9d29cc7" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>LinearRegression</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1af32f46c4d02d5fcd2a8f84629c975073" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>residuals</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a648a608bf829a1447eec97a03236b6eb" prot="protected" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>residuals_</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1a0aab363c45329f8469d3909b3dc39074" prot="public" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>standardErrors</name></member>
-      <member refid="class_quant_lib_1_1_general_linear_least_squares_1abb50ee381e4421136194b3352f990c03" prot="protected" virt="non-virtual"><scope>QuantLib::LinearRegression</scope><name>standardErrors_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -291,27 +291,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="392" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="392" bodyend="470"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a114bd3f70557109ba551776610bb2dc1" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a0d5754808d36bc0b9f0326d84a42efb8" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>b_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a04b890f917032156f955c80d329dbd80" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>c_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a2c57b25fdbd1e203829cb074da399677" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>fAverage_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>fNext</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1ac10f717ba9b15ab09b9a97a181bc627c" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>fNext_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1af3d64f6e70b2ae7c4de97bb7b06facd4" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>fPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a25c575d0d1fdecd30fe320289e3bb216" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>primitive1_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a5dff62ff329859031a6639c741bd2308" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>primitive2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a5ca404d01c2a124094be8290463be4e0" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>QuadraticMinHelper</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1af1e26afaea4ba30fc153246f049723f4" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>splitRegion_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a06433d609e2509589b2f991f40ae37ca" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>x1_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1ac33eaca6e10259fdbd4b88260cef0426" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>x2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a10d37ab2258f3401e85eb55689c81bb3" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>x3_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a80e32c5b8a31ec0682b3bdfccaba0ec9" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>x4_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a9e8caaa1ecd918d2bd85ce8e4eceb8ae" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>xRatio_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_quadratic_min_helper_1a7e707ac6591cf0467e500cf4fe7a5f04" prot="private" virt="non-virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>xScaling_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::QuadraticMinHelper</scope><name>~SectionHelper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

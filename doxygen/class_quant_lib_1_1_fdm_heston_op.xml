@@ -212,20 +212,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="78" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="78" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>apply_direction</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>apply_mixed</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a85f98e3ad305848e4e8b78e47cb93a84" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>correlationMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a257ac89b3734afbf0133877673922c3f" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>dxMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a2d8c39e05b56003c02b61e1ba3356801" prot="private" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>dyMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1aed9c50ab5e81724d1eeb2a7f2f761db9" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>FdmHestonOp</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>preconditioner</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonOp</scope><name>solve_splitting</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmHestonOp</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

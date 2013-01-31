@@ -32,8 +32,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="45" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1identity_1ad11d115f88f5f7bb049fb1da0904012d" prot="public" virt="non-virtual"><scope>QuantLib::identity</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -86,26 +86,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="9466">
-        <label>MarketModelComposite::SubProduct</label>
-        <childnode refid="9467" relation="usage">
-          <edgelabel>product</edgelabel>
-        </childnode>
-      </node>
-      <node id="9467">
-        <label>Clone&lt; QuantLib::MarketModelMultiProduct &gt;</label>
-        <link refid="class_quant_lib_1_1_clone"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="60" bodyend="67"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1a10eacbc6d0d31ab49ecb20de50786852" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>cashflows</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1a1d39aac66e12dae50a24cd7a9100ef33" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>done</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1aa8edac5104dee87fc6488fbc99895800" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>multiplier</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1ad2f3e3fe1acf068b2686761333556fd8" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>numberOfCashflows</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1ab0d10ecbe275fbb2af32502d1a78a04f" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>product</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product_1abe6d70a2f681b27d05e74fb0a549ea02" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelComposite::SubProduct</scope><name>timeIndices</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

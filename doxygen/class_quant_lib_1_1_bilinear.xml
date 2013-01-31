@@ -54,8 +54,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/bilinearinterpolation.hpp" bodystart="83" bodyend="91"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bilinear_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" virt="non-virtual"><scope>QuantLib::Bilinear</scope><name>interpolate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

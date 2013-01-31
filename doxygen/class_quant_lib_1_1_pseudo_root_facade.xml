@@ -246,50 +246,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12549">
-        <label>PseudoRootFacade</label>
-        <childnode refid="12550" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12550">
-        <label>MarketModel</label>
-        <link refid="class_quant_lib_1_1_market_model"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12551">
-        <label>PseudoRootFacade</label>
-        <childnode refid="12552" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12552">
-        <label>MarketModel</label>
-        <link refid="class_quant_lib_1_1_market_model"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/models/pseudorootfacade.hpp" bodystart="33" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" virt="virtual"><scope>QuantLib::PseudoRootFacade</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1ae8113626cf8d8b8ae2f9dc8ebfb47062" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>covariancePseudoRoots_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a38bd6b5501b4957ac4effffc83be5ce5" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>displacements</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1ae6f14a8d5e577f6ca6ac3bc1c940a1dd" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1af28aec1bf0cbe34b36fd0ecc90fbb780" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>initialRates</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a8b89a8c8a2eeefb8fb7fcf981aab2498" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>initialRates_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfFactors</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1ab4f4847a3bfe9c8a8ea499a4e20643cf" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1aed640b8d340edab41683b6aadd89665b" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfSteps</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a7096f7840a57cff837d27141bc085e5c" prot="private" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>numberOfSteps_</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a4ae7300f2e5a07c864d4652df785b9ee" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>pseudoRoot</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1aa4cf0f526934ccf52df43906ba463a4c" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>PseudoRootFacade</name></member>
-      <member refid="class_quant_lib_1_1_pseudo_root_facade_1a0499deac3dc47d036deb4ae7c2d45c97" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>PseudoRootFacade</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" virt="non-virtual"><scope>QuantLib::PseudoRootFacade</scope><name>timeDependentVolatility</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" virt="virtual"><scope>QuantLib::PseudoRootFacade</scope><name>totalCovariance</name></member>
-      <member refid="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" virt="virtual"><scope>QuantLib::PseudoRootFacade</scope><name>~MarketModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

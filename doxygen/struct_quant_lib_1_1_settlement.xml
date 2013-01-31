@@ -34,10 +34,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swaption.hpp" bodystart="37" bodyend="39"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_settlement_1a1d1cfd8ffb84e947f82999c682b666a7a22b020ea78bc55a582d02a2ee0024b8f" prot="public" virt="non-virtual"><scope>QuantLib::Settlement</scope><name>Cash</name></member>
-      <member refid="struct_quant_lib_1_1_settlement_1a1d1cfd8ffb84e947f82999c682b666a7ab5681a86938de048267367ab05485b48" prot="public" virt="non-virtual"><scope>QuantLib::Settlement</scope><name>Physical</name></member>
-      <member refid="struct_quant_lib_1_1_settlement_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Settlement</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

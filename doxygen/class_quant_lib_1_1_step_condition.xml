@@ -55,28 +55,6 @@
 <para>condition to be applied at every time step </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13357">
-        <label>NullCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_null_condition"/>
-        <childnode refid="13356" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13358">
-        <label>ZeroCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_zero_condition"/>
-        <childnode refid="13356" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13356">
-        <label>StepCondition&lt; array_type &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="35" bodyend="39"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" virt="pure-virtual"><scope>QuantLib::StepCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::StepCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

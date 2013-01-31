@@ -124,16 +124,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/callabilityschedule.hpp" bodystart="40" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>amount</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>amount_</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7accea35f717039c64bc6ea05604ecddc0" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Clean</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7ac6af973c5e80fa24e058491cfc3ce3d7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Dirty</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1ae582fb779f6c1b5549fd220239816302" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Price</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1ab8ab494def066d8193e346cdea69a68d" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Price</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_callability_1_1_price_1ae96b07c06ceff094f476fd92cbe89e10" prot="private" virt="non-virtual"><scope>QuantLib::Callability::Price</scope><name>type_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

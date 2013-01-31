@@ -110,33 +110,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="14437">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="14435">
-        <label>UnitOfMeasure::Data</label>
-        <childnode refid="14436" relation="usage">
-          <edgelabel>rounding</edgelabel>
-        </childnode>
-        <childnode refid="14437" relation="usage">
-          <edgelabel>triangulationUnitOfMeasure</edgelabel>
-        </childnode>
-      </node>
-      <node id="14436">
-        <label>Rounding</label>
-        <link refid="class_quant_lib_1_1_rounding"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="76" bodyend="87"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>code</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1abcebb3d584a8e7b59aad01b944601e78" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>name</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1ad7abf16b90345ce924d7a556a5ee904b" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>rounding</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a66c3f31b4ac25bc2c3b0d9843aa515ed" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>triangulationUnitOfMeasure</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_1_1_data_1a0bc6f200ea331dd773c9e5357933e401" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasure::Data</scope><name>unitType</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

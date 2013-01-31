@@ -180,40 +180,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6186">
-        <label>FdmStepConditionComposite</label>
-        <childnode refid="6187" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6187">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6188">
-        <label>FdmStepConditionComposite</label>
-        <childnode refid="6189" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6189">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" bodystart="43" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1a6bc126e9ab7843921a5b5d2b5018adcf" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>Conditions</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1a273bef697c0714099c4268d1dcf15be2" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>conditions</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1ac5b98f63bb83984de5a13c2d49caa098" prot="private" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>conditions_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1a25f249e0532f5a2174b4075de3a45d86" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>FdmStepConditionComposite</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1abbc01083af72f7cdc866613abbc2b3de" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>joinConditions</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1ae273746d46d552b36e079755fa097178" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>stoppingTimes</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1a189f7cccf06d556536bc82aa0e426a13" prot="private" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>stoppingTimes_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_step_condition_composite_1ac74c9d62ffde57df16d50ce6a788c741" prot="public" virt="non-virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>vanillaComposite</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmStepConditionComposite</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

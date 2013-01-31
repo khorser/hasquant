@@ -3,60 +3,6 @@
   <compounddef id="class_quant_lib_1_1_american_basket_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::AmericanBasketPathPricer</compoundname>
     <basecompoundref refid="class_quant_lib_1_1_early_exercise_path_pricer" prot="public" virt="non-virtual">EarlyExercisePathPricer&lt; MultiPath &gt;</basecompoundref>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_american_basket_path_pricer_1ad07e45857550cb27d1ed4656ef3dc21b" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>const Size assetNumber_</definition>
-        <argsstring></argsstring>
-        <name>assetNumber_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="111" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="111" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_american_basket_path_pricer_1ac641fb99b5820ca1d07577c57f4d57c9" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;Payoff&gt; payoff_</definition>
-        <argsstring></argsstring>
-        <name>payoff_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="112" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_american_basket_path_pricer_1a72be6c4e983f47a5dd14116688a18c32" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real scalingValue_</definition>
-        <argsstring></argsstring>
-        <name>scalingValue_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="114" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="114" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_american_basket_path_pricer_1a00108e05cce8d40a68dad2829de1acd9" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; v_</definition>
-        <argsstring></argsstring>
-        <name>v_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="115" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1a126aa36cc7c20060c3b91022dee3102e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -145,64 +91,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="106"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1afd24cb742fc55699839988866a4dee49" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real payoff</definition>
-        <argsstring>(const Array &amp;state) const </argsstring>
-        <name>payoff</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>state</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="109"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="115">
-        <label>EarlyExercisePathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_early_exercise_path_pricer"/>
-      </node>
-      <node id="114">
-        <label>AmericanBasketPathPricer</label>
-        <childnode refid="115" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="117">
-        <label>EarlyExercisePathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_early_exercise_path_pricer"/>
-      </node>
-      <node id="116">
-        <label>AmericanBasketPathPricer</label>
-        <childnode refid="117" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="94" bodyend="116"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1a126aa36cc7c20060c3b91022dee3102e" prot="public" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>AmericanBasketPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1ad07e45857550cb27d1ed4656ef3dc21b" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>assetNumber_</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1aae6298ed1ee2c1d736a201b3c27c36bd" prot="public" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>basisSystem</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1a9741aeb3c0e26119a689d89552fb0e91" prot="public" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1afd24cb742fc55699839988866a4dee49" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1ac641fb99b5820ca1d07577c57f4d57c9" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1a72be6c4e983f47a5dd14116688a18c32" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>scalingValue_</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1a5422696d00dda83ea6d9d41ba3a6967c" prot="public" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>state</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_path_pricer_1a8f1d307035ca52ae82e4c13aa0cfe635" prot="public" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>StateType</name></member>
-      <member refid="class_quant_lib_1_1_american_basket_path_pricer_1a00108e05cce8d40a68dad2829de1acd9" prot="protected" virt="non-virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1_early_exercise_path_pricer_1a8588f6b61b818a87bc0ade9d82504bed" prot="public" virt="virtual"><scope>QuantLib::AmericanBasketPathPricer</scope><name>~EarlyExercisePathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -269,26 +269,5 @@
 <listitem><para>E. Thiemard Economic generation of low-discrepancy sequences with a b-ary gray code.</para></listitem><listitem><para>Algorithms 659, 647. <ulink url="http://www.netlib.org/toms/647,">http://www.netlib.org/toms/647,</ulink> <ulink url="http://www.netlib.org/toms/659">http://www.netlib.org/toms/659</ulink></para></listitem></orderedlist>
 </para><para><xrefsect id="test_1_test000052"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by reproducing known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/faurersg.hpp" bodystart="46" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a7f0114915436207b8d706475877ee08b" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>addOne_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1af7e5a1677c2d306ee54893a4f4a1fb48" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>bary_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a0b6b6deeaf234f4fe1458a6320c8f772" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>base_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>dimensionality_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a66c526c4bd3931e9df1d9f2a81f196c4" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>FaureRsg</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1acba90d1497f24d6c21a1befd8ac04eda" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>generateNextIntSequence</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a5887dca4032d27bced3e70c6dc219b3c" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>gray_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a89e718360f70fcbaffbbddcdde80d87b" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>integerSequence_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1aa2f24701d450ecd0a50744a24900a1c3" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>lastIntSequence</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1aa3c4688fab345016517ac455a5dd2018" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>mbit_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a3e80401ccf7e47af752cab6942c4abe8" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>nextIntSequence</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a15b541124ea01ca45ea29f675c261246" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a28cbabc560b9c8f545909732163c6d26" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>normalizationFactor_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1ad5eb34b6873bc9721086f68f87a04dba" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>pascal3D</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1aad624c6efaa33f6cc9e8038ab896f324" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>powBase_</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_faure_rsg_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" virt="non-virtual"><scope>QuantLib::FaureRsg</scope><name>sequence_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

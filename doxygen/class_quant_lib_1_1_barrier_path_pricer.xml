@@ -164,40 +164,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="717">
-        <label>BarrierPathPricer</label>
-        <childnode refid="718" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="718">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="719">
-        <label>BarrierPathPricer</label>
-        <childnode refid="720" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="720">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="140" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="140" bodyend="160"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>barrier_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1af13c0ed93ae2ee2a191d6d165f652852" prot="public" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>BarrierPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>barrierType_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1ab65ebafff2b1cff02ee370c43f4fd418" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>diffProcess_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>discounts_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>rebate_</name></member>
-      <member refid="class_quant_lib_1_1_barrier_path_pricer_1a915fc2daa00478e802ea377105b1e51d" prot="private" virt="non-virtual"><scope>QuantLib::BarrierPathPricer</scope><name>sequenceGen_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::BarrierPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -113,34 +113,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="38"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1ae090e5efea87205f2e254b9686a0ce1c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void preAdjustValuesImpl</definition>
-        <argsstring>()</argsstring>
-        <name>preAdjustValuesImpl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="41"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a85429fd2334469ecf405ecf57a624b73" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void postAdjustValuesImpl</definition>
-        <argsstring>()</argsstring>
-        <name>postAdjustValuesImpl</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="42"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-func">
       <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a103920d0a3d154908562d4076a85062a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -181,67 +153,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3830">
-        <label>DiscretizedAsset</label>
-        <link refid="class_quant_lib_1_1_discretized_asset"/>
-      </node>
-      <node id="3829">
-        <label>DiscretizedCallableFixedRateBond</label>
-        <childnode refid="3830" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3832">
-        <label>DiscretizedAsset</label>
-        <link refid="class_quant_lib_1_1_discretized_asset"/>
-        <childnode refid="3833" relation="usage">
-          <edgelabel>values_</edgelabel>
-        </childnode>
-      </node>
-      <node id="3833">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="3831">
-        <label>DiscretizedCallableFixedRateBond</label>
-        <childnode refid="3832" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/discretizedcallablefixedratebond.hpp" bodystart="32" bodyend="51"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a9a40fa1e5a72b0409745ea1c67b2cf63" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>addCoupon</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>adjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a103920d0a3d154908562d4076a85062a" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>applyCallability</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1af48abd19298730ed7f612e1051255fae" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1abac2d2e025f90412d739851b50083136" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>callabilityTimes_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a2f156ecbe4b2565cf41fabcbfa476c39" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>couponTimes_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1afad0751d0bfc43043efa52445e6f40e2" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>DiscretizedAsset</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1fce1419444577d3bb4928661eb7cba0" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>DiscretizedCallableFixedRateBond</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a6cef7fe12b71383095431da763298442" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ae39867f35c28df8a77f62d659f6b7ad5" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>isOnTime</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1abb9ebdedf694d081a3763668136bfc7f" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>latestPostAdjustment_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1afb82cc42be705c48a8351e203748b02d" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>latestPreAdjustment_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>mandatoryTimes</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>method</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aa2f3ac04333282912860221a3b90e23b" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>partialRollback</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>postAdjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a85429fd2334469ecf405ecf57a624b73" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>postAdjustValuesImpl</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>preAdjustValues</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1ae090e5efea87205f2e254b9686a0ce1c" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>preAdjustValuesImpl</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a6c08e31d5f5a5d45b311bae8c7f4b0f2" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>presentValue</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1ac694011a07003f7d67b8183597b5a0c6" prot="private" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>redemptionTime_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aef4cbc1d4c3994be66cc8b8a943e5151" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>rollback</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a5868da364bb0ac7ca08b2c72d3fb2f78" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>time</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a252c914b2d10cfe6e7d555128185d5d7" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>time</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1ae97b689c7df7487279f31ab5af9b3762" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>time_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a99a3a78defaeab5ede226107da665b96" prot="protected" virt="non-virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>values_</name></member>
-      <member refid="class_quant_lib_1_1_discretized_asset_1a2790be8448a44e9a466515cec789566d" prot="public" virt="virtual"><scope>QuantLib::DiscretizedCallableFixedRateBond</scope><name>~DiscretizedAsset</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

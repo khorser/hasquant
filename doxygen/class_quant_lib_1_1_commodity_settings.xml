@@ -94,39 +94,6 @@
 <para>global repository for run-time library settings </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2359">
-        <label>Singleton&lt; CommoditySettings &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="2358">
-        <label>CommoditySettings</label>
-        <link refid="class_quant_lib_1_1_commodity_settings"/>
-        <childnode refid="2359" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2361">
-        <label>Singleton&lt; CommoditySettings &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="2360">
-        <label>CommoditySettings</label>
-        <link refid="class_quant_lib_1_1_commodity_settings"/>
-        <childnode refid="2361" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditysettings.hpp" bodystart="34" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_commodity_settings_1a64a502593a2ff038deb661cc6b698d11" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>CommoditySettings</name></member>
-      <member refid="class_quant_lib_1_1_commodity_settings_1ab5f787ad2b8ed122b99ff06a08333d7a" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>currency</name></member>
-      <member refid="class_quant_lib_1_1_commodity_settings_1a9b8209f252ea1344d7fa6de58bc1102a" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>currency_</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>Singleton</name></member>
-      <member refid="class_quant_lib_1_1_commodity_settings_1adf4b5f459e5fd38f36759f17d4d0cd68" prot="public" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>unitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_commodity_settings_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" virt="non-virtual"><scope>QuantLib::CommoditySettings</scope><name>unitOfMeasure_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

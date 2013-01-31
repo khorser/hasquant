@@ -305,26 +305,5 @@
     <detaileddescription>
 <para>References: Kluge, Timo L., 2008. Pricing Swing Options and other Electricity Derivatives, <ulink url="http://eprints.maths.ox.ac.uk/246/1/kluge.pdf">http://eprints.maths.ox.ac.uk/246/1/kluge.pdf</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="46" bodyend="92"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>apply_direction</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>apply_mixed</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a6c336054e589dc7188d1bdf76945d690" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>bcSet_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a5fcf2c1bf3e4eb77a1fdccadfcdb8d75" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>dyMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a9d44ffc8676cc7374ce088d871a31d1a" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>FdmExtOUJumpOp</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a16d75f5dea359079bdcc386a3b98a3da" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>gaussLaguerreIntegration_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1af74cc85e4f497ec38295d24e745f9859" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>integro</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a7c506e612bc53209c1b6a065523f9781" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>ouOp_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>preconditioner</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a53db70a3fdfda50516bf7d47da3f1958" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>rTS_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>solve_splitting</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a48c41cf150b557ea5789f02c1be4b52f" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>x_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpOp</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

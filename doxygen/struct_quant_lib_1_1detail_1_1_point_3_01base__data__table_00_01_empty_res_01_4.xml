@@ -139,15 +139,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="212" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="212" bodyend="224"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1aad7fef1055d0b4fd61b6142952e66eeb" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>data_type</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1a2c1d952987580b48159aab3dab850f03" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>first</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1aef3cb5dd84a28dad7bfae21cc3542574" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1acc625e48a9453662b5a742ce32b2c7ef" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1ac8bdbf4608dd0ba04e778dc7ba43f06c" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>Point</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1a7a750f84a6700f267810a8edcaee752e" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>Point</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1ae87fdf49a14c0233779959a4c8ebcd4d" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>Point</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_point_3_01base__data__table_00_01_empty_res_01_4_1af597f35ecabf1e65b998304aea3f45a4" prot="public" virt="non-virtual"><scope>QuantLib::detail::Point&lt; base_data_table, EmptyRes &gt;</scope><name>second</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

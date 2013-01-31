@@ -272,23 +272,5 @@
     <detaileddescription>
 <para>Generates random paths with drift(S,t) and variance(S,t) using a gaussian sequence generator</para><para><xrefsect id="test_1_test000080"><xreftitle>Tests</xreftitle><xrefdescription><para>the generated paths are checked against cached results </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/pathgenerator.hpp" bodystart="44" bodyend="74"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_path_generator_1abacc895c68c2f082c8cd5d9fc2d2a5f3" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>antithetic</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a8acd68dfbde630aaf205a8d4092d9602" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>bb_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a101ac2fd4059964925dda5d18055f99c" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>dimension_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a64140717577d3f2eafa18016be2b53eb" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>generator_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a6049f022cf66ebb26cfe96caa59aff87" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a0d855fd134f590d0fffa238157649a39" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1ab66466f0938ee327635eab8a616d1ef4" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>next_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1ac527d8948d55885994a0a87fa31f7c42" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>PathGenerator</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1aa22257337a62516ace1d26739a7a1660" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>PathGenerator</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1aa5a59ac3cc2d12f748a336ede36c6ed2" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1ae160475137a6c68f508c0dbd97aae237" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1aedff7f6f4202c9a9773b8efcb4e1deef" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>temp_</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>timeGrid</name></member>
-      <member refid="class_quant_lib_1_1_path_generator_1adda5ae6c670bdbb1857509a4aa20ec25" prot="private" virt="non-virtual"><scope>QuantLib::PathGenerator</scope><name>timeGrid_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

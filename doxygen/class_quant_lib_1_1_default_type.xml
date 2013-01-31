@@ -4,34 +4,6 @@
     <compoundname>QuantLib::DefaultType</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_failure_to_pay" prot="public" virt="non-virtual">FailureToPay</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_type_1a4ccfce5a2a470d2898d05344e7780fa2" prot="protected" static="no" mutable="no">
-        <type>AtomicDefault::Type</type>
-        <definition>AtomicDefault::Type defTypes_</definition>
-        <argsstring></argsstring>
-        <name>defTypes_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_default_type_1a3fe600d064ddf07ac5988601872dc131" prot="protected" static="no" mutable="no">
-        <type>Restructuring::Type</type>
-        <definition>Restructuring::Type restrType_</definition>
-        <argsstring></argsstring>
-        <name>restrType_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="145" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_default_type_1a95b78a625cfd28cf0c11168a8b197bbf" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
@@ -147,29 +119,6 @@
 <para>Atomic credit-event type. </para>    </briefdescription>
     <detaileddescription>
 <para>This class encapsulates the ISDA default contractual types and their combinations. Non-atomicity works only at the atomic type level, obviating the specific event characteristics which it is accounted for only in derived classes. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="3427">
-        <label>DefaultType</label>
-        <link refid="class_quant_lib_1_1_default_type"/>
-      </node>
-      <node id="3428">
-        <label>FailureToPay</label>
-        <link refid="class_quant_lib_1_1_failure_to_pay"/>
-        <childnode refid="3427" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="106" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="106" bodyend="146"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_default_type_1a00315e9f530aba6ec5817be3fc7c8757" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>containsDefaultType</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a8db01c54abbd2be18b72af0e2856ae12" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>containsRestructuringType</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a6e59734a532944690c303a9b7b6b2fd3" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>defaultType</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a95b78a625cfd28cf0c11168a8b197bbf" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>DefaultType</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a4ccfce5a2a470d2898d05344e7780fa2" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>defTypes_</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>isRestructuring</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a3fe600d064ddf07ac5988601872dc131" prot="protected" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>restrType_</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a8d8e1b252213625a77083d4f6acd6568" prot="public" virt="non-virtual"><scope>QuantLib::DefaultType</scope><name>restructuringType</name></member>
-      <member refid="class_quant_lib_1_1_default_type_1a3b51189306de6ec7a30ecc9f9f1ffab6" prot="public" virt="virtual"><scope>QuantLib::DefaultType</scope><name>~DefaultType</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

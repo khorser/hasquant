@@ -162,24 +162,5 @@
     <detaileddescription>
 <para>Mesher for a exponential jump process with high mean reversion rate and low jump intensity <formula id="283">\[ \begin{array}{rcl} dY_t &amp;=&amp; -\beta Y_{t-}dt + J_tdN_t \\ \omega(J)&amp;=&amp;\frac{1}{\eta_u}e^{-\frac{1}{\eta_u}J} \end{array} \]</formula></para><para>References: B. Hambly, S. Howison, T. Kluge, Modelling spikes and pricing swing options in electricity markets, <ulink url="http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf">http://people.maths.ox.ac.uk/hambly/PDF/Papers/elec.pdf</ulink> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="49" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" bodystart="49" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1a208eaa0a2d6a36ccb65c022c3485363b" prot="private" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>beta_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a1155518c087ec4af6ff6109358df607a" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>dminus</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ae1847e5b28f379fb26166e9be7ee8015" prot="protected" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>dminus_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a0726574713e89fcc5ec41b656172270c" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>dplus</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ac9eac9d51ed573fa746ca81e2f5be9af" prot="protected" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>dplus_</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>eta_</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1a71d3a400f8107ad1d604361cfc4012c2" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>ExponentialJump1dMesher</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>Fdm1dMesher</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1abb89333a64fdf97627f73462a9e43591" prot="private" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>jumpIntensity_</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1ab9e5c47b8969137e52b09ddced8ab89f" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>jumpSizeDensity</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1acff366d655a8362deeca6f395fecf82f" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>jumpSizeDensity</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1abe9536c90c8392c86dd8562d48eff07c" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>jumpSizeDistribution</name></member>
-      <member refid="class_quant_lib_1_1_exponential_jump1d_mesher_1affefbc63d3a01fdae697efebcd5c56c1" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>jumpSizeDistribution</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a419dfb57dd2688876897560d8e9d8dd6" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>location</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a66c06bbb278d9d165875f6c099a52db1" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>locations</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a2e993815b92a6d8d46c5212de911b331" prot="protected" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>locations_</name></member>
-      <member refid="class_quant_lib_1_1_fdm1d_mesher_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::ExponentialJump1dMesher</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

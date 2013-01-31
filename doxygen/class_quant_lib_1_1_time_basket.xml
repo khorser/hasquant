@@ -189,20 +189,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="36" bodyend="71"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_time_basket_1aaae3bb8452ab2076a1678a4ea6ad87ed" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>const_iterator</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1aa93a1332a54c147b7520c6db316f342a" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>const_reverse_iterator</name></member>
-      <member refid="classstd_1_1map_1af400dbe3fe1572c567f882190c772196" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>elements</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1a0c4a88a3947bd9e763239f456b000e43" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>hasDate</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1a6dc93ba2311dc4033218143dab0641e8" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>iterator</name></member>
-      <member refid="classstd_1_1map_1a4736f9b2b54dddaa10b54581a23a1789" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>keys</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1aa8da85804e43c204de0ae7de04229c40" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1a662b2aff055067f7930a3499f63c32cb" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1ada4bc9b4db55dbf1023e1298fd3f9af7" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>rebin</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1abd49bd01c7d10f089c6b298cd6e01e2e" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>reverse_iterator</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1a3e97740a21d32bbc2a4dd0e5a729312d" prot="private" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>super</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1adc14373ce1d117c919c147bb18db5a40" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>TimeBasket</name></member>
-      <member refid="class_quant_lib_1_1_time_basket_1a6b78bdcda419ebfef78a827b17032b1d" prot="public" virt="non-virtual"><scope>QuantLib::TimeBasket</scope><name>TimeBasket</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

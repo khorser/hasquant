@@ -149,15 +149,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="135" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="132" bodyend="153"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>binary_compose3_function</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1ab0fe93287a99040a88ba6bd9a7efd358" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>first_argument_type</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>g_</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1abbaf94cb47bb8a35351ed320c1119e3e" prot="private" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>h_</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>result_type</name></member>
-      <member refid="class_quant_lib_1_1binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" virt="non-virtual"><scope>QuantLib::binary_compose3_function</scope><name>second_argument_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

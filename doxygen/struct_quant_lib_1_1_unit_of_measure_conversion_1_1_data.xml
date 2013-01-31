@@ -155,37 +155,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="14442">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="14441">
-        <label>UnitOfMeasureConversion::Data</label>
-        <childnode refid="14442" relation="usage">
-          <edgelabel>target</edgelabel>
-          <edgelabel>source</edgelabel>
-        </childnode>
-        <childnode refid="14443" relation="usage">
-          <edgelabel>commodityType</edgelabel>
-        </childnode>
-      </node>
-      <node id="14443">
-        <label>CommodityType</label>
-        <link refid="class_quant_lib_1_1_commodity_type"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="85" bodyend="103"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a40036ceeca10849cabe2f0d92ffda83d" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>code</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a22d7e78737b17b88d12e19ffc7484133" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>commodityType</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1acbaac6b0f096083c973ed8834116081f" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>conversionFactor</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a63e0fb715621eb4188bd9ec80f27019b" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>conversionFactorChain</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a4fca95f189c1b1d6aab61c965cb26f13" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1aaac39388f08bef694c95f9491182deb4" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a66c4616a029db5ed59bff533aa1a8a8c" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>source</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1a2ee40be10d97e428321d01988a33d969" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>target</name></member>
-      <member refid="struct_quant_lib_1_1_unit_of_measure_conversion_1_1_data_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion::Data</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

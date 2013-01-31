@@ -188,44 +188,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="3699">
-        <label>Tracing</label>
-        <childnode refid="3700" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3700">
-        <label>Singleton&lt; Tracing &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3701">
-        <label>Tracing</label>
-        <childnode refid="3702" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3702">
-        <label>Singleton&lt; Tracing &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/tracing.hpp" bodystart="65" bodyend="88"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a0d2912955de777acfcd951216a40f795" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>depth</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a5c026231da11874bd824a06d0a516708" prot="private" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>depth_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a8cfbbe53c1cf6e3054736daea3044c0f" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>disable</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a6663cf1e20c2f8162d29d31c8f6324e6" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>down</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a486f22824bd83c5308a0d70ffac6f758" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>enable</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a1d79980f25d38aba3d6777d0afe544f3" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>enabled</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1ab6dfcb3e6c79f4def1295fea7f0de8c0" prot="private" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>enabled_</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a045e6ebcc2cec847920a49abcf5599c8" prot="private" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>out_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1ad590312feef889aa6887f072b334162c" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>setStream</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>Singleton</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1aa38e56e146bc20466a2b5969217cbb73" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>stream</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a6f5029a99a424c669154db0011e6c8e9" prot="private" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>Tracing</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_tracing_1a0a1d932d49dd1079cfd0964b11adc7a0" prot="public" virt="non-virtual"><scope>QuantLib::detail::Tracing</scope><name>up</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

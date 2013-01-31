@@ -46,39 +46,6 @@
 <para>base class for market-model factories </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9485">
-        <label>MarketModelFactory</label>
-        <link refid="class_quant_lib_1_1_market_model_factory"/>
-        <childnode refid="9486" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9486">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9487">
-        <label>MarketModelFactory</label>
-        <link refid="class_quant_lib_1_1_market_model_factory"/>
-        <childnode refid="9488" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9488">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/marketmodel.hpp" bodystart="57" bodyend="63"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_factory_1a20dc781ed3be433dc386daf56859e6b1" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelFactory</scope><name>create</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelFactory</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelFactory</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelFactory</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelFactory</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_market_model_factory_1a3fa54b54445fc2742a15bea0d4c2435f" prot="public" virt="virtual"><scope>QuantLib::MarketModelFactory</scope><name>~MarketModelFactory</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::MarketModelFactory</scope><name>~Observable</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

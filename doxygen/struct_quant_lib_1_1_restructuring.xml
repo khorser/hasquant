@@ -88,17 +88,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" line="84" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaulttype.hpp" bodystart="84" bodyend="97"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1f798b3e8ca3d741d23e207651c84324" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>AnyRestructuring</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7aaaa8401b50cb34e3a0d58729f70494f0" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>CR</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7ae78b3002d80d0e5c68e9eb1f771886aa" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>FullRestructuring</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a519a4a8945cef24205e65dbbc404da73" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>MM</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a0196a476607af5f394eec47184a03ca5" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>ModifiedModifiedRestructuring</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1157a52de091d4b2ea5750cc7a1c97d1" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>ModifiedRestructuring</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a72e220e7a1804705bd074f8cdd5093c4" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>MR</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a87077092dc8a25cf4848c1652f61a07e" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>NoRestructuring</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>Type</name></member>
-      <member refid="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a02fc5eba222de6617ba2e419c5cb5000" prot="public" virt="non-virtual"><scope>QuantLib::Restructuring</scope><name>XR</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

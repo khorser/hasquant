@@ -24,43 +24,6 @@
 <para>Simple day counter for reproducing theoretical calculations. </para>    </briefdescription>
     <detaileddescription>
 <para>This day counter tries to ensure that whole-month distances are returned as a simple fraction, i.e., 1 year = 1.0, 6 months = 0.5, 3 months = 0.25 and so forth.</para><para><xrefsect id="caveats_1_caveats000147"><xreftitle>Warning</xreftitle><xrefdescription><para>this day counter should be used together with <ref refid="class_quant_lib_1_1_null_calendar" kindref="compound">NullCalendar</ref>, which ensures that dates at whole-month distances share the same day of month. It is <bold>not</bold> guaranteed to work with any other calendar.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000155"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the results is checked against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="13105">
-        <label>DayCounter</label>
-        <link refid="class_quant_lib_1_1_day_counter"/>
-      </node>
-      <node id="13104">
-        <label>SimpleDayCounter</label>
-        <link refid="class_quant_lib_1_1_simple_day_counter"/>
-        <childnode refid="13105" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13107">
-        <label>DayCounter</label>
-        <link refid="class_quant_lib_1_1_day_counter"/>
-      </node>
-      <node id="13106">
-        <label>SimpleDayCounter</label>
-        <link refid="class_quant_lib_1_1_simple_day_counter"/>
-        <childnode refid="13107" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/simpledaycounter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/simpledaycounter.hpp" bodystart="46" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a6f11ec688642d2b1aa3fc401ff4459e5" prot="protected" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>DayCounter</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>DayCounter</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_simple_day_counter_1aeacf3f515bbda5190060eca01fc142cd" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>SimpleDayCounter</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" virt="non-virtual"><scope>QuantLib::SimpleDayCounter</scope><name>yearFraction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -223,25 +223,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/parametricexerciseadapter.hpp" bodystart="33" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1acd9318273e52073d486e779f628ca372" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a3eac9ea0fb436d6a6f72379588b39921" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>currentExercise_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a0cd1da9c234a65843ed1783da733f913" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>currentStep_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1af66beb74da59fb4825934b77b8d2c469" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a2c21aea2418a5a63b99bb267d9f9e1d7" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exercise_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aa8dcb0de162131db7bd1609d221445ea" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exerciseTimes</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aa010100d61810501bed98b1773802fe5" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>exerciseTimes_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ac1eb7b75189b33cded488d6d1ff2d9ba" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>isExerciseTime_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1aec2d702d48459594eb8f12eaec1920bd" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::ExerciseStrategy::"><scope>QuantLib::ParametricExerciseAdapter</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a3b7c47d0e999001cf2378ec95e660bac" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>numberOfVariables_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1afd83397529bc22ef01f0fb0b782ce8e9" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>parameters_</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ad97257635561dfa7bb32e7a66d5cc9cc" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>ParametricExerciseAdapter</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>relevantTimes</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_parametric_exercise_adapter_1a7a0ba563aebb3a7b4df558ae61d61e70" prot="private" virt="non-virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>variables_</name></member>
-      <member refid="class_quant_lib_1_1_exercise_strategy_1a131d63d54acfaaee85f99d675cb83fa8" prot="public" virt="virtual"><scope>QuantLib::ParametricExerciseAdapter</scope><name>~ExerciseStrategy</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

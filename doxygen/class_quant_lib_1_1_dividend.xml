@@ -64,21 +64,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="51"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_dividend_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
-        <definition>Date date_</definition>
-        <argsstring></argsstring>
-        <name>date_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_dividend_1a3ce04351ecc7f83eab8f3bfaaa99f3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -121,89 +106,6 @@
 <para>Predetermined cash flow. </para>    </briefdescription>
     <detaileddescription>
 <para>This cash flow pays a predetermined amount at a given date. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="3880">
-        <label>FractionalDividend</label>
-        <link refid="class_quant_lib_1_1_fractional_dividend"/>
-        <childnode refid="3875" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3877">
-        <label>Event</label>
-        <link refid="class_quant_lib_1_1_event"/>
-        <childnode refid="3878" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3878">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="3879">
-        <label>FixedDividend</label>
-        <link refid="class_quant_lib_1_1_fixed_dividend"/>
-        <childnode refid="3875" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3876">
-        <label>CashFlow</label>
-        <link refid="class_quant_lib_1_1_cash_flow"/>
-        <childnode refid="3877" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3875">
-        <label>Dividend</label>
-        <link refid="class_quant_lib_1_1_dividend"/>
-        <childnode refid="3876" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="3883">
-        <label>Event</label>
-        <link refid="class_quant_lib_1_1_event"/>
-        <childnode refid="3884" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3884">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="3885">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="3882">
-        <label>CashFlow</label>
-        <link refid="class_quant_lib_1_1_cash_flow"/>
-        <childnode refid="3883" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="3881">
-        <label>Dividend</label>
-        <link refid="class_quant_lib_1_1_dividend"/>
-        <childnode refid="3882" relation="public-inheritance">
-        </childnode>
-        <childnode refid="3885" relation="usage">
-          <edgelabel>date_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/dividend.hpp" bodystart="36" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_dividend_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_dividend_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" virt="pure-virtual"><scope>QuantLib::Dividend</scope><name>amount</name></member>
-      <member refid="class_quant_lib_1_1_dividend_1a4851910d5646519c98bb6ee48bab8648" prot="public" virt="pure-virtual"><scope>QuantLib::Dividend</scope><name>amount</name></member>
-      <member refid="class_quant_lib_1_1_dividend_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>date</name></member>
-      <member refid="class_quant_lib_1_1_dividend_1ae66f66b0d2874fc0d466bc1ef6dd2976" prot="protected" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>date_</name></member>
-      <member refid="class_quant_lib_1_1_dividend_1a3ce04351ecc7f83eab8f3bfaaa99f3d4" prot="public" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>Dividend</name></member>
-      <member refid="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>hasOccurred</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::Dividend</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>~CashFlow</name></member>
-      <member refid="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>~Event</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Dividend</scope><name>~Observable</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

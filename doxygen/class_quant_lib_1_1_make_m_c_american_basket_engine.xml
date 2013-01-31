@@ -333,28 +333,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="69" bodyend="91"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a7ff206b890b8b59edb2a71e34f6836ac" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>calibrationSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1ace2e6664e2b5af24656a3c1cea745332" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>MakeMCAmericanBasketEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a012cfff5b787ce5b69e20d584bd8e913" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1aefe36caaf445a056f96125f8103e583a" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a7a3a0d0ce76e6aa751f329ebd6fd081f" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a39ebf89a746f1d3fd1f2088f92300e42" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a156027a2fd6371cad37acbf6a2de3efc" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withCalibrationSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a75fa8a343990abef5af3142ecdc8e290" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1a07d4b8d1abcafbf6d6df79ade4fbd3d8" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1aaeb2121f640bb526a83a08a96d762009" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1affc8611ebc4a7048c6bd6622a2a58c15" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_basket_engine_1ace97d1407e6f572e900ed45e775155cb" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanBasketEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

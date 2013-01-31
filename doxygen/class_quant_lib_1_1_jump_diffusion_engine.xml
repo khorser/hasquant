@@ -93,12 +93,5 @@
 <listitem><para>the correctness of the returned value is tested by reproducing results available in literature.</para></listitem><listitem><para>the correctness of the returned greeks is tested by reproducing numerical derivatives. </para></listitem></itemizedlist>
 </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/jumpdiffusionengine.hpp" bodystart="42" bodyend="52"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>JumpDiffusionEngine</name></member>
-      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1af75d2bb304cdff446e507879467b2582" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>maxIterations_</name></member>
-      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a21562578cbc7c64f98c0d96de2b0afe8" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_jump_diffusion_engine_1a143abeb112e1d03d1fad1fde1f082a89" prot="private" virt="non-virtual"><scope>QuantLib::JumpDiffusionEngine</scope><name>relativeAccuracy_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -79,26 +79,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="9304">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="9303">
-        <label>LongstaffSchwartzMultiPathPricer::PathInfo</label>
-        <childnode refid="9304" relation="usage">
-          <edgelabel>payments</edgelabel>
-          <edgelabel>exercises</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" bodystart="61" bodyend="69"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info_1af6dec7a5214f9f009a6779c5682d92f8" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</scope><name>exercises</name></member>
-      <member refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info_1ad1ac1e3c345157edb336be046573c696" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</scope><name>PathInfo</name></member>
-      <member refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info_1a9a36c3a4d9399c5d2e26ab4433991e79" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</scope><name>pathLength</name></member>
-      <member refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info_1a19e4275ddb59a69fa691bdd912122df4" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</scope><name>payments</name></member>
-      <member refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info_1a8d34e40db8a15b8c99d915130265e7b7" prot="public" virt="non-virtual"><scope>QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</scope><name>states</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

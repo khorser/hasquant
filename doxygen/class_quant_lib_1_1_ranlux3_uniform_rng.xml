@@ -79,11 +79,5 @@
             of being observed.
    Ranlux4: highest possible luxury.         </verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="45" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_ranlux3_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux3UniformRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_ranlux3_uniform_rng_1a6ffc0ab1bec1bb3af932502c0b155ac7" prot="private" virt="non-virtual"><scope>QuantLib::Ranlux3UniformRng</scope><name>ranlux3_</name></member>
-      <member refid="class_quant_lib_1_1_ranlux3_uniform_rng_1a26acac4149299d7b81700d3006db9fe6" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux3UniformRng</scope><name>Ranlux3UniformRng</name></member>
-      <member refid="class_quant_lib_1_1_ranlux3_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux3UniformRng</scope><name>sample_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

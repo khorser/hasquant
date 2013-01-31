@@ -407,33 +407,5 @@
     <detaileddescription>
 <para>This class provides a more comfortable way to instantiate standard yoy inflation cap and floor. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeyoyinflationcapfloor.hpp" bodystart="38" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a554c10f085b8efda37e357575aaafba1" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>asOptionlet</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aaf8849e372b95794dfde616057a9d75f" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>asOptionlet_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a021eab7f1f44c1c71b8dfd29b9c4864b" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>calendar_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1adf0ad547259f891b535727fac0023627" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>capFloorType_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a76c6c2d60ef1370e20bdf40a0e0ca642" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>dayCounter_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1ab9baa4e2de0d4da3e1be02dbeb6fe532" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>effectiveDate_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>engine_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a372994af3e97d8b3e9eef891109c4708" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>firstCapletExcluded_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a7b5758dc357368c9bcb7920c66084351" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>fixingDays_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a497006adbd7b8bec09761f23a10f3f2e" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>forwardStart_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a501723adcbda98a1b1dc8594a298153b" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>index_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a63a20fb28b234a6ebc695416ec21c0a5" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>length_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a73a35a3706d1fb34e1cbcc0b50618a4a" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>MakeYoYInflationCapFloor</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a0313ad2f0ebbcc7085afb5650bd11b76" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>nominal_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a2f0b22e1c17db6dd8f558f4dfc8dfff6" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>observationLag_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1ac2c89e120c1183c0a748926d7feff65f" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>operator boost::shared_ptr&lt; YoYInflationCapFloor &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aa7c58d5b4554cea444bb491822fb05a7" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>operator YoYInflationCapFloor</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a41417dab9908d060a94e64e709035804" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>roll_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a08cd1531eb162e74385c6863ec98f099" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withEffectiveDate</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a22ed723f0c176c54abf47904b02cb019" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withFirstCapletExcluded</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a958da617eb93dc592fc6214a7e9d63ba" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withFixingDays</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a88ed76c947d26a44600fda78ab2ee682" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withNominal</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a16a95b38695948c73114164ddaff7a59" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withPaymentAdjustment</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1a772da1f62e4e16289a8e6a8d73eac37a" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withPaymentDayCounter</name></member>
-      <member refid="class_quant_lib_1_1_make_yo_y_inflation_cap_floor_1aacb8d8bdc958d22907668e19f93eef98" prot="public" virt="non-virtual"><scope>QuantLib::MakeYoYInflationCapFloor</scope><name>withPricingEngine</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -397,32 +397,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" line="103" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcamericanengine.hpp" bodystart="103" bodyend="131"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a7ff206b890b8b59edb2a71e34f6836ac" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>calibrationSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>controlVariate_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a5c7a80957c80444f6f0486cf13c2f5a1" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>MakeMCAmericanEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a72b1f12993111e76ce1324e1cda416b3" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>polynomOrder_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a9314a66fb961746487facfea82d9eeeb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>polynomType_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1ac6cd895b87605c2e2c2abd1595c2d94e" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a8635128ef9a58a27fb2e766facfc5ceb" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a4f791c58ab6c1f807affdd8645543e57" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withBasisSystem</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a79fd7d285b4900128879823c52e68e2c" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withCalibrationSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1ac52db43cccebc8db7feda06184e1d158" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withControlVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1acb1a2381e08ae45cb0b8fe92eec53482" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1ad31e3487ee6cf17bdb33452b92462364" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withPolynomOrder</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a22eb14626e60b0100c56f06c3962ae82" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a5189c6e021ad3b7b9def772f3387512d" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a1e2014ef955181953e7cee89a8bc45b8" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_american_engine_1a6173cdad29cb3457267df9c4e9765bfa" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCAmericanEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

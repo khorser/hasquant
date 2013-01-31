@@ -211,19 +211,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" bodystart="80" bodyend="114"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a6e0aebb30b163f9873c2dd0eadd78708" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>aliveIndex_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a886cf3fa59ad609edf356cd300ab5a8c" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>allDerivatives_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1aafd988ebee2e08e62013a163680ffa56" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>e_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1aaa4d2804830043113c5009392f8f0ce0" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>getBumps</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a67921ca7df824b046fc691bc45270d4a" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>numberBumps_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a818fcc70c9c59451b45284fceab7a0ca" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>pseudoBumps_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a287d7f45f243847879108986a5785263" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>pseudoRoot_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a3262470bf2aa428c035a63c3af003135" prot="public" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>RatePseudoRootJacobian</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1af070858fdff18de0ca6ca748e1f3959b" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>ratios_</name></member>
-      <member refid="class_quant_lib_1_1_rate_pseudo_root_jacobian_1a7faf504f2e153c71fac455aca1fab4aa" prot="private" virt="non-virtual"><scope>QuantLib::RatePseudoRootJacobian</scope><name>taus_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

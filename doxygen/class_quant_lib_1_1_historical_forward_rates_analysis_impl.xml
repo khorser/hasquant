@@ -234,21 +234,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="207" bodyend="236"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ad46d635a7ebc761eda88970a53784b74" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>failedDates</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1aa2a2548f1a4a7059cff88a0ed3023de8" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>failedDates_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a9f4e4ee632f2e5ec6f5ffa1d2f0a68d5" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>failedDatesErrorMessage</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ad8936fd9c1c14e9c15dc239fb300f912" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>failedDatesErrorMessage_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a49882046d19998fab2d46847152208f9" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>fixingPeriods</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a87a5a047f13da672b5d8a59b0b09e736" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>fixingPeriods_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a7d3e7260bb19c5748ef144cbb2e2b430" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>HistoricalForwardRatesAnalysisImpl</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a56e93c08e7fa2c67b4f47e7f53c26958" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>HistoricalForwardRatesAnalysisImpl</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ac7b7b4a056f59698e84a724c5c372652" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>skippedDates</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1aa88299924157a2ff41d5ad78318b0054" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>skippedDates_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>skippedDatesErrorMessage</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1af5d524c8f8687fd7dbb1bbb9a1290344" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>skippedDatesErrorMessage_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a1d42000bb140219a9fcbb7b3cc5cacbe" prot="private" virt="non-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>stats_</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a4fdb8db154e538f3ebcf8bce70118c2e" prot="public" virt="virtual"><scope>QuantLib::HistoricalForwardRatesAnalysisImpl</scope><name>~HistoricalForwardRatesAnalysis</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

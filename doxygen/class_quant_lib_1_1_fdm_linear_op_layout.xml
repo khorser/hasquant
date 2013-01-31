@@ -232,20 +232,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="34" bodyend="85"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a74be322402b4996f46dfba8a15a1d3b7" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>begin</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a7ae7d3955436ab2dc5286b54ef21074d" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>dim</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a6ac473dd7687ae18d5e55acff3154ab3" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>dim_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a1ff16f08403b103b6a5b55e54e886a7f" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>end</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a756ee81f33a06e0611036ef5fa1fce88" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>FdmLinearOpLayout</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1adafceab1b8a45eb30335a10248251170" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>index</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1ad77e0111e798ba5148d9ad5a23fbed04" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>iter_neighbourhood</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1aab775ce90c6a10fa0ddbc0f36411f5cc" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>neighbourhood</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a85258597d695f5b977f0f4eb7470ea8c" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>neighbourhood</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a2fbd77c00f147ac5ce2471e4d572789f" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>spacing</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_layout_1a85a3a73fbda5204dceb544b0cd9b3294" prot="private" virt="non-virtual"><scope>QuantLib::FdmLinearOpLayout</scope><name>spacing_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

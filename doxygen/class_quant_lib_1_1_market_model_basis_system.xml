@@ -51,17 +51,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelbasissystem.hpp" line="29" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/callability/marketmodelbasissystem.hpp" bodystart="29" bodyend="37"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_basis_system_1a8aee6ad1fc8e72689d7800de6dd71de7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a40f3fe604a09125d6707b7d2128339fa" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>isExerciseTime</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1afd20cc76c83b8c0275df7603761c6dce" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>nextStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_basis_system_1a4152ba33a9f707f0d161f18b8343df05" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>numberOfData</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1aaf50b073c0431c39c47f9efe491dcb89" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>numberOfExercises</name></member>
-      <member refid="class_quant_lib_1_1_market_model_basis_system_1a8c44b012825c6dcb6fe4d4d01a078d45" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>numberOfFunctions</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1a200e3c18dd442cb53120f1e732f80cc3" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>values</name></member>
-      <member refid="class_quant_lib_1_1_market_model_node_data_provider_1ac955e186a3d091ef31b5e2cca89965c8" prot="public" virt="virtual"><scope>QuantLib::MarketModelBasisSystem</scope><name>~MarketModelNodeDataProvider</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

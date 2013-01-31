@@ -38,9 +38,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/compoundoption/compoundoption.hpp" bodystart="53" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" virt="non-virtual"><scope>QuantLib::CompoundOption::arguments</scope><name>motherOption</name></member>
-      <member refid="class_quant_lib_1_1_compound_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CompoundOption::arguments</scope><name>validate</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

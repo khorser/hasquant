@@ -101,12 +101,5 @@
     <detaileddescription>
 <para>Pass in a market model, a list of instruments, and possible bumps.</para><para>Get out pseudo-root bumps that shift each implied vol by one percent, and leave the other instruments fixed.</para><para>If the contribution of an instrument is too correlated with other instruments used, discard it. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="89" bodyend="108"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_orthogonalized_bump_finder_1a8f05c47e1d655904914257fa3688f043" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalizedBumpFinder</scope><name>derivativesProducer_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonalized_bump_finder_1ae48b40df0717c7224c09a1f8e3db83a5" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalizedBumpFinder</scope><name>GetVegaBumps</name></member>
-      <member refid="class_quant_lib_1_1_orthogonalized_bump_finder_1a572740fb94c027d74945aa778699c0bf" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalizedBumpFinder</scope><name>multiplierCutOff_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalizedBumpFinder</scope><name>OrthogonalizedBumpFinder</name></member>
-      <member refid="class_quant_lib_1_1_orthogonalized_bump_finder_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalizedBumpFinder</scope><name>tolerance_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

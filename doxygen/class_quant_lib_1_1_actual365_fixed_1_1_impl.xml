@@ -49,34 +49,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="47">
-        <label>Actual365Fixed::Impl</label>
-        <childnode refid="48" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="48">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="49">
-        <label>Actual365Fixed::Impl</label>
-        <childnode refid="50" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="50">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp" bodystart="46" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" virt="virtual"><scope>QuantLib::Actual365Fixed::Impl</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_actual365_fixed_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Actual365Fixed::Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_actual365_fixed_1_1_impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" virt="non-virtual"><scope>QuantLib::Actual365Fixed::Impl</scope><name>yearFraction</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Actual365Fixed::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

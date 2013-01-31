@@ -36,8 +36,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" line="95" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" bodystart="92" bodyend="100"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1earlier__than_3_01boost_1_1shared__ptr_3_01_t_01_4_01_4_1a34985523d9dc2b20946ef53bac699b94" prot="public" virt="non-virtual"><scope>QuantLib::earlier_than&lt; boost::shared_ptr&lt; T &gt; &gt;</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -162,16 +162,5 @@
 <codeline><highlight class="normal">};</highlight></codeline>
 </programlisting></para><para><xrefsect id="test_1_test000079"><xreftitle>Tests</xreftitle><xrefdescription><para>the generated paths are checked against cached results </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipathgenerator.hpp" bodystart="50" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a367af962c96536f36f35c4e924d5e69b" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>antithetic</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a64140717577d3f2eafa18016be2b53eb" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>generator_</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1aec953e0036be310f7660675a4915a9f8" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>MultiPathGenerator</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a08dcfc5879d85c52e6a463515b6bb7a3" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a54b9ab2aefa4d7d1b1cc3b699337aac3" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1ab66466f0938ee327635eab8a616d1ef4" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>next_</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1aa94312a20d5fdd30808a9c44fea1c986" prot="private" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_generator_1a0f7a5af246b6d497bbf49e20515d29b2" prot="public" virt="non-virtual"><scope>QuantLib::MultiPathGenerator</scope><name>sample_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

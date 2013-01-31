@@ -191,19 +191,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="194" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="194" bodyend="228"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1af781e28fa0c400cbffa5680063ea73f8" prot="public" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>ConvexMonotone3Helper</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1ab9b4627e7073db63cf3ff8f2753bd66d" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>eta3_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a2c57b25fdbd1e203829cb074da399677" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>fAverage_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>fNext</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a06fa726cbd88b88e0c69d1b27b980e4a" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>gNext_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a84d47c63a6effe33b0e2632d6d4654cb" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>gPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a5729e1e3ef27c35c151a71c985ef2d64" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>prevPrimitive_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1af6f710f0bf0d038d201ef6f9c53d09da" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>xPrev_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_convex_monotone3_helper_1a7e707ac6591cf0467e500cf4fe7a5f04" prot="private" virt="non-virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>xScaling_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_section_helper_1aa262b3cae887e0408c440b949a37414e" prot="public" virt="virtual"><scope>QuantLib::detail::ConvexMonotone3Helper</scope><name>~SectionHelper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -97,11 +97,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp" bodystart="46" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" virt="virtual"><scope>QuantLib::DayCounter::Impl</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::DayCounter::Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" virt="pure-virtual"><scope>QuantLib::DayCounter::Impl</scope><name>yearFraction</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::DayCounter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

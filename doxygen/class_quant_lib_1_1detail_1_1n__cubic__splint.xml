@@ -331,27 +331,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="301" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="300" bodyend="338"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a96a60581129fb338d767d43df1e2ca37" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>a2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a22df4fc1d43b5f2caa5d110da818088c" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a912b7ce63d4047511398d540e48ddd6f" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>b2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a9e8545f4bb932639db0187c55ef18f5a" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>b_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a77d015539f2a2a09c89a8aa0a5727da5" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>d2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a582a83fcbbf2db2f8d51c5ae749c5b5e" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>d_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1aa91b0ef834fa3ce8c160e7fcd85d6285" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>data_table</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a4a40386dad3dd1a5090c757d9a35ccff" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>dimensions</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1ac809be5f13593250eaa2f02615544579" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>i_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a18d9f6f99910b58ea02ddb0207dd4414" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>n_cubic_splint</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1acfc455c96d779248db3eff8e5da03ab2" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>output_data</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1ad8d9028d731c0df0fa73016f7de5fb1c" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>return_type</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1aa9716216d4d71e80b9bfc9afc9ed69d3" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>super</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a26f8813b6739bb7d65c75ab1a7f508bb" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>v1_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1af593673c797be76b3379a02e895bbbc2" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>v2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1afec3f9c9ad784475758c6c245d0e8686" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1a50d523b30e828df6c4123843e7737e67" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>y2_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1accf46bcd8cb837b7b34c0f6c35cc6f4e" prot="private" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>y_</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1n__cubic__splint_1aba8a532308a54ef39a30594bf480fb4d" prot="public" virt="non-virtual"><scope>QuantLib::detail::n_cubic_splint</scope><name>~n_cubic_splint</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

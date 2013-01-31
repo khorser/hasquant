@@ -80,45 +80,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5882">
-        <label>FDShoutEngine&lt; FDShoutCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</label>
-        <link refid="class_quant_lib_1_1_f_d_shout_engine"/>
-        <childnode refid="5877" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5877">
-        <label>FDEngineAdapter&lt; base, engine &gt;</label>
-      </node>
-      <node id="5880">
-        <label>FDDividendEuropeanEngine&lt; FDDividendEngine&lt; Scheme &gt;, DividendVanillaOption::engine &gt;</label>
-        <link refid="class_quant_lib_1_1_f_d_dividend_european_engine"/>
-        <childnode refid="5877" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5879">
-        <label>FDDividendAmericanEngine&lt; FDAmericanCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</label>
-        <link refid="class_quant_lib_1_1_f_d_dividend_american_engine"/>
-        <childnode refid="5877" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5878">
-        <label>FDAmericanEngine&lt; FDAmericanCondition&lt; FDStepConditionEngine&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</label>
-        <link refid="class_quant_lib_1_1_f_d_american_engine"/>
-        <childnode refid="5877" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5881">
-        <label>FDDividendShoutEngine&lt; FDShoutCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, DividendVanillaOption::engine &gt;</label>
-        <link refid="class_quant_lib_1_1_f_d_dividend_shout_engine"/>
-        <childnode refid="5877" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="91" bodyend="105"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a10873979f635888606e03f9cb2d8a096" prot="private" virt="non-virtual"><scope>QuantLib::FDEngineAdapter</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_f_d_engine_adapter_1a5b384cc6370ced0fc4b8afe20720b764" prot="public" virt="non-virtual"><scope>QuantLib::FDEngineAdapter</scope><name>FDEngineAdapter</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

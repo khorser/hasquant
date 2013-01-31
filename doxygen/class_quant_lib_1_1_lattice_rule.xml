@@ -74,13 +74,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/latticerules.hpp" bodystart="35" bodyend="44"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da42a4ade1acd55a49164099104990e09f" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>A</name></member>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da3f2a77ecd272aa6d6b5902faa5e5fc68" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>B</name></member>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da739ce3f516592d245d16fd8a3893472c" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>C</name></member>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da77a6b11f9898c052926f1d49765861e8" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>D</name></member>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a3f2214d87379615e249262f6c04cba8d" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>getRule</name></member>
-      <member refid="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" virt="non-virtual"><scope>QuantLib::LatticeRule</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

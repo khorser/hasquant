@@ -132,16 +132,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/pdebsm.hpp" bodystart="32" bodyend="51"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a48516a64919875b824270547d4632609" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>argument_type</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a6145a397fc88de2c481b429487a98164" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a25c3f75b188136c4b1c845ee57fa999d" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>discount</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1a90779cff69e3e385225278103b4fae97" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>generateOperator</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1abd43b82aee080b5c9f1d27e60bcf83f2" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>grid_type</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a15e237ccad9b621e18a509acb3c8c227" prot="public" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>PdeBSM</name></member>
-      <member refid="class_quant_lib_1_1_pde_b_s_m_1a7be072a3f9cfbc89a71baf41516948a4" prot="private" virt="non-virtual"><scope>QuantLib::PdeBSM</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_pde_second_order_parabolic_1ae6eca838d7ef0c4d2a8bde288098e81d" prot="public" virt="virtual"><scope>QuantLib::PdeBSM</scope><name>~PdeSecondOrderParabolic</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

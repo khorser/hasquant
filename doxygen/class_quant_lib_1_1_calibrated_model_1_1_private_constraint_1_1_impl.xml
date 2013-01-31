@@ -58,34 +58,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1631">
-        <label>CalibratedModel::PrivateConstraint::Impl</label>
-        <childnode refid="1632" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1632">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1633">
-        <label>CalibratedModel::PrivateConstraint::Impl</label>
-        <childnode refid="1634" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1634">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_constraint_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="141" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="141" bodyend="159"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1af922d9f9b118b46d8acbd8b2d768a5c4" prot="private" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>arguments_</name></member>
-      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a8be4af264dc90debea6ae1bc11bf4b04" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>Impl</name></member>
-      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1_1_impl_1a86ea46c39cfb69eea992a9b65023d505" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

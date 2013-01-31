@@ -40,22 +40,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="3684">
-        <label>short_date_holder</label>
-        <childnode refid="3685" relation="usage">
-          <edgelabel>d</edgelabel>
-        </childnode>
-      </node>
-      <node id="3685">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="205" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="205" bodyend="208"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1short__date__holder_1a85641069b0d4478ab8a7356c3bf32ea3" prot="public" virt="non-virtual"><scope>QuantLib::detail::short_date_holder</scope><name>d</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1short__date__holder_1af6727cc2dbeacb9fcf0306051b0a9237" prot="public" virt="non-virtual"><scope>QuantLib::detail::short_date_holder</scope><name>short_date_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -76,38 +76,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="11965">
-        <label>PagodaOption::arguments</label>
-        <childnode refid="11966" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11966">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="11967">
-        <label>PagodaOption::arguments</label>
-        <childnode refid="11968" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11968">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/exoticoptions/pagodaoption.hpp" bodystart="60" bodyend="66"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_pagoda_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_pagoda_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>fixingDates</name></member>
-      <member refid="class_quant_lib_1_1_pagoda_option_1_1arguments_1a1a83cf926af6168b44c7a8b7e2b8f297" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>fraction</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_pagoda_option_1_1arguments_1a8bd2adbc296761a89bdd67dba30d466a" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>roof</name></member>
-      <member refid="class_quant_lib_1_1_pagoda_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::PagodaOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

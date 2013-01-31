@@ -108,32 +108,6 @@
 <para>abstract base class for calendar implementations </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1592">
-        <label>Calendar::Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="1594">
-        <label>WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="1592" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1593">
-        <label>OrthodoxImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_orthodox_impl"/>
-        <childnode refid="1592" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" bodystart="61" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Calendar::Impl</scope><name>addedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a1291315ff78a8c6c1d8b21d99e724a2f" prot="public" virt="pure-virtual"><scope>QuantLib::Calendar::Impl</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a5a7ad21cda86451725622b5d32783548" prot="public" virt="pure-virtual"><scope>QuantLib::Calendar::Impl</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" virt="pure-virtual"><scope>QuantLib::Calendar::Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Calendar::Impl</scope><name>removedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Calendar::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

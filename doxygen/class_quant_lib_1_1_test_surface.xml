@@ -43,33 +43,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14005">
-        <label>Surface</label>
-        <link refid="class_quant_lib_1_1_surface"/>
-      </node>
-      <node id="14004">
-        <label>TestSurface</label>
-        <childnode refid="14005" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14007">
-        <label>Surface</label>
-        <link refid="class_quant_lib_1_1_surface"/>
-      </node>
-      <node id="14006">
-        <label>TestSurface</label>
-        <childnode refid="14007" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" bodystart="43" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_test_surface_1af23c215e27dbfa079829dd91616ee4c7" prot="public" virt="non-virtual"><scope>QuantLib::TestSurface</scope><name>domain</name></member>
-      <member refid="class_quant_lib_1_1_test_surface_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::TestSurface</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_surface_1adf9a9acd7daf9d6c50faf9640b3ca938" prot="public" virt="virtual"><scope>QuantLib::TestSurface</scope><name>~Surface</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

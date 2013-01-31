@@ -41,9 +41,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="36" bodyend="-1"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_null_1a10b15a39fff7b4b5e889dc502186253c" prot="public" virt="non-virtual"><scope>QuantLib::Null</scope><name>Null</name></member>
-      <member refid="class_quant_lib_1_1_null_1ae5857c1c44e69902576181d342c6b0cd" prot="public" virt="non-virtual"><scope>QuantLib::Null</scope><name>operator T</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

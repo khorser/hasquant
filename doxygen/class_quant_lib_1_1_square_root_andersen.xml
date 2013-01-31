@@ -386,58 +386,6 @@
     </briefdescription>
     <detaileddescription>
 <para>Displaced diffusion LMM with uncorrelated vol process. Called &quot;Shifted BGM&quot; with Heston vol by Brace in &quot;Engineering BGM.&quot; Vol process is an external input. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="13336">
-        <label>SquareRootAndersen</label>
-        <link refid="class_quant_lib_1_1_square_root_andersen"/>
-        <childnode refid="13337" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13337">
-        <label>MarketModelVolProcess</label>
-        <link refid="class_quant_lib_1_1_market_model_vol_process"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13338">
-        <label>SquareRootAndersen</label>
-        <link refid="class_quant_lib_1_1_square_root_andersen"/>
-        <childnode refid="13339" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13339">
-        <label>MarketModelVolProcess</label>
-        <link refid="class_quant_lib_1_1_market_model_vol_process"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/evolvers/volprocesses/squarerootandersen.hpp" bodystart="34" bodyend="85"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a0cd1da9c234a65843ed1783da733f913" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>currentStep_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a556f65df522c6382c53665089d2a8de7" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>DoOneSubStep</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a458824c1c9a6494e88e52b5574f78788" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1abf3d7bbf336195dbe2ec1a8d811cfd2d" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>eMinuskDt_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a0c2c8b8d85c2ef2a8ea5afb1855a7bd7" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>epsilon_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a9fd062c3257b97efb131dd9a0c168a38" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>k_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a61d017960d55f63ae47efe0cafdef517" prot="public" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>MarketModelVolProcess</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1aea9ac6ded607172edc58b33120d49305" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>nextPath</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a790819874b2d07cfe050f88b7986775d" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>nextstep</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a700d068edb6482e7e012d396979c5930" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>numberStateVariables</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a6d83557adbc933ab37b96a2bf545cb30" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>numberSteps</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1af39cdac72a14ae54ca665f43a171b9de" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>numberSubSteps_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a103e9d2baa21eb3cc06a52a59068519b" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>PsiC_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1af430590f474daf10e714401cfde97440" prot="public" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>SquareRootAndersen</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a39556d0cb670ff0150ac0bb6658f178a" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>state_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a3483b4e6c56f73fd3604d6e70e27300d" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>stateVariables</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1add0737fe4f812e1669a809fdfd35345c" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>stepSd</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1aa66aa849f6624f3fb0765ae7265120a0" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>subStep_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a5f315773f95ca1592e577e6e4536cd33" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>v0_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a71178b2c04ebe21b50e734c362ecd083" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>v_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1aa7c096d1e12c20cfa755c0b3b033537a" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>variatesPerStep</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a6443ad2e3b468ce174b1703314214a42" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>vPath_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a9f487a5c26e28c66af672d3543ab3761" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>w1_</name></member>
-      <member refid="class_quant_lib_1_1_square_root_andersen_1a578becc7be6609588bbd951de5e0d53d" prot="private" virt="non-virtual"><scope>QuantLib::SquareRootAndersen</scope><name>w2_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_vol_process_1a0d022be0cc10ca0e82cc3e3d98bea81f" prot="public" virt="virtual"><scope>QuantLib::SquareRootAndersen</scope><name>~MarketModelVolProcess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

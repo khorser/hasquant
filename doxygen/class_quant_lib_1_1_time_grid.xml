@@ -393,31 +393,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000069"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>what was the rationale for limiting the grid to positive times? Investigate and see whether we can use it for negative ones as well. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timegrid.hpp" bodystart="40" bodyend="171"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_time_grid_1aa4d3cd421e9f1c91305810e102bc4995" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>at</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a881f8a7c6ad4ed301617230cf4039c7b" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>back</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1aa4b02d4f1a8500fb07a551069060709f" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>begin</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a5a60444b80bb7a1d3734ee79422ee396" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>closestIndex</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1af91c3447448db0d4079999605b339d44" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>closestTime</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1afcfad2d03bbca304a497bd327827a3ae" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>const_iterator</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a33a951e006aff3625c156397cad65672" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>const_reverse_iterator</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ac66ca8c21371cb1d3ec2be1024d24e46" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>dt</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a2d4469cea4b7a580aa23f08c62603745" prot="private" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a350132543d80a1c1e5be844e6d2878ea" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>end</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a1fadbd48b1c0f232cc0dc0183642a104" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>front</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a6bd298263e48ea6d251ff1a26dd8d8c6" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>index</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ac6ef9fb94702478c6e0e8573d1220e78" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>mandatoryTimes</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a07e6a1db7b4a86f9bbe6ff699a5e7e01" prot="private" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>mandatoryTimes_</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ae0a3b3aaac87396ddb204d784f4b84cf" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>operator[]</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a04886aa70c34d66738e78bf70c675e66" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>rbegin</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>rend</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1ae0640f1cc45cab42c4dcb56237123a18" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>TimeGrid</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a5283e1e556c13bf0998a74edbe8fd3c3" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>TimeGrid</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a2191bc528680c801cb7a150b9a3ba3d2" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>TimeGrid</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a53c316a9745ce6a633ebbb09f2ce8ea7" prot="public" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>TimeGrid</name></member>
-      <member refid="class_quant_lib_1_1_time_grid_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::TimeGrid</scope><name>times_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

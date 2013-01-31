@@ -602,57 +602,6 @@
 <para>Amount of a commodity. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="12561">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="12560">
-        <label>Quantity</label>
-        <link refid="class_quant_lib_1_1_quantity"/>
-        <childnode refid="12561" relation="usage">
-          <edgelabel>baseUnitOfMeasure</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" bodystart="33" bodyend="86"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_quantity_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>amount</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ab369048f79fea55cc2630ce41c8bb2db" prot="private" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>amount_</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107ad49f32edf8f7bca53bf83458dd499f39" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>AutomatedConversion</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a1ec31e9903d7163170721986906bd492" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>baseUnitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107a0724fc0338cd74c96a344432e10e4539" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>BaseUnitOfMeasureConversion</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ab3eb319be4ad31a69bbedb9741f25b5a" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>close</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1aa203374ee10b1dd92948e400472cd1e7" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>close_enough</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a37755c700c75d5810577a5dfbd10446a" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>commodityType</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a792de4e88e29e3df5d753c1590d47d8c" prot="private" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>commodityType_</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1adf033835af8d96a070082ca9ee78ce30" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>conversionType</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>ConversionType</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ac32291f3a839fe01ad0708ab8c53d107a72ed6bc56b64c8b02948e4208525cca7" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>NoConversion</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ab5319972dff38489989679a5a68fe451" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a9d5ba8f98f7b4996e5e9ed2e57ac24cc" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1aad1cad04d3e9719f8335cbb8af7c9d45" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator*</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ac6ab8a2eb848a6b503bc4b5af339b3a8" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator*=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a4d4035572a6b279abe4f76b714ab7a88" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1afbdc8e55dbb347a2dc5f84d6ac93f83c" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1af40ce3b43a237773e2cf6a663c8ac7bd" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a78bc29d2a181c79cb78e53dc8c5f49c3" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ad78fa7a2b2c87df291ea92b30b4ab21e" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1aaf18bd78c2946f12532b9931bb991663" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a3509a450371b66d3cb796cc446679724" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator/</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a3491221669a3f36e3c5ea9f18fdeeef9" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator/</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ae351bfed0880b199af50880ff4e5f0b6" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator/=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a39659ebc093023e8f81571b7ccc7c712" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator&lt;</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ad2b77826ab7bb423eb3117281aca2b72" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1aee765537c0de009828db8d5c1302cd54" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator&lt;=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1abc87975ae73b653638f53313f0f126c0" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a00c4d93468e4de8b1c0ce0d808e0c7b8" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator&gt;</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a5cfb1d15f4c1a39611a6ceada7e76dac" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>operator&gt;=</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a67993ce5cbc759f6eaf3840be5dce96f" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>Quantity</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1ab629670c2ba4783926ca4bf75777fbb9" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>Quantity</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a8b301bfc296be76a82744b152620b9c4" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>rounded</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a04ebdb0779a676fed38122c80f7190e6" prot="public" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>unitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_quantity_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" virt="non-virtual"><scope>QuantLib::Quantity</scope><name>unitOfMeasure_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

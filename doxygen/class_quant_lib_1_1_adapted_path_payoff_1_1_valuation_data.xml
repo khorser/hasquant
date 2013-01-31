@@ -249,20 +249,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="34" bodyend="67"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a1608af2f8dfa82baa65721f3a1257ecf" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>exercises_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ab74a9b33ec948b2a4614894b4e996798" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>forwardTermStructures_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ae3650f31c99da4860d1aba3056cc3e56" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>getAssetValue</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>getYieldTermStructure</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a2d8654d02951034f8d696086cb87b57b" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>maximumTimeRead_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a0a804d35ee0bc871bf757c4db1ca905a" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>numberOfAssets</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a21086d3059a8089eb8ad49f2bdf20038" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>numberOfTimes</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a91378e998645dd53e95d23fc2b901e95" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>path_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ab8d572f490945a2a251f5435006d0983" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>payments_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a4747e7f3d78af594cb1590bd7d32581e" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>setExerciseData</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ac0c2a2fde164119aa0db6a59c3039999" prot="public" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>setPayoffValue</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a1d32222ae0be0c19a85a7cb37b1253b8" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>states_</name></member>
-      <member refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a8b39cd01b2dfbd7fda397962bcb16932" prot="private" virt="non-virtual"><scope>QuantLib::AdaptedPathPayoff::ValuationData</scope><name>ValuationData</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

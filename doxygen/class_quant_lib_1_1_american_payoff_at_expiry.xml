@@ -370,33 +370,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000049"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>calculate greeks </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/americanpayoffatexpiry.hpp" bodystart="33" bodyend="60"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a96c0f11fbeced8f51ee45a495d97e621" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>alpha_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1aaaa5720a044a2da44d000c6f3d5178b9" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>AmericanPayoffAtExpiry</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a6483291df5e2a5a0d80b22cf68a96750" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>beta_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1acf2aa28a8fcd6f66c0d3e49d019e7a6d" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>cum_d1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a39a065eac6adb9f4b219476d8c0d7996" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>cum_d2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1aeb53f7624e898bd863b63f4f1456420b" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>D1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1af4a5645e6b8741c3da46581b94693438" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>D2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a09bf58c29a716d125bd5a0ef81422697" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>DalphaDd1_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1af1e110eae91fab98ae1a7af92a2b2ff2" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>DbetaDd2_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1ab7d02fd5d685000f5043ca7de4e20386" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>dividendDiscount_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1ac1cf3296c83d8cde3e794018de4c3470" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>DKDstrike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a433beb006c85c4ce7eb801559f157c83" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>DXDstrike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1affac1323e1a6750194a934420e4c8489" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>DYDstrike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a6080532cd8596049370f5002b384806a" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>forward_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1aa42afe84a98eee8702bd363d0ca44d7d" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>inTheMoney_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a629e5965bc4384a1ecaa02f7dd40371f" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>K_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a3f9f8a52c6032fa1654ffb09a3a08655" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>log_H_S_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a2a9908eb5b292575c98ce43a28caf45a" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>mu_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1ad368d415c7aa16fe7d97d156ecb70bff" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>spot_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1ae2772c4dc7dc87e946c2d53f7be8673f" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>stdDev_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1af4df09cd4cbe06f6558dc5777c23e106" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a24129c87c49238b3cfb21fe9478f0a07" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>variance_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1a495d7956053f82f3c199fce368666905" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>X_</name></member>
-      <member refid="class_quant_lib_1_1_american_payoff_at_expiry_1aa6e684030837a8a8a50476e7a12fc9f1" prot="private" virt="non-virtual"><scope>QuantLib::AmericanPayoffAtExpiry</scope><name>Y_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

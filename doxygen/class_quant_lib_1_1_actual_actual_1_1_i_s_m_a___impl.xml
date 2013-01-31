@@ -51,34 +51,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="63">
-        <label>ActualActual::ISMA_Impl</label>
-        <childnode refid="64" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="64">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="65">
-        <label>ActualActual::ISMA_Impl</label>
-        <childnode refid="66" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="66">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="55" bodyend="64"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" virt="virtual"><scope>QuantLib::ActualActual::ISMA_Impl</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_actual_actual_1_1_i_s_m_a___impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::ActualActual::ISMA_Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_actual_actual_1_1_i_s_m_a___impl_1a787d1463c2150cf4c421bacedeed4843" prot="public" virt="non-virtual"><scope>QuantLib::ActualActual::ISMA_Impl</scope><name>yearFraction</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::ActualActual::ISMA_Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

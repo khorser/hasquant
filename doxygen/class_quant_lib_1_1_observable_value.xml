@@ -169,17 +169,5 @@
 <para>Observers can be registered with instances of this class so that they are notified when a different value is assigned to such instances. Client code can copy the contained value or pass it to functions via implicit conversion. <simplesect kind="note"><para>it is not possible to call non-const method on the returned value. This is by design, as this possibility would necessarily bypass the notification code; client code should modify the value via re-assignment instead. </para></simplesect>
 </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/observablevalue.hpp" bodystart="42" bodyend="60"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_observable_value_1a05bc7a91ca8a88664c49a458898986bf" prot="private" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>observable_</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1a24ed879449408e93d4547711f1f2c10a" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>ObservableValue</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1aaa3f054c252719bddecc285e933ff8e6" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>ObservableValue</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1a42ab810bc2f7420b063ac50e8236728a" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>ObservableValue</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1ac0b3ed61a44036fb7b305892a1546385" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>operator boost::shared_ptr&lt; Observable &gt;</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1ae5857c1c44e69902576181d342c6b0cd" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>operator T</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1aceb7a715070cd34af75b73d97a8b6f7e" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1a8df11cf784dbdc9fe0910d9fdc35c754" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1a20f4a96fd8932e0b4d89c65f95991bc9" prot="public" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_observable_value_1ae496c0f6edafccdab7ef2e2b9d0c7e03" prot="private" virt="non-virtual"><scope>QuantLib::ObservableValue</scope><name>value_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -55,47 +55,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13645">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_year_on_year_inflation_swap_1_1arguments"/>
-        <childnode refid="13640" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13641">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_asset_swap_1_1arguments"/>
-        <childnode refid="13640" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13642">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments"/>
-        <childnode refid="13640" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13644">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_swaption_1_1arguments"/>
-        <childnode refid="13643" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13640">
-        <label>Swap::arguments</label>
-      </node>
-      <node id="13643">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_vanilla_swap_1_1arguments"/>
-        <childnode refid="13640" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/swap.hpp" bodystart="117" bodyend="122"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" virt="non-virtual"><scope>QuantLib::Swap::arguments</scope><name>legs</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" virt="non-virtual"><scope>QuantLib::Swap::arguments</scope><name>payer</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::Swap::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::Swap::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

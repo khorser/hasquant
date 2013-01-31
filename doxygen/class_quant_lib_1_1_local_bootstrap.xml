@@ -150,16 +150,5 @@
     <detaileddescription>
 <para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (<ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref>) the input term structure is solved on a number of market instruments which are passed as a vector of handles to <ref refid="class_quant_lib_1_1_bootstrap_helper" kindref="compound">BootstrapHelper</ref> instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the <ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref> class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="86" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="86" bodyend="100"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1a2e33aee3148dccfadec4cc0a83b10179" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>forcePositive_</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>Interpolator</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1af581ddd45305ac7377fbe85856952886" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>LocalBootstrap</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1aaafa151c3c244b107a148e67b39cdc61" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>localisation_</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>setup</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1ad346897f534c947dcc4c1b0259681ce8" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>Traits</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1aa1c2b6a55e098a66c64ac699025eda08" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>ts_</name></member>
-      <member refid="class_quant_lib_1_1_local_bootstrap_1ae7e37a0cd72e79fc76ff937158c608b6" prot="private" virt="non-virtual"><scope>QuantLib::LocalBootstrap</scope><name>validCurve_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

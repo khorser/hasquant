@@ -273,46 +273,6 @@
 <para>exchange-rate repository </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000002"><xreftitle>Tests</xreftitle><xrefdescription><para>lookup of direct, triangulated, and derived exchange rates is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="5372">
-        <label>Singleton&lt; ExchangeRateManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="5371">
-        <label>ExchangeRateManager</label>
-        <link refid="class_quant_lib_1_1_exchange_rate_manager"/>
-        <childnode refid="5372" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5374">
-        <label>Singleton&lt; ExchangeRateManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-      <node id="5373">
-        <label>ExchangeRateManager</label>
-        <link refid="class_quant_lib_1_1_exchange_rate_manager"/>
-        <childnode refid="5374" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="40" bodyend="97"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a06d8b6a35265988b53450aeab76d5745" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a8a0cc1e9b866b2247a8f128ae6d409e2" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>addKnownRates</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>clear</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1aa43c229409a4aae00ad820c73bb3fa39" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a4add30282237d286a3ab9a35c2c47981" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>directLookup</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a51c0f2bad175c59aa21e992e27ef9f9b" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>ExchangeRateManager</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1abd825baf4477624068bde2e31f9d2bb5" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>fetch</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1ad3ebd85b2257bdcc432b30e2b740b12f" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>hash</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a9b555fadce4abae16787393506e7ac5a" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>hashes</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a4f348b6a0fa3436769f8d97bb5a205d2" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>Key</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1a093a0fb71cc0f5e543d1e5a29f265da2" prot="public" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>lookup</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>Singleton</name></member>
-      <member refid="class_quant_lib_1_1_exchange_rate_manager_1aadb7f226c353646e96490fefea15d4e1" prot="private" virt="non-virtual"><scope>QuantLib::ExchangeRateManager</scope><name>smartLookup</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

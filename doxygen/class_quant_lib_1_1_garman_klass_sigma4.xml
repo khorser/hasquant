@@ -23,60 +23,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="148" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="147" bodyend="148"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_sigma4_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real calculatePoint</definition>
-        <argsstring>(const IntervalPrice &amp;p)</argsstring>
-        <name>calculatePoint</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &amp;</type>
-          <declname>p</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="150" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="150" bodyend="157"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6907">
-        <label>GarmanKlassAbstract</label>
-        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
-      </node>
-      <node id="6906">
-        <label>GarmanKlassSigma4</label>
-        <childnode refid="6907" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6909">
-        <label>GarmanKlassAbstract</label>
-        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
-      </node>
-      <node id="6908">
-        <label>GarmanKlassSigma4</label>
-        <childnode refid="6909" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="144" bodyend="158"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual" ambiguityscope="QuantLib::LocalVolatilityEstimator::"><scope>QuantLib::GarmanKlassSigma4</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_sigma4_1a42b6adf4a0a568d3673b7da4abfa3849" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>calculatePoint</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>GarmanKlassAbstract</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_sigma4_1a4c9e7c761121eded0006f515a96be566" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>GarmanKlassSigma4</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_abstract_1a685ec69bc8fa930e820390e5d34b06f1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>yearFraction_</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::GarmanKlassSigma4</scope><name>~LocalVolatilityEstimator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

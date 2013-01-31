@@ -40,8 +40,5 @@
    The Bernstein polynomials \form#168 are defined as
 </verbatim></para><para><formula id="169">\[ B_{i,n}(x) \equiv \left( \begin{array}{c} n \\ i \end{array} \right) x^i (1-x)^{n-i} \]</formula> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/bernsteinpolynomial.hpp" bodystart="45" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bernstein_polynomial_1a3711a2d3540e80eff0b2ceae5e3969c7" prot="public" virt="non-virtual"><scope>QuantLib::BernsteinPolynomial</scope><name>get</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

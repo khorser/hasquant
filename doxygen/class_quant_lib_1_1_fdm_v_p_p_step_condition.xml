@@ -344,50 +344,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6202">
-        <label>FdmVPPStepCondition</label>
-        <childnode refid="6203" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6203">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6204">
-        <label>FdmVPPStepCondition</label>
-        <childnode refid="6205" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6205">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmvppstepcondition.hpp" bodystart="38" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a670c4c1cfaff8bb46b1cfd39c79d1b8e" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>carbonPrice_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a45edd93c5f47f69c7b548e77bf6e8be8" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>changeState</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a52e3691417bceefcc489782cd53fa03e" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>evolve</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1abf8a75ac0bd22d6f661577aea9131c21" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>evolveAtPMax</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a670c8ffacc7790bc82030aaef1d871f1" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>evolveAtPMin</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a98c39f75c9930b4972ddff8ae1507a30" prot="public" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>FdmVPPStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a70b22468747b8b9e61f7dd273fa957ac" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>gasPrice_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ab6ee6ec5266ae8b1040cb8cf46afc66f" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>heatRate_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ada99e5388b503fa12e045c2060aa9475" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>pMax_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1aee06cd02341796b9e83ede8be2ad0ee2" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>pMin_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a84287b044e79aa45bdcc598b93eacbd1" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>sparkSpreadPrice_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ad85e46c0c1e963f423e0a72082a05994" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>startUpFixCost_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1af2411cd32232caa591bd390c8b5b03eb" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>startUpFuel_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1a7de2e03d2f2654a504f17cd726ca7aaa" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>stateDirection_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ac8a0a3266983be69d3be316cee347456" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>stateEvolveFcts_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1ab06b54dddf49030f931b40aa717b3fa9" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>tMinDown_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_v_p_p_step_condition_1acf629de0b7ded06172785e50f2c0ecef" prot="private" virt="non-virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>tMinUp_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmVPPStepCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

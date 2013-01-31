@@ -139,49 +139,6 @@
 <codeline><highlight class="normal">Operator<sp/>operator*(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member" tooltip="real number">Real</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;);</highlight></codeline>
 <codeline><highlight class="normal">Operator<sp/>operator-(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Operator&amp;);</highlight></codeline>
 </programlisting></para><para><xrefsect id="todo_1_todo000045"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add Richardson extrapolation</para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="5395">
-        <label>ExplicitEuler&lt; Operator &gt;</label>
-        <link refid="class_quant_lib_1_1_explicit_euler"/>
-        <childnode refid="5396" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5396">
-        <label>MixedScheme&lt; Operator &gt;</label>
-        <link refid="class_quant_lib_1_1_mixed_scheme"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5397">
-        <label>ExplicitEuler&lt; Operator &gt;</label>
-        <link refid="class_quant_lib_1_1_explicit_euler"/>
-        <childnode refid="5398" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5398">
-        <label>MixedScheme&lt; Operator &gt;</label>
-        <link refid="class_quant_lib_1_1_mixed_scheme"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/expliciteuler.hpp" bodystart="66" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_explicit_euler_1ac07e755f1412353806d561469c9ad49f" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>bc_set</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1a5ef2ff2e57a5eb84f1e124859bac8d74" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>bc_type</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1abb48456777566e37b094bb898bafc1a7" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>bcs_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1a9b68be7f0b8097f723468a930f604c39" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>condition_type</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a6be603d8547f31e72817d2aaf219e325" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1ae8554f66409add3f74084a628d27424b" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>ExplicitEuler</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a2dd5907ac54bce1439847d0204c7ca55" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>explicitPart_</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a9345bcefe07d2a311bb4580cf6844223" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>I_</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a70be7cca17d458911d7cb37ac568fa80" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>implicitPart_</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a7ec7f35b9cfc993cd78e13c84ee80f5c" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>L_</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a342497546b70b2f83e90a83be8fd5a45" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>MixedScheme</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1a02ede700df8d04acf392294f6ab090c4" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>operator_type</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>setStep</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>step</name></member>
-      <member refid="class_quant_lib_1_1_mixed_scheme_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_1ab85b62c5cc90bded0075d322e91fd993" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEuler</scope><name>traits</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -365,56 +365,6 @@
     </briefdescription>
     <detaileddescription>
 <para>Pathwise product inverse floater for doing <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> Tested in MarketModels::testInverseFloater() </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9519">
-        <label>MarketModelPathwiseInverseFloater</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater"/>
-        <childnode refid="9520" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9520">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9521">
-        <label>MarketModelPathwiseInverseFloater</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater"/>
-        <childnode refid="9522" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9522">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductinversefloater.hpp" bodystart="42" bodyend="94"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>alreadyDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ad3aae77deea2299a19a323693babc367" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedAccruals_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3c3ba7b225669d05b62322bd6f1c4a97" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedMultipliers_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a2faaf75cde7ca4aaec563d01efddd9a3" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>fixedStrikes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a27ab05f4ebf0871b131b91330353d146" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>floatingAccruals_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a3a4b8ac50f8b84dd64fc7980593bf53a" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>floatingSpreads_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a4db1170620701c092375336c1c0427d7" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>lastIndex_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab780670b50d3d6218b423095121bd887" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>MarketModelPathwiseInverseFloater</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a64a39b19c9c0e793eab7cc04265b2308" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>multiplier_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a8c62f834ee93d2c8dbbb49d9da2cc3e6" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>payer_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a0fa00dfc19817fe667f6a4418f692880" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>paymentTimes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater_1ab82a70566ba2dd36aa0fe6ed2072993c" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>~MarketModelPathwiseInverseFloater</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseInverseFloater</scope><name>~MarketModelPathwiseMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

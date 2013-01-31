@@ -180,42 +180,6 @@
 <para>repository of conversion factors between units of measure </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000004"><xreftitle>Tests</xreftitle><xrefdescription><para>lookup of direct unit of measure conversion is tested. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="14444">
-        <label>UnitOfMeasureConversionManager</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure_conversion_manager"/>
-        <childnode refid="14445" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14445">
-        <label>Singleton&lt; UnitOfMeasureConversionManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14446">
-        <label>UnitOfMeasureConversionManager</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure_conversion_manager"/>
-        <childnode refid="14447" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="14447">
-        <label>Singleton&lt; UnitOfMeasureConversionManager &gt;</label>
-        <link refid="class_quant_lib_1_1_singleton"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" bodystart="36" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a56517d6c0673d0288049e89765057a1d" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1ab8bd4acf8f01123f6c403ed73f7ff225" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>addKnownConversionFactors</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>clear</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1aa48e82ca511331edffe2e5fc82abe507" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a3c44aa73895e93b0a4698cb874aeeec7" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>directLookup</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1ab7455b7e1235d292c444095842349291" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>instance</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1aecec91204ea136d1fd797c0eb4629084" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>lookup</name></member>
-      <member refid="class_quant_lib_1_1_singleton_1a04783ca27b0280a844368faf849c8ddb" prot="protected" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>Singleton</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a316b7556f07ffd394fb29b09564dc381" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>smartLookup</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_manager_1ace5d27c964a5ce6a190b7fa44365362b" prot="private" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversionManager</scope><name>UnitOfMeasureConversionManager</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

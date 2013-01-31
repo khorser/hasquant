@@ -82,21 +82,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/lastfixingquote.hpp" line="50"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_last_fixing_quote_1ab651f48b400b38a7a77a1e5dc0528774" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> &gt;</type>
-        <definition>boost::shared_ptr&lt;Index&gt; index_</definition>
-        <argsstring></argsstring>
-        <name>index_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/lastfixingquote.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/lastfixingquote.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_last_fixing_quote_1a5b3eaf65f6d0b676286d5395c22c369b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -120,76 +105,6 @@
 <para><ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> adapter for the last fixing available of a given <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref>. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8823">
-        <label>LastFixingQuote</label>
-        <link refid="class_quant_lib_1_1_last_fixing_quote"/>
-        <childnode refid="8824" relation="public-inheritance">
-        </childnode>
-        <childnode refid="8826" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8824">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="8825" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8825">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="8826">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="8827">
-        <label>LastFixingQuote</label>
-        <link refid="class_quant_lib_1_1_last_fixing_quote"/>
-        <childnode refid="8828" relation="public-inheritance">
-        </childnode>
-        <childnode refid="8830" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8828">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="8829" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8829">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="8830">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/quotes/lastfixingquote.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/quotes/lastfixingquote.hpp" bodystart="34" bodyend="54"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1a169fbd188bf08207e4bf2034c07a63db" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>index</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1ab651f48b400b38a7a77a1e5dc0528774" prot="protected" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>index_</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>isValid</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1a5b3eaf65f6d0b676286d5395c22c369b" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>LastFixingQuote</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::LastFixingQuote</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::LastFixingQuote</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1a369440e5252bf83983ad708ee439a581" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>referenceDate</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::LastFixingQuote</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_last_fixing_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>~Observer</name></member>
-      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::LastFixingQuote</scope><name>~Quote</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

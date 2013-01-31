@@ -70,34 +70,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="11616">
-        <label>OneDayCounter::Impl</label>
-        <childnode refid="11617" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11617">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="11618">
-        <label>OneDayCounter::Impl</label>
-        <childnode refid="11619" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="11619">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_day_counter_1_1_impl"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/one.hpp" bodystart="35" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_one_day_counter_1_1_impl_1a3b9b190e8748f2ad7cf3e9591ad52a0d" prot="public" virt="non-virtual"><scope>QuantLib::OneDayCounter::Impl</scope><name>dayCount</name></member>
-      <member refid="class_quant_lib_1_1_one_day_counter_1_1_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::OneDayCounter::Impl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_one_day_counter_1_1_impl_1afdb943145310bdefac1cb46ce5fd178c" prot="public" virt="non-virtual"><scope>QuantLib::OneDayCounter::Impl</scope><name>yearFraction</name></member>
-      <member refid="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::OneDayCounter::Impl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

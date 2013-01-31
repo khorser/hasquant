@@ -85,12 +85,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/quantovanillaoption.hpp" bodystart="35" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_quanto_option_results_1af668b46e2ea513bb6df4974bda3203ac" prot="public" virt="non-virtual"><scope>QuantLib::QuantoOptionResults</scope><name>qlambda</name></member>
-      <member refid="class_quant_lib_1_1_quanto_option_results_1ab226971d5d49e64a1612821867989936" prot="public" virt="non-virtual"><scope>QuantLib::QuantoOptionResults</scope><name>qrho</name></member>
-      <member refid="class_quant_lib_1_1_quanto_option_results_1a8650e348397411cd7630c4aea540e30d" prot="public" virt="non-virtual"><scope>QuantLib::QuantoOptionResults</scope><name>QuantoOptionResults</name></member>
-      <member refid="class_quant_lib_1_1_quanto_option_results_1a22b038229e304a87b5ee8e104fc6e0d2" prot="public" virt="non-virtual"><scope>QuantLib::QuantoOptionResults</scope><name>qvega</name></member>
-      <member refid="class_quant_lib_1_1_quanto_option_results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::QuantoOptionResults</scope><name>reset</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

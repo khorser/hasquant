@@ -70,11 +70,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/ranluxuniformrng.hpp" bodystart="60" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_ranlux4_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux4UniformRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_ranlux4_uniform_rng_1afbc9d604c4d03259911a39a27c691786" prot="private" virt="non-virtual"><scope>QuantLib::Ranlux4UniformRng</scope><name>ranlux4_</name></member>
-      <member refid="class_quant_lib_1_1_ranlux4_uniform_rng_1a48f0cf779ed1b892b0eae935e9187e46" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux4UniformRng</scope><name>Ranlux4UniformRng</name></member>
-      <member refid="class_quant_lib_1_1_ranlux4_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::Ranlux4UniformRng</scope><name>sample_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

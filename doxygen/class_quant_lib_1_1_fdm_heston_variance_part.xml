@@ -2,47 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_heston_variance_part" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonVariancePart</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_variance_part_1a5fcf2c1bf3e4eb77a1fdccadfcdb8d75" prot="protected" static="no" mutable="no">
-        <type>const TripleBandLinearOp</type>
-        <definition>const TripleBandLinearOp dyMap_</definition>
-        <argsstring></argsstring>
-        <name>dyMap_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="71" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_variance_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" static="no" mutable="no">
-        <type>TripleBandLinearOp</type>
-        <definition>TripleBandLinearOp mapT_</definition>
-        <argsstring></argsstring>
-        <name>mapT_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_fdm_heston_variance_part_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
-        <definition>const boost::shared_ptr&lt;YieldTermStructure&gt; rTS_</definition>
-        <argsstring></argsstring>
-        <name>rTS_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_variance_part_1a3d63b96f77468b46f08070f78d58e6b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -117,13 +76,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" line="60" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmhestonop.hpp" bodystart="60" bodyend="75"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a5fcf2c1bf3e4eb77a1fdccadfcdb8d75" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>dyMap_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a3d63b96f77468b46f08070f78d58e6b6" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>FdmHestonVariancePart</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>getMap</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a7ef6b02126b65ea3c6ca28d054c7937e" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>mapT_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="protected" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>rTS_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_heston_variance_part_1a09ba34a55e4c4831735758c26f40172c" prot="public" virt="non-virtual"><scope>QuantLib::FdmHestonVariancePart</scope><name>setTime</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

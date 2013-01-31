@@ -127,69 +127,6 @@
 <para>Integral of a 1-dimensional function using the Gauss quadratures method. </para>    </briefdescription>
     <detaileddescription>
 <para>References: Gauss quadratures and orthogonal polynomials</para><para>G.H. Gloub and J.H. Welsch: Calculation of Gauss quadrature rule. Math. Comput. 23 (1986), 221-230</para><para>&quot;Numerical Recipes in C&quot;, 2nd edition, Press, Teukolsky, Vetterling, Flannery,</para><para><xrefsect id="test_1_test000037"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7004">
-        <label>GaussLegendreIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_legendre_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7003">
-        <label>GaussLaguerreIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_laguerre_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6999">
-        <label>GaussGegenbauerIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_gegenbauer_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7000">
-        <label>GaussHermiteIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hermite_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6998">
-        <label>GaussChebyshevIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_chebyshev_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7001">
-        <label>GaussHyperbolicIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_hyperbolic_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6996">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-      <node id="6997">
-        <label>GaussChebyshev2ndIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_chebyshev2nd_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7002">
-        <label>GaussJacobiIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_jacobi_integration"/>
-        <childnode refid="6996" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="47" bodyend="67"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a26573986379a1661fd23fad2dde2a1de" prot="private" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>w_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>x</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1aa17c3bd9fcf002dcb2dbfb5efc269c8c" prot="private" virt="non-virtual"><scope>QuantLib::GaussianQuadrature</scope><name>x_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

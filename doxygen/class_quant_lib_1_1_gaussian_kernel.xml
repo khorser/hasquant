@@ -124,40 +124,6 @@
 <para>Gaussian kernel function. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6981">
-        <label>KernelFunction</label>
-        <link refid="class_quant_lib_1_1_kernel_function"/>
-      </node>
-      <node id="6980">
-        <label>GaussianKernel</label>
-        <link refid="class_quant_lib_1_1_gaussian_kernel"/>
-        <childnode refid="6981" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6983">
-        <label>KernelFunction</label>
-        <link refid="class_quant_lib_1_1_kernel_function"/>
-      </node>
-      <node id="6982">
-        <label>GaussianKernel</label>
-        <link refid="class_quant_lib_1_1_gaussian_kernel"/>
-        <childnode refid="6983" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/kernelfunctions.hpp" bodystart="44" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1ae08ec8d619e9e0ae0ff9f72551859cb9" prot="private" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>cnd_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1a1ff827eed65218edc219994791061dd2" prot="public" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1a589c757d080f04958842516b5ec50746" prot="public" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>GaussianKernel</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1aab2c61bbb8f4e989140f9c6b3b4bdcba" prot="private" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>nd_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1abea5e47f9dd97fc8da41bbe727d05955" prot="private" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>normFact_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="virtual"><scope>QuantLib::GaussianKernel</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_kernel_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" virt="non-virtual"><scope>QuantLib::GaussianKernel</scope><name>primitive</name></member>
-      <member refid="class_quant_lib_1_1_kernel_function_1a45b5bc5f0e6ad13abc0d53cb235d8cd3" prot="public" virt="virtual"><scope>QuantLib::GaussianKernel</scope><name>~KernelFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

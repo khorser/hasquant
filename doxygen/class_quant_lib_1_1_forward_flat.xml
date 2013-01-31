@@ -73,10 +73,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/forwardflatinterpolation.hpp" bodystart="89" bodyend="98"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_forward_flat_1a288e578670054bd80e88dffe71d28b7b" prot="public" virt="non-virtual"><scope>QuantLib::ForwardFlat</scope><name>global</name></member>
-      <member refid="class_quant_lib_1_1_forward_flat_1a51dd5c56d90da172e213d17a6d74550c" prot="public" virt="non-virtual"><scope>QuantLib::ForwardFlat</scope><name>interpolate</name></member>
-      <member refid="class_quant_lib_1_1_forward_flat_1abe404d63ad88b3b804b458aa23052be5" prot="public" virt="non-virtual"><scope>QuantLib::ForwardFlat</scope><name>requiredPoints</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

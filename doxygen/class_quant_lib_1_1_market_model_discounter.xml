@@ -78,11 +78,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/discounter.hpp" line="31" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/discounter.hpp" bodystart="31" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_discounter_1a3c5bc5e28c4bbd1998cd26b5d449208d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelDiscounter</scope><name>before_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_discounter_1af2ec52c6d9db8f350c28765715b34839" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelDiscounter</scope><name>beforeWeight_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_discounter_1a626cac049fa57705277cb76b1482d628" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelDiscounter</scope><name>MarketModelDiscounter</name></member>
-      <member refid="class_quant_lib_1_1_market_model_discounter_1acd22450856eba24505a46cb25b334c76" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelDiscounter</scope><name>numeraireBonds</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

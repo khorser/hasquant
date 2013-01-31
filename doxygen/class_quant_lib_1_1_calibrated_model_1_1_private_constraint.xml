@@ -27,36 +27,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1627">
-        <label>CalibratedModel::PrivateConstraint</label>
-        <childnode refid="1628" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1628">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1629">
-        <label>CalibratedModel::PrivateConstraint</label>
-        <childnode refid="1630" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1630">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="139" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="139" bodyend="164"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>Constraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1ab9e3f58a83b77084d721adb3ffcf1703" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>PrivateConstraint</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>test</name></member>
-      <member refid="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" virt="non-virtual"><scope>QuantLib::CalibratedModel::PrivateConstraint</scope><name>update</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

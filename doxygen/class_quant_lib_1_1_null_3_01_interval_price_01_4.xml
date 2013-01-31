@@ -37,9 +37,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="110" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="109" bodyend="114"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; IntervalPrice &gt;</scope><name>Null</name></member>
-      <member refid="class_quant_lib_1_1_null_3_01_interval_price_01_4_1a06d1259c9dc4f8799616e2afdd7ecbc8" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; IntervalPrice &gt;</scope><name>operator IntervalPrice</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

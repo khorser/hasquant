@@ -84,12 +84,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepcondition.hpp" bodystart="90" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a57eaae34f0c310c58466ec7d82f0504f" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::PayoffWrapper</scope><name>getValue</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a73cfad8707a6a802108b5bb7e04aca75" prot="private" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::PayoffWrapper</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a7b61d8868e01af8da73c376fd01c1de9" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::PayoffWrapper</scope><name>PayoffWrapper</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_payoff_wrapper_1a6df65165daae2c9a1f576c67a04d2e67" prot="public" virt="non-virtual"><scope>QuantLib::CurveDependentStepCondition::PayoffWrapper</scope><name>PayoffWrapper</name></member>
-      <member refid="class_quant_lib_1_1_curve_dependent_step_condition_1_1_curve_wrapper_1ada5322ace3e6e7194879abfa92bede90" prot="public" virt="virtual"><scope>QuantLib::CurveDependentStepCondition::PayoffWrapper</scope><name>~CurveWrapper</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -466,34 +466,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="37" bodyend="87"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a75afedb1d8ac13a96c01da419ce7215d" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>browse</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1ad40d7f0ec820dbaf0b0d2db600eaf7ce" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>Cube</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a56f11ab139b6aaec03eef124506b385f" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>Cube</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1adf95da11d265098a2bed104f0a6eb7ad" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>Cube</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a1e1ff7fef7a0d36d530009c7658f7ff3" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>expandLayers</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1ad1f824c9e8d3080be0bd4813d9db421b" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>extrapolation_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a5098af519b100517999188651e0db7d2" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>interpolators_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a546c8fcae184605f6d18da6ba73d58f5" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>nLayers_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1ae3e28ddfdfa35dd3a4f46e23260d0640" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a978515afd4ba5ff025f47d83737362c9" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a2b2cd0d482d7b5433104839b52ad9668" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>optionDates</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a0319ec980b7cb2681d52e037d3a53b42" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>optionDates_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a64607520dc485a5e2d0d22968393c9d8" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>optionTimes</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a8c3d11bba712822cbb27ad9fbe496fcb" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>optionTimes_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a061647a8c1a70e7876206f6de08fb44f" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>points</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a1e63d15f139fc82ea12b0540028f3964" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>points_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a77ceea7733922a5aa7efe9042f6ea0c4" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>setElement</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a6987584b867f6c78981a818a6f88bf10" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>setLayer</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a29192b59e9341cafc39ca8f518d78e3b" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>setPoint</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a537c6e49a4c015038b59f5fdc730e1e5" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>setPoints</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a7e58166e4cd0ffb27d6e5e3edc09fad5" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>swapLengths</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a4901b47448f53baf1cba3704594d31eb" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>swapLengths_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1adf1466388fd71f68aefe316d9e01f51f" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>swapTenors</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a2f900b306a7b4dcb1b0dc50a6cf89c5e" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>swapTenors_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1af6ab8c73eb8bdd4f65ab5bc7a83e0f4f" prot="private" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>transposedPoints_</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1a17260005148c0ed4ac57d2ecf6b55de6" prot="public" virt="non-virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>updateInterpolators</name></member>
-      <member refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube_1aa27ee5d926922a47ddf603ed91997a28" prot="public" virt="virtual"><scope>QuantLib::SwaptionVolCube1::Cube</scope><name>~Cube</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

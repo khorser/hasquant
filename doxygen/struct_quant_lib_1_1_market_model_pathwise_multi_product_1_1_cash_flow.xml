@@ -35,9 +35,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" bodystart="56" bodyend="59"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_market_model_pathwise_multi_product_1_1_cash_flow_1a7960bebf5b1fdea48392a1ce016cc6c3" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct::CashFlow</scope><name>amount</name></member>
-      <member refid="struct_quant_lib_1_1_market_model_pathwise_multi_product_1_1_cash_flow_1a68cc2038eb65e95d23e948581a8d0515" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct::CashFlow</scope><name>timeIndex</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

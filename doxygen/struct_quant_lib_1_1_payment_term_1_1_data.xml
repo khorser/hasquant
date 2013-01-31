@@ -91,25 +91,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="12063">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-      <node id="12062">
-        <label>PaymentTerm::Data</label>
-        <childnode refid="12063" relation="usage">
-          <edgelabel>calendar</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="56" bodyend="64"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_payment_term_1_1_data_1a78752433f4fe4a459158fefc086335e5" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm::Data</scope><name>calendar</name></member>
-      <member refid="struct_quant_lib_1_1_payment_term_1_1_data_1acab908bba0f709e62dfb9fd9116b0f75" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm::Data</scope><name>Data</name></member>
-      <member refid="struct_quant_lib_1_1_payment_term_1_1_data_1a7ec11d2afdbee6ed91f40584c319f923" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm::Data</scope><name>eventType</name></member>
-      <member refid="struct_quant_lib_1_1_payment_term_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm::Data</scope><name>name</name></member>
-      <member refid="struct_quant_lib_1_1_payment_term_1_1_data_1ad574a26f94e97270ded97bff02bdaf14" prot="public" virt="non-virtual"><scope>QuantLib::PaymentTerm::Data</scope><name>offsetDays</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

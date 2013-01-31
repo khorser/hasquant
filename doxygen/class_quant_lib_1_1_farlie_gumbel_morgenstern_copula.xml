@@ -64,10 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/farliegumbelmorgensterncopula.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/farliegumbelmorgensterncopula.hpp" bodystart="33" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_1aea61b45d41505b179d5c78be9164396a" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopula</scope><name>FarlieGumbelMorgensternCopula</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopula</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_farlie_gumbel_morgenstern_copula_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::FarlieGumbelMorgensternCopula</scope><name>theta_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

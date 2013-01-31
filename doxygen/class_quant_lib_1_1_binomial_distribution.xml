@@ -90,12 +90,5 @@
     <detaileddescription>
 <para>formula here ... Given an integer k it returns its probability in a Binomial distribution with parameters p and n. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/binomialdistribution.hpp" bodystart="51" bodyend="59"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_binomial_distribution_1a57cbbf81702f9ae88052a82796767503" prot="public" virt="non-virtual"><scope>QuantLib::BinomialDistribution</scope><name>BinomialDistribution</name></member>
-      <member refid="class_quant_lib_1_1_binomial_distribution_1ad6d284158e47d2a26cc417578e7e61ec" prot="private" virt="non-virtual"><scope>QuantLib::BinomialDistribution</scope><name>logOneMinusP_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_distribution_1aa6f730f107dec19441df8ce521ab3f61" prot="private" virt="non-virtual"><scope>QuantLib::BinomialDistribution</scope><name>logP_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_distribution_1ab045fb029116c7ba3b737aa0460b8966" prot="private" virt="non-virtual"><scope>QuantLib::BinomialDistribution</scope><name>n_</name></member>
-      <member refid="class_quant_lib_1_1_binomial_distribution_1a860deba0e182257980641badf4554fde" prot="public" virt="non-virtual"><scope>QuantLib::BinomialDistribution</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

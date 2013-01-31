@@ -47,23 +47,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="900">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="899">
-        <label>BiCGStabResult</label>
-        <childnode refid="900" relation="usage">
-          <edgelabel>x</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/bicgstab.hpp" bodystart="33" bodyend="37"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_bi_c_g_stab_result_1ae00ecbfbe7c0f2b69c514b9e70fe8c04" prot="public" virt="non-virtual"><scope>QuantLib::BiCGStabResult</scope><name>error</name></member>
-      <member refid="struct_quant_lib_1_1_bi_c_g_stab_result_1a060bce7b59766d77d03e4e16aff2f312" prot="public" virt="non-virtual"><scope>QuantLib::BiCGStabResult</scope><name>iterations</name></member>
-      <member refid="struct_quant_lib_1_1_bi_c_g_stab_result_1a877142897d25b48b1ab91cde586ab339" prot="public" virt="non-virtual"><scope>QuantLib::BiCGStabResult</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -64,11 +64,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="61" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>create</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1a1b1bfa9d112cb3e0f5ad0969ca57c4b2" prot="public" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>MTBrownianGeneratorFactory</name></member>
-      <member refid="class_quant_lib_1_1_m_t_brownian_generator_factory_1a39818330032075067999645be285873f" prot="private" virt="non-virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" virt="virtual"><scope>QuantLib::MTBrownianGeneratorFactory</scope><name>~BrownianGeneratorFactory</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

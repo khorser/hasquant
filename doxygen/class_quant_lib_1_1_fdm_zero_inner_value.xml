@@ -48,10 +48,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="81" bodyend="85"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_zero_inner_value_1ace64998c5d06f06e9b4d7dc754901d28" prot="public" virt="non-virtual"><scope>QuantLib::FdmZeroInnerValue</scope><name>avgInnerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_zero_inner_value_1a3763df815f0fe4f4f7119e0210e04e7a" prot="public" virt="non-virtual"><scope>QuantLib::FdmZeroInnerValue</scope><name>innerValue</name></member>
-      <member refid="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" virt="virtual"><scope>QuantLib::FdmZeroInnerValue</scope><name>~FdmInnerValueCalculator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

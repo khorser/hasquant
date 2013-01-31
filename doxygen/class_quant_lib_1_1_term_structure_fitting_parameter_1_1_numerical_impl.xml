@@ -151,40 +151,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13997">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="13996">
-        <label>TermStructureFittingParameter::NumericalImpl</label>
-        <childnode refid="13997" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13999">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_parameter_1_1_impl"/>
-      </node>
-      <node id="13998">
-        <label>TermStructureFittingParameter::NumericalImpl</label>
-        <childnode refid="13999" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="155" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="155" bodyend="185"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1add642d92bb037c50adc668ef8b0561b2" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>change</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a426c8d7c1c4fddc9256055429235ad21" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>NumericalImpl</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a152ddc5903a4188646cc4131c4665b5d" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>set</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1aba911fdc1eafb640ce92861b77b04252" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>termStructure</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1accfb2e6f0d4ec3fb0789e250aa3295ca" prot="private" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>termStructure_</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1a63b1ac1fe6074fcd9789119e547d4812" prot="private" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>times_</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ae8b7f7095eb4359d77e946884117e3c2" prot="public" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_term_structure_fitting_parameter_1_1_numerical_impl_1ab7762b4e5b79275c37fa24b9f8be1579" prot="private" virt="non-virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>values_</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::TermStructureFittingParameter::NumericalImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

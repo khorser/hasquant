@@ -184,19 +184,5 @@
     <detaileddescription>
 <para>Given a collection of vectors, w_i, find a collection of vectors x_i such that x_i is orthogonal to w_j for i != j, and &lt;x_i, w_i&gt; = &lt;w_i, w_i&gt;</para><para>This is done by performing GramSchmidt on the other vectors and then projecting onto the orthogonal space.</para><para>This class is tested in <verbatim>MatricesTest::testOrthogonalProjection();</verbatim> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/matrixutilities/basisincompleteordered.hpp" bodystart="54" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a101ac2fd4059964925dda5d18055f99c" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>dimension_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1ac5be0c8a21bbee2af6591f724b6844af" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>GetVector</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1acc2404874721984234e7fcd0c519e53e" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>multiplierCutoff_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a82d51c6995f0cb0a31121dacb90e97b2" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>numberValidVectors</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1ab599f8abb5ed9509599f7814fb5b691b" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>numberValidVectors_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a17f8114b1af082ec68059ded2d22fc00" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>numberVectors_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a702d29e63c01ba91425f24e22ac1d4ce" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>originalVectors_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a2bc4e08445c6ad8b09eff827e1984e24" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>OrthogonalProjections</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a27b3d8210f40a77a4fae9bff353ef7f4" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>orthoNormalizedVectors_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1ac09d94c45981b32c2ec345c11025fd1c" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>projectedVectors_</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1a38d1e02dc5c49efcafa72743723cfb13" prot="public" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>validVectors</name></member>
-      <member refid="class_quant_lib_1_1_orthogonal_projections_1abc310f75991fc8082434ec78e011c919" prot="private" virt="non-virtual"><scope>QuantLib::OrthogonalProjections</scope><name>validVectors_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

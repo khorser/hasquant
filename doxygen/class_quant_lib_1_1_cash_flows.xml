@@ -1480,50 +1480,5 @@
     <detaileddescription>
 <para><xrefsect id="todo_1_todo000001"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>add tests </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/cashflows.hpp" bodystart="41" bodyend="403"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_cash_flows_1aeff3590f9dcd736c6813415fecb3264e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualDays</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1add502f32c2b28eaef015581725c16362" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualEndDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1af769ffc5d74836d41dbf61afc5fd48d4" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualPeriod</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a327c021eb612eda92e4bf006c5d106be" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accrualStartDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ad847f5760463d3f239ac388287f1b13f" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedAmount</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ac5e20d3c2a37e64e2d191e9a7718d690" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedDays</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a4fa213c8cf4de8362071823155d2698b" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>accruedPeriod</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ae3aa49c05366fc3a840988b8d44e8a94" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>atmRate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a954517447441b8adc1e91a510fc687da" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>basisPointValue</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a62e34cfbad021c887ca517d30f76a266" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>basisPointValue</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a9b11008b6df9721a340a1844e96c1385" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1af9cc5fe1103f97e4471922c6069307d1" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1af60dbf95c35352d257f55588716cb12a" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>bps</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a48f48014b35fc99fd49086a6ce8d0421" prot="private" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>CashFlows</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ad9756e7e5aef49e2b9eb7f8cc9a348a8" prot="private" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>CashFlows</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a72621ac467ab4e7a3c53ab6b8f5d4d71" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>convexity</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a1a41eee8556d9ae0771a47ce1eef65a9" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>convexity</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a64640dcb0a9d2c0bd9d914e03450b6e0" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>duration</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1af70bbcf5337066d9cd6848020bf8b7e7" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>duration</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1aba88d0e60cebe7088f340357e48dd88d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>isExpired</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a356f8aea0022acb2e628dfce5cf47e14" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>maturityDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a812cc01c85ff1bc09e4edb798a92ae5b" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlow</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a49d7390ee1e3377d916ea425735b3873" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlowAmount</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a835348c16d1009ffe4e50e50929fc0dd" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCashFlowDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1aef37790de2210df61dbe752914e61762" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nextCouponRate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a709490e6c0ffead2b28bdbeb8c0ec0a0" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>nominal</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a935030a697b942fe432e020706a21fc8" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a5cf9ce7f6f791493a5c54b21a766d463" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a58ac4a7022b3f7803e3262df1291eed1" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a043fe6f5dd5dc0ad42b453e9fbafabd5" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npv</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a8ba8a6673783d6c60a6869f9a40432fd" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>npvbps</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ac0113b119a8c4c90ee57b4abf64bda0d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlow</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a97719a1d5eb607d221bebe79efbb1671" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlowAmount</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1ae97cfc1d7c084bc7ff0660b082722352" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCashFlowDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1adf7c17d0ea199777ce5703e0d100d3b8" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>previousCouponRate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a7ae9cbcf2cfb504c8941a6ddc7275c16" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>referencePeriodEnd</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a1a2f3b3519e1df56006aaf605de8db4d" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>referencePeriodStart</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a3393c4e4a7533490b540d49466594f24" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>startDate</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a5fcebd9dacabca6a125a48a97dd3c0b3" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yield</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a24ff333a91ccb3fcc3928f921d2bc4c3" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yieldValueBasisPoint</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a9fe83b29ebedc44cb8ca72935df11a2e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>yieldValueBasisPoint</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1a1a2af0e4ab0d785e046b89e8a9b2ca97" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>zSpread</name></member>
-      <member refid="class_quant_lib_1_1_cash_flows_1afb5712af994c2bb3890466253ff2da4e" prot="public" virt="non-virtual"><scope>QuantLib::CashFlows</scope><name>zSpread</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

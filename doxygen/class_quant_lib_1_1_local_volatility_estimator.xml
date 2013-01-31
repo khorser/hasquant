@@ -47,27 +47,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="9175">
-        <label>GarmanKlassAbstract&lt; IntervalPrice &gt;</label>
-        <link refid="class_quant_lib_1_1_garman_klass_abstract"/>
-        <childnode refid="9174" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9176">
-        <label>SimpleLocalEstimator&lt; Real &gt;</label>
-        <link refid="class_quant_lib_1_1_simple_local_estimator"/>
-        <childnode refid="9174" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9174">
-        <label>LocalVolatilityEstimator&lt; T &gt;</label>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/volatilitymodel.hpp" bodystart="34" bodyend="39"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" virt="pure-virtual"><scope>QuantLib::LocalVolatilityEstimator</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" virt="virtual"><scope>QuantLib::LocalVolatilityEstimator</scope><name>~LocalVolatilityEstimator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

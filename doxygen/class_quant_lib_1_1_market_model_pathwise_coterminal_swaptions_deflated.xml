@@ -249,49 +249,6 @@
     </briefdescription>
     <detaileddescription>
 <para>Main use is to test market pathwise vegas. The swaptions are payers and co-terminal. The class is tested in TestPathwiseVegas by running against the numerical version below. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9509">
-        <label>MarketModelPathwiseCoterminalSwaptionsDeflated</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated"/>
-        <childnode refid="9510" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9510">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9511">
-        <label>MarketModelPathwiseCoterminalSwaptionsDeflated</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated"/>
-        <childnode refid="9512" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9512">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductswaption.hpp" bodystart="40" bodyend="80"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>alreadyDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a16c35eb39b59cd0f22fb74f03330ed2f" prot="public" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>MarketModelPathwiseCoterminalSwaptionsDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a9a3b601978c2d9eace2a43cb7984605d" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>numberRates_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1adfdcd5dfe44a759ebc2f8467090eecdd" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>rateTimes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ad66c1346977a31e4d6f3aa5c42d20fca" prot="private" virt="non-virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>strikes_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated_1ade0687278a8477205ea14f019af4bd17" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>~MarketModelPathwiseCoterminalSwaptionsDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseCoterminalSwaptionsDeflated</scope><name>~MarketModelPathwiseMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

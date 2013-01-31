@@ -48,10 +48,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="42" bodyend="48"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap_1a93c98cea283aa6d8bd047b968fd86970" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian::Cap</scope><name>endIndex_</name></member>
-      <member refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap_1a202147612522384bf58d92f294a8cedb" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian::Cap</scope><name>startIndex_</name></member>
-      <member refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap_1af4df09cd4cbe06f6558dc5777c23e106" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian::Cap</scope><name>strike_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

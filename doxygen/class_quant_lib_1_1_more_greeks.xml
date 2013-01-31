@@ -91,27 +91,6 @@
 <para>more additional option results </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10010">
-        <label>MoreGreeks</label>
-        <link refid="class_quant_lib_1_1_more_greeks"/>
-      </node>
-      <node id="10011">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_one_asset_option_1_1results"/>
-        <childnode refid="10010" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/option.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/option.hpp" bodystart="82" bodyend="90"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_more_greeks_1a8e14062b135dfc72b01a9686ae83b7cb" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>deltaForward</name></member>
-      <member refid="class_quant_lib_1_1_more_greeks_1a772bf8dd12659167e62e44b43cc71c9e" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>elasticity</name></member>
-      <member refid="class_quant_lib_1_1_more_greeks_1ade07d7d6e2dd62225dd75988c763ad50" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>itmCashProbability</name></member>
-      <member refid="class_quant_lib_1_1_more_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_more_greeks_1a50765ef4c62d0feb685efd9cf29ac4d3" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>strikeSensitivity</name></member>
-      <member refid="class_quant_lib_1_1_more_greeks_1ac693db2827cc856c59ac92a18f6975cb" prot="public" virt="non-virtual"><scope>QuantLib::MoreGreeks</scope><name>thetaPerDay</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::MoreGreeks</scope><name>~results</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

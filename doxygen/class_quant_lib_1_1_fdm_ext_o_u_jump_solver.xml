@@ -123,102 +123,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpsolver.hpp" line="45"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void performCalculations</definition>
-        <argsstring>() const </argsstring>
-        <name>performCalculations</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpsolver.hpp" line="48"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6059">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="6058">
-        <label>LazyObject</label>
-        <link refid="class_quant_lib_1_1_lazy_object"/>
-        <childnode refid="6059" relation="public-inheritance">
-        </childnode>
-        <childnode refid="6060" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6060">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="6057">
-        <label>FdmExtOUJumpSolver</label>
-        <childnode refid="6058" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6063">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="6062">
-        <label>LazyObject</label>
-        <link refid="class_quant_lib_1_1_lazy_object"/>
-        <childnode refid="6063" relation="public-inheritance">
-        </childnode>
-        <childnode refid="6064" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6064">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="6061">
-        <label>FdmExtOUJumpSolver</label>
-        <childnode refid="6062" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpsolver.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpsolver.hpp" bodystart="37" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lazy_object_1a10873979f635888606e03f9cb2d8a096" prot="protected" virt="virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1abcf8c3b096b3eea8688019abe7180471" prot="protected" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>calculated_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a02adf06b2bdc1f80a84263d8f106a8c4" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>FdmExtOUJumpSolver</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1abd8698b462ce90fe56b15ce7a0192d3e" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>freeze</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1a72e3e9b2ee0ed5ab8aa688b9422d8138" prot="protected" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>frozen_</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1a6badf169db619841c91a27420cbdf142" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>LazyObject</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>performCalculations</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1af9b89f2c7b9fb40ebc38660165609b88" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1a467a786be42a2165aa15a26709674547" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>recalculate</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a59c40aa606e9daa5abe370dd9c7a3b8f" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>rTS_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1af9e30171ffc2739afd5871127b27ee81" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>schemeDesc_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a31617421dfe41c4a3afb11bcf3e18912" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>solver_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a67a7f90a7869e662112666a3470fc05c" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>solverDesc_</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1a26c02da24a82bc72024a8e8d48af0fca" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>unfreeze</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_solver_1a54a3d3adf137f4c0b938cea30a8c2022" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>valueAt</name></member>
-      <member refid="class_quant_lib_1_1_lazy_object_1ae3a128a2ae365a18a03ed05354030a05" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>~LazyObject</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::FdmExtOUJumpSolver</scope><name>~Observer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

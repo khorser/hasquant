@@ -69,47 +69,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_explicit_euler_scheme_1a6be603d8547f31e72817d2aaf219e325" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>Time dt_</definition>
-        <argsstring></argsstring>
-        <name>dt_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_explicit_euler_scheme_1af39714d9545afb8b657218e47c8d34fa" prot="protected" static="no" mutable="no">
-        <type>const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;</type>
-        <definition>const boost::shared_ptr&lt;FdmLinearOpComposite&gt;&amp; map_</definition>
-        <argsstring></argsstring>
-        <name>map_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_explicit_euler_scheme_1a4f13d4cdd0a54c11bd935450ba2e26e5" prot="protected" static="no" mutable="no">
-        <type>const std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;</type>
-        <definition>const std::vector&lt;boost::shared_ptr&lt;FdmDirichletBoundary&gt; &gt; bcSet_</definition>
-        <argsstring></argsstring>
-        <name>bcSet_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_explicit_euler_scheme_1ae8ee00806f2fb42943edafdd13e2a7da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -177,18 +136,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="35" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1ac07e755f1412353806d561469c9ad49f" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>bc_set</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a4f13d4cdd0a54c11bd935450ba2e26e5" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>bcSet_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a9b68be7f0b8097f723468a930f604c39" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>condition_type</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a6be603d8547f31e72817d2aaf219e325" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>dt_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1ae8ee00806f2fb42943edafdd13e2a7da" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>ExplicitEulerScheme</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1af39714d9545afb8b657218e47c8d34fa" prot="protected" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>map_</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a02ede700df8d04acf392294f6ab090c4" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>operator_type</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>setStep</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>step</name></member>
-      <member refid="class_quant_lib_1_1_explicit_euler_scheme_1ad66caa3a712f1851c280155e836560f1" prot="public" virt="non-virtual"><scope>QuantLib::ExplicitEulerScheme</scope><name>traits</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

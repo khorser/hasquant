@@ -97,17 +97,5 @@
     <detaileddescription>
 <para>These conventions specify the rule used to generate dates in a <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref>. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/dategenerationrule.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/dategenerationrule.hpp" bodystart="39" bodyend="65"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>Backward</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ac78cb76ca18746c78d962eb46eabb008" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>CDS</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ae204c9c3e62b1e9a6b60e40cd05256c5" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>Forward</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a634c5fa704fceaa797cf0c089af2b6c9" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>OldCDS</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a37ee623eedc42fca85cd00bb7f9b78ae" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>operator&lt;&lt;</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>Rule</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ac8d8da6652fd8ffa5e27e779518e414e" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>ThirdWednesday</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a21087b4bddcc38096b2349354748c175" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>Twentieth</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ad694d6ae582abfc8e99ea7e6e6c3f8d5" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>TwentiethIMM</name></member>
-      <member refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ab9f6920de535f04ccfe34d670fa2c8a8" prot="public" virt="non-virtual"><scope>QuantLib::DateGeneration</scope><name>Zero</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -35,9 +35,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="36" bodyend="40"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_swaption_1a93c98cea283aa6d8bd047b968fd86970" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian::Swaption</scope><name>endIndex_</name></member>
-      <member refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_swaption_1a202147612522384bf58d92f294a8cedb" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian::Swaption</scope><name>startIndex_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

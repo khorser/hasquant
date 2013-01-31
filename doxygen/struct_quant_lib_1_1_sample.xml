@@ -81,11 +81,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/sample.hpp" bodystart="34" bodyend="41"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_sample_1a40d52b6e6a9b7bb6caaf4495a989d75a" prot="public" virt="non-virtual"><scope>QuantLib::Sample</scope><name>Sample</name></member>
-      <member refid="struct_quant_lib_1_1_sample_1a4fc7f59e3113e19697159919a5aad095" prot="public" virt="non-virtual"><scope>QuantLib::Sample</scope><name>value</name></member>
-      <member refid="struct_quant_lib_1_1_sample_1a265a253612b46abed17c61b0a5e5ce30" prot="public" virt="non-virtual"><scope>QuantLib::Sample</scope><name>value_type</name></member>
-      <member refid="struct_quant_lib_1_1_sample_1a4ddbf238c21d1f8db5aa4efe1aabe9aa" prot="public" virt="non-virtual"><scope>QuantLib::Sample</scope><name>weight</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

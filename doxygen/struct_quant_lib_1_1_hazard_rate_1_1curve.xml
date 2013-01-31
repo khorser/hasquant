@@ -27,8 +27,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/probabilitytraits.hpp" bodystart="118" bodyend="120"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_hazard_rate_1_1curve_1a9a8dc025e71e229f8064d7e05e00fe3e" prot="public" virt="non-virtual"><scope>QuantLib::HazardRate::curve</scope><name>type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

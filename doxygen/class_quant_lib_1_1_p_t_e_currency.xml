@@ -23,48 +23,6 @@
 <para>Portuguese escudo. </para>    </briefdescription>
     <detaileddescription>
 <para>The ISO three-letter code was PTE; the numeric code was 620. It was divided in 100 centavos.</para><para>Obsoleted by the Euro since 1999. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="12554">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="12553">
-        <label>PTECurrency</label>
-        <link refid="class_quant_lib_1_1_p_t_e_currency"/>
-        <childnode refid="12554" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12556">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="12555">
-        <label>PTECurrency</label>
-        <link refid="class_quant_lib_1_1_p_t_e_currency"/>
-        <childnode refid="12556" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" line="695" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/europe.hpp" bodystart="695" bodyend="706"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_currency_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>code</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a4b2522cc63a7317f0e327c2a897a7ce6" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>Currency</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a204c75f752ee13cb64ccc2b7af3f687c" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>format</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ac3f006fc110023306a10a2d55acea9a3" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>fractionsPerUnit</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a49e03ed5a6ba3b97feab045f462ad6c3" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>fractionSymbol</name></member>
-      <member refid="class_quant_lib_1_1_currency_1af8370604529de0f829b8424e1288a104" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a7aa6bec74a2e4f450511a17972c06d6d" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>numericCode</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a683e4aa899ff13036968e802c756341b" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a257ed05732c5ca447c26c8d3eff0ef47" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a3abfb8e127c9bcc4f89e96f99b8ab26d" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_p_t_e_currency_1ad1a32e77ca722486ac8adc3a7c07613b" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>PTECurrency</name></member>
-      <member refid="class_quant_lib_1_1_currency_1a6a799b7b95e09cfb0d07488185108da1" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>rounding</name></member>
-      <member refid="class_quant_lib_1_1_currency_1ab662225ef2ceaf4f83418b7e31917c79" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>symbol</name></member>
-      <member refid="class_quant_lib_1_1_currency_1aaf2f23f525420d1db162d9f9ee49502c" prot="public" virt="non-virtual"><scope>QuantLib::PTECurrency</scope><name>triangulationCurrency</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

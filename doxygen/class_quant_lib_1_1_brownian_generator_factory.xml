@@ -45,9 +45,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/browniangenerator.hpp" bodystart="42" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_brownian_generator_factory_1a475996ed05d83e9509d7691ae903c251" prot="public" virt="pure-virtual"><scope>QuantLib::BrownianGeneratorFactory</scope><name>create</name></member>
-      <member refid="class_quant_lib_1_1_brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" virt="virtual"><scope>QuantLib::BrownianGeneratorFactory</scope><name>~BrownianGeneratorFactory</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

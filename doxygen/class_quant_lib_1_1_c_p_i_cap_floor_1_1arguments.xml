@@ -219,62 +219,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="2883">
-        <label>Handle&lt; QuantLib::ZeroInflationIndex &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="2882">
-        <label>CPICapFloor::arguments</label>
-        <childnode refid="2883" relation="usage">
-          <edgelabel>infIndex</edgelabel>
-        </childnode>
-        <childnode refid="2884" relation="usage">
-          <edgelabel>payDate</edgelabel>
-          <edgelabel>startDate</edgelabel>
-          <edgelabel>maturity</edgelabel>
-          <edgelabel>fixDate</edgelabel>
-        </childnode>
-        <childnode refid="2885" relation="usage">
-          <edgelabel>payCalendar</edgelabel>
-          <edgelabel>fixCalendar</edgelabel>
-        </childnode>
-        <childnode refid="2886" relation="usage">
-          <edgelabel>observationLag</edgelabel>
-        </childnode>
-      </node>
-      <node id="2886">
-        <label>Period</label>
-        <link refid="class_quant_lib_1_1_period"/>
-      </node>
-      <node id="2885">
-        <label>Calendar</label>
-        <link refid="class_quant_lib_1_1_calendar"/>
-      </node>
-      <node id="2884">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" line="117" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpicapfloor.hpp" bodystart="117" bodyend="132"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a7147aec61f1b39b7940bbfd1cd859f47" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>baseCPI</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a8b6b1f982a630c25d1addb947caaba20" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>fixCalendar</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ada67439b509ef6c29b3ea133750d0253" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>fixConvention</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ae4163a3dd4d0d8f6bd5c9c82321ff0f0" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>fixDate</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a4d7374959254cdc28051707949d34a53" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>infIndex</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a43cdf885457559a4b455fed55a1a27dd" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>maturity</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>nominal</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1accbbdff5a9957196a62671150550449d" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>observationInterpolation</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>observationLag</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a564ccb9747850bf2b905b55aab9aaaf5" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>payCalendar</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ac5be8de9a77f16aae5dcedd748b64c2c" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>payConvention</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1aebed7f368494937495cfdf5ee9e85cab" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>payDate</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>startDate</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a9a4a33b294edec6ebb0de2820c5f8408" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>strike</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1af0e108519286f3c7f1b8bcd11d6cfb68" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::CPICapFloor::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

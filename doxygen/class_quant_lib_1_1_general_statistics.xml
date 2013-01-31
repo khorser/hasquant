@@ -405,31 +405,5 @@
     <detaileddescription>
 <para>This class accumulates a set of data and returns their statistics (e.g: mean, variance, skewness, kurtosis, error estimation, percentile, etc.) based on the empirical distribution (no gaussian assumption)</para><para>It doesn&apos;t suffer the numerical instability problem of <ref refid="class_quant_lib_1_1_incremental_statistics" kindref="compound">IncrementalStatistics</ref>. The downside is that it stores all samples, thus increasing the memory requirements. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/generalstatistics.hpp" bodystart="45" bodyend="183"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_general_statistics_1a3a1d26bb85ab23c2a935d09081c946fd" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a536b63938a662f0138ab4f1e87669eef" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>addSequence</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1acd78fc587eb7cf80dd145cb3adda5ae8" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>addSequence</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a629a0510086a52a9a80da6f1bf8cb987" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>data</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1acc5ad105e834e2360818b4f5046bd1f5" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>errorEstimate</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a746e2780dc881928322ff28743ce4eaa" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>expectationValue</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1aea0f50316eca89c0866cbbd8570ef9ef" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>GeneralStatistics</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a8a4ed1d1339aae2ccc6bd69c8f026f10" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>kurtosis</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1ad849b4ad24b7c5b71e7ec46a65d53e8e" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>max</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a962ffe5a3593be370d5c883365c060f4" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>mean</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1ac98e9ad7b67758707ccda2475bb90019" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>min</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1ad85e1d17aa1273cc6b198d9109ef5c41" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>percentile</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a562749b6ecea0101e83f14ba5ea029fb" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>reserve</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1afb02dc74860bcd8ad0982324d50c82e4" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>samples</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a3aaec9e307c55c0feab51b7802d3ba14" prot="private" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a27cb1a211374553eadd4a0e09d60cf0c" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>skewness</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a10ee1a10d90af08c04aff52692a5747e" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>sort</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1aed753975ae900455b0cd59b63bf34458" prot="private" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>sorted_</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1af728e0bfb80c48d44424d590cbfda34e" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>standardDeviation</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a41d2156c2a2c3580b5ba66056b504a06" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>topPercentile</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a64a1ba313ad4c1fd58bf5887c366df5a" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>value_type</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>variance</name></member>
-      <member refid="class_quant_lib_1_1_general_statistics_1adadbb304259580be7add0941c9540bd9" prot="public" virt="non-virtual"><scope>QuantLib::GeneralStatistics</scope><name>weightSum</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

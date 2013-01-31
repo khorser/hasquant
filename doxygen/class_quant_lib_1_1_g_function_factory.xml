@@ -130,16 +130,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="71" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="71" bodyend="177"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0aafa42ecf160c9f3afb314efcb8aa352a" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>ExactYield</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1af447a901dbf4e82f6e4b5ecb80f5bdf4" prot="private" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>GFunctionFactory</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1a5f2826e9e117c97265bfd903b2fd12fb" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>newGFunctionExactYield</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1acaab67d019feb98a326d097881f1fe2c" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>newGFunctionStandard</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1a19ff14c354896e975b2e3641865e46f5" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>newGFunctionWithShifts</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a606bc5398bb1642b29021a9f8fb67ce3" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>NonParallelShifts</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0ae3aa6b271f27680f24179f357c81354e" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>ParallelShifts</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a57f9bf199e30a749a03be1dac2f5f624" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>Standard</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory</scope><name>YieldCurveModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

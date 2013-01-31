@@ -76,11 +76,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="41" bodyend="49"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_non_central_chi_square_distribution_1a92f5788feae0a63e00f8c20cf7ed8fb1" prot="private" virt="non-virtual"><scope>QuantLib::NonCentralChiSquareDistribution</scope><name>df_</name></member>
-      <member refid="class_quant_lib_1_1_non_central_chi_square_distribution_1a4b33d29159bc2878a4622e399953a2b6" prot="private" virt="non-virtual"><scope>QuantLib::NonCentralChiSquareDistribution</scope><name>ncp_</name></member>
-      <member refid="class_quant_lib_1_1_non_central_chi_square_distribution_1a273d59e51f882d57b2e9f518c891947e" prot="public" virt="non-virtual"><scope>QuantLib::NonCentralChiSquareDistribution</scope><name>NonCentralChiSquareDistribution</name></member>
-      <member refid="class_quant_lib_1_1_non_central_chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::NonCentralChiSquareDistribution</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

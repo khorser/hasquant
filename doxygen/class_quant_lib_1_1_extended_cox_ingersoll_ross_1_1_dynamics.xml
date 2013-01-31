@@ -102,52 +102,6 @@
 <para>Short-rate dynamics in the extended Cox-Ingersoll-Ross model. </para>    </briefdescription>
     <detaileddescription>
 <para>The short-rate is here <formula id="300">\[ r_t = \varphi(t) + y_t^2 \]</formula> where <formula id="294">$ \varphi(t) $</formula> is the deterministic time-dependent parameter used for term-structure fitting and <formula id="297">$ y_t $</formula> is the state variable, the square-root of a standard CIR process. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="5503">
-        <label>Dynamics</label>
-        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="5504" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5504">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="5502">
-        <label>ExtendedCoxIngersollRoss::Dynamics</label>
-        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="5503" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5506">
-        <label>Dynamics</label>
-        <link refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="5507" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="5507">
-        <label>ShortRateDynamics</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics"/>
-      </node>
-      <node id="5505">
-        <label>ExtendedCoxIngersollRoss::Dynamics</label>
-        <link refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics"/>
-        <childnode refid="5506" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="82" bodyend="100"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1ac9a0c3284faf3b540a26ffbb11ba4875" prot="public" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>Dynamics</name></member>
-      <member refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" virt="non-virtual" ambiguityscope="QuantLib::CoxIngersollRoss::Dynamics::"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>Dynamics</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a1863803e3d08a291d7dd59ab2242e748" prot="private" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>phi_</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>process</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2" prot="public" virt="virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>shortRate</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" virt="non-virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>ShortRateDynamics</name></member>
-      <member refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33" prot="public" virt="virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>variable</name></member>
-      <member refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::ExtendedCoxIngersollRoss::Dynamics</scope><name>~ShortRateDynamics</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

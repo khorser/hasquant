@@ -79,53 +79,6 @@
 <para>Payoff based on a floating strike </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6515">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="6516" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6516">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="6514">
-        <label>FloatingTypePayoff</label>
-        <link refid="class_quant_lib_1_1_floating_type_payoff"/>
-        <childnode refid="6515" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6518">
-        <label>TypePayoff</label>
-        <link refid="class_quant_lib_1_1_type_payoff"/>
-        <childnode refid="6519" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6519">
-        <label>Payoff</label>
-        <link refid="class_quant_lib_1_1_payoff"/>
-      </node>
-      <node id="6517">
-        <label>FloatingTypePayoff</label>
-        <link refid="class_quant_lib_1_1_floating_type_payoff"/>
-        <childnode refid="6518" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/payoffs.hpp" bodystart="75" bodyend="84"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_floating_type_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" virt="virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_floating_type_payoff_1ab9c0fc29abc54eac7c0ac9b6b4026db0" prot="public" virt="non-virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>FloatingTypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_floating_type_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_floating_type_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" virt="non-virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>optionType</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1abcdb1c11e3593354931e650dd3dd13f2" prot="protected" virt="non-virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>type_</name></member>
-      <member refid="class_quant_lib_1_1_type_payoff_1a0d0b65c5c1a4c7df8618e75120c15c46" prot="protected" virt="non-virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>TypePayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::FloatingTypePayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

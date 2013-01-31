@@ -62,37 +62,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1437">
-        <label>Domain</label>
-        <link refid="class_quant_lib_1_1_domain"/>
-      </node>
-      <node id="1436">
-        <label>BoundedDomain</label>
-        <childnode refid="1437" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1439">
-        <label>Domain</label>
-        <link refid="class_quant_lib_1_1_domain"/>
-      </node>
-      <node id="1438">
-        <label>BoundedDomain</label>
-        <childnode refid="1439" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/domain.hpp" bodystart="51" bodyend="57"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" virt="pure-virtual"><scope>QuantLib::BoundedDomain</scope><name>includes</name></member>
-      <member refid="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" virt="non-virtual"><scope>QuantLib::BoundedDomain</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_bounded_domain_1adb28eda0cefba7aa918d8d79d8b629b8" prot="public" virt="pure-virtual"><scope>QuantLib::BoundedDomain</scope><name>xLowerBound</name></member>
-      <member refid="class_quant_lib_1_1_bounded_domain_1a6cf0a3e00a76ac9a42b32838e2d4f891" prot="public" virt="pure-virtual"><scope>QuantLib::BoundedDomain</scope><name>xUpperBound</name></member>
-      <member refid="class_quant_lib_1_1_bounded_domain_1aa20edb398aaffb32c0325847f0e4069b" prot="public" virt="pure-virtual"><scope>QuantLib::BoundedDomain</scope><name>yLowerBound</name></member>
-      <member refid="class_quant_lib_1_1_bounded_domain_1ad337b7812f786063477d81a593a6c416" prot="public" virt="pure-virtual"><scope>QuantLib::BoundedDomain</scope><name>yUpperBound</name></member>
-      <member refid="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" virt="virtual"><scope>QuantLib::BoundedDomain</scope><name>~Domain</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -41,9 +41,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataformatters.hpp" bodystart="41" bodyend="44"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1ordinal__holder_1a4c79e7f153710550f0238535048a4d0a" prot="public" virt="non-virtual"><scope>QuantLib::detail::ordinal_holder</scope><name>n</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1ordinal__holder_1a6678dc9223da2f51de8b759e8564bb87" prot="public" virt="non-virtual"><scope>QuantLib::detail::ordinal_holder</scope><name>ordinal_holder</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

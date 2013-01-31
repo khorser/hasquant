@@ -115,37 +115,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7228">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="7227">
-        <label>GeometricAPOPathPricer</label>
-        <childnode refid="7228" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7230">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="7229">
-        <label>GeometricAPOPathPricer</label>
-        <childnode refid="7230" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" line="68" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_geom_av_price.hpp" bodystart="68" bodyend="81"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a03a7940acbfe70e2d64da8e1692e20b3" prot="private" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>discount_</name></member>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a86d794f35e5cad47144c884217a73a33" prot="public" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>GeometricAPOPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1af7b74f117d77bca61083800382057efe" prot="private" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>pastFixings_</name></member>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_geometric_a_p_o_path_pricer_1af7bfe5678e5fb28716cab530ef2320cb" prot="private" virt="non-virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>runningProduct_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::GeometricAPOPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

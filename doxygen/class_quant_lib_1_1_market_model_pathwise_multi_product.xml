@@ -224,66 +224,6 @@
 <para>market-model pathwise product </para>    </briefdescription>
     <detaileddescription>
 <para>This is the abstract base class that encapsulates the notion of a product: it contains the information that would be in the termsheet of the product.</para><para>It&apos;s useful to have it be able to do several products simultaneously. The products would have to have the same underlying rate times of course. The class is therefore really encapsulating the notion of a multi-product.</para><para>For each time evolved to, it generates the cash flows associated to that time for the state of the yield curve. If one was doing a callable product then this would encompass the product and its exercise strategy.</para><para>This class differs from market-model multi-product in that it also returns the derivative of the pay-off with respect to each forward rate </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9541">
-        <label>MarketModelPathwiseMultiDeflatedCap</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_deflated_cap"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9537">
-        <label>MarketModelPathwiseCoterminalSwaptionsDeflated</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_deflated"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9539">
-        <label>MarketModelPathwiseInverseFloater</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_inverse_floater"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9535">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-      <node id="9540">
-        <label>MarketModelPathwiseMultiCaplet</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_caplet"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9542">
-        <label>MarketModelPathwiseSwap</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_swap"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9538">
-        <label>MarketModelPathwiseCoterminalSwaptionsNumericalDeflated</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_coterminal_swaptions_numerical_deflated"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9536">
-        <label>MarketModelPathwiseCashRebate</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_cash_rebate"/>
-        <childnode refid="9535" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisemultiproduct.hpp" bodystart="53" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a164f79bb7fcc17d83d7201fd191ae054" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>alreadyDeflated</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0c4d55a1d5639736ddbf050d163c0d37" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a50dbf9a773ef7e342c512ec2f06c2a54" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1acac5d6422d1a97a1cc7830b670429ca4" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a0a292c0068ae301d400b2e4b24e8847f" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1ae76494005108a03d01db60b6bb685116" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1554834bb65e58fefbf96280a405e85d" prot="public" virt="pure-virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::MarketModelPathwiseMultiProduct</scope><name>~MarketModelPathwiseMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -389,58 +389,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1772">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-      <node id="1771">
-        <label>CallSpecifiedPathwiseMultiProduct</label>
-        <childnode refid="1772" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1774">
-        <label>MarketModelPathwiseMultiProduct</label>
-        <link refid="class_quant_lib_1_1_market_model_pathwise_multi_product"/>
-      </node>
-      <node id="1773">
-        <label>CallSpecifiedPathwiseMultiProduct</label>
-        <childnode refid="1774" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/pathwise/pathwiseproductcallspecified.hpp" bodystart="40" bodyend="85"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1afba381efa2c145ef9a83dd84bcfc6621" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>alreadyDeflated</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a99d26818d259d9ee854fcad12f73954f" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>callable_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aceeab3a9ec3084ee41035b7036b82520" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>CallSpecifiedPathwiseMultiProduct</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aaee45eba86c65b24bb5ead13eba4c60a" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>cashFlowTimes_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3b92a77366ebd734accc8ecaf8c13b23" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>clone</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3495084176af63912be0fa34354c98a9" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>currentIndex_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a99584e3c15eae7090453e51464031b95" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>disableCallability</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a248628469aa309c9e381fa3d34c859b3" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>dummyCashFlowsGenerated_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab10d12326048ed135c7678610c61f958" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>dummyCashFlowsThisStep_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a01055a9405d293d293c4033f5b4575a6" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>enableCallability</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aaf1f37e1319c6476e12d03c295b74260" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>evolution</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1aa5fabad6baffe7913d7edf93e4017faa" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>evolution_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1add55b4cce0f3bb07188d993170ddf40b" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>isPresent_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ae9340ad78cd16947af851ac186443907" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>maxNumberOfCashFlowsPerProductPerStep</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab323de6c99257ba28ce5fc12da07241f" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>nextTimeStep</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a63d28ae6f6a49a733295508c43d86aa7" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>numberOfProducts</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ab2f18eae2df5bbc404eb6fa684abca49" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>possibleCashFlowTimes</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1ae4d5b4a4178ccc3570e0beca85fc8e92" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>rebate</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a199086827a6af9d9e7a8b7c9fcdf3444" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>rebate_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a9534a66915c2da892c83fa1f35310bcb" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>rebateOffset_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a7b0e029102ad38f4b814c6523aedb53d" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a293571fb981de08448b05feaa32a24a4" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>strategy</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a9c7a2fa59413902815c3c1d5c36c525e" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>strategy_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a953ed7f6689b5a3250fd8df534de12ec" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>suggestedNumeraires</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a3bf43ddbe280319685fbb0c3f68aeb59" prot="public" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>underlying</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1a156ad7b42e5748b283037b3b7a397291" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>underlying_</name></member>
-      <member refid="class_quant_lib_1_1_call_specified_pathwise_multi_product_1af1c3baa268facc51f6e68710935be697" prot="private" virt="non-virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>wasCalled_</name></member>
-      <member refid="class_quant_lib_1_1_market_model_pathwise_multi_product_1a1643b3218544f1cc5292bbb5047f5515" prot="public" virt="virtual"><scope>QuantLib::CallSpecifiedPathwiseMultiProduct</scope><name>~MarketModelPathwiseMultiProduct</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

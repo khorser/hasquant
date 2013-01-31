@@ -42,9 +42,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/curve.hpp" bodystart="33" bodyend="37"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_curve_1a7709f6c0612c6668e25d555787a5688b" prot="public" virt="pure-virtual"><scope>QuantLib::Curve</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_curve_1ac18558a7f7b08085261782f72b65ce26" prot="public" virt="virtual"><scope>QuantLib::Curve</scope><name>~Curve</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

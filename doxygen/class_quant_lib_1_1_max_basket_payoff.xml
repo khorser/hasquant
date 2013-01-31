@@ -44,18 +44,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/basketoption.hpp" bodystart="63" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" virt="virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>accept</name></member>
-      <member refid="class_quant_lib_1_1_max_basket_payoff_1a8af5614e309a5b2a685b9c4ac364dc46" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>accumulate</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a440d118e6b1d4c8a91b66f39338b4c17" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>basePayoff</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>BasketPayoff</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>description</name></member>
-      <member refid="class_quant_lib_1_1_max_basket_payoff_1a29f60a08a31fdab7003c73790f896d27" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>MaxBasketPayoff</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" virt="non-virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" virt="virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_basket_payoff_1a9b8b91f2b5d451870eecd88a14db32bf" prot="public" virt="virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>~BasketPayoff</name></member>
-      <member refid="class_quant_lib_1_1_payoff_1a6e5057c430de1f2920b50de1c36b402d" prot="public" virt="virtual"><scope>QuantLib::MaxBasketPayoff</scope><name>~Payoff</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -135,34 +135,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6114">
-        <label>FdmLinearOpComposite</label>
-      </node>
-      <node id="6116">
-        <label>FdmKlugeExtOUOp</label>
-        <link refid="class_quant_lib_1_1_fdm_kluge_ext_o_u_op"/>
-        <childnode refid="6114" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6115">
-        <label>FdmExtOUJumpOp</label>
-        <link refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op"/>
-        <childnode refid="6114" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmlinearopcomposite.hpp" bodystart="33" bodyend="48"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1adbd8c74d39db458bcb26da7d42d0039d" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1a4085e54ce764c545f5bb73a11320e37d" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>apply_direction</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1a6ae97c408d016fb12af247af56ee67a3" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>apply_mixed</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" virt="non-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1ad8b12f8ec6911c0c0dba38ff9baacfea" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>preconditioner</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1a65f9a00866252efbf8b84e32fcd0a5b2" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1a154fc82502dc7257b459b1f13e2bc6b6" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_composite_1a9ee9fc2e0f66a9c268e944675c279587" prot="public" virt="pure-virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>solve_splitting</name></member>
-      <member refid="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" virt="virtual"><scope>QuantLib::FdmLinearOpComposite</scope><name>~FdmLinearOp</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

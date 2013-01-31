@@ -141,43 +141,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="14673">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-      <node id="14672">
-        <label>VanillaVPPOption::arguments</label>
-        <childnode refid="14673" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="14675">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-      <node id="14674">
-        <label>VanillaVPPOption::arguments</label>
-        <childnode refid="14675" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/vanillavppoption.hpp" bodystart="54" bodyend="65"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1af8effc7b27d720414fee142bdf4d7595" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>heatRate</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a0f1297ffcede16ba2514238ffa44db20" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>initialState</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a6cefda6ccfbc01888d89130bf3879f6a" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>pMax</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a99c07913b6f7fb4e99d8cc5bcbd00c5c" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>pMin</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a5a5a3388c49421af31ae3cc96d087f97" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>startUpFixCost</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1aa18f282bb709dfcc6acb55684aff61e4" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>startUpFuel</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a8e4eb1ac5dbaff5b978d061a074e8079" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>tMinDown</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a379adf13032bc286e3c2e56532dffcaf" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>tMinUp</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_v_p_p_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::VanillaVPPOption::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

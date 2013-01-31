@@ -202,20 +202,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="32" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a494949239a699b0592b98db108f89f74" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>allComputed_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aaa0a81e56299281df9c35c4b869426a2" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>bumpMatrix_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aec20e4b28521e92bbcd06a9f768336e4" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>bumps_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aab9be16c0ad54c109b6e9b13cf94a17a" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>caps_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a4d3cd7c89eef3342655f0c77c21b2c59" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>computed_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a979a8a837dc087013bcc7d0d9918c817" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>derivatives_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a6a9e4faf3bee0ac83e22202182c135ef" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>derivativesVolatility</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a420548ad33b833b5d34cfb5958186bf0" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>getAllOnePercentBumps</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a3f96a924f595b6c38156acbfb26dc988" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>getInputBumps</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a8ec3d8f8ba0de5392701edafc7882d45" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>onePercentBump</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1af3828fb6dd2c8f26deee19266e76c097" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>onePercentBumps_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1aa8431507da058f3886dcd735bebb22bf" prot="private" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>swaptions_</name></member>
-      <member refid="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a4733b81cad6142c6eda26dbf7dff5a65" prot="public" virt="non-virtual"><scope>QuantLib::VolatilityBumpInstrumentJacobian</scope><name>VolatilityBumpInstrumentJacobian</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

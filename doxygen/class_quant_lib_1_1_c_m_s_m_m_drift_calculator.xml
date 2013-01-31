@@ -278,25 +278,5 @@
     <detaileddescription>
 <para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" bodystart="42" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a4e934849a19967e55aa22aa7da53cb3d" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>alive_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a92c92cd878b235b63ae690ee4c016245" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>C_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a5e38ed5805e19e65cfde4d3156b38ff9" prot="public" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>CMSMMDriftCalculator</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a92c0dc56015a87c865ec05f87b70f9e3" prot="public" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>compute</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a247c5d7048480396e3b561b6fb8193e9" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>displacements_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1acb5a1fd659fe9187af1fffa2c9c781a9" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>downs_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1af01d81b35df0e4473a4e436b5af22fa0" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>isFullFactor_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1ab08d17d726b407bc7365c916b7827528" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>numberOfFactors_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a9c042abcd446925e95dde36619f5bf6d" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>numberOfRates_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a17ecb426f85139cf0c1e18631f3e1055" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>numeraire_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1aba76903207846828d0276124b49589c4" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>oneOverTaus_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a1a0e346cfe3d18e894d96238aa8c18cb" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>PjPnWk_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a0b09b63609237451bdafe29321938f44" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>pseudo_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a9413bd7d9fb9e5ed4cba081717da14ce" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>spanningFwds_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a30c9a34413633385559d8ab1a9642d83" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>tmp_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1ad58b798be98e08a9fa31b8291add7945" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>ups_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a3869bd911dd3ff55982d6c1b68ac4368" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>wkaj_</name></member>
-      <member refid="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1af9cbcae03df3cde6e2490378b64374c1" prot="private" virt="non-virtual"><scope>QuantLib::CMSMMDriftCalculator</scope><name>wkajN_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

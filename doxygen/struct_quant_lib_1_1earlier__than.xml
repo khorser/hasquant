@@ -13,7 +13,5 @@
     <detaileddescription>
 <para>There is no generic implementation of this struct. Template specializations will have to be defined for each needed type (see <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> for an example.) </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/comparison.hpp" bodystart="87" bodyend="-1"/>
-    <listofallmembers>
-    </listofallmembers>
   </compounddef>
 </doxygen>

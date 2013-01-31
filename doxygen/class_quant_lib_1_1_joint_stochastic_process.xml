@@ -32,21 +32,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="83" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1a9cd3fd1e737562df296a500f6a33e4f8" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &gt;</type>
-        <definition>std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt; l_</definition>
-        <argsstring></argsstring>
-        <name>l_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="74" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="74" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="class_quant_lib_1_1_joint_stochastic_process_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -517,126 +502,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="71"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a4c2346b1504ec72fc8387ff736fabf3d" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
-        <definition>Disposable&lt;Array&gt; slice</definition>
-        <argsstring>(const Array &amp;x, Size i) const </argsstring>
-        <name>slice</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-          <declname>i</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="75"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8650">
-        <label>JointStochasticProcess</label>
-        <childnode refid="8651" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8653">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="8651">
-        <label>StochasticProcess</label>
-        <link refid="class_quant_lib_1_1_stochastic_process"/>
-        <childnode refid="8652" relation="public-inheritance">
-        </childnode>
-        <childnode refid="8653" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8652">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="8654">
-        <label>JointStochasticProcess</label>
-        <childnode refid="8655" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8657">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="8655">
-        <label>StochasticProcess</label>
-        <link refid="class_quant_lib_1_1_stochastic_process"/>
-        <childnode refid="8656" relation="public-inheritance">
-        </childnode>
-        <childnode refid="8657" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8656">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="34" bodyend="101"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a87d025fa8e0daa4e048320c7ac266bb3" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>apply</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a44112f498b08b54095749e18c35d562b" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>const_iterator</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1adfd3c50fd8254a227325875bd0524352" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>constituents</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a6a3d4ab138baaed72f7469ca960918d3" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>correlationCache_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a78f42eaa1b4d4ffa9ae5027e1edd1763" prot="public" virt="pure-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>correlationIsStateDependent</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1aa35146549bd167f407791342e89927e3" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a5669afa101f7e3d2f10d8e21d36ebd92" prot="public" virt="pure-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>crossModelCorrelation</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>diffusion</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1aea3658beebc66268a48cf5273cce6abd" prot="protected" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>discretization_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>drift</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>evolve</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a30a103c583af9320f08337052d38c622" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>expectation</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1af712ecab6d5754978fed3860efc7f661" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>factors</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1afb37fb07c7df7da80f6af1c2021f1830" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>factors_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>initialValues</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1ad9d72b339a9139f25a4b0c45170902e1" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>iterator</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a3d0532cce350891ae95b6f78f33f1acb" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>JointStochasticProcess</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a9cd3fd1e737562df296a500f6a33e4f8" prot="protected" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>l_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1aca88982d9e57d7e326b4b4bf941f6f71" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>modelFactors_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a68b5a72cfb3db8ddefaf8cf04cc3ab65" prot="public" virt="pure-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>numeraire</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::JointStochasticProcess</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observable::"><scope>QuantLib::JointStochasticProcess</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1ab5f887b196ae4e77af2ef2f875b46b79" prot="public" virt="pure-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>postEvolve</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a74d60b763f457e5e704430993e299921" prot="public" virt="pure-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>preEvolve</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a4c2346b1504ec72fc8387ff736fabf3d" prot="protected" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>slice</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1ab55b8ade4729f4509ad40bbaab050a0d" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>stdDeviation</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1afbd1bbfbbd50f17d99fa61f74dc16437" prot="protected" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>StochasticProcess</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1a2bcd53302e27b1c9273e17c82516184d" prot="protected" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>StochasticProcess</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a748380f774765c5190c570c0c8a8091e" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>time</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a731d3bf691075bd5360a369d828c3a9a" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>vfactors_</name></member>
-      <member refid="class_quant_lib_1_1_joint_stochastic_process_1a93b792b3666cdd5cbe916a6c36e10bb3" prot="private" virt="non-virtual"><scope>QuantLib::JointStochasticProcess</scope><name>vsize_</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::JointStochasticProcess</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::JointStochasticProcess</scope><name>~Observer</name></member>
-      <member refid="class_quant_lib_1_1_stochastic_process_1a46d4ac2f44e1c3ee07d69d7e0b4593fc" prot="public" virt="virtual"><scope>QuantLib::JointStochasticProcess</scope><name>~StochasticProcess</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

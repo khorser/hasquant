@@ -65,14 +65,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" line="168" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/cpiswap.hpp" bodystart="168" bodyend="176"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>legs</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>nominal</name></member>
-      <member refid="class_quant_lib_1_1_swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>payer</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1ab6f4e6d3fde00ce906e46494f60dfe7a" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::CPISwap::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::CPISwap::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -219,64 +219,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="2680">
-        <label>ConvertibleBond::option::arguments</label>
-        <childnode refid="2681" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="2681">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="2682">
-        <label>ConvertibleBond::option::arguments</label>
-        <childnode refid="2683" relation="public-inheritance">
-        </childnode>
-        <childnode refid="2684" relation="usage">
-          <edgelabel>issueDate</edgelabel>
-          <edgelabel>settlementDate</edgelabel>
-        </childnode>
-        <childnode refid="2685" relation="usage">
-          <edgelabel>creditSpread</edgelabel>
-        </childnode>
-      </node>
-      <node id="2685">
-        <label>Handle&lt; QuantLib::Quote &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="2684">
-        <label>Date</label>
-        <link refid="class_quant_lib_1_1_date"/>
-      </node>
-      <node id="2683">
-        <label>arguments</label>
-        <link refid="class_quant_lib_1_1_option_1_1arguments"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" line="185" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/convertiblebonds/convertiblebond.hpp" bodystart="184" bodyend="207"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a186dc4e965a69de41c93b527271bbb08" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityDates</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ae21eb9aefd3d60d22918bea9f4909d3a" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityPrices</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a96ee5b280321bdb70d4fa75ace56f896" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityTriggers</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acd5424754e3f8c0f78ff950954b23e7b" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>callabilityTypes</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a622b37ef6d3405018df2cc51486385c1" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>conversionRatio</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a52aaf336ba6c7b103e373fa37508a241" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>couponAmounts</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1ac1d9de7bc3b1057703ce26ca7a0f9e06" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>couponDates</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1acac2188288b9fbb8c056a17dc3e9d046" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>creditSpread</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ff411bfd99ee153705d4ca61c53cad9" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>dividendDates</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a2acc3fd17e817c230e7f54d66b5b130b" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>dividends</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>exercise</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a8215f9a580af435bd18853921d4d59f3" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>issueDate</name></member>
-      <member refid="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>payoff</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a340776950e7a04325cff7db8034c8851" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>redemption</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>settlementDate</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a93f9d5dd85d395e9ae1ab204d53ba89f" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>settlementDays</name></member>
-      <member refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::ConvertibleBond::option::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -91,12 +91,5 @@
 <para>It uses the well-known fact that the sum of 12 uniform deviate in (-.5,.5) is approximately a Gaussian deviate with average 0 and standard deviation 1. The uniform deviate is supplied by RNG.</para><para>Class RNG must implement the following interface: <programlisting><codeline><highlight class="normal">RNG::sample_type<sp/>RNG::next()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting> </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/centrallimitgaussianrng.hpp" bodystart="44" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_c_l_gaussian_rng_1aaadb3d9a4b1c2b6a7547ab900765f34e" prot="public" virt="non-virtual"><scope>QuantLib::CLGaussianRng</scope><name>CLGaussianRng</name></member>
-      <member refid="class_quant_lib_1_1_c_l_gaussian_rng_1a2faa1ca7c400e4bcd47fe2de070d81c3" prot="public" virt="non-virtual"><scope>QuantLib::CLGaussianRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_c_l_gaussian_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::CLGaussianRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_c_l_gaussian_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" virt="non-virtual"><scope>QuantLib::CLGaussianRng</scope><name>uniformGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_c_l_gaussian_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" virt="non-virtual"><scope>QuantLib::CLGaussianRng</scope><name>urng_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -70,54 +70,6 @@
 <para>RendistatoCalculator equivalent swap spread <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> adapter. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12803">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="12804" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12804">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12802">
-        <label>RendistatoEquivalentSwapSpreadQuote</label>
-        <link refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote"/>
-        <childnode refid="12803" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12806">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="12807" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12807">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12805">
-        <label>RendistatoEquivalentSwapSpreadQuote</label>
-        <link refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote"/>
-        <childnode refid="12806" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" line="181" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/bonds/btp.hpp" bodystart="181" bodyend="189"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>isValid</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1ab3394fc6d0df9cc90ca40e99346a0f4e" prot="private" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>r_</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1a3a149c12978a99eb9797dfcda71260b6" prot="public" virt="non-virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>RendistatoEquivalentSwapSpreadQuote</name></member>
-      <member refid="class_quant_lib_1_1_rendistato_equivalent_swap_spread_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::RendistatoEquivalentSwapSpreadQuote</scope><name>~Quote</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

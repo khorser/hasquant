@@ -76,11 +76,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="65" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="65" bodyend="76"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_ziggurat_1a06fc87d81c62e9abb8790b6e5713c55ba4cf0a75076c0e93010640ad9b584b0ce" prot="public" virt="non-virtual"><scope>QuantLib::Ziggurat</scope><name>allowsErrorEstimate</name></member>
-      <member refid="struct_quant_lib_1_1_ziggurat_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" virt="non-virtual"><scope>QuantLib::Ziggurat</scope><name>make_sequence_generator</name></member>
-      <member refid="struct_quant_lib_1_1_ziggurat_1a999b90124f308be1e4dc441d337ad046" prot="public" virt="non-virtual"><scope>QuantLib::Ziggurat</scope><name>rng_type</name></member>
-      <member refid="struct_quant_lib_1_1_ziggurat_1acd4cba61f7a52c8551bebe4d5686d6f9" prot="public" virt="non-virtual"><scope>QuantLib::Ziggurat</scope><name>rsg_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

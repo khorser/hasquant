@@ -23,8 +23,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/visitor.hpp" bodystart="33" bodyend="36"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_acyclic_visitor_1ad5d3ee45c3c556131083dd7b54f3e21c" prot="public" virt="virtual"><scope>QuantLib::AcyclicVisitor</scope><name>~AcyclicVisitor</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

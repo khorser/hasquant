@@ -107,13 +107,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/frankcopularng.hpp" bodystart="36" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1a3770b6318e121e98aba5d34d66e7af13" prot="public" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>FrankCopulaRng</name></member>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1ad590806283f6baf45a2b643d86e2d9c2" prot="public" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1a5ca0ebc8ec96d11c5542cd549f01db16" prot="private" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>theta_</name></member>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1a5b45866e4fe2a7e4590496cecf387afc" prot="private" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>uniformGenerator_</name></member>
-      <member refid="class_quant_lib_1_1_frank_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" virt="non-virtual"><scope>QuantLib::FrankCopulaRng</scope><name>urng_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

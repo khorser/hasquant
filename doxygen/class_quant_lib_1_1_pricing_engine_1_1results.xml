@@ -37,47 +37,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12501">
-        <label>PricingEngine::results</label>
-      </node>
-      <node id="12506">
-        <label>MoreGreeks</label>
-        <link refid="class_quant_lib_1_1_more_greeks"/>
-        <childnode refid="12501" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12504">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_margrabe_option_1_1results"/>
-        <childnode refid="12503" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12505">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_one_asset_option_1_1results"/>
-        <childnode refid="12502" relation="public-inheritance">
-        </childnode>
-        <childnode refid="12506" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12502">
-        <label>Greeks</label>
-        <link refid="class_quant_lib_1_1_greeks"/>
-        <childnode refid="12501" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12503">
-        <label>results</label>
-        <link refid="class_quant_lib_1_1_multi_asset_option_1_1results"/>
-        <childnode refid="12502" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengine.hpp" bodystart="51" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::PricingEngine::results</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1results_1a65ac339a893f0a19212b0139376ca94c" prot="public" virt="virtual"><scope>QuantLib::PricingEngine::results</scope><name>~results</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

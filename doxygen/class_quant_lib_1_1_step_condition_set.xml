@@ -83,11 +83,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="46" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_set_1a95a92b40a27f7bda1d2c8b7ff09742e1" prot="private" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>itemType</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>push_back</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_set_1a7261b531978cd11dfbc3ebfa6bbb2bb8" prot="private" virt="non-virtual"><scope>QuantLib::StepConditionSet</scope><name>stepConditions_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

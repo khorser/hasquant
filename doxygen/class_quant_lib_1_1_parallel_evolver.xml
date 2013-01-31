@@ -142,15 +142,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="83" bodyend="112"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1ac07e755f1412353806d561469c9ad49f" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>bc_set</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1aef6b7dd9b6ddcb702ca96f3b5cdf0fba" prot="private" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>evolvers_</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1a02ede700df8d04acf392294f6ab090c4" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>operator_type</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1a837ec9638f5c903436c81bcde0601c4e" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>ParallelEvolver</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>setStep</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>step</name></member>
-      <member refid="class_quant_lib_1_1_parallel_evolver_1ac4d750b5cedcaf966401b628d2e540d2" prot="public" virt="non-virtual"><scope>QuantLib::ParallelEvolver</scope><name>traits</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

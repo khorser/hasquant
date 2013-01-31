@@ -132,14 +132,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="46" bodyend="65"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1aa69c3ab8418bc558c37eaf24ef6c8fee" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>data_table_</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1a0b7ebb222c2323ce7c2e2ba08db06aca" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1ad6cd2d1fd53d4e0ed53112cb127fb55b" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1ab82590214dc3a7524551efeed581d5e3" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>DataTable</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1a0d6996e4b0f7fff9ff2a0d161f217af7" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1aeb42a8d001d9949e48db9d085cb8b6f4" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>operator[]</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_data_table_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::detail::DataTable</scope><name>size</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

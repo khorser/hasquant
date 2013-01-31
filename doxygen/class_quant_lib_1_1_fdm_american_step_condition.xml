@@ -78,35 +78,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5999">
-        <label>FdmAmericanStepCondition</label>
-        <childnode refid="6000" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6000">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6001">
-        <label>FdmAmericanStepCondition</label>
-        <childnode refid="6002" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6002">
-        <label>StepCondition&lt; Array &gt;</label>
-        <link refid="class_quant_lib_1_1_step_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" bodystart="35" bodyend="47"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_american_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" virt="non-virtual"><scope>QuantLib::FdmAmericanStepCondition</scope><name>applyTo</name></member>
-      <member refid="class_quant_lib_1_1_fdm_american_step_condition_1a9fa60e9630a5a2b8bd92a2cf24b17610" prot="private" virt="non-virtual"><scope>QuantLib::FdmAmericanStepCondition</scope><name>calculator_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_american_step_condition_1ad8fe63f18c00d6c8b2b61963ce67092c" prot="public" virt="non-virtual"><scope>QuantLib::FdmAmericanStepCondition</scope><name>FdmAmericanStepCondition</name></member>
-      <member refid="class_quant_lib_1_1_fdm_american_step_condition_1a50650312ead6442d887c2ff8637a7bbb" prot="private" virt="non-virtual"><scope>QuantLib::FdmAmericanStepCondition</scope><name>mesher_</name></member>
-      <member refid="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" virt="virtual"><scope>QuantLib::FdmAmericanStepCondition</scope><name>~StepCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

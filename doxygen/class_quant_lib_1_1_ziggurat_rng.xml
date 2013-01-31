@@ -89,12 +89,5 @@
 <listitem><para>This implementation was written from scratch, following Marsaglia and Tsang. It avoids the correlation by using only the leftmost 24 bits of mt19937&apos;s output.</para></listitem></orderedlist>
 </para><para>Note that the GNU GSL implementation uses a different value for the right-most step. The GSL value is somewhat different from the one reported by Marsaglia and Tsang because GSL uses a different tail. This implementation uses the same right-most step as reported by Marsaglia and Tsang. The generator was put through Marsaglia&apos;s Diehard battery of tests and didn&apos;t exibit any abnormal behavior. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/zigguratrng.hpp" bodystart="52" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_ziggurat_rng_1a8179b6f798136e72f4691fe0aa93ef76" prot="private" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>mt32_</name></member>
-      <member refid="class_quant_lib_1_1_ziggurat_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>next</name></member>
-      <member refid="class_quant_lib_1_1_ziggurat_rng_1a02ce9033842ef7bba94d91f0d09c7ebc" prot="private" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>nextGaussian</name></member>
-      <member refid="class_quant_lib_1_1_ziggurat_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_ziggurat_rng_1a2052bed081d36e3d3c216260365d6a31" prot="public" virt="non-virtual"><scope>QuantLib::ZigguratRng</scope><name>ZigguratRng</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

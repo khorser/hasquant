@@ -124,21 +124,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="87"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_lattice_1ab90fa1dcf13b5f32d2e434defca13d21" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref></type>
-        <definition>TimeGrid t_</definition>
-        <argsstring></argsstring>
-        <name>t_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="94" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_lattice_1aa11e1abb76c37d91d43b0e0fd132f9c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -196,114 +181,6 @@
 <para>Lattice (tree, finite-differences) base class </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="8834">
-        <label>TreeLattice2D&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice2_d"/>
-        <childnode refid="8832" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8844">
-        <label>ShortRateTree</label>
-        <link refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree"/>
-        <childnode refid="8843" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8836">
-        <label>TreeLattice1D&lt; BlackScholesLattice&lt; T &gt; &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice1_d"/>
-        <childnode refid="8835" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8839">
-        <label>TreeLattice&lt; OneFactorModel::ShortRateTree &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice"/>
-        <childnode refid="8831" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8840">
-        <label>TreeLattice1D&lt; OneFactorModel::ShortRateTree &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice1_d"/>
-        <childnode refid="8839" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8843">
-        <label>TreeLattice2D&lt; TwoFactorModel::ShortRateTree, TrinomialTree &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice2_d"/>
-        <childnode refid="8842" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8837">
-        <label>BlackScholesLattice&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_black_scholes_lattice"/>
-        <childnode refid="8836" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8835">
-        <label>TreeLattice&lt; BlackScholesLattice&lt; T &gt; &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice"/>
-        <childnode refid="8831" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8832">
-        <label>TreeLattice&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice"/>
-        <childnode refid="8831" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8838">
-        <label>TsiveriotisFernandesLattice&lt; T &gt;</label>
-        <link refid="class_quant_lib_1_1_tsiveriotis_fernandes_lattice"/>
-        <childnode refid="8837" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8842">
-        <label>TreeLattice&lt; TwoFactorModel::ShortRateTree &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice"/>
-        <childnode refid="8831" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8841">
-        <label>ShortRateTree</label>
-        <link refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_tree"/>
-        <childnode refid="8840" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8831">
-        <label>Lattice</label>
-        <link refid="class_quant_lib_1_1_lattice"/>
-      </node>
-      <node id="8833">
-        <label>TreeLattice1D&lt; Impl &gt;</label>
-        <link refid="class_quant_lib_1_1_tree_lattice1_d"/>
-        <childnode refid="8832" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="8846">
-        <label>TimeGrid</label>
-        <link refid="class_quant_lib_1_1_time_grid"/>
-      </node>
-      <node id="8845">
-        <label>Lattice</label>
-        <link refid="class_quant_lib_1_1_lattice"/>
-        <childnode refid="8846" relation="usage">
-          <edgelabel>t_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/numericalmethod.hpp" bodystart="36" bodyend="95"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lattice_1a85dadec35b0b9775e93b8c0d826447ba" prot="public" virt="pure-virtual"><scope>QuantLib::Lattice</scope><name>grid</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1a8f3082121a4d10bf0c4e141212935378" prot="public" virt="pure-virtual"><scope>QuantLib::Lattice</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1aa11e1abb76c37d91d43b0e0fd132f9c4" prot="public" virt="non-virtual"><scope>QuantLib::Lattice</scope><name>Lattice</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1a014c376879c97eb1268c460dfeeebb4d" prot="public" virt="pure-virtual"><scope>QuantLib::Lattice</scope><name>partialRollback</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1a0fe7a4c02a090391b474654cf43ddb56" prot="public" virt="pure-virtual"><scope>QuantLib::Lattice</scope><name>presentValue</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1ac284e0bd252bb0977c06d28bdefdfc06" prot="public" virt="pure-virtual"><scope>QuantLib::Lattice</scope><name>rollback</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1ab90fa1dcf13b5f32d2e434defca13d21" prot="protected" virt="non-virtual"><scope>QuantLib::Lattice</scope><name>t_</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1a6f56adbf4be442b2ca611a3840ba6c50" prot="public" virt="non-virtual"><scope>QuantLib::Lattice</scope><name>timeGrid</name></member>
-      <member refid="class_quant_lib_1_1_lattice_1a3254b8af4162c70d213eb9153fe8dc8d" prot="public" virt="virtual"><scope>QuantLib::Lattice</scope><name>~Lattice</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

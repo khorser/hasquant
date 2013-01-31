@@ -38,9 +38,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/array.hpp" bodystart="144" bodyend="148"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_null_3_01_array_01_4_1a10b15a39fff7b4b5e889dc502186253c" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; Array &gt;</scope><name>Null</name></member>
-      <member refid="class_quant_lib_1_1_null_3_01_array_01_4_1aac0a0df9147413ce551751079915b2e7" prot="public" virt="non-virtual"><scope>QuantLib::Null&lt; Array &gt;</scope><name>operator Array</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -39,13 +39,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp" bodystart="82" bodyend="86"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>addedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_south_korea_1_1_krx_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_south_korea_1_1_settlement_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="public" virt="non-virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_south_korea_1_1_krx_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>removedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::SouthKorea::KrxImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

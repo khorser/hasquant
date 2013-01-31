@@ -237,48 +237,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="6039">
-        <label>FdmDirichletBoundary</label>
-        <childnode refid="6040" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6040">
-        <label>BoundaryCondition&lt; FdmLinearOp &gt;</label>
-        <link refid="class_quant_lib_1_1_boundary_condition"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="6041">
-        <label>FdmDirichletBoundary</label>
-        <childnode refid="6042" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="6042">
-        <label>BoundaryCondition&lt; FdmLinearOp &gt;</label>
-        <link refid="class_quant_lib_1_1_boundary_condition"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/utilities/fdmdirichletboundary.hpp" bodystart="38" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1af4a571c9f08e9d1ff4d37d2ebd467857" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterApplying</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6a903b9c6cc4872dec364e066c09e6d3" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterApplying</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a4556b05a74d18222e48aa7a2ad43b9ec" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyAfterSolving</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1aee99faccbd03377e771635a6cfae86b8" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyBeforeApplying</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1aca642c8c604583162711f4396ef2b51e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>applyBeforeSolving</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a1813b44fed97254f385fac37cfca09ee" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9045300122c604195884011d6607940f" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>FdmDirichletBoundary</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a04ab9a298d4798a54e2ba82c50fb19a2" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>indicies_</name></member>
-      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00af886b397626076218462d53d50eb96bc" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Lower</name></member>
-      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ac9d3e887722f2bc482bcca9d41c512af" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>None</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a9625d18a7fe44bba0f81c0de83f765fb" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>operator_type</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6e60101b2af13783da6aa3d7cee67acb" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>setTime</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a25abbd804206d98770d676560b6a635e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Side</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a98e8e540edb437f98c62fbbc3bbdb701" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>side_</name></member>
-      <member refid="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ae70afef0d3ff7aca74e17e85ff6c9f2e" prot="public" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>Upper</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a6f82d4a4640bb56acd32cee4139370d0" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>valueOnBoundary_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_dirichlet_boundary_1a217fc462bba36545e25bc0b7f50e2377" prot="private" virt="non-virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>xExtreme_</name></member>
-      <member refid="class_quant_lib_1_1_boundary_condition_1aadb0c87dae0ef14d92760cbc517f5330" prot="public" virt="virtual"><scope>QuantLib::FdmDirichletBoundary</scope><name>~BoundaryCondition</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

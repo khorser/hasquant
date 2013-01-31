@@ -4,34 +4,6 @@
     <compoundname>QuantLib::RandomDefaultModel</compoundname>
     <derivedcompoundref refid="class_quant_lib_1_1_gaussian_random_default_model" prot="public" virt="non-virtual">GaussianRandomDefaultModel</derivedcompoundref>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp</includes>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_default_model_1a804abfaf5ef088110d37eccde7d1c9a0" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; Pool &gt;</type>
-        <definition>boost::shared_ptr&lt;Pool&gt; pool_</definition>
-        <argsstring></argsstring>
-        <name>pool_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="56" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_random_default_model_1a69d3c9c99d522936a4f50c1223a6516c" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &gt;</type>
-        <definition>std::vector&lt;DefaultProbKey&gt; defaultKeys_</definition>
-        <argsstring></argsstring>
-        <name>defaultKeys_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -105,26 +77,6 @@
 <para>Base class for random default models. </para>    </briefdescription>
     <detaileddescription>
 <para>Provides sequences of random default times for each name in the pool. </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="12659">
-        <label>RandomDefaultModel</label>
-        <link refid="class_quant_lib_1_1_random_default_model"/>
-      </node>
-      <node id="12660">
-        <label>GaussianRandomDefaultModel</label>
-        <link refid="class_quant_lib_1_1_gaussian_random_default_model"/>
-        <childnode refid="12659" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/randomdefaultmodel.hpp" bodystart="37" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_random_default_model_1a69d3c9c99d522936a4f50c1223a6516c" prot="protected" virt="non-virtual"><scope>QuantLib::RandomDefaultModel</scope><name>defaultKeys_</name></member>
-      <member refid="class_quant_lib_1_1_random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8" prot="public" virt="pure-virtual"><scope>QuantLib::RandomDefaultModel</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_random_default_model_1a804abfaf5ef088110d37eccde7d1c9a0" prot="protected" virt="non-virtual"><scope>QuantLib::RandomDefaultModel</scope><name>pool_</name></member>
-      <member refid="class_quant_lib_1_1_random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" virt="non-virtual"><scope>QuantLib::RandomDefaultModel</scope><name>RandomDefaultModel</name></member>
-      <member refid="class_quant_lib_1_1_random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" virt="pure-virtual"><scope>QuantLib::RandomDefaultModel</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_random_default_model_1ac7a9258a633f4ec45a6efe376e5abc9d" prot="public" virt="virtual"><scope>QuantLib::RandomDefaultModel</scope><name>~RandomDefaultModel</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

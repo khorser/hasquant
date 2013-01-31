@@ -34,54 +34,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" line="56" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_trapezoid_integral_1a5a7b69e9c96cb1f7b182caef74747c6c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>Real integrate</definition>
-        <argsstring>(const boost::function&lt; Real(Real)&gt; &amp;f, Real a, Real b) const </argsstring>
-        <name>integrate</name>
-        <param>
-          <type>const boost::function&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>(<ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>)&gt; &amp;</type>
-          <declname>f</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>a</declname>
-        </param>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>b</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" bodystart="59" bodyend="80"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Integral of a one-dimensional function. </para>    </briefdescription>
     <detaileddescription>
 <para>Given a target accuracy <formula id="203">$ \epsilon $</formula>, the integral of a function <formula id="37">$ f $</formula> between <formula id="47">$ a $</formula> and <formula id="48">$ b $</formula> is calculated by means of the trapezoid formula <formula id="204">\[ \int_{a}^{b} f \mathrm{d}x = \frac{1}{2} f(x_{0}) + f(x_{1}) + f(x_{2}) + \dots + f(x_{N-1}) + \frac{1}{2} f(x_{N}) \]</formula> where <formula id="205">$ x_0 = a $</formula>, <formula id="206">$ x_N = b $</formula>, and <formula id="207">$ x_i = a+i \Delta x $</formula> with <formula id="208">$ \Delta x = (b-a)/N $</formula>. The number <formula id="32">$ N $</formula> of intervals is repeatedly increased until the target accuracy is reached.</para><para><xrefsect id="test_1_test000041"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the result is tested by checking it against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/trapezoidintegral.hpp" bodystart="52" bodyend="81"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_integrator_1a30349681fee19d861a0a89c9f4bf941d" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>absoluteAccuracy</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1ab118832eb331364a73b4bb0a6baa4629" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>absoluteError</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a239d39c2bf8f6edefc8b4b78451b8c8e" prot="protected" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>increaseNumberOfEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_trapezoid_integral_1a5a7b69e9c96cb1f7b182caef74747c6c" prot="protected" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>integrate</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1acc129571df52ec7737c23e281c830106" prot="public" virt="virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>integrationSuccess</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a63b3dafdb96cf907300477ec2478ea8b" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>Integrator</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a842b062d85cd314bb96925ed3b67afac" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>maxEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a79593bf769449322a27f03525936cde3" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>numberOfEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a60134ce215fe001ccfd67332646dd805" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1ae715a1a7471aa54a69ade6e67652c6c0" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>setAbsoluteAccuracy</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a3deaec481d5e01a78e29bcddab11ce93" prot="protected" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>setAbsoluteError</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a3ae2d70f89b2d3c6a9d16cfa91c4cc70" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>setMaxEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1a5bf750b90dc3c089122560f6d5a5db0d" prot="protected" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>setNumberOfEvaluations</name></member>
-      <member refid="class_quant_lib_1_1_trapezoid_integral_1a561fa1ee6b2567042a2c6ccaf256b452" prot="public" virt="non-virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>TrapezoidIntegral</name></member>
-      <member refid="class_quant_lib_1_1_integrator_1ac13ff1f4b36510ac4bcd076d4c1773ab" prot="public" virt="virtual"><scope>QuantLib::TrapezoidIntegral</scope><name>~Integrator</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

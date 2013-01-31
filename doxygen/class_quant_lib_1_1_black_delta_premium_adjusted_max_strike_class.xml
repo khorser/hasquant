@@ -91,11 +91,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/fx/blackdeltacalculator.hpp" bodystart="104" bodyend="119"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_max_strike_class_1a5891bc0dca87b71ab42dc20f41eef112" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedMaxStrikeClass</scope><name>bdc_</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_max_strike_class_1aa2ee156215fe2415d66a1f5e83dd4adf" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedMaxStrikeClass</scope><name>BlackDeltaPremiumAdjustedMaxStrikeClass</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_max_strike_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedMaxStrikeClass</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_black_delta_premium_adjusted_max_strike_class_1a558676275dc818fb808f33a998dfa3e1" prot="private" virt="non-virtual"><scope>QuantLib::BlackDeltaPremiumAdjustedMaxStrikeClass</scope><name>stdDev_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

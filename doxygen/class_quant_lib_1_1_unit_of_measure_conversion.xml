@@ -196,65 +196,10 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="37" bodyend="40"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_unit_of_measure_conversion_1a210aee44be05928c82d452eba426b14d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; Data &gt;</type>
-        <definition>boost::shared_ptr&lt;Data&gt; data_</definition>
-        <argsstring></argsstring>
-        <name>data_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="82" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1afce364d5a06b731c81704cde94794bc2" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type></type>
-        <definition>UnitOfMeasureConversion</definition>
-        <argsstring>(const UnitOfMeasureConversion &amp;r1, const UnitOfMeasureConversion &amp;r2)</argsstring>
-        <name>UnitOfMeasureConversion</name>
-        <param>
-          <type>const UnitOfMeasureConversion &amp;</type>
-          <declname>r1</declname>
-        </param>
-        <param>
-          <type>const UnitOfMeasureConversion &amp;</type>
-          <declname>r2</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="80"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversion.hpp" bodystart="35" bodyend="104"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1af17b10aa153892f31d9d000edb547397" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>chain</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>code</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a37755c700c75d5810577a5dfbd10446a" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>commodityType</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a3b17ecbd0d9986301281b6f446c5ad8b" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>conversionFactor</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a044f1f3c3e89e8da3ff37797449925b0" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>convert</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a210aee44be05928c82d452eba426b14d" prot="protected" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>data_</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>Derived</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>Direct</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1af4b46201b6accf81619e8aaded44a41a" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>source</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a1facf4ce5263c51fb04d511d7603fc8a" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>target</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1ab5f62266ccba3960c8cbbc44213817af" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>type</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1a69161ed58889bfab13dbd53a307ca534" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>UnitOfMeasureConversion</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1acea7cd5a63a1f48d7feed6e4a43cc33e" prot="public" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>UnitOfMeasureConversion</name></member>
-      <member refid="class_quant_lib_1_1_unit_of_measure_conversion_1afce364d5a06b731c81704cde94794bc2" prot="protected" virt="non-virtual"><scope>QuantLib::UnitOfMeasureConversion</scope><name>UnitOfMeasureConversion</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

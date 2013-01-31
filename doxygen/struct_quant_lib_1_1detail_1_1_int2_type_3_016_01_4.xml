@@ -37,9 +37,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="397" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="397" bodyend="400"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_int2_type_3_016_01_4_1a280758fd243cc281542c28c1c320333f" prot="public" virt="non-virtual"><scope>QuantLib::detail::Int2Type&lt; 6 &gt;</scope><name>c_spline</name></member>
-      <member refid="struct_quant_lib_1_1detail_1_1_int2_type_3_016_01_4_1a8bc17d986d2be34a075ba352fe84eaf9" prot="public" virt="non-virtual"><scope>QuantLib::detail::Int2Type&lt; 6 &gt;</scope><name>c_splint</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

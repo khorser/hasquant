@@ -338,27 +338,5 @@
     <detaileddescription>
 <para>This view can be used to easily store a discretized 2-D function in an array to be used in a finite differences calculation. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/lexicographicalview.hpp" bodystart="37" bodyend="79"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1aff626e64244e6b8430972b61a2405169" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>begin_</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a5e57fc05a0e74011ddb318203e15be2d" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>end_</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a64811b5cfac61b8b7f079a1e56c273f1" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>LexicographicalView</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a20b182f3ebd58c72b9d7ec207efde1bc" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>operator[]</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1affef015b19d72a3e5affd7f6f94c487c" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>reverse_x_iterator</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a9ca10f675e1e0b950cf45bb46d2ae2ad" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>reverse_y_iterator</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1acab55b16f1b726eb6ae7ae1b30849076" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rxbegin</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1ae0bdc43b58a69fc779ae759e4c4b4eed" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rxend</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1aa1cdbcea66a355d777a591b22f55dec4" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>rybegin</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a104ca00059e96eba5a43cb453864b8eb" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ryend</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a60ae9a6c903bfa254d23a6a144ad05ae" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>x_iterator</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a5d6d0013e2b539b82adc6ee9aced4c3b" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xbegin</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a95880e751665365e1bc72f0533ba5d43" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xend</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a9181efab98a01d26ddb0f7d07006fdd9" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xSize</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a5b7d151dd8bd0b9caf6c2226a1a0bfa8" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>xSize_</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a33c972ce3c11af890f66ca3fa79e4692" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>y_iterator</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a5ada822e35e1d1e457536b934cc915c8" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ybegin</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a5ff481378d38b12bfd7bdd4e8229f15f" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>yend</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1ac8b98e629892d44bca18d9fe1e6f7b84" prot="public" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ySize</name></member>
-      <member refid="class_quant_lib_1_1_lexicographical_view_1a4b4ced0c6342f8c5e8d8788b1e4d3417" prot="private" virt="non-virtual"><scope>QuantLib::LexicographicalView</scope><name>ySize_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

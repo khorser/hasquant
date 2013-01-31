@@ -176,17 +176,5 @@
     <detaileddescription>
 <para><ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> contains the list of paths for each asset, i.e., multipath[j] is the path followed by the j-th asset. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/multipath.hpp" bodystart="38" bodyend="58"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_multi_path_1ad65e78a811f17a9c504e6995782caa64" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>assetNumber</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a8d08b1b4eca7df4b5194d05dda62d69a" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>at</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a1072d695def4d818ee48244b5e87a7b0" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>at</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a6ad3835dcfc070f674af75dc697b62ff" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>MultiPath</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1ad6de2a992badf085d6250b9d6ebed0be" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>MultiPath</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a5e2ee5e880e28937902a8b9493a1cfcb" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>MultiPath</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a2ec0f6fb5ec6fffd978c95a4a55f0178" prot="private" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>multiPath_</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1aaa8b698c8de3097faef375d76c50d50d" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>operator[]</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a794e83596e13fc0cff8a60d4f96a9792" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>operator[]</name></member>
-      <member refid="class_quant_lib_1_1_multi_path_1a4e8b292569a9184ecdffc719a39d67d5" prot="public" virt="non-virtual"><scope>QuantLib::MultiPath</scope><name>pathSize</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

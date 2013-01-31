@@ -130,38 +130,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="893">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="892">
-        <label>BiasedBarrierPathPricer</label>
-        <childnode refid="893" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="895">
-        <label>PathPricer&lt; Path &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="894">
-        <label>BiasedBarrierPathPricer</label>
-        <childnode refid="895" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" line="163" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/barrier/mcbarrierengine.hpp" bodystart="163" bodyend="178"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1a70ca946cc3b0a75548f7f38eedd3a7a6" prot="private" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>barrier_</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1a1439bfbbaacb914efebb469a50d6528a" prot="private" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>barrierType_</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1a50ab57b49c747f02816fb0bcb0fac046" prot="public" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>BiasedBarrierPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1a5b7c70a1efc32d377233f99a0dffc62f" prot="private" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>discounts_</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1a3d1dc98279327e77c9533ea3e9b62093" prot="private" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_biased_barrier_path_pricer_1ad6e88a4eb440388c167742fc333e8fd5" prot="private" virt="non-virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>rebate_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::BiasedBarrierPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

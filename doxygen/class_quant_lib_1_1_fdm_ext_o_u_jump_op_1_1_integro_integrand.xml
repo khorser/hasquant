@@ -109,13 +109,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp" bodystart="67" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a474788abd4b701988062bf1161090ad2" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>bcSet_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a1cffe8529d271d91d1faff0fef4c6b87" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>eta_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a78b7a377f4507f398d68d2b84602594d" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>IntegroIntegrand</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1ac7f99b91f156a037621bbdea6cab2792" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>interpl_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1a8f2e9405d5571553f62b805fb9b42d3e" prot="public" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand_1ab295bd7d159f9136fed721f36381decb" prot="private" virt="non-virtual"><scope>QuantLib::FdmExtOUJumpOp::IntegroIntegrand</scope><name>y_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

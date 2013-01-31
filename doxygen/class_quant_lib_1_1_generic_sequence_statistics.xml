@@ -570,60 +570,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_sequence_statistics_1a101ac2fd4059964925dda5d18055f99c" prot="protected" static="no" mutable="no">
-        <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
-        <definition>Size dimension_</definition>
-        <argsstring></argsstring>
-        <name>dimension_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="144" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="144" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_sequence_statistics_1a7be4ef03e92a452316a435427a8c048e" prot="protected" static="no" mutable="no">
-        <type>std::vector&lt; statistics_type &gt;</type>
-        <definition>std::vector&lt;statistics_type&gt; stats_</definition>
-        <argsstring></argsstring>
-        <name>stats_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="145" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="145" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_sequence_statistics_1a7efaf9c624aded4fa10a3917f523642e" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>std::vector&lt;Real&gt; results_</definition>
-        <argsstring></argsstring>
-        <name>results_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="146" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="146" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_generic_sequence_statistics_1ac7bc1d4bf5808900f134e92c1ad1760a" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
-        <definition>Matrix quadraticSum_</definition>
-        <argsstring></argsstring>
-        <name>quadraticSum_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="147" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="147" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_generic_sequence_statistics_1afbcdf522cb04d3aa199db19be945285d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -648,73 +594,6 @@
 <para>Statistics analysis of N-dimensional (sequence) data. </para>    </briefdescription>
     <detaileddescription>
 <para>It provides 1-dimensional statistics as discrepancy plus N-dimensional (sequence) statistics (e.g. mean, variance, skewness, kurtosis, etc.) with one component for each dimension of the sample space.</para><para>For most of the statistics this class relies on the StatisticsType underlying class to provide 1-D methods that will be iterated for all the components of the N-D data. These lifted methods are the union of all the methods that might be requested to the 1-D underlying StatisticsType class, with the usual compile-time checks provided by the template approach.</para><para><xrefsect id="test_1_test000071"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking them against numerical calculations. </para></xrefdescription></xrefsect></para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7219">
-        <label>GenericSequenceStatistics&lt; StatisticsType &gt;</label>
-        <link refid="class_quant_lib_1_1_generic_sequence_statistics"/>
-      </node>
-      <node id="7220">
-        <label>DiscrepancyStatistics&lt; Statistics &gt;</label>
-        <link refid="class_quant_lib_1_1_discrepancy_statistics"/>
-        <childnode refid="7219" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7222">
-        <label>Matrix</label>
-        <link refid="class_quant_lib_1_1_matrix"/>
-      </node>
-      <node id="7221">
-        <label>GenericSequenceStatistics&lt; StatisticsType &gt;</label>
-        <link refid="class_quant_lib_1_1_generic_sequence_statistics"/>
-        <childnode refid="7222" relation="usage">
-          <edgelabel>quadraticSum_</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/statistics/sequencestatistics.hpp" bodystart="50" bodyend="148"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a1f278171ca690f5a6c24ca31583fdad6" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1aec007c1f57d0a048f8cc541dc3614137" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>add</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1abfe0667817541e44f9f42f8479d0f89d" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>averageShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1af0006e861bd46e8e780a705ed17fd4c6" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a2419a649deea843b01804a626b3009f4" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>covariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a101ac2fd4059964925dda5d18055f99c" prot="protected" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>dimension_</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1aa407c16fa7f7b5e1dce0239a1e1f9b11" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>downsideDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1afe95f5456e7f097c20d273ed0c7368a3" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>downsideVariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ac0dfceea0de7224a591a1734f860bb40" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>errorEstimate</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a9dce88984fe2418e9f2d47fc50996194" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>expectedShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ac82b1d32c521abdcdf2df5ca2e31fa52" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianAverageShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a281f204c440d50cfdd499562b05e0e7f" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianExpectedShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a531454d8413732a05e685bcf1cdc5974" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianPercentile</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1aa8d4eb1ce1319ce83f7b4b4ce8fc58e3" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianPotentialUpside</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a9359b0d4904d74a521b73927679ac98c" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianShortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ae5df0de2660027432d85a0f6d65ddc39" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>gaussianValueAtRisk</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1afbcdf522cb04d3aa199db19be945285d" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>GenericSequenceStatistics</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a767667eaea3cbc3b35666db167f209b6" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>kurtosis</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a3ecd48053793363b4b7032c1a1a61222" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>max</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1acccc2e99a25f8b4e2688e840dab3326d" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>mean</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ac67e03faa849950e469165311c357c73" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>min</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ad4aae5fd842cd76dcc21ac60ca81e495" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>percentile</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ab74510815db3c9b3f5895ab883cc13d8" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>potentialUpside</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ac7bc1d4bf5808900f134e92c1ad1760a" prot="protected" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>quadraticSum_</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a17d2abbab64d9514dba9a21d71c914d7" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>regret</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a58bd77d1d091d636b8d5400814152bc5" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a7efaf9c624aded4fa10a3917f523642e" prot="protected" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>results_</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1afb02dc74860bcd8ad0982324d50c82e4" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>samples</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a8f778a87e1f684b7028968a2229ef6d0" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>semiDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1adacf8b47e63f62a3f8644f4085399950" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>semiVariance</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a9e5daee08ad4ef07a3cfc69efda097f0" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>shortfall</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ad23542ce302e21b2ea5d6d5e05ecf201" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>skewness</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a8a5eb61b9b2db4239e03d575d1d18153" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>standardDeviation</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a432b0207d0c29af4568812e45096b424" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>statistics_type</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a7be4ef03e92a452316a435427a8c048e" prot="protected" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>stats_</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a8dd99e1d97911568752102c50ddcef34" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>value_type</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1ad5aea367f2b20182be171a30cd7aaf3b" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>valueAtRisk</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1a7410d338da8f3c635cc37f03da72cd76" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>variance</name></member>
-      <member refid="class_quant_lib_1_1_generic_sequence_statistics_1adadbb304259580be7add0941c9540bd9" prot="public" virt="non-virtual"><scope>QuantLib::GenericSequenceStatistics</scope><name>weightSum</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

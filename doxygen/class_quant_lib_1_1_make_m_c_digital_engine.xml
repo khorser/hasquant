@@ -307,26 +307,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" line="88" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcdigitalengine.hpp" bodystart="88" bodyend="110"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1ab3936864d511ed336bdef2085a024728" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>MakeMCDigitalEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1ad193bceb88346d2755789a09afa91d86" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>steps_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a2c4aca1523cfd7b211f723d48985b1de" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>stepsPerYear_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1addcba14483b649b40c8008daaff63bd0" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a1770f48750df1bef1cd9b4924d2baef3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a54170f53faad10558c3025f80848fecc" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a770ffb2b71e5a4c4e36b08c593d2d499" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1aa22eb873cc8760a1fb97d0e75201adef" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1ab820cc500b1e80afd179dc8254d8aa43" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withSeed</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a3b6573a4c09f0c37cc2d3b15427fcd0f" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withSteps</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_digital_engine_1a529341ac238c7716f66602e490e603ff" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDigitalEngine</scope><name>withStepsPerYear</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

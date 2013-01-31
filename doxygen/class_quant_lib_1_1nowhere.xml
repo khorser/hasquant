@@ -23,10 +23,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="75" bodyend="78"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1constant_1af3d999ce0ad6690e9e90d5cbc5e388f1" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>constant</name></member>
-      <member refid="class_quant_lib_1_1nowhere_1a0e6626a5d9aff1b64cab2da450c4f1f9" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>nowhere</name></member>
-      <member refid="class_quant_lib_1_1constant_1a5ac8cc87cf7e0b144057e95ef382fe2f" prot="public" virt="non-virtual"><scope>QuantLib::nowhere</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

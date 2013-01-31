@@ -782,52 +782,5 @@
     <detaileddescription>
 <para>This class provides methods to inspect dates as well as methods and operators which implement a limited date algebra (increasing and decreasing dates, and calculating their difference).</para><para><xrefsect id="test_1_test000153"><xreftitle>Tests</xreftitle><xrefdescription><para>self-consistency of dates, serial numbers, days of month, months, and weekdays is checked over the whole date range. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" line="89" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/date.hpp" bodystart="89" bodyend="181"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_date_1a184b838fc86b6047e5d9ba7f9f3e8a18" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>advance</name></member>
-      <member refid="class_quant_lib_1_1_date_1abd18a31f6e9937ea5d409535cd6385d7" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>checkSerialNumber</name></member>
-      <member refid="class_quant_lib_1_1_date_1aff49fc2cda4491ff4457ca481bb8edf9" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>Date</name></member>
-      <member refid="class_quant_lib_1_1_date_1aa331455552468c0198d57df46efc08f8" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>Date</name></member>
-      <member refid="class_quant_lib_1_1_date_1aa157820c6a6e7518f7215e2213616aee" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>Date</name></member>
-      <member refid="class_quant_lib_1_1_date_1a1abc2fd6d46857840592b215117cd332" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>dayOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_date_1a763db58d72c7d2cb79f910d073157b38" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>dayOfYear</name></member>
-      <member refid="class_quant_lib_1_1_date_1a7c1704dd4c31093571b353b270e160cd" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>endOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_date_1aa0e9cb47a55168ecd2af13d7be0e8a86" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>isEndOfMonth</name></member>
-      <member refid="class_quant_lib_1_1_date_1a586c8f2317d6b5165f60304a391eb587" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>isLeap</name></member>
-      <member refid="class_quant_lib_1_1_date_1ab16674c4f64b17d89302cf0805f1fdbd" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>maxDate</name></member>
-      <member refid="class_quant_lib_1_1_date_1adf15bfe61be8943465c57b674d848f7f" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>maximumSerialNumber</name></member>
-      <member refid="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>minDate</name></member>
-      <member refid="class_quant_lib_1_1_date_1a55989419aef0302ecc99c1c8d52cccf9" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>minimumSerialNumber</name></member>
-      <member refid="class_quant_lib_1_1_date_1aaf6068a327702eb87fab7c893d63c3cd" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>month</name></member>
-      <member refid="class_quant_lib_1_1_date_1a0aa07cb3fd00c5891f306156a4932623" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>monthLength</name></member>
-      <member refid="class_quant_lib_1_1_date_1ade4d8a8ea2160e4fa3f2e794ee00935b" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>monthOffset</name></member>
-      <member refid="class_quant_lib_1_1_date_1a9caf3cd25686bb9e2eefc53a9eadcafb" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>nextWeekday</name></member>
-      <member refid="class_quant_lib_1_1_date_1ac3b059c7dcdc19487c1f95542218c888" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>nthWeekday</name></member>
-      <member refid="class_quant_lib_1_1_date_1a5ac1b43688828377f31de974e061006f" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator!=</name></member>
-      <member refid="class_quant_lib_1_1_date_1a6de85b04ffcb972a60918bb63cb571e8" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_date_1aa51ddbd8d8f33c4abde8bd8603fc8fed" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator+</name></member>
-      <member refid="class_quant_lib_1_1_date_1ae6a991aa97305857a8f1f3ce86e56a8e" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator++</name></member>
-      <member refid="class_quant_lib_1_1_date_1a6541a6651456d8bc1622a24291841647" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator++</name></member>
-      <member refid="class_quant_lib_1_1_date_1ab6f7f85b59c091e173b7bb63fd499e3c" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_date_1a07d81fcf62cbe8eb96e3643555931b46" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator+=</name></member>
-      <member refid="class_quant_lib_1_1_date_1a83028e338e164409c00c44b170b1ad94" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_date_1a9f749d07ec5fbb465a2b618a159c513d" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_date_1ad4b6fb4702e8fd7dcdcf0ff7ab0ab60d" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator-</name></member>
-      <member refid="class_quant_lib_1_1_date_1ad96f835929dff451238fe944b8855797" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator--</name></member>
-      <member refid="class_quant_lib_1_1_date_1a382393929522ea82108942354ca727f7" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator--</name></member>
-      <member refid="class_quant_lib_1_1_date_1ae766493ec3fd4018080f00af808dfbe0" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_date_1a0b5789977f91e47ef9ea2ec8a921215a" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator-=</name></member>
-      <member refid="class_quant_lib_1_1_date_1acbc7a012dc46ebcd65dfd2887e3a3ad4" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator&lt;</name></member>
-      <member refid="class_quant_lib_1_1_date_1a65ff0f219c6817d3b8b6e57724dc680a" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator&lt;&lt;</name></member>
-      <member refid="class_quant_lib_1_1_date_1aec251fea3c00fa40e6e9e07a90620f78" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator&lt;=</name></member>
-      <member refid="class_quant_lib_1_1_date_1ad51822da99f2cc001b6326ac28bd49d6" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator==</name></member>
-      <member refid="class_quant_lib_1_1_date_1a042bfc86a816127e316415634bb99107" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator&gt;</name></member>
-      <member refid="class_quant_lib_1_1_date_1a04118d56c46df4ac9054f0e34d2a6ce2" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>operator&gt;=</name></member>
-      <member refid="class_quant_lib_1_1_date_1a412eb3ac472f875e0017df004a9d0ee2" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>serialNumber</name></member>
-      <member refid="class_quant_lib_1_1_date_1a51c38d3088b7464c8c5d9f2cd0442096" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>serialNumber_</name></member>
-      <member refid="class_quant_lib_1_1_date_1aa3b3414c408337e640d21c0936602c66" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>todaysDate</name></member>
-      <member refid="class_quant_lib_1_1_date_1abaa5325a9945802025849f2ce19f216a" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>weekday</name></member>
-      <member refid="class_quant_lib_1_1_date_1a6b547238a0bb413fe80f74b6ce04bb69" prot="public" virt="non-virtual"><scope>QuantLib::Date</scope><name>year</name></member>
-      <member refid="class_quant_lib_1_1_date_1a9893829c8af5e7b6dae52084d77ddf70" prot="private" virt="non-virtual"><scope>QuantLib::Date</scope><name>yearOffset</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

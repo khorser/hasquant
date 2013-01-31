@@ -79,12 +79,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatortraits.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operatortraits.hpp" bodystart="33" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_operator_traits_1a736e8d4a0263c9dd7a6f33aa7615c767" prot="public" virt="non-virtual"><scope>QuantLib::OperatorTraits</scope><name>array_type</name></member>
-      <member refid="class_quant_lib_1_1_operator_traits_1a8e42ab6213980dc041bfb2274e5d8279" prot="public" virt="non-virtual"><scope>QuantLib::OperatorTraits</scope><name>bc_set</name></member>
-      <member refid="class_quant_lib_1_1_operator_traits_1a49aecf7965a775f25fe3bba33ac87a8b" prot="public" virt="non-virtual"><scope>QuantLib::OperatorTraits</scope><name>bc_type</name></member>
-      <member refid="class_quant_lib_1_1_operator_traits_1a9c398736e49b1d74db6090c0254dbcbf" prot="public" virt="non-virtual"><scope>QuantLib::OperatorTraits</scope><name>condition_type</name></member>
-      <member refid="class_quant_lib_1_1_operator_traits_1a158330dcc465dcd323e801d462791ac4" prot="public" virt="non-virtual"><scope>QuantLib::OperatorTraits</scope><name>operator_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

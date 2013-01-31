@@ -24,8 +24,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/null.hpp" bodystart="46" bodyend="50"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1detail_1_1_floating_point_null_3_01true_01_4_1af66defe51472a9cc55a359a79ed27490" prot="public" virt="non-virtual"><scope>QuantLib::detail::FloatingPointNull&lt; true &gt;</scope><name>nullValue</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

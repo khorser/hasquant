@@ -119,61 +119,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7341">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="7342">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="7340">
-        <label>Handle&lt; T &gt;::Link</label>
-        <childnode refid="7341" relation="public-inheritance">
-        </childnode>
-        <childnode refid="7342" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7344">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="7345">
-        <label>Observer</label>
-        <link refid="class_quant_lib_1_1_observer"/>
-      </node>
-      <node id="7343">
-        <label>Handle&lt; T &gt;::Link</label>
-        <childnode refid="7344" relation="public-inheritance">
-        </childnode>
-        <childnode refid="7345" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/handle.hpp" bodystart="43" bodyend="55"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1af6d3592fe892a679b905efa2faec134a" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>currentLink</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1ac6e61de369e994009e36f344f99c15ad" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>empty</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1abb64f0c8c919957ab32442581fa29a67" prot="private" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>h_</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1a802efedab6181f4b387dbff71b208e68" prot="private" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>isObserver_</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1afcbab3b7e664f50b2a05967223a42edd" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>Link</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1aff7f827772441dfd70a6dd9562fc5ca3" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>linkTo</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1abbd00a8000bd3ee5cd7e35aeb436f937" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observer_1af6a9d3ca0b7f388f3b7ccb1eccf11f63" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>Observer</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual" ambiguityscope="QuantLib::"><scope>QuantLib::Handle::Link</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a6810b3645967da11d5f5d4804d37bacc" prot="public" virt="non-virtual" ambiguityscope="QuantLib::Observer::"><scope>QuantLib::Handle::Link</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_observer_1aa4b0a1b72f12bebd9f9de9daf8dd02f9" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>registerWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a61253fab60176cbcfce16537442d0b4b" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>unregisterWith</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0c19cb502f3b720b99b176ea6cc7e319" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>unregisterWithAll</name></member>
-      <member refid="class_quant_lib_1_1_handle_1_1_link_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::Handle::Link</scope><name>update</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::Handle::Link</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_observer_1a0cb58450d0039d83b21363773e589615" prot="public" virt="virtual"><scope>QuantLib::Handle::Link</scope><name>~Observer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

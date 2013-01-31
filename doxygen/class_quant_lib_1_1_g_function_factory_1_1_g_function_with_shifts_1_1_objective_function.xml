@@ -149,16 +149,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="152" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="152" bodyend="166"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1adf784673402326f48ea2fce8465d1d7c" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>derivative</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a82692e4e8edda225208d27e32de786c8" prot="private" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>derivative_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a4ca01e1123ed31078221ef631ddb036d" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>gFunctionWithShifts</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1ad1ed96ea77e3bb991bf660d6514ca09f" prot="private" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>o_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1ae22de746b5146aaf5db9e25aeddb1a03" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>ObjectiveFunction</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1ac77e92926193ea1c518fcc0a335a9556" prot="public" virt="virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a9489d1da5b00c42e11e2bb37d7cc0b94" prot="private" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>Rs_</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a4146ae1a0a8c9124c305a85ec755537b" prot="public" virt="non-virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>setSwapRateValue</name></member>
-      <member refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function_1a01c14cff0d16539e5dad3d0cc574327e" prot="public" virt="virtual"><scope>QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</scope><name>~ObjectiveFunction</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

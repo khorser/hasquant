@@ -38,49 +38,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="1448">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="1446">
-        <label>Brazil::ExchangeImpl</label>
-        <childnode refid="1447" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1447">
-        <label>WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="1448" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="1451">
-        <label>Impl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_impl"/>
-      </node>
-      <node id="1449">
-        <label>Brazil::ExchangeImpl</label>
-        <childnode refid="1450" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="1450">
-        <label>WesternImpl</label>
-        <link refid="class_quant_lib_1_1_calendar_1_1_western_impl"/>
-        <childnode refid="1451" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/calendars/brazil.hpp" bodystart="83" bodyend="87"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1a19a911026af3cf77a94df8fabbec2544" prot="public" virt="non-virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>addedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" virt="non-virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>easterMonday</name></member>
-      <member refid="class_quant_lib_1_1_brazil_1_1_exchange_impl_1aef7bb743a07f9252b6c796266834639a" prot="public" virt="non-virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>isBusinessDay</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_western_impl_1a99edfdd84b47e15c4beff2a15d45dbd8" prot="protected" virt="virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>isWeekend</name></member>
-      <member refid="class_quant_lib_1_1_brazil_1_1_exchange_impl_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" virt="non-virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>name</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1aa92305fd714987d2b803b379df34cbcd" prot="public" virt="non-virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>removedHolidays</name></member>
-      <member refid="class_quant_lib_1_1_calendar_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" virt="virtual"><scope>QuantLib::Brazil::ExchangeImpl</scope><name>~Impl</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

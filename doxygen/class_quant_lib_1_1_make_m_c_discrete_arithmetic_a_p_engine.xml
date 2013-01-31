@@ -277,24 +277,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_price.hpp" line="173" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/asian/mc_discr_arith_av_price.hpp" bodystart="173" bodyend="194"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a3fd25065e16fc0078b5684ee94b0ca4e" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>antithetic_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a237ba632601944316deef578c245e825" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>brownianBridge_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a1c27fd78e44f207125a15990d39ad4f5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>controlVariate_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1ac61d44782e70210872bc7f84a02cfe63" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>MakeMCDiscreteArithmeticAPEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1ae92c9f4ec24db42ea6eceb5919e9dea5" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>maxSamples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a9fba5728f2e7e979edc8fce741709a97" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>operator boost::shared_ptr&lt; PricingEngine &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a56894d395192aaae9970e5f03c5ad02f" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a6ca6ca73af9920c0423b5e6c682ffb78" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>samples_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a654936ea7a7e268c1d02b452e80c7fdb" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>seed_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a23d2944fdb4ac7f255b13aaa685af25d" prot="private" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>tolerance_</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a98dd3ac9fba18a75bdce17d5eac250d5" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withAbsoluteTolerance</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a9523e6451f4bf4fbe2f0068f553275f2" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withAntitheticVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1ae95d3e92551ca17469a92802c7cc1fd2" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withBrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a47c1c621ed4a16cb83d6188e09868ab3" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withControlVariate</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1ac6ff9d7b7ab66e260331c9f99556b952" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withMaxSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a506a6e7132b251e5e1d9f778b6c736ff" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withSamples</name></member>
-      <member refid="class_quant_lib_1_1_make_m_c_discrete_arithmetic_a_p_engine_1a5ca8f1c6c15502e1d1b916d44bbc48cf" prot="public" virt="non-virtual"><scope>QuantLib::MakeMCDiscreteArithmeticAPEngine</scope><name>withSeed</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

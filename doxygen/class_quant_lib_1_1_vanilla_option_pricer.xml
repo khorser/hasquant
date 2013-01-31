@@ -48,9 +48,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/conundrumpricer.hpp" bodystart="35" bodyend="41"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_vanilla_option_pricer_1a8601919c0205f2a88e7e7f7852c924b9" prot="public" virt="pure-virtual"><scope>QuantLib::VanillaOptionPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_vanilla_option_pricer_1a226ba38945451dd181b28c0c23c2ee9b" prot="public" virt="virtual"><scope>QuantLib::VanillaOptionPricer</scope><name>~VanillaOptionPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

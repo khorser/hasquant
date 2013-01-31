@@ -55,10 +55,5 @@
     <detaileddescription>
 <para><xrefsect id="test_1_test000010"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned values is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/variancegamma/analyticvariancegammaengine.hpp" bodystart="38" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_variance_gamma_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" virt="non-virtual"><scope>QuantLib::VarianceGammaEngine</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_variance_gamma_engine_1ab36bbe36365d265741871d4414314e11" prot="private" virt="non-virtual"><scope>QuantLib::VarianceGammaEngine</scope><name>process_</name></member>
-      <member refid="class_quant_lib_1_1_variance_gamma_engine_1aec41fc8d5057dccde9163e13c8dd4407" prot="public" virt="non-virtual"><scope>QuantLib::VarianceGammaEngine</scope><name>VarianceGammaEngine</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

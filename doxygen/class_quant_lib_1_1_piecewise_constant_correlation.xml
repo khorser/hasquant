@@ -94,13 +94,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/piecewiseconstantcorrelation.hpp" bodystart="32" bodyend="40"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1ae08bef1d9e2af46227740be2eed7bd98" prot="public" virt="virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1ab327bb2b2562291f7fe1b4052b86683f" prot="public" virt="pure-virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>correlations</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" virt="pure-virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>numberOfRates</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1acd4ae9bccce0ae4579e3c97df63654e5" prot="public" virt="pure-virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>rateTimes</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1a05c63460ae2cc20c30541b797418b15f" prot="public" virt="pure-virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>times</name></member>
-      <member refid="class_quant_lib_1_1_piecewise_constant_correlation_1a8ba187765333e99f9b1f5d3990daf08c" prot="public" virt="virtual"><scope>QuantLib::PiecewiseConstantCorrelation</scope><name>~PiecewiseConstantCorrelation</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

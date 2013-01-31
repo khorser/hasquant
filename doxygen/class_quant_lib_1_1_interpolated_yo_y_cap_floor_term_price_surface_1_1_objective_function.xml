@@ -2,47 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function" kind="class" prot="protected">
     <compoundname>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</compoundname>
-      <sectiondef kind="protected-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a457f33ba3cae0a866042833846c84a81" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>const Time t_</definition>
-        <argsstring></argsstring>
-        <name>t_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="214" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="214" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1aa46cfeeb01359f96491b6c11ff0429ad" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &amp;</type>
-        <definition>const Interpolation2D&amp; a_</definition>
-        <argsstring></argsstring>
-        <name>a_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="215" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a51a61f63b30d4094f96f6c0e2a877bea" prot="protected" static="no" mutable="no">
-        <type>const <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &amp;</type>
-        <definition>const Interpolation2D &amp; b_</definition>
-        <argsstring></argsstring>
-        <name>b_</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="215" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="215" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a4d2c09746f711ea3a4419b7221775b86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
@@ -91,32 +50,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="8410">
-        <label>Interpolation2D</label>
-        <link refid="class_quant_lib_1_1_interpolation2_d"/>
-        <childnode refid="8411" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="8409">
-        <label>InterpolatedYoYCapFloorTermPriceSurface&lt; Interpolator2D, Interpolator1D &gt;::ObjectiveFunction</label>
-        <childnode refid="8410" relation="usage">
-          <edgelabel>b_</edgelabel>
-          <edgelabel>a_</edgelabel>
-        </childnode>
-      </node>
-      <node id="8411">
-        <label>Extrapolator</label>
-        <link refid="class_quant_lib_1_1_extrapolator"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" line="207" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="207" bodyend="216"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1aa46cfeeb01359f96491b6c11ff0429ad" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a51a61f63b30d4094f96f6c0e2a877bea" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</scope><name>b_</name></member>
-      <member refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a4d2c09746f711ea3a4419b7221775b86" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</scope><name>ObjectiveFunction</name></member>
-      <member refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a4ddfce779ee421565fab731da6be3f0d" prot="public" virt="non-virtual"><scope>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1_1_objective_function_1a457f33ba3cae0a866042833846c84a81" prot="protected" virt="non-virtual"><scope>QuantLib::InterpolatedYoYCapFloorTermPriceSurface::ObjectiveFunction</scope><name>t_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

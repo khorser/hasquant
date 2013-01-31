@@ -34,10 +34,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/default.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/default.hpp" bodystart="32" bodyend="34"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00a9d8adb3a58f9266f34281a3afd6abcb6" prot="public" virt="non-virtual"><scope>QuantLib::Protection</scope><name>Buyer</name></member>
-      <member refid="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00af07cc4a205761c4aeb2d8011744712f4" prot="public" virt="non-virtual"><scope>QuantLib::Protection</scope><name>Seller</name></member>
-      <member refid="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" virt="non-virtual"><scope>QuantLib::Protection</scope><name>Side</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

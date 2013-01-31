@@ -41,11 +41,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/duration.hpp" bodystart="35" bodyend="37"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7aa169bd239b5186fa112d9424e3a55167" prot="public" virt="non-virtual"><scope>QuantLib::Duration</scope><name>Macaulay</name></member>
-      <member refid="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7a68c800404093521f6e4df855dd531971" prot="public" virt="non-virtual"><scope>QuantLib::Duration</scope><name>Modified</name></member>
-      <member refid="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7aebfbf7dc5cde0772efb1aa49712bd76b" prot="public" virt="non-virtual"><scope>QuantLib::Duration</scope><name>Simple</name></member>
-      <member refid="struct_quant_lib_1_1_duration_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::Duration</scope><name>Type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

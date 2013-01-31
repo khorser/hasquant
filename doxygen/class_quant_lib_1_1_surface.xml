@@ -59,10 +59,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/surface.hpp" bodystart="36" bodyend="41"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_surface_1ab10d8c4f72856ffe3a2927be1c9b9b99" prot="public" virt="pure-virtual"><scope>QuantLib::Surface</scope><name>domain</name></member>
-      <member refid="class_quant_lib_1_1_surface_1af034c5477c1ca16034f9c847379b7a07" prot="public" virt="pure-virtual"><scope>QuantLib::Surface</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_surface_1adf9a9acd7daf9d6c50faf9640b3ca938" prot="public" virt="virtual"><scope>QuantLib::Surface</scope><name>~Surface</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

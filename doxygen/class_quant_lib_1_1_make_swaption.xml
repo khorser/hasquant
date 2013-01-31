@@ -261,24 +261,5 @@
     <detaileddescription>
 <para>This class provides a more comfortable way to instantiate standard market swaption. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" line="44" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/makeswaption.hpp" bodystart="44" bodyend="73"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_make_swaption_1aa4b7e0c2a623baa425922d58a6a187ea" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>delivery_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1aec8a3d48bdab47e807560f973bfa1569" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>engine_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a3dba475b3e3956c0cc7b1a2934a8941e" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>exercise_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a82043c5ad79ac1b7b969001c0fac6b01" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>exerciseDate_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a0f3d454856e688ed07ac415619cd9fda" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>fixingDate_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a71bffc95cc0737a95b2a0d43fccda46d" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>MakeSwaption</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a1b0428af8b0787e9bedf904415375a56" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>operator boost::shared_ptr&lt; Swaption &gt;</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a7eb9fcdd8c15aaa0b285f1aa1cf2faaa" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>operator Swaption</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a0463f9db44f6600d2bd49fa85c52303a" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>optionConvention_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a50109c00d2ee7a170e1059d12ff799f2" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>optionTenor_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a677c777a39be3c60afd1b9b1e0892bc9" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>strike_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a3a0b946fc98b025f246b77d6c2751f41" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>swapIndex_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a414a2abe2e0b9f234b39b86b952f1060" prot="private" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>underlyingSwap_</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a3c044acb20afbac4d2bfe1be7b2a1779" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>withExerciseDate</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a6641d02e1efeb02157375d02e31b63be" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>withOptionConvention</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a2206dd43edbcfc23780a85d933c5cac6" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>withPricingEngine</name></member>
-      <member refid="class_quant_lib_1_1_make_swaption_1a38cdc0b04f7f5fc09a8f723bae7a1164" prot="public" virt="non-virtual"><scope>QuantLib::MakeSwaption</scope><name>withSettlementType</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

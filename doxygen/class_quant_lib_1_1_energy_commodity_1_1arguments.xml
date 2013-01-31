@@ -50,31 +50,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="4085">
-        <label>UnitOfMeasure</label>
-        <link refid="class_quant_lib_1_1_unit_of_measure"/>
-      </node>
-      <node id="4084">
-        <label>Currency</label>
-        <link refid="class_quant_lib_1_1_currency"/>
-      </node>
-      <node id="4083">
-        <label>EnergyCommodity::arguments</label>
-        <childnode refid="4084" relation="usage">
-          <edgelabel>currency</edgelabel>
-        </childnode>
-        <childnode refid="4085" relation="usage">
-          <edgelabel>unitOfMeasure</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="118" bodyend="123"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>currency</name></member>
-      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>unitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_energy_commodity_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::EnergyCommodity::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

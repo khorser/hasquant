@@ -97,13 +97,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" line="32" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commodityunitcost.hpp" bodystart="32" bodyend="45"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1ac5c99f8389e4128d193cce78549e69d2" prot="public" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>amount</name></member>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1a1bf10595111a05fa2c49d43d0511033a" prot="private" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>amount_</name></member>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1ae0adde80ae10226cf9b4a38d0e2f60bd" prot="public" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>CommodityUnitCost</name></member>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1afa109e53a596e5ad2d985ba8dd96cd9f" prot="public" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>CommodityUnitCost</name></member>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>unitOfMeasure</name></member>
-      <member refid="class_quant_lib_1_1_commodity_unit_cost_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="private" virt="non-virtual"><scope>QuantLib::CommodityUnitCost</scope><name>unitOfMeasure_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

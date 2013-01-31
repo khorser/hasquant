@@ -167,17 +167,5 @@
     <detaileddescription>
 <para>We assume here that the short-rate is a function of two state variables x and y. <formula id="308">\[ r_t = f(t, x_t, y_t) \]</formula> of two state variables <formula id="295">$ x_t $</formula> and <formula id="297">$ y_t $</formula>. These stochastic processes satisfy <formula id="309">\[ x_t = \mu_x(t, x_t)dt + \sigma_x(t, x_t) dW_t^x \]</formula> and <formula id="310">\[ y_t = \mu_y(t,y_t)dt + \sigma_y(t, y_t) dW_t^y \]</formula> where <formula id="311">$ W^x $</formula> and <formula id="312">$ W^y $</formula> are two brownian motions satisfying <formula id="313">\[ dW^x_t dW^y_t = \rho dt \]</formula>. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/shortrate/twofactormodel.hpp" bodystart="72" bodyend="105"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1ac63b6b972e9461ed9c0de2899f6fdc45" prot="public" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>correlation</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>correlation_</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1afd0ad032a77834548769cc5f19c3c75f" prot="public" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>process</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a35ee4be4dfe9ba11ae065e504d243b27" prot="public" virt="pure-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>shortRate</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a355ae86a43fc31ac1a073994cd003cd0" prot="public" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>ShortRateDynamics</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a8172c305c4c368a1edd673b4ca62f371" prot="public" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>xProcess</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a6417a80237f06bb695c9e3271c8a215f" prot="private" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>xProcess_</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1aa16b95136209eb87d8450dcba1d7cc3b" prot="public" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>yProcess</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1acc6490a53b58f242e459165077c11abf" prot="private" virt="non-virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>yProcess_</name></member>
-      <member refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" virt="virtual"><scope>QuantLib::TwoFactorModel::ShortRateDynamics</scope><name>~ShortRateDynamics</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

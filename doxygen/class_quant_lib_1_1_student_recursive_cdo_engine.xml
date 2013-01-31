@@ -59,58 +59,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="13525">
-        <label>RecursiveCdoEngine&lt; CDOEngine, OneFactorStudentCopula &gt;</label>
-        <link refid="class_quant_lib_1_1_recursive_cdo_engine"/>
-      </node>
-      <node id="13524">
-        <label>StudentRecursiveCdoEngine&lt; CDOEngine &gt;</label>
-        <childnode refid="13525" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="13530">
-        <label>Handle&lt; OneFactorStudentCopula &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="13527">
-        <label>RecursiveCdoEngine&lt; CDOEngine, OneFactorStudentCopula &gt;</label>
-        <link refid="class_quant_lib_1_1_recursive_cdo_engine"/>
-        <childnode refid="13528" relation="usage">
-          <edgelabel>correlQuote_</edgelabel>
-        </childnode>
-        <childnode refid="13529" relation="usage">
-          <edgelabel>copula_</edgelabel>
-        </childnode>
-      </node>
-      <node id="13528">
-        <label>Handle&lt; QuantLib::Quote &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="13529">
-        <label>RelinkableHandle&lt; OneFactorStudentCopula &gt;</label>
-        <link refid="class_quant_lib_1_1_relinkable_handle"/>
-        <childnode refid="13530" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="13526">
-        <label>StudentRecursiveCdoEngine&lt; CDOEngine &gt;</label>
-        <childnode refid="13527" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" line="327" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recursivecdoengine.hpp" bodystart="326" bodyend="344"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a2d05d24d5c72596ce42d8f21ac7f62f4" prot="protected" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>copula_</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ae21eaab5535677e38677e7cad5fd4cfd" prot="protected" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>correlQuote_</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a1de75d730452a11df096c7a0bad398fa" prot="public" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>expectedTrancheLoss</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a3660e034e2d6c3a470310130926c8a73" prot="protected" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1a784a4cae083c5b2fe8f118af0cefbb21" prot="public" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>RecursiveCdoEngine</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ab3a6fadcd72020218969124dadf94b05" prot="public" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>RecursiveCdoEngine</name></member>
-      <member refid="class_quant_lib_1_1_student_recursive_cdo_engine_1a8f21cb62f611d3e2cfcaa82f1287c5f1" prot="public" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>StudentRecursiveCdoEngine</name></member>
-      <member refid="class_quant_lib_1_1_recursive_cdo_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" virt="non-virtual"><scope>QuantLib::StudentRecursiveCdoEngine</scope><name>update</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -111,14 +111,5 @@
   Press, Teukolsky, Vetterling, Flannery, chapter 6
 </verbatim></para><para><xrefsect id="test_1_test000030"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/gammadistribution.hpp" bodystart="57" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gamma_function_1a06a101ad2c388a89e98dffb9198524bd" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c1_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1a8eb8c5e7f80b26da01c8d0359767650f" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c2_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1a302fa080d0424ffb023c3259315c9ef0" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c3_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1aff6828b9219a35779c7656f95f83b451" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c4_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1a8b2d67e606c9a1949cb068093183966b" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c5_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1a8271c33b430d797267d12c4cf889c050" prot="private" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>c6_</name></member>
-      <member refid="class_quant_lib_1_1_gamma_function_1aa7a02154cf24b10b3f3c4801a6d0cd03" prot="public" virt="non-virtual"><scope>QuantLib::GammaFunction</scope><name>logValue</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

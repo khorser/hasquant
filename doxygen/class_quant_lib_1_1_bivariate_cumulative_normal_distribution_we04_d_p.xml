@@ -80,11 +80,5 @@
 <listitem><para>The implementation of the cumulative normal distribution is <ref refid="class_quant_lib_1_1_cumulative_normal_distribution" kindref="compound">QuantLib::CumulativeNormalDistribution</ref></para></listitem><listitem><para>The arrays XX and W are zero-based</para></listitem></itemizedlist>
 </para><para><xrefsect id="test_1_test000029"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by checking it against known good results. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="92" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="92" bodyend="100"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1ad77e715ae0200927ddf5c6702eda95ac" prot="public" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>BivariateCumulativeNormalDistributionWe04DP</name></member>
-      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1aa9bf78c1a9550ea46151060cfdc3365f" prot="private" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>correlation_</name></member>
-      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a686775bd2175a0b1b03cb7abaddbeab1" prot="private" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>cumnorm_</name></member>
-      <member refid="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_we04_d_p_1a5cd84d61c9a61614c49dacf063bca822" prot="public" virt="non-virtual"><scope>QuantLib::BivariateCumulativeNormalDistributionWe04DP</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

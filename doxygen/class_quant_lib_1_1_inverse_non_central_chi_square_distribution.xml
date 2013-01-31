@@ -112,13 +112,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/chisquaredistribution.hpp" bodystart="51" bodyend="64"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1af9292c8029283028a1236892ebe87463" prot="private" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>accuracy_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1ad6e56820e860fc7f0f2c82030c0758db" prot="private" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>guess_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a436491cd73a1ad7f7a9b00ffc4cc802b" prot="public" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>InverseNonCentralChiSquareDistribution</name></member>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a199f2b4515f1ed005f51f93afa7bfd4e" prot="private" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>maxEvaluations_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a5a4b0d3681b828d034773d04d0b2122c" prot="private" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>nonCentralDist_</name></member>
-      <member refid="class_quant_lib_1_1_inverse_non_central_chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" virt="non-virtual"><scope>QuantLib::InverseNonCentralChiSquareDistribution</scope><name>operator()</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

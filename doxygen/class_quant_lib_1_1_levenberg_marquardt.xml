@@ -186,43 +186,6 @@
 <para>Levenberg-Marquardt optimization method. </para>    </briefdescription>
     <detaileddescription>
 <para>This implementation is based on MINPACK (<ulink url="http://www.netlib.org/minpack">http://www.netlib.org/minpack</ulink>, <ulink url="http://www.netlib.org/cephes/linalg.tgz">http://www.netlib.org/cephes/linalg.tgz</ulink>) </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="8999">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="8998">
-        <label>LevenbergMarquardt</label>
-        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
-        <childnode refid="8999" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9001">
-        <label>OptimizationMethod</label>
-        <link refid="class_quant_lib_1_1_optimization_method"/>
-      </node>
-      <node id="9000">
-        <label>LevenbergMarquardt</label>
-        <link refid="class_quant_lib_1_1_levenberg_marquardt"/>
-        <childnode refid="9001" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/levenbergmarquardt.hpp" bodystart="36" bodyend="56"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1aa345e430a32a46229b67f4a7c0fa3edb" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>currentProblem_</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a107162d90a80a615e65d51c741a27773" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>epsfcn_</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>fcn</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>getInfo</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a5d738aeea7498205f87574a32a152f93" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>gtol_</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1af205b6bc8a0c53ef01842bb58c9d9b29" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>info_</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a31d6f8638e0f667353d0860bea7ce526" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>initCostValues_</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>LevenbergMarquardt</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>minimize</name></member>
-      <member refid="class_quant_lib_1_1_levenberg_marquardt_1a974e29f035d694be1d2413256a1cc3f7" prot="private" virt="non-virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>xtol_</name></member>
-      <member refid="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" virt="virtual"><scope>QuantLib::LevenbergMarquardt</scope><name>~OptimizationMethod</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

@@ -343,28 +343,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/prices.hpp" bodystart="66" bodyend="105"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ab0d2fc8a61cc30fce240ad6df88447d4" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Close</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a760e68e04a1de187b12f14ed431d5b7f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>close</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1ab345b763ee4f5eeaef8a098c7c76b1e9" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>close_</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1aa2975db12f512e672d6f5180295464e1" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>extractComponent</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a5dd7dfe99440e13129f9b91c84ba1f75" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>extractValues</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a24c57acd029e3f96fede49402ea01e6f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>High</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1ae4747a97e5319952aad4d2fdcbd922fd" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>high</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a7d6a8fd001d1a6d7305d44ca42749718" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>high_</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a1e2311ac1194f01bc365460d8fab00d1" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>IntervalPrice</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a55fb9afa8813c4d56212a946fbb4527f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>IntervalPrice</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7a7a352a3dd2accc1dd65a4538c3754ee8" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Low</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a3885ecba4d75226d09b5da5b50219e3d" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>low</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a390b29a166814f8834fa8caea46ee97c" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>low_</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1aa65c06d1f48a093f170765f5cb0d5d1a" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>makeSeries</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7ac8e6944e998ac466c3cc4a648dde8291" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Open</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a856a693a06d5afacb06355639a1abce5" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>open</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a532e2adef666f32acaa21b53834b42da" prot="private" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>open_</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a2bf443157a54b032c47c7d1bc4f9bd1f" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>setValue</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1ad3ee0adc80b6bdc7e977553d09dced95" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>setValues</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>Type</name></member>
-      <member refid="class_quant_lib_1_1_interval_price_1acee7d35150d5eb317f1297520ab7ff03" prot="public" virt="non-virtual"><scope>QuantLib::IntervalPrice</scope><name>value</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

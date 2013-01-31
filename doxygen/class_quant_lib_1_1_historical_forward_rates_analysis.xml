@@ -87,25 +87,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="7446">
-        <label>HistoricalForwardRatesAnalysis</label>
-      </node>
-      <node id="7447">
-        <label>HistoricalForwardRatesAnalysisImpl&lt; Traits, Interpolator &gt;</label>
-        <link refid="class_quant_lib_1_1_historical_forward_rates_analysis_impl"/>
-        <childnode refid="7446" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" line="195" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="195" bodyend="203"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1aa4eb422c5fe9da2b42e8212141e288cc" prot="public" virt="pure-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>failedDates</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a9d1a04bbe193055490e83527c9516366" prot="public" virt="pure-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>failedDatesErrorMessage</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a19c60e1c510918a6944301bdddf6c90f" prot="public" virt="pure-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>fixingPeriods</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a86e8507c98d8c11ca6f0eacc2a057717" prot="public" virt="pure-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>skippedDates</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a3e64c25cdff7ee8e77911c8418f8e6b7" prot="public" virt="pure-virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>skippedDatesErrorMessage</name></member>
-      <member refid="class_quant_lib_1_1_historical_forward_rates_analysis_1a4fdb8db154e538f3ebcf8bce70118c2e" prot="public" virt="virtual"><scope>QuantLib::HistoricalForwardRatesAnalysis</scope><name>~HistoricalForwardRatesAnalysis</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

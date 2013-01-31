@@ -141,45 +141,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <collaborationgraph>
-      <node id="13856">
-        <label>Handle&lt; QuantLib::YieldTermStructure &gt;</label>
-        <link refid="class_quant_lib_1_1_handle"/>
-      </node>
-      <node id="13858">
-        <label>Schedule</label>
-        <link refid="class_quant_lib_1_1_schedule"/>
-      </node>
-      <node id="13857">
-        <label>DayCounter</label>
-        <link refid="class_quant_lib_1_1_day_counter"/>
-      </node>
-      <node id="13855">
-        <label>SyntheticCDO::arguments</label>
-        <childnode refid="13856" relation="usage">
-          <edgelabel>yieldTS</edgelabel>
-        </childnode>
-        <childnode refid="13857" relation="usage">
-          <edgelabel>dayCounter</edgelabel>
-        </childnode>
-        <childnode refid="13858" relation="usage">
-          <edgelabel>schedule</edgelabel>
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/syntheticcdo.hpp" bodystart="158" bodyend="173"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>arguments</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a0d68fd6434b749c23eea28b12007b58a" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>basket</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a51b76afe33f9f1374698265867954ac8" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>dayCounter</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1af283a59bba1cd0b219a03e626632aa61" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>paymentConvention</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a4c23a2ea0416a2c14c7bc9655c027de9" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>runningRate</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abcc78c7bb6b0af62152d52d5f11d620e" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>schedule</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a07c2d0e57c7e50acbacdfa1703016dd9" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>side</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1abfc5afffe4070eb898c1db01caa33761" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>upfrontRate</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_synthetic_c_d_o_1_1arguments_1a976857a811f2d9fb19d781b796097d1b" prot="public" virt="non-virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>yieldTS</name></member>
-      <member refid="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" virt="virtual"><scope>QuantLib::SyntheticCDO::arguments</scope><name>~arguments</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

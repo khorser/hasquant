@@ -201,16 +201,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="787" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="787" bodyend="856"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_convex_monotone_1af0dbcf4ddad03a3afd388298f38e58b7" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>ConvexMonotone</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a6f3802aa1f714ae6c652cbb1101b054f" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>dataSizeAdjustment</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a2e33aee3148dccfadec4cc0a83b10179" prot="private" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>forcePositive_</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a288e578670054bd80e88dffe71d28b7b" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>global</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a51dd5c56d90da172e213d17a6d74550c" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>interpolate</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a52a2871f12d817e1bb0568dba512c07f" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>localInterpolate</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1a44ee7944038652091dce73f8171e2408" prot="private" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>monotonicity_</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1af9e0c2f35d25f2d15ae116fe2910ce5c" prot="private" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>quadraticity_</name></member>
-      <member refid="class_quant_lib_1_1_convex_monotone_1abe404d63ad88b3b804b458aa23052be5" prot="public" virt="non-virtual"><scope>QuantLib::ConvexMonotone</scope><name>requiredPoints</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

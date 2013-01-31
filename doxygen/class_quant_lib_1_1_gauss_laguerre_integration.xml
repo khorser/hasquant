@@ -32,38 +32,6 @@
 <para>generalized Gauss-Laguerre integration </para>    </briefdescription>
     <detaileddescription>
 <para>This class performs a 1-dimensional Gauss-Laguerre integration. <formula id="190">\[ \int_{0}^{\inf} f(x) \mathrm{d}x \]</formula> The weighting function is <formula id="191">\[ w(x;s)=x^s \exp{-x} \]</formula> and <formula id="192">\[ s &gt; -1 \]</formula> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="7033">
-        <label>GaussLaguerreIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_laguerre_integration"/>
-        <childnode refid="7034" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7034">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="7035">
-        <label>GaussLaguerreIntegration</label>
-        <link refid="class_quant_lib_1_1_gauss_laguerre_integration"/>
-        <childnode refid="7036" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="7036">
-        <label>GaussianQuadrature</label>
-        <link refid="class_quant_lib_1_1_gaussian_quadrature"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/integrals/gaussianquadratures.hpp" bodystart="81" bodyend="85"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a09a125b1d628dba5c56286a69c43b6fd" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>GaussianQuadrature</name></member>
-      <member refid="class_quant_lib_1_1_gauss_laguerre_integration_1abb3d0cd5c386e433e64762a4157604dd" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>GaussLaguerreIntegration</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1afd92625955969b8a4a77603f3ad45c6a" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a5d16723c3caf3e13e78d037a9505b79b" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>order</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a06b451105824df2649badde39fc7e7fc" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>weights</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_quadrature_1a7300ae12f41806f24442c35070669f10" prot="public" virt="non-virtual"><scope>QuantLib::GaussLaguerreIntegration</scope><name>x</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

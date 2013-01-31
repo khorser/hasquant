@@ -111,13 +111,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" line="113" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/functional.hpp" bodystart="113" bodyend="124"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1composed__function_1af3f7199d8f4f7c45b378df8f3035a86a" prot="public" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>argument_type</name></member>
-      <member refid="class_quant_lib_1_1composed__function_1a58076738c8be889fca1b173b252c8d0b" prot="public" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>composed_function</name></member>
-      <member refid="class_quant_lib_1_1composed__function_1a5bffa5ba7163be1080445f808a43a327" prot="private" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1composed__function_1ad5c68d78a2de915774c6fa4a05d7d79c" prot="private" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>g_</name></member>
-      <member refid="class_quant_lib_1_1composed__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1composed__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" virt="non-virtual"><scope>QuantLib::composed_function</scope><name>result_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

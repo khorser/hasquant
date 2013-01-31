@@ -100,14 +100,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="35" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="35" bodyend="43"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1aabb6b834d3f1862fad09f23c49ff1519" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>bcSet</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1a428ea8617d9bb6e4dbf6c5bdaac56ca5" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>calculator</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1a928e8f70136a2f740c2cb7016c4bdf20" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>condition</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1a5fa0c652f147a64d0ace95737800d6db" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>dampingSteps</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1a86b4fad6e76ae4e0eeb45fbe1663c1f9" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>maturity</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1ad85eeecbf370c66542608e95bac87677" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>mesher</name></member>
-      <member refid="struct_quant_lib_1_1_fdm_solver_desc_1a0ea1d367e7a89798f7ae4e7cac0fe8a4" prot="public" virt="non-virtual"><scope>QuantLib::FdmSolverDesc</scope><name>timeSteps</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

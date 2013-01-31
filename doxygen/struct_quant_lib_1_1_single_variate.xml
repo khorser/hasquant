@@ -99,13 +99,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/mctraits.hpp" bodystart="39" bodyend="46"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_single_variate_1abc6126af1d45847bc59afa0aa3216b04a4cf0a75076c0e93010640ad9b584b0ce" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>allowsErrorEstimate</name></member>
-      <member refid="struct_quant_lib_1_1_single_variate_1a6250dc20ffb598ccb01d0ebc3e0a5e89" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>path_generator_type</name></member>
-      <member refid="struct_quant_lib_1_1_single_variate_1af0d94abd55c1f5d59f118fb07b43de07" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>path_pricer_type</name></member>
-      <member refid="struct_quant_lib_1_1_single_variate_1aa8c6f99a3d9fc9757f1adb70a39d61e4" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>path_type</name></member>
-      <member refid="struct_quant_lib_1_1_single_variate_1a3b06460378c6160a0308efbecfc7a63f" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>rng_traits</name></member>
-      <member refid="struct_quant_lib_1_1_single_variate_1a6048845f2c9ca8e5856abbd3eda84f6e" prot="public" virt="non-virtual"><scope>QuantLib::SingleVariate</scope><name>rsg_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

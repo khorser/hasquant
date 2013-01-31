@@ -58,10 +58,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/optimization/costfunction.hpp" bodystart="67" bodyend="72"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parameters_transformation_1a44803e157c0ce565961dfad848ab39da" prot="public" virt="pure-virtual"><scope>QuantLib::ParametersTransformation</scope><name>direct</name></member>
-      <member refid="class_quant_lib_1_1_parameters_transformation_1a587ae542f0b4f06f6619235e5d43ef53" prot="public" virt="pure-virtual"><scope>QuantLib::ParametersTransformation</scope><name>inverse</name></member>
-      <member refid="class_quant_lib_1_1_parameters_transformation_1ab78413e4bcca36b38d5827d165bb5db5" prot="public" virt="virtual"><scope>QuantLib::ParametersTransformation</scope><name>~ParametersTransformation</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

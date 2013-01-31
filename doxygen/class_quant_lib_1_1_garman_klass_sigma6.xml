@@ -31,12 +31,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" line="176" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/volatility/garmanklass.hpp" bodystart="175" bodyend="182"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a114bd3f70557109ba551776610bb2dc1" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>a_</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a99f7ee87e8f40de9970c6b41e76693a4" prot="protected" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>f_</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_open_close_1a50246f9252bf4759cae1f2661fc0a8c3" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>GarmanKlassOpenClose</name></member>
-      <member refid="class_quant_lib_1_1_garman_klass_sigma6_1af5971b888992a3a78cf6eadbb92b4476" prot="public" virt="non-virtual"><scope>QuantLib::GarmanKlassSigma6</scope><name>GarmanKlassSigma6</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

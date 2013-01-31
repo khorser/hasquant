@@ -126,14 +126,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" line="59" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/operators/fdmbatesop.hpp" bodystart="59" bodyend="70"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1a474788abd4b701988062bf1161090ad2" prot="private" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>bcSet_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1ab93aabd725036e18018464e4d104a097" prot="private" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>delta_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1af0ed3ad04e78da46b8f74f5e37d4ea6c" prot="public" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>IntegroIntegrand</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1ac7f99b91f156a037621bbdea6cab2792" prot="private" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>interpl_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1aa75da5258630a6e16f71bc04f43a33f6" prot="private" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>nu_</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1a47f9a26157603b2742f9f08072dfe83c" prot="public" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand_1a12813200f3dc96ba42daef8d52aeefdc" prot="private" virt="non-virtual"><scope>QuantLib::FdmBatesOp::IntegroIntegrand</scope><name>x_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

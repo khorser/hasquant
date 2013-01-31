@@ -72,11 +72,5 @@
     <detaileddescription>
 <para>Taken from &quot;Monte Carlo Methods in Finance&quot;, by Peter Jäckel </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="45" bodyend="53"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>get</name></member>
-      <member refid="class_quant_lib_1_1_prime_numbers_1a76738d2768be27aefd000752de7af2bc" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>nextPrimeNumber</name></member>
-      <member refid="class_quant_lib_1_1_prime_numbers_1a380c72c99a9c6e635a8347157daef351" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>PrimeNumbers</name></member>
-      <member refid="class_quant_lib_1_1_prime_numbers_1a8f0710de46c09f881183cf8184c54946" prot="private" virt="non-virtual"><scope>QuantLib::PrimeNumbers</scope><name>primeNumbers_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

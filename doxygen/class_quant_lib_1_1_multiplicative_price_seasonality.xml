@@ -254,102 +254,11 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="156" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="156" bodyend="156"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1a04522da1a6abd56c86f7fc29265a2131" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>void</type>
-        <definition>virtual void validate</definition>
-        <argsstring>() const </argsstring>
-        <name>validate</name>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="159"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multiplicative_price_seasonality_1ad946b62da3cd97939a89076b8db4fc68" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-        <definition>virtual Rate seasonalityCorrection</definition>
-        <argsstring>(Rate r, const Date &amp;d, const DayCounter &amp;dc, const Date &amp;curveBaseDate, bool isZeroRate) const </argsstring>
-        <name>seasonalityCorrection</name>
-        <param>
-          <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
-          <declname>r</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>d</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
-          <declname>dc</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>curveBaseDate</declname>
-        </param>
-        <param>
-          <type>bool</type>
-          <declname>isZeroRate</declname>
-        </param>
-        <briefdescription>
-        </briefdescription>
-        <detaileddescription>
-        </detaileddescription>
-        <inbodydescription>
-        </inbodydescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="161"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Multiplicative seasonality in the price index (CPI/RPI/HICP/etc). </para>    </briefdescription>
     <detaileddescription>
 <para>Stationary multiplicative seasonality in CPI/RPI/HICP (i.e. in price) implies that zero inflation swap rates are affected, but that year-on-year inflation swap rates show no effect. Of course, if the seasonality in CPI/RPI/HICP is non-stationary then both swap rates will be affected.</para><para>Factors must be in multiples of the minimum required for one year, e.g. 12 for monthly, and these factors are reused for as long as is required, i.e. they wrap around. So, for example, if 24 factors are given this repeats every two years. True stationary seasonality can be obtained by giving the same number of factors as the frequency dictates e.g. 12 for monthly seasonality.</para><para><xrefsect id="caveats_1_caveats000113"><xreftitle>Warning</xreftitle><xrefdescription><para>Multi-year seasonality (i.e. non-stationary) is fragile: the user <bold>must</bold> ensure that corrections at whole years before and after the inflation term structure base date are the same. Otherwise there can be an inconsistency with quoted rates. This is enforced if the frequency is lower than daily. This is not enforced for daily seasonality because this will always be inconsistent due to weekends, holidays, leap years, etc. If you use multi-year daily seasonality it is up to you to check.</para></xrefdescription></xrefsect></para><para><simplesect kind="note"><para>Factors are normalized relative to their appropriate reference dates. For zero inflation this is the inflation curve true base date: since you have a fixing for that date the seasonality factor must be one. For YoY inflation the reference is always one year earlier.</para></simplesect>
 <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> is treated as piecewise constant, hence it works correctly with uninterpolated indices if the seasonality correction factor frequency is the same as the index frequency (or less). </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="10069">
-        <label>Seasonality</label>
-        <link refid="class_quant_lib_1_1_seasonality"/>
-      </node>
-      <node id="10068">
-        <label>MultiplicativePriceSeasonality</label>
-        <link refid="class_quant_lib_1_1_multiplicative_price_seasonality"/>
-        <childnode refid="10069" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10071">
-        <label>Seasonality</label>
-        <link refid="class_quant_lib_1_1_seasonality"/>
-      </node>
-      <node id="10070">
-        <label>MultiplicativePriceSeasonality</label>
-        <link refid="class_quant_lib_1_1_multiplicative_price_seasonality"/>
-        <childnode refid="10071" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" line="118" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/seasonality.hpp" bodystart="118" bodyend="162"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a88825843d6b6a77114265771bed9c0b2" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>correctYoYRate</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1aa37fbae55acaa96be0560fa5d0639668" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>correctZeroRate</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a2d031749634662c6fd7dd3679f26a487" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>frequency</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ae358763dc753768bb42e898365204a9a" prot="private" virt="non-virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>frequency_</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>isConsistent</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a44c1ae642d4a92fa718e6cbebff53a66" prot="public" virt="non-virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>MultiplicativePriceSeasonality</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ac3f700621464820570e9ec9056063580" prot="public" virt="non-virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>MultiplicativePriceSeasonality</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1aaa0bf273dd9cf60bac755433885fc754" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityBaseDate</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a6b022f17c3cd4573591b1d9d6bdc9bc0" prot="private" virt="non-virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityBaseDate_</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ad946b62da3cd97939a89076b8db4fc68" prot="protected" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityCorrection</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a0b491ad373c3dfc69328b778da1db888" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityFactor</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a06da5d6dfbf66d7de02a1ba5a9086aef" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityFactors</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1ac89342d7f64c0e53c6858225fe08ca89" prot="private" virt="non-virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>seasonalityFactors_</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a6be258f4053db2976aff2501eccdbdde" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>set</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a04522da1a6abd56c86f7fc29265a2131" prot="protected" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>validate</name></member>
-      <member refid="class_quant_lib_1_1_multiplicative_price_seasonality_1a4b4e0a5a27ef7c1fcc907dc4ce7f37a0" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>~MultiplicativePriceSeasonality</name></member>
-      <member refid="class_quant_lib_1_1_seasonality_1a047e624db01a253658360c259176e7bf" prot="public" virt="virtual"><scope>QuantLib::MultiplicativePriceSeasonality</scope><name>~Seasonality</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

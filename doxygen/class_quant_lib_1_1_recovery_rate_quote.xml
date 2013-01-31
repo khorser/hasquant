@@ -238,63 +238,6 @@
 <para>Stores a recovery rate market quote and the associated seniority. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="12728">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="12729" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12729">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12727">
-        <label>RecoveryRateQuote</label>
-        <link refid="class_quant_lib_1_1_recovery_rate_quote"/>
-        <childnode refid="12728" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="12731">
-        <label>Quote</label>
-        <link refid="class_quant_lib_1_1_quote"/>
-        <childnode refid="12732" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="12732">
-        <label>Observable</label>
-        <link refid="class_quant_lib_1_1_observable"/>
-      </node>
-      <node id="12730">
-        <label>RecoveryRateQuote</label>
-        <link refid="class_quant_lib_1_1_recovery_rate_quote"/>
-        <childnode refid="12731" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" line="30" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/recoveryratequote.hpp" bodystart="30" bodyend="68"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a85334d693e480baeec58c5dea98231c2" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>conventionalRecovery</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a04a54ca2ab50e2294fee540414ef3cb4" prot="private" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>IsdaConvRecoveries</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>isValid</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1ad04d9ebe85dc59213d9d4db8b7a6896d" prot="private" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>makeIsdaConvMap</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a7f7e703e9c401045b58eac7c150f678c" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>makeIsdaMap</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a1feed34db4078925b2fba8634fbad261" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>makeIsdaMap</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a397546715bfc5aedd1d16dd202a19d4c" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>notifyObservers</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a6438e92e07db169a97ed3eba36788dc4" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a840dd96e33a304cbf681d357de7f48d0" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>Observable</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a522aacdd0f2408fe5e46527a6db999b4" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>operator=</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a8615d76c1ae6f0106df3f41ef9d6c065" prot="private" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>recoveryRate_</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1afaac90fe361d90e2708db714a797dac8" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>RecoveryRateQuote</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>reset</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>seniority</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1ae35b512424ab0cb35502f8dd976cb8aa" prot="private" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>seniority_</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" virt="non-virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>setValue</name></member>
-      <member refid="class_quant_lib_1_1_recovery_rate_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>value</name></member>
-      <member refid="class_quant_lib_1_1_observable_1a5f0b266a5d1e6ed41027d3e8c8d7ff1f" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>~Observable</name></member>
-      <member refid="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" virt="virtual"><scope>QuantLib::RecoveryRateQuote</scope><name>~Quote</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

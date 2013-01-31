@@ -90,12 +90,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" line="33" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/copulas/gaussiancopula.hpp" bodystart="33" bodyend="41"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_gaussian_copula_1ab64c3f92d74e0d72052ac557db4a6e3d" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>bivariate_normal_cdf_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_copula_1a025f2c6e6ec49736861536ce63c46734" prot="public" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>GaussianCopula</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_copula_1a51e59cc7566c2879ab0a6df1900cba8d" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>invCumNormal_</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_gaussian_copula_1a98f57706bc57f4e14ca8c8cb1cfa213b" prot="private" virt="non-virtual"><scope>QuantLib::GaussianCopula</scope><name>rho_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

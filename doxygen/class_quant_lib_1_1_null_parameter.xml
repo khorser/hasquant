@@ -24,58 +24,6 @@
 <para>Parameter which is always zero <formula id="287">$ a(t) = 0 $</formula> </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="10316">
-        <label>Parameter</label>
-        <link refid="class_quant_lib_1_1_parameter"/>
-      </node>
-      <node id="10315">
-        <label>NullParameter</label>
-        <link refid="class_quant_lib_1_1_null_parameter"/>
-        <childnode refid="10316" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="10320">
-        <label>Array</label>
-        <link refid="class_quant_lib_1_1_array"/>
-      </node>
-      <node id="10318">
-        <label>Parameter</label>
-        <link refid="class_quant_lib_1_1_parameter"/>
-        <childnode refid="10319" relation="usage">
-          <edgelabel>constraint_</edgelabel>
-        </childnode>
-        <childnode refid="10320" relation="usage">
-          <edgelabel>params_</edgelabel>
-        </childnode>
-      </node>
-      <node id="10319">
-        <label>Constraint</label>
-        <link refid="class_quant_lib_1_1_constraint"/>
-      </node>
-      <node id="10317">
-        <label>NullParameter</label>
-        <link refid="class_quant_lib_1_1_null_parameter"/>
-        <childnode refid="10318" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" line="101" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp" bodystart="101" bodyend="116"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_parameter_1a87897679d6b7a92d8ef1ed8ccf012251" prot="protected" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>constraint_</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1aa593fa134416a954928e323a5175af7d" prot="protected" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>impl_</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a44d746dc59d36b77c5afc6238f995541" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>implementation</name></member>
-      <member refid="class_quant_lib_1_1_null_parameter_1a36792a6f68f66afdeb5cceabeaa5a74e" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>NullParameter</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a9736183e84f061ad08b6d595e2c293bf" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a722d0b273a6e3633c189fb21eaaa483c" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>Parameter</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1af377e71756ecf6d23f90351048c8a499" prot="protected" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>Parameter</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a7645d99ee1cc5e6d763836b5b335e95d" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>params</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1ab530ebeeba8cb03f510779f1f7470a9b" prot="protected" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>params_</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a214b7ebc4d1aeba57c89c885e264bb8b" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>setParam</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_parameter_1ab4ef17fdb7e62440087774171668418c" prot="public" virt="non-virtual"><scope>QuantLib::NullParameter</scope><name>testParams</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

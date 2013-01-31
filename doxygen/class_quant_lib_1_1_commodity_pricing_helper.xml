@@ -149,12 +149,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" line="36" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditypricinghelpers.hpp" bodystart="36" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_commodity_pricing_helper_1ad61668c14d55c85c52b018d0eb8d4079" prot="public" virt="non-virtual"><scope>QuantLib::CommodityPricingHelper</scope><name>calculateFxConversionFactor</name></member>
-      <member refid="class_quant_lib_1_1_commodity_pricing_helper_1ac28d20f70729cdee721c0e56544deb1e" prot="public" virt="non-virtual"><scope>QuantLib::CommodityPricingHelper</scope><name>calculateUnitCost</name></member>
-      <member refid="class_quant_lib_1_1_commodity_pricing_helper_1a2045c4b9d40cefb75dfb00bf37c96161" prot="public" virt="non-virtual"><scope>QuantLib::CommodityPricingHelper</scope><name>calculateUomConversionFactor</name></member>
-      <member refid="class_quant_lib_1_1_commodity_pricing_helper_1af861a5d223ce4e1e56ee136edf4762e6" prot="public" virt="non-virtual"><scope>QuantLib::CommodityPricingHelper</scope><name>CommodityPricingHelper</name></member>
-      <member refid="class_quant_lib_1_1_commodity_pricing_helper_1a4ad06b02380a4dc32ff35de5599d3c41" prot="public" virt="non-virtual"><scope>QuantLib::CommodityPricingHelper</scope><name>createPricingPeriods</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

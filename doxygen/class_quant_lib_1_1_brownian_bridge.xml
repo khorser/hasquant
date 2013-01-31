@@ -383,29 +383,5 @@
     <detaileddescription>
 <para>This class generates normalized (i.e., unit-variance) paths as sequences of variations. In order to obtain the actual path of the underlying, the returned variations must be multiplied by the integrated variance (including time) over the corresponding time step. </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/montecarlo/brownianbridge.hpp" bodystart="53" bodyend="145"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1acc334fdc4c74e84a410b2022b06dcef0" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>bridgeIndex</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1aa70bcc753b785e13a69444a9a6471b5e" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>bridgeIndex_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1aa358622cc01bb34c683b20349df9bf72" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>BrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1ae5cedbfa759d6a0f2748422b60d0539c" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>BrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a904c629dba6743d9c82df7755f7d9c9e" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>BrownianBridge</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a25a40b6614565f755233080a384c35f1" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>initialize</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a2adda291c848191a796ea80d38b94254" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>leftIndex</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a297bd720420f5e71b46aef8aca552fe2" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>leftIndex_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a760321c6a2e07dcb679a43eb94b081af" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>leftWeight</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1ab2ada1faae18d7e9c1ff070fc10eecec" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>leftWeight_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1af70d531bbebf23527e17b6f90783cb7f" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>rightIndex</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a63f9c9cfcf8994e7f5ebd5f460630293" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>rightIndex_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1af618b502e4b1bd0b9f3d99d224ac0520" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>rightWeight</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a8cf534bc88f638485a81998085c5db99" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>rightWeight_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>size</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1af413506ef7c7376c1ea8ca4622cb1ada" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>size_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a5cc07694df39759b7c646902548e294f" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>sqrtdt_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a86183c1eb79b83a8c4c769c79a959672" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>stdDev_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a6f4d0c5e8845b51c55ae7e309b513160" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>stdDeviation</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a6b4cd39a8eca4c81bee1cda0cda93305" prot="private" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>t_</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a1caecd902d2960755b349a552a9b92f2" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>times</name></member>
-      <member refid="class_quant_lib_1_1_brownian_bridge_1a8bbfa9d91f03b618eea0205fa2026bae" prot="public" virt="non-virtual"><scope>QuantLib::BrownianBridge</scope><name>transform</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

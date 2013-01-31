@@ -109,37 +109,6 @@
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <inheritancegraph>
-      <node id="5287">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="5286">
-        <label>EuropeanPathMultiPathPricer</label>
-        <childnode refid="5287" relation="public-inheritance">
-        </childnode>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="5289">
-        <label>PathPricer&lt; MultiPath &gt;</label>
-        <link refid="class_quant_lib_1_1_path_pricer"/>
-      </node>
-      <node id="5288">
-        <label>EuropeanPathMultiPathPricer</label>
-        <childnode refid="5289" relation="public-inheritance">
-        </childnode>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" line="90" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/mcpathbasketengine.hpp" bodystart="90" bodyend="102"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a795cf527bfd996d44c6654f2e63365ce" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>discounts_</name></member>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a30a0963d0a5fde46af5d2b7f8d7ea176" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>EuropeanPathMultiPathPricer</name></member>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a622edfbc9c32032e94fe333cc06e722e" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>forwardTermStructures_</name></member>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a0cacd4870c3cc9f19211ca5c7ec177e9" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>payoff_</name></member>
-      <member refid="class_quant_lib_1_1_european_path_multi_path_pricer_1a9584b8ba9709f6a9559dbc9d2df9b808" prot="private" virt="non-virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>timePositions_</name></member>
-      <member refid="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" virt="virtual"><scope>QuantLib::EuropeanPathMultiPathPricer</scope><name>~PathPricer</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

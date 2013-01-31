@@ -157,47 +157,6 @@
 
  John Hull and Alan White, &quot;Valuation of a CDO and nth to default CDS 
  without Monte Carlo simulation&quot;, Journal of Derivatives 12, 2, 2004. </verbatim> </para>    </detaileddescription>
-    <inheritancegraph>
-      <node id="9321">
-        <label>LossDistBucketing</label>
-        <link refid="class_quant_lib_1_1_loss_dist_bucketing"/>
-        <childnode refid="9322" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9322">
-        <label>LossDist</label>
-        <link refid="class_quant_lib_1_1_loss_dist"/>
-      </node>
-    </inheritancegraph>
-    <collaborationgraph>
-      <node id="9323">
-        <label>LossDistBucketing</label>
-        <link refid="class_quant_lib_1_1_loss_dist_bucketing"/>
-        <childnode refid="9324" relation="public-inheritance">
-        </childnode>
-      </node>
-      <node id="9324">
-        <label>LossDist</label>
-        <link refid="class_quant_lib_1_1_loss_dist"/>
-      </node>
-    </collaborationgraph>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" line="184" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/lossdistribution.hpp" bodystart="184" bodyend="199"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_loss_dist_1acf9cea8bbac2609ec13be76d762ea137" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>binomialProbabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab82fe26fbce3b5569b04c89ff1323940" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>binomialProbabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1a01ac704c1d58d3c0b62457aebf7097c3" prot="public" virt="virtual"><scope>QuantLib::LossDistBucketing</scope><name>buckets</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1a0c2c8b8d85c2ef2a8ea5afb1855a7bd7" prot="private" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>epsilon_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1ac372ed58ee1837492b4519f4c31ec7f0" prot="private" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>locateTargetBucket</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1ab1ed2340c94e1792f0d63fca3f5b1b7e" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>LossDist</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1ac84336ba94974568e944853ca269808b" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>LossDistBucketing</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1ad7e73faa199a16d3c9dc6a7a7295c295" prot="public" virt="virtual"><scope>QuantLib::LossDistBucketing</scope><name>maximum</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1abff8e9929d1de11ec2ddeae1146c19b2" prot="private" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>maximum_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1aec681bdcc2a8f7d46664f2e51620f854" prot="private" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>nBuckets_</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_bucketing_1a0c71a619a048f010109b9d01231394d8" prot="public" virt="virtual"><scope>QuantLib::LossDistBucketing</scope><name>operator()</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aaed4b6db418b52611e4fb134d0cb6b8d" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>probabilityOfAtLeastNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a2d7794e813cefafdac6576166cbdd06b" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1aa00098d738a49d32f49d9e57a76bd984" prot="public" virt="non-virtual"><scope>QuantLib::LossDistBucketing</scope><name>probabilityOfNEvents</name></member>
-      <member refid="class_quant_lib_1_1_loss_dist_1a5546766df1db78def3db23dd75033fe9" prot="public" virt="virtual"><scope>QuantLib::LossDistBucketing</scope><name>~LossDist</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

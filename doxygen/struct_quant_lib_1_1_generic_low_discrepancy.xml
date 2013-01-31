@@ -99,12 +99,5 @@
     <detaileddescription>
     </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" line="82" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/rngtraits.hpp" bodystart="82" bodyend="96"/>
-    <listofallmembers>
-      <member refid="struct_quant_lib_1_1_generic_low_discrepancy_1a99fb83031ce9923c84392b4e92f956b5a4cf0a75076c0e93010640ad9b584b0ce" prot="public" virt="non-virtual"><scope>QuantLib::GenericLowDiscrepancy</scope><name>allowsErrorEstimate</name></member>
-      <member refid="struct_quant_lib_1_1_generic_low_discrepancy_1add6654799b779fd05bdbd3943f58e8e3" prot="public" virt="non-virtual"><scope>QuantLib::GenericLowDiscrepancy</scope><name>icInstance</name></member>
-      <member refid="struct_quant_lib_1_1_generic_low_discrepancy_1a151fdf6c3c4b229d6e1f7f56f0590f2b" prot="public" virt="non-virtual"><scope>QuantLib::GenericLowDiscrepancy</scope><name>make_sequence_generator</name></member>
-      <member refid="struct_quant_lib_1_1_generic_low_discrepancy_1a171ed387822763dc8c95e3f638cc8de0" prot="public" virt="non-virtual"><scope>QuantLib::GenericLowDiscrepancy</scope><name>rsg_type</name></member>
-      <member refid="struct_quant_lib_1_1_generic_low_discrepancy_1aa6f14f6a2e2d5a6b067bcd8c58eda787" prot="public" virt="non-virtual"><scope>QuantLib::GenericLowDiscrepancy</scope><name>ursg_type</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

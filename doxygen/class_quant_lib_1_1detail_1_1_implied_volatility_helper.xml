@@ -75,9 +75,5 @@
 <para>The passed engine must be linked to the passed quote (see, e.g., <ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref> to see how this can be achieved.)</para><para><simplesect kind="note"><para>this function is meant for developers of option classes so that they can implement an impliedVolatility() method. </para></simplesect>
 </para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/impliedvolatility.hpp" line="43" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/impliedvolatility.hpp" bodystart="43" bodyend="62"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1detail_1_1_implied_volatility_helper_1a2327c6efb97633b4594621f3e31c0567" prot="public" virt="non-virtual"><scope>QuantLib::detail::ImpliedVolatilityHelper</scope><name>calculate</name></member>
-      <member refid="class_quant_lib_1_1detail_1_1_implied_volatility_helper_1a03965c0a2cb10a60abd316127ee76c9c" prot="public" virt="non-virtual"><scope>QuantLib::detail::ImpliedVolatilityHelper</scope><name>clone</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>

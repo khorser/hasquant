@@ -183,18 +183,5 @@
 </programlisting> If a client of this class wants to use the nextInt32Sequence method, class RNG must also implement <programlisting><codeline><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>RNG::nextInt32()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 </programlisting></para><para><xrefsect id="caveats_1_caveats000073"><xreftitle>Warning</xreftitle><xrefdescription><para>do not use with low-discrepancy sequence generator. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/randomsequencegenerator.hpp" bodystart="50" bodyend="92"/>
-    <listofallmembers>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1ad089a89a18aa50ad2c64712cf5fb5e3d" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>dimension</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a9cf0dc854ef1c5ea1ceb614b8c06b5c4" prot="private" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>dimensionality_</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1ad426b393eed1e246bc404a540c0ad4f8" prot="private" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>int32Sequence_</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a8d216498c4107b3bca19b47a929407fc" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>lastSequence</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1af9063e25330911ad101c3d075e6db0dc" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>nextInt32Sequence</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a15b541124ea01ca45ea29f675c261246" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>nextSequence</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a58caaa6b289fac085580152fc34831cf" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>RandomSequenceGenerator</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1afa011e1cb13276720be0bd1999c3c48c" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>RandomSequenceGenerator</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a71b7f656dfe0cefb9d41f6e8e8f502c8" prot="private" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>rng_</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1af3b59a3dd56521693efc68c221a2bf38" prot="public" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>sample_type</name></member>
-      <member refid="class_quant_lib_1_1_random_sequence_generator_1a79a766cc4ab56b2fe639f0a5d3b99131" prot="private" virt="non-virtual"><scope>QuantLib::RandomSequenceGenerator</scope><name>sequence_</name></member>
-    </listofallmembers>
   </compounddef>
 </doxygen>
