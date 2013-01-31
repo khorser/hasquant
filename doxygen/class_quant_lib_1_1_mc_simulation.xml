@@ -138,35 +138,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="159" bodyend="207"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1a6e88fa36deb63e5bf40cad0082068f57" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <templateparamlist>
-          <param>
-            <type>class Sequence</type>
-          </param>
-        </templateparamlist>
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>static Real maxError</definition>
-        <argsstring>(const Sequence &amp;sequence)</argsstring>
-        <name>maxError</name>
-        <param>
-          <type>const Sequence &amp;</type>
-          <declname>sequence</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="91" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="91" bodyend="93"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_mc_simulation_1ab8fcdfbea80f9ee9882c197655216b2d" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>static Real maxError</definition>
-        <argsstring>(Real error)</argsstring>
-        <name>maxError</name>
-        <param>
-          <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-          <declname>error</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" line="94" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/mcsimulation.hpp" bodystart="94" bodyend="96"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>base class for Monte Carlo engines </para>    </briefdescription>
     <detaileddescription>

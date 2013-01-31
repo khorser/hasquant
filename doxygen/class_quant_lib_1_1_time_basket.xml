@@ -88,15 +88,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="69"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_basket_1a3e97740a21d32bbc2a4dd0e5a729312d" prot="private" static="no">
-        <type>std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>typedef std::map&lt;Date,Real&gt; super</definition>
-        <argsstring></argsstring>
-        <name>super</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/cashflows/timebasket.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_time_basket_1adc14373ce1d117c919c147bb18db5a40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

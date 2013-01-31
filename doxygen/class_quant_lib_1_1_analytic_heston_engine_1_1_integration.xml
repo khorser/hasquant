@@ -2,36 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHestonEngine::Integration</compoundname>
-      <sectiondef kind="private-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691" prot="private" static="no">
-        <name>Algorithm</name>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a5da36873a6ca5bd48a5d09a66494d99b" prot="private">
-          <name>GaussLobatto</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a8eed21c1e5da408d6fb043dd2f31b10e" prot="private">
-          <name>GaussKronrod</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ae42eebe972693176d980b955e85214ab" prot="private">
-          <name>Simpson</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ac0111755f85d9000e5a35ba1000f340b" prot="private">
-          <name>Trapezoid</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a2bfb4513d11d22b84e8dbb254cc72564" prot="private">
-          <name>GaussLaguerre</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a54070b770d5bfb6cde1604954318e00e" prot="private">
-          <name>GaussLegendre</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691ad850b21b5803615e4f110512b394c112" prot="private">
-          <name>GaussChebyshev</name>
-        </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1a5e41188f16a381c8915a17a22228e691a625aa1a8618c8379a01b09e1713d1ed2" prot="private">
-          <name>GaussChebyshev2nd</name>
-        </enumvalue>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" line="171" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/analytichestonengine.hpp" bodystart="170" bodyend="173"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1_1_integration_1ae59d059eb44a1751ae56d08efde5eb81" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>Integration</type>

@@ -121,22 +121,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="56"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_market_model_composite_1a8fd3de84f6d91768bff4a6d9fc1af0f0" prot="protected" static="no">
-        <type>std::vector&lt; SubProduct &gt;::iterator</type>
-        <definition>typedef std::vector&lt;SubProduct&gt;::iterator iterator</definition>
-        <argsstring></argsstring>
-        <name>iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="69" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="69" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_market_model_composite_1ad1bf7b26d29f9abf4bfa131b2a93c575" prot="protected" static="no">
-        <type>std::vector&lt; SubProduct &gt;::const_iterator</type>
-        <definition>typedef std::vector&lt;SubProduct&gt;::const_iterator const_iterator</definition>
-        <argsstring></argsstring>
-        <name>const_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" line="70" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp" bodystart="70" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1aa1d30d9ce60192c93dbbc3a5936e5729" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

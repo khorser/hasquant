@@ -4,15 +4,6 @@
     <compoundname>QuantLib::ExchangeRateManager</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry" prot="public">QuantLib::ExchangeRateManager::Entry</innerclass>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_exchange_rate_manager_1a4f348b6a0fa3436769f8d97bb5a205d2" prot="private" static="no">
-        <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
-        <definition>typedef BigInteger Key</definition>
-        <argsstring></argsstring>
-        <name>Key</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="81" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="81" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_exchange_rate_manager_1aaba78e362716d89d9d8bfa9f90b15a10" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

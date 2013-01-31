@@ -8,22 +8,6 @@
         <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_iterative_bootstrap_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
-        <type>Curve::traits_type</type>
-        <definition>typedef Curve::traits_type Traits</definition>
-        <argsstring></argsstring>
-        <name>Traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_iterative_bootstrap_1a753c3c9c1ba58ef4035fb26bdf5bcac0" prot="private" static="no">
-        <type>Curve::interpolator_type</type>
-        <definition>typedef Curve::interpolator_type Interpolator</definition>
-        <argsstring></argsstring>
-        <name>Interpolator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/iterativebootstrap.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1ab7b9c96215e7b0b8b9b46284cd0ae603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

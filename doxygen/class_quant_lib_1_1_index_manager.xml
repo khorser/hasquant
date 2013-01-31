@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_index_manager" kind="class" prot="public">
     <compoundname>QuantLib::IndexManager</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp</includes>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_index_manager_1a4cfdb53fc4ba50a284863d232c0ac5db" prot="private" static="no">
-        <type>std::map&lt; std::string, <ref refid="class_quant_lib_1_1_observable_value" kindref="compound">ObservableValue</ref>&lt; <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt; &gt;</type>
-        <definition>typedef std::map&lt;std::string, ObservableValue&lt;TimeSeries&lt;Real&gt; &gt; &gt; history_map</definition>
-        <argsstring></argsstring>
-        <name>history_map</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/indexes/indexmanager.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_index_manager_1ab10666efc7e0e3ce490caf4ee6718752" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

@@ -26,29 +26,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="64"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_instrument_1ad2ffc0f39d2675e895fe3020af42355d" prot="private" static="no">
-        <type>std::pair&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_instrument" kindref="compound">Instrument</ref> &gt;, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>typedef std::pair&lt;boost::shared_ptr&lt;Instrument&gt;, Real&gt; component</definition>
-        <argsstring></argsstring>
-        <name>component</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="50" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="50" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_instrument_1a41ec75c6f54e64a5088be2b40f8a1bc0" prot="private" static="no">
-        <type>std::list&lt; component &gt;::iterator</type>
-        <definition>typedef std::list&lt;component&gt;::iterator iterator</definition>
-        <argsstring></argsstring>
-        <name>iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_instrument_1a471472ddb60c9cd6c61d099349916893" prot="private" static="no">
-        <type>std::list&lt; component &gt;::const_iterator</type>
-        <definition>typedef std::list&lt;component&gt;::const_iterator const_iterator</definition>
-        <argsstring></argsstring>
-        <name>const_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/compositeinstrument.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_instrument_1a6c2e5140cb8d3d49eb526feba0d0fda0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

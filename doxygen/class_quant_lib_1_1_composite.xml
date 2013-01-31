@@ -8,22 +8,6 @@
         <type>class T</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_1aab63929d1bc832ba9301510b2dcd145d" prot="protected" static="no">
-        <type>std::list&lt; boost::shared_ptr&lt; T &gt; &gt;::iterator</type>
-        <definition>typedef std::list&lt;boost::shared_ptr&lt;T&gt; &gt;::iterator iterator</definition>
-        <argsstring></argsstring>
-        <name>iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_composite_1a6c96f5d4ed2ea149249a6301e7e9c723" prot="protected" static="no">
-        <type>std::list&lt; boost::shared_ptr&lt; T &gt; &gt;::const_iterator</type>
-        <definition>typedef std::list&lt;boost::shared_ptr&lt;T&gt; &gt;::const_iterator const_iterator</definition>
-        <argsstring></argsstring>
-        <name>const_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/patterns/composite.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Composite pattern. </para>    </briefdescription>
     <detaileddescription>

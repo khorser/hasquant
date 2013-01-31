@@ -46,22 +46,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="108" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="108" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a8730b54eabb730eb3b5a7da3eac60448" prot="private" static="yes" mutable="no">
-        <type>const int</type>
-        <definition>const int bits_</definition>
-        <argsstring></argsstring>
-        <name>bits_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="130" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="130" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_sobol_rsg_1a4c3e1fa530cf971227e1ef07d3be06e9" prot="private" static="yes" mutable="no">
-        <type>const double</type>
-        <definition>const double normalizationFactor_</definition>
-        <argsstring></argsstring>
-        <name>normalizationFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" line="131" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/sobolrsg.hpp" bodystart="131" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_sobol_rsg_1a517494ec668ecd36efffc01912e484c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

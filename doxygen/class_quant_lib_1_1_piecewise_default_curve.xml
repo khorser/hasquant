@@ -277,22 +277,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="158" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="240" bodyend="243"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1a29beac208608e51d51138c44c79d77e2" prot="private" static="no">
-        <type>Traits::template curve&lt; Interpolator &gt;::type</type>
-        <definition>typedef Traits::template curve&lt;Interpolator&gt;::type base_curve</definition>
-        <argsstring></argsstring>
-        <name>base_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1a3942b52a5b30c115030574f931223ef8" prot="private" static="no">
-        <type><ref refid="class_quant_lib_1_1_piecewise_default_curve" kindref="compound">PiecewiseDefaultCurve</ref>&lt; Traits, Interpolator, Bootstrap &gt;</type>
-        <definition>typedef PiecewiseDefaultCurve&lt;Traits,Interpolator,Bootstrap&gt; this_curve</definition>
-        <argsstring></argsstring>
-        <name>this_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" line="58" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="58" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

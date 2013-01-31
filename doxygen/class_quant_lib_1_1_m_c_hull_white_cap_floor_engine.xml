@@ -13,15 +13,6 @@
         <defval><ref refid="namespace_quant_lib_1a235b6c8805adaa743cc845aae9c05946" kindref="member">Statistics</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a987f992eb0a7633d894abd8c2f74e01e" prot="private" static="no">
-        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; <ref refid="struct_quant_lib_1_1_single_variate" kindref="compound">SingleVariate</ref>, RNG, S &gt;</type>
-        <definition>typedef McSimulation&lt;SingleVariate,RNG,S&gt; simulation</definition>
-        <argsstring></argsstring>
-        <name>simulation</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" line="61" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="61" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a930da5a9e4d53caa2103161fd7a65ea8" prot="public" static="no">
         <type><ref refid="class_quant_lib_1_1_multi_path_generator" kindref="compound">simulation::path_generator_type</ref></type>

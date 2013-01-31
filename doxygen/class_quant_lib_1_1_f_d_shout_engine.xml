@@ -11,15 +11,6 @@
         <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_shout_engine_1a37db3538052cef5735b9c1611d8f9b4d" prot="private" static="no">
-        <type>FDEngineAdapter&lt; FDShoutCondition&lt; <ref refid="class_quant_lib_1_1_f_d_step_condition_engine" kindref="compound">FDStepConditionEngine</ref>&lt; Scheme &gt; &gt;, OneAssetOption::engine &gt;</type>
-        <definition>typedef FDEngineAdapter&lt;FDShoutCondition&lt; FDStepConditionEngine&lt;Scheme&gt; &gt;, OneAssetOption::engine&gt; super</definition>
-        <argsstring></argsstring>
-        <name>super</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdshoutengine.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_shout_engine_1aa26a7ddb67722bc5f6a3fe0807da6b04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

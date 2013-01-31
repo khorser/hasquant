@@ -11,15 +11,6 @@
         <type>class I2</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_convex_monotone_interpolation_1a3f4493f18525d8bcea5562c86cc4f11d" prot="private" static="no">
-        <type>std::map&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, boost::shared_ptr&lt; detail::SectionHelper &gt; &gt;</type>
-        <definition>typedef std::map&lt;Real, boost::shared_ptr&lt;detail::SectionHelper&gt; &gt; helper_map</definition>
-        <argsstring></argsstring>
-        <name>helper_map</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" line="753" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="753" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1aba0c71f5eff7f25db399620fa8f08834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

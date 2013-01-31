@@ -15,19 +15,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="43"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_period_parser_1a2325c91cbe4445b3da242c1de8ac9ad0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
-        <definition>static Period parseOnePeriod</definition>
-        <argsstring>(const std::string &amp;str)</argsstring>
-        <name>parseOnePeriod</name>
-        <param>
-          <type>const std::string &amp;</type>
-          <declname>str</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="45"/>
-      </memberdef>
-      </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/dataparsers.hpp" bodystart="41" bodyend="46"/>
   </compounddef>
 </doxygen>

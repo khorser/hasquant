@@ -27,36 +27,6 @@
         <defval><ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a2e301ff1e9761ffd43e2e8a626d5ae90" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="class_quant_lib_1_1_multi_path_generator" kindref="compound">path_generator_type</ref></type>
-        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_generator_type path_generator_type</definition>
-        <argsstring></argsstring>
-        <name>path_generator_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a7922dd7fea2c004ef3dc817d274cfe84" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::<ref refid="class_quant_lib_1_1_path_pricer" kindref="compound">path_pricer_type</ref></type>
-        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::path_pricer_type path_pricer_type</definition>
-        <argsstring></argsstring>
-        <name>path_pricer_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a9e8c6745d46fec52af674b05ce5b75d7" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::stats_type</type>
-        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::stats_type stats_type</definition>
-        <argsstring></argsstring>
-        <name>stats_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="55" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="55" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_vanilla_engine_1a07e1e84bbe02891bd31885fe3fc4c181" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_mc_simulation" kindref="compound">McSimulation</ref>&lt; MC, RNG, S &gt;::result_type</type>
-        <definition>typedef McSimulation&lt;MC,RNG,S&gt;::result_type result_type</definition>
-        <argsstring></argsstring>
-        <name>result_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/mcvanillaengine.hpp" bodystart="57" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>

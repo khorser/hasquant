@@ -3,24 +3,6 @@
   <compounddef id="class_quant_lib_1_1_f_d_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FDVanillaEngine</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp</includes>
-      <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_vanilla_engine_1a654b2d0f68b7cc7daa7dc3d3b19ddb87" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">BoundaryCondition</ref>&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt;</type>
-        <definition>typedef BoundaryCondition&lt;TridiagonalOperator&gt; bc_type</definition>
-        <argsstring></argsstring>
-        <name>bc_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="76" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_f_d_vanilla_engine_1ab602c82b8b4c102c985b77298eb4c3d3" prot="private" static="yes" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real safetyZoneFactor_</definition>
-        <argsstring></argsstring>
-        <name>safetyZoneFactor_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdvanillaengine.hpp" bodystart="87" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_vanilla_engine_1a9f23f63944cfbb2f8f87765ca0e78e14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

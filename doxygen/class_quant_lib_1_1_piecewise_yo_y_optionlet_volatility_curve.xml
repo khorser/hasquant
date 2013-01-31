@@ -85,22 +85,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="157" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="221" bodyend="224"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1add919e493f3351ea0b86fe849d04ce19" prot="private" static="no">
-        <type><ref refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve" kindref="compound">InterpolatedYoYOptionletVolatilityCurve</ref>&lt; Interpolator &gt;</type>
-        <definition>typedef InterpolatedYoYOptionletVolatilityCurve&lt;Interpolator&gt; base_curve</definition>
-        <argsstring></argsstring>
-        <name>base_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="112" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ac3ea9a256ef5409b9ffdfa1a9b5c9ce6" prot="private" static="no">
-        <type><ref refid="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve" kindref="compound">PiecewiseYoYOptionletVolatilityCurve</ref>&lt; Interpolator, Bootstrap, Traits &gt;</type>
-        <definition>typedef PiecewiseYoYOptionletVolatilityCurve&lt;Interpolator, Bootstrap, Traits&gt; this_curve</definition>
-        <argsstring></argsstring>
-        <name>this_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="115" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="115" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

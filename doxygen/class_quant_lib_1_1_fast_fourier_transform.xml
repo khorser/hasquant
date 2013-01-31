@@ -102,23 +102,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fast_fourier_transform_1a913d365024003817bdf148a238c1de9e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::size_t</type>
-        <definition>static std::size_t bit_reverse</definition>
-        <argsstring>(std::size_t x, std::size_t order)</argsstring>
-        <name>bit_reverse</name>
-        <param>
-          <type>std::size_t</type>
-          <declname>x</declname>
-        </param>
-        <param>
-          <type>std::size_t</type>
-          <declname>order</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="112" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="112" bodyend="120"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>FFT implementation. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/math/fastfouriertransform.hpp" bodystart="38" bodyend="121"/>

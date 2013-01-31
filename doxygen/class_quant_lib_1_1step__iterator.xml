@@ -8,15 +8,6 @@
         <type>class Iterator</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1step__iterator_1ad2ca21a2418b71f646e905788d19d752" prot="private" static="no">
-        <type>boost::iterator_adaptor&lt; <ref refid="class_quant_lib_1_1step__iterator" kindref="compound">step_iterator</ref>&lt; Iterator &gt;, Iterator &gt;</type>
-        <definition>typedef boost::iterator_adaptor&lt;step_iterator&lt;Iterator&gt;, Iterator&gt; super_t</definition>
-        <argsstring></argsstring>
-        <name>super_t</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/utilities/steppingiterator.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1step__iterator_1abb1fccc1ec657d30fc080bc0bf40b5bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

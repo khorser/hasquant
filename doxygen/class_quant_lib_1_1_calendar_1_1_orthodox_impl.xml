@@ -3,20 +3,6 @@
   <compounddef id="class_quant_lib_1_1_calendar_1_1_orthodox_impl" kind="class" prot="public">
     <compoundname>QuantLib::Calendar::OrthodoxImpl</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
-      <sectiondef kind="protected-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_calendar_1_1_orthodox_impl_1af437030fcb90f9c04d718ccd36e6d436" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__datetime_1ga91214837fb837828e91ce17de9eaa43c" kindref="member">Day</ref></type>
-        <definition>static Day easterMonday</definition>
-        <argsstring>(Year)</argsstring>
-        <name>easterMonday</name>
-        <param>
-          <type><ref refid="group__datetime_1ga84dee895910074cbc7d936c86c1abf3d" kindref="member">Year</ref></type>
-        </param>
-        <briefdescription>
-<para>expressed relative to first day of year </para>        </briefdescription>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp" line="167"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>partial calendar implementation </para>    </briefdescription>
     <detaileddescription>

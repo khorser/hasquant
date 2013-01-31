@@ -8,15 +8,6 @@
         <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_bootstrap_error_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
-        <type>Curve::traits_type</type>
-        <definition>typedef Curve::traits_type Traits</definition>
-        <argsstring></argsstring>
-        <name>Traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/bootstraperror.hpp" bodystart="37" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

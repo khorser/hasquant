@@ -12,36 +12,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="46" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1a1d1fdba8713a5bb37860f0dada78e26f" prot="private" static="yes" mutable="no">
-        <type>const int</type>
-        <definition>const int KK</definition>
-        <argsstring></argsstring>
-        <name>KK</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1a3fa29894b3e9df3203709263624c2ae5" prot="private" static="yes" mutable="no">
-        <type>const int</type>
-        <definition>const int LL</definition>
-        <argsstring></argsstring>
-        <name>LL</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1aa9783a3056ae8a4f5bca1220444787b8" prot="private" static="yes" mutable="no">
-        <type>const int</type>
-        <definition>const int TT</definition>
-        <argsstring></argsstring>
-        <name>TT</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_knuth_uniform_rng_1a8a8e6d3c89612379da2e03f5c8c326b6" prot="private" static="yes" mutable="no">
-        <type>const int</type>
-        <definition>const int QUALITY</definition>
-        <argsstring></argsstring>
-        <name>QUALITY</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" line="54" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/knuthuniformrng.hpp" bodystart="54" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_knuth_uniform_rng_1ab59db514c5c64ebd20105fd6eba4e0a2" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>

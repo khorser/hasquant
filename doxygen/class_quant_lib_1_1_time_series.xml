@@ -306,29 +306,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a5f93c0aabd08aba5b00ba5df1b7035ad" prot="private" static="no">
-        <type>Container::value_type</type>
-        <definition>typedef Container::value_type container_value_type</definition>
-        <argsstring></argsstring>
-        <name>container_value_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="175" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="175" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ad794d5ad317585b3a6a3413a2d0bdc1c" prot="private" static="no">
-        <type>boost::function1&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, const container_value_type &amp; &gt;</type>
-        <definition>typedef boost::function1&lt;Date, const container_value_type&amp;&gt; projection_time</definition>
-        <argsstring></argsstring>
-        <name>projection_time</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="177" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a73eaf2541e71ac68dd6d52951f4472a3" prot="private" static="no">
-        <type>boost::function1&lt; T, const container_value_type &amp; &gt;</type>
-        <definition>typedef boost::function1&lt;T, const container_value_type&amp;&gt; projection_value</definition>
-        <argsstring></argsstring>
-        <name>projection_value</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="179" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="179" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab23fa5e29fa4062e597a71f8750e1672" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
@@ -393,30 +370,6 @@
         <detaileddescription>
 <para>This constructor initializes the history with a set of values. Such values are assigned to a corresponding number of consecutive dates starting from <bold><emphasis>firstDate</emphasis></bold> included. </para>        </detaileddescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="76" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="75" bodyend="80"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9768f1691349224f47d71dfb7215ef38" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-        <definition>static const Date&amp; get_time</definition>
-        <argsstring>(const container_value_type &amp;v)</argsstring>
-        <name>get_time</name>
-        <param>
-          <type>const container_value_type &amp;</type>
-          <declname>v</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="232" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="232" bodyend="234"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9d6a8f8b01c0b1a988bf7f051dba4926" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const T &amp;</type>
-        <definition>static const T&amp; get_value</definition>
-        <argsstring>(const container_value_type &amp;v)</argsstring>
-        <name>get_value</name>
-        <param>
-          <type>const container_value_type &amp;</type>
-          <declname>v</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" line="235" bodyfile="C:/Develop/QuantLib-1.2.1/ql/timeseries.hpp" bodystart="235" bodyend="237"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

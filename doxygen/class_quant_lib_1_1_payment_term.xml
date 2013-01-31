@@ -55,15 +55,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="34" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_payment_term_1af712537c9641a0c00f62adfd46aea75f" prot="protected" static="yes" mutable="no">
-        <type>std::map&lt; std::string, boost::shared_ptr&lt; Data &gt; &gt;</type>
-        <definition>std::map&lt;std::string, boost::shared_ptr&lt;Data&gt; &gt; paymentTerms_</definition>
-        <argsstring></argsstring>
-        <name>paymentTerms_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/paymentterm.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1ac0b4bf5957764421c6e7ae31db2cbf86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

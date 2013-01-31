@@ -7,29 +7,6 @@
         <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1ad346897f534c947dcc4c1b0259681ce8" prot="private" static="no">
-        <type>Curve::traits_type</type>
-        <definition>typedef Curve::traits_type Traits</definition>
-        <argsstring></argsstring>
-        <name>Traits</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a29ce88ec2013c3de7a04fbee85c27624" prot="private" static="no">
-        <type>Traits::helper</type>
-        <definition>typedef Traits::helper helper</definition>
-        <argsstring></argsstring>
-        <name>helper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="42" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="42" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_penalty_function_1a1802435247f5ee780a0408e67697d286" prot="private" static="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; helper &gt; &gt;::const_iterator</type>
-        <definition>typedef std::vector&lt; boost::shared_ptr&lt;helper&gt; &gt;::const_iterator helper_iterator</definition>
-        <argsstring></argsstring>
-        <name>helper_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" line="45" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/localbootstrap.hpp" bodystart="45" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78" kind="class" prot="public">
     <compoundname>QuantLib::BivariateCumulativeNormalDistributionDr78</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp</includes>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1a5b3ec330fad87daf3073ba470ccb5407" prot="private" static="yes" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real x_[]</definition>
-        <argsstring>[]</argsstring>
-        <name>x_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1aea759cbccab2a3050f84a2c19894b3de" prot="private" static="yes" mutable="no">
-        <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>const Real y_[]</definition>
-        <argsstring>[]</argsstring>
-        <name>y_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" line="66" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/distributions/bivariatenormaldistribution.hpp" bodystart="66" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bivariate_cumulative_normal_distribution_dr78_1aaff529b42b7caa21b0ea339811b52bdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

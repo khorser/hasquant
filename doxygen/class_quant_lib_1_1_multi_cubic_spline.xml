@@ -10,22 +10,6 @@
         <defname>i</defname>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1af1e8a80facc3611088896b222bae00ac" prot="private" static="no">
-        <type>detail::Int2Type&lt; i &gt;::c_spline</type>
-        <definition>typedef detail::Int2Type&lt;i&gt;::c_spline c_spline</definition>
-        <argsstring></argsstring>
-        <name>c_spline</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="467" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="467" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1af15dc76a76a8d91e8bb4312a7bca5d7d" prot="private" static="no">
-        <type>detail::Int2Type&lt; i &gt;::c_splint</type>
-        <definition>typedef detail::Int2Type&lt;i&gt;::c_splint c_splint</definition>
-        <argsstring></argsstring>
-        <name>c_splint</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" line="468" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/interpolations/multicubicspline.hpp" bodystart="468" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a015b0e85ee81e3da61427f7a4c0d42ee" prot="public" static="no">
         <type>c_splint::argument_type</type>

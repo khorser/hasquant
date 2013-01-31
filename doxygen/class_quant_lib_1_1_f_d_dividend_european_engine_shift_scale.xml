@@ -10,15 +10,6 @@
         <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale_1a18abb46e32bcf7ee8c3da9a86b0e3763" prot="private" static="no">
-        <type>FDEngineAdapter&lt; <ref refid="class_quant_lib_1_1_f_d_dividend_engine_shift_scale" kindref="compound">FDDividendEngineShiftScale</ref>&lt; Scheme &gt;, <ref refid="class_quant_lib_1_1_dividend_vanilla_option_1_1engine" kindref="compound">DividendVanillaOption::engine</ref> &gt;</type>
-        <definition>typedef FDEngineAdapter&lt;FDDividendEngineShiftScale&lt;Scheme&gt;, DividendVanillaOption::engine&gt; super</definition>
-        <argsstring></argsstring>
-        <name>super</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" line="77" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendeuropeanengine.hpp" bodystart="77" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_european_engine_shift_scale_1ad6731f4a2176b1c79fb94ba0e4737e05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

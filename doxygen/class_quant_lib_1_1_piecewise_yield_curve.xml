@@ -307,22 +307,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="177" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="251" bodyend="254"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a29beac208608e51d51138c44c79d77e2" prot="private" static="no">
-        <type>Traits::template curve&lt; Interpolator &gt;::type</type>
-        <definition>typedef Traits::template curve&lt;Interpolator&gt;::type base_curve</definition>
-        <argsstring></argsstring>
-        <name>base_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="63" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1a1f643aaa3bd9bdb21a0c7124038d5268" prot="private" static="no">
-        <type><ref refid="class_quant_lib_1_1_piecewise_yield_curve" kindref="compound">PiecewiseYieldCurve</ref>&lt; Traits, Interpolator, Bootstrap &gt;</type>
-        <definition>typedef PiecewiseYieldCurve&lt;Traits,Interpolator,Bootstrap&gt; this_curve</definition>
-        <argsstring></argsstring>
-        <name>this_curve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="64" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="64" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yield_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>

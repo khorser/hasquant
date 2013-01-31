@@ -33,19 +33,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1a1867185f9a1f3eb2f399745ddc03e490" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_day_counter_1_1_impl" kindref="compound">DayCounter::Impl</ref> &gt;</type>
-        <definition>static boost::shared_ptr&lt;DayCounter::Impl&gt; implementation</definition>
-        <argsstring>(Convention c)</argsstring>
-        <name>implementation</name>
-        <param>
-          <type>Convention</type>
-          <declname>c</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actualactual.hpp" line="86"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1a2f6af47d8c7920afbd03b2c650d2215a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

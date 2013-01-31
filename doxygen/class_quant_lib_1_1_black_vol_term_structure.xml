@@ -352,15 +352,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="130"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_black_vol_term_structure_1a22c9432b90554982169986855c860335" prot="private" static="yes" mutable="no">
-        <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
-        <definition>const Time dT</definition>
-        <argsstring></argsstring>
-        <name>dT</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" line="133" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/volatility/equityfx/blackvoltermstructure.hpp" bodystart="133" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_vol_term_structure_1a4ae9127d377a588eef334703cf63c510" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

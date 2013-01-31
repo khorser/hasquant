@@ -10,15 +10,6 @@
         <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="protected-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_multi_period_engine_1aeb9ca28b3cb88fb673385716fe1e370b" prot="protected" static="no">
-        <type><ref refid="class_quant_lib_1_1_finite_difference_model" kindref="compound">FiniteDifferenceModel</ref>&lt; Scheme&lt; <ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &gt; &gt;</type>
-        <definition>typedef FiniteDifferenceModel&lt;Scheme&lt;TridiagonalOperator&gt; &gt; model_type</definition>
-        <argsstring></argsstring>
-        <name>model_type</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" line="37" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="37" bodyend="85"/>
   </compounddef>
 </doxygen>

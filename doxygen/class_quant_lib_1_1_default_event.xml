@@ -4,15 +4,6 @@
     <compoundname>QuantLib::DefaultEvent</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_default_event_1_1_default_settlement" prot="public">QuantLib::DefaultEvent::DefaultSettlement</innerclass>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_default_event_1a6ff00a80540d7c42fb2e8f0e000a7662" prot="private" static="no">
-        <type>std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
-        <definition>typedef std::map&lt;Seniority, Real&gt; rate_map</definition>
-        <argsstring></argsstring>
-        <name>rate_map</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="85" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="85" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a538254ee240ed75fde17e25d55c65c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

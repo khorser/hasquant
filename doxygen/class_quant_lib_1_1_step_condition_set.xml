@@ -8,15 +8,6 @@
         <type>typename array_type</type>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_step_condition_set_1a95a92b40a27f7bda1d2c8b7ff09742e1" prot="private" static="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_step_condition" kindref="compound">StepCondition</ref>&lt; array_type &gt; &gt;</type>
-        <definition>typedef boost::shared_ptr&lt;StepCondition&lt;array_type&gt; &gt; itemType</definition>
-        <argsstring></argsstring>
-        <name>itemType</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" line="47" bodyfile="C:/Develop/QuantLib-1.2.1/ql/methods/finitedifferences/parallelevolver.hpp" bodystart="47" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>

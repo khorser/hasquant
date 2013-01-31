@@ -37,15 +37,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="57" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="103" bodyend="105"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_type_1a832b66991a7ea52f0f85282001e39917" prot="protected" static="yes" mutable="no">
-        <type>std::map&lt; std::string, boost::shared_ptr&lt; Data &gt; &gt;</type>
-        <definition>std::map&lt;std::string, boost::shared_ptr&lt;Data&gt; &gt; commodityTypes_</definition>
-        <argsstring></argsstring>
-        <name>commodityTypes_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" line="72" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp" bodystart="72" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a09c2a6e182b14dee1fa4190dd20359b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

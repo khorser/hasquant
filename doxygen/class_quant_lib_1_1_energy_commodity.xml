@@ -135,46 +135,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="97"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="protected-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1a72c709964a3937b8f6899f7d2429a90a" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>static Real calculateFxConversionFactor</definition>
-        <argsstring>(const Currency &amp;fromCurrency, const Currency &amp;toCurrency, const Date &amp;evaluationDate)</argsstring>
-        <name>calculateFxConversionFactor</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
-          <declname>fromCurrency</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
-          <declname>toCurrency</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
-          <declname>evaluationDate</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="102"/>
-      </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1a28c24b5995011e2e9ee35518629d910f" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
-        <definition>static Real calculateUomConversionFactor</definition>
-        <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;fromUnitOfMeasure, const UnitOfMeasure &amp;toUnitOfMeasure)</argsstring>
-        <name>calculateUomConversionFactor</name>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
-          <declname>commodityType</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
-          <declname>fromUnitOfMeasure</declname>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
-          <declname>toUnitOfMeasure</declname>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="106"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Energy commodity class. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" line="63" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/energycommodity.hpp" bodystart="63" bodyend="115"/>

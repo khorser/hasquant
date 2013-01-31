@@ -80,15 +80,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_unit_of_measure_1a8e52da6d59153d502eeb6649c922673c" prot="private" static="yes" mutable="no">
-        <type>std::map&lt; std::string, boost::shared_ptr&lt; UnitOfMeasure::Data &gt; &gt;</type>
-        <definition>std::map&lt;std::string, boost::shared_ptr&lt;UnitOfMeasure::Data&gt; &gt; unitsOfMeasure_</definition>
-        <argsstring></argsstring>
-        <name>unitsOfMeasure_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" line="73" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasure.hpp" bodystart="73" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_1a0d331fdab7998ace4c8dd0db6e6bd2df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

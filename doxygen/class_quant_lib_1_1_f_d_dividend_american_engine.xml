@@ -11,15 +11,6 @@
         <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_f_d_dividend_american_engine_1af518b20127585fbe0188688134af848d" prot="private" static="no">
-        <type>FDEngineAdapter&lt; FDAmericanCondition&lt; FDDividendEngine&lt; Scheme &gt; &gt;, <ref refid="class_quant_lib_1_1_dividend_vanilla_option_1_1engine" kindref="compound">DividendVanillaOption::engine</ref> &gt;</type>
-        <definition>typedef FDEngineAdapter&lt;FDAmericanCondition&lt;FDDividendEngine&lt;Scheme&gt; &gt;, DividendVanillaOption::engine&gt; super</definition>
-        <argsstring></argsstring>
-        <name>super</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/vanilla/fddividendamericanengine.hpp" bodystart="48" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_american_engine_1a15bba4b3f8c2594124749abe56751e47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

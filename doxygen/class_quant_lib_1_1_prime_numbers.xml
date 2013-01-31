@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_prime_numbers" kind="class" prot="public">
     <compoundname>QuantLib::PrimeNumbers</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp</includes>
-      <sectiondef kind="private-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_prime_numbers_1a8f0710de46c09f881183cf8184c54946" prot="private" static="yes" mutable="no">
-        <type>std::vector&lt; <ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref> &gt;</type>
-        <definition>std::vector&lt;BigNatural&gt; primeNumbers_</definition>
-        <argsstring></argsstring>
-        <name>primeNumbers_</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="52" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" bodystart="52" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-static-func">
       <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
@@ -25,15 +16,6 @@
         <briefdescription>
 <para>Get and store one after another. </para>        </briefdescription>
         <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="48"/>
-      </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a76738d2768be27aefd000752de7af2bc" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
-        <definition>static BigNatural nextPrimeNumber</definition>
-        <argsstring>()</argsstring>
-        <name>nextPrimeNumber</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/primenumbers.hpp" line="51"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

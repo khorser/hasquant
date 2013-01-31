@@ -3,22 +3,6 @@
   <compounddef id="class_quant_lib_1_1_joint_stochastic_process" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::JointStochasticProcess</compoundname>
     <innerclass refid="struct_quant_lib_1_1_joint_stochastic_process_1_1_caching_key" prot="private">QuantLib::JointStochasticProcess::CachingKey</innerclass>
-      <sectiondef kind="private-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_joint_stochastic_process_1a44112f498b08b54095749e18c35d562b" prot="private" static="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &gt;::const_iterator</type>
-        <definition>typedef std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;::const_iterator const_iterator</definition>
-        <argsstring></argsstring>
-        <name>const_iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="80" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="80" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_joint_stochastic_process_1ad9d72b339a9139f25a4b0c45170902e1" prot="private" static="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &gt;::iterator</type>
-        <definition>typedef std::vector&lt;boost::shared_ptr&lt;StochasticProcess&gt; &gt;::iterator iterator</definition>
-        <argsstring></argsstring>
-        <name>iterator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" line="83" bodyfile="C:/Develop/QuantLib-1.2.1/ql/processes/jointstochasticprocess.hpp" bodystart="83" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a3d0532cce350891ae95b6f78f33f1acb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

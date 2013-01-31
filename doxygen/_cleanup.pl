@@ -36,11 +36,35 @@ for $f (glob("*.xml"))
 	    {
 		$skip = "</sectiondef>";
 	    }
+	    elsif (m!<sectiondef kind="private-static-attrib">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="private-static-func">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
 	    elsif (m!<sectiondef kind="protected-attrib">!)
 	    {
 		$skip = "</sectiondef>";
 	    }
 	    elsif (m!<sectiondef kind="protected-func">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="protected-static-attrib">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="protected-static-func">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="private-type">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
+	    elsif (m!<sectiondef kind="protected-type">!)
 	    {
 		$skip = "</sectiondef>";
 	    }
