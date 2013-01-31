@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_trinomial_tree" kind="class" prot="public">
     <compoundname>QuantLib::TrinomialTree</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/methods/lattices/trinomialtree.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_trinomial_tree_1_1_branching" prot="private">QuantLib::TrinomialTree::Branching</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_trinomial_tree_1a617aa1e32f64a3e471e0facc2b9c63f0" prot="public" static="no">
         <name>Branches</name>

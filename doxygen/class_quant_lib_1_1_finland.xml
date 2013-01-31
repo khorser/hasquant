@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_finland" kind="class" prot="public">
     <compoundname>QuantLib::Finland</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/finland.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_finland_1_1_impl" prot="private">QuantLib::Finland::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_finland_1a69571d4904ea6f194244c9942e7c2fdf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

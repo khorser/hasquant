@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_constant_parameter" kind="class" prot="public">
     <compoundname>QuantLib::ConstantParameter</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_constant_parameter_1_1_impl" prot="private">QuantLib::ConstantParameter::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_constant_parameter_1a5a1b1ae66d386c628ff6cea0815d4c8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

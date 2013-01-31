@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_swaption_vol_cube1" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolCube1</compoundname>
-    <innerclass refid="class_quant_lib_1_1_swaption_vol_cube1_1_1_cube" prot="private">QuantLib::SwaptionVolCube1::Cube</innerclass>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">

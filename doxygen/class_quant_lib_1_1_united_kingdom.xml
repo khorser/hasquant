@@ -3,9 +3,6 @@
   <compounddef id="class_quant_lib_1_1_united_kingdom" kind="class" prot="public">
     <compoundname>QuantLib::UnitedKingdom</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedkingdom.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_united_kingdom_1_1_exchange_impl" prot="private">QuantLib::UnitedKingdom::ExchangeImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_united_kingdom_1_1_metals_impl" prot="private">QuantLib::UnitedKingdom::MetalsImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_united_kingdom_1_1_settlement_impl" prot="private">QuantLib::UnitedKingdom::SettlementImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_united_kingdom_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

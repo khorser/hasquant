@@ -3,8 +3,6 @@
   <compounddef id="class_quant_lib_1_1_italy" kind="class" prot="public">
     <compoundname>QuantLib::Italy</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/italy.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_italy_1_1_exchange_impl" prot="private">QuantLib::Italy::ExchangeImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_italy_1_1_settlement_impl" prot="private">QuantLib::Italy::SettlementImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_italy_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

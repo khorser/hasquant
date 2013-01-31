@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_slovakia" kind="class" prot="public">
     <compoundname>QuantLib::Slovakia</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/slovakia.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_slovakia_1_1_bsse_impl" prot="private">QuantLib::Slovakia::BsseImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_slovakia_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

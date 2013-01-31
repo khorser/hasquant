@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_t_a_r_g_e_t" kind="class" prot="public">
     <compoundname>QuantLib::TARGET</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/target.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_t_a_r_g_e_t_1_1_impl" prot="private">QuantLib::TARGET::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_t_a_r_g_e_t_1a091e4208120834557fca01faa7708e37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

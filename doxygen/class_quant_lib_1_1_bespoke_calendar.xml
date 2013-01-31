@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_bespoke_calendar" kind="class" prot="public">
     <compoundname>QuantLib::BespokeCalendar</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/bespokecalendar.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_bespoke_calendar_1_1_impl" prot="private">QuantLib::BespokeCalendar::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1a7f3c5b5278c667900534fb0e63f13c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

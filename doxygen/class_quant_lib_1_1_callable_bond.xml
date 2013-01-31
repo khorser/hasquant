@@ -5,7 +5,6 @@
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1arguments" prot="public">QuantLib::CallableBond::arguments</innerclass>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1engine" prot="public">QuantLib::CallableBond::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper" prot="protected">QuantLib::CallableBond::ImpliedVolHelper</innerclass>
     <innerclass refid="class_quant_lib_1_1_callable_bond_1_1results" prot="public">QuantLib::CallableBond::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>

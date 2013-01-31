@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_interpolation2_d" kind="class" prot="public">
     <compoundname>QuantLib::Interpolation2D</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/interpolations/interpolation2d.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_interpolation2_d_1_1_impl" prot="protected">QuantLib::Interpolation2D::Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_interpolation2_d_1_1template_impl" prot="public">QuantLib::Interpolation2D::templateImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="typedef" id="class_quant_lib_1_1_interpolation2_d_1aeed8928d320364b39b92b65ef14fc17f" prot="public" static="no">

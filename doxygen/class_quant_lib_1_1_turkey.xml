@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_turkey" kind="class" prot="public">
     <compoundname>QuantLib::Turkey</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/turkey.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_turkey_1_1_impl" prot="private">QuantLib::Turkey::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_turkey_1abc4accb33645e919da15a818582e740f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

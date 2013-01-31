@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_composite_constraint" kind="class" prot="public">
     <compoundname>QuantLib::CompositeConstraint</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_composite_constraint_1_1_impl" prot="private">QuantLib::CompositeConstraint::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

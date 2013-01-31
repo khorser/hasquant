@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_weekends_only" kind="class" prot="public">
     <compoundname>QuantLib::WeekendsOnly</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/weekendsonly.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_weekends_only_1_1_impl" prot="private">QuantLib::WeekendsOnly::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_weekends_only_1a86d6eba973e959c8f54adbb8f2992e15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

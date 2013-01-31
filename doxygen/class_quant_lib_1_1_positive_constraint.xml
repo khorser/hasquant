@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_positive_constraint" kind="class" prot="public">
     <compoundname>QuantLib::PositiveConstraint</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_positive_constraint_1_1_impl" prot="private">QuantLib::PositiveConstraint::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_positive_constraint_1a6933ae2fa43a9797a0be9b81d3f67227" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_settings" kind="class" prot="public">
     <compoundname>QuantLib::Settings</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/settings.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_settings_1_1_date_proxy" prot="private">QuantLib::Settings::DateProxy</innerclass>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_settings_1a91c99b41b2e91d182b86ccc958e3248e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

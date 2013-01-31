@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_business252" kind="class" prot="public">
     <compoundname>QuantLib::Business252</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/business252.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_business252_1_1_impl" prot="private">QuantLib::Business252::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_business252_1ae7be8e19c46cf51cf61f4b107825c06f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

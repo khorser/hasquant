@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_argentina" kind="class" prot="public">
     <compoundname>QuantLib::Argentina</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/argentina.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_argentina_1_1_merval_impl" prot="private">QuantLib::Argentina::MervalImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_argentina_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

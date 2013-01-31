@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts" kind="class" prot="private">
     <compoundname>QuantLib::GFunctionFactory::GFunctionWithShifts</compoundname>
-    <innerclass refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1_1_objective_function" prot="private">QuantLib::GFunctionFactory::GFunctionWithShifts::ObjectiveFunction</innerclass>
       <sectiondef kind="friend">
       <memberdef kind="friend" id="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts_1a917aa9b96504fb8ed651232abff00e2d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend class</type>

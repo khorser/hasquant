@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::LongstaffSchwartzMultiPathPricer</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
-    <innerclass refid="struct_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1_1_path_info" prot="protected">QuantLib::LongstaffSchwartzMultiPathPricer::PathInfo</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

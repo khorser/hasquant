@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_piecewise_constant_parameter" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseConstantParameter</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/parameter.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_piecewise_constant_parameter_1_1_impl" prot="private">QuantLib::PiecewiseConstantParameter::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_piecewise_constant_parameter_1abaab926b36c99cda27f439d3cbd55149" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

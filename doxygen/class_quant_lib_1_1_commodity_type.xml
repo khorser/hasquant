@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_commodity_type" kind="class" prot="public">
     <compoundname>QuantLib::CommodityType</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/commoditytype.hpp</includes>
-    <innerclass refid="struct_quant_lib_1_1_commodity_type_1_1_data" prot="protected">QuantLib::CommodityType::Data</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

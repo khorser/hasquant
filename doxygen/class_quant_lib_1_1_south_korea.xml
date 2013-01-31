@@ -3,8 +3,6 @@
   <compounddef id="class_quant_lib_1_1_south_korea" kind="class" prot="public">
     <compoundname>QuantLib::SouthKorea</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/southkorea.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_south_korea_1_1_krx_impl" prot="private">QuantLib::SouthKorea::KrxImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_south_korea_1_1_settlement_impl" prot="private">QuantLib::SouthKorea::SettlementImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_south_korea_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

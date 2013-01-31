@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_market_model_composite" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelComposite</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/marketmodels/products/compositeproduct.hpp</includes>
-    <innerclass refid="struct_quant_lib_1_1_market_model_composite_1_1_sub_product" prot="protected">QuantLib::MarketModelComposite::SubProduct</innerclass>
       <sectiondef kind="user-defined">
       <header>MarketModelMultiProduct interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_market_model_composite_1afa0882cb7e47518f285e2bc573d954a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">

@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_south_africa" kind="class" prot="public">
     <compoundname>QuantLib::SouthAfrica</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/southafrica.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_south_africa_1_1_impl" prot="private">QuantLib::SouthAfrica::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_south_africa_1a3194ebf0e22761f359b35f266aa1fa7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

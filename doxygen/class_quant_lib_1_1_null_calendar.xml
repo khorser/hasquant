@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_null_calendar" kind="class" prot="public">
     <compoundname>QuantLib::NullCalendar</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/nullcalendar.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_null_calendar_1_1_impl" prot="private">QuantLib::NullCalendar::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_null_calendar_1aa3fc5e89acab53d97a14e634472e6cb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

@@ -3,11 +3,6 @@
   <compounddef id="class_quant_lib_1_1_germany" kind="class" prot="public">
     <compoundname>QuantLib::Germany</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/germany.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_germany_1_1_eurex_impl" prot="private">QuantLib::Germany::EurexImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_germany_1_1_euwax_impl" prot="private">QuantLib::Germany::EuwaxImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_germany_1_1_frankfurt_stock_exchange_impl" prot="private">QuantLib::Germany::FrankfurtStockExchangeImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_germany_1_1_settlement_impl" prot="private">QuantLib::Germany::SettlementImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_germany_1_1_xetra_impl" prot="private">QuantLib::Germany::XetraImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_germany_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

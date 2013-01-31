@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_joint_stochastic_process" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::JointStochasticProcess</compoundname>
-    <innerclass refid="struct_quant_lib_1_1_joint_stochastic_process_1_1_caching_key" prot="private">QuantLib::JointStochasticProcess::CachingKey</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joint_stochastic_process_1a3d0532cce350891ae95b6f78f33f1acb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_fdm_bates_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmBatesOp</compoundname>
-    <innerclass refid="class_quant_lib_1_1_fdm_bates_op_1_1_integro_integrand" prot="private">QuantLib::FdmBatesOp::IntegroIntegrand</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_op_1ac1d9307ca160f9d3de1ee7757897424d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_joint_calendar" kind="class" prot="public">
     <compoundname>QuantLib::JointCalendar</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/jointcalendar.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_joint_calendar_1_1_impl" prot="private">QuantLib::JointCalendar::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_joint_calendar_1ac82ed9afb1ad7d58128551f627178cce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_russia" kind="class" prot="public">
     <compoundname>QuantLib::Russia</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/russia.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_russia_1_1_settlement_impl" prot="private">QuantLib::Russia::SettlementImpl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_russia_1a7ddb9e368dbf68f53fb6869bfd970424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

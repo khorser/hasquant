@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_no_constraint" kind="class" prot="public">
     <compoundname>QuantLib::NoConstraint</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/optimization/constraint.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_no_constraint_1_1_impl" prot="private">QuantLib::NoConstraint::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_no_constraint_1a0710638b6c7cbb4f1e6cc83a5d129114" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

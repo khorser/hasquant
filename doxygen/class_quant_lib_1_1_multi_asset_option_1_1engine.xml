@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_multi_asset_option_1_1engine" kind="class" prot="public">
-    <compoundname>QuantLib::MultiAssetOption::engine</compoundname>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" line="75" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/multiassetoption.hpp" bodystart="73" bodyend="75"/>
-  </compounddef>
-</doxygen>

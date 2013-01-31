@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_day_counter" kind="class" prot="public">
     <compoundname>QuantLib::DayCounter</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounter.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_day_counter_1_1_impl" prot="protected">QuantLib::DayCounter::Impl</innerclass>
       <sectiondef kind="user-defined">
       <header>DayCounter interface</header>
       <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

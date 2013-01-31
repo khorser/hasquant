@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_calendar" kind="class" prot="public">
     <compoundname>QuantLib::Calendar</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendar.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_calendar_1_1_impl" prot="protected">QuantLib::Calendar::Impl</innerclass>
     <innerclass refid="class_quant_lib_1_1_calendar_1_1_orthodox_impl" prot="public">QuantLib::Calendar::OrthodoxImpl</innerclass>
     <innerclass refid="class_quant_lib_1_1_calendar_1_1_western_impl" prot="public">QuantLib::Calendar::WesternImpl</innerclass>
       <sectiondef kind="user-defined">

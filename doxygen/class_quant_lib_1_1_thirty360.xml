@@ -3,9 +3,6 @@
   <compounddef id="class_quant_lib_1_1_thirty360" kind="class" prot="public">
     <compoundname>QuantLib::Thirty360</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/thirty360.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_e_u___impl" prot="private">QuantLib::Thirty360::EU_Impl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_i_t___impl" prot="private">QuantLib::Thirty360::IT_Impl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_thirty360_1_1_u_s___impl" prot="private">QuantLib::Thirty360::US_Impl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_thirty360_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
         <name>Convention</name>

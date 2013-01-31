@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fdm_ext_o_u_jump_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmExtOUJumpOp</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/finitedifferences/fdmextoujumpop.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1_1_integro_integrand" prot="private">QuantLib::FdmExtOUJumpOp::IntegroIntegrand</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_op_1a9d44ffc8676cc7374ce088d871a31d1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

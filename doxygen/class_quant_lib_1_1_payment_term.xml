@@ -2,7 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_payment_term" kind="class" prot="public">
     <compoundname>QuantLib::PaymentTerm</compoundname>
-    <innerclass refid="struct_quant_lib_1_1_payment_term_1_1_data" prot="protected">QuantLib::PaymentTerm::Data</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
       <memberdef kind="function" id="class_quant_lib_1_1_payment_term_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">

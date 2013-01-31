@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedYoYOptionletStripper</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/inflation/interpolatedyoyoptionletstripper.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function" prot="protected">QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</innerclass>
     <templateparamlist>
       <param>
         <type>class Interpolator1D</type>

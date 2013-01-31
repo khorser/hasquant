@@ -2,9 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_g_function_factory" kind="class" prot="public">
     <compoundname>QuantLib::GFunctionFactory</compoundname>
-    <innerclass refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_exact_yield" prot="private">QuantLib::GFunctionFactory::GFunctionExactYield</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_standard" prot="private">QuantLib::GFunctionFactory::GFunctionStandard</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g_function_factory_1_1_g_function_with_shifts" prot="private">QuantLib::GFunctionFactory::GFunctionWithShifts</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0" prot="public" static="no">
         <name>YieldCurveModel</name>

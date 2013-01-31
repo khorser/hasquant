@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_vanilla_swap_1_1engine" kind="class" prot="public">
-    <compoundname>QuantLib::VanillaSwap::engine</compoundname>
-    <location file="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" line="164" bodyfile="C:/Develop/QuantLib-1.2.1/ql/instruments/vanillaswap.hpp" bodystart="163" bodyend="164"/>
-  </compounddef>
-</doxygen>

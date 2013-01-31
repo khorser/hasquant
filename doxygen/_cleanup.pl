@@ -81,5 +81,6 @@ for $f (glob("*.xml"))
 # :silent! argdo %s/^\s*<\(.*\)>\n\s*<\/\1>/
 # :silent! argdo g/^$/delete
 # :silent! argdo g/^\s*<\(derivedcompoundref\|reimplementedby\|basecompoundref\)/delete
+# :silent! argdo g/^\s*<innerclass refid=.* prot="protected">/delete
+# :silent! argdo g/^\s*<innerclass refid=.* prot="private">/delete
 # :silent! xa
-

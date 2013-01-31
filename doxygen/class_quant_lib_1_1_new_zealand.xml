@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_new_zealand" kind="class" prot="public">
     <compoundname>QuantLib::NewZealand</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/newzealand.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_new_zealand_1_1_impl" prot="private">QuantLib::NewZealand::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_new_zealand_1aa234220757dc2457e0bf61b1bc0de3eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

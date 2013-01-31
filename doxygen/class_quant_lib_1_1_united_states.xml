@@ -3,10 +3,6 @@
   <compounddef id="class_quant_lib_1_1_united_states" kind="class" prot="public">
     <compoundname>QuantLib::UnitedStates</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/unitedstates.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_united_states_1_1_government_bond_impl" prot="private">QuantLib::UnitedStates::GovernmentBondImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_united_states_1_1_nerc_impl" prot="private">QuantLib::UnitedStates::NercImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_united_states_1_1_nyse_impl" prot="private">QuantLib::UnitedStates::NyseImpl</innerclass>
-    <innerclass refid="class_quant_lib_1_1_united_states_1_1_settlement_impl" prot="private">QuantLib::UnitedStates::SettlementImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

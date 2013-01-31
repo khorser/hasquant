@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_hong_kong" kind="class" prot="public">
     <compoundname>QuantLib::HongKong</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/calendars/hongkong.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_hong_kong_1_1_hkex_impl" prot="private">QuantLib::HongKong::HkexImpl</innerclass>
       <sectiondef kind="public-type">
       <memberdef kind="enum" id="class_quant_lib_1_1_hong_kong_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>

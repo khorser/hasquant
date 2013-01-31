@@ -3,7 +3,6 @@
   <compounddef id="class_quant_lib_1_1_actual365_fixed" kind="class" prot="public">
     <compoundname>QuantLib::Actual365Fixed</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/time/daycounters/actual365fixed.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_actual365_fixed_1_1_impl" prot="private">QuantLib::Actual365Fixed::Impl</innerclass>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_actual365_fixed_1a2f70a12a500d16b29da54ae1138a511a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
