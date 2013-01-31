@@ -157,22 +157,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="48" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ae111cb608a73ca819237b5c9f93f1088" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Bootstrap&lt; this_curve &gt;</definition>
-        <argsstring></argsstring>
-        <name>Bootstrap&lt; this_curve &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="98" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="98" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a57e9e8eaf5be1d62515629611b40421e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class BootstrapError&lt; this_curve &gt;</definition>
-        <argsstring></argsstring>
-        <name>BootstrapError&lt; this_curve &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="104" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="104" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Piecewise year-on-year inflation term structure. </para>    </briefdescription>
     <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="39" bodyend="106"/>

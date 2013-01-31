@@ -162,21 +162,6 @@
       </sectiondef>
       <sectiondef kind="public-type">
       </sectiondef>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_quantity_1ad2b77826ab7bb423eb3117281aca2b72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend std::ostream &amp;</type>
-        <definition>std::ostream&amp; operator&lt;&lt;</definition>
-        <argsstring>(std::ostream &amp;, const Quantity &amp;)</argsstring>
-        <name>operator&lt;&lt;</name>
-        <param>
-          <type>std::ostream &amp;</type>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/quantity.hpp" line="81"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="related">
       <memberdef kind="function" id="class_quant_lib_1_1_quantity_1afbdc8e55dbb347a2dc5f84d6ac93f83c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>

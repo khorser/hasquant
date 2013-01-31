@@ -68,6 +68,10 @@ for $f (glob("*.xml"))
 	    {
 		$skip = "</sectiondef>";
 	    }
+	    elsif (m!<sectiondef kind="friend">!)
+	    {
+		$skip = "</sectiondef>";
+	    }
 	    else
 	    {
 		print O "$_";

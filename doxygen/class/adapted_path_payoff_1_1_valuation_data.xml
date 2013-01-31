@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data" kind="class" prot="public">
     <compoundname>QuantLib::AdaptedPathPayoff::ValuationData</compoundname>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a71076bd417ea6d9dfc2a5dcd0a5a82e2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class AdaptedPathPayoff</definition>
-        <argsstring></argsstring>
-        <name>AdaptedPathPayoff</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" line="51" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/mcbasket/adaptedpathpayoff.hpp" bodystart="51" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a21086d3059a8089eb8ad49f2bdf20038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

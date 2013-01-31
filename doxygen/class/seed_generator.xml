@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_seed_generator" kind="class" prot="public">
     <compoundname>QuantLib::SeedGenerator</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_seed_generator_1acdd97f92f1256d3e9eefb301d54bd413" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Singleton&lt; SeedGenerator &gt;</definition>
-        <argsstring></argsstring>
-        <name>Singleton&lt; SeedGenerator &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" line="39" bodyfile="C:/Develop/QuantLib-1.2.1/ql/math/randomnumbers/seedgenerator.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_seed_generator_1a957d5ec5d69c9644228fe2eca5cd08e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>unsigned long</type>

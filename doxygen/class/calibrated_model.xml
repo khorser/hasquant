@@ -4,15 +4,6 @@
     <compoundname>QuantLib::CalibratedModel</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/models/model.hpp</includes>
     <innerclass refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_calibrated_model_1a80488386afb1c0c879f7991542f9620d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class CalibrationFunction</definition>
-        <argsstring></argsstring>
-        <name>CalibrationFunction</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" line="121" bodyfile="C:/Develop/QuantLib-1.2.1/ql/models/model.hpp" bodystart="120" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

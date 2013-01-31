@@ -3,21 +3,6 @@
   <compounddef id="class_quant_lib_1_1_date_interval" kind="class" prot="public">
     <compoundname>QuantLib::DateInterval</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_date_interval_1a6aa05c54f803720abdee15bc2136ab83" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend std::ostream &amp;</type>
-        <definition>std::ostream&amp; operator&lt;&lt;</definition>
-        <argsstring>(std::ostream &amp;, const DateInterval &amp;)</argsstring>
-        <name>operator&lt;&lt;</name>
-        <param>
-          <type>std::ostream &amp;</type>
-        </param>
-        <param>
-          <type>const <ref refid="class_quant_lib_1_1_date_interval" kindref="compound">DateInterval</ref> &amp;</type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/dateinterval.hpp" line="35"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_date_interval_1a1072dc506a9f6bf6ba7b89745e7719cc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>

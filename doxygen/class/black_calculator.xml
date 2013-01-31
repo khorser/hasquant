@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_black_calculator" kind="class" prot="public">
     <compoundname>QuantLib::BlackCalculator</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_black_calculator_1abadcb24a4a0b52860a5e7618e3f66914" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Calculator</definition>
-        <argsstring></argsstring>
-        <name>Calculator</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" line="40" bodyfile="C:/Develop/QuantLib-1.2.1/ql/pricingengines/blackcalculator.hpp" bodystart="39" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a2e919a306924f31d9f6f89645d0d69b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>

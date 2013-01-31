@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FittedBondDiscountCurve::FittingMethod</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1aed718c4358fb9121b3421566c9e0be55" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class FittedBondDiscountCurve</definition>
-        <argsstring></argsstring>
-        <name>FittedBondDiscountCurve</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="198" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="198" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a61fc6646c33df418f0cd8afd94d4c131" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>

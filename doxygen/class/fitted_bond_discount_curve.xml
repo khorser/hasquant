@@ -237,15 +237,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="149" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="267" bodyend="270"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_fitted_bond_discount_curve_1aa89d459b4348379e6b5b96665fc8ad21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class FittingMethod</definition>
-        <argsstring></argsstring>
-        <name>FittingMethod</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" line="87" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/fittedbonddiscountcurve.hpp" bodystart="86" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para><ref refid="struct_quant_lib_1_1_discount" kindref="compound">Discount</ref> curve fitted to a set of fixed-coupon bonds. </para>    </briefdescription>
     <detaileddescription>

@@ -56,15 +56,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="77"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_callable_bond_1ae63057c21db39b3ce3afb6fec57f82d0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class ImpliedVolHelper</definition>
-        <argsstring></argsstring>
-        <name>ImpliedVolHelper</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" line="100" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/callablebonds/callablebond.hpp" bodystart="99" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1a71e3006b83c8b484bc57296fe94bf36d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>

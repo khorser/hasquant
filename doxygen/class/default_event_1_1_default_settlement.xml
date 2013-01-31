@@ -2,15 +2,6 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
   <compounddef id="class_quant_lib_1_1_default_event_1_1_default_settlement" kind="class" prot="public">
     <compoundname>QuantLib::DefaultEvent::DefaultSettlement</compoundname>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1aa83df1fd5966eae29c74571e258a5aa3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class DefaultEvent</definition>
-        <argsstring></argsstring>
-        <name>DefaultEvent</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" line="53" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/credit/defaultevent.hpp" bodystart="53" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>

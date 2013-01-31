@@ -323,29 +323,6 @@
         <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="67" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1ae111cb608a73ca819237b5c9f93f1088" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Bootstrap&lt; this_curve &gt;</definition>
-        <argsstring></argsstring>
-        <name>Bootstrap&lt; this_curve &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="189" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="189" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1a57e9e8eaf5be1d62515629611b40421e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class BootstrapError&lt; this_curve &gt;</definition>
-        <argsstring></argsstring>
-        <name>BootstrapError&lt; this_curve &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="190" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="190" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="friend" id="class_quant_lib_1_1_piecewise_yield_curve_1aca3f88b9684e23193ac4481984646966" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class PenaltyFunction&lt; this_curve &gt;</definition>
-        <argsstring></argsstring>
-        <name>PenaltyFunction&lt; this_curve &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" line="191" bodyfile="C:/Develop/QuantLib-1.2.1/ql/termstructures/yield/piecewiseyieldcurve.hpp" bodystart="191" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
     <briefdescription>
 <para>Piecewise yield term structure. </para>    </briefdescription>
     <detaileddescription>

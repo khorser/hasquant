@@ -4,15 +4,6 @@
     <compoundname>QuantLib::ExchangeRateManager</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp</includes>
     <innerclass refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry" prot="public">QuantLib::ExchangeRateManager::Entry</innerclass>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_exchange_rate_manager_1aaba78e362716d89d9d8bfa9f90b15a10" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Singleton&lt; ExchangeRateManager &gt;</definition>
-        <argsstring></argsstring>
-        <name>Singleton&lt; ExchangeRateManager &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" line="41" bodyfile="C:/Develop/QuantLib-1.2.1/ql/currencies/exchangeratemanager.hpp" bodystart="41" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1a06d8b6a35265988b53450aeab76d5745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>

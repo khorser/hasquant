@@ -3,15 +3,6 @@
   <compounddef id="class_quant_lib_1_1_unit_of_measure_conversion_manager" kind="class" prot="public">
     <compoundname>QuantLib::UnitOfMeasureConversionManager</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1a60b603fb83417749c97671430b872ae9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Singleton&lt; UnitOfMeasureConversionManager &gt;</definition>
-        <argsstring></argsstring>
-        <name>Singleton&lt; UnitOfMeasureConversionManager &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/experimental/commodities/unitofmeasureconversionmanager.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_manager_1aecec91204ea136d1fd797c0eb4629084" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>UnitOfMeasureConversion</type>

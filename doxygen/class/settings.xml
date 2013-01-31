@@ -3,28 +3,6 @@
   <compounddef id="class_quant_lib_1_1_settings" kind="class" prot="public">
     <compoundname>QuantLib::Settings</compoundname>
     <includes local="no">C:/Develop/QuantLib-1.2.1/ql/settings.hpp</includes>
-      <sectiondef kind="friend">
-      <memberdef kind="friend" id="class_quant_lib_1_1_settings_1a91c99b41b2e91d182b86ccc958e3248e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend class</type>
-        <definition>friend class Singleton&lt; Settings &gt;</definition>
-        <argsstring></argsstring>
-        <name>Singleton&lt; Settings &gt;</name>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="38" bodyfile="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" bodystart="38" bodyend="-1"/>
-      </memberdef>
-      <memberdef kind="friend" id="class_quant_lib_1_1_settings_1a7372fd0b783fb5d23e60a661934d1203" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>friend std::ostream &amp;</type>
-        <definition>std::ostream&amp; operator&lt;&lt;</definition>
-        <argsstring>(std::ostream &amp;, const DateProxy &amp;)</argsstring>
-        <name>operator&lt;&lt;</name>
-        <param>
-          <type>std::ostream &amp;</type>
-        </param>
-        <param>
-          <type>const DateProxy &amp;</type>
-        </param>
-        <location file="C:/Develop/QuantLib-1.2.1/ql/settings.hpp" line="47"/>
-      </memberdef>
-      </sectiondef>
       <sectiondef kind="public-func">
       <memberdef kind="function" id="class_quant_lib_1_1_settings_1a95055e9410ed0465a5f30d3ffc90c1d3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>DateProxy &amp;</type>
