@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_united_states" kind="class" prot="public">
+  <compounddef id="united_states" kind="class" prot="public">
     <compoundname>QuantLib::UnitedStates</compoundname>
     <includes local="no">/time/calendars/unitedstates.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+      <memberdef kind="enum" id="united_states_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
-        <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public">
+        <enumvalue id="united_states_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public">
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a3f2821f9809075eb575505bcc2525103" prot="public">
+        <enumvalue id="united_states_1abe41cfffd960e29a5d8b07be00aeda42a3f2821f9809075eb575505bcc2525103" prot="public">
           <name>NYSE</name>
           <briefdescription>
 <para>New York stock exchange calendar. </para>          </briefdescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a561f5c560b2b1a55abd84072867a8016" prot="public">
+        <enumvalue id="united_states_1abe41cfffd960e29a5d8b07be00aeda42a561f5c560b2b1a55abd84072867a8016" prot="public">
           <name>GovernmentBond</name>
           <briefdescription>
 <para>government-bond calendar </para>          </briefdescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42a6a00c6db1276885bef0cc051c47e095c" prot="public">
+        <enumvalue id="united_states_1abe41cfffd960e29a5d8b07be00aeda42a6a00c6db1276885bef0cc051c47e095c" prot="public">
           <name>NERC</name>
           <briefdescription>
 <para>off-peak days for NERC </para>          </briefdescription>
@@ -32,15 +32,15 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_united_states_1a3ebaa0e0dd38c024125606c66ecf1697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="united_states_1a3ebaa0e0dd38c024125606c66ecf1697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>UnitedStates</definition>
         <argsstring>(Market market=Settlement)</argsstring>
         <name>UnitedStates</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_united_states_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type><ref refid="united_states_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>market</declname>
-          <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
+          <defval><ref refid="settlement" kindref="compound">Settlement</ref></defval>
         </param>
         <location file="/time/calendars/unitedstates.hpp" line="152"/>
       </memberdef>

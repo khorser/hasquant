@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_b_t_p" kind="class" prot="public">
+  <compounddef id="b_t_p" kind="class" prot="public">
     <compoundname>QuantLib::BTP</compoundname>
     <includes local="no">/instruments/bonds/btp.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Bond interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="b_t_p_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real accruedAmount</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>accruedAmount</name>
-        <reimplements refid="class_quant_lib_1_1_bond_1a0fc8bd8e30a2481352f942bbbd8666dc">accruedAmount</reimplements>
+        <reimplements refid="bond_1a0fc8bd8e30a2481352f942bbbd8666dc">accruedAmount</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>d</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <briefdescription>
 <para>accrued amount at a given date </para>        </briefdescription>
@@ -24,13 +24,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1adacf47225e05cb98f15b84e8fc5ba36a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_t_p_1adacf47225e05cb98f15b84e8fc5ba36a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BTP</definition>
         <argsstring>(const Date &amp;maturityDate, Rate fixedRate, const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>BTP</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -38,24 +38,24 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1aed15b2ba17315cba44cad24d16540192" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_t_p_1aed15b2ba17315cba44cad24d16540192" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BTP</definition>
         <argsstring>(const Date &amp;maturityDate, Rate fixedRate, Real redemption, const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>BTP</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -67,20 +67,20 @@
           <declname>redemption</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <detaileddescription>
 <para>constructor needed for legacy non-par redemption BTPs. As of today the only remaining one is IT123456789012 that will redeem 99.999 on xx-may-2037 </para>        </detaileddescription>
         <location file="/instruments/bonds/btp.hpp" line="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_t_p_1a88a4605ce00014426d599efc7c3ff68a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_t_p_1a88a4605ce00014426d599efc7c3ff68a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate yield</definition>
         <argsstring>(Real cleanPrice, Date settlementDate=Date(), Real accuracy=1.0e-8, Size maxEvaluations=100) const </argsstring>
@@ -90,9 +90,9 @@
           <declname>cleanPrice</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>settlementDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -105,14 +105,14 @@
           <defval>100</defval>
         </param>
         <briefdescription>
-<para><ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> yield given a (clean) price and settlement date. </para>        </briefdescription>
+<para><ref refid="b_t_p" kindref="compound">BTP</ref> yield given a (clean) price and settlement date. </para>        </briefdescription>
         <detaileddescription>
-<para>The default <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
+<para>The default <ref refid="b_t_p" kindref="compound">BTP</ref> conventions are used: Actual/Actual (ISMA), Compounded, Annual. The default bond settlement is used if no date is given. </para>        </detaileddescription>
         <location file="/instruments/bonds/btp.hpp" line="89"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Italian <ref refid="class_quant_lib_1_1_b_t_p" kindref="compound">BTP</ref> (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
+<para>Italian <ref refid="b_t_p" kindref="compound">BTP</ref> (Buono Poliennali del Tesoro) fixed rate bond. </para>    </briefdescription>
     <location file="/instruments/bonds/btp.hpp" line="62" bodyfile="/instruments/bonds/btp.hpp" bodystart="62" bodyend="90"/>
   </compounddef>
 </doxygen>

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discrepancy_statistics" kind="class" prot="public">
+  <compounddef id="discrepancy_statistics" kind="class" prot="public">
     <compoundname>QuantLib::DiscrepancyStatistics</compoundname>
     <includes local="no">/math/statistics/discrepancystatistics.hpp</includes>
       <sectiondef kind="user-defined">
       <header>1-dimensional inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_discrepancy_statistics_1a122ecc93c99621dc327be1f4dec2849a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discrepancy_statistics_1a122ecc93c99621dc327be1f4dec2849a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discrepancy</definition>
         <argsstring>() const </argsstring>
@@ -14,7 +14,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_discrepancy_statistics_1a098d1b826c2efcfccac368aa5c2d6cc0" prot="public" static="no">
+      <memberdef kind="typedef" id="discrepancy_statistics_1a098d1b826c2efcfccac368aa5c2d6cc0" prot="public" static="no">
         <type>SequenceStatistics::value_type</type>
         <definition>typedef SequenceStatistics::value_type value_type</definition>
         <argsstring></argsstring>
@@ -23,7 +23,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discrepancy_statistics_1ab9796065f48d4502cb41326f68720a67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discrepancy_statistics_1ab9796065f48d4502cb41326f68720a67" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DiscrepancyStatistics</definition>
         <argsstring>(Size dimension)</argsstring>
@@ -34,7 +34,7 @@
         </param>
         <location file="/math/statistics/discrepancystatistics.hpp" line="39" bodyfile="/math/statistics/discrepancystatistics.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discrepancy_statistics_1a1f278171ca690f5a6c24ca31583fdad6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discrepancy_statistics_1a1f278171ca690f5a6c24ca31583fdad6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class Sequence</type>
@@ -55,7 +55,7 @@
         </param>
         <location file="/math/statistics/discrepancystatistics.hpp" line="46" bodyfile="/math/statistics/discrepancystatistics.hpp" bodystart="45" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discrepancy_statistics_1aec007c1f57d0a048f8cc541dc3614137" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discrepancy_statistics_1aec007c1f57d0a048f8cc541dc3614137" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class Iterator</type>
@@ -80,7 +80,7 @@
         </param>
         <location file="/math/statistics/discrepancystatistics.hpp" line="52" bodyfile="/math/statistics/discrepancystatistics.hpp" bodystart="50" bodyend="93"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discrepancy_statistics_1a58bd77d1d091d636b8d5400814152bc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discrepancy_statistics_1a58bd77d1d091d636b8d5400814152bc5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>(Size dimension=0)</argsstring>

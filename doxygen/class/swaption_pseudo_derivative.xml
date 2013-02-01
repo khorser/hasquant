@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_pseudo_derivative" kind="class" prot="public">
+  <compounddef id="swaption_pseudo_derivative" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionPseudoDerivative</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1aa816dc2db612e172040dfcb99ac95bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_pseudo_derivative_1aa816dc2db612e172040dfcb99ac95bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionPseudoDerivative</definition>
         <argsstring>(boost::shared_ptr&lt; MarketModel &gt; inputModel, Size startIndex, Size endIndex)</argsstring>
         <name>SwaptionPseudoDerivative</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt;</type>
           <declname>inputModel</declname>
         </param>
         <param>
@@ -22,8 +22,8 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a061575e2908a30f5f646b4f4297db0bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_pseudo_derivative_1a061575e2908a30f5f646b4f4297db0bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; varianceDerivative</definition>
         <argsstring>(Size i) const </argsstring>
         <name>varianceDerivative</name>
@@ -33,8 +33,8 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_pseudo_derivative_1a6f48fc2301b8f7e4a4e0c28e7d55407a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; volatilityDerivative</definition>
         <argsstring>(Size i) const </argsstring>
         <name>volatilityDerivative</name>
@@ -44,21 +44,21 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a8ec1750ec5666ad6ac99e955ce196170" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_pseudo_derivative_1a8ec1750ec5666ad6ac99e955ce196170" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedVolatility</definition>
         <argsstring>() const </argsstring>
         <name>impliedVolatility</name>
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_pseudo_derivative_1a4b8b05b2a9af92dad9cc304c2925a4eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring>() const </argsstring>
         <name>variance</name>
         <location file="/models/marketmodels/pathwisegreeks/swaptionpseudojacobian.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_pseudo_derivative_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_pseudo_derivative_1a6f26ea87fa9cec3be05613ed6a61caed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real expiry</definition>
         <argsstring>() const </argsstring>

@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine" kind="class" prot="public">
+  <compounddef id="interpolating_c_p_i_cap_floor_engine" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatingCPICapFloorEngine</compoundname>
     <includes local="no">/experimental/inflation/cpicapfloorengines.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a242990321b88c5ebe1002057f8301bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1a242990321b88c5ebe1002057f8301bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatingCPICapFloorEngine</definition>
         <argsstring>(const Handle&lt; CPICapFloorTermPriceSurface &gt; &amp;)</argsstring>
         <name>InterpolatingCPICapFloorEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="c_p_i_cap_floor_term_price_surface" kindref="compound">CPICapFloorTermPriceSurface</ref> &gt; &amp;</type>
         </param>
         <location file="/experimental/inflation/cpicapfloorengines.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1acf2f383eca3842fb5af46cbf59e9c2d8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/inflation/cpicapfloorengines.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1a31de2d5748acd4ff3dbdc511202b505b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
         <location file="/experimental/inflation/cpicapfloorengines.hpp" line="47" bodyfile="/experimental/inflation/cpicapfloorengines.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolating_c_p_i_cap_floor_engine_1a1a3030dcbcf6db7748b562616f2b06b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolating_c_p_i_cap_floor_engine_1a1a3030dcbcf6db7748b562616f2b06b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~InterpolatingCPICapFloorEngine</definition>
         <argsstring>()</argsstring>

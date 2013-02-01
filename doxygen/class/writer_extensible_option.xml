@@ -1,30 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_writer_extensible_option" kind="class" prot="public">
+  <compounddef id="writer_extensible_option" kind="class" prot="public">
     <compoundname>QuantLib::WriterExtensibleOption</compoundname>
     <includes local="no">/experimental/exoticoptions/writerextensibleoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_writer_extensible_option_1_1arguments" prot="public">QuantLib::WriterExtensibleOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_writer_extensible_option_1_1engine" prot="public">QuantLib::WriterExtensibleOption::engine</innerclass>
+    <innerclass refid="writer_extensible_option_1_1arguments" prot="public">QuantLib::WriterExtensibleOption::arguments</innerclass>
+    <innerclass refid="writer_extensible_option_1_1engine" prot="public">QuantLib::WriterExtensibleOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1a6aab4e77770a4ef1fb69319013a4cefd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="writer_extensible_option_1a6aab4e77770a4ef1fb69319013a4cefd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>WriterExtensibleOption</definition>
         <argsstring>(const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;payoff1, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise1, const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;payoff2, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise2)</argsstring>
         <name>WriterExtensibleOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
           <declname>payoff1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
           <declname>payoff2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise2</declname>
         </param>
         <detaileddescription>
@@ -60,36 +60,36 @@
 </para>        </detaileddescription>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1a31bd0c2f80effdcd73eb4b9ca49d3cd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="function" id="writer_extensible_option_1a31bd0c2f80effdcd73eb4b9ca49d3cd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring>()</argsstring>
         <name>payoff2</name>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="50" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1ab273912ca6b9f3daa22ec362aff6c659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+      <memberdef kind="function" id="writer_extensible_option_1ab273912ca6b9f3daa22ec362aff6c659" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring>()</argsstring>
         <name>exercise2</name>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="51" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="writer_extensible_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="writer_extensible_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

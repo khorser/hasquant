@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_poland" kind="class" prot="public">
+  <compounddef id="poland" kind="class" prot="public">
     <compoundname>QuantLib::Poland</compoundname>
     <includes local="no">/time/calendars/poland.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_poland_1ab797bcd494e9a82287b6506bb896c26a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="poland_1ab797bcd494e9a82287b6506bb896c26a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Poland</definition>
         <argsstring>()</argsstring>

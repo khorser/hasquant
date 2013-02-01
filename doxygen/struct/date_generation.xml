@@ -1,47 +1,47 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_date_generation" kind="struct" prot="public">
+  <compounddef id="date_generation" kind="struct" prot="public">
     <compoundname>QuantLib::DateGeneration</compoundname>
     <includes local="no">/time/dategenerationrule.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" prot="public" static="no">
+      <memberdef kind="enum" id="date_generation_1a11fcd51ef86118f65e603c1474377a78" prot="public" static="no">
         <name>Rule</name>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" prot="public">
           <name>Backward</name>
           <detaileddescription>
 <para>Backward from termination date to effective date. </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ae204c9c3e62b1e9a6b60e40cd05256c5" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ae204c9c3e62b1e9a6b60e40cd05256c5" prot="public">
           <name>Forward</name>
           <detaileddescription>
-<para><ref refid="class_quant_lib_1_1_forward" kindref="compound">Forward</ref> from effective date to termination date. </para>          </detaileddescription>
+<para><ref refid="forward" kindref="compound">Forward</ref> from effective date to termination date. </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ab9f6920de535f04ccfe34d670fa2c8a8" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ab9f6920de535f04ccfe34d670fa2c8a8" prot="public">
           <name>Zero</name>
           <detaileddescription>
 <para>No intermediate dates between effective date and termination date. </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ac8d8da6652fd8ffa5e27e779518e414e" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ac8d8da6652fd8ffa5e27e779518e414e" prot="public">
           <name>ThirdWednesday</name>
           <detaileddescription>
 <para>All dates but effective date and termination date are taken to be on the third wednesday of their month (with forward calculation.) </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a21087b4bddcc38096b2349354748c175" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78a21087b4bddcc38096b2349354748c175" prot="public">
           <name>Twentieth</name>
           <detaileddescription>
 <para>All dates but the effective date are taken to be the twentieth of their month (used for CDS schedules in emerging markets.) The termination date is also modified. </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ad694d6ae582abfc8e99ea7e6e6c3f8d5" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ad694d6ae582abfc8e99ea7e6e6c3f8d5" prot="public">
           <name>TwentiethIMM</name>
           <detaileddescription>
-<para>All dates but the effective date are taken to be the twentieth of an <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> month (used for CDS schedules.) The termination date is also modified. </para>          </detaileddescription>
+<para>All dates but the effective date are taken to be the twentieth of an <ref refid="i_m_m" kindref="compound">IMM</ref> month (used for CDS schedules.) The termination date is also modified. </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a634c5fa704fceaa797cf0c089af2b6c9" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78a634c5fa704fceaa797cf0c089af2b6c9" prot="public">
           <name>OldCDS</name>
           <detaileddescription>
 <para>Same as TwentiethIMM with unrestricted date ends and log/short stub coupon period (old CDS convention). </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78ac78cb76ca18746c78d962eb46eabb008" prot="public">
+        <enumvalue id="date_generation_1a11fcd51ef86118f65e603c1474377a78ac78cb76ca18746c78d962eb46eabb008" prot="public">
           <name>CDS</name>
           <detaileddescription>
 <para>Credit derivatives standard rule since &apos;Big Bang&apos; changes in 2009. </para>          </detaileddescription>
@@ -50,7 +50,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
-      <memberdef kind="function" id="struct_quant_lib_1_1_date_generation_1a37ee623eedc42fca85cd00bb7f9b78ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="date_generation_1a37ee623eedc42fca85cd00bb7f9b78ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream &amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;, DateGeneration::Rule)</argsstring>
@@ -59,7 +59,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
         </param>
         <location file="/time/dategenerationrule.hpp" line="69"/>
       </memberdef>
@@ -67,7 +67,7 @@
     <briefdescription>
 <para>Date-generation rule. </para>    </briefdescription>
     <detaileddescription>
-<para>These conventions specify the rule used to generate dates in a <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref>. </para>    </detaileddescription>
+<para>These conventions specify the rule used to generate dates in a <ref refid="schedule" kindref="compound">Schedule</ref>. </para>    </detaileddescription>
     <location file="/time/dategenerationrule.hpp" line="39" bodyfile="/time/dategenerationrule.hpp" bodystart="39" bodyend="65"/>
   </compounddef>
 </doxygen>

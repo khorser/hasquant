@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_p_i_swap" kind="class" prot="public">
+  <compounddef id="c_p_i_swap" kind="class" prot="public">
     <compoundname>QuantLib::CPISwap</compoundname>
     <includes local="no">/instruments/cpiswap.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_swap_1_1arguments" prot="public">QuantLib::CPISwap::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_swap_1_1engine" prot="public">QuantLib::CPISwap::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_swap_1_1results" prot="public">QuantLib::CPISwap::results</innerclass>
+    <innerclass refid="c_p_i_swap_1_1arguments" prot="public">QuantLib::CPISwap::arguments</innerclass>
+    <innerclass refid="c_p_i_swap_1_1engine" prot="public">QuantLib::CPISwap::engine</innerclass>
+    <innerclass refid="c_p_i_swap_1_1results" prot="public">QuantLib::CPISwap::results</innerclass>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
+        <enumvalue id="c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
+        <enumvalue id="c_p_i_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
         </enumvalue>
@@ -21,7 +21,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a9b90134641b0ea54f1b43cfde68f62ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a9b90134641b0ea54f1b43cfde68f62ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CPISwap</definition>
         <argsstring>(Type type, Real nominal, bool subtractInflationNominal, Spread spread, const DayCounter &amp;floatDayCount, const Schedule &amp;floatSchedule, const BusinessDayConvention &amp;floatRoll, Natural fixingDays, const boost::shared_ptr&lt; IborIndex &gt; &amp;floatIndex, Rate fixedRate, Real baseCPI, const DayCounter &amp;fixedDayCount, const Schedule &amp;fixedSchedule, const BusinessDayConvention &amp;fixedRoll, const Period &amp;observationLag, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;fixedIndex, CPI::InterpolationType observationInterpolation=CPI::AsIndex, Real inflationNominal=Null&lt; Real &gt;())</argsstring>
@@ -43,11 +43,11 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>floatDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>floatSchedule</declname>
         </param>
         <param>
@@ -59,7 +59,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>floatIndex</declname>
         </param>
         <param>
@@ -71,11 +71,11 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>fixedSchedule</declname>
         </param>
         <param>
@@ -83,11 +83,11 @@
           <declname>fixedRoll</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>fixedIndex</declname>
         </param>
         <param>
@@ -98,184 +98,184 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>inflationNominal</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/instruments/cpiswap.hpp" line="93"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ac83078708d7f39ee5937d2c0d4d99434" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1ac83078708d7f39ee5937d2c0d4d99434" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real floatLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>floatLegNPV</name>
         <location file="/instruments/cpiswap.hpp" line="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a8519db12d1035aea8bc0b73b531fa1d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>virtual Spread fairSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairSpread</name>
         <location file="/instruments/cpiswap.hpp" line="98"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1acae4e2138e8dbe8c12a605ea79086d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/cpiswap.hpp" line="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a5d5b9c2299952391c66f5b080295e747" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
         <location file="/instruments/cpiswap.hpp" line="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1af9ee3189838631f5f8aa9175389dad1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1af9ee3189838631f5f8aa9175389dad1b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>Type</type>
         <definition>CPISwap::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
         <location file="/instruments/cpiswap.hpp" line="104" bodyfile="/instruments/cpiswap.hpp" bodystart="193" bodyend="193"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/instruments/cpiswap.hpp" line="105" bodyfile="/instruments/cpiswap.hpp" bodystart="194" bodyend="194"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1aa69bebfcfe33bfa4259ffffc5c55c392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1aa69bebfcfe33bfa4259ffffc5c55c392" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool subtractInflationNominal</definition>
         <argsstring>() const </argsstring>
         <name>subtractInflationNominal</name>
         <location file="/instruments/cpiswap.hpp" line="106" bodyfile="/instruments/cpiswap.hpp" bodystart="195" bodyend="195"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
         <name>spread</name>
         <location file="/instruments/cpiswap.hpp" line="109" bodyfile="/instruments/cpiswap.hpp" bodystart="198" bodyend="198"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a9ace77b155fec783a7f1e2f27cef14b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1a9ace77b155fec783a7f1e2f27cef14b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter &amp; floatDayCount</definition>
         <argsstring>() const </argsstring>
         <name>floatDayCount</name>
         <location file="/instruments/cpiswap.hpp" line="110" bodyfile="/instruments/cpiswap.hpp" bodystart="199" bodyend="199"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a8105c4a20b2b9e022001c33e9f933341" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1a8105c4a20b2b9e022001c33e9f933341" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
         <definition>const Schedule &amp; floatSchedule</definition>
         <argsstring>() const </argsstring>
         <name>floatSchedule</name>
         <location file="/instruments/cpiswap.hpp" line="111" bodyfile="/instruments/cpiswap.hpp" bodystart="200" bodyend="200"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a489855877bac655a8a40a1ccf0e12ee6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a489855877bac655a8a40a1ccf0e12ee6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
         <definition>const BusinessDayConvention &amp; floatPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>floatPaymentRoll</name>
         <location file="/instruments/cpiswap.hpp" line="112" bodyfile="/instruments/cpiswap.hpp" bodystart="201" bodyend="201"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
         <name>fixingDays</name>
         <location file="/instruments/cpiswap.hpp" line="113" bodyfile="/instruments/cpiswap.hpp" bodystart="202" bodyend="202"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a94ae66b439f89cd551508d38e4775e23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1a94ae66b439f89cd551508d38e4775e23" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; IborIndex &gt; &amp; floatIndex</definition>
         <argsstring>() const </argsstring>
         <name>floatIndex</name>
         <location file="/instruments/cpiswap.hpp" line="114" bodyfile="/instruments/cpiswap.hpp" bodystart="203" bodyend="203"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
         <location file="/instruments/cpiswap.hpp" line="117" bodyfile="/instruments/cpiswap.hpp" bodystart="206" bodyend="206"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ae3688411e63b836688fe6d77f87549be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1ae3688411e63b836688fe6d77f87549be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real baseCPI</definition>
         <argsstring>() const </argsstring>
         <name>baseCPI</name>
         <location file="/instruments/cpiswap.hpp" line="118" bodyfile="/instruments/cpiswap.hpp" bodystart="207" bodyend="207"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1a95363e8aed06af280c2f0cf7e424fed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter &amp; fixedDayCount</definition>
         <argsstring>() const </argsstring>
         <name>fixedDayCount</name>
         <location file="/instruments/cpiswap.hpp" line="119" bodyfile="/instruments/cpiswap.hpp" bodystart="208" bodyend="208"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1ae9b9f2b40445d5d7802a80596445d4c5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
         <definition>const Schedule &amp; fixedSchedule</definition>
         <argsstring>() const </argsstring>
         <name>fixedSchedule</name>
         <location file="/instruments/cpiswap.hpp" line="120" bodyfile="/instruments/cpiswap.hpp" bodystart="209" bodyend="209"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a417e96d4a1906168e11cf64d73190df0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a417e96d4a1906168e11cf64d73190df0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref> &amp;</type>
         <definition>const BusinessDayConvention &amp; fixedPaymentRoll</definition>
         <argsstring>() const </argsstring>
         <name>fixedPaymentRoll</name>
         <location file="/instruments/cpiswap.hpp" line="121" bodyfile="/instruments/cpiswap.hpp" bodystart="210" bodyend="210"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="function" id="c_p_i_swap_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
         <location file="/instruments/cpiswap.hpp" line="122" bodyfile="/instruments/cpiswap.hpp" bodystart="211" bodyend="211"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5c24e955816d960f087a5d88805d981d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="c_p_i_swap_1a5c24e955816d960f087a5d88805d981d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp; fixedIndex</definition>
         <argsstring>() const </argsstring>
         <name>fixedIndex</name>
         <location file="/instruments/cpiswap.hpp" line="123" bodyfile="/instruments/cpiswap.hpp" bodystart="212" bodyend="212"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>CPI::InterpolationType</type>
         <definition>CPI::InterpolationType observationInterpolation</definition>
         <argsstring>() const </argsstring>
         <name>observationInterpolation</name>
         <location file="/instruments/cpiswap.hpp" line="124" bodyfile="/instruments/cpiswap.hpp" bodystart="213" bodyend="213"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a6ec2404f611183ccedff6a9e227eedc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a6ec2404f611183ccedff6a9e227eedc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real inflationNominal</definition>
         <argsstring>() const </argsstring>
         <name>inflationNominal</name>
         <location file="/instruments/cpiswap.hpp" line="125" bodyfile="/instruments/cpiswap.hpp" bodystart="214" bodyend="214"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a80d571527c5ae24798704b5e3bbf0f30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a80d571527c5ae24798704b5e3bbf0f30" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg &amp; cpiLeg</definition>
         <argsstring>() const </argsstring>
         <name>cpiLeg</name>
         <location file="/instruments/cpiswap.hpp" line="128" bodyfile="/instruments/cpiswap.hpp" bodystart="216" bodyend="218"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a5a62986f612f359daf7619f30c31c9c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a5a62986f612f359daf7619f30c31c9c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg &amp; floatLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatLeg</name>
         <location file="/instruments/cpiswap.hpp" line="129" bodyfile="/instruments/cpiswap.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *args) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -283,12 +283,12 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/cpiswap.hpp" line="132"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

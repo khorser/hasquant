@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1detail_1_1_point" kind="struct" prot="public">
+  <compounddef id="detail_1_1_point" kind="struct" prot="public">
     <compoundname>QuantLib::detail::Point</compoundname>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="struct_quant_lib_1_1detail_1_1_point_1a99a0a112457c400621d9adec814ebbbb" prot="public" static="no">
+      <memberdef kind="typedef" id="detail_1_1_point_1a99a0a112457c400621d9adec814ebbbb" prot="public" static="no">
         <type>X</type>
         <definition>typedef X data_type</definition>
         <argsstring></argsstring>
@@ -20,14 +20,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_point_1a2c1d952987580b48159aab3dab850f03" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="detail_1_1_point_1a2c1d952987580b48159aab3dab850f03" prot="public" static="no" mutable="no">
         <type>data_type</type>
         <definition>data_type first</definition>
         <argsstring></argsstring>
         <name>first</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="143" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="143" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_point_1a2bcf66e10478bfdf9fb2514fe62d06c3" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="detail_1_1_point_1a2bcf66e10478bfdf9fb2514fe62d06c3" prot="public" static="no" mutable="no">
         <type>Y</type>
         <definition>Y second</definition>
         <argsstring></argsstring>
@@ -36,14 +36,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1ae08c5f0c5b4c75a3e0f33dada5f2fcba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1ae08c5f0c5b4c75a3e0f33dada5f2fcba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Point</definition>
         <argsstring>()</argsstring>
         <name>Point</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="125" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="124" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1a14c66cff0f41903336115411a09c85ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1a14c66cff0f41903336115411a09c85ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Point</definition>
         <argsstring>(const std::vector&lt; Real &gt;::const_iterator &amp;i)</argsstring>
@@ -54,7 +54,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="127" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="126" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1a235d67c6c59395070761b6c837ffead9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1a235d67c6c59395070761b6c837ffead9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Point</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;v)</argsstring>
@@ -65,7 +65,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="129" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="128" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1a7a750f84a6700f267810a8edcaee752e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1a7a750f84a6700f267810a8edcaee752e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Point</definition>
         <argsstring>(const SplineGrid::const_iterator &amp;i)</argsstring>
@@ -76,7 +76,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="131" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="130" bodyend="131"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1ae87fdf49a14c0233779959a4c8ebcd4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1ae87fdf49a14c0233779959a4c8ebcd4d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Point</definition>
         <argsstring>(const SplineGrid &amp;grid)</argsstring>
@@ -87,14 +87,14 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="133" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="132" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1a50322de528faf8a226738ab09b282d10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1a50322de528faf8a226738ab09b282d10" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>operator data_type</definition>
         <argsstring>() const </argsstring>
         <name>operator data_type</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="134" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1a00cfcc2b2d51df2b761254f9fc37dda6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1a00cfcc2b2d51df2b761254f9fc37dda6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>data_type</type>
         <definition>data_type operator[]</definition>
         <argsstring>(Size n) const </argsstring>
@@ -105,7 +105,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="137" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_point_1aab8e3cd5ca1b2e78f2a8cef2ddcbf3ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_point_1aab8e3cd5ca1b2e78f2a8cef2ddcbf3ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>data_type &amp;</type>
         <definition>data_type&amp; operator[]</definition>
         <argsstring>(Size n)</argsstring>

@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" kind="class" prot="public">
+  <compounddef id="calibrated_model_1_1_private_constraint" kind="class" prot="public">
     <compoundname>QuantLib::CalibratedModel::PrivateConstraint</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1_1_private_constraint_1ab9e3f58a83b77084d721adb3ffcf1703" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="calibrated_model_1_1_private_constraint_1ab9e3f58a83b77084d721adb3ffcf1703" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PrivateConstraint</definition>
         <argsstring>(const std::vector&lt; Parameter &gt; &amp;arguments)</argsstring>
         <name>PrivateConstraint</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="parameter" kindref="compound">Parameter</ref> &gt; &amp;</type>
           <declname>arguments</declname>
         </param>
         <location file="/models/model.hpp" line="163" bodyfile="/models/model.hpp" bodystart="161" bodyend="163"/>

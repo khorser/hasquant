@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_iterative_bootstrap" kind="class" prot="public">
+  <compounddef id="iterative_bootstrap" kind="class" prot="public">
     <compoundname>QuantLib::IterativeBootstrap</compoundname>
     <includes local="no">/termstructures/iterativebootstrap.hpp</includes>
     <templateparamlist>
       <param>
-        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1ab7b9c96215e7b0b8b9b46284cd0ae603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="iterative_bootstrap_1ab7b9c96215e7b0b8b9b46284cd0ae603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>IterativeBootstrap</definition>
         <argsstring>()</argsstring>
         <name>IterativeBootstrap</name>
         <location file="/termstructures/iterativebootstrap.hpp" line="44" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="63" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="iterative_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setup</definition>
         <argsstring>(Curve *ts)</argsstring>
         <name>setup</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
           <declname>ts</declname>
         </param>
         <location file="/termstructures/iterativebootstrap.hpp" line="45" bodyfile="/termstructures/iterativebootstrap.hpp" bodystart="67" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_iterative_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="iterative_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_penalty_function" kind="class" prot="public">
+  <compounddef id="penalty_function" kind="class" prot="public">
     <compoundname>QuantLib::PenaltyFunction</compoundname>
     <templateparamlist>
       <param>
-        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="penalty_function_1aeac3c7422dfdd255ca94636d6c4921cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PenaltyFunction</definition>
         <argsstring>(Curve *curve, Size initialIndex, helper_iterator rateHelpersStart, helper_iterator rateHelpersEnd)</argsstring>
         <name>PenaltyFunction</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
           <declname>curve</declname>
         </param>
         <param>
@@ -31,24 +31,24 @@
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="52" bodyfile="/termstructures/localbootstrap.hpp" bodystart="47" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="penalty_function_1ae06eeb0d628c9577b9dc0bac57fd5518" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(const Array &amp;x) const </argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="56" bodyfile="/termstructures/localbootstrap.hpp" bodystart="251" bodyend="270"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="penalty_function_1a973ee01e4df8286373f5a0d3e947fc3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt; Array &gt; values</definition>
         <argsstring>(const Array &amp;x) const </argsstring>
         <name>values</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="57" bodyfile="/termstructures/localbootstrap.hpp" bodystart="273" bodyend="294"/>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_scholes_calculator" kind="class" prot="public">
+  <compounddef id="black_scholes_calculator" kind="class" prot="public">
     <compoundname>QuantLib::BlackScholesCalculator</compoundname>
     <includes local="no">/pricingengines/blackscholescalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a24cca80a4d40ce5a348b9d11b566cde0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a24cca80a4d40ce5a348b9d11b566cde0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackScholesCalculator</definition>
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, Real spot, DiscountFactor growth, Real stdDev, DiscountFactor discount)</argsstring>
         <name>BlackScholesCalculator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
         </param>
         <location file="/pricingengines/blackscholescalculator.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a8154e95cbc2d2bd852e2394941136557" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a8154e95cbc2d2bd852e2394941136557" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackScholesCalculator</definition>
         <argsstring>(Option::Type optionType, Real strike, Real spot, DiscountFactor growth, Real stdDev, DiscountFactor discount)</argsstring>
@@ -62,14 +62,14 @@
         </param>
         <location file="/pricingengines/blackscholescalculator.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a6ee5dc6bd250148da726adfbcd50cef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a6ee5dc6bd250148da726adfbcd50cef9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BlackScholesCalculator</definition>
         <argsstring>()</argsstring>
         <name>~BlackScholesCalculator</name>
         <location file="/pricingengines/blackscholescalculator.hpp" line="46" bodyfile="/pricingengines/blackscholescalculator.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a2397bf69d6801e3328c9273143c87ce6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta</definition>
         <argsstring>() const </argsstring>
@@ -78,7 +78,7 @@
 <para>Sensitivity to change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackscholescalculator.hpp" line="48" bodyfile="/pricingengines/blackscholescalculator.hpp" bodystart="66" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a789f1dd91bf031b93eecd46b14154c75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a789f1dd91bf031b93eecd46b14154c75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real elasticity</definition>
         <argsstring>() const </argsstring>
@@ -87,7 +87,7 @@
 <para>Sensitivity in percent to a percent change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackscholescalculator.hpp" line="51" bodyfile="/pricingengines/blackscholescalculator.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a2c03665ff1c1e1f9fbbf077d4fb5da13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma</definition>
         <argsstring>() const </argsstring>
@@ -96,7 +96,7 @@
 <para>Second order derivative with respect to change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackscholescalculator.hpp" line="54" bodyfile="/pricingengines/blackscholescalculator.hpp" bodystart="74" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1acfadae38267887f344854fae069b38e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1acfadae38267887f344854fae069b38e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real theta</definition>
         <argsstring>(Time maturity) const </argsstring>
@@ -109,7 +109,7 @@
 <para>Sensitivity to time to maturity. </para>        </detaileddescription>
         <location file="/pricingengines/blackscholescalculator.hpp" line="56" bodyfile="/pricingengines/blackscholescalculator.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_scholes_calculator_1a77ee03b6feb4bdd44acb8ef149f985d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_scholes_calculator_1a77ee03b6feb4bdd44acb8ef149f985d0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaPerDay</definition>
         <argsstring>(Time maturity) const </argsstring>

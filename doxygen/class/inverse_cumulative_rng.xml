@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_inverse_cumulative_rng" kind="class" prot="public">
+  <compounddef id="inverse_cumulative_rng" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeRng</compoundname>
     <includes local="no">/math/randomnumbers/inversecumulativerng.hpp</includes>
     <templateparamlist>
@@ -16,14 +16,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_inverse_cumulative_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+      <memberdef kind="typedef" id="inverse_cumulative_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
+        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
         <location file="/math/randomnumbers/inversecumulativerng.hpp" line="56" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_inverse_cumulative_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
+      <memberdef kind="typedef" id="inverse_cumulative_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
@@ -32,7 +32,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_rng_1a94c3ceb8818a466b6bd20dcb49d2665f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="inverse_cumulative_rng_1a94c3ceb8818a466b6bd20dcb49d2665f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>InverseCumulativeRng</definition>
         <argsstring>(const RNG &amp;uniformGenerator)</argsstring>
@@ -43,8 +43,8 @@
         </param>
         <location file="/math/randomnumbers/inversecumulativerng.hpp" line="58" bodyfile="/math/randomnumbers/inversecumulativerng.hpp" bodystart="67" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_rng_1a9a9a593ede5bb876841ba3bd87f5b8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+      <memberdef kind="function" id="inverse_cumulative_rng_1a9a9a593ede5bb876841ba3bd87f5b8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
         <definition>InverseCumulativeRng&lt; RNG, IC &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

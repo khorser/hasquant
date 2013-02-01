@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_vol_surface" kind="class" prot="public" abstract="yes">
+  <compounddef id="black_vol_surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BlackVolSurface</compoundname>
     <includes local="no">/experimental/volatility/blackvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a3152b6bf490ea2cfa5ae0af7aad2ad65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="black_vol_surface_1a3152b6bf490ea2cfa5ae0af7aad2ad65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackVolSurface</definition>
         <argsstring>(const Calendar &amp;cal, BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackVolSurface</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -21,15 +21,15 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000022"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000022"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1aa38e554a3ddfabe77ad448430e6304fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_vol_surface_1aa38e554a3ddfabe77ad448430e6304fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackVolSurface</definition>
         <argsstring>(BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -40,29 +40,29 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000023"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000023"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a36d6c83a231ba52c91b94b2351dadbba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_vol_surface_1a36d6c83a231ba52c91b94b2351dadbba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackVolSurface</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal=Calendar(), BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>BlackVolSurface</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -70,15 +70,15 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a623d0f595d50ad0994d9970b329c4b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_vol_surface_1a623d0f595d50ad0994d9970b329c4b07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackVolSurface</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -88,7 +88,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -96,9 +96,9 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -107,13 +107,13 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Black spot volatility</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1ad3e4d80efb08be55b65ab6cf23c7924e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="black_vol_surface_1ad3e4d80efb08be55b65ab6cf23c7924e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Period &amp;, bool extrapolate) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <defname>p</defname>
         </param>
         <param>
@@ -124,13 +124,13 @@
 <para>returns the smile for a given option tenor </para>        </briefdescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="80" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a484e8f48a2fe92a9aaac3e1dc670d3fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="black_vol_surface_1a484e8f48a2fe92a9aaac3e1dc670d3fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Date &amp;, bool extrapolate) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d</defname>
         </param>
         <param>
@@ -141,8 +141,8 @@
 <para>returns the smile for a given option date </para>        </briefdescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="83" bodyfile="/experimental/volatility/blackvolsurface.hpp" bodystart="121" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a3fda1b45776741cd9b66565d3c9ca1b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="black_vol_surface_1a3fda1b45776741cd9b66565d3c9ca1b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(Time, bool extrapolate) const </argsstring>
         <name>smileSection</name>
@@ -161,26 +161,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_vol_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_black_atm_vol_curve_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="black_atm_vol_curve_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>BlackAtmVolCurve interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a399f9448fe345c23f0484547b98749fc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_vol_surface_1a399f9448fe345c23f0484547b98749fc" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmVarianceImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>atmVarianceImpl</name>
-        <reimplements refid="class_quant_lib_1_1_black_atm_vol_curve_1a3f60fbe8f11376ac813a5f751d33161c">atmVarianceImpl</reimplements>
+        <reimplements refid="black_atm_vol_curve_1a3f60fbe8f11376ac813a5f751d33161c">atmVarianceImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -189,12 +189,12 @@
 <para>spot at-the-money variance calculation </para>        </briefdescription>
         <location file="/experimental/volatility/blackvolsurface.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a19afdb51423c925cb7f5ce598b2369ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_vol_surface_1a19afdb51423c925cb7f5ce598b2369ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility atmVolImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>atmVolImpl</name>
-        <reimplements refid="class_quant_lib_1_1_black_atm_vol_curve_1a3e805d2195b83e2011386f39514d6100">atmVolImpl</reimplements>
+        <reimplements refid="black_atm_vol_curve_1a3e805d2195b83e2011386f39514d6100">atmVolImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -207,8 +207,8 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <description><para>This method must be implemented in derived classes to perform the actual volatility calculations. When it is called, time check has already been performed; therefore, it must assume that time-extrapolation is allowed. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time) const =0</argsstring>
         <name>smileSectionImpl</name>

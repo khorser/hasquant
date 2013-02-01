@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_spread_option" kind="class" prot="public">
+  <compounddef id="spread_option" kind="class" prot="public">
     <compoundname>QuantLib::SpreadOption</compoundname>
     <includes local="no">/experimental/exoticoptions/spreadoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_spread_option_1_1engine" prot="public">QuantLib::SpreadOption::engine</innerclass>
+    <innerclass refid="spread_option_1_1engine" prot="public">QuantLib::SpreadOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_spread_option_1a5922c631c5d24bb2e76f9c559e394c0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="spread_option_1a5922c631c5d24bb2e76f9c559e394c0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SpreadOption</definition>
         <argsstring>(const boost::shared_ptr&lt; PlainVanillaPayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>SpreadOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/experimental/exoticoptions/spreadoption.hpp" line="38" bodyfile="/experimental/exoticoptions/spreadoption.hpp" bodystart="36" bodyend="38"/>

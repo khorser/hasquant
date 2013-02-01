@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gaussian_kernel" kind="class" prot="public">
+  <compounddef id="gaussian_kernel" kind="class" prot="public">
     <compoundname>QuantLib::GaussianKernel</compoundname>
     <includes local="no">/math/kernelfunctions.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a589c757d080f04958842516b5ec50746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_kernel_1a589c757d080f04958842516b5ec50746" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GaussianKernel</definition>
         <argsstring>(Real average, Real sigma)</argsstring>
@@ -19,19 +19,19 @@
         </param>
         <location file="/math/kernelfunctions.hpp" line="47" bodyfile="/math/kernelfunctions.hpp" bodystart="46" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="gaussian_kernel_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>
         <name>operator()</name>
-        <reimplements refid="class_quant_lib_1_1_kernel_function_1a7709f6c0612c6668e25d555787a5688b">operator()</reimplements>
+        <reimplements refid="kernel_function_1a7709f6c0612c6668e25d555787a5688b">operator()</reimplements>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>x</declname>
         </param>
         <location file="/math/kernelfunctions.hpp" line="52" bodyfile="/math/kernelfunctions.hpp" bodystart="52" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_kernel_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivative</definition>
         <argsstring>(Real x) const </argsstring>
@@ -42,7 +42,7 @@
         </param>
         <location file="/math/kernelfunctions.hpp" line="56" bodyfile="/math/kernelfunctions.hpp" bodystart="56" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_kernel_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_kernel_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>

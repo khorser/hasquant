@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_path_multi_asset_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="path_multi_asset_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::PathMultiAssetOption::arguments</compoundname>
     <includes local="no">/experimental/mcbasket/pathmultiassetoption.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a48e8d7b985dd28de0fc21c1da11d890e" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
+      <memberdef kind="variable" id="path_multi_asset_option_1_1arguments_1a48e8d7b985dd28de0fc21c1da11d890e" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;PathPayoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="67" bodyfile="/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+      <memberdef kind="variable" id="path_multi_asset_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
@@ -20,14 +20,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="64" bodyfile="/experimental/mcbasket/pathmultiassetoption.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

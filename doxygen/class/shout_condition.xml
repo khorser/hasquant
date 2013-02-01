@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_shout_condition" kind="class" prot="public">
+  <compounddef id="shout_condition" kind="class" prot="public">
     <compoundname>QuantLib::ShoutCondition</compoundname>
     <includes local="no">/methods/finitedifferences/shoutcondition.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a9060b1f6d7cc29b738bd1bbcfab3072e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="shout_condition_1a9060b1f6d7cc29b738bd1bbcfab3072e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ShoutCondition</definition>
         <argsstring>(Option::Type type, Real strike, Time resTime, Rate rate)</argsstring>
@@ -27,13 +27,13 @@
         </param>
         <location file="/methods/finitedifferences/shoutcondition.hpp" line="45" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="61" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1af44ff54137a0ed35a85c8118cf85be80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="shout_condition_1af44ff54137a0ed35a85c8118cf85be80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ShoutCondition</definition>
         <argsstring>(const Array &amp;intrinsicValues, Time resTime, Rate rate)</argsstring>
         <name>ShoutCondition</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>intrinsicValues</declname>
         </param>
         <param>
@@ -46,13 +46,13 @@
         </param>
         <location file="/methods/finitedifferences/shoutcondition.hpp" line="48" bodyfile="/methods/finitedifferences/shoutcondition.hpp" bodystart="67" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_shout_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="shout_condition_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <param>

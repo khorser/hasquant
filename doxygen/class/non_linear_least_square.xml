@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_non_linear_least_square" kind="class" prot="public">
+  <compounddef id="non_linear_least_square" kind="class" prot="public">
     <compoundname>QuantLib::NonLinearLeastSquare</compoundname>
     <includes local="no">/math/optimization/leastsquare.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a97ef06e4c5f0246dc4628a5e4d397444" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a97ef06e4c5f0246dc4628a5e4d397444" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>NonLinearLeastSquare</definition>
         <argsstring>(Constraint &amp;c, Real accuracy=1e-4, Size maxiter=100)</argsstring>
         <name>NonLinearLeastSquare</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c</declname>
         </param>
         <param>
@@ -27,13 +27,13 @@
 <para>Default constructor. </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="102"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a55fdd63d7f7096f711f7b26bc52b543e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a55fdd63d7f7096f711f7b26bc52b543e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>NonLinearLeastSquare</definition>
         <argsstring>(Constraint &amp;c, Real accuracy, Size maxiter, boost::shared_ptr&lt; OptimizationMethod &gt; om)</argsstring>
         <name>NonLinearLeastSquare</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type><ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c</declname>
         </param>
         <param>
@@ -45,14 +45,14 @@
           <declname>maxiter</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
           <declname>om</declname>
         </param>
         <briefdescription>
 <para>Default constructor. </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a20fd9ab60a7cce2d6c0acad31c0038ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a20fd9ab60a7cce2d6c0acad31c0038ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>~NonLinearLeastSquare</definition>
         <argsstring>()</argsstring>
@@ -61,32 +61,32 @@
 <para>Destructor. </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="109" bodyfile="/math/optimization/leastsquare.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a067968a223168798fa3f64b6051f4354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="non_linear_least_square_1a067968a223168798fa3f64b6051f4354" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>Array&amp; perform</definition>
         <argsstring>(LeastSquareProblem &amp;lsProblem)</argsstring>
         <name>perform</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_least_square_problem" kindref="compound">LeastSquareProblem</ref> &amp;</type>
+          <type><ref refid="least_square_problem" kindref="compound">LeastSquareProblem</ref> &amp;</type>
           <declname>lsProblem</declname>
         </param>
         <briefdescription>
 <para>Solve least square problem using numerix solver. </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="112"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a3332be4ffb31e7777ad8797ddaf803a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a3332be4ffb31e7777ad8797ddaf803a9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setInitialValue</definition>
         <argsstring>(const Array &amp;initialValue)</argsstring>
         <name>setInitialValue</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>initialValue</declname>
         </param>
         <location file="/math/optimization/leastsquare.hpp" line="114" bodyfile="/math/optimization/leastsquare.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a1cbd190434a8924319877d9a566a7362" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="non_linear_least_square_1a1cbd190434a8924319877d9a566a7362" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>Array&amp; results</definition>
         <argsstring>()</argsstring>
         <name>results</name>
@@ -94,7 +94,7 @@
 <para>return the results </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="119" bodyfile="/math/optimization/leastsquare.hpp" bodystart="119" bodyend="119"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a3f311cedd53bc1947d0cbf7846bf2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a3f311cedd53bc1947d0cbf7846bf2778" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real residualNorm</definition>
         <argsstring>()</argsstring>
@@ -103,7 +103,7 @@
 <para>return the least square residual norm </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="122" bodyfile="/math/optimization/leastsquare.hpp" bodystart="122" bodyend="122"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a424fb70e9f6bd717d1ebaeef27266237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a424fb70e9f6bd717d1ebaeef27266237" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lastValue</definition>
         <argsstring>()</argsstring>
@@ -112,7 +112,7 @@
 <para>return last function value </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="125" bodyfile="/math/optimization/leastsquare.hpp" bodystart="125" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1ac91e0c85dd8c6275c6fb8da8de811dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1ac91e0c85dd8c6275c6fb8da8de811dcc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer exitFlag</definition>
         <argsstring>()</argsstring>
@@ -121,7 +121,7 @@
 <para>return exit flag </para>        </briefdescription>
         <location file="/math/optimization/leastsquare.hpp" line="128" bodyfile="/math/optimization/leastsquare.hpp" bodystart="128" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_non_linear_least_square_1a39cd20d97f356086d2c033b0bad60caf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="non_linear_least_square_1a39cd20d97f356086d2c033b0bad60caf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer iterationsNumber</definition>
         <argsstring>()</argsstring>

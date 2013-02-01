@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1details_1_1_linear_fct" kind="class" prot="public">
+  <compounddef id="details_1_1_linear_fct" kind="class" prot="public">
     <compoundname>QuantLib::details::LinearFct</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fct_1a3fc5d911bfd9e103f113df96c9475393" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="details_1_1_linear_fct_1a3fc5d911bfd9e103f113df96c9475393" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LinearFct</definition>
         <argsstring>(Size i)</argsstring>
@@ -19,7 +19,7 @@
         </param>
         <location file="/math/linearleastsquaresregression.hpp" line="39" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fct_1a4dc2723ee1b3a4d080cae7096730f92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="details_1_1_linear_fct_1a4dc2723ee1b3a4d080cae7096730f92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(const Container &amp;x) const </argsstring>

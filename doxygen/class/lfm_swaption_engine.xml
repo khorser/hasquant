@@ -1,30 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lfm_swaption_engine" kind="class" prot="public">
+  <compounddef id="lfm_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::LfmSwaptionEngine</compoundname>
     <includes local="no">/legacy/libormarketmodels/lfmswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lfm_swaption_engine_1af462bfcfe13f6ad80f331abba14a54cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lfm_swaption_engine_1af462bfcfe13f6ad80f331abba14a54cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LfmSwaptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; LiborForwardModel &gt; &amp;model, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>LfmSwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_libor_forward_model" kindref="compound">LiborForwardModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="libor_forward_model" kindref="compound">LiborForwardModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/legacy/libormarketmodels/lfmswaptionengine.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lfm_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="lfm_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/legacy/libormarketmodels/lfmswaptionengine.hpp" line="41"/>
       </memberdef>
       </sectiondef>

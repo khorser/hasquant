@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_claim" kind="class" prot="public" abstract="yes">
+  <compounddef id="claim" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Claim</compoundname>
     <includes local="no">/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="claim_1ad2e9bee49eababe4baebe19b32d7e6ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Claim</definition>
         <argsstring>()</argsstring>
         <name>~Claim</name>
         <location file="/instruments/claim.hpp" line="34" bodyfile="/instruments/claim.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_claim_1a72b7cb2651ac4d2b9143c54c49090d37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="claim_1a72b7cb2651ac4d2b9143c54c49090d37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real amount</definition>
         <argsstring>(const Date &amp;defaultDate, Real notional, Real recoveryRate) const =0</argsstring>
         <name>amount</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>defaultDate</declname>
         </param>
         <param>
@@ -30,17 +30,17 @@
         </param>
         <location file="/instruments/claim.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_claim_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="claim_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/instruments/claim.hpp" line="38" bodyfile="/instruments/claim.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> associated to a default event. </para>    </briefdescription>
+<para><ref refid="claim" kindref="compound">Claim</ref> associated to a default event. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="32" bodyfile="/instruments/claim.hpp" bodystart="32" bodyend="39"/>
   </compounddef>
 </doxygen>

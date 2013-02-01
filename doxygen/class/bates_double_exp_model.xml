@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bates_double_exp_model" kind="class" prot="public">
+  <compounddef id="bates_double_exp_model" kind="class" prot="public">
     <compoundname>QuantLib::BatesDoubleExpModel</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a1edcd78e3677bd8752104bd277159bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_model_1a1edcd78e3677bd8752104bd277159bf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BatesDoubleExpModel</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonProcess &gt; &amp;process, Real lambda=0.1, Real nuUp=0.1, Real nuDown=0.1, Real p=0.5)</argsstring>
         <name>BatesDoubleExpModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -34,28 +34,28 @@
         </param>
         <location file="/models/equity/batesmodel.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1ac0a375ee03ecb1eebd62648f8aaa38e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_model_1ac0a375ee03ecb1eebd62648f8aaa38e4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real p</definition>
         <argsstring>() const </argsstring>
         <name>p</name>
         <location file="/models/equity/batesmodel.hpp" line="73" bodyfile="/models/equity/batesmodel.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1aecbaa94cf482cd93bcc9e60fa3a69434" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_model_1aecbaa94cf482cd93bcc9e60fa3a69434" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nuDown</definition>
         <argsstring>() const </argsstring>
         <name>nuDown</name>
         <location file="/models/equity/batesmodel.hpp" line="74" bodyfile="/models/equity/batesmodel.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a54e6a38c08af90b015809f708b7bd194" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_model_1a54e6a38c08af90b015809f708b7bd194" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nuUp</definition>
         <argsstring>() const </argsstring>
         <name>nuUp</name>
         <location file="/models/equity/batesmodel.hpp" line="75" bodyfile="/models/equity/batesmodel.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_model_1a24cb1182953e872918829ca60b348e54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lambda</definition>
         <argsstring>() const </argsstring>

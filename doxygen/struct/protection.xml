@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_protection" kind="struct" prot="public">
+  <compounddef id="protection" kind="struct" prot="public">
     <compoundname>QuantLib::Protection</compoundname>
     <includes local="no">/default.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" static="no">
+      <memberdef kind="enum" id="protection_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" static="no">
         <name>Side</name>
-        <enumvalue id="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00a9d8adb3a58f9266f34281a3afd6abcb6" prot="public">
+        <enumvalue id="protection_1a8c0137d7160ad71b6ed265c53c99ed00a9d8adb3a58f9266f34281a3afd6abcb6" prot="public">
           <name>Buyer</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_protection_1a8c0137d7160ad71b6ed265c53c99ed00af07cc4a205761c4aeb2d8011744712f4" prot="public">
+        <enumvalue id="protection_1a8c0137d7160ad71b6ed265c53c99ed00af07cc4a205761c4aeb2d8011744712f4" prot="public">
           <name>Seller</name>
         </enumvalue>
         <location file="/default.hpp" line="33" bodyfile="/default.hpp" bodystart="33" bodyend="33"/>

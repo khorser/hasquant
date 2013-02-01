@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1yoy_inflation_leg" kind="class" prot="public">
+  <compounddef id="yoy_inflation_leg" kind="class" prot="public">
     <compoundname>QuantLib::yoyInflationLeg</compoundname>
     <includes local="no">/cashflows/yoyinflationcoupon.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a5d7dd9ac512856220767b206043f26ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="yoy_inflation_leg_1a5d7dd9ac512856220767b206043f26ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>yoyInflationLeg</definition>
         <argsstring>(const Schedule &amp;schedule, const Calendar &amp;cal, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;index, const Period &amp;observationLag)</argsstring>
         <name>yoyInflationLeg</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="95"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1ab379502458ebfc4cde32f8e5311247eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1ab379502458ebfc4cde32f8e5311247eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withNotionals</definition>
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
@@ -38,8 +38,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a627ba057dc6a5eacda6bb7c2c9854039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a627ba057dc6a5eacda6bb7c2c9854039" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withNotionals</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
@@ -49,18 +49,18 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a8c73102540c1de534dec363bf2659a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a8c73102540c1de534dec363bf2659a32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withPaymentDayCounter</definition>
         <argsstring>(const DayCounter &amp;)</argsstring>
         <name>withPaymentDayCounter</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="98"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a33ea957beadfa517713395abf88675fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a33ea957beadfa517713395abf88675fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withPaymentAdjustment</definition>
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
@@ -69,8 +69,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1aa6194db8b805fa867dc818d076a53da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1aa6194db8b805fa867dc818d076a53da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withFixingDays</definition>
         <argsstring>(Natural fixingDays)</argsstring>
         <name>withFixingDays</name>
@@ -80,8 +80,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1ac4925a046a107b056d421fd70cb4ef21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1ac4925a046a107b056d421fd70cb4ef21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withFixingDays</definition>
         <argsstring>(const std::vector&lt; Natural &gt; &amp;fixingDays)</argsstring>
         <name>withFixingDays</name>
@@ -91,8 +91,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a12151082e60a1062ab45eaef6d2c4fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a12151082e60a1062ab45eaef6d2c4fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withGearings</definition>
         <argsstring>(Real gearing)</argsstring>
         <name>withGearings</name>
@@ -102,8 +102,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="102"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1ace2be3b0400dcddc22649e7957b557d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1ace2be3b0400dcddc22649e7957b557d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withGearings</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;gearings)</argsstring>
         <name>withGearings</name>
@@ -113,8 +113,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1affb44aec9c5f7c8fae308a709f752c94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1affb44aec9c5f7c8fae308a709f752c94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withSpreads</definition>
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
@@ -124,8 +124,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a2a283234fc5cd30891bb747b2c5a5964" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a2a283234fc5cd30891bb747b2c5a5964" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withSpreads</definition>
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>
@@ -135,8 +135,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="105"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1af43a86faa0b8336ac02c96f9c9ecd1bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1af43a86faa0b8336ac02c96f9c9ecd1bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withCaps</definition>
         <argsstring>(Rate cap)</argsstring>
         <name>withCaps</name>
@@ -146,8 +146,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a30046e6f3bf8d317ceda2080f23cc85d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a30046e6f3bf8d317ceda2080f23cc85d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withCaps</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;caps)</argsstring>
         <name>withCaps</name>
@@ -157,8 +157,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1a4a3abb6a20a78090f76e2fe5ebd1de1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1a4a3abb6a20a78090f76e2fe5ebd1de1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withFloors</definition>
         <argsstring>(Rate floor)</argsstring>
         <name>withFloors</name>
@@ -168,8 +168,8 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="108"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1ae72aff41707a5af84fd45691a750cebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
+      <memberdef kind="function" id="yoy_inflation_leg_1ae72aff41707a5af84fd45691a750cebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="yoy_inflation_leg" kindref="compound">yoyInflationLeg</ref> &amp;</type>
         <definition>yoyInflationLeg&amp; withFloors</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;floors)</argsstring>
         <name>withFloors</name>
@@ -179,7 +179,7 @@
         </param>
         <location file="/cashflows/yoyinflationcoupon.hpp" line="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1yoy_inflation_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="yoy_inflation_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_a_u_c_p_i" kind="class" prot="public">
+  <compounddef id="a_u_c_p_i" kind="class" prot="public">
     <compoundname>QuantLib::AUCPI</compoundname>
     <includes local="no">/indexes/inflation/aucpi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_a_u_c_p_i_1ae67a1689e8851b888367657c97646ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="a_u_c_p_i_1ae67a1689e8851b888367657c97646ee3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>AUCPI</definition>
         <argsstring>(Frequency frequency, bool revised, bool interpolated, const Handle&lt; ZeroInflationTermStructure &gt; &amp;ts=Handle&lt; ZeroInflationTermStructure &gt;())</argsstring>
@@ -22,9 +22,9 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/inflation/aucpi.hpp" line="47" bodyfile="/indexes/inflation/aucpi.hpp" bodystart="35" bodyend="47"/>
       </memberdef>

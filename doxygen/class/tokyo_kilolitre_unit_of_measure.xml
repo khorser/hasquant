@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_tokyo_kilolitre_unit_of_measure" kind="class" prot="public">
+  <compounddef id="tokyo_kilolitre_unit_of_measure" kind="class" prot="public">
     <compoundname>QuantLib::TokyoKilolitreUnitOfMeasure</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_tokyo_kilolitre_unit_of_measure_1a1433f45c8020baf183db9fbdfe086338" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="tokyo_kilolitre_unit_of_measure_1a1433f45c8020baf183db9fbdfe086338" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TokyoKilolitreUnitOfMeasure</definition>
         <argsstring>()</argsstring>

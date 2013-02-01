@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_historical_forward_rates_analysis_impl" kind="class" prot="public">
+  <compounddef id="historical_forward_rates_analysis_impl" kind="class" prot="public">
     <compoundname>QuantLib::HistoricalForwardRatesAnalysisImpl</compoundname>
     <includes local="no">/models/marketmodels/historicalforwardratesanalysis.hpp</includes>
     <templateparamlist>
@@ -12,7 +12,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a7d3e7260bb19c5748ef144cbb2e2b430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a7d3e7260bb19c5748ef144cbb2e2b430" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HistoricalForwardRatesAnalysisImpl</definition>
         <argsstring>(const boost::shared_ptr&lt; SequenceStatistics &gt; &amp;stats, const Date &amp;startDate, const Date &amp;endDate, const Period &amp;step, const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;fwdIndex, const Period &amp;initialGap, const Period &amp;horizon, const std::vector&lt; boost::shared_ptr&lt; IborIndex &gt; &gt; &amp;iborIndexes, const std::vector&lt; boost::shared_ptr&lt; SwapIndex &gt; &gt; &amp;swapIndexes, const DayCounter &amp;yieldCurveDayCounter, Real yieldCurveAccuracy)</argsstring>
@@ -22,39 +22,39 @@
           <declname>stats</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>step</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
           <declname>fwdIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>initialGap</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>horizon</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &gt; &amp;</type>
           <declname>iborIndexes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &gt; &amp;</type>
           <declname>swapIndexes</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>yieldCurveDayCounter</declname>
         </param>
         <param>
@@ -63,43 +63,43 @@
         </param>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="220" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="274" bodyend="296"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a56e93c08e7fa2c67b4f47e7f53c26958" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a56e93c08e7fa2c67b4f47e7f53c26958" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>HistoricalForwardRatesAnalysisImpl</definition>
         <argsstring>()</argsstring>
         <name>HistoricalForwardRatesAnalysisImpl</name>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="221" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="221" bodyend="221"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ac7b7b4a056f59698e84a724c5c372652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1ac7b7b4a056f59698e84a724c5c372652" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; skippedDates</definition>
         <argsstring>() const </argsstring>
         <name>skippedDates</name>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="222" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="247" bodyend="249"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a8f9c13a4ee54fd3910843fe0b3e2360a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt; std::string &gt; &amp; skippedDatesErrorMessage</definition>
         <argsstring>() const </argsstring>
         <name>skippedDatesErrorMessage</name>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="223" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="253" bodyend="255"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1ad46d635a7ebc761eda88970a53784b74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1ad46d635a7ebc761eda88970a53784b74" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; failedDates</definition>
         <argsstring>() const </argsstring>
         <name>failedDates</name>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="224" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="259" bodyend="261"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a9f4e4ee632f2e5ec6f5ffa1d2f0a68d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a9f4e4ee632f2e5ec6f5ffa1d2f0a68d5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt; std::string &gt; &amp; failedDatesErrorMessage</definition>
         <argsstring>() const </argsstring>
         <name>failedDatesErrorMessage</name>
         <location file="/models/marketmodels/historicalforwardratesanalysis.hpp" line="225" bodyfile="/models/marketmodels/historicalforwardratesanalysis.hpp" bodystart="265" bodyend="267"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_historical_forward_rates_analysis_impl_1a49882046d19998fab2d46847152208f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="historical_forward_rates_analysis_impl_1a49882046d19998fab2d46847152208f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; fixingPeriods</definition>
         <argsstring>() const </argsstring>
         <name>fixingPeriods</name>

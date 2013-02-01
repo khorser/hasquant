@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_d_shout_condition" kind="class" prot="public">
+  <compounddef id="f_d_shout_condition" kind="class" prot="public">
     <compoundname>QuantLib::FDShoutCondition</compoundname>
     <templateparamlist>
       <param>
@@ -10,13 +10,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_shout_condition_1a3ca38d680322e3217c8846cd7ebfe788" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="f_d_shout_condition_1a3ca38d680322e3217c8846cd7ebfe788" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FDShoutCondition</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
         <name>FDShoutCondition</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

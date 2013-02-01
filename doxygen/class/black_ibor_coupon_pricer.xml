@@ -1,91 +1,91 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_ibor_coupon_pricer" kind="class" prot="public">
+  <compounddef id="black_ibor_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BlackIborCouponPricer</compoundname>
     <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1aa571622cd4113681a465da61bc8f64fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1aa571622cd4113681a465da61bc8f64fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BlackIborCouponPricer</definition>
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>BlackIborCouponPricer</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="88" bodyfile="/cashflows/couponpricer.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1a3cf6429f80d187b3886e1619ff25f81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1a3cf6429f80d187b3886e1619ff25f81a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void initialize</definition>
         <argsstring>(const FloatingRateCoupon &amp;coupon)</argsstring>
         <name>initialize</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a67e3aa825e7a48e9ee9d33e36b1cfdbd">initialize</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a67e3aa825e7a48e9ee9d33e36b1cfdbd">initialize</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
+          <type>const <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &amp;</type>
           <declname>coupon</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1a0e471aae59dd8422ead76d75123236db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1a0e471aae59dd8422ead76d75123236db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real swapletPrice</definition>
         <argsstring>() const </argsstring>
         <name>swapletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
         <location file="/cashflows/couponpricer.hpp" line="91" bodyfile="/cashflows/couponpricer.hpp" bodystart="145" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1ab97c044933292489623b2119d181eab1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1ab97c044933292489623b2119d181eab1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate swapletRate</definition>
         <argsstring>() const </argsstring>
         <name>swapletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
         <location file="/cashflows/couponpricer.hpp" line="92" bodyfile="/cashflows/couponpricer.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1abf78bf17451d690b874753e2836ee6b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1abf78bf17451d690b874753e2836ee6b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real capletPrice</definition>
         <argsstring>(Rate effectiveCap) const </argsstring>
         <name>capletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423">capletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423">capletPrice</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="93" bodyfile="/cashflows/couponpricer.hpp" bodystart="156" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1a1bef241dfb582e71c861a50fc865f213" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1a1bef241dfb582e71c861a50fc865f213" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate capletRate</definition>
         <argsstring>(Rate effectiveCap) const </argsstring>
         <name>capletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad">capletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad">capletRate</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="94" bodyfile="/cashflows/couponpricer.hpp" bodystart="161" bodyend="163"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1a7a8299a2e67d236dd5d13fed1f27596b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1a7a8299a2e67d236dd5d13fed1f27596b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real floorletPrice</definition>
         <argsstring>(Rate effectiveFloor) const </argsstring>
         <name>floorletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d">floorletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d">floorletPrice</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="95" bodyfile="/cashflows/couponpricer.hpp" bodystart="166" bodyend="169"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_coupon_pricer_1a0eac541c13b3f379965cbb199f9c85c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_ibor_coupon_pricer_1a0eac541c13b3f379965cbb199f9c85c8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate floorletRate</definition>
         <argsstring>(Rate effectiveFloor) const </argsstring>
         <name>floorletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672">floorletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672">floorletRate</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>

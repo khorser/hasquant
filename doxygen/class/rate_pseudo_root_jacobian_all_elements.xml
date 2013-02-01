@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_rate_pseudo_root_jacobian_all_elements" kind="class" prot="public">
+  <compounddef id="rate_pseudo_root_jacobian_all_elements" kind="class" prot="public">
     <compoundname>QuantLib::RatePseudoRootJacobianAllElements</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_all_elements_1ab14135e1a42344da2e84c1cfddaad124" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="rate_pseudo_root_jacobian_all_elements_1ab14135e1a42344da2e84c1cfddaad124" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RatePseudoRootJacobianAllElements</definition>
         <argsstring>(const Matrix &amp;pseudoRoot, Size aliveIndex, Size numeraire, const std::vector&lt; Time &gt; &amp;taus, const std::vector&lt; Spread &gt; &amp;displacements)</argsstring>
         <name>RatePseudoRootJacobianAllElements</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>pseudoRoot</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rate_pseudo_root_jacobian_all_elements_1a9bc80d450f847e13421f7f427de8604b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="rate_pseudo_root_jacobian_all_elements_1a9bc80d450f847e13421f7f427de8604b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void getBumps</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;oldRates, const std::vector&lt; Real &gt; &amp;oneStepDFs, const std::vector&lt; Rate &gt; &amp;newRates, const std::vector&lt; Real &gt; &amp;gaussians, std::vector&lt; Matrix &gt; &amp;B)</argsstring>
@@ -52,7 +52,7 @@
           <declname>gaussians</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>B</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/ratepseudorootjacobian.hpp" line="130"/>

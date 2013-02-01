@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_j_p_y_libor" kind="class" prot="public">
+  <compounddef id="j_p_y_libor" kind="class" prot="public">
     <compoundname>QuantLib::JPYLibor</compoundname>
     <includes local="no">/indexes/ibor/jpylibor.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_j_p_y_libor_1adedbcd2cbb37cf80014b2fa93da7bc0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="j_p_y_libor_1adedbcd2cbb37cf80014b2fa93da7bc0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>JPYLibor</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>JPYLibor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/ibor/jpylibor.hpp" line="53" bodyfile="/indexes/ibor/jpylibor.hpp" bodystart="46" bodyend="53"/>
       </memberdef>

@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_hull_white_process" kind="class" prot="public">
+  <compounddef id="hull_white_process" kind="class" prot="public">
     <compoundname>QuantLib::HullWhiteProcess</compoundname>
     <includes local="no">/processes/hullwhiteprocess.hpp</includes>
       <sectiondef kind="user-defined">
       <header>StochasticProcess1D interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real x0</definition>
         <argsstring>() const </argsstring>
         <name>x0</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
+        <reimplements refid="stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
         <location file="/processes/hullwhiteprocess.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real drift</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>drift</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
+        <reimplements refid="stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -33,12 +33,12 @@
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
         <location file="/processes/hullwhiteprocess.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real diffusion</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>diffusion</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
+        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -51,12 +51,12 @@
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
         <location file="/processes/hullwhiteprocess.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1a81842299056bb82662dce099fca6bcba" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real expectation</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>expectation</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa">expectation</reimplements>
+        <reimplements refid="stochastic_process1_d_1a8be83040b1b61f27a482f14d5b461caa">expectation</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -73,12 +73,12 @@
 <para>returns the expectation <formula id="362">$ E(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
         <location file="/processes/hullwhiteprocess.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1aa78ac261543c5f8c3b2e065f4a57c526" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real stdDeviation</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>stdDeviation</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7">stdDeviation</reimplements>
+        <reimplements refid="stochastic_process1_d_1a36c51f5c5f2c6dd353751857c3625ca7">stdDeviation</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -95,12 +95,12 @@
 <para>returns the standard deviation <formula id="363">$ S(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
         <location file="/processes/hullwhiteprocess.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aec618e405b3e8c104f58b6616d3d482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_process_1aec618e405b3e8c104f58b6616d3d482f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring>(Time t0, Real x0, Time dt) const </argsstring>
         <name>variance</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998">variance</reimplements>
+        <reimplements refid="stochastic_process1_d_1ab0dfe97f905be74f88809dec0c56b998">variance</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
@@ -117,21 +117,21 @@
 <para>returns the variance <formula id="364">$ V(x_{t_0 + \Delta t} | x_{t_0} = x_0) $</formula> of the process after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. This method can be overridden in derived classes which want to hard-code a particular discretization. </para>        </detaileddescription>
         <location file="/processes/hullwhiteprocess.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_process_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
         <name>a</name>
         <location file="/processes/hullwhiteprocess.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
         <location file="/processes/hullwhiteprocess.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1a65387ea280e5a966d21a2a97988acee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_process_1a65387ea280e5a966d21a2a97988acee2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real alpha</definition>
         <argsstring>(Time t) const </argsstring>
@@ -144,13 +144,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_process_1ac927aa5c4787f2b161285a5c91f96a97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_process_1ac927aa5c4787f2b161285a5c91f96a97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HullWhiteProcess</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h, Real a, Real sigma)</argsstring>
         <name>HullWhiteProcess</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
         <param>

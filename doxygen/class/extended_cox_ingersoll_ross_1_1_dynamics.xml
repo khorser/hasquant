@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
+  <compounddef id="extended_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1ac9a0c3284faf3b540a26ffbb11ba4875" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1_1_dynamics_1ac9a0c3284faf3b540a26ffbb11ba4875" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Dynamics</definition>
         <argsstring>(const Parameter &amp;phi, Real theta, Real k, Real sigma, Real x0)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
           <declname>phi</declname>
         </param>
         <param>
@@ -31,12 +31,12 @@
         </param>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="90" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="85" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1_1_dynamics_1a573cbed5671719737c6e0233387e1f33" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real variable</definition>
         <argsstring>(Time t, Rate r) const </argsstring>
         <name>variable</name>
-        <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplements>
+        <reimplements refid="cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348">variable</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -49,12 +49,12 @@
 <para>Compute state variable from short rate. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="92" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1_1_dynamics_1a8a13ccfdf1c30529ba58973d8c22afe2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real shortRate</definition>
         <argsstring>(Time t, Real y) const </argsstring>
         <name>shortRate</name>
-        <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6">shortRate</reimplements>
+        <reimplements refid="cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6">shortRate</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

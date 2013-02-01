@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_disposable" kind="class" prot="public">
+  <compounddef id="disposable" kind="class" prot="public">
     <compoundname>QuantLib::Disposable</compoundname>
     <includes local="no">/utilities/disposable.hpp</includes>
     <templateparamlist>
@@ -11,7 +11,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_disposable_1ab538a1e5ad0d5028c1fa92f4d849dc3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="disposable_1ab538a1e5ad0d5028c1fa92f4d849dc3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Disposable</definition>
         <argsstring>(T &amp;t)</argsstring>
@@ -22,24 +22,24 @@
         </param>
         <location file="/utilities/disposable.hpp" line="66" bodyfile="/utilities/disposable.hpp" bodystart="75" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a4e34b6d01a65daf06beaa13b266c1459" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="disposable_1a4e34b6d01a65daf06beaa13b266c1459" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Disposable</definition>
         <argsstring>(const Disposable&lt; T &gt; &amp;t)</argsstring>
         <name>Disposable</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
+          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <location file="/utilities/disposable.hpp" line="67" bodyfile="/utilities/disposable.hpp" bodystart="80" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_disposable_1a62e578457d50f2dfccc17ba03ebd94de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
+      <memberdef kind="function" id="disposable_1a62e578457d50f2dfccc17ba03ebd94de" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
         <definition>Disposable&lt; T &gt; &amp; operator=</definition>
         <argsstring>(const Disposable&lt; T &gt; &amp;t)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
+          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; T &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <location file="/utilities/disposable.hpp" line="68" bodyfile="/utilities/disposable.hpp" bodystart="85" bodyend="88"/>
@@ -52,7 +52,7 @@
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/>Foo<sp/>f(i*2);</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>f;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
-</programlisting></para><para><xrefsect id="caveats_1_caveats000152"><xreftitle>Warning</xreftitle><xrefdescription><para>In order to avoid copies in code such as shown above, the conversion from <computeroutput>T</computeroutput> to <computeroutput><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt;T&gt;</computeroutput> is destructive, i.e., it does <bold>not</bold> preserve the state of the original object. Therefore, it is necessary for the developer to avoid code such as </para></xrefdescription></xrefsect><programlisting><codeline><highlight class="normal">Disposable&lt;Foo&gt;<sp/>bar(Foo&amp;<sp/>f)<sp/>{</highlight></codeline>
+</programlisting></para><para><xrefsect id="caveats_1_caveats000152"><xreftitle>Warning</xreftitle><xrefdescription><para>In order to avoid copies in code such as shown above, the conversion from <computeroutput>T</computeroutput> to <computeroutput><ref refid="disposable" kindref="compound">Disposable</ref>&lt;T&gt;</computeroutput> is destructive, i.e., it does <bold>not</bold> preserve the state of the original object. Therefore, it is necessary for the developer to avoid code such as </para></xrefdescription></xrefsect><programlisting><codeline><highlight class="normal">Disposable&lt;Foo&gt;<sp/>bar(Foo&amp;<sp/>f)<sp/>{</highlight></codeline>
 <codeline><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>f;</highlight></codeline>
 <codeline><highlight class="normal">}</highlight></codeline>
 </programlisting> which would likely render the passed object unusable. The correct way to obtain the desired behavior would be: <programlisting><codeline><highlight class="normal">Disposable&lt;Foo&gt;<sp/>bar(Foo&amp;<sp/>f)<sp/>{</highlight></codeline>

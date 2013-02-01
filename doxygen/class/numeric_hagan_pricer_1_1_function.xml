@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function" kind="class" prot="public" abstract="yes">
+  <compounddef id="numeric_hagan_pricer_1_1_function" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::NumericHaganPricer::Function</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1af90995647e802e28f0a10dec00761500" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="numeric_hagan_pricer_1_1_function_1af90995647e802e28f0a10dec00761500" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Function</definition>
         <argsstring>()</argsstring>
         <name>~Function</name>
         <location file="/cashflows/conundrumpricer.hpp" line="265" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="265" bodyend="265"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="numeric_hagan_pricer_1_1_function_1a7709f6c0612c6668e25d555787a5688b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Real x) const =0</argsstring>

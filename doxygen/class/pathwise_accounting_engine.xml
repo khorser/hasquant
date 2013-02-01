@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pathwise_accounting_engine" kind="class" prot="public">
+  <compounddef id="pathwise_accounting_engine" kind="class" prot="public">
     <compoundname>QuantLib::PathwiseAccountingEngine</compoundname>
     <includes local="no">/models/marketmodels/pathwiseaccountingengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pathwise_accounting_engine_1af1d080ad4fe8b1032b025972ea97d66b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pathwise_accounting_engine_1af1d080ad4fe8b1032b025972ea97d66b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PathwiseAccountingEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; LogNormalFwdRateEuler &gt; &amp;evolver, const Clone&lt; MarketModelPathwiseMultiProduct &gt; &amp;product, const boost::shared_ptr&lt; MarketModel &gt; &amp;pseudoRootStructure, Real initialNumeraireValue)</argsstring>
         <name>PathwiseAccountingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_log_normal_fwd_rate_euler" kindref="compound">LogNormalFwdRateEuler</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="log_normal_fwd_rate_euler" kindref="compound">LogNormalFwdRateEuler</ref> &gt; &amp;</type>
           <declname>evolver</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_clone" kindref="compound">Clone</ref>&lt; <ref refid="class_quant_lib_1_1_market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt; &amp;</type>
+          <type>const <ref refid="clone" kindref="compound">Clone</ref>&lt; <ref refid="market_model_pathwise_multi_product" kindref="compound">MarketModelPathwiseMultiProduct</ref> &gt; &amp;</type>
           <declname>product</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
           <declname>pseudoRootStructure</declname>
         </param>
         <param>
@@ -27,13 +27,13 @@
         </param>
         <location file="/models/marketmodels/pathwiseaccountingengine.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pathwise_accounting_engine_1a940e51e81b1c6e634b04ffee6d66ebbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pathwise_accounting_engine_1a940e51e81b1c6e634b04ffee6d66ebbf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void multiplePathValues</definition>
         <argsstring>(SequenceStatisticsInc &amp;stats, Size numberOfPaths)</argsstring>
         <name>multiplePathValues</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &amp;</type>
+          <type><ref refid="generic_sequence_statistics" kindref="compound">SequenceStatisticsInc</ref> &amp;</type>
           <declname>stats</declname>
         </param>
         <param>

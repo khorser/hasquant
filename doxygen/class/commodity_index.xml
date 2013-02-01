@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_commodity_index" kind="class" prot="public">
+  <compounddef id="commodity_index" kind="class" prot="public">
     <compoundname>QuantLib::CommodityIndex</compoundname>
     <includes local="no">/experimental/commodities/commodityindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
@@ -15,83 +15,83 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="commodity_index_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/experimental/commodities/commodityindex.hpp" line="54" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_index_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         <definition>const CommodityType &amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="58" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ae1a84781300fdb3e7b7f3b719fda0610" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_index_1ae1a84781300fdb3e7b7f3b719fda0610" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency &amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="59" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a04ebdb0779a676fed38122c80f7190e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_index_1a04ebdb0779a676fed38122c80f7190e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure &amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="60" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_index_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="61" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a1f34ae89e89dbd1e8b6b819fab67d876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="commodity_index_1a1f34ae89e89dbd1e8b6b819fab67d876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; CommodityCurve &gt; &amp; forwardCurve</definition>
         <argsstring>() const </argsstring>
         <name>forwardCurve</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="62" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a49ef143f1d484eafaa99baa3c7ea9b09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a49ef143f1d484eafaa99baa3c7ea9b09" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real lotQuantity</definition>
         <argsstring>() const </argsstring>
         <name>lotQuantity</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="63" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="134" bodyend="136"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac495fd9bc1177fa5ff37da1dd4382f13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1ac495fd9bc1177fa5ff37da1dd4382f13" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;date)</argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="65" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="147" bodyend="156"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ada34e3301903ed5c0e42cc0dc0bdf770" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1ada34e3301903ed5c0e42cc0dc0bdf770" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real forwardPrice</definition>
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>forwardPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="66" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="158" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac2415a2511bd3784612e1b83ed7ed876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="commodity_index_1ac2415a2511bd3784612e1b83ed7ed876" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date lastQuoteDate</definition>
         <argsstring>() const </argsstring>
         <name>lastQuoteDate</name>
@@ -99,7 +99,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a74f35eb3d78b2859e3f101bb8fca6492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a74f35eb3d78b2859e3f101bb8fca6492" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityIndex</definition>
         <argsstring>(const std::string &amp;name, const CommodityType &amp;commodityType, const Currency &amp;currency, const UnitOfMeasure &amp;unitOfMeasure, const Calendar &amp;calendar, Real lotQuantity, const boost::shared_ptr&lt; CommodityCurve &gt; &amp;forwardCurve, const boost::shared_ptr&lt; ExchangeContracts &gt; &amp;exchangeContracts, int nearbyOffset)</argsstring>
@@ -109,19 +109,19 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -129,7 +129,7 @@
           <declname>lotQuantity</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
           <declname>forwardCurve</declname>
         </param>
         <param>
@@ -142,13 +142,13 @@
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a6e7c2f06156bc986266ded7619af86ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a6e7c2f06156bc986266ded7619af86ac" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void addQuote</definition>
         <argsstring>(const Date &amp;quoteDate, Real quote)</argsstring>
         <name>addQuote</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>quoteDate</declname>
         </param>
         <param>
@@ -157,53 +157,53 @@
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="69" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="185" bodyend="193"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ad224c1a7c70301d545c2d63ece164d8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1ad224c1a7c70301d545c2d63ece164d8b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void addQuotes</definition>
         <argsstring>(const std::map&lt; Date, Real &gt; &amp;quotes)</argsstring>
         <name>addQuotes</name>
         <param>
-          <type>const std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const std::map&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>quotes</declname>
         </param>
         <location file="/experimental/commodities/commodityindex.hpp" line="71" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="71" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a47256ff46c55a4a73152af3b83350ddf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a47256ff46c55a4a73152af3b83350ddf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void clearQuotes</definition>
         <argsstring>()</argsstring>
         <name>clearQuotes</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="81" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="195" bodyend="197"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a7d2fba75b27aca061c42efea5b80f7fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a7d2fba75b27aca061c42efea5b80f7fc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isValidQuoteDate</definition>
         <argsstring>(const Date &amp;quoteDate) const </argsstring>
         <name>isValidQuoteDate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>quoteDate</declname>
         </param>
         <briefdescription>
 <para>returns TRUE if the quote date is valid </para>        </briefdescription>
         <location file="/experimental/commodities/commodityindex.hpp" line="83" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="84" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="175" bodyend="177"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a28a48365ab4d6d488ed5d2ce442fe524" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_index_1a28a48365ab4d6d488ed5d2ce442fe524" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool forwardCurveEmpty</definition>
         <argsstring>() const </argsstring>
         <name>forwardCurveEmpty</name>
         <location file="/experimental/commodities/commodityindex.hpp" line="85" bodyfile="/experimental/commodities/commodityindex.hpp" bodystart="179" bodyend="183"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_index_1a45a42a373bc45cab8cb46d7d4f079b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="commodity_index_1a45a42a373bc45cab8cb46d7d4f079b38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const TimeSeries&lt; Real &gt; &amp; quotes</definition>
         <argsstring>() const </argsstring>
         <name>quotes</name>

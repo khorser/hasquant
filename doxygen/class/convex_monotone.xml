@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_convex_monotone" kind="class" prot="public">
+  <compounddef id="convex_monotone" kind="class" prot="public">
     <compoundname>QuantLib::ConvexMonotone</compoundname>
     <includes local="no">/math/interpolations/convexmonotoneinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="convex_monotone_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
         <definition>const bool global</definition>
         <argsstring></argsstring>
@@ -12,7 +12,7 @@
         <initializer>= true</initializer>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="789" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="789" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="convex_monotone_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size requiredPoints</definition>
         <argsstring></argsstring>
@@ -20,7 +20,7 @@
         <initializer>= 2</initializer>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="790" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="790" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_convex_monotone_1a6f3802aa1f714ae6c652cbb1101b054f" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="convex_monotone_1a6f3802aa1f714ae6c652cbb1101b054f" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size dataSizeAdjustment</definition>
         <argsstring></argsstring>
@@ -30,7 +30,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_1af0dbcf4ddad03a3afd388298f38e58b7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_1af0dbcf4ddad03a3afd388298f38e58b7" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConvexMonotone</definition>
         <argsstring>(Real quadraticity=0.3, Real monotonicity=0.7, bool forcePositive=true)</argsstring>
@@ -52,7 +52,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="797" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="793" bodyend="797"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -61,7 +61,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>
@@ -79,7 +79,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="801" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="800" bodyend="807"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_1a52a2871f12d817e1bb0568dba512c07f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_1a52a2871f12d817e1bb0568dba512c07f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -88,7 +88,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation localInterpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Size localisation, Interpolation &amp;prevInterpolation, Size finalSize) const </argsstring>
         <name>localInterpolate</name>
@@ -109,7 +109,7 @@
           <declname>localisation</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &amp;</type>
+          <type><ref refid="interpolation" kindref="compound">Interpolation</ref> &amp;</type>
           <declname>prevInterpolation</declname>
         </param>
         <param>

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_constant_c_p_i_volatility" kind="class" prot="public">
+  <compounddef id="constant_c_p_i_volatility" kind="class" prot="public">
     <compoundname>QuantLib::ConstantCPIVolatility</compoundname>
     <includes local="no">/termstructures/volatility/inflation/constantcpivolatility.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructor</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a7e6db6a90e33957f54f8dda00133dad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="constant_c_p_i_volatility_1a7e6db6a90e33957f54f8dda00133dad4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ConstantCPIVolatility</definition>
         <argsstring>(const Volatility v, Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated)</argsstring>
@@ -19,18 +19,18 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -48,32 +48,32 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Limits</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="constant_c_p_i_volatility_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/volatility/inflation/constantcpivolatility.hpp" line="49" bodyfile="/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="49" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="constant_c_p_i_volatility_1a325a26f342dc0d36ac376c98e79f7565" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_c_p_i_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
+        <reimplements refid="c_p_i_volatility_surface_1a1a0b4386bde01c8cc2678dc87489fcd9">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/inflation/constantcpivolatility.hpp" line="51" bodyfile="/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="constant_c_p_i_volatility_1a890665a296b4f9991d4d01ac63e35873" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_c_p_i_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
+        <reimplements refid="c_p_i_volatility_surface_1aede5e93dcaf5b7de1d5ffd4a773cd803">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/inflation/constantcpivolatility.hpp" line="53" bodyfile="/termstructures/volatility/inflation/constantcpivolatility.hpp" bodystart="53" bodyend="53"/>

@@ -1,30 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pool" kind="class" prot="public">
+  <compounddef id="pool" kind="class" prot="public">
     <compoundname>QuantLib::Pool</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1af71e2c9e63c7a14525b20806f3c40c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1af71e2c9e63c7a14525b20806f3c40c23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Pool</definition>
         <argsstring>()</argsstring>
         <name>Pool</name>
         <location file="/experimental/credit/pool.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/experimental/credit/pool.hpp" line="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void clear</definition>
         <argsstring>()</argsstring>
         <name>clear</name>
         <location file="/experimental/credit/pool.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1a11f7868ebc12b98cb7c2cc4a44d7d6f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1a11f7868ebc12b98cb7c2cc4a44d7d6f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool has</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
@@ -35,7 +35,7 @@
         </param>
         <location file="/experimental/credit/pool.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1a9d2d4c566fe08564a3458c96fc6030c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1a9d2d4c566fe08564a3458c96fc6030c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void add</definition>
         <argsstring>(const std::string &amp;name, const Issuer &amp;issuer)</argsstring>
@@ -50,7 +50,7 @@
         </param>
         <location file="/experimental/credit/pool.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1a79fb7a2e3d3215adb63c99bcf611ed34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1a79fb7a2e3d3215adb63c99bcf611ed34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Issuer &amp;</type>
         <definition>const Issuer&amp; get</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
@@ -61,7 +61,7 @@
         </param>
         <location file="/experimental/credit/pool.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1aa4a828f3ad25a750a311f4495766cb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1aa4a828f3ad25a750a311f4495766cb52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTime</definition>
         <argsstring>(const std::string &amp;name, Real time)</argsstring>
@@ -76,7 +76,7 @@
         </param>
         <location file="/experimental/credit/pool.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1adadede9310fa9603982ad9d6f867d6b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1adadede9310fa9603982ad9d6f867d6b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getTime</definition>
         <argsstring>(const std::string &amp;name) const </argsstring>
@@ -87,7 +87,7 @@
         </param>
         <location file="/experimental/credit/pool.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pool_1a5b0387412c808499b36a396389c29a83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pool_1a5b0387412c808499b36a396389c29a83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; std::string &gt; &amp;</type>
         <definition>const std::vector&lt;std::string&gt;&amp; names</definition>
         <argsstring>() const </argsstring>

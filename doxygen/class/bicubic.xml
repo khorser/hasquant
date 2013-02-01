@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bicubic" kind="class" prot="public">
+  <compounddef id="bicubic" kind="class" prot="public">
     <compoundname>QuantLib::Bicubic</compoundname>
     <includes local="no">/math/interpolations/bicubicsplineinterpolation.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bicubic_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bicubic_1a6f774b30f13db7f9af19e3b9b01fcf32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -16,7 +16,7 @@
             <type>class M</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref></type>
+        <type><ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref></type>
         <definition>Interpolation2D interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, const I2 &amp;yEnd, const M &amp;z) const </argsstring>
         <name>interpolate</name>

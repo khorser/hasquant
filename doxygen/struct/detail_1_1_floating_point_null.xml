@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1detail_1_1_floating_point_null" kind="struct" prot="public">
+  <compounddef id="detail_1_1_floating_point_null" kind="struct" prot="public">
     <compoundname>QuantLib::detail::FloatingPointNull</compoundname>
     <templateparamlist>
       <param>

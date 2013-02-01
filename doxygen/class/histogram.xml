@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_histogram" kind="class" prot="public">
+  <compounddef id="histogram" kind="class" prot="public">
     <compoundname>QuantLib::Histogram</compoundname>
     <includes local="no">/math/statistics/histogram.hpp</includes>
       <sectiondef kind="user-defined">
       <header>constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1af51c4df08524a7d196bd62f31e4bc50f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1af51c4df08524a7d196bd62f31e4bc50f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Histogram</definition>
         <argsstring>()</argsstring>
         <name>Histogram</name>
         <location file="/math/statistics/histogram.hpp" line="45" bodyfile="/math/statistics/histogram.hpp" bodystart="44" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1af063d6ae60bbc0f1dc23141faf837dfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1af063d6ae60bbc0f1dc23141faf837dfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -36,7 +36,7 @@
         </param>
         <location file="/math/statistics/histogram.hpp" line="50" bodyfile="/math/statistics/histogram.hpp" bodystart="48" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a209d7787d8f50bd1c8adf7612be8dbaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a209d7787d8f50bd1c8adf7612be8dbaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -60,7 +60,7 @@
         </param>
         <location file="/math/statistics/histogram.hpp" line="57" bodyfile="/math/statistics/histogram.hpp" bodystart="55" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a8d8c1526af99504d0b87a320504f9e06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a8d8c1526af99504d0b87a320504f9e06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -94,28 +94,28 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a18099aedcd39e72c751cc7cd30dba0d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a18099aedcd39e72c751cc7cd30dba0d7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size bins</definition>
         <argsstring>() const </argsstring>
         <name>bins</name>
         <location file="/math/statistics/histogram.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a76063bc3f4d54bbabe5ffac5b43845a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a76063bc3f4d54bbabe5ffac5b43845a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; breaks</definition>
         <argsstring>() const </argsstring>
         <name>breaks</name>
         <location file="/math/statistics/histogram.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a7e4af7419144ae5528fa318b30752a42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a7e4af7419144ae5528fa318b30752a42" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Algorithm</type>
         <definition>Algorithm algorithm</definition>
         <argsstring>() const </argsstring>
         <name>algorithm</name>
         <location file="/math/statistics/histogram.hpp" line="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -125,7 +125,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>results</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1ac985675085bbe718933ca1db2b3b005d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1ac985675085bbe718933ca1db2b3b005d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size counts</definition>
         <argsstring>(Size i) const </argsstring>
@@ -136,7 +136,7 @@
         </param>
         <location file="/math/statistics/histogram.hpp" line="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_histogram_1a7bb6aa81b5de0ababfb432c3cb346b5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="histogram_1a7bb6aa81b5de0ababfb432c3cb346b5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real frequency</definition>
         <argsstring>(Size i) const </argsstring>
@@ -149,25 +149,25 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691" prot="public" static="no">
+      <memberdef kind="enum" id="histogram_1a5e41188f16a381c8915a17a22228e691" prot="public" static="no">
         <name>Algorithm</name>
-        <enumvalue id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691ac9d3e887722f2bc482bcca9d41c512af" prot="public">
+        <enumvalue id="histogram_1a5e41188f16a381c8915a17a22228e691ac9d3e887722f2bc482bcca9d41c512af" prot="public">
           <name>None</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691ad053b3f1bf23d7f7231caa563b51eb00" prot="public">
+        <enumvalue id="histogram_1a5e41188f16a381c8915a17a22228e691ad053b3f1bf23d7f7231caa563b51eb00" prot="public">
           <name>Sturges</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691af6cb3036978c564d260f5016cac04f85" prot="public">
+        <enumvalue id="histogram_1a5e41188f16a381c8915a17a22228e691af6cb3036978c564d260f5016cac04f85" prot="public">
           <name>FD</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_histogram_1a5e41188f16a381c8915a17a22228e691a8f50e622a8b9ff156308dbda611daad2" prot="public">
+        <enumvalue id="histogram_1a5e41188f16a381c8915a17a22228e691a8f50e622a8b9ff156308dbda611daad2" prot="public">
           <name>Scott</name>
         </enumvalue>
         <location file="/math/statistics/histogram.hpp" line="40" bodyfile="/math/statistics/histogram.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_histogram" kindref="compound">Histogram</ref> class. </para>    </briefdescription>
+<para><ref refid="histogram" kindref="compound">Histogram</ref> class. </para>    </briefdescription>
     <detaileddescription>
 <para>This class computes the histogram of a given data set. The caller can specify the number of bins, the breaks, or the algorithm for determining these quantities in computing the histogram. </para>    </detaileddescription>
     <location file="/math/statistics/histogram.hpp" line="38" bodyfile="/math/statistics/histogram.hpp" bodystart="38" bodyend="93"/>

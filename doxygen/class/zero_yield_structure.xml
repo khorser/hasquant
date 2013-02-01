@@ -1,65 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_zero_yield_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="zero_yield_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ZeroYieldStructure</compoundname>
     <includes local="no">/termstructures/yield/zeroyieldstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1a879bd44d37864155c62c4d561baadc8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="zero_yield_structure_1a879bd44d37864155c62c4d561baadc8d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroYieldStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ZeroYieldStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1af287d6e530508b687989352cbe0ce16f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="zero_yield_structure_1af287d6e530508b687989352cbe0ce16f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroYieldStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>ZeroYieldStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1a5e457f34ac19db74df6a4d1a573f26e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="zero_yield_structure_1a5e457f34ac19db74df6a4d1a573f26e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroYieldStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const DayCounter &amp;dc=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
@@ -69,23 +69,23 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/zeroyieldstructure.hpp" line="66"/>
       </memberdef>
@@ -93,7 +93,7 @@
       <sectiondef kind="user-defined">
       <header>Calculations</header>
       <description><para>This method must be implemented in derived classes to perform the actual calculations. When it is called, range check has already been performed; therefore, it must assume that extrapolation is required. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1a841c9841f67d21b682578d206fc915ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="zero_yield_structure_1a841c9841f67d21b682578d206fc915ec" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate zeroYieldImpl</definition>
         <argsstring>(Time) const =0</argsstring>
@@ -108,12 +108,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure implementation</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_yield_structure_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="zero_yield_structure_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor discountImpl</definition>
         <argsstring>(Time) const </argsstring>
         <name>discountImpl</name>
-        <reimplements refid="class_quant_lib_1_1_yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
+        <reimplements refid="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <defname>t</defname>
@@ -126,7 +126,7 @@
     <briefdescription>
 <para>Zero-yield term structure. </para>    </briefdescription>
     <detaileddescription>
-<para>This abstract class acts as an adapter to <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> allowing the programmer to implement only the <computeroutput>zeroYieldImpl(Time)</computeroutput> method in derived classes.</para><para><ref refid="struct_quant_lib_1_1_discount" kindref="compound">Discount</ref> and forward are calculated from zero yields.</para><para>Zero rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
+<para>This abstract class acts as an adapter to <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> allowing the programmer to implement only the <computeroutput>zeroYieldImpl(Time)</computeroutput> method in derived classes.</para><para><ref refid="discount" kindref="compound">Discount</ref> and forward are calculated from zero yields.</para><para>Zero rates are assumed to be annual continuous compounding. </para>    </detaileddescription>
     <location file="/termstructures/yield/zeroyieldstructure.hpp" line="44" bodyfile="/termstructures/yield/zeroyieldstructure.hpp" bodystart="44" bodyend="88"/>
   </compounddef>
 </doxygen>

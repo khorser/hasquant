@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_simple_chooser_engine" kind="class" prot="public">
+  <compounddef id="analytic_simple_chooser_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticSimpleChooserEngine</compoundname>
     <includes local="no">/experimental/exoticoptions/analyticsimplechooserengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_simple_chooser_engine_1a6507283f351149da5e42d6a505ece461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_simple_chooser_engine_1a6507283f351149da5e42d6a505ece461" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticSimpleChooserEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>AnalyticSimpleChooserEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/exoticoptions/analyticsimplechooserengine.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_simple_chooser_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="analytic_simple_chooser_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/exoticoptions/analyticsimplechooserengine.hpp" line="40"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for European Simple Chooser option. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements a Simple Chooser <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> option, with European exercise. </para>    </detaileddescription>
+<para>This class implements a Simple Chooser <ref refid="option" kindref="compound">Option</ref> option, with European exercise. </para>    </detaileddescription>
     <location file="/experimental/exoticoptions/analyticsimplechooserengine.hpp" line="36" bodyfile="/experimental/exoticoptions/analyticsimplechooserengine.hpp" bodystart="36" bodyend="43"/>
   </compounddef>
 </doxygen>

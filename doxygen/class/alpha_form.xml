@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_alpha_form" kind="class" prot="public" abstract="yes">
+  <compounddef id="alpha_form" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::AlphaForm</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_1a34759557c2dd9970a96b6ad522c6a16b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="alpha_form_1a34759557c2dd9970a96b6ad522c6a16b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~AlphaForm</definition>
         <argsstring>()</argsstring>
         <name>~AlphaForm</name>
         <location file="/models/marketmodels/models/alphaform.hpp" line="29" bodyfile="/models/marketmodels/models/alphaform.hpp" bodystart="29" bodyend="29"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_1a587be0279d72e2b70a3918f02f6d88ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="alpha_form_1a587be0279d72e2b70a3918f02f6d88ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Integer i) const =0</argsstring>
@@ -21,7 +21,7 @@
         </param>
         <location file="/models/marketmodels/models/alphaform.hpp" line="30"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_1a866e0aa714c57d7ec779cb7c3976bbf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="alpha_form_1a866e0aa714c57d7ec779cb7c3976bbf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void setAlpha</definition>
         <argsstring>(Real alpha)=0</argsstring>

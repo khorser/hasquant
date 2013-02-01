@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine" kind="class" prot="public">
+  <compounddef id="fd_simple_ext_o_u_jump_swing_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdSimpleExtOUJumpSwingEngine</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a41e5d6817cb171cff9a28e375681f742" prot="public" static="no">
+      <memberdef kind="typedef" id="fd_simple_ext_o_u_jump_swing_engine_1a41e5d6817cb171cff9a28e375681f742" prot="public" static="no">
         <type>FdmExtOUJumpModelInnerValue::Shape</type>
         <definition>typedef FdmExtOUJumpModelInnerValue::Shape Shape</definition>
         <argsstring></argsstring>
@@ -12,17 +12,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1ae9de6650aad558980eb9b9d7668b3a79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_simple_ext_o_u_jump_swing_engine_1ae9de6650aad558980eb9b9d7668b3a79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdSimpleExtOUJumpSwingEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;p, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, Size tGrid=50, Size xGrid=200, Size yGrid=50, const boost::shared_ptr&lt; Shape &gt; &amp;shape=boost::shared_ptr&lt; Shape &gt;(), const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdSimpleExtOUJumpSwingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
         </param>
         <location file="/experimental/finitedifferences/fdsimpleextoujumpswingengine.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_ext_o_u_jump_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_simple_ext_o_u_jump_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

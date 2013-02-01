@@ -1,65 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_survival_probability_structure" kind="class" prot="public">
+  <compounddef id="survival_probability_structure" kind="class" prot="public">
     <compoundname>QuantLib::SurvivalProbabilityStructure</compoundname>
     <includes local="no">/termstructures/credit/survivalprobabilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1ab595f65d804bf2d47b14dbd14116b758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="survival_probability_structure_1ab595f65d804bf2d47b14dbd14116b758" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SurvivalProbabilityStructure</definition>
         <argsstring>(const DayCounter &amp;dayCounter=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>SurvivalProbabilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1acc00d3c3b43cbac49da988431f883024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="survival_probability_structure_1acc00d3c3b43cbac49da988431f883024" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SurvivalProbabilityStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal=Calendar(), const DayCounter &amp;dayCounter=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
         <name>SurvivalProbabilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1a635efc6d6d8cd153ff4d53b1f769825b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="survival_probability_structure_1a635efc6d6d8cd153ff4d53b1f769825b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SurvivalProbabilityStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, const DayCounter &amp;dayCounter=DayCounter(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;())</argsstring>
@@ -69,35 +69,35 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>DefaultProbabilityTermStructure implementation</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_survival_probability_structure_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="survival_probability_structure_1aacf490703e42933ebc53ef281a4a38fb" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real defaultDensityImpl</definition>
         <argsstring>(Time) const </argsstring>
         <name>defaultDensityImpl</name>
-        <reimplements refid="class_quant_lib_1_1_default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e">defaultDensityImpl</reimplements>
+        <reimplements refid="default_probability_term_structure_1a6fa52b63cbf5503d39b7ce7cb66b741e">defaultDensityImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -111,7 +111,7 @@
     <briefdescription>
 <para>Hazard-rate term structure. </para>    </briefdescription>
     <detaileddescription>
-<para>This abstract class acts as an adapter to <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> allowing the programmer to implement only the <computeroutput>survivalProbabilityImpl(Time)</computeroutput> method in derived classes.</para><para>Hazard rates and default densities are calculated from survival probabilities. </para>    </detaileddescription>
+<para>This abstract class acts as an adapter to <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> allowing the programmer to implement only the <computeroutput>survivalProbabilityImpl(Time)</computeroutput> method in derived classes.</para><para>Hazard rates and default densities are calculated from survival probabilities. </para>    </detaileddescription>
     <location file="/termstructures/credit/survivalprobabilitystructure.hpp" line="43" bodyfile="/termstructures/credit/survivalprobabilitystructure.hpp" bodystart="42" bodyend="81"/>
   </compounddef>
 </doxygen>

@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_volatility_term_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="volatility_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::VolatilityTermStructure</compoundname>
     <includes local="no">/termstructures/voltermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a5f30fa48a97a7299157730452b4034e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="volatility_term_structure_1a5f30fa48a97a7299157730452b4034e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VolatilityTermStructure</definition>
         <argsstring>(const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>VolatilityTermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -20,15 +20,15 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000132"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/voltermstructure.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_term_structure_1a6dde14edb40ab23fb1ea553c516d56f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VolatilityTermStructure</definition>
         <argsstring>(BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -38,25 +38,25 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000133"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/voltermstructure.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_term_structure_1a313b93ad25131868d6ecba5dd642741d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VolatilityTermStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>VolatilityTermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -64,15 +64,15 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
         <location file="/termstructures/voltermstructure.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_term_structure_1a82bd61e80d4c1bf9e22b55917fe18cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VolatilityTermStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -82,7 +82,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -90,9 +90,9 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -100,7 +100,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="volatility_term_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
@@ -109,20 +109,20 @@
 <para>the business day convention used in tenor to date conversion </para>        </briefdescription>
         <location file="/termstructures/voltermstructure.hpp" line="70" bodyfile="/termstructures/voltermstructure.hpp" bodystart="88" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="volatility_term_structure_1af59f60f1e0a7875cd8c4e97c3e50f8fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date optionDateFromTenor</definition>
         <argsstring>(const Period &amp;) const </argsstring>
         <name>optionDateFromTenor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <defname>p</defname>
         </param>
         <briefdescription>
 <para>period/date conversion </para>        </briefdescription>
         <location file="/termstructures/voltermstructure.hpp" line="72" bodyfile="/termstructures/voltermstructure.hpp" bodystart="93" bodyend="98"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
@@ -131,7 +131,7 @@
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/voltermstructure.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>

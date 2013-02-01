@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_jump_diffusion_engine" kind="class" prot="public">
+  <compounddef id="jump_diffusion_engine" kind="class" prot="public">
     <compoundname>QuantLib::JumpDiffusionEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/jumpdiffusionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="jump_diffusion_engine_1a96b5e2bd278cb79f245271f3a2a810bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>JumpDiffusionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; Merton76Process &gt; &amp;, Real relativeAccuracy_=1e-4, Size maxIterations=100)</argsstring>
         <name>JumpDiffusionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_merton76_process" kindref="compound">Merton76Process</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="merton76_process" kindref="compound">Merton76Process</ref> &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -24,7 +24,7 @@
         </param>
         <location file="/pricingengines/vanilla/jumpdiffusionengine.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="jump_diffusion_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

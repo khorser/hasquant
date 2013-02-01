@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_exercise_strategy" kind="class" prot="public" abstract="yes">
+  <compounddef id="exercise_strategy" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ExerciseStrategy</compoundname>
     <templateparamlist>
       <param>
@@ -10,35 +10,35 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a131d63d54acfaaee85f99d675cb83fa8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="exercise_strategy_1a131d63d54acfaaee85f99d675cb83fa8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ExerciseStrategy</definition>
         <argsstring>()</argsstring>
         <name>~ExerciseStrategy</name>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="33" bodyfile="/methods/montecarlo/exercisestrategy.hpp" bodystart="33" bodyend="33"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1af117f62bb721ee93fb0da745f4018258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1af117f62bb721ee93fb0da745f4018258" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>virtual std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>exerciseTimes</name>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1aac73cc2b0828ec5d0db4a0ced4ca2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1aac73cc2b0828ec5d0db4a0ced4ca2066" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>virtual std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const =0</argsstring>
         <name>relevantTimes</name>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1a75ca33d032c1f93ad3448fb15167a9d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool exercise</definition>
         <argsstring>(const State &amp;currentState) const =0</argsstring>
@@ -49,7 +49,7 @@
         </param>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1a0790cb4dda543bdf138f7b4d99e0d056" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void nextStep</definition>
         <argsstring>(const State &amp;currentState)=0</argsstring>
@@ -60,7 +60,7 @@
         </param>
         <location file="/methods/montecarlo/exercisestrategy.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exercise_strategy_1a06832a3ff993830ac38bdb9932a65b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="exercise_strategy_1a06832a3ff993830ac38bdb9932a65b14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::auto_ptr&lt; ExerciseStrategy&lt; State &gt; &gt;</type>
         <definition>virtual std::auto_ptr&lt;ExerciseStrategy&lt;State&gt; &gt; clone</definition>
         <argsstring>() const =0</argsstring>

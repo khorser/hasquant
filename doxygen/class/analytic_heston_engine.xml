@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_heston_engine" kind="class" prot="public">
+  <compounddef id="analytic_heston_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHestonEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/analytichestonengine.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_analytic_heston_engine_1_1_integration" prot="public">QuantLib::AnalyticHestonEngine::Integration</innerclass>
+    <innerclass refid="analytic_heston_engine_1_1_integration" prot="public">QuantLib::AnalyticHestonEngine::Integration</innerclass>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" static="no">
+      <memberdef kind="enum" id="analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627" prot="public" static="no">
         <name>ComplexLogFormula</name>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public">
+        <enumvalue id="analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627ae1becfe3698c1b41c850bf66d3d8f6a8" prot="public">
           <name>Gatheral</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public">
+        <enumvalue id="analytic_heston_engine_1a3caae3180358d7e623bcf2dc25e5b627afa729cb74e490fa3872a683e39698f94" prot="public">
           <name>BranchCorrection</name>
         </enumvalue>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="84" bodyfile="/pricingengines/vanilla/analytichestonengine.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1a7e1ac6d8a5b5bdff12cf34c18d5d9c21" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticHestonEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -36,13 +36,13 @@
         </param>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="92"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1a48782c024537cf3863e6bd8b4ffdddc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticHestonEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -52,13 +52,13 @@
         </param>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1aeda55fecff4d9f96c2e1969ecf6720a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticHestonEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, ComplexLogFormula cpxLog, const Integration &amp;itg)</argsstring>
         <name>AnalyticHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -71,15 +71,15 @@
         </param>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="102"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/vanilla/analytichestonengine.hpp" line="105"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1a79593bf769449322a27f03525936cde3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfEvaluations</definition>
         <argsstring>() const </argsstring>
@@ -88,7 +88,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_heston_engine_1a6b939ee024d09139214b4671c4ab29fa" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void doCalculation</definition>
         <argsstring>(Real riskFreeDiscount, Real dividendDiscount, Real spotPrice, Real strikePrice, Real term, Real kappa, Real theta, Real sigma, Real v0, Real rho, const TypePayoff &amp;type, const Integration &amp;integration, const ComplexLogFormula cpxLog, const AnalyticHestonEngine *const enginePtr, Real &amp;value, Size &amp;evaluations)</argsstring>
@@ -134,7 +134,7 @@
           <declname>rho</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_type_payoff" kindref="compound">TypePayoff</ref> &amp;</type>
+          <type>const <ref refid="type_payoff" kindref="compound">TypePayoff</ref> &amp;</type>
           <declname>type</declname>
         </param>
         <param>
@@ -146,7 +146,7 @@
           <declname>cpxLog</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_analytic_heston_engine" kindref="compound">AnalyticHestonEngine</ref> *const</type>
+          <type>const <ref refid="analytic_heston_engine" kindref="compound">AnalyticHestonEngine</ref> *const</type>
           <declname>enginePtr</declname>
         </param>
         <param>
@@ -163,7 +163,7 @@
     <briefdescription>
 <para>analytic Heston-model engine based on Fourier transform </para>    </briefdescription>
     <detaileddescription>
-<para>Integration detail: Two algebraically equivalent formulations of the complex logarithm of the Heston model exist. Gatherals [2005] (also Duffie, Pan and <ref refid="class_quant_lib_1_1_singleton" kindref="compound">Singleton</ref> [2000], and Schoutens, Simons and Tistaert[2004]) version does not cause discoutinuities whereas the original version (e.g. Heston [1993]) needs some sort of &quot;branch correction&quot; to work properly. Gatheral&apos;s version does also work with adaptive integration routines and should be preferred over the original Heston version.</para><para>References: <verbatim>   Heston, Steven L., 1993. A Closed-Form Solution for Options
+<para>Integration detail: Two algebraically equivalent formulations of the complex logarithm of the Heston model exist. Gatherals [2005] (also Duffie, Pan and <ref refid="singleton" kindref="compound">Singleton</ref> [2000], and Schoutens, Simons and Tistaert[2004]) version does not cause discoutinuities whereas the original version (e.g. Heston [1993]) needs some sort of &quot;branch correction&quot; to work properly. Gatheral&apos;s version does also work with adaptive integration routines and should be preferred over the original Heston version.</para><para>References: <verbatim>   Heston, Steven L., 1993. A Closed-Form Solution for Options
    with Stochastic Volatility with Applications to Bond and
    Currency Options.  The review of Financial Studies, Volume 6,
    Issue 2, 327-343.

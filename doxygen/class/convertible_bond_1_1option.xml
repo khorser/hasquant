@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_convertible_bond_1_1option" kind="class" prot="public">
+  <compounddef id="convertible_bond_1_1option" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleBond::option</compoundname>
-    <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1arguments" prot="public">QuantLib::ConvertibleBond::option::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_convertible_bond_1_1option_1_1engine" prot="public">QuantLib::ConvertibleBond::option::engine</innerclass>
+    <innerclass refid="convertible_bond_1_1option_1_1arguments" prot="public">QuantLib::ConvertibleBond::option::arguments</innerclass>
+    <innerclass refid="convertible_bond_1_1option_1_1engine" prot="public">QuantLib::ConvertibleBond::option::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1_1option_1a131d8868af8498a6cc6577bb4b1b92a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="convertible_bond_1_1option_1a131d8868af8498a6cc6577bb4b1b92a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>option</definition>
         <argsstring>(const ConvertibleBond *bond, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, Real conversionRatio, const DividendSchedule &amp;dividends, const CallabilitySchedule &amp;callability, const Handle&lt; Quote &gt; &amp;creditSpread, const Leg &amp;cashflows, const DayCounter &amp;dayCounter, const Schedule &amp;schedule, const Date &amp;issueDate, Natural settlementDays, Real redemption)</argsstring>
         <name>option</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_convertible_bond" kindref="compound">ConvertibleBond</ref> *</type>
+          <type>const <ref refid="convertible_bond" kindref="compound">ConvertibleBond</ref> *</type>
           <declname>bond</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -31,7 +31,7 @@
           <declname>callability</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>creditSpread</declname>
         </param>
         <param>
@@ -39,15 +39,15 @@
           <declname>cashflows</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
         </param>
         <param>
@@ -60,7 +60,7 @@
         </param>
         <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="166"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_convertible_bond_1_1option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="convertible_bond_1_1option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>

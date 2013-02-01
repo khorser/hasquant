@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_eonia" kind="class" prot="public">
+  <compounddef id="eonia" kind="class" prot="public">
     <compoundname>QuantLib::Eonia</compoundname>
     <includes local="no">/indexes/ibor/eonia.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_eonia_1ab1ca7be937154b05daab396a40c1ebd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="eonia_1ab1ca7be937154b05daab396a40c1ebd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Eonia</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>Eonia</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/ibor/eonia.hpp" line="35"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Eonia (Euro Overnight <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> <ref refid="struct_quant_lib_1_1_average" kindref="compound">Average</ref>) rate fixed by the <ref refid="struct_quant_lib_1_1_e_c_b" kindref="compound">ECB</ref>. </para>    </briefdescription>
+<para>Eonia (Euro Overnight <ref refid="index" kindref="compound">Index</ref> <ref refid="average" kindref="compound">Average</ref>) rate fixed by the <ref refid="e_c_b" kindref="compound">ECB</ref>. </para>    </briefdescription>
     <location file="/indexes/ibor/eonia.hpp" line="32" bodyfile="/indexes/ibor/eonia.hpp" bodystart="32" bodyend="36"/>
   </compounddef>
 </doxygen>

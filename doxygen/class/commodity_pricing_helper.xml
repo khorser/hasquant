@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_commodity_pricing_helper" kind="class" prot="public">
+  <compounddef id="commodity_pricing_helper" kind="class" prot="public">
     <compoundname>QuantLib::CommodityPricingHelper</compoundname>
     <includes local="no">/experimental/commodities/commoditypricinghelpers.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1af861a5d223ce4e1e56ee136edf4762e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_pricing_helper_1af861a5d223ce4e1e56ee136edf4762e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityPricingHelper</definition>
         <argsstring>()</argsstring>
@@ -13,51 +13,51 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1ad61668c14d55c85c52b018d0eb8d4079" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_pricing_helper_1ad61668c14d55c85c52b018d0eb8d4079" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real calculateFxConversionFactor</definition>
         <argsstring>(const Currency &amp;fromCurrency, const Currency &amp;toCurrency, const Date &amp;evaluationDate)</argsstring>
         <name>calculateFxConversionFactor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>fromCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>toCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>evaluationDate</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="42" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="79" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1a2045c4b9d40cefb75dfb00bf37c96161" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_pricing_helper_1a2045c4b9d40cefb75dfb00bf37c96161" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real calculateUomConversionFactor</definition>
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;fromUnitOfMeasure, const UnitOfMeasure &amp;toUnitOfMeasure)</argsstring>
         <name>calculateUomConversionFactor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>fromUnitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>toUnitOfMeasure</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="47" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="65" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1ac28d20f70729cdee721c0e56544deb1e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_pricing_helper_1ac28d20f70729cdee721c0e56544deb1e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real calculateUnitCost</definition>
         <argsstring>(const CommodityType &amp;commodityType, const CommodityUnitCost &amp;unitCost, const Currency &amp;baseCurrency, const UnitOfMeasure &amp;baseUnitOfMeasure, const Date &amp;evaluationDate)</argsstring>
         <name>calculateUnitCost</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -65,34 +65,34 @@
           <declname>unitCost</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>baseCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>baseUnitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>evaluationDate</declname>
         </param>
         <location file="/experimental/commodities/commoditypricinghelpers.hpp" line="53" bodyfile="/experimental/commodities/commoditypricinghelpers.hpp" bodystart="96" bodyend="114"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_pricing_helper_1a4ad06b02380a4dc32ff35de5599d3c41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_pricing_helper_1a4ad06b02380a4dc32ff35de5599d3c41" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void createPricingPeriods</definition>
         <argsstring>(Date startDate, Date endDate, const Quantity &amp;quantity, EnergyCommodity::DeliverySchedule deliverySchedule, EnergyCommodity::QuantityPeriodicity qtyPeriodicity, const PaymentTerm &amp;paymentTerm, PricingPeriods &amp;pricingPeriods)</argsstring>
         <name>createPricingPeriods</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
           <declname>quantity</declname>
         </param>
         <param>

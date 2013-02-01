@@ -1,66 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_spreaded_hazard_rate_curve" kind="class" prot="public">
+  <compounddef id="spreaded_hazard_rate_curve" kind="class" prot="public">
     <compoundname>QuantLib::SpreadedHazardRateCurve</compoundname>
     <includes local="no">/experimental/credit/spreadedhazardratecurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>DefaultProbabilityTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="46" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
+        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="47" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
+        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="48" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="81" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="49" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
+        <reimplements refid="term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="50" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="89" bodyend="91"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1a1eff1cf5b4a5eae890d79147781883c2" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1a1eff1cf5b4a5eae890d79147781883c2" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real hazardRateImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>hazardRateImpl</name>
-        <reimplements refid="class_quant_lib_1_1_hazard_rate_structure_1a0186c4f02893fb518ec1eac362e77e35">hazardRateImpl</reimplements>
+        <reimplements refid="hazard_rate_structure_1a0186c4f02893fb518ec1eac362e77e35">hazardRateImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -70,17 +70,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_spreaded_hazard_rate_curve_1abaccc805c8145f7e1d6c1fd282d36794" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="spreaded_hazard_rate_curve_1abaccc805c8145f7e1d6c1fd282d36794" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SpreadedHazardRateCurve</definition>
         <argsstring>(const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;originalCurve, const Handle&lt; Quote &gt; &amp;spread)</argsstring>
         <name>SpreadedHazardRateCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
           <declname>originalCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <location file="/experimental/credit/spreadedhazardratecurve.hpp" line="43" bodyfile="/experimental/credit/spreadedhazardratecurve.hpp" bodystart="65" bodyend="71"/>

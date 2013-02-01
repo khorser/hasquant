@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_writer_extensible_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="writer_extensible_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::WriterExtensibleOption::arguments</compoundname>
     <includes local="no">/experimental/exoticoptions/writerextensibleoption.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_writer_extensible_option_1_1arguments_1a3b1bb5e134ef03e851478bc00138e06e" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="variable" id="writer_extensible_option_1_1arguments_1a3b1bb5e134ef03e851478bc00138e06e" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff2</definition>
         <argsstring></argsstring>
         <name>payoff2</name>
         <location file="/experimental/exoticoptions/writerextensibleoption.hpp" line="65" bodyfile="/experimental/exoticoptions/writerextensibleoption.hpp" bodystart="65" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_writer_extensible_option_1_1arguments_1a35a9a6c885b78c1f68bb55b96f176f06" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+      <memberdef kind="variable" id="writer_extensible_option_1_1arguments_1a35a9a6c885b78c1f68bb55b96f176f06" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise2</definition>
         <argsstring></argsstring>
         <name>exercise2</name>
@@ -20,7 +20,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_writer_extensible_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="writer_extensible_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_student_recursive_cdo_engine" kind="class" prot="public">
+  <compounddef id="student_recursive_cdo_engine" kind="class" prot="public">
     <compoundname>QuantLib::StudentRecursiveCdoEngine</compoundname>
     <templateparamlist>
       <param>
@@ -8,13 +8,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_student_recursive_cdo_engine_1a8f21cb62f611d3e2cfcaa82f1287c5f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="student_recursive_cdo_engine_1a8f21cb62f611d3e2cfcaa82f1287c5f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>StudentRecursiveCdoEngine</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;correlQuote, Size nz, Size nm, Size nbuckets=1, Size quadOrder=12, Real maxval=5., Size steps=50)</argsstring>
         <name>StudentRecursiveCdoEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>correlQuote</declname>
         </param>
         <param>

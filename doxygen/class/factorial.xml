@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_factorial" kind="class" prot="public">
+  <compounddef id="factorial" kind="class" prot="public">
     <compoundname>QuantLib::Factorial</compoundname>
     <includes local="no">/math/factorial.hpp</includes>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a08a6c1c9fa512656b34c5b146a2c7786" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="factorial_1a08a6c1c9fa512656b34c5b146a2c7786" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>static Real get</definition>
         <argsstring>(Natural n)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/math/factorial.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_factorial_1a521d12fb2a1218b7b4bf59b1bcabb767" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="factorial_1a521d12fb2a1218b7b4bf59b1bcabb767" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>static Real ln</definition>
         <argsstring>(Natural n)</argsstring>

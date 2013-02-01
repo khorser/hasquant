@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_path_payoff" kind="class" prot="public" abstract="yes">
+  <compounddef id="path_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PathPayoff</compoundname>
     <includes local="no">/experimental/mcbasket/pathpayoff.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="path_payoff_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
@@ -14,41 +14,41 @@
 <para><xrefsect id="caveats_1_caveats000017"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="path_payoff_1a77d7003fa5d2e29669371413d5662141" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string description</definition>
         <argsstring>() const =0</argsstring>
         <name>description</name>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a9febbc13f6d1310bada5929dde07e411" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="path_payoff_1a9febbc13f6d1310bada5929dde07e411" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void value</definition>
         <argsstring>(const Matrix &amp;path, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;forwardTermStructures, Array &amp;payments, Array &amp;exercises, std::vector&lt; Array &gt; &amp;states) const =0</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
           <declname>forwardTermStructures</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>payments</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>exercises</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &amp;</type>
           <declname>states</declname>
         </param>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a04619d6110aa5a91bd45584e3cb76681" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="path_payoff_1a04619d6110aa5a91bd45584e3cb76681" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size basisSystemDimension</definition>
         <argsstring>() const =0</argsstring>
@@ -58,20 +58,20 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="path_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/experimental/mcbasket/pathpayoff.hpp" line="77" bodyfile="/experimental/mcbasket/pathpayoff.hpp" bodystart="84" bodyend="90"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_path_payoff_1a444a94ef33e9aebb6daffdd30b35d931" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="path_payoff_1a444a94ef33e9aebb6daffdd30b35d931" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~PathPayoff</definition>
         <argsstring>()</argsstring>

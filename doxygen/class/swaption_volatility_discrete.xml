@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_volatility_discrete" kind="class" prot="public">
+  <compounddef id="swaption_volatility_discrete" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolatilityDiscrete</compoundname>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
@@ -14,7 +14,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -23,17 +23,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a4340857b604555593bc1628a70887051" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1a4340857b604555593bc1628a70887051" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolatilityDiscrete</definition>
         <argsstring>(const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, Natural settlementDays, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc)</argsstring>
         <name>SwaptionVolatilityDiscrete</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
@@ -41,7 +41,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -49,30 +49,30 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a6de4fcf336b673a3f19c9e9cdf12620d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1a6de4fcf336b673a3f19c9e9cdf12620d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolatilityDiscrete</definition>
         <argsstring>(const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const Date &amp;referenceDate, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc)</argsstring>
         <name>SwaptionVolatilityDiscrete</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -80,30 +80,30 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1af8c0bdd0fa7a2e7878f0cc3c897b74b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1af8c0bdd0fa7a2e7878f0cc3c897b74b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolatilityDiscrete</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;optionDates, const std::vector&lt; Period &gt; &amp;swapTenors, const Date &amp;referenceDate, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc)</argsstring>
         <name>SwaptionVolatilityDiscrete</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>optionDates</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -111,40 +111,40 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="swaption_volatility_discrete_1afb21564e63d8019bd939c8e878edb466" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; optionTenors</definition>
         <argsstring>() const </argsstring>
         <name>optionTenors</name>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="54" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="swaption_volatility_discrete_1aefdc1e5e098b1b44b002aa1cca7760f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; optionDates</definition>
         <argsstring>() const </argsstring>
         <name>optionDates</name>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="55" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1ac5ef24fc83d3fdf7ede195f4a57f5b45" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; optionTimes</definition>
         <argsstring>() const </argsstring>
         <name>optionTimes</name>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="56" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a78ff20ada3366ab46220b2c79526e7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="swaption_volatility_discrete_1a78ff20ada3366ab46220b2c79526e7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Period &gt; &amp; swapTenors</definition>
         <argsstring>() const </argsstring>
         <name>swapTenors</name>
         <location file="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" line="57" bodyfile="/termstructures/volatility/swaption/swaptionvoldiscrete.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_discrete_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_discrete_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; swapLengths</definition>
         <argsstring>() const </argsstring>

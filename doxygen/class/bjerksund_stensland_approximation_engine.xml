@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine" kind="class" prot="public">
+  <compounddef id="bjerksund_stensland_approximation_engine" kind="class" prot="public">
     <compoundname>QuantLib::BjerksundStenslandApproximationEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/bjerksundstenslandengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1ad7beb01099c5ca4ca4c749bca0ebf508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bjerksund_stensland_approximation_engine_1ad7beb01099c5ca4ca4c749bca0ebf508" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BjerksundStenslandApproximationEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;)</argsstring>
         <name>BjerksundStenslandApproximationEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
         <location file="/pricingengines/vanilla/bjerksundstenslandengine.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bjerksund_stensland_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bjerksund_stensland_approximation_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

@@ -1,41 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_recovery_rate_quote" kind="class" prot="public">
+  <compounddef id="recovery_rate_quote" kind="class" prot="public">
     <compoundname>QuantLib::RecoveryRateQuote</compoundname>
     <includes local="no">/experimental/credit/recoveryratequote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
         <location file="/experimental/credit/recoveryratequote.hpp" line="43" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="74" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1a5b8c9356cc847f334f6eca69399f9dd9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
         <definition>Seniority seniority</definition>
         <argsstring>() const </argsstring>
         <name>seniority</name>
         <location file="/experimental/credit/recoveryratequote.hpp" line="44" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="70" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool isValid</definition>
         <argsstring>() const </argsstring>
         <name>isValid</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
-<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
         <location file="/experimental/credit/recoveryratequote.hpp" line="45" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="79" bodyend="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real setValue</definition>
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
@@ -43,13 +43,13 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>returns the difference between the new value and the old value </para>        </briefdescription>
         <location file="/experimental/credit/recoveryratequote.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
@@ -58,7 +58,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1a85334d693e480baeec58c5dea98231c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1a85334d693e480baeec58c5dea98231c2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>static Real conventionalRecovery</definition>
         <argsstring>(Seniority sen)</argsstring>
@@ -71,7 +71,7 @@
 <para>Returns a map with the ISDA conventional (values by default) of the recovery rate per each ISDA seniority. </para>        </detaileddescription>
         <location file="/experimental/credit/recoveryratequote.hpp" line="36" bodyfile="/experimental/credit/recoveryratequote.hpp" bodystart="36" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1a7f7e703e9c401045b58eac7c150f678c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1a7f7e703e9c401045b58eac7c150f678c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -94,7 +94,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1afaac90fe361d90e2708db714a797dac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1afaac90fe361d90e2708db714a797dac8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RecoveryRateQuote</definition>
         <argsstring>(Real value=Null&lt; Real &gt;(), Seniority seniority=NoSeniority)</argsstring>
@@ -102,7 +102,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
@@ -111,7 +111,7 @@
         </param>
         <location file="/experimental/credit/recoveryratequote.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_quote_1a1feed34db4078925b2fba8634fbad261" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="recovery_rate_quote_1a1feed34db4078925b2fba8634fbad261" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

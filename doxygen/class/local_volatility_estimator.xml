@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_local_volatility_estimator" kind="class" prot="public" abstract="yes">
+  <compounddef id="local_volatility_estimator" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LocalVolatilityEstimator</compoundname>
     <templateparamlist>
       <param>
@@ -10,20 +10,20 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="local_volatility_estimator_1a44b35cfd91e33e158d09a2c42c57f100" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~LocalVolatilityEstimator</definition>
         <argsstring>()</argsstring>
         <name>~LocalVolatilityEstimator</name>
         <location file="/volatilitymodel.hpp" line="36" bodyfile="/volatilitymodel.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+      <memberdef kind="function" id="local_volatility_estimator_1af7c989c57bd378aa5d11664b2b58f940" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>virtual TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; T &gt; &amp;quoteSeries)=0</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; T &gt; &amp;</type>
+          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; T &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/volatilitymodel.hpp" line="38"/>

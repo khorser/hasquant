@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_day_counter" kind="class" prot="public">
+  <compounddef id="day_counter" kind="class" prot="public">
     <compoundname>QuantLib::DayCounter</compoundname>
     <includes local="no">/time/daycounter.hpp</includes>
       <sectiondef kind="user-defined">
       <header>DayCounter interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -14,7 +14,7 @@
 <para>Returns whether or not the day counter is initialized. </para>        </briefdescription>
         <location file="/time/daycounter.hpp" line="74" bodyfile="/time/daycounter.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
@@ -25,45 +25,45 @@
 <para><xrefsect id="caveats_1_caveats000145"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between day counters. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/daycounter.hpp" line="80" bodyfile="/time/daycounter.hpp" bodystart="115" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1a339ef693d51f8a2ec0e59c90986dddec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
         <definition>BigInteger dayCount</definition>
         <argsstring>(const Date &amp;, const Date &amp;) const </argsstring>
         <name>dayCount</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d1</defname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d2</defname>
         </param>
         <briefdescription>
 <para>Returns the number of days between two dates. </para>        </briefdescription>
         <location file="/time/daycounter.hpp" line="83" bodyfile="/time/daycounter.hpp" bodystart="120" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1af45d6af610c92c3fa975077f081002e6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time yearFraction</definition>
         <argsstring>(const Date &amp;, const Date &amp;, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date()) const </argsstring>
         <name>yearFraction</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d1</defname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d2</defname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <briefdescription>
 <para>Returns the period between two dates as a fraction of year. </para>        </briefdescription>
@@ -71,7 +71,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1a4c13117cd5659354dad5d3a3d4b36925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DayCounter</definition>
         <argsstring>()</argsstring>
@@ -82,35 +82,35 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1acbca520b46832e1a53e72053c233692c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const DayCounter &amp;, const DayCounter &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <detaileddescription>
 <para>Returns <computeroutput>true</computeroutput> iff the two day counters belong to the same derived class. </para>        </detaileddescription>
         <location file="/time/daycounter.hpp" line="98" bodyfile="/time/daycounter.hpp" bodystart="133" bodyend="136"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1a0f7511e2a309e1588a2f300def9b495c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator!=</definition>
         <argsstring>(const DayCounter &amp;, const DayCounter &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/time/daycounter.hpp" line="102" bodyfile="/time/daycounter.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="day_counter_1a68dd78dd1968d9b0c1d0702a6f3be500" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream &amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;, const DayCounter &amp;)</argsstring>
@@ -119,7 +119,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/time/daycounter.hpp" line="106" bodyfile="/time/daycounter.hpp" bodystart="142" bodyend="144"/>
       </memberdef>

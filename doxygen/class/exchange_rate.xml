@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_exchange_rate" kind="class" prot="public">
+  <compounddef id="exchange_rate" kind="class" prot="public">
     <compoundname>QuantLib::ExchangeRate</compoundname>
     <includes local="no">/exchangerate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="exchange_rate_1a75f5670fadd474821dc84525928ba632" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExchangeRate</definition>
         <argsstring>()</argsstring>
         <name>ExchangeRate</name>
         <location file="/exchangerate.hpp" line="46" bodyfile="/exchangerate.hpp" bodystart="86" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="exchange_rate_1abd72efd56b917e8e5da9fe0a7304d7c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExchangeRate</definition>
         <argsstring>(const Currency &amp;source, const Currency &amp;target, Decimal rate)</argsstring>
         <name>ExchangeRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <param>
@@ -36,8 +36,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="exchange_rate_1a96501aee76f43095161955da20b424c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency &amp; source</definition>
         <argsstring>() const </argsstring>
         <name>source</name>
@@ -45,8 +45,8 @@
 <para>the source currency. </para>        </briefdescription>
         <location file="/exchangerate.hpp" line="58" bodyfile="/exchangerate.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="exchange_rate_1a07f53542a8bfb912e7a153d9bf63b7f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency &amp; target</definition>
         <argsstring>() const </argsstring>
         <name>target</name>
@@ -54,8 +54,8 @@
 <para>the target currency. </para>        </briefdescription>
         <location file="/exchangerate.hpp" line="60" bodyfile="/exchangerate.hpp" bodystart="98" bodyend="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+      <memberdef kind="function" id="exchange_rate_1a2b176c012741d73289ff358b0f990cc2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
         <definition>ExchangeRate::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
@@ -63,7 +63,7 @@
 <para>the type </para>        </briefdescription>
         <location file="/exchangerate.hpp" line="62" bodyfile="/exchangerate.hpp" bodystart="102" bodyend="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="exchange_rate_1a09c7854c186e979c6bd755668a03c3d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaee215f8d421f6afcede0391fcffb5fe7" kindref="member">Decimal</ref></type>
         <definition>Decimal rate</definition>
         <argsstring>() const </argsstring>
@@ -75,30 +75,30 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utility methods</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref></type>
+      <memberdef kind="function" id="exchange_rate_1a9f301db956165c24ea3e237fd1e8ee13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="money" kindref="compound">Money</ref></type>
         <definition>Money exchange</definition>
         <argsstring>(const Money &amp;amount) const </argsstring>
         <name>exchange</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
           <declname>amount</declname>
         </param>
         <briefdescription>
 <para>apply the exchange rate to a cash amount </para>        </briefdescription>
         <location file="/exchangerate.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref></type>
+      <memberdef kind="function" id="exchange_rate_1ae2478925351c7de1d7c107cb4d025872" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="exchange_rate" kindref="compound">ExchangeRate</ref></type>
         <definition>static ExchangeRate chain</definition>
         <argsstring>(const ExchangeRate &amp;r1, const ExchangeRate &amp;r2)</argsstring>
         <name>chain</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
           <declname>r1</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
           <declname>r2</declname>
         </param>
         <briefdescription>
@@ -107,14 +107,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public">
+        <enumvalue id="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public">
           <name>Direct</name>
           <detaileddescription>
 <para>given directly by the user </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public">
+        <enumvalue id="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public">
           <name>Derived</name>
           <detaileddescription>
 <para>derived from exchange rates between other currencies </para>          </detaileddescription>

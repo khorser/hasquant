@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_inflation_term_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="inflation_term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationTermStructure</compoundname>
     <includes local="no">/termstructures/inflationtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a9214065f19ed6aed687d659f3178e846" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a9214065f19ed6aed687d659f3178e846" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InflationTermStructure</definition>
         <argsstring>(Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
@@ -15,7 +15,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -27,28 +27,28 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1ada228b83be6416e909efa642ab4018fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="inflation_term_structure_1ada228b83be6416e909efa642ab4018fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InflationTermStructure</definition>
         <argsstring>(const Date &amp;referenceDate, Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>InflationTermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -68,27 +68,27 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a4d0581c97230aa967c13cdcc34e26285" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a4d0581c97230aa967c13cdcc34e26285" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InflationTermStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Rate baseRate, const Period &amp;observationLag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const DayCounter &amp;dayCounter=DayCounter(), const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
@@ -98,7 +98,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -106,7 +106,7 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -118,26 +118,26 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/inflationtermstructure.hpp" line="63"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inflation interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="function" id="inflation_term_structure_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -145,36 +145,36 @@
 <para>The TS observes with a lag that is usually different from the availability lag of the index. An inflation rate is given, by default, for the maturity requested assuming this lag. </para>        </detaileddescription>
         <location file="/termstructures/inflationtermstructure.hpp" line="71" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="72" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="273" bodyend="275"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1aae3d0e9ffbf211a4d81973d0b822cfac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="inflation_term_structure_1aae3d0e9ffbf211a4d81973d0b822cfac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool indexIsInterpolated</definition>
         <argsstring>() const </argsstring>
         <name>indexIsInterpolated</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="73" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="277" bodyend="279"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a0c4124ee5502dfbab1f138f498e41199" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a0c4124ee5502dfbab1f138f498e41199" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate baseRate</definition>
         <argsstring>() const </argsstring>
         <name>baseRate</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="74" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="281" bodyend="283"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1af684fb79502d793c8bd59583a423646b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="inflation_term_structure_1af684fb79502d793c8bd59583a423646b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt; YieldTermStructure &gt; nominalTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>nominalTermStructure</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="75" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="286" bodyend="288"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1afec07013d98138f010a327210da23b50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="inflation_term_structure_1afec07013d98138f010a327210da23b50" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const =0</argsstring>
         <name>baseDate</name>
@@ -186,15 +186,15 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a603c78d1843c31d434dcd6f3379c43e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a603c78d1843c31d434dcd6f3379c43e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setSeasonality</definition>
         <argsstring>(const boost::shared_ptr&lt; Seasonality &gt; &amp;seasonality=boost::shared_ptr&lt; Seasonality &gt;())</argsstring>
         <name>setSeasonality</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt; &amp;</type>
           <declname>seasonality</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>Functions to set and get seasonality. </para>        </briefdescription>
@@ -202,14 +202,14 @@
 <para>Calling setSeasonality with no arguments means unsetting as the default is used to choose unsetting. </para>        </detaileddescription>
         <location file="/termstructures/inflationtermstructure.hpp" line="95"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a4e1beb088ded9eb0a21435aa127d6e6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> &gt;</type>
+      <memberdef kind="function" id="inflation_term_structure_1a4e1beb088ded9eb0a21435aa127d6e6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="seasonality" kindref="compound">Seasonality</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; Seasonality &gt; seasonality</definition>
         <argsstring>() const </argsstring>
         <name>seasonality</name>
         <location file="/termstructures/inflationtermstructure.hpp" line="96" bodyfile="/termstructures/inflationtermstructure.hpp" bodystart="290" bodyend="292"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_term_structure_1a7d2a2133961184adf82eee3508bc2db4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="inflation_term_structure_1a7d2a2133961184adf82eee3508bc2db4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasSeasonality</definition>
         <argsstring>() const </argsstring>

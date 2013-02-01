@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_ndim_solver" kind="class" prot="public">
+  <compounddef id="fdm_ndim_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmNdimSolver</compoundname>
     <templateparamlist>
       <param>
@@ -10,8 +10,8 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_ndim_solver_1a3e5ea47905d0d844f0669cc99601d97a" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_multi_cubic_spline" kindref="compound">MultiCubicSpline</ref>&lt; N &gt;::data_table</type>
+      <memberdef kind="typedef" id="fdm_ndim_solver_1a3e5ea47905d0d844f0669cc99601d97a" prot="public" static="no">
+        <type><ref refid="multi_cubic_spline" kindref="compound">MultiCubicSpline</ref>&lt; N &gt;::data_table</type>
         <definition>typedef MultiCubicSpline&lt;N&gt;::data_table data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
@@ -19,7 +19,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1a1c51cdcb10c0639ae8b5bdbf47ee3d17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1a1c51cdcb10c0639ae8b5bdbf47ee3d17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FdmNdimSolver</definition>
         <argsstring>(const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc, const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;op)</argsstring>
@@ -38,14 +38,14 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmndimsolver.hpp" line="46" bodyfile="/methods/finitedifferences/solvers/fdmndimsolver.hpp" bodystart="75" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <location file="/methods/finitedifferences/solvers/fdmndimsolver.hpp" line="48" bodyfile="/methods/finitedifferences/solvers/fdmndimsolver.hpp" bodystart="122" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1a89b48402de4ff77ed6a671b6557d000b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1a89b48402de4ff77ed6a671b6557d000b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real interpolateAt</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;x) const </argsstring>
@@ -56,7 +56,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmndimsolver.hpp" line="50" bodyfile="/methods/finitedifferences/solvers/fdmndimsolver.hpp" bodystart="166" bodyend="170"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1ad8eb9b65a6c16eae00b883615704654b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1ad8eb9b65a6c16eae00b883615704654b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaAt</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;x) const </argsstring>
@@ -67,7 +67,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmndimsolver.hpp" line="51" bodyfile="/methods/finitedifferences/solvers/fdmndimsolver.hpp" bodystart="145" bodyend="163"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1a6791d84e5515a6d35064b63a727d9a3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1a6791d84e5515a6d35064b63a727d9a3c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setValue</definition>
         <argsstring>(data_table &amp;f, const std::vector&lt; Size &gt; &amp;x, Real value)</argsstring>
@@ -88,7 +88,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ndim_solver_1a1fc255988d09acddec60be61579b5105" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ndim_solver_1a1fc255988d09acddec60be61579b5105" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setValue</definition>
         <argsstring>(data_table &amp;f, const std::vector&lt; Size &gt; &amp;x, Real value)</argsstring>

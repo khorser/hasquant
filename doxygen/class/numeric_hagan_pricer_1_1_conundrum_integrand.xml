@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand" kind="class" prot="public">
+  <compounddef id="numeric_hagan_pricer_1_1_conundrum_integrand" kind="class" prot="public">
     <compoundname>QuantLib::NumericHaganPricer::ConundrumIntegrand</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand_1a99b915fe37515b68f8f1eeb704fa7c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="numeric_hagan_pricer_1_1_conundrum_integrand_1a99b915fe37515b68f8f1eeb704fa7c15" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ConundrumIntegrand</definition>
         <argsstring>(const boost::shared_ptr&lt; VanillaOptionPricer &gt; &amp;o, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rateCurve, const boost::shared_ptr&lt; GFunction &gt; &amp;gFunction, Date fixingDate, Date paymentDate, Real annuity, Real forwardValue, Real strike, Option::Type optionType)</argsstring>
@@ -13,7 +13,7 @@
           <declname>o</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>rateCurve</declname>
         </param>
         <param>
@@ -21,11 +21,11 @@
           <declname>gFunction</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>fixingDate</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="281"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_numeric_hagan_pricer_1_1_conundrum_integrand_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="numeric_hagan_pricer_1_1_conundrum_integrand_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>

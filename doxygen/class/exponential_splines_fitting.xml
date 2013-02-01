@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_exponential_splines_fitting" kind="class" prot="public">
+  <compounddef id="exponential_splines_fitting" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialSplinesFitting</compoundname>
     <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1a5e01cc092388459a70f09ade7b21d17b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_splines_fitting_1a5e01cc092388459a70f09ade7b21d17b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExponentialSplinesFitting</definition>
         <argsstring>(bool constrainAtZero=true)</argsstring>
@@ -16,12 +16,12 @@
         </param>
         <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
+      <memberdef kind="function" id="exponential_splines_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
         <definition>std::auto_ptr&lt;FittedBondDiscountCurve::FittingMethod&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
+        <reimplements refid="fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
         <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="49"/>

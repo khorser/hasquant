@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op" kind="class" prot="public">
+  <compounddef id="fdm_kluge_ext_o_u_op" kind="class" prot="public">
     <compoundname>QuantLib::FdmKlugeExtOUOp</compoundname>
     <includes local="no">/experimental/finitedifferences/fdmklugeextouop.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a6196d15718e60a26804ca495e0bff78a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a6196d15718e60a26804ca495e0bff78a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmKlugeExtOUOp</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; KlugeExtOUProcess &gt; &amp;klugeOUProcess, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, const FdmBoundaryConditionSet &amp;bcSet, Size integroIntegrationOrder)</argsstring>
@@ -14,11 +14,11 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="kluge_ext_o_u_process" kindref="compound">KlugeExtOUProcess</ref> &gt; &amp;</type>
           <declname>klugeOUProcess</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>
@@ -31,14 +31,14 @@
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a09ba34a55e4c4831735758c26f40172c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTime</definition>
         <argsstring>(Time t1, Time t2)</argsstring>
@@ -53,30 +53,30 @@
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a57a6892aa53bf65db185549fa1bfa51f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; apply</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1ae6468d51ed63c95520b155ba4698879c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; apply_mixed</definition>
         <argsstring>(const Array &amp;r) const </argsstring>
         <name>apply_mixed</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a062cfb9a8002ecf8c38aec31fef6e260" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; apply_direction</definition>
         <argsstring>(Size direction, const Array &amp;r) const </argsstring>
         <name>apply_direction</name>
@@ -85,13 +85,13 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a8efe13de6957e0b3abaa7bb8f4a56a28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; solve_splitting</definition>
         <argsstring>(Size direction, const Array &amp;r, Real s) const </argsstring>
         <name>solve_splitting</name>
@@ -100,7 +100,7 @@
           <declname>direction</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <param>
@@ -109,13 +109,13 @@
         </param>
         <location file="/experimental/finitedifferences/fdmklugeextouop.hpp" line="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_kluge_ext_o_u_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_kluge_ext_o_u_op_1a8d6573356c0748762b5634d1d289c60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; preconditioner</definition>
         <argsstring>(const Array &amp;r, Real s) const </argsstring>
         <name>preconditioner</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <param>

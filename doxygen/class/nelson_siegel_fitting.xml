@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_nelson_siegel_fitting" kind="class" prot="public">
+  <compounddef id="nelson_siegel_fitting" kind="class" prot="public">
     <compoundname>QuantLib::NelsonSiegelFitting</compoundname>
     <includes local="no">/termstructures/yield/nonlinearfittingmethods.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1a6e61366712a43ae31f6cea6118f98bf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="nelson_siegel_fitting_1a6e61366712a43ae31f6cea6118f98bf2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>NelsonSiegelFitting</definition>
         <argsstring>()</argsstring>
         <name>NelsonSiegelFitting</name>
         <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
+      <memberdef kind="function" id="nelson_siegel_fitting_1ae3bc14b05ae58606398649bfd2f6af41" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="fitted_bond_discount_curve_1_1_fitting_method" kindref="compound">FittedBondDiscountCurve::FittingMethod</ref> &gt;</type>
         <definition>std::auto_ptr&lt;FittedBondDiscountCurve::FittingMethod&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <reimplements refid="class_quant_lib_1_1_fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
+        <reimplements refid="fitted_bond_discount_curve_1_1_fitting_method_1a2570502965870826900201521f575a94">clone</reimplements>
         <briefdescription>
 <para>clone of the current object </para>        </briefdescription>
         <location file="/termstructures/yield/nonlinearfittingmethods.hpp" line="70"/>

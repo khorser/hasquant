@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_1_1arguments" kind="class" prot="public">
+  <compounddef id="swaption_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Swaption::arguments</compoundname>
     <includes local="no">/instruments/swaption.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+      <memberdef kind="variable" id="swaption_1_1arguments_1a3326e02320aa0daaf1c3433efd26ea37" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; swap</definition>
         <argsstring></argsstring>
         <name>swap</name>
         <location file="/instruments/swaption.hpp" line="107" bodyfile="/instruments/swaption.hpp" bodystart="107" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swaption_1_1arguments_1adbc9e8d5ea5da78fba7924bc32cfb25c" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swaption_1_1arguments_1adbc9e8d5ea5da78fba7924bc32cfb25c" prot="public" static="no" mutable="no">
         <type>Settlement::Type</type>
         <definition>Settlement::Type settlementType</definition>
         <argsstring></argsstring>
@@ -20,14 +20,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swaption_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
         <location file="/instruments/swaption.hpp" line="106" bodyfile="/instruments/swaption.hpp" bodystart="106" bodyend="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

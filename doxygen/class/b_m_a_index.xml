@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_b_m_a_index" kind="class" prot="public">
+  <compounddef id="b_m_a_index" kind="class" prot="public">
     <compoundname>QuantLib::BMAIndex</compoundname>
     <includes local="no">/indexes/bmaindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="b_m_a_index_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <reimplements refid="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
+        <reimplements refid="index_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
         <detaileddescription>
 <para>BMA is fixed weekly on Wednesdays. </para>        </detaileddescription>
         <location file="/indexes/bmaindex.hpp" line="48" bodyfile="/indexes/bmaindex.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="b_m_a_index_1aa279f27f1bb152aa71ff980f0bae2727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isValidFixingDate</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>isValidFixingDate</name>
-        <reimplements refid="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78">isValidFixingDate</reimplements>
+        <reimplements refid="index_1abaaf5b4d83d8e96c321a71b3eec62a78">isValidFixingDate</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <briefdescription>
@@ -32,8 +32,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="b_m_a_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
@@ -42,29 +42,29 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="b_m_a_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>(const Date &amp;valueDate) const </argsstring>
         <name>maturityDate</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
+        <reimplements refid="interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
         <location file="/indexes/bmaindex.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1afc12c1eac0967ca3d9cfcb0cf282109b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+      <memberdef kind="function" id="b_m_a_index_1afc12c1eac0967ca3d9cfcb0cf282109b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
         <definition>Schedule fixingSchedule</definition>
         <argsstring>(const Date &amp;start, const Date &amp;end)</argsstring>
         <name>fixingSchedule</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>end</declname>
         </param>
         <detaileddescription>
@@ -73,23 +73,23 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_index_1a0e89b1381092bc44afde073deec94543" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_index_1a0e89b1381092bc44afde073deec94543" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BMAIndex</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>BMAIndex</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/bmaindex.hpp" line="43"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> Market Association index. </para>    </briefdescription>
+<para><ref refid="bond" kindref="compound">Bond</ref> Market Association index. </para>    </briefdescription>
     <detaileddescription>
-<para>The BMA index is the short-term tax-exempt reference index of the <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> Market Association. It has tenor one week, is fixed weekly on Wednesdays and is applied with a one-day&apos;s fixing gap from Thursdays on for one week. It is the tax-exempt correspondent of the 1M USD-Libor. </para>    </detaileddescription>
+<para>The BMA index is the short-term tax-exempt reference index of the <ref refid="bond" kindref="compound">Bond</ref> Market Association. It has tenor one week, is fixed weekly on Wednesdays and is applied with a one-day&apos;s fixing gap from Thursdays on for one week. It is the tax-exempt correspondent of the 1M USD-Libor. </para>    </detaileddescription>
     <location file="/indexes/bmaindex.hpp" line="40" bodyfile="/indexes/bmaindex.hpp" bodystart="40" bodyend="67"/>
   </compounddef>
 </doxygen>

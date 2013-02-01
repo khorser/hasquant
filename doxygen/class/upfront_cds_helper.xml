@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_upfront_cds_helper" kind="class" prot="public">
+  <compounddef id="upfront_cds_helper" kind="class" prot="public">
     <compoundname>QuantLib::UpfrontCdsHelper</compoundname>
     <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="upfront_cds_helper_1a631b5125f1e204255ad5f6580d0264e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>UpfrontCdsHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;upfront, Rate runningSpread, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Natural upfrontSettlementDays=0, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
         <name>UpfrontCdsHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>upfront</declname>
         </param>
         <param>
@@ -18,7 +18,7 @@
           <declname>runningSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -38,11 +38,11 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -73,7 +73,7 @@
 </para>        </detaileddescription>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="154"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="upfront_cds_helper_1a5e1aa11b8fec503c3e4fa26c5b2117a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>UpfrontCdsHelper</definition>
         <argsstring>(Rate upfront, Rate runningSpread, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Natural upfrontSettlementDays=0, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
@@ -87,7 +87,7 @@
           <declname>runningSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -95,7 +95,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -107,11 +107,11 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -119,7 +119,7 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -142,20 +142,20 @@
 </para>        </detaileddescription>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="170"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="upfront_cds_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="171"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="upfront_cds_helper_1a5b508edbd7d439284c55178fd681adb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void initializeDates</definition>
         <argsstring>()</argsstring>
         <name>initializeDates</name>
-        <reimplements refid="class_quant_lib_1_1_cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
+        <reimplements refid="cds_helper_1a5b508edbd7d439284c55178fd681adb0">initializeDates</reimplements>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="172"/>
       </memberdef>
       </sectiondef>

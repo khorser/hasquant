@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_striked_type_payoff" kind="class" prot="public">
+  <compounddef id="striked_type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::StrikedTypePayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="striked_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
         <definition>std::string description</definition>
         <argsstring>() const </argsstring>
         <name>description</name>
-        <reimplements refid="class_quant_lib_1_1_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplements>
+        <reimplements refid="type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b">description</reimplements>
         <location file="/instruments/payoffs.hpp" line="93"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="striked_type_payoff_1ad7c02470d5002728533aa20843a1bd78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real strike</definition>
         <argsstring>() const </argsstring>

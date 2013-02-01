@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_garman_klass_abstract" kind="class" prot="public" abstract="yes">
+  <compounddef id="garman_klass_abstract" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GarmanKlassAbstract</compoundname>
     <includes local="no">/models/volatility/garmanklass.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="garman_klass_abstract_1ad5920315fa0f5007e061d9c4c06a0b2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GarmanKlassAbstract</definition>
         <argsstring>(Real y)</argsstring>
@@ -15,13 +15,13 @@
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="48" bodyfile="/models/volatility/garmanklass.hpp" bodystart="47" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
+      <memberdef kind="function" id="garman_klass_abstract_1a8c12250c552c5a225fa1dd5c60be8426" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>TimeSeries&lt;Volatility&gt; calculate</definition>
         <argsstring>(const TimeSeries&lt; IntervalPrice &gt; &amp;quoteSeries)</argsstring>
         <name>calculate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="class_quant_lib_1_1_interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
+          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="interval_price" kindref="compound">IntervalPrice</ref> &gt; &amp;</type>
           <declname>quoteSeries</declname>
         </param>
         <location file="/models/volatility/garmanklass.hpp" line="50" bodyfile="/models/volatility/garmanklass.hpp" bodystart="50" bodyend="60"/>

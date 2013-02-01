@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper" kind="class" prot="protected">
+  <compounddef id="callable_bond_1_1_implied_vol_helper" kind="class" prot="protected">
     <compoundname>QuantLib::CallableBond::ImpliedVolHelper</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1a81c7ca079e9587647cfa25419f41c9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_1_1_implied_vol_helper_1a81c7ca079e9587647cfa25419f41c9d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ImpliedVolHelper</definition>
         <argsstring>(const CallableBond &amp;bond, Real targetValue)</argsstring>
         <name>ImpliedVolHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_callable_bond" kindref="compound">CallableBond</ref> &amp;</type>
+          <type>const <ref refid="callable_bond" kindref="compound">CallableBond</ref> &amp;</type>
           <declname>bond</declname>
         </param>
         <param>
@@ -18,7 +18,7 @@
         </param>
         <location file="/experimental/callablebonds/callablebond.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_1_1_implied_vol_helper_1a9fc10223441f4b891bba4f2633ef790c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_1_1_implied_vol_helper_1a9fc10223441f4b891bba4f2633ef790c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Volatility x) const </argsstring>

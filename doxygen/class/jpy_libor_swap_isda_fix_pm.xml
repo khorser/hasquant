@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm" kind="class" prot="public">
+  <compounddef id="jpy_libor_swap_isda_fix_pm" kind="class" prot="public">
     <compoundname>QuantLib::JpyLiborSwapIsdaFixPm</compoundname>
     <includes local="no">/indexes/swap/jpyliborswap.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm_1a99a870bc80bd627d8ba262d9cce3e24e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="jpy_libor_swap_isda_fix_pm_1a99a870bc80bd627d8ba262d9cce3e24e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>JpyLiborSwapIsdaFixPm</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>JpyLiborSwapIsdaFixPm</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/swap/jpyliborswap.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_jpy_libor_swap_isda_fix_pm_1aeeaf366228d3eb226d736e6018ae946e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="jpy_libor_swap_isda_fix_pm_1aeeaf366228d3eb226d736e6018ae946e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>JpyLiborSwapIsdaFixPm</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;forwarding, const Handle&lt; YieldTermStructure &gt; &amp;discounting)</argsstring>
         <name>JpyLiborSwapIsdaFixPm</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
         <location file="/indexes/swap/jpyliborswap.hpp" line="66"/>
@@ -43,7 +43,7 @@
     <briefdescription>
 <para>JpyLiborSwapIsdaFixPm index base class </para>    </briefdescription>
     <detaileddescription>
-<para>JPY Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 3pm Tokyo. Semiannual Act/365 vs 6M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX1 or JPYSFIXP=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
+<para>JPY Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 3pm Tokyo. Semiannual Act/365 vs 6M <ref refid="libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX1 or JPYSFIXP=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
     <location file="/indexes/swap/jpyliborswap.hpp" line="59" bodyfile="/indexes/swap/jpyliborswap.hpp" bodystart="59" bodyend="67"/>
   </compounddef>
 </doxygen>

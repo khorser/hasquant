@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1composed__function" kind="class" prot="public">
+  <compounddef id="composed__function" kind="class" prot="public">
     <compoundname>QuantLib::composed_function</compoundname>
     <templateparamlist>
       <param>
@@ -11,14 +11,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1composed__function_1af3f7199d8f4f7c45b378df8f3035a86a" prot="public" static="no">
+      <memberdef kind="typedef" id="composed__function_1af3f7199d8f4f7c45b378df8f3035a86a" prot="public" static="no">
         <type>G::argument_type</type>
         <definition>typedef G::argument_type argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
         <location file="/math/functional.hpp" line="115" bodyfile="/math/functional.hpp" bodystart="115" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1composed__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
+      <memberdef kind="typedef" id="composed__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
         <type>F::result_type</type>
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
@@ -27,7 +27,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1composed__function_1a58076738c8be889fca1b173b252c8d0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="composed__function_1a58076738c8be889fca1b173b252c8d0b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>composed_function</definition>
         <argsstring>(const F &amp;f, const G &amp;g)</argsstring>
@@ -42,7 +42,7 @@
         </param>
         <location file="/math/functional.hpp" line="117" bodyfile="/math/functional.hpp" bodystart="117" bodyend="117"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1composed__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="composed__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
         <definition>result_type operator()</definition>
         <argsstring>(const argument_type &amp;x) const </argsstring>

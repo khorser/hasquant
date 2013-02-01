@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data" kind="class" prot="public">
+  <compounddef id="adapted_path_payoff_1_1_valuation_data" kind="class" prot="public">
     <compoundname>QuantLib::AdaptedPathPayoff::ValuationData</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a21086d3059a8089eb8ad49f2bdf20038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1a21086d3059a8089eb8ad49f2bdf20038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfTimes</definition>
         <argsstring>() const </argsstring>
         <name>numberOfTimes</name>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a0a804d35ee0bc871bf757c4db1ca905a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1a0a804d35ee0bc871bf757c4db1ca905a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfAssets</definition>
         <argsstring>() const </argsstring>
         <name>numberOfAssets</name>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ae3650f31c99da4860d1aba3056cc3e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1ae3650f31c99da4860d1aba3056cc3e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real getAssetValue</definition>
         <argsstring>(Size time, Size asset)</argsstring>
@@ -32,8 +32,8 @@
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1a73eeecaf6052dadb5fc2447aff7b2d90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; getYieldTermStructure</definition>
         <argsstring>(Size time)</argsstring>
         <name>getYieldTermStructure</name>
@@ -43,7 +43,7 @@
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1ac0c2a2fde164119aa0db6a59c3039999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1ac0c2a2fde164119aa0db6a59c3039999" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setPayoffValue</definition>
         <argsstring>(Size time, Real value)</argsstring>
@@ -58,7 +58,7 @@
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data_1a4747e7f3d78af594cb1590bd7d32581e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1_1_valuation_data_1a4747e7f3d78af594cb1590bd7d32581e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setExerciseData</definition>
         <argsstring>(Size time, Real exercise, Array &amp;state)</argsstring>
@@ -72,7 +72,7 @@
           <declname>exercise</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>state</declname>
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="47"/>

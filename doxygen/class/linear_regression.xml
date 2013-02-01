@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_linear_regression" kind="class" prot="public">
+  <compounddef id="linear_regression" kind="class" prot="public">
     <compoundname>QuantLib::LinearRegression</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_linear_regression_1a5af104f1f93e4f02753fae7d0855fbcf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="linear_regression_1a5af104f1f93e4f02753fae7d0855fbcf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class xContainer</type>
@@ -33,7 +33,7 @@
 <para>linear regression y_i = a_0 + a_1*x_0 +..+a_n*x_{n-1} + eps </para>        </briefdescription>
         <location file="/math/linearleastsquaresregression.hpp" line="94" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="103" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_linear_regression_1ab16acb1ffaa57d83c0125772f9d29cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="linear_regression_1ab16acb1ffaa57d83c0125772f9d29cc7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class xContainer</type>

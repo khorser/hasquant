@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cms_rate_bond" kind="class" prot="public">
+  <compounddef id="cms_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::CmsRateBond</compoundname>
     <includes local="no">/instruments/bonds/cmsratebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cms_rate_bond_1a7633422a0c3c58407b7d7d9a61699ea2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cms_rate_bond_1a7633422a0c3c58407b7d7d9a61699ea2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CmsRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const boost::shared_ptr&lt; SwapIndex &gt; &amp;index, const DayCounter &amp;paymentDayCounter, BusinessDayConvention paymentConvention=Following, Natural fixingDays=Null&lt; Natural &gt;(), const std::vector&lt; Real &gt; &amp;gearings=std::vector&lt; Real &gt;(1, 1.0), const std::vector&lt; Spread &gt; &amp;spreads=std::vector&lt; Spread &gt;(1, 0.0), const std::vector&lt; Rate &gt; &amp;caps=std::vector&lt; Rate &gt;(), const std::vector&lt; Rate &gt; &amp;floors=std::vector&lt; Rate &gt;(), bool inArrears=false, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
@@ -18,15 +18,15 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>paymentDayCounter</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <param>
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -70,9 +70,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/instruments/bonds/cmsratebond.hpp" line="61"/>
       </memberdef>

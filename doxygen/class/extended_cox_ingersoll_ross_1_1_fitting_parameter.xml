@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter" kind="class" prot="public">
+  <compounddef id="extended_cox_ingersoll_ross_1_1_fitting_parameter" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss::FittingParameter</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter_1a01424d1435a10b1c9b02f887528d4e66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1_1_fitting_parameter_1a01424d1435a10b1c9b02f887528d4e66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FittingParameter</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real theta, Real k, Real sigma, Real x0)</argsstring>
         <name>FittingParameter</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>

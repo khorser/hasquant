@@ -1,54 +1,54 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kind="class" prot="public" abstract="yes">
+  <compounddef id="yo_y_inflation_cap_floor_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YoYInflationCapFloorEngine</compoundname>
     <includes local="no">/pricingengines/inflation/inflationcapfloorengines.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a34374e848b5e016a316bc23217253bc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1a34374e848b5e016a316bc23217253bc9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>YoYInflationCapFloorEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;, const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;vol)</argsstring>
         <name>YoYInflationCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a8bb01ccc7877fe002fed45904efb5ec5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+      <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1a8bb01ccc7877fe002fed45904efb5ec5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;YoYInflationIndex&gt; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="50" bodyfile="/pricingengines/inflation/inflationcapfloorengines.hpp" bodystart="50" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1ae3cf89dfb539bcd920d51376df6b8a00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;</type>
+      <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1ae3cf89dfb539bcd920d51376df6b8a00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;</type>
         <definition>Handle&lt;YoYOptionletVolatilitySurface&gt; volatility</definition>
         <argsstring>() const </argsstring>
         <name>volatility</name>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="51" bodyfile="/pricingengines/inflation/inflationcapfloorengines.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a12ee2939c6082f5a499d14d4ca6d065e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1a12ee2939c6082f5a499d14d4ca6d065e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setVolatility</definition>
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;vol)</argsstring>
         <name>setVolatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="yo_y_inflation_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/inflation/inflationcapfloorengines.hpp" line="55"/>
       </memberdef>
       </sectiondef>

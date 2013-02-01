@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bermudan_exercise" kind="class" prot="public">
+  <compounddef id="bermudan_exercise" kind="class" prot="public">
     <compoundname>QuantLib::BermudanExercise</compoundname>
     <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bermudan_exercise_1a23a2f17d9bae84c1423ab5c423b17205" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BermudanExercise</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, bool payoffAtExpiry=false)</argsstring>
         <name>BermudanExercise</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_default_event_1_1_default_settlement" kind="class" prot="public">
+  <compounddef id="default_event_1_1_default_settlement" kind="class" prot="public">
     <compoundname>QuantLib::DefaultEvent::DefaultSettlement</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="default_event_1_1_default_settlement_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
         <location file="/experimental/credit/defaultevent.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a95749f00f4c7ae289280c2412829deeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1_1_default_settlement_1a95749f00f4c7ae289280c2412829deeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real recoveryRate</definition>
         <argsstring>(Seniority sen) const </argsstring>
@@ -23,13 +23,13 @@
 <para>Returns the recovery rate of a default event which has already settled. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1_1_default_settlement_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1_1_default_settlement_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/experimental/credit/defaultevent.hpp" line="76"/>
       </memberdef>

@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cds_option" kind="class" prot="public">
+  <compounddef id="cds_option" kind="class" prot="public">
     <compoundname>QuantLib::CdsOption</compoundname>
     <includes local="no">/experimental/credit/cdsoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_cds_option_1_1arguments" prot="public">QuantLib::CdsOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cds_option_1_1engine" prot="public">QuantLib::CdsOption::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cds_option_1_1results" prot="public">QuantLib::CdsOption::results</innerclass>
+    <innerclass refid="cds_option_1_1arguments" prot="public">QuantLib::CdsOption::arguments</innerclass>
+    <innerclass refid="cds_option_1_1engine" prot="public">QuantLib::CdsOption::engine</innerclass>
+    <innerclass refid="cds_option_1_1results" prot="public">QuantLib::CdsOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cds_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/experimental/credit/cdsoption.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cds_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -34,8 +34,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a37a0ce9ec1e1962e9cd5845be2657bd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="cds_option_1a37a0ce9ec1e1962e9cd5845be2657bd3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CreditDefaultSwap&gt;&amp; underlyingSwap</definition>
         <argsstring>() const </argsstring>
         <name>underlyingSwap</name>
@@ -44,21 +44,21 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1aba1526ce2bda378e4ef2465f8e447763" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_option_1aba1526ce2bda378e4ef2465f8e447763" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate atmRate</definition>
         <argsstring>() const </argsstring>
         <name>atmRate</name>
         <location file="/experimental/credit/cdsoption.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1ab5554b5e7c7e5608a4a952efbee8deff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_option_1ab5554b5e7c7e5608a4a952efbee8deff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real riskyAnnuity</definition>
         <argsstring>() const </argsstring>
         <name>riskyAnnuity</name>
         <location file="/experimental/credit/cdsoption.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1a5cabbc4f244ab101262fabc120ed06c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_option_1a5cabbc4f244ab101262fabc120ed06c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, const Handle&lt; DefaultProbabilityTermStructure &gt; &amp;, Real recoveryRate, Real accuracy=1.e-4, Size maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
@@ -68,11 +68,11 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -102,17 +102,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_option_1ad336e12950bbf3cfc1bafd6fc5bb796a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_option_1ad336e12950bbf3cfc1bafd6fc5bb796a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CdsOption</definition>
         <argsstring>(const boost::shared_ptr&lt; CreditDefaultSwap &gt; &amp;swap, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, bool knocksOut=true)</argsstring>
         <name>CdsOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="credit_default_swap" kindref="compound">CreditDefaultSwap</ref> &gt; &amp;</type>
           <declname>swap</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_himalaya_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="himalaya_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::HimalayaOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+      <memberdef kind="variable" id="himalaya_option_1_1arguments_1aa3c115cda618ed9bc3eecdf266fa5b2d" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring></argsstring>
         <name>fixingDates</name>
@@ -12,14 +12,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="himalaya_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
         <location file="/experimental/exoticoptions/himalayaoption.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_himalaya_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="himalaya_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

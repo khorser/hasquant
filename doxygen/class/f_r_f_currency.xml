@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_r_f_currency" kind="class" prot="public">
+  <compounddef id="f_r_f_currency" kind="class" prot="public">
     <compoundname>QuantLib::FRFCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_r_f_currency_1a697b68e54e2c08c0868edde5689aa3dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="f_r_f_currency_1a697b68e54e2c08c0868edde5689aa3dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FRFCurrency</definition>
         <argsstring>()</argsstring>

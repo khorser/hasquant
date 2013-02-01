@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_clayton_copula_rng" kind="class" prot="public">
+  <compounddef id="clayton_copula_rng" kind="class" prot="public">
     <compoundname>QuantLib::ClaytonCopulaRng</compoundname>
     <includes local="no">/experimental/math/claytoncopularng.hpp</includes>
     <templateparamlist>
@@ -11,14 +11,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_clayton_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="typedef" id="clayton_copula_rng_1af3b59a3dd56521693efc68c221a2bf38" prot="public" static="no">
+        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef Sample&lt;std::vector&lt;Real&gt; &gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
         <location file="/experimental/math/claytoncopularng.hpp" line="38" bodyfile="/experimental/math/claytoncopularng.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_clayton_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
+      <memberdef kind="typedef" id="clayton_copula_rng_1abf33bf876d7887a0d4a55f3d3ebba7ba" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG urng_type</definition>
         <argsstring></argsstring>
@@ -27,7 +27,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_clayton_copula_rng_1a68641611e0ad1aba5518eb32ba559751" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="clayton_copula_rng_1a68641611e0ad1aba5518eb32ba559751" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>ClaytonCopulaRng</definition>
         <argsstring>(const RNG &amp;uniformGenerator, Real theta)</argsstring>
@@ -42,8 +42,8 @@
         </param>
         <location file="/experimental/math/claytoncopularng.hpp" line="40" bodyfile="/experimental/math/claytoncopularng.hpp" bodystart="48" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_clayton_copula_rng_1a8882bec40b8d894e3d743ddff183d903" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+      <memberdef kind="function" id="clayton_copula_rng_1a8882bec40b8d894e3d743ddff183d903" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
         <definition>ClaytonCopulaRng&lt; RNG &gt;::sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

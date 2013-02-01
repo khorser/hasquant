@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_f_t_variance_gamma_engine" kind="class" prot="public">
+  <compounddef id="f_f_t_variance_gamma_engine" kind="class" prot="public">
     <compoundname>QuantLib::FFTVarianceGammaEngine</compoundname>
     <includes local="no">/experimental/variancegamma/fftvariancegammaengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a1c213c43e67ef844ffcaa35bc7c164c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="f_f_t_variance_gamma_engine_1a1c213c43e67ef844ffcaa35bc7c164c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FFTVarianceGammaEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; VarianceGammaProcess &gt; &amp;process, Real logStrikeSpacing=0.001)</argsstring>
         <name>FFTVarianceGammaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="variance_gamma_process" kindref="compound">VarianceGammaProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -20,12 +20,12 @@
         </param>
         <location file="/experimental/variancegamma/fftvariancegammaengine.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_variance_gamma_engine_1a0428dab69dd3bc7d09cfa5127bf039ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
+      <memberdef kind="function" id="f_f_t_variance_gamma_engine_1a0428dab69dd3bc7d09cfa5127bf039ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::auto_ptr&lt; <ref refid="f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
         <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>
-        <reimplements refid="class_quant_lib_1_1_f_f_t_engine_1a957725ec1d11493d09636c2a11701d87">clone</reimplements>
+        <reimplements refid="f_f_t_engine_1a957725ec1d11493d09636c2a11701d87">clone</reimplements>
         <location file="/experimental/variancegamma/fftvariancegammaengine.hpp" line="42"/>
       </memberdef>
       </sectiondef>

@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_energy_commodity_1_1results" kind="class" prot="public">
+  <compounddef id="energy_commodity_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::EnergyCommodity::results</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1results_1a2d0d8db8ecaae636a224ea2ba4dd51a2" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="energy_commodity_1_1results_1a2d0d8db8ecaae636a224ea2ba4dd51a2" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real NPV</definition>
         <argsstring></argsstring>
         <name>NPV</name>
         <location file="/experimental/commodities/energycommodity.hpp" line="127" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1results_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+      <memberdef kind="variable" id="energy_commodity_1_1results_1a2abe4a46fc0038ef6a824d8109ca1741" prot="public" static="no" mutable="no">
+        <type><ref refid="currency" kindref="compound">Currency</ref></type>
         <definition>Currency currency</definition>
         <argsstring></argsstring>
         <name>currency</name>
         <location file="/experimental/commodities/energycommodity.hpp" line="128" bodyfile="/experimental/commodities/energycommodity.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_energy_commodity_1_1results_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+      <memberdef kind="variable" id="energy_commodity_1_1results_1a8381a2b60fb912bab67a5218ba3ad058" prot="public" static="no" mutable="no">
+        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
         <definition>UnitOfMeasure unitOfMeasure</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure</name>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_commodity_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="energy_commodity_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

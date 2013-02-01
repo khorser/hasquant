@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_monte_carlo_model" kind="class" prot="public">
+  <compounddef id="monte_carlo_model" kind="class" prot="public">
     <compoundname>QuantLib::MonteCarloModel</compoundname>
     <includes local="no">/methods/montecarlo/montecarlomodel.hpp</includes>
     <templateparamlist>
@@ -22,49 +22,49 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a9792aacbaa395d164fe71c19940a35cf" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1a9792aacbaa395d164fe71c19940a35cf" prot="public" static="no">
         <type>MC&lt; RNG &gt;</type>
         <definition>typedef MC&lt;RNG&gt; mc_traits</definition>
         <argsstring></argsstring>
         <name>mc_traits</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="53" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="53" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a3b06460378c6160a0308efbecfc7a63f" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1a3b06460378c6160a0308efbecfc7a63f" prot="public" static="no">
         <type>RNG</type>
         <definition>typedef RNG rng_traits</definition>
         <argsstring></argsstring>
         <name>rng_traits</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="54" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="54" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1aab11530354ed62b0a419f90803f7a647" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1aab11530354ed62b0a419f90803f7a647" prot="public" static="no">
         <type>MC&lt; RNG &gt;::path_generator_type</type>
         <definition>typedef MC&lt;RNG&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="55" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a37efbc67c5d5bcba2ad1e5a6bc382563" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1a37efbc67c5d5bcba2ad1e5a6bc382563" prot="public" static="no">
         <type>MC&lt; RNG &gt;::path_pricer_type</type>
         <definition>typedef MC&lt;RNG&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="56" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1a204507d73ca2954ec4c0b27373d2c40c" prot="public" static="no">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">path_generator_type::sample_type</ref></type>
+      <memberdef kind="typedef" id="monte_carlo_model_1a204507d73ca2954ec4c0b27373d2c40c" prot="public" static="no">
+        <type><ref refid="sample" kindref="compound">path_generator_type::sample_type</ref></type>
         <definition>typedef path_generator_type::sample_type sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="57" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1ad8e5fd95c87e9d6a3657dc6083452142" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1ad8e5fd95c87e9d6a3657dc6083452142" prot="public" static="no">
         <type>path_pricer_type::result_type</type>
         <definition>typedef path_pricer_type::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="58" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_monte_carlo_model_1ac9e2bc84dc5b8fed59e079e42208e74c" prot="public" static="no">
+      <memberdef kind="typedef" id="monte_carlo_model_1ac9e2bc84dc5b8fed59e079e42208e74c" prot="public" static="no">
         <type>S</type>
         <definition>typedef S stats_type</definition>
         <argsstring></argsstring>
@@ -73,7 +73,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1ac333491bacb2f08888afa1d98ae29d50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="monte_carlo_model_1ac333491bacb2f08888afa1d98ae29d50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MonteCarloModel</definition>
         <argsstring>(const boost::shared_ptr&lt; path_generator_type &gt; &amp;pathGenerator, const boost::shared_ptr&lt; path_pricer_type &gt; &amp;pathPricer, const stats_type &amp;sampleAccumulator, bool antitheticVariate, const boost::shared_ptr&lt; path_pricer_type &gt; &amp;cvPathPricer=boost::shared_ptr&lt; path_pricer_type &gt;(), result_type cvOptionValue=result_type(), const boost::shared_ptr&lt; path_generator_type &gt; &amp;cvPathGenerator=boost::shared_ptr&lt; path_generator_type &gt;())</argsstring>
@@ -111,7 +111,7 @@
         </param>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="75" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="61" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1a77cd545c02ed7037a3e8d582ca1069c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="monte_carlo_model_1a77cd545c02ed7037a3e8d582ca1069c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void addSamples</definition>
         <argsstring>(Size samples)</argsstring>
@@ -122,7 +122,7 @@
         </param>
         <location file="/methods/montecarlo/montecarlomodel.hpp" line="81" bodyfile="/methods/montecarlo/montecarlomodel.hpp" bodystart="96" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_model_1a4e28dddeca06f8b74c814ace5b4fac58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="monte_carlo_model_1a4e28dddeca06f8b74c814ace5b4fac58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const stats_type &amp;</type>
         <definition>const MonteCarloModel&lt; MC, RNG, S &gt;::stats_type &amp; sampleAccumulator</definition>
         <argsstring>(void) const </argsstring>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_g2_swaption_engine" kind="class" prot="public">
+  <compounddef id="g2_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::G2SwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/g2swaptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_swaption_engine_1a9a21159dd8f78f1728aff7aca6aec513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="g2_swaption_engine_1a9a21159dd8f78f1728aff7aca6aec513" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>G2SwaptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; G2 &gt; &amp;model, Real range, Size intervals)</argsstring>
         <name>G2SwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_g2" kindref="compound">G2</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="g2" kindref="compound">G2</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -23,12 +23,12 @@
         </param>
         <location file="/pricingengines/swaption/g2swaptionengine.hpp" line="49" bodyfile="/pricingengines/swaption/g2swaptionengine.hpp" bodystart="45" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="g2_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/swaption/g2swaptionengine.hpp" line="50" bodyfile="/pricingengines/swaption/g2swaptionengine.hpp" bodystart="50" bodyend="66"/>
       </memberdef>
       </sectiondef>

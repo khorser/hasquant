@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_time_setter" kind="class" prot="public">
+  <compounddef id="generic_time_setter" kind="class" prot="public">
     <compoundname>QuantLib::GenericTimeSetter</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_time_setter_1a128a759d11365cdafd4455de2b5a5ea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -19,7 +19,7 @@
         <argsstring>(const Array &amp;grid, T process)</argsstring>
         <name>GenericTimeSetter</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="85" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="84" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_time_setter_1aa7ef6044ec2ce2d17c8d79b5fa64518f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setTime</definition>
         <argsstring>(Time t, TridiagonalOperator &amp;L) const </argsstring>
@@ -38,7 +38,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
         <location file="/methods/finitedifferences/pde.hpp" line="87" bodyfile="/methods/finitedifferences/pde.hpp" bodystart="86" bodyend="89"/>

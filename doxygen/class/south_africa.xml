@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_south_africa" kind="class" prot="public">
+  <compounddef id="south_africa" kind="class" prot="public">
     <compoundname>QuantLib::SouthAfrica</compoundname>
     <includes local="no">/time/calendars/southafrica.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_south_africa_1a3194ebf0e22761f359b35f266aa1fa7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="south_africa_1a3194ebf0e22761f359b35f266aa1fa7b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SouthAfrica</definition>
         <argsstring>()</argsstring>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl" kind="class" prot="public">
+  <compounddef id="detail_1_1_mixed_interpolation_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::MixedInterpolationImpl</compoundname>
     <templateparamlist>
       <param>
@@ -17,7 +17,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a17203ac2d665c31656247a76e2701def" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a17203ac2d665c31656247a76e2701def" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MixedInterpolationImpl</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Size n, const Interpolator1 &amp;factory1=Interpolator1(), const Interpolator2 &amp;factory2=Interpolator2())</argsstring>
@@ -50,14 +50,14 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="44" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="39" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="59" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
@@ -68,7 +68,7 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="63" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="63" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
@@ -79,7 +79,7 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="68" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="68" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivative</definition>
         <argsstring>(Real x) const </argsstring>
@@ -90,7 +90,7 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="73" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="73" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondDerivative</definition>
         <argsstring>(Real x) const </argsstring>
@@ -101,7 +101,7 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="78" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="78" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_mixed_interpolation_impl_1a9f6eaafbc5eb99a39fdb32ca6e71f732" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_mixed_interpolation_impl_1a9f6eaafbc5eb99a39fdb32ca6e71f732" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size switchIndex</definition>
         <argsstring>()</argsstring>

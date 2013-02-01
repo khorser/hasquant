@@ -1,36 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_black_variance_surface" kind="class" prot="public">
+  <compounddef id="extended_black_variance_surface" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedBlackVarianceSurface</compoundname>
     <includes local="no">/experimental/volatility/extendedblackvariancesurface.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5" prot="public" static="no">
+      <memberdef kind="enum" id="extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5" prot="public" static="no">
         <name>Extrapolation</name>
-        <enumvalue id="class_quant_lib_1_1_extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5ae3d90f29d65e6ca219865c8863a4da2a" prot="public">
+        <enumvalue id="extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5ae3d90f29d65e6ca219865c8863a4da2a" prot="public">
           <name>ConstantExtrapolation</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5a083d32b4e15cef6c1dd5c76052ce3b4d" prot="public">
+        <enumvalue id="extended_black_variance_surface_1a8e2df513f6590afb6c85a22a458745c5a083d32b4e15cef6c1dd5c76052ce3b4d" prot="public">
           <name>InterpolatorDefaultExtrapolation</name>
         </enumvalue>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="41" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1ad450699920f65fd2efe34adb8197e628" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1ad450699920f65fd2efe34adb8197e628" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExtendedBlackVarianceSurface</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;strikes, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;volatilities, const DayCounter &amp;dayCounter, Extrapolation lowerExtrapolation=InterpolatorDefaultExtrapolation, Extrapolation upperExtrapolation=InterpolatorDefaultExtrapolation)</argsstring>
         <name>ExtendedBlackVarianceSurface</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -38,11 +38,11 @@
           <declname>strikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -57,47 +57,47 @@
         </param>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="extended_black_variance_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="54" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="extended_black_variance_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="55" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="56" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="57" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="57" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1a9ef2833161e7150c5b0fbfbfc91b6791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1a9ef2833161e7150c5b0fbfbfc91b6791" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class Interpolator</type>
@@ -114,31 +114,31 @@
         </param>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="59" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="59" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_black_variance_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="black_variance_term_structure_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="67" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="82" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_black_variance_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="extended_black_variance_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="68"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Black volatility surface modelled as variance surface. </para>    </briefdescription>
     <detaileddescription>
-<para>This class is similar to <ref refid="class_quant_lib_1_1_black_variance_surface" kindref="compound">BlackVarianceSurface</ref>, but extends it to use quotes for the input volatilities. </para>    </detaileddescription>
+<para>This class is similar to <ref refid="black_variance_surface" kindref="compound">BlackVarianceSurface</ref>, but extends it to use quotes for the input volatilities. </para>    </detaileddescription>
     <location file="/experimental/volatility/extendedblackvariancesurface.hpp" line="39" bodyfile="/experimental/volatility/extendedblackvariancesurface.hpp" bodystart="39" bodyend="80"/>
   </compounddef>
 </doxygen>

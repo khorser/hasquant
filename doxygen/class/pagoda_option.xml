@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pagoda_option" kind="class" prot="public">
+  <compounddef id="pagoda_option" kind="class" prot="public">
     <compoundname>QuantLib::PagodaOption</compoundname>
     <includes local="no">/experimental/exoticoptions/pagodaoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_pagoda_option_1_1arguments" prot="public">QuantLib::PagodaOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_pagoda_option_1_1engine" prot="public">QuantLib::PagodaOption::engine</innerclass>
+    <innerclass refid="pagoda_option_1_1arguments" prot="public">QuantLib::PagodaOption::arguments</innerclass>
+    <innerclass refid="pagoda_option_1_1engine" prot="public">QuantLib::PagodaOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pagoda_option_1aa24208806aa5411bceaa9c73d090f47b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="pagoda_option_1aa24208806aa5411bceaa9c73d090f47b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PagodaOption</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;fixingDates, Real roof, Real fraction)</argsstring>
         <name>PagodaOption</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>fixingDates</declname>
         </param>
         <param>
@@ -25,12 +25,12 @@
         </param>
         <location file="/experimental/exoticoptions/pagodaoption.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pagoda_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="pagoda_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

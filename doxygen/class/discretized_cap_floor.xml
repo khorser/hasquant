@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discretized_cap_floor" kind="class" prot="public">
+  <compounddef id="discretized_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCapFloor</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_cap_floor_1acc6e405d619c13b77b52de572f5b49e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_cap_floor_1acc6e405d619c13b77b52de572f5b49e2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscretizedCapFloor</definition>
         <argsstring>(const CapFloor::arguments &amp;args, const Date &amp;referenceDate, const DayCounter &amp;dayCounter)</argsstring>
         <name>DiscretizedCapFloor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref> &amp;</type>
+          <type>const <ref refid="cap_floor_1_1arguments" kindref="compound">CapFloor::arguments</ref> &amp;</type>
           <declname>args</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/pricingengines/capfloor/discretizedcapfloor.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_cap_floor_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_cap_floor_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>(Size size)</argsstring>
@@ -33,7 +33,7 @@
         </param>
         <location file="/pricingengines/capfloor/discretizedcapfloor.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_cap_floor_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_cap_floor_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const </argsstring>

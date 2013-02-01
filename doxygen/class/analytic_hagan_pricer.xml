@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_hagan_pricer" kind="class" prot="public">
+  <compounddef id="analytic_hagan_pricer" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticHaganPricer</compoundname>
     <includes local="no">/cashflows/conundrumpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_hagan_pricer_1a81f28aa3715695a25e04c2c2f15ae53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_hagan_pricer_1a81f28aa3715695a25e04c2c2f15ae53c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticHaganPricer</definition>
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;swaptionVol, GFunctionFactory::YieldCurveModel modelOfYieldCurve, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>AnalyticHaganPricer</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>swaptionVol</declname>
         </param>
         <param>
@@ -18,7 +18,7 @@
           <declname>modelOfYieldCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="320"/>

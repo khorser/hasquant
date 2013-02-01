@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_s_a_b_r" kind="class" prot="public">
+  <compounddef id="s_a_b_r" kind="class" prot="public">
     <compoundname>QuantLib::SABR</compoundname>
     <includes local="no">/math/interpolations/sabrinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_s_a_b_r_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="s_a_b_r_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
         <definition>const bool global</definition>
         <argsstring></argsstring>
@@ -14,7 +14,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_1a87f9f93562d4810ac90baf75be10fbba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="s_a_b_r_1a87f9f93562d4810ac90baf75be10fbba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SABR</definition>
         <argsstring>(Time t, Real forward, Real alpha, Real beta, Real nu, Real rho, bool alphaIsFixed, bool betaIsFixed, bool nuIsFixed, bool rhoIsFixed, bool vegaWeighted=false, const boost::shared_ptr&lt; EndCriteria &gt; endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; optMethod=boost::shared_ptr&lt; OptimizationMethod &gt;())</argsstring>
@@ -65,18 +65,18 @@
           <defval>false</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;</type>
           <declname>optMethod</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
         <location file="/math/interpolations/sabrinterpolation.hpp" line="410" bodyfile="/math/interpolations/sabrinterpolation.hpp" bodystart="395" bodyend="410"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_s_a_b_r_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="s_a_b_r_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -85,7 +85,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>

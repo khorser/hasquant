@@ -1,66 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_volatility_cube" kind="class" prot="public">
+  <compounddef id="swaption_volatility_cube" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolatilityCube</compoundname>
     <includes local="no">/termstructures/volatility/swaption/swaptionvolcube.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="swaption_volatility_cube_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="52" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="swaption_volatility_cube_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="53" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
+        <reimplements refid="term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="54" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_volatility_cube_1a4a72314adf5959d9427df0fad16a1d3b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
+        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="55" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="55" bodyend="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="swaption_volatility_cube_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
+        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="56" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
+        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="57" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="57" bodyend="57"/>
@@ -68,22 +68,22 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1a92f7194103698b0abf537479db1bab49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="60" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1af96d43a92083621b2e8e980ec2b666b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="61" bodyend="61"/>
@@ -91,12 +91,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1aa42d63fa6f2a1c9d377c25ca63fa5f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_volatility_cube_1aa42d63fa6f2a1c9d377c25ca63fa5f6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         <definition>const Period&amp; maxSwapTenor</definition>
         <argsstring>() const </argsstring>
         <name>maxSwapTenor</name>
-        <reimplements refid="class_quant_lib_1_1_swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
+        <reimplements refid="swaption_volatility_structure_1a95eb3bcb1f89026d83f78dd535d803a0">maxSwapTenor</reimplements>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="65" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="65" bodyend="65"/>
@@ -104,53 +104,53 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a5d78247782146d4b70292706933b6235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1a5d78247782146d4b70292706933b6235" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate atmStrike</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1a12e6621b980964b337ceb6d306654759" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1a12e6621b980964b337ceb6d306654759" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate atmStrike</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;swapTenor) const </argsstring>
         <name>atmStrike</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube.hpp" line="72" bodyfile="/termstructures/volatility/swaption/swaptionvolcube.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_volatility_cube_1af16bbd26e0c973d80b93aeb5c4a272ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_volatility_cube_1af16bbd26e0c973d80b93aeb5c4a272ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolatilityCube</definition>
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;atmVolStructure, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; Spread &gt; &amp;strikeSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndexBase, const boost::shared_ptr&lt; SwapIndex &gt; &amp;shortSwapIndexBase, bool vegaWeightedSmileFit)</argsstring>
         <name>SwaptionVolatilityCube</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>atmVolStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
@@ -158,15 +158,15 @@
           <declname>strikeSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>swapIndexBase</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>shortSwapIndexBase</declname>
         </param>
         <param>

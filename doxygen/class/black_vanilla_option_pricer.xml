@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_vanilla_option_pricer" kind="class" prot="public">
+  <compounddef id="black_vanilla_option_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BlackVanillaOptionPricer</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vanilla_option_pricer_1a53a9bb8024f985df7e17d53667da6b71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_vanilla_option_pricer_1a53a9bb8024f985df7e17d53667da6b71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackVanillaOptionPricer</definition>
         <argsstring>(Rate forwardValue, Date expiryDate, const Period &amp;swapTenor, const boost::shared_ptr&lt; SwaptionVolatilityStructure &gt; &amp;volatilityStructure)</argsstring>
@@ -13,20 +13,20 @@
           <declname>forwardValue</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>expiryDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>volatilityStructure</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_vanilla_option_pricer_1aca654004dde0110e7771eaa4d73c7c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_vanilla_option_pricer_1aca654004dde0110e7771eaa4d73c7c85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real strike, Option::Type optionType, Real deflator) const </argsstring>

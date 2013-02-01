@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_model_engine" kind="class" prot="public">
+  <compounddef id="generic_model_engine" kind="class" prot="public">
     <compoundname>QuantLib::GenericModelEngine</compoundname>
     <includes local="no">/pricingengines/genericmodelengine.hpp</includes>
     <templateparamlist>
@@ -21,19 +21,19 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_model_engine_1a3edb57d5adf68af0bd3ab7b6a1633edf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericModelEngine</definition>
         <argsstring>(const Handle&lt; ModelType &gt; &amp;model=Handle&lt; ModelType &gt;())</argsstring>
         <name>GenericModelEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; ModelType &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; ModelType &gt; &amp;</type>
           <declname>model</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; ModelType &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; ModelType &gt;()</defval>
         </param>
         <location file="/pricingengines/genericmodelengine.hpp" line="42" bodyfile="/pricingengines/genericmodelengine.hpp" bodystart="41" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_model_engine_1a5761f8fc721622d3924cfd84b297e363" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericModelEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ModelType &gt; &amp;model)</argsstring>

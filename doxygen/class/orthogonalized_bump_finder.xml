@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_orthogonalized_bump_finder" kind="class" prot="public">
+  <compounddef id="orthogonalized_bump_finder" kind="class" prot="public">
     <compoundname>QuantLib::OrthogonalizedBumpFinder</compoundname>
     <includes local="no">/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonalized_bump_finder_1ac13090c0556142212a8c53c8edb00940" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OrthogonalizedBumpFinder</definition>
         <argsstring>(const VegaBumpCollection &amp;bumps, const std::vector&lt; VolatilityBumpInstrumentJacobian::Swaption &gt; &amp;swaptions, const std::vector&lt; VolatilityBumpInstrumentJacobian::Cap &gt; &amp;caps, Real multiplierCutOff, Real tolerance)</argsstring>
         <name>OrthogonalizedBumpFinder</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
+          <type>const <ref refid="vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
           <declname>bumps</declname>
         </param>
         <param>
@@ -31,13 +31,13 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonalized_bump_finder_1ae48b40df0717c7224c09a1f8e3db83a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonalized_bump_finder_1ae48b40df0717c7224c09a1f8e3db83a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void GetVegaBumps</definition>
         <argsstring>(std::vector&lt; std::vector&lt; Matrix &gt; &gt; &amp;theBumps) const </argsstring>
         <name>GetVegaBumps</name>
         <param>
-          <type>std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
+          <type>std::vector&lt; std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &gt; &amp;</type>
           <declname>theBumps</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="98"/>

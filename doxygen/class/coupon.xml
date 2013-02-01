@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_coupon" kind="class" prot="public" abstract="yes">
+  <compounddef id="coupon" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Coupon</compoundname>
     <includes local="no">/cashflows/coupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="coupon_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <reimplements refid="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <reimplements refid="cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
@@ -19,15 +19,15 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/cashflows/coupon.hpp" line="56" bodyfile="/cashflows/coupon.hpp" bodystart="93" bodyend="95"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="coupon_1a8ff50d13a6583a8a5f97ba3a8d2187df" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; accrualStartDate</definition>
         <argsstring>() const </argsstring>
         <name>accrualStartDate</name>
@@ -35,8 +35,8 @@
 <para>start of the accrual period </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="58" bodyfile="/cashflows/coupon.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="coupon_1a6cf202b8e6db203736e43b79932e87c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; accrualEndDate</definition>
         <argsstring>() const </argsstring>
         <name>accrualEndDate</name>
@@ -44,8 +44,8 @@
 <para>end of the accrual period </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="60" bodyfile="/cashflows/coupon.hpp" bodystart="101" bodyend="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="coupon_1a2979aa5e7dc27591cc1687c5379b416c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referencePeriodStart</definition>
         <argsstring>() const </argsstring>
         <name>referencePeriodStart</name>
@@ -53,8 +53,8 @@
 <para>start date of the reference period </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="62" bodyfile="/cashflows/coupon.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="coupon_1aca57f98b3b3ab2457890bba3eabe81a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referencePeriodEnd</definition>
         <argsstring>() const </argsstring>
         <name>referencePeriodEnd</name>
@@ -62,7 +62,7 @@
 <para>end date of the reference period </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="64" bodyfile="/cashflows/coupon.hpp" bodystart="109" bodyend="111"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1a57133f8ae29ed44c208e6f828e1942cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time accrualPeriod</definition>
         <argsstring>() const </argsstring>
@@ -71,7 +71,7 @@
 <para>accrual period as fraction of year </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1a8009fe8a9cbf19c6ec7ff89fee12d309" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
         <definition>BigInteger accrualDays</definition>
         <argsstring>() const </argsstring>
@@ -80,7 +80,7 @@
 <para>accrual period in days </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="coupon_1a120f8a9f50fd915f019580dad4789819" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate rate</definition>
         <argsstring>() const =0</argsstring>
@@ -89,8 +89,8 @@
 <para>accrued rate </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="coupon_1a9d30a3965ddf6100738ec4624c56d847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>virtual DayCounter dayCounter</definition>
         <argsstring>() const =0</argsstring>
         <name>dayCounter</name>
@@ -98,37 +98,37 @@
 <para>day counter for accrual calculation </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1a1277046a4095e0e02509c40779ff9465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time accruedPeriod</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>accruedPeriod</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>accrued period as fraction of year at the given date </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1acdb0640a6de7b44529d41e4fe1c37cd8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
         <definition>BigInteger accruedDays</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>accruedDays</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>accrued days at the given date </para>        </briefdescription>
         <location file="/cashflows/coupon.hpp" line="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real accruedAmount</definition>
         <argsstring>(const Date &amp;) const =0</argsstring>
         <name>accruedAmount</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
@@ -137,26 +137,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="cash_flow_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflows/coupon.hpp" line="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="coupon_1a8059cf8902fe54a39631ef3c0775d05e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Coupon</definition>
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;accrualStartDate, const Date &amp;accrualEndDate, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>Coupon</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -164,22 +164,22 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>accrualStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>accrualEndDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000002"><xreftitle>Warning</xreftitle><xrefdescription><para>the coupon does not adjust the payment date which must already be a business day. </para></xrefdescription></xrefsect></para>        </detaileddescription>
@@ -189,7 +189,7 @@
     <briefdescription>
 <para>coupon accruing over a fixed period </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements part of the <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> interface but it is still abstract and provides derived classes with methods for accrual period calculations. </para>    </detaileddescription>
+<para>This class implements part of the <ref refid="cash_flow" kindref="compound">CashFlow</ref> interface but it is still abstract and provides derived classes with methods for accrual period calculations. </para>    </detaileddescription>
     <location file="/cashflows/coupon.hpp" line="39" bodyfile="/cashflows/coupon.hpp" bodystart="39" bodyend="88"/>
   </compounddef>
 </doxygen>

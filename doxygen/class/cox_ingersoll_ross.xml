@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross" kind="class" prot="public">
+  <compounddef id="cox_ingersoll_ross" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::CoxIngersollRoss::Dynamics</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" prot="public">QuantLib::CoxIngersollRoss::HelperProcess</innerclass>
+    <innerclass refid="cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::CoxIngersollRoss::Dynamics</innerclass>
+    <innerclass refid="cox_ingersoll_ross_1_1_helper_process" prot="public">QuantLib::CoxIngersollRoss::HelperProcess</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a86cde1731e3090e18ffb1b0a4e7f7552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1a86cde1731e3090e18ffb1b0a4e7f7552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CoxIngersollRoss</definition>
         <argsstring>(Rate r0=0.05, Real theta=0.1, Real k=0.1, Real sigma=0.1)</argsstring>
@@ -33,12 +33,12 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
+        <reimplements refid="affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>
@@ -57,24 +57,24 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
+        <reimplements refid="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
+        <reimplements refid="one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <briefdescription>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_linear_op_layout" kind="class" prot="public">
+  <compounddef id="fdm_linear_op_layout" kind="class" prot="public">
     <compoundname>QuantLib::FdmLinearOpLayout</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a756ee81f33a06e0611036ef5fa1fce88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a756ee81f33a06e0611036ef5fa1fce88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FdmLinearOpLayout</definition>
         <argsstring>(const std::vector&lt; Size &gt; &amp;dim)</argsstring>
@@ -14,42 +14,42 @@
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="37" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="36" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a74be322402b4996f46dfba8a15a1d3b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a74be322402b4996f46dfba8a15a1d3b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>FdmLinearOpIterator</type>
         <definition>FdmLinearOpIterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="45" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="45" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a1ff16f08403b103b6a5b55e54e886a7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a1ff16f08403b103b6a5b55e54e886a7f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>FdmLinearOpIterator</type>
         <definition>FdmLinearOpIterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="49" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="49" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a7ae7d3955436ab2dc5286b54ef21074d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a7ae7d3955436ab2dc5286b54ef21074d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; dim</definition>
         <argsstring>() const </argsstring>
         <name>dim</name>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="53" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a2fbd77c00f147ac5ce2471e4d572789f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a2fbd77c00f147ac5ce2471e4d572789f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; spacing</definition>
         <argsstring>() const </argsstring>
         <name>spacing</name>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="57" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="61" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1adafceab1b8a45eb30335a10248251170" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1adafceab1b8a45eb30335a10248251170" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size index</definition>
         <argsstring>(const std::vector&lt; Size &gt; &amp;coordinates) const </argsstring>
@@ -60,7 +60,7 @@
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="65" bodyfile="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" bodystart="65" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1aab775ce90c6a10fa0ddbc0f36411f5cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1aab775ce90c6a10fa0ddbc0f36411f5cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size neighbourhood</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iterator, Size i, Integer offset) const </argsstring>
@@ -79,7 +79,7 @@
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1a85258597d695f5b977f0f4eb7470ea8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_linear_op_layout_1a85258597d695f5b977f0f4eb7470ea8c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size neighbourhood</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iterator, Size i1, Integer offset1, Size i2, Integer offset2) const </argsstring>
@@ -106,8 +106,8 @@
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearoplayout.hpp" line="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_layout_1ad77e0111e798ba5148d9ad5a23fbed04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; FdmLinearOpIterator &gt;</type>
+      <memberdef kind="function" id="fdm_linear_op_layout_1ad77e0111e798ba5148d9ad5a23fbed04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; FdmLinearOpIterator &gt;</type>
         <definition>Disposable&lt;FdmLinearOpIterator&gt; iter_neighbourhood</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iterator, Size i, Integer offset) const </argsstring>
         <name>iter_neighbourhood</name>

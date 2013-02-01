@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_writer_extensible_option_engine" kind="class" prot="public">
+  <compounddef id="analytic_writer_extensible_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticWriterExtensibleOptionEngine</compoundname>
     <includes local="no">/experimental/exoticoptions/analyticwriterextensibleoptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_writer_extensible_option_engine_1a4f9d5fd7e6b29600e385e7ed640cd7bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_writer_extensible_option_engine_1a4f9d5fd7e6b29600e385e7ed640cd7bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticWriterExtensibleOptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>AnalyticWriterExtensibleOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/exoticoptions/analyticwriterextensibleoptionengine.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_writer_extensible_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="analytic_writer_extensible_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/exoticoptions/analyticwriterextensibleoptionengine.hpp" line="38"/>
       </memberdef>
       </sectiondef>

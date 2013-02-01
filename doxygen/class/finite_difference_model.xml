@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_finite_difference_model" kind="class" prot="public">
+  <compounddef id="finite_difference_model" kind="class" prot="public">
     <compoundname>QuantLib::FiniteDifferenceModel</compoundname>
     <includes local="no">/methods/finitedifferences/finitedifferencemodel.hpp</includes>
     <templateparamlist>
@@ -9,35 +9,35 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1af71a244fde04ad42aad6528bcdd3a58e" prot="public" static="no">
+      <memberdef kind="typedef" id="finite_difference_model_1af71a244fde04ad42aad6528bcdd3a58e" prot="public" static="no">
         <type>Evolver::traits</type>
         <definition>typedef Evolver::traits traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="38" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
+      <memberdef kind="typedef" id="finite_difference_model_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
         <type>traits::operator_type</type>
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="39" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
+      <memberdef kind="typedef" id="finite_difference_model_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
         <type>traits::array_type</type>
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="40" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
+      <memberdef kind="typedef" id="finite_difference_model_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
         <type>traits::bc_set</type>
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="41" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_finite_difference_model_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
+      <memberdef kind="typedef" id="finite_difference_model_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
         <type>traits::condition_type</type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
@@ -46,7 +46,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a09774de668e962396945562d3dd77666" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="finite_difference_model_1a09774de668e962396945562d3dd77666" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FiniteDifferenceModel</definition>
         <argsstring>(const operator_type &amp;L, const bc_set &amp;bcs, const std::vector&lt; Time &gt; &amp;stoppingTimes=std::vector&lt; Time &gt;())</argsstring>
@@ -66,7 +66,7 @@
         </param>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="48" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="44" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a4e737d230d9084ebe057df0ba5b37175" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="finite_difference_model_1a4e737d230d9084ebe057df0ba5b37175" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FiniteDifferenceModel</definition>
         <argsstring>(const Evolver &amp;evolver, const std::vector&lt; Time &gt; &amp;stoppingTimes=std::vector&lt; Time &gt;())</argsstring>
@@ -82,14 +82,14 @@
         </param>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="57" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="54" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1ac4b07289afb96749cb9e3ac7ba843954" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="finite_difference_model_1ac4b07289afb96749cb9e3ac7ba843954" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const Evolver &amp;</type>
         <definition>const Evolver&amp; evolver</definition>
         <argsstring>() const </argsstring>
         <name>evolver</name>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="65" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a29eb8c23b64571be731ffa8f4df2590a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="finite_difference_model_1a29eb8c23b64571be731ffa8f4df2590a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void rollback</definition>
         <argsstring>(array_type &amp;a, Time from, Time to, Size steps)</argsstring>
@@ -114,7 +114,7 @@
 <para>solves the problem between the given times. <xrefsect id="caveats_1_caveats000078"><xreftitle>Warning</xreftitle><xrefdescription><para>being this a rollback, <computeroutput>from</computeroutput> must be a later time than <computeroutput>to</computeroutput>. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/methods/finitedifferences/finitedifferencemodel.hpp" line="73" bodyfile="/methods/finitedifferences/finitedifferencemodel.hpp" bodystart="70" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_finite_difference_model_1a65ea4e753878a94e9daa438b1bd1cb75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="finite_difference_model_1a65ea4e753878a94e9daa438b1bd1cb75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void rollback</definition>
         <argsstring>(array_type &amp;a, Time from, Time to, Size steps, const condition_type &amp;condition)</argsstring>

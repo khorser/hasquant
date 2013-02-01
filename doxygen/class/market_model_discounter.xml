@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_market_model_discounter" kind="class" prot="public">
+  <compounddef id="market_model_discounter" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelDiscounter</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_discounter_1a626cac049fa57705277cb76b1482d628" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="market_model_discounter_1a626cac049fa57705277cb76b1482d628" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MarketModelDiscounter</definition>
         <argsstring>(Time paymentTime, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
@@ -18,13 +18,13 @@
         </param>
         <location file="/models/marketmodels/discounter.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_discounter_1acd22450856eba24505a46cb25b334c76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="market_model_discounter_1acd22450856eba24505a46cb25b334c76" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real numeraireBonds</definition>
         <argsstring>(const CurveState &amp;, Size numeraire) const </argsstring>
         <name>numeraireBonds</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>

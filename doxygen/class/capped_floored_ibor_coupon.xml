@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_capped_floored_ibor_coupon" kind="class" prot="public">
+  <compounddef id="capped_floored_ibor_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CappedFlooredIborCoupon</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_ibor_coupon_1a9825f005e636de6f15a8d7fd18f24c63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_ibor_coupon_1a9825f005e636de6f15a8d7fd18f24c63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CappedFlooredIborCoupon</definition>
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Real gearing=1.0, Spread spread=0.0, Rate cap=Null&lt; Rate &gt;(), Rate floor=Null&lt; Rate &gt;(), const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter(), bool isInArrears=false)</argsstring>
         <name>CappedFlooredIborCoupon</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -17,11 +17,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -45,27 +45,27 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -74,13 +74,13 @@
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="118" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="100" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_ibor_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="capped_floored_ibor_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;v)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <declname>v</declname>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="120" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="120" bodyend="127"/>

@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discounting_swap_engine" kind="class" prot="public">
+  <compounddef id="discounting_swap_engine" kind="class" prot="public">
     <compoundname>QuantLib::DiscountingSwapEngine</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1aa7be22a575aabf3b208da485e618b0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discounting_swap_engine_1aa7be22a575aabf3b208da485e618b0c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscountingSwapEngine</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;(), boost::optional&lt; bool &gt; includeSettlementDateFlows=boost::none, Date settlementDate=Date(), Date npvDate=Date())</argsstring>
         <name>DiscountingSwapEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -19,26 +19,26 @@
           <defval>boost::none</defval>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>settlementDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>npvDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/pricingengines/swap/discountingswapengine.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discounting_swap_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <location file="/pricingengines/swap/discountingswapengine.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discounting_swap_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="discounting_swap_engine_1a80fd74539bdffcb8be719e5b8929feb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountCurve</definition>
         <argsstring>() const </argsstring>
         <name>discountCurve</name>

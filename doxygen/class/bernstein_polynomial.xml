@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bernstein_polynomial" kind="class" prot="public">
+  <compounddef id="bernstein_polynomial" kind="class" prot="public">
     <compoundname>QuantLib::BernsteinPolynomial</compoundname>
     <includes local="no">/math/bernsteinpolynomial.hpp</includes>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bernstein_polynomial_1a3711a2d3540e80eff0b2ceae5e3969c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bernstein_polynomial_1a3711a2d3540e80eff0b2ceae5e3969c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>static Real get</definition>
         <argsstring>(Natural i, Natural n, Real x)</argsstring>

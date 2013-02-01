@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_trigeorgis" kind="class" prot="public">
+  <compounddef id="extended_trigeorgis" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedTrigeorgis</compoundname>
     <includes local="no">/experimental/lattices/extendedbinomialtree.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_trigeorgis_1a19e5d0060fa947df9856a8a298123afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="extended_trigeorgis_1a19e5d0060fa947df9856a8a298123afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExtendedTrigeorgis</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;, Time end, Size steps, Real strike)</argsstring>
         <name>ExtendedTrigeorgis</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>

@@ -1,78 +1,78 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_forward_swap_quote" kind="class" prot="public">
+  <compounddef id="forward_swap_quote" kind="class" prot="public">
     <compoundname>QuantLib::ForwardSwapQuote</compoundname>
     <includes local="no">/quotes/forwardswapquote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="forward_swap_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
         <location file="/quotes/forwardswapquote.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="forward_swap_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isValid</definition>
         <argsstring>() const </argsstring>
         <name>isValid</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
-<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
         <location file="/quotes/forwardswapquote.hpp" line="44"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="forward_swap_quote_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
+        <reimplements refid="lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
         <location file="/quotes/forwardswapquote.hpp" line="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1a2554b9dd0051ff3515a9960c1dcac0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_swap_quote_1a2554b9dd0051ff3515a9960c1dcac0f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ForwardSwapQuote</definition>
         <argsstring>(const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndex, const Handle&lt; Quote &gt; &amp;spread, const Period &amp;fwdStart)</argsstring>
         <name>ForwardSwapQuote</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>swapIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>fwdStart</declname>
         </param>
         <location file="/quotes/forwardswapquote.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1a564ae9e6cc9c76d2d63daaf7395b7d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="forward_swap_quote_1a564ae9e6cc9c76d2d63daaf7395b7d6c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; valueDate</definition>
         <argsstring>() const </argsstring>
         <name>valueDate</name>
         <location file="/quotes/forwardswapquote.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="forward_swap_quote_1a31cb634ae3717b7740c373fd6c34f1d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/quotes/forwardswapquote.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_swap_quote_1aee260a08ccb6428c19b51ac1042641df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="forward_swap_quote_1aee260a08ccb6428c19b51ac1042641df" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
@@ -80,7 +80,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> for a forward starting swap. </para>    </briefdescription>
+<para><ref refid="quote" kindref="compound">Quote</ref> for a forward starting swap. </para>    </briefdescription>
     <location file="/quotes/forwardswapquote.hpp" line="36" bodyfile="/quotes/forwardswapquote.hpp" bodystart="35" bodyend="65"/>
   </compounddef>
 </doxygen>

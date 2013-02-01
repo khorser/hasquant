@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_schedule" kind="class" prot="public">
+  <compounddef id="schedule" kind="class" prot="public">
     <compoundname>QuantLib::Schedule</compoundname>
     <includes local="no">/time/schedule.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date access</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/time/schedule.hpp" line="58" bodyfile="/time/schedule.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1abea66c4e6c7c0c704595dc74f62928b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1abea66c4e6c7c0c704595dc74f62928b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; operator[]</definition>
         <argsstring>(Size i) const </argsstring>
         <name>operator[]</name>
@@ -23,8 +23,8 @@
         </param>
         <location file="/time/schedule.hpp" line="59" bodyfile="/time/schedule.hpp" bodystart="144" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ad8552a3b104393c179d57ae4c2a631db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1ad8552a3b104393c179d57ae4c2a631db" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; at</definition>
         <argsstring>(Size i) const </argsstring>
         <name>at</name>
@@ -34,8 +34,8 @@
         </param>
         <location file="/time/schedule.hpp" line="60" bodyfile="/time/schedule.hpp" bodystart="152" bodyend="154"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a85d2e0e17f5004717b41200157dd4a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1a85d2e0e17f5004717b41200157dd4a14" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; date</definition>
         <argsstring>(Size i) const </argsstring>
         <name>date</name>
@@ -45,36 +45,36 @@
         </param>
         <location file="/time/schedule.hpp" line="61" bodyfile="/time/schedule.hpp" bodystart="140" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a51fc99caf0d0a0ba4d3f2c38c0d5d4ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="schedule_1a51fc99caf0d0a0ba4d3f2c38c0d5d4ac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date previousDate</definition>
         <argsstring>(const Date &amp;refDate) const </argsstring>
         <name>previousDate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
         <location file="/time/schedule.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a5e307fb35beca9fe67dad8cddbb205b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="schedule_1a5e307fb35beca9fe67dad8cddbb205b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date nextDate</definition>
         <argsstring>(const Date &amp;refDate) const </argsstring>
         <name>nextDate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
         <location file="/time/schedule.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="schedule_1a6a149d4beeac42703f37f63defbff974" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/time/schedule.hpp" line="64" bodyfile="/time/schedule.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a439b40d8814b479267bf0c02db12b78c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a439b40d8814b479267bf0c02db12b78c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isRegular</definition>
         <argsstring>(Size i) const </argsstring>
@@ -88,63 +88,63 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
         <location file="/time/schedule.hpp" line="69" bodyfile="/time/schedule.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1a1dfea729100daaf17a5ac3b724c02556" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar &amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
         <location file="/time/schedule.hpp" line="70" bodyfile="/time/schedule.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9deedb3b118e820860f37c71cd37ce15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1a9deedb3b118e820860f37c71cd37ce15" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/time/schedule.hpp" line="71" bodyfile="/time/schedule.hpp" bodystart="160" bodyend="162"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a8d374dd66ad92e67b93771d7bcbe96b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1a8d374dd66ad92e67b93771d7bcbe96b9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; endDate</definition>
         <argsstring>() const </argsstring>
         <name>endDate</name>
         <location file="/time/schedule.hpp" line="72" bodyfile="/time/schedule.hpp" bodystart="164" bodyend="166"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a64d90b59ffaef1de9780c3c509bb4789" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+      <memberdef kind="function" id="schedule_1a64d90b59ffaef1de9780c3c509bb4789" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         <definition>const Period &amp; tenor</definition>
         <argsstring>() const </argsstring>
         <name>tenor</name>
         <location file="/time/schedule.hpp" line="73" bodyfile="/time/schedule.hpp" bodystart="168" bodyend="171"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>businessDayConvention</name>
         <location file="/time/schedule.hpp" line="74" bodyfile="/time/schedule.hpp" bodystart="173" bodyend="175"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a2ff4fd27cc61edade690751ad64c9787" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a2ff4fd27cc61edade690751ad64c9787" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention terminationDateBusinessDayConvention</definition>
         <argsstring>() const </argsstring>
         <name>terminationDateBusinessDayConvention</name>
         <location file="/time/schedule.hpp" line="75" bodyfile="/time/schedule.hpp" bodystart="178" bodyend="181"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a0c65bb19459f2af9f74de89865036dcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+      <memberdef kind="function" id="schedule_1a0c65bb19459f2af9f74de89865036dcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
         <definition>DateGeneration::Rule rule</definition>
         <argsstring>() const </argsstring>
         <name>rule</name>
         <location file="/time/schedule.hpp" line="76" bodyfile="/time/schedule.hpp" bodystart="183" bodyend="186"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a4bea961a3d8f31ed8c30118ed855cc92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a4bea961a3d8f31ed8c30118ed855cc92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool endOfMonth</definition>
         <argsstring>() const </argsstring>
@@ -154,49 +154,49 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Iterators</header>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_schedule_1a6638a6b2e69d0d6275e474ae74e6248e" prot="public" static="no">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;::const_iterator</type>
+      <memberdef kind="typedef" id="schedule_1a6638a6b2e69d0d6275e474ae74e6248e" prot="public" static="no">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;::const_iterator</type>
         <definition>typedef std::vector&lt;Date&gt;::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
         <location file="/time/schedule.hpp" line="81" bodyfile="/time/schedule.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
         <location file="/time/schedule.hpp" line="82" bodyfile="/time/schedule.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
         <location file="/time/schedule.hpp" line="83" bodyfile="/time/schedule.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a9811026ccee1b6de7481c37c0c781473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a9811026ccee1b6de7481c37c0c781473" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator lower_bound</definition>
         <argsstring>(const Date &amp;d=Date()) const </argsstring>
         <name>lower_bound</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/time/schedule.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utilities</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1abcb12dd16aa315e52ea3da24f0654729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+      <memberdef kind="function" id="schedule_1abcb12dd16aa315e52ea3da24f0654729" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
         <definition>Schedule until</definition>
         <argsstring>(const Date &amp;truncationDate) const </argsstring>
         <name>until</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>truncationDate</declname>
         </param>
         <briefdescription>
@@ -205,18 +205,18 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ac3899befc230efe20405b5e456cb728b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1ac3899befc230efe20405b5e456cb728b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Schedule</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;, const Calendar &amp;calendar=NullCalendar(), BusinessDayConvention convention=Unadjusted)</argsstring>
         <name>Schedule</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_null_calendar" kindref="compound">NullCalendar</ref>()</defval>
+          <defval><ref refid="null_calendar" kindref="compound">NullCalendar</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -225,25 +225,25 @@
         </param>
         <location file="/time/schedule.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1a79964effbd46511798359c767d9b57cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1a79964effbd46511798359c767d9b57cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Schedule</definition>
         <argsstring>(Date effectiveDate, const Date &amp;terminationDate, const Period &amp;tenor, const Calendar &amp;calendar, BusinessDayConvention convention, BusinessDayConvention terminationDateConvention, DateGeneration::Rule rule, bool endOfMonth, const Date &amp;firstDate=Date(), const Date &amp;nextToLastDate=Date())</argsstring>
         <name>Schedule</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>effectiveDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>terminationDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -255,7 +255,7 @@
           <declname>terminationDateConvention</declname>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
         </param>
         <param>
@@ -263,18 +263,18 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>firstDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>nextToLastDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/time/schedule.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_schedule_1ab534bc60e45c15592f49ea029f95e81e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="schedule_1ab534bc60e45c15592f49ea029f95e81e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Schedule</definition>
         <argsstring>()</argsstring>

@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pde_short_rate" kind="class" prot="public">
+  <compounddef id="pde_short_rate" kind="class" prot="public">
     <compoundname>QuantLib::PdeShortRate</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_pde_short_rate_1aae035d1991b41ee61215e34da5f41785" prot="public" static="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">OneFactorModel::ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="typedef" id="pde_short_rate_1aae035d1991b41ee61215e34da5f41785" prot="public" static="no">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">OneFactorModel::ShortRateDynamics</ref> &gt;</type>
         <definition>typedef boost::shared_ptr&lt;OneFactorModel::ShortRateDynamics&gt; argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="36" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_pde_short_rate_1a65ddf9db50c1f72d49311fffd0e7b210" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_transformed_grid" kindref="compound">TransformedGrid</ref></type>
+      <memberdef kind="typedef" id="pde_short_rate_1a65ddf9db50c1f72d49311fffd0e7b210" prot="public" static="no">
+        <type><ref refid="transformed_grid" kindref="compound">TransformedGrid</ref></type>
         <definition>typedef TransformedGrid grid_type</definition>
         <argsstring></argsstring>
         <name>grid_type</name>
@@ -19,7 +19,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pde_short_rate_1a0280123c5c0a336afcf12a2584a66f74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="pde_short_rate_1a0280123c5c0a336afcf12a2584a66f74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PdeShortRate</definition>
         <argsstring>(const argument_type &amp;d)</argsstring>
@@ -30,7 +30,7 @@
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="38" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pde_short_rate_1a6145a397fc88de2c481b429487a98164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="pde_short_rate_1a6145a397fc88de2c481b429487a98164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real diffusion</definition>
         <argsstring>(Time t, Real x) const </argsstring>
@@ -45,7 +45,7 @@
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="39" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pde_short_rate_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="pde_short_rate_1a4b76688eb89f51544dfe1f2f23d556a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real drift</definition>
         <argsstring>(Time t, Real x) const </argsstring>
@@ -60,7 +60,7 @@
         </param>
         <location file="/methods/finitedifferences/pdeshortrate.hpp" line="42" bodyfile="/methods/finitedifferences/pdeshortrate.hpp" bodystart="42" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pde_short_rate_1a6152d29f7ddf8b23f0afa5144d8f54c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="pde_short_rate_1a6152d29f7ddf8b23f0afa5144d8f54c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real discount</definition>
         <argsstring>(Time t, Real x) const </argsstring>

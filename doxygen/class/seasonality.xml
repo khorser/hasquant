@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_seasonality" kind="class" prot="public" abstract="yes">
+  <compounddef id="seasonality" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Seasonality</compoundname>
     <includes local="no">/termstructures/inflation/seasonality.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Seasonality interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1af4103a7879130a7286d87ce550213553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="seasonality_1af4103a7879130a7286d87ce550213553" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate correctZeroRate</definition>
         <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
         <name>correctZeroRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -19,18 +19,18 @@
           <declname>r</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
           <declname>iTS</declname>
         </param>
         <location file="/termstructures/inflation/seasonality.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1ac93d68f5fa5eaa0d5bde685923877e13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="seasonality_1ac93d68f5fa5eaa0d5bde685923877e13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate correctYoYRate</definition>
         <argsstring>(const Date &amp;d, const Rate r, const InflationTermStructure &amp;iTS) const =0</argsstring>
         <name>correctYoYRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -38,18 +38,18 @@
           <declname>r</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
           <declname>iTS</declname>
         </param>
         <location file="/termstructures/inflation/seasonality.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="seasonality_1ad3811d44e8830cd435b032e3d28a31f9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>virtual bool isConsistent</definition>
         <argsstring>(const InflationTermStructure &amp;iTS) const </argsstring>
         <name>isConsistent</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
+          <type>const <ref refid="inflation_term_structure" kindref="compound">InflationTermStructure</ref> &amp;</type>
           <declname>iTS</declname>
         </param>
         <detaileddescription>
@@ -58,7 +58,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_seasonality_1a047e624db01a253658360c259176e7bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="seasonality_1a047e624db01a253658360c259176e7bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Seasonality</definition>
         <argsstring>()</argsstring>
@@ -69,7 +69,7 @@
     <briefdescription>
 <para>A transformation of an existing inflation swap rate. </para>    </briefdescription>
     <detaileddescription>
-<para>This is an abstract class and contains the functions correctXXXRate which returns rates with the seasonality correction. Currently only the price multiplicative version is implemented, but this covers stationary (1-year) and non-stationary (multi-year) seasonality depending on how many years of factors are given. <ref refid="class_quant_lib_1_1_seasonality" kindref="compound">Seasonality</ref> is piecewise constant, hence it will work with un-interpolated inflation indices.</para><para>A seasonality assumption can be used to fill in inflation swap curves between maturities that are usually given in integer numbers of years, e.g. 8,9,10,15,20, etc. Historical seasonality may be observed in reported CPI values, alternatively it may be affected by known future events, e.g. announced changes in VAT rates. Thus seasonality may be stationary or non-stationary.</para><para>If seasonality is additive then both swap rates will show affects. Additive seasonality is not implemented. </para>    </detaileddescription>
+<para>This is an abstract class and contains the functions correctXXXRate which returns rates with the seasonality correction. Currently only the price multiplicative version is implemented, but this covers stationary (1-year) and non-stationary (multi-year) seasonality depending on how many years of factors are given. <ref refid="seasonality" kindref="compound">Seasonality</ref> is piecewise constant, hence it will work with un-interpolated inflation indices.</para><para>A seasonality assumption can be used to fill in inflation swap curves between maturities that are usually given in integer numbers of years, e.g. 8,9,10,15,20, etc. Historical seasonality may be observed in reported CPI values, alternatively it may be affected by known future events, e.g. announced changes in VAT rates. Thus seasonality may be stationary or non-stationary.</para><para>If seasonality is additive then both swap rates will show affects. Additive seasonality is not implemented. </para>    </detaileddescription>
     <location file="/termstructures/inflation/seasonality.hpp" line="54" bodyfile="/termstructures/inflation/seasonality.hpp" bodystart="54" bodyend="78"/>
   </compounddef>
 </doxygen>

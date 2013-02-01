@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon" kind="class" prot="public">
+  <compounddef id="capped_floored_yo_y_inflation_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CappedFlooredYoYInflationCoupon</compoundname>
     <includes local="no">/cashflows/capflooredinflationcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>augmented Coupon interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
+        <reimplements refid="coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>swap(let) rate </para>        </briefdescription>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate cap</definition>
         <argsstring>() const </argsstring>
@@ -24,7 +24,7 @@
 <para>cap </para>        </briefdescription>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate floor</definition>
         <argsstring>() const </argsstring>
@@ -33,7 +33,7 @@
 <para>floor </para>        </briefdescription>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate effectiveCap</definition>
         <argsstring>() const </argsstring>
@@ -42,7 +42,7 @@
 <para>effective cap of fixing </para>        </briefdescription>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="105"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate effectiveFloor</definition>
         <argsstring>() const </argsstring>
@@ -54,59 +54,59 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="112"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a8e3a1070cdb35b6259e9d3acfc75a2ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;v)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="yo_y_inflation_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <declname>v</declname>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="117"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a459fb28417955e6c5e7357d06660827b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a459fb28417955e6c5e7357d06660827b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CappedFlooredYoYInflationCoupon</definition>
         <argsstring>(const boost::shared_ptr&lt; YoYInflationCoupon &gt; &amp;underlying, Rate cap=Null&lt; Rate &gt;(), Rate floor=Null&lt; Rate &gt;())</argsstring>
         <name>CappedFlooredYoYInflationCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_coupon" kindref="compound">YoYInflationCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_coupon" kindref="compound">YoYInflationCoupon</ref> &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1ac190319df6222fba5c7088e610ba817a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1ac190319df6222fba5c7088e610ba817a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CappedFlooredYoYInflationCoupon</definition>
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;index, const Period &amp;observationLag, const DayCounter &amp;dayCounter, Real gearing=1.0, Spread spread=0.0, const Rate cap=Null&lt; Rate &gt;(), const Rate floor=Null&lt; Rate &gt;(), const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
         <name>CappedFlooredYoYInflationCoupon</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -114,11 +114,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -126,15 +126,15 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -150,46 +150,46 @@
         <param>
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>const <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="92" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="75" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isCapped</definition>
         <argsstring>() const </argsstring>
         <name>isCapped</name>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="120" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="120" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isFloored</definition>
         <argsstring>() const </argsstring>
         <name>isFloored</name>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="121" bodyfile="/cashflows/capflooredinflationcoupon.hpp" bodystart="121" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_yo_y_inflation_coupon_1af2b4cec8f0cac8b96a39273aeec915cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_yo_y_inflation_coupon_1af2b4cec8f0cac8b96a39273aeec915cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setPricer</definition>
         <argsstring>(const boost::shared_ptr&lt; YoYInflationCouponPricer &gt; &amp;)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_coupon_pricer" kindref="compound">YoYInflationCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_coupon_pricer" kindref="compound">YoYInflationCouponPricer</ref> &gt; &amp;</type>
         </param>
         <location file="/cashflows/capflooredinflationcoupon.hpp" line="123"/>
       </memberdef>

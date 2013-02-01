@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_flat_smile_section" kind="class" prot="public">
+  <compounddef id="flat_smile_section" kind="class" prot="public">
     <compoundname>QuantLib::FlatSmileSection</compoundname>
       <sectiondef kind="user-defined">
       <header>SmileSection interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="flat_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="46" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="57" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="flat_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="47" bodyfile="/termstructures/volatility/flatsmilesection.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="flat_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
@@ -27,13 +27,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aab05bc4fef9d8582e5aba84f89ba9a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_smile_section_1aab05bc4fef9d8582e5aba84f89ba9a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatSmileSection</definition>
         <argsstring>(const Date &amp;d, Volatility vol, const DayCounter &amp;dc, const Date &amp;referenceDate=Date(), Real atmLevel=Null&lt; Rate &gt;())</argsstring>
         <name>FlatSmileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -41,22 +41,22 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>atmLevel</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_smile_section_1aed359b90458a66d44a64820b1ada1c25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatSmileSection</definition>
         <argsstring>(Time exerciseTime, Volatility vol, const DayCounter &amp;dc, Real atmLevel=Null&lt; Rate &gt;())</argsstring>
@@ -70,13 +70,13 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>atmLevel</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/flatsmilesection.hpp" line="43"/>
       </memberdef>

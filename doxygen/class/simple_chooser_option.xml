@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_simple_chooser_option" kind="class" prot="public">
+  <compounddef id="simple_chooser_option" kind="class" prot="public">
     <compoundname>QuantLib::SimpleChooserOption</compoundname>
     <includes local="no">/experimental/exoticoptions/simplechooseroption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_simple_chooser_option_1_1arguments" prot="public">QuantLib::SimpleChooserOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_simple_chooser_option_1_1engine" prot="public">QuantLib::SimpleChooserOption::engine</innerclass>
+    <innerclass refid="simple_chooser_option_1_1arguments" prot="public">QuantLib::SimpleChooserOption::arguments</innerclass>
+    <innerclass refid="simple_chooser_option_1_1engine" prot="public">QuantLib::SimpleChooserOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_chooser_option_1a123b62d417651e92e1e578e808cb610f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="simple_chooser_option_1a123b62d417651e92e1e578e808cb610f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SimpleChooserOption</definition>
         <argsstring>(Date choosingDate, Real strike, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>SimpleChooserOption</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>choosingDate</declname>
         </param>
         <param>
@@ -20,17 +20,17 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/experimental/exoticoptions/simplechooseroption.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_chooser_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="simple_chooser_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

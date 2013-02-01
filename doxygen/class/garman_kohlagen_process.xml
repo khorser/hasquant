@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_garman_kohlagen_process" kind="class" prot="public">
+  <compounddef id="garman_kohlagen_process" kind="class" prot="public">
     <compoundname>QuantLib::GarmanKohlagenProcess</compoundname>
     <includes local="no">/processes/blackscholesprocess.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_kohlagen_process_1ade94a231a4d65e1fbc2f44e5d7b3423e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="garman_kohlagen_process_1ade94a231a4d65e1fbc2f44e5d7b3423e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GarmanKohlagenProcess</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;x0, const Handle&lt; YieldTermStructure &gt; &amp;foreignRiskFreeTS, const Handle&lt; YieldTermStructure &gt; &amp;domesticRiskFreeTS, const Handle&lt; BlackVolTermStructure &gt; &amp;blackVolTS, const boost::shared_ptr&lt; discretization &gt; &amp;d=boost::shared_ptr&lt; discretization &gt;(new EulerDiscretization))</argsstring>
         <name>GarmanKohlagenProcess</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>foreignRiskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>domesticRiskFreeTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
           <declname>blackVolTS</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt; &amp;</type>
           <declname>d</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="class_quant_lib_1_1_euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="stochastic_process_1_1discretization" kindref="compound">discretization</ref> &gt;(new <ref refid="euler_discretization" kindref="compound">EulerDiscretization</ref>)</defval>
         </param>
         <location file="/processes/blackscholesprocess.hpp" line="168"/>
       </memberdef>

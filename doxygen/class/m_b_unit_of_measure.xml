@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_b_unit_of_measure" kind="class" prot="public">
+  <compounddef id="m_b_unit_of_measure" kind="class" prot="public">
     <compoundname>QuantLib::MBUnitOfMeasure</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_b_unit_of_measure_1aea0e1e04d44d25021538bb35032e1902" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_b_unit_of_measure_1aea0e1e04d44d25021538bb35032e1902" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MBUnitOfMeasure</definition>
         <argsstring>()</argsstring>

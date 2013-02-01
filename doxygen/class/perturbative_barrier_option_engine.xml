@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_perturbative_barrier_option_engine" kind="class" prot="public">
+  <compounddef id="perturbative_barrier_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::PerturbativeBarrierOptionEngine</compoundname>
     <includes local="no">/experimental/barrieroption/perturbativebarrieroptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a91afc879fc5f1960f367fb3a1cc82437" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="perturbative_barrier_option_engine_1a91afc879fc5f1960f367fb3a1cc82437" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PerturbativeBarrierOptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;, Natural order=1, bool zeroGamma=false)</argsstring>
         <name>PerturbativeBarrierOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
@@ -24,12 +24,12 @@
         </param>
         <location file="/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_perturbative_barrier_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="perturbative_barrier_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/barrieroption/perturbativebarrieroptionengine.hpp" line="44"/>
       </memberdef>
       </sectiondef>

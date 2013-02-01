@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swap_1_1arguments" kind="class" prot="public">
+  <compounddef id="swap_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Swap::arguments</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1arguments_1afd4d39f841bb8aba3695d1d6ed65e1f2" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &gt;</type>
         <definition>std::vector&lt;Leg&gt; legs</definition>
         <argsstring></argsstring>
         <name>legs</name>
         <location file="/instruments/swap.hpp" line="119" bodyfile="/instruments/swap.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1arguments_1aef10c42b7e9e25bc16b34890cb780037" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; payer</definition>
         <argsstring></argsstring>
@@ -19,7 +19,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

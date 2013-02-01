@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_combo_helper" kind="class" prot="public">
+  <compounddef id="detail_1_1_combo_helper" kind="class" prot="public">
     <compoundname>QuantLib::detail::ComboHelper</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a9c7c3284c8e6c261029491a3ac406e21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_combo_helper_1a9c7c3284c8e6c261029491a3ac406e21" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ComboHelper</definition>
         <argsstring>(boost::shared_ptr&lt; SectionHelper &gt; &amp;quadraticHelper, boost::shared_ptr&lt; SectionHelper &gt; &amp;convMonoHelper, Real quadraticity)</argsstring>
@@ -22,7 +22,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="117" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="112" bodyend="119"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_combo_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
@@ -33,7 +33,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="121" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_combo_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
@@ -44,7 +44,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="124" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="124" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_combo_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_combo_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fNext</definition>
         <argsstring>() const </argsstring>

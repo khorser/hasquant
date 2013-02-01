@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve" kind="class" prot="public">
+  <compounddef id="piecewise_yo_y_optionlet_volatility_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseYoYOptionletVolatilityCurve</compoundname>
     <includes local="no">/experimental/inflation/piecewiseyoyoptionletvolatility.hpp</includes>
     <templateparamlist>
@@ -11,29 +11,29 @@
         <type>template&lt; class &gt; class</type>
         <declname>Bootstrap</declname>
         <defname>Bootstrap</defname>
-        <defval><ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+        <defval><ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
       </param>
       <param>
         <type>class Traits</type>
-        <defval><ref refid="class_quant_lib_1_1_yo_y_inflation_volatility_traits" kindref="compound">YoYInflationVolatilityTraits</ref></defval>
+        <defval><ref refid="yo_y_inflation_volatility_traits" kindref="compound">YoYInflationVolatilityTraits</ref></defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Inflation interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <reimplements refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
+        <reimplements refid="yo_y_optionlet_volatility_surface_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="145" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="175" bodyend="178"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplements>
+        <reimplements refid="interpolated_yo_y_optionlet_volatility_curve_1a8f99356f853de778d6eb053615c1bdbf">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="146" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="181" bodyend="184"/>
@@ -41,59 +41,59 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a37dd8ccc18cbc518783287bdc47b4088">times</reimplements>
+        <reimplements refid="interpolated_yo_y_optionlet_volatility_curve_1a37dd8ccc18cbc518783287bdc47b4088">times</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="150" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="188" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5">dates</reimplements>
+        <reimplements refid="interpolated_yo_y_optionlet_volatility_curve_1a89257bfeb91871645a70c5370fd7cbc5">dates</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="151" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="195" bodyend="198"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b">data</reimplements>
+        <reimplements refid="interpolated_yo_y_optionlet_volatility_curve_1abe2ca418f8f3bcc37a8bcbe60533b40b">data</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="152" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="202" bodyend="205"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e">nodes</reimplements>
+        <reimplements refid="interpolated_yo_y_optionlet_volatility_curve_1abcff9b6eca640af28de7247fac16c00e">nodes</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="153" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="209" bodyend="212"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="157" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="221" bodyend="224"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_yo_y_optionlet_volatility_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
         <location file="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" line="117" bodyfile="/experimental/inflation/piecewiseyoyoptionletvolatility.hpp" bodystart="117" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_yo_y_optionlet_volatility_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>
@@ -102,7 +102,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_optionlet_volatility_curve_1aa9b744ef2d568d7fcc64936fa6a799ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_yo_y_optionlet_volatility_curve_1aa9b744ef2d568d7fcc64936fa6a799ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseYoYOptionletVolatilityCurve</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, Rate minStrike, Rate maxStrike, Volatility baseYoYVolatility, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, Real accuracy=1.0e-12, const Interpolator &amp;interpolator=Interpolator())</argsstring>
@@ -112,7 +112,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -120,11 +120,11 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>

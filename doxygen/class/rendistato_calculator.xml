@@ -1,59 +1,59 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_rendistato_calculator" kind="class" prot="public">
+  <compounddef id="rendistato_calculator" kind="class" prot="public">
     <compoundname>QuantLib::RendistatoCalculator</compoundname>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ad37076d5ec6a1c45a01c3d6a3fc91489" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1ad37076d5ec6a1c45a01c3d6a3fc91489" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate yield</definition>
         <argsstring>() const </argsstring>
         <name>yield</name>
         <location file="/instruments/bonds/btp.hpp" line="127" bodyfile="/instruments/bonds/btp.hpp" bodystart="213" bodyend="217"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ab4a5cac9afc19887bed6329cafc90e19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1ab4a5cac9afc19887bed6329cafc90e19" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time duration</definition>
         <argsstring>() const </argsstring>
         <name>duration</name>
         <location file="/instruments/bonds/btp.hpp" line="128" bodyfile="/instruments/bonds/btp.hpp" bodystart="219" bodyend="222"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a5bfc61fdef3469fc0bf6a9ebf1023c81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a5bfc61fdef3469fc0bf6a9ebf1023c81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; yields</definition>
         <argsstring>() const </argsstring>
         <name>yields</name>
         <location file="/instruments/bonds/btp.hpp" line="130" bodyfile="/instruments/bonds/btp.hpp" bodystart="224" bodyend="227"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a6009cb9f30e2f11874bde2076882a299" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a6009cb9f30e2f11874bde2076882a299" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; durations</definition>
         <argsstring>() const </argsstring>
         <name>durations</name>
         <location file="/instruments/bonds/btp.hpp" line="131" bodyfile="/instruments/bonds/btp.hpp" bodystart="229" bodyend="232"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a0e8d00b76f5279595958604f6e234bd4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; swapLengths</definition>
         <argsstring>() const </argsstring>
         <name>swapLengths</name>
         <location file="/instruments/bonds/btp.hpp" line="133" bodyfile="/instruments/bonds/btp.hpp" bodystart="234" bodyend="236"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a458631a03abfb7cfb4db7b3515fe936f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a458631a03abfb7cfb4db7b3515fe936f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; swapRates</definition>
         <argsstring>() const </argsstring>
         <name>swapRates</name>
         <location file="/instruments/bonds/btp.hpp" line="134" bodyfile="/instruments/bonds/btp.hpp" bodystart="238" bodyend="241"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a7301abf71719eb535c263ebddbe45330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a7301abf71719eb535c263ebddbe45330" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; swapYields</definition>
         <argsstring>() const </argsstring>
         <name>swapYields</name>
         <location file="/instruments/bonds/btp.hpp" line="135" bodyfile="/instruments/bonds/btp.hpp" bodystart="243" bodyend="246"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ae66570c40b723bbe176ad168264ae164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1ae66570c40b723bbe176ad168264ae164" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; swapDurations</definition>
         <argsstring>() const </argsstring>
@@ -63,42 +63,42 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Equivalent Swap proxy</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a5a5e4144899d2675e9e3fecee91334bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+      <memberdef kind="function" id="rendistato_calculator_1a5a5e4144899d2675e9e3fecee91334bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; VanillaSwap &gt; equivalentSwap</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwap</name>
         <location file="/instruments/bonds/btp.hpp" line="140" bodyfile="/instruments/bonds/btp.hpp" bodystart="254" bodyend="257"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a02df826c493ded7bf2d9ce1a57f82020" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a02df826c493ded7bf2d9ce1a57f82020" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate equivalentSwapRate</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapRate</name>
         <location file="/instruments/bonds/btp.hpp" line="141" bodyfile="/instruments/bonds/btp.hpp" bodystart="259" bodyend="262"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1ae351041a661a801d1281d583675aac68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1ae351041a661a801d1281d583675aac68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate equivalentSwapYield</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapYield</name>
         <location file="/instruments/bonds/btp.hpp" line="142" bodyfile="/instruments/bonds/btp.hpp" bodystart="264" bodyend="267"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1add2cfbe99dbad4cfa9169bdd212fdb65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1add2cfbe99dbad4cfa9169bdd212fdb65" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time equivalentSwapDuration</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapDuration</name>
         <location file="/instruments/bonds/btp.hpp" line="143" bodyfile="/instruments/bonds/btp.hpp" bodystart="269" bodyend="272"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a01eb0994b1a8b28fa6e4c449fc6d435d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a01eb0994b1a8b28fa6e4c449fc6d435d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time equivalentSwapLength</definition>
         <argsstring>() const </argsstring>
         <name>equivalentSwapLength</name>
         <location file="/instruments/bonds/btp.hpp" line="144" bodyfile="/instruments/bonds/btp.hpp" bodystart="274" bodyend="277"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a28d9bd579325de64cc255385f24302ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a28d9bd579325de64cc255385f24302ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread equivalentSwapSpread</definition>
         <argsstring>() const </argsstring>
@@ -108,7 +108,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -117,7 +117,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_rendistato_calculator_1a3f8a2214e54f096e18dd4cbd4688ad30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="rendistato_calculator_1a3f8a2214e54f096e18dd4cbd4688ad30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RendistatoCalculator</definition>
         <argsstring>(const boost::shared_ptr&lt; RendistatoBasket &gt; &amp;basket, const boost::shared_ptr&lt; Euribor &gt; &amp;euriborIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
@@ -127,11 +127,11 @@
           <declname>basket</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="euribor" kindref="compound">Euribor</ref> &gt; &amp;</type>
           <declname>euriborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="124"/>

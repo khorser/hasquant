@@ -1,51 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_fdm_solver_desc" kind="struct" prot="public">
+  <compounddef id="fdm_solver_desc" kind="struct" prot="public">
     <compoundname>QuantLib::FdmSolverDesc</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1ad85eeecbf370c66542608e95bac87677" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1ad85eeecbf370c66542608e95bac87677" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; FdmMesher &gt;</type>
         <definition>const boost::shared_ptr&lt;FdmMesher&gt; mesher</definition>
         <argsstring></argsstring>
         <name>mesher</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="36" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1aabb6b834d3f1862fad09f23c49ff1519" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1aabb6b834d3f1862fad09f23c49ff1519" prot="public" static="no" mutable="no">
         <type>const FdmBoundaryConditionSet</type>
         <definition>const FdmBoundaryConditionSet bcSet</definition>
         <argsstring></argsstring>
         <name>bcSet</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="37" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1a928e8f70136a2f740c2cb7016c4bdf20" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1a928e8f70136a2f740c2cb7016c4bdf20" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; FdmStepConditionComposite &gt;</type>
         <definition>const boost::shared_ptr&lt;FdmStepConditionComposite&gt; condition</definition>
         <argsstring></argsstring>
         <name>condition</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="38" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1a428ea8617d9bb6e4dbf6c5bdaac56ca5" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1a428ea8617d9bb6e4dbf6c5bdaac56ca5" prot="public" static="no" mutable="no">
         <type>const boost::shared_ptr&lt; FdmInnerValueCalculator &gt;</type>
         <definition>const boost::shared_ptr&lt;FdmInnerValueCalculator&gt; calculator</definition>
         <argsstring></argsstring>
         <name>calculator</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="39" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1a86b4fad6e76ae4e0eeb45fbe1663c1f9" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1a86b4fad6e76ae4e0eeb45fbe1663c1f9" prot="public" static="no" mutable="no">
         <type>const <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>const Time maturity</definition>
         <argsstring></argsstring>
         <name>maturity</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="40" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1a0ea1d367e7a89798f7ae4e7cac0fe8a4" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1a0ea1d367e7a89798f7ae4e7cac0fe8a4" prot="public" static="no" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size timeSteps</definition>
         <argsstring></argsstring>
         <name>timeSteps</name>
         <location file="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" line="41" bodyfile="/methods/finitedifferences/solvers/fdmsolverdesc.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_fdm_solver_desc_1a5fa0c652f147a64d0ace95737800d6db" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="fdm_solver_desc_1a5fa0c652f147a64d0ace95737800d6db" prot="public" static="no" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size dampingSteps</definition>
         <argsstring></argsstring>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_calculator" kind="class" prot="public">
+  <compounddef id="black_calculator" kind="class" prot="public">
     <compoundname>QuantLib::BlackCalculator</compoundname>
     <includes local="no">/pricingengines/blackcalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a2e919a306924f31d9f6f89645d0d69b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a2e919a306924f31d9f6f89645d0d69b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackCalculator</definition>
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, Real forward, Real stdDev, Real discount=1.0)</argsstring>
         <name>BlackCalculator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
         </param>
         <location file="/pricingengines/blackcalculator.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a2920114426078b8deba090acbfcc90c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a2920114426078b8deba090acbfcc90c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackCalculator</definition>
         <argsstring>(Option::Type optionType, Real strike, Real forward, Real stdDev, Real discount=1.0)</argsstring>
@@ -56,21 +56,21 @@
         </param>
         <location file="/pricingengines/blackcalculator.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a3cfb065da998301703ed796e399a4e15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1a3cfb065da998301703ed796e399a4e15" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BlackCalculator</definition>
         <argsstring>()</argsstring>
         <name>~BlackCalculator</name>
         <location file="/pricingengines/blackcalculator.hpp" line="51" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="51" bodyend="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
         <location file="/pricingengines/blackcalculator.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a46dff13c5db3dc12f768cdf4d4cc5b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real deltaForward</definition>
         <argsstring>() const </argsstring>
@@ -79,7 +79,7 @@
 <para>Sensitivity to change in the underlying forward price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1abd77e62b63781915cc05be90c29ade86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1abd77e62b63781915cc05be90c29ade86" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real delta</definition>
         <argsstring>(Real spot) const </argsstring>
@@ -92,7 +92,7 @@
 <para>Sensitivity to change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ae21b5d8931ed83b6ce0f8f80039f4789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1ae21b5d8931ed83b6ce0f8f80039f4789" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real elasticityForward</definition>
         <argsstring>() const </argsstring>
@@ -101,7 +101,7 @@
 <para>Sensitivity in percent to a percent change in the underlying forward price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ad1038ed391cff8fa11082293e2dd524c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1ad1038ed391cff8fa11082293e2dd524c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real elasticity</definition>
         <argsstring>(Real spot) const </argsstring>
@@ -114,7 +114,7 @@
 <para>Sensitivity in percent to a percent change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ad11bcb2919c3355037ad2f3c9dadb26f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1ad11bcb2919c3355037ad2f3c9dadb26f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gammaForward</definition>
         <argsstring>() const </argsstring>
@@ -123,7 +123,7 @@
 <para>Second order derivative with respect to change in the underlying forward price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a50f95bfa73f23492b64d7de4b3274f71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1a50f95bfa73f23492b64d7de4b3274f71" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real gamma</definition>
         <argsstring>(Real spot) const </argsstring>
@@ -136,7 +136,7 @@
 <para>Second order derivative with respect to change in the underlying spot price. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1aaa4eafefa825f26cb526e13cdec63e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1aaa4eafefa825f26cb526e13cdec63e1d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real theta</definition>
         <argsstring>(Real spot, Time maturity) const </argsstring>
@@ -153,7 +153,7 @@
 <para>Sensitivity to time to maturity. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a100e24c42cc4cd95b51242a6adf782ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="black_calculator_1a100e24c42cc4cd95b51242a6adf782ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaPerDay</definition>
         <argsstring>(Real spot, Time maturity) const </argsstring>
@@ -170,7 +170,7 @@
 <para>Sensitivity to time to maturity per day, assuming 365 day per year. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="80" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="118" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a0c37734c53fa52703c6f0d22677b05ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a0c37734c53fa52703c6f0d22677b05ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real vega</definition>
         <argsstring>(Time maturity) const </argsstring>
@@ -183,7 +183,7 @@
 <para>Sensitivity to volatility. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1affcfd1c0fd1c6bef1bb21fd2a336bff5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>(Time maturity) const </argsstring>
@@ -196,7 +196,7 @@
 <para>Sensitivity to discounting rate. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1ab880a4d01e68c373077c2c6cf68af259" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1ab880a4d01e68c373077c2c6cf68af259" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real dividendRho</definition>
         <argsstring>(Time maturity) const </argsstring>
@@ -209,7 +209,7 @@
 <para>Sensitivity to dividend/growth rate. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1aee3252e0cf020c5878f35dae85bd1107" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1aee3252e0cf020c5878f35dae85bd1107" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real itmCashProbability</definition>
         <argsstring>() const </argsstring>
@@ -218,7 +218,7 @@
 <para>Probability of being in the money in the bond martingale measure, i.e. N(d2). It is a risk-neutral probability, not the real world one. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="95" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1abb479ae11d5c444f5ef42ac09dc14765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1abb479ae11d5c444f5ef42ac09dc14765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real itmAssetProbability</definition>
         <argsstring>() const </argsstring>
@@ -227,7 +227,7 @@
 <para>Probability of being in the money in the asset martingale measure, i.e. N(d1). It is a risk-neutral probability, not the real world one. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="101" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1acfc72cb510f6de42cc315f39a34da0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real strikeSensitivity</definition>
         <argsstring>() const </argsstring>
@@ -236,14 +236,14 @@
 <para>Sensitivity to strike. </para>        </detaileddescription>
         <location file="/pricingengines/blackcalculator.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
         <location file="/pricingengines/blackcalculator.hpp" line="106" bodyfile="/pricingengines/blackcalculator.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_calculator_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_calculator_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>

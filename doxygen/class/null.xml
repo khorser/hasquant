@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_null" kind="class" prot="public">
+  <compounddef id="null" kind="class" prot="public">
     <compoundname>QuantLib::Null</compoundname>
     <includes local="no">/utilities/null.hpp</includes>
     <templateparamlist>
@@ -9,14 +9,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_null_1a10b15a39fff7b4b5e889dc502186253c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="null_1a10b15a39fff7b4b5e889dc502186253c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Null</definition>
         <argsstring>()</argsstring>
         <name>Null</name>
         <location file="/utilities/null.hpp" line="66" bodyfile="/utilities/null.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_null_1ae5857c1c44e69902576181d342c6b0cd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="null_1ae5857c1c44e69902576181d342c6b0cd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>operator T</definition>
         <argsstring>() const </argsstring>

@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_futures_rate_helper" kind="class" prot="public">
+  <compounddef id="futures_rate_helper" kind="class" prot="public">
     <compoundname>QuantLib::FuturesRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
         <location file="/termstructures/yield/ratehelpers.hpp" line="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>FuturesRateHelper inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1afcf6adb1180a55c010c9e3ec3ce691bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1afcf6adb1180a55c010c9e3ec3ce691bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real convexityAdjustment</definition>
         <argsstring>() const </argsstring>
@@ -26,30 +26,30 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="92"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1af8f8fc7fd687e1f205089964f22cfc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1af8f8fc7fd687e1f205089964f22cfc2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immDate, Natural lengthInMonths, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
@@ -57,7 +57,7 @@
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -69,17 +69,17 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a2781d775af2d85d4bf3a18edfad17b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a2781d775af2d85d4bf3a18edfad17b7d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(Real price, const Date &amp;immDate, Natural lengthInMonths, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter, Rate convexityAdjustment=0.0)</argsstring>
@@ -89,7 +89,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
@@ -97,7 +97,7 @@
           <declname>lengthInMonths</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -109,7 +109,7 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -119,35 +119,35 @@
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a6a92c1c42e0caf366a6a28e06feacbc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a6a92c1c42e0caf366a6a28e06feacbc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immStartDate, const Date &amp;endDate, const DayCounter &amp;dayCounter, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3c5531480661d184d5be5601856b496f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a3c5531480661d184d5be5601856b496f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(Real price, const Date &amp;immStartDate, const Date &amp;endDate, const DayCounter &amp;dayCounter, Rate convexityAdjustment=0.0)</argsstring>
@@ -157,15 +157,15 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immStartDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -175,31 +175,31 @@
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a3ab1e5812cb4e4073ba5496e3e9a8217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a3ab1e5812cb4e4073ba5496e3e9a8217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, const Date &amp;immDate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const Handle&lt; Quote &gt; &amp;convexityAdjustment=Handle&lt; Quote &gt;())</argsstring>
         <name>FuturesRateHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>convexityAdjustment</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_futures_rate_helper_1a22f486b9caa33944136b676a520072ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="futures_rate_helper_1a22f486b9caa33944136b676a520072ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FuturesRateHelper</definition>
         <argsstring>(Real price, const Date &amp;immDate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, Rate convexityAdjustment=0.0)</argsstring>
@@ -209,11 +209,11 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>immDate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
@@ -225,7 +225,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Rate helper for bootstrapping over <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> futures prices. </para>    </briefdescription>
+<para>Rate helper for bootstrapping over <ref refid="ibor_index" kindref="compound">IborIndex</ref> futures prices. </para>    </briefdescription>
     <location file="/termstructures/yield/ratehelpers.hpp" line="46" bodyfile="/termstructures/yield/ratehelpers.hpp" bodystart="46" bodyend="97"/>
   </compounddef>
 </doxygen>

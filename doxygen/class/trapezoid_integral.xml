@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_trapezoid_integral" kind="class" prot="public">
+  <compounddef id="trapezoid_integral" kind="class" prot="public">
     <compoundname>QuantLib::TrapezoidIntegral</compoundname>
     <includes local="no">/math/integrals/trapezoidintegral.hpp</includes>
     <templateparamlist>
@@ -11,7 +11,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_trapezoid_integral_1a561fa1ee6b2567042a2c6ccaf256b452" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="trapezoid_integral_1a561fa1ee6b2567042a2c6ccaf256b452" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TrapezoidIntegral</definition>
         <argsstring>(Real accuracy, Size maxIterations)</argsstring>

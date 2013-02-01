@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl" kind="class" prot="public">
+  <compounddef id="detail_1_1_cubic_interpolation_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::CubicInterpolationImpl</compoundname>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1aa0ad73baaa5937cf8c2f8c44325aad54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1aa0ad73baaa5937cf8c2f8c44325aad54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CubicInterpolationImpl</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, CubicInterpolation::DerivativeApprox da, bool monotonic, CubicInterpolation::BoundaryCondition leftCondition, Real leftConditionValue, CubicInterpolation::BoundaryCondition rightCondition, Real rightConditionValue)</argsstring>
@@ -29,7 +29,7 @@
           <declname>yBegin</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
+          <type><ref refid="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
           <declname>da</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
           <declname>monotonic</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>leftCondition</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>leftConditionValue</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>rightCondition</declname>
         </param>
         <param>
@@ -54,14 +54,14 @@
         </param>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="360" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="344" bodyend="360"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="362" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="362" bodyend="670"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
@@ -72,7 +72,7 @@
         </param>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="671" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="671" bodyend="675"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
@@ -83,7 +83,7 @@
         </param>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="676" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="676" bodyend="682"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivative</definition>
         <argsstring>(Real x) const </argsstring>
@@ -94,7 +94,7 @@
         </param>
         <location file="/math/interpolations/cubicinterpolation.hpp" line="683" bodyfile="/math/interpolations/cubicinterpolation.hpp" bodystart="683" bodyend="687"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_cubic_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_cubic_interpolation_impl_1a9dc6ccdc0a9723a88f09b8092fc4513a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondDerivative</definition>
         <argsstring>(Real x) const </argsstring>

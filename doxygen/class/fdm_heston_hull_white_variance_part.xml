@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part" kind="class" prot="public">
+  <compounddef id="fdm_heston_hull_white_variance_part" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonHullWhiteVariancePart</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a28383606eda70b46b073161291dd7bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_heston_hull_white_variance_part_1a28383606eda70b46b073161291dd7bd3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmHestonHullWhiteVariancePart</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, Real sigma, Real kappa, Real theta)</argsstring>
@@ -26,7 +26,7 @@
         </param>
         <location file="/methods/finitedifferences/operators/fdmhestonhullwhiteop.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_hull_white_variance_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_heston_hull_white_variance_part_1a1ff6f42e241f24f5515c9c01ebb7b2c8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const TripleBandLinearOp &amp;</type>
         <definition>const TripleBandLinearOp&amp; getMap</definition>
         <argsstring>() const </argsstring>

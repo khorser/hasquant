@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
+  <compounddef id="one_factor_model_1_1_short_rate_dynamics" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OneFactorModel::ShortRateDynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1ab560dc05b93486682c84416c34e48935" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ShortRateDynamics</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process)</argsstring>
         <name>ShortRateDynamics</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/models/shortrate/onefactormodel.hpp" line="57" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="55" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a4177f4ad2f5e4bdb85ef90414109fd0a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ShortRateDynamics</definition>
         <argsstring>()</argsstring>
         <name>~ShortRateDynamics</name>
         <location file="/models/shortrate/onefactormodel.hpp" line="58" bodyfile="/models/shortrate/onefactormodel.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real variable</definition>
         <argsstring>(Time t, Rate r) const =0</argsstring>
@@ -39,7 +39,7 @@
 <para>Compute state variable from short rate. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodel.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate shortRate</definition>
         <argsstring>(Time t, Real variable) const =0</argsstring>
@@ -56,8 +56,8 @@
 <para>Compute short rate from state variable. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodel.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="one_factor_model_1_1_short_rate_dynamics_1a6757308e82485603fd8d2583b002d150" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;StochasticProcess1D&gt;&amp; process</definition>
         <argsstring>()</argsstring>
         <name>process</name>

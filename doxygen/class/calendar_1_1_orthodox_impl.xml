@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_calendar_1_1_orthodox_impl" kind="class" prot="public">
+  <compounddef id="calendar_1_1_orthodox_impl" kind="class" prot="public">
     <compoundname>QuantLib::Calendar::OrthodoxImpl</compoundname>
     <includes local="no">/time/calendar.hpp</includes>
     <briefdescription>

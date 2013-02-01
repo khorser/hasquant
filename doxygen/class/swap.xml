@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swap" kind="class" prot="public">
+  <compounddef id="swap" kind="class" prot="public">
     <compoundname>QuantLib::Swap</compoundname>
     <includes local="no">/instruments/swap.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_swap_1_1arguments" prot="public">QuantLib::Swap::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_swap_1_1engine" prot="public">QuantLib::Swap::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_swap_1_1results" prot="public">QuantLib::Swap::results</innerclass>
+    <innerclass refid="swap_1_1arguments" prot="public">QuantLib::Swap::arguments</innerclass>
+    <innerclass refid="swap_1_1engine" prot="public">QuantLib::Swap::engine</innerclass>
+    <innerclass refid="swap_1_1results" prot="public">QuantLib::Swap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1aa7e28d70b1366663707f7554205b887b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_1aa7e28d70b1366663707f7554205b887b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Swap</definition>
         <argsstring>(const Leg &amp;firstLeg, const Leg &amp;secondLeg)</argsstring>
@@ -25,7 +25,7 @@
 <para>The cash flows belonging to the first leg are paid; the ones belonging to the second leg are received. </para>        </detaileddescription>
         <location file="/instruments/swap.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a84d17705f422bce5e74d0a4ca0f6df34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_1a84d17705f422bce5e74d0a4ca0f6df34" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Swap</definition>
         <argsstring>(const std::vector&lt; Leg &gt; &amp;legs, const std::vector&lt; bool &gt; &amp;payer)</argsstring>
@@ -42,7 +42,7 @@
 <para>Multi leg constructor. </para>        </detaileddescription>
         <location file="/instruments/swap.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a428a8c0a5cb2912604b351462b52e228" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_1a428a8c0a5cb2912604b351462b52e228" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Swap</definition>
         <argsstring>(Size legs)</argsstring>
@@ -58,22 +58,22 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/swap.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -81,12 +81,12 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/swap.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
@@ -95,12 +95,12 @@
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/swap.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupExpired</definition>
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
+        <reimplements refid="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="/instruments/swap.hpp" line="105"/>
@@ -108,21 +108,21 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Additional interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="swap_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/swap.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="swap_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/instruments/swap.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1ae068828364b9e2254681f983d68dcb6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1ae068828364b9e2254681f983d68dcb6c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real legBPS</definition>
         <argsstring>(Size j) const </argsstring>
@@ -133,7 +133,7 @@
         </param>
         <location file="/instruments/swap.hpp" line="66" bodyfile="/instruments/swap.hpp" bodystart="66" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a269631e31a13dd1e7d6e78bc52397cef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1a269631e31a13dd1e7d6e78bc52397cef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real legNPV</definition>
         <argsstring>(Size j) const </argsstring>
@@ -144,7 +144,7 @@
         </param>
         <location file="/instruments/swap.hpp" line="71" bodyfile="/instruments/swap.hpp" bodystart="71" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1addfecdb10b9c77cc3b2de423cbe7a5bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1addfecdb10b9c77cc3b2de423cbe7a5bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor startDiscounts</definition>
         <argsstring>(Size j) const </argsstring>
@@ -155,7 +155,7 @@
         </param>
         <location file="/instruments/swap.hpp" line="76" bodyfile="/instruments/swap.hpp" bodystart="76" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1ac50265fc5de978e94b014cfbea2f1668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1ac50265fc5de978e94b014cfbea2f1668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor endDiscounts</definition>
         <argsstring>(Size j) const </argsstring>
@@ -166,14 +166,14 @@
         </param>
         <location file="/instruments/swap.hpp" line="81" bodyfile="/instruments/swap.hpp" bodystart="81" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1aade227fdc14701bf0bfde19b1c9ae2bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1aade227fdc14701bf0bfde19b1c9ae2bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor npvDateDiscount</definition>
         <argsstring>() const </argsstring>
         <name>npvDateDiscount</name>
         <location file="/instruments/swap.hpp" line="86" bodyfile="/instruments/swap.hpp" bodystart="86" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1a59d4f1ae9886a4955a88789f6da538ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_1a59d4f1ae9886a4955a88789f6da538ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; leg</definition>
         <argsstring>(Size j) const </argsstring>

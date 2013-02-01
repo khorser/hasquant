@@ -1,51 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_term_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="term_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TermStructure</compoundname>
     <includes local="no">/termstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>There are three ways in which a term structure can keep track of its reference date. The first is that such date is fixed; the second is that it is determined by advancing the current date of a given number of business days; and the third is that it is based on the reference date of some other structure.</para><para>In the first case, the constructor taking a date is to be used; the default implementation of <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> will then return such date. In the second case, the constructor taking a number of days and a calendar is to be used; <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> will return a date calculated based on the current evaluation date, and the term structure and its observers will be notified when the evaluation date changes. In the last case, the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method must be overridden in derived classes so that it fetches and return the appropriate date. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a4a8e0f324391a12454f11f5f5d5e66e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>There are three ways in which a term structure can keep track of its reference date. The first is that such date is fixed; the second is that it is determined by advancing the current date of a given number of business days; and the third is that it is based on the reference date of some other structure.</para><para>In the first case, the constructor taking a date is to be used; the default implementation of <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> will then return such date. In the second case, the constructor taking a number of days and a calendar is to be used; <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> will return a date calculated based on the current evaluation date, and the term structure and its observers will be notified when the evaluation date changes. In the last case, the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method must be overridden in derived classes so that it fetches and return the appropriate date. </para></description>
+      <memberdef kind="function" id="term_structure_1a4a8e0f324391a12454f11f5f5d5e66e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TermStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>TermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000107"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000107"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructure.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a44918f70ab345cad67a287d46641f20f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="term_structure_1a44918f70ab345cad67a287d46641f20f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TermStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>TermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
         <location file="/termstructure.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ab72309c6d49bd4b6dc5b9ed09b67c7b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="term_structure_1ab72309c6d49bd4b6dc5b9ed09b67c7b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TermStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -55,12 +55,12 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -69,8 +69,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Dates and Time</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
@@ -78,21 +78,21 @@
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/termstructure.hpp" line="81" bodyfile="/termstructure.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a56d243294c1b34335d067270796f5668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="term_structure_1a56d243294c1b34335d067270796f5668" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time timeFromReference</definition>
         <argsstring>(const Date &amp;date) const </argsstring>
         <name>timeFromReference</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <briefdescription>
 <para>date/time conversion </para>        </briefdescription>
         <location file="/termstructure.hpp" line="83" bodyfile="/termstructure.hpp" bodystart="140" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date maxDate</definition>
         <argsstring>() const =0</argsstring>
         <name>maxDate</name>
@@ -100,7 +100,7 @@
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructure.hpp" line="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="term_structure_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
@@ -109,8 +109,8 @@
 <para>the latest time for which the curve can return values </para>        </briefdescription>
         <location file="/termstructure.hpp" line="87" bodyfile="/termstructure.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>virtual const Date&amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
@@ -118,8 +118,8 @@
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="/termstructure.hpp" line="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
@@ -127,7 +127,7 @@
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="/termstructure.hpp" line="91" bodyfile="/termstructure.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
@@ -139,17 +139,17 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="term_structure_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/termstructure.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="term_structure_1a7cd56b3d79445a9c5e72fbc0ddd4d201" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~TermStructure</definition>
         <argsstring>()</argsstring>

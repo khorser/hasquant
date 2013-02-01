@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_ext_o_u_jump_vanilla_engine" kind="class" prot="public">
+  <compounddef id="fd_ext_o_u_jump_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdExtOUJumpVanillaEngine</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_ext_o_u_jump_vanilla_engine_1a7f3f3c62461e27ef8f80ffa22e6dee2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_ext_o_u_jump_vanilla_engine_1a7f3f3c62461e27ef8f80ffa22e6dee2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdExtOUJumpVanillaEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;p, const boost::shared_ptr&lt; YieldTermStructure &gt; &amp;rTS, Size tGrid=50, Size xGrid=200, Size yGrid=50, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdExtOUJumpVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>rTS</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
         </param>
         <location file="/experimental/finitedifferences/fdextoujumpvanillaengine.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_ext_o_u_jump_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_ext_o_u_jump_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

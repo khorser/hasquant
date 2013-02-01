@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_surface" kind="class" prot="public" abstract="yes">
+  <compounddef id="surface" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Surface</compoundname>
     <includes local="no">/math/surface.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_surface_1af034c5477c1ca16034f9c847379b7a07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="surface_1af034c5477c1ca16034f9c847379b7a07" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
@@ -19,14 +19,14 @@
         </param>
         <location file="/math/surface.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_surface_1ab10d8c4f72856ffe3a2927be1c9b9b99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_domain" kindref="compound">Domain</ref> &gt;</type>
+      <memberdef kind="function" id="surface_1ab10d8c4f72856ffe3a2927be1c9b9b99" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="domain" kindref="compound">Domain</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;Domain&gt; domain</definition>
         <argsstring>() const =0</argsstring>
         <name>domain</name>
         <location file="/math/surface.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_surface_1adf9a9acd7daf9d6c50faf9640b3ca938" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="surface_1adf9a9acd7daf9d6c50faf9640b3ca938" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Surface</definition>
         <argsstring>()</argsstring>

@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_o_i_s_rate_helper" kind="class" prot="public">
+  <compounddef id="o_i_s_rate_helper" kind="class" prot="public">
     <compoundname>QuantLib::OISRateHelper</compoundname>
     <includes local="no">/termstructures/yield/oisratehelper.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="o_i_s_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
         <location file="/termstructures/yield/oisratehelper.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_o_i_s_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="o_i_s_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTermStructure</definition>
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
         <location file="/termstructures/yield/oisratehelper.hpp" line="46"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_o_i_s_rate_helper_1a8c919486d0714f318587d39e11828248" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
+      <memberdef kind="function" id="o_i_s_rate_helper_1a8c919486d0714f318587d39e11828248" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;OvernightIndexedSwap&gt; swap</definition>
         <argsstring>() const </argsstring>
         <name>swap</name>
@@ -36,20 +36,20 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="o_i_s_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/termstructures/yield/oisratehelper.hpp" line="54"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_o_i_s_rate_helper_1a5e6c52df8f311395f8fbee931331f59a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="o_i_s_rate_helper_1a5e6c52df8f311395f8fbee931331f59a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OISRateHelper</definition>
         <argsstring>(Natural settlementDays, const Period &amp;tenor, const Handle&lt; Quote &gt; &amp;fixedRate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
@@ -59,11 +59,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>fixedRate</declname>
         </param>
         <param>
@@ -71,15 +71,15 @@
           <declname>overnightIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/yield/oisratehelper.hpp" line="42"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Rate helper for bootstrapping over Overnight Indexed <ref refid="class_quant_lib_1_1_swap" kindref="compound">Swap</ref> rates. </para>    </briefdescription>
+<para>Rate helper for bootstrapping over Overnight Indexed <ref refid="swap" kindref="compound">Swap</ref> rates. </para>    </briefdescription>
     <location file="/termstructures/yield/oisratehelper.hpp" line="34" bodyfile="/termstructures/yield/oisratehelper.hpp" bodystart="34" bodyend="68"/>
   </compounddef>
 </doxygen>

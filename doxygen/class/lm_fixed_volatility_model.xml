@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lm_fixed_volatility_model" kind="class" prot="public">
+  <compounddef id="lm_fixed_volatility_model" kind="class" prot="public">
     <compoundname>QuantLib::LmFixedVolatilityModel</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a533759436c1b9d801ec55e933bc24d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lm_fixed_volatility_model_1a533759436c1b9d801ec55e933bc24d17" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LmFixedVolatilityModel</definition>
         <argsstring>(const Array &amp;volatilities, const std::vector&lt; Time &gt; &amp;startTimes)</argsstring>
         <name>LmFixedVolatilityModel</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>volatilities</declname>
         </param>
         <param>
@@ -18,8 +18,8 @@
         </param>
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="lm_fixed_volatility_model_1a03f03d36b98e10eaaf9f3bb562a3044a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; volatility</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>volatility</name>
@@ -28,13 +28,13 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lm_fixed_volatility_model_1ae4a8be640d1ad9269e3e4ff61ad54a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(Size i, Time t, const Array &amp;x) const </argsstring>
@@ -48,7 +48,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmfixedvolmodel.hpp" line="38"/>

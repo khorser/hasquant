@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_composite_constraint" kind="class" prot="public">
+  <compounddef id="composite_constraint" kind="class" prot="public">
     <compoundname>QuantLib::CompositeConstraint</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="composite_constraint_1a17d744afd044219f08e343ca1f2333e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CompositeConstraint</definition>
         <argsstring>(const Constraint &amp;c1, const Constraint &amp;c2)</argsstring>
         <name>CompositeConstraint</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c1</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>c2</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="126" bodyfile="/math/optimization/constraint.hpp" bodystart="124" bodyend="126"/>

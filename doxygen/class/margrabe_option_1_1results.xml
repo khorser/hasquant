@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_margrabe_option_1_1results" kind="class" prot="public">
+  <compounddef id="margrabe_option_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::MargrabeOption::results</compoundname>
     <includes local="no">/experimental/exoticoptions/margrabeoption.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a90fefb6d21481196eae30c99279c45ed" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1results_1a90fefb6d21481196eae30c99279c45ed" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta1</definition>
         <argsstring></argsstring>
         <name>delta1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="76" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a8eb7e5c2ea99fa314dd5f1352b4cfa82" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1results_1a8eb7e5c2ea99fa314dd5f1352b4cfa82" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta2</definition>
         <argsstring></argsstring>
         <name>delta2</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="77" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="77" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a7e2dabd72cd24f0dbd090b020598c5c8" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1results_1a7e2dabd72cd24f0dbd090b020598c5c8" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma1</definition>
         <argsstring></argsstring>
         <name>gamma1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="78" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1results_1a0c592742a5ffd3af304a17afd68df742" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1results_1a0c592742a5ffd3af304a17afd68df742" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma2</definition>
         <argsstring></argsstring>
@@ -34,14 +34,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1_1results_1a81532ad36ede4bfc6cd5e69a321f3df4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1_1results_1a81532ad36ede4bfc6cd5e69a321f3df4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>results</definition>
         <argsstring>()</argsstring>
         <name>results</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="75" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="72" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

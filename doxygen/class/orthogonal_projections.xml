@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_orthogonal_projections" kind="class" prot="public">
+  <compounddef id="orthogonal_projections" kind="class" prot="public">
     <compoundname>QuantLib::OrthogonalProjections</compoundname>
     <includes local="no">/math/matrixutilities/basisincompleteordered.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonal_projections_1a2bc4e08445c6ad8b09eff827e1984e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonal_projections_1a2bc4e08445c6ad8b09eff827e1984e24" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OrthogonalProjections</definition>
         <argsstring>(const Matrix &amp;originalVectors, Real multiplierCutOff, Real tolerance)</argsstring>
         <name>OrthogonalProjections</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>originalVectors</declname>
         </param>
         <param>
@@ -23,14 +23,14 @@
         </param>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonal_projections_1a38d1e02dc5c49efcafa72743723cfb13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonal_projections_1a38d1e02dc5c49efcafa72743723cfb13" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::valarray&lt; bool &gt; &amp;</type>
         <definition>const std::valarray&lt;bool&gt;&amp; validVectors</definition>
         <argsstring>() const </argsstring>
         <name>validVectors</name>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonal_projections_1ac5be0c8a21bbee2af6591f724b6844af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonal_projections_1ac5be0c8a21bbee2af6591f724b6844af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; GetVector</definition>
         <argsstring>(Size index) const </argsstring>
@@ -41,7 +41,7 @@
         </param>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_orthogonal_projections_1a82d51c6995f0cb0a31121dacb90e97b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="orthogonal_projections_1a82d51c6995f0cb0a31121dacb90e97b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberValidVectors</definition>
         <argsstring>() const </argsstring>

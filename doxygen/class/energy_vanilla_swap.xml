@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_energy_vanilla_swap" kind="class" prot="public">
+  <compounddef id="energy_vanilla_swap" kind="class" prot="public">
     <compoundname>QuantLib::EnergyVanillaSwap</compoundname>
     <includes local="no">/experimental/commodities/energyvanillaswap.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1ac2f6e41346330b70d61d8675ff442abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="energy_vanilla_swap_1ac2f6e41346330b70d61d8675ff442abe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EnergyVanillaSwap</definition>
         <argsstring>(bool payer, const Calendar &amp;calendar, const Money &amp;fixedPrice, const UnitOfMeasure &amp;fixedPriceUnitOfMeasure, const boost::shared_ptr&lt; CommodityIndex &gt; &amp;index, const Currency &amp;payCurrency, const Currency &amp;receiveCurrency, const PricingPeriods &amp;pricingPeriods, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts, const Handle&lt; YieldTermStructure &gt; &amp;payLegTermStructure, const Handle&lt; YieldTermStructure &gt; &amp;receiveLegTermStructure, const Handle&lt; YieldTermStructure &gt; &amp;discountTermStructure)</argsstring>
@@ -14,27 +14,27 @@
           <declname>payer</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
           <declname>fixedPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>fixedPriceUnitOfMeasure</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>payCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>receiveCurrency</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>pricingPeriods</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -50,52 +50,52 @@
           <declname>secondaryCosts</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>payLegTermStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>receiveLegTermStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountTermStructure</declname>
         </param>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="energy_vanilla_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1acf62c1e22a09f8f6ae515de3e07bef53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="energy_vanilla_swap_1acf62c1e22a09f8f6ae515de3e07bef53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer payReceive</definition>
         <argsstring>() const </argsstring>
         <name>payReceive</name>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="52" bodyfile="/experimental/commodities/energyvanillaswap.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a2fe503ac9d18fc8d0c7f17f6e10e7939" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+      <memberdef kind="function" id="energy_vanilla_swap_1a2fe503ac9d18fc8d0c7f17f6e10e7939" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
         <definition>const Money&amp; fixedPrice</definition>
         <argsstring>() const </argsstring>
         <name>fixedPrice</name>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="53" bodyfile="/experimental/commodities/energyvanillaswap.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1a423c35ce58ee5f94178842c9b58ff90b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="energy_vanilla_swap_1a423c35ce58ee5f94178842c9b58ff90b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure&amp; fixedPriceUnitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>fixedPriceUnitOfMeasure</name>
         <location file="/experimental/commodities/energyvanillaswap.hpp" line="54" bodyfile="/experimental/commodities/energyvanillaswap.hpp" bodystart="54" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_vanilla_swap_1ad77f58399fcfa7ab11e68f8adcf6242b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="energy_vanilla_swap_1ad77f58399fcfa7ab11e68f8adcf6242b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="commodity_index" kindref="compound">CommodityIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;CommodityIndex&gt;&amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>

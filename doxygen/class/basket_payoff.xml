@@ -1,41 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_basket_payoff" kind="class" prot="public" abstract="yes">
+  <compounddef id="basket_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BasketPayoff</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="basket_payoff_1a808f35be919559506cae91c3a021f87c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BasketPayoff</definition>
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;p)</argsstring>
         <name>BasketPayoff</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="40" bodyfile="/instruments/basketoption.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a9b8b91f2b5d451870eecd88a14db32bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="basket_payoff_1a9b8b91f2b5d451870eecd88a14db32bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BasketPayoff</definition>
         <argsstring>()</argsstring>
         <name>~BasketPayoff</name>
         <location file="/instruments/basketoption.hpp" line="41" bodyfile="/instruments/basketoption.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="basket_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
         <location file="/instruments/basketoption.hpp" line="42" bodyfile="/instruments/basketoption.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="basket_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::string</type>
         <definition>std::string description</definition>
         <argsstring>() const </argsstring>
         <name>description</name>
         <location file="/instruments/basketoption.hpp" line="43" bodyfile="/instruments/basketoption.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="basket_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real price) const </argsstring>
@@ -46,30 +46,30 @@
         </param>
         <location file="/instruments/basketoption.hpp" line="44" bodyfile="/instruments/basketoption.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="basket_payoff_1acdddb691e7a91527a509d3d51951834c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real operator()</definition>
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="45" bodyfile="/instruments/basketoption.hpp" bodystart="45" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1ae04dcd96c5a2ea87a6d09a4f7b77c7f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="basket_payoff_1ae04dcd96c5a2ea87a6d09a4f7b77c7f3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real accumulate</definition>
         <argsstring>(const Array &amp;a) const =0</argsstring>
         <name>accumulate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_payoff_1a440d118e6b1d4c8a91b66f39338b4c17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="function" id="basket_payoff_1a440d118e6b1d4c8a91b66f39338b4c17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>const boost::shared_ptr&lt;Payoff&gt; basePayoff</definition>
         <argsstring>()</argsstring>
         <name>basePayoff</name>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1detail_1_1_floating_point_null_3_01false_01_4" kind="struct" prot="public">
+  <compounddef id="detail_1_1_floating_point_null_3_01false_01_4" kind="struct" prot="public">
     <compoundname>QuantLib::detail::FloatingPointNull&lt; false &gt;</compoundname>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_floating_point_null_3_01false_01_4_1aff44a30500beb8b50a548f3a2372d059" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_floating_point_null_3_01false_01_4_1aff44a30500beb8b50a548f3a2372d059" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>int</type>
         <definition>static int nullValue</definition>
         <argsstring>()</argsstring>

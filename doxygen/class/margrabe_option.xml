@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_margrabe_option" kind="class" prot="public">
+  <compounddef id="margrabe_option" kind="class" prot="public">
     <compoundname>QuantLib::MargrabeOption</compoundname>
     <includes local="no">/experimental/exoticoptions/margrabeoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_margrabe_option_1_1arguments" prot="public">QuantLib::MargrabeOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_margrabe_option_1_1engine" prot="public">QuantLib::MargrabeOption::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_margrabe_option_1_1results" prot="public">QuantLib::MargrabeOption::results</innerclass>
+    <innerclass refid="margrabe_option_1_1arguments" prot="public">QuantLib::MargrabeOption::arguments</innerclass>
+    <innerclass refid="margrabe_option_1_1engine" prot="public">QuantLib::MargrabeOption::engine</innerclass>
+    <innerclass refid="margrabe_option_1_1results" prot="public">QuantLib::MargrabeOption::results</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a86f02ea29338a3fc8dcb9a6128e6a1f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1a86f02ea29338a3fc8dcb9a6128e6a1f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MargrabeOption</definition>
         <argsstring>(Integer Q1, Integer Q2, const boost::shared_ptr&lt; Exercise &gt; &amp;)</argsstring>
@@ -21,16 +21,16 @@
           <declname>Q2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="margrabe_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -38,40 +38,40 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a80047a0f4c6aa402065a92d49a30909e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1a80047a0f4c6aa402065a92d49a30909e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta1</definition>
         <argsstring>() const </argsstring>
         <name>delta1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a5d5e115b72bfe6f0934eac38ae511a97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1a5d5e115b72bfe6f0934eac38ae511a97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real delta2</definition>
         <argsstring>() const </argsstring>
         <name>delta2</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a5e3b5ce99d39f637fef69ac70d191c11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1a5e3b5ce99d39f637fef69ac70d191c11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma1</definition>
         <argsstring>() const </argsstring>
         <name>gamma1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1a4e1c296e0cc1a8c434730a1e7d548ae5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1a4e1c296e0cc1a8c434730a1e7d548ae5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gamma2</definition>
         <argsstring>() const </argsstring>
         <name>gamma2</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="margrabe_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

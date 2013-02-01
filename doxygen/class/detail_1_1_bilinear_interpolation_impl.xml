@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_bilinear_interpolation_impl" kind="class" prot="public">
+  <compounddef id="detail_1_1_bilinear_interpolation_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::BilinearInterpolationImpl</compoundname>
     <templateparamlist>
       <param>
@@ -14,7 +14,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bilinear_interpolation_impl_1a5ea445e0cdba27071cbdf1f8313026e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_bilinear_interpolation_impl_1a5ea445e0cdba27071cbdf1f8313026e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BilinearInterpolationImpl</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, const I2 &amp;yEnd, const M &amp;zData)</argsstring>
@@ -41,14 +41,14 @@
         </param>
         <location file="/math/interpolations/bilinearinterpolation.hpp" line="43" bodyfile="/math/interpolations/bilinearinterpolation.hpp" bodystart="38" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bilinear_interpolation_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_bilinear_interpolation_impl_1afe1d8348c24e6589bc7c0b3f689316a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>()</argsstring>
         <name>calculate</name>
         <location file="/math/interpolations/bilinearinterpolation.hpp" line="46" bodyfile="/math/interpolations/bilinearinterpolation.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bilinear_interpolation_impl_1abea3518f04c55492b47c8a8d1a04ca12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_bilinear_interpolation_impl_1abea3518f04c55492b47c8a8d1a04ca12" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x, Real y) const </argsstring>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond" kind="class" prot="public">
+  <compounddef id="discretized_callable_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedCallableFixedRateBond</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1fce1419444577d3bb4928661eb7cba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_callable_fixed_rate_bond_1a1fce1419444577d3bb4928661eb7cba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscretizedCallableFixedRateBond</definition>
         <argsstring>(const CallableBond::arguments &amp;, const Date &amp;referenceDate, const DayCounter &amp;dayCounter)</argsstring>
@@ -12,16 +12,16 @@
           <type>const CallableBond::arguments &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_callable_fixed_rate_bond_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>(Size size)</argsstring>
@@ -32,7 +32,7 @@
         </param>
         <location file="/experimental/callablebonds/discretizedcallablefixedratebond.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_callable_fixed_rate_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_callable_fixed_rate_bond_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const </argsstring>

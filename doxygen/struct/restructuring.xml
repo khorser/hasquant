@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_restructuring" kind="struct" prot="public">
+  <compounddef id="restructuring" kind="struct" prot="public">
     <compoundname>QuantLib::Restructuring</compoundname>
     <includes local="no">/experimental/credit/defaulttype.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a87077092dc8a25cf4848c1652f61a07e" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a87077092dc8a25cf4848c1652f61a07e" prot="public">
           <name>NoRestructuring</name>
           <initializer>= 0</initializer>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1157a52de091d4b2ea5750cc7a1c97d1" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1157a52de091d4b2ea5750cc7a1c97d1" prot="public">
           <name>ModifiedRestructuring</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a0196a476607af5f394eec47184a03ca5" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a0196a476607af5f394eec47184a03ca5" prot="public">
           <name>ModifiedModifiedRestructuring</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7ae78b3002d80d0e5c68e9eb1f771886aa" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7ae78b3002d80d0e5c68e9eb1f771886aa" prot="public">
           <name>FullRestructuring</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1f798b3e8ca3d741d23e207651c84324" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a1f798b3e8ca3d741d23e207651c84324" prot="public">
           <name>AnyRestructuring</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a02fc5eba222de6617ba2e419c5cb5000" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a02fc5eba222de6617ba2e419c5cb5000" prot="public">
           <name>XR</name>
           <initializer>= NoRestructuring</initializer>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a72e220e7a1804705bd074f8cdd5093c4" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a72e220e7a1804705bd074f8cdd5093c4" prot="public">
           <name>MR</name>
           <initializer>= ModifiedRestructuring</initializer>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a519a4a8945cef24205e65dbbc404da73" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7a519a4a8945cef24205e65dbbc404da73" prot="public">
           <name>MM</name>
           <initializer>= ModifiedModifiedRestructuring</initializer>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_restructuring_1a1d1cfd8ffb84e947f82999c682b666a7aaaa8401b50cb34e3a0d58729f70494f0" prot="public">
+        <enumvalue id="restructuring_1a1d1cfd8ffb84e947f82999c682b666a7aaaa8401b50cb34e3a0d58729f70494f0" prot="public">
           <name>CR</name>
           <initializer>= FullRestructuring</initializer>
         </enumvalue>
@@ -42,7 +42,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="struct_quant_lib_1_1_restructuring" kindref="compound">Restructuring</ref> type. </para>    </briefdescription>
+<para><ref refid="restructuring" kindref="compound">Restructuring</ref> type. </para>    </briefdescription>
     <location file="/experimental/credit/defaulttype.hpp" line="84" bodyfile="/experimental/credit/defaulttype.hpp" bodystart="84" bodyend="97"/>
   </compounddef>
 </doxygen>

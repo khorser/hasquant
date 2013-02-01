@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_credit_default_swap" kind="class" prot="public">
+  <compounddef id="credit_default_swap" kind="class" prot="public">
     <compoundname>QuantLib::CreditDefaultSwap</compoundname>
     <includes local="no">/instruments/creditdefaultswap.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1arguments" prot="public">QuantLib::CreditDefaultSwap::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1engine" prot="public">QuantLib::CreditDefaultSwap::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_credit_default_swap_1_1results" prot="public">QuantLib::CreditDefaultSwap::results</innerclass>
+    <innerclass refid="credit_default_swap_1_1arguments" prot="public">QuantLib::CreditDefaultSwap::arguments</innerclass>
+    <innerclass refid="credit_default_swap_1_1engine" prot="public">QuantLib::CreditDefaultSwap::engine</innerclass>
+    <innerclass refid="credit_default_swap_1_1results" prot="public">QuantLib::CreditDefaultSwap::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1acc79277d9b859d2db515a4006e39ab41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1acc79277d9b859d2db515a4006e39ab41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CreditDefaultSwap</definition>
         <argsstring>(Protection::Side side, Real notional, Rate spread, const Schedule &amp;schedule, BusinessDayConvention paymentConvention, const DayCounter &amp;dayCounter, bool settlesAccrual=true, bool paysAtDefaultTime=true, const Date &amp;protectionStart=Date(), const boost::shared_ptr&lt; Claim &gt; &amp;=boost::shared_ptr&lt; Claim &gt;())</argsstring>
@@ -26,7 +26,7 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -48,13 +48,13 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>protectionStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt; &amp;</type>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
+          <type>const boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>CDS quoted as running-spread only. </para>        </briefdescription>
@@ -85,7 +85,7 @@
 <parametername>schedule</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+<para><ref refid="coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -126,7 +126,7 @@
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a39ad57353c0f6d00b1e20ef3b370fdb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a39ad57353c0f6d00b1e20ef3b370fdb5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CreditDefaultSwap</definition>
         <argsstring>(Protection::Side side, Real notional, Rate upfront, Rate spread, const Schedule &amp;schedule, BusinessDayConvention paymentConvention, const DayCounter &amp;dayCounter, bool settlesAccrual=true, bool paysAtDefaultTime=true, const Date &amp;protectionStart=Date(), const Date &amp;upfrontDate=Date(), const boost::shared_ptr&lt; Claim &gt; &amp;=boost::shared_ptr&lt; Claim &gt;())</argsstring>
@@ -148,7 +148,7 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -156,7 +156,7 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -170,18 +170,18 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>protectionStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>upfrontDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt; &amp;</type>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> &gt;()</defval>
+          <type>const boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt; &amp;</type>
+          <defval>boost::shared_ptr&lt; <ref refid="claim" kindref="compound">Claim</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>CDS quoted as upfront and running spread. </para>        </briefdescription>
@@ -219,7 +219,7 @@
 <parametername>schedule</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
+<para><ref refid="coupon" kindref="compound">Coupon</ref> schedule. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
@@ -261,7 +261,7 @@
 <parametername>upfrontDate</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref> date for the upfront payment. </para></parameterdescription>
+<para><ref refid="settlement" kindref="compound">Settlement</ref> date for the upfront payment. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
@@ -270,22 +270,22 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="credit_default_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/creditdefaultswap.hpp" line="125"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="credit_default_swap_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -293,12 +293,12 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="credit_default_swap_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
@@ -307,12 +307,12 @@
 <para>When a derived result structure is defined for an instrument, this method should be overridden to read from it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="credit_default_swap_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupExpired</definition>
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
+        <reimplements refid="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="227"/>
@@ -320,57 +320,57 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1acc92405f554372b2ac8be49b9c052908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Protection::Side</type>
         <definition>Protection::Side side</definition>
         <argsstring>() const </argsstring>
         <name>side</name>
         <location file="/instruments/creditdefaultswap.hpp" line="131"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
         <location file="/instruments/creditdefaultswap.hpp" line="132"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a63b91855ec1848afb6dca91b5b53a3b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate runningSpread</definition>
         <argsstring>() const </argsstring>
         <name>runningSpread</name>
         <location file="/instruments/creditdefaultswap.hpp" line="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a5a44ea6a59c7913843c89ea5acf6fc72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::optional&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>boost::optional&lt;Rate&gt; upfront</definition>
         <argsstring>() const </argsstring>
         <name>upfront</name>
         <location file="/instruments/creditdefaultswap.hpp" line="134"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a6c2c2b3c3323b9e8b7b7e9b6d9a381bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a6c2c2b3c3323b9e8b7b7e9b6d9a381bf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool settlesAccrual</definition>
         <argsstring>() const </argsstring>
         <name>settlesAccrual</name>
         <location file="/instruments/creditdefaultswap.hpp" line="135"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3a9c322458ea5f2f207bbbda4d63f63c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a3a9c322458ea5f2f207bbbda4d63f63c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool paysAtDefaultTime</definition>
         <argsstring>() const </argsstring>
         <name>paysAtDefaultTime</name>
         <location file="/instruments/creditdefaultswap.hpp" line="136"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a7570cd83c9c52257a28a15125b553207" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; coupons</definition>
         <argsstring>() const </argsstring>
         <name>coupons</name>
         <location file="/instruments/creditdefaultswap.hpp" line="137"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="credit_default_swap_1a061ac789f04857311e0ac77349c5470d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; protectionStartDate</definition>
         <argsstring>() const </argsstring>
         <name>protectionStartDate</name>
@@ -378,8 +378,8 @@
 <para>The first date for which defaults will trigger the contract. </para>        </briefdescription>
         <location file="/instruments/creditdefaultswap.hpp" line="139"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="credit_default_swap_1a771353eb0b622464172d74dd95225aae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; protectionEndDate</definition>
         <argsstring>() const </argsstring>
         <name>protectionEndDate</name>
@@ -390,7 +390,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Results</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1af902c4c5d6a281bfc0e46820bb8f8126" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1af902c4c5d6a281bfc0e46820bb8f8126" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairUpfront</definition>
         <argsstring>() const </argsstring>
@@ -399,7 +399,7 @@
 <para>Returns the upfront spread that, given the running spread and the quoted recovery rate, will make the instrument have an NPV of 0. </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="149"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1ad5fc81080d467478294f70a2982808d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairSpread</definition>
         <argsstring>() const </argsstring>
@@ -409,7 +409,7 @@
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="156"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a3479180b25f065f25ae8e60bdf858488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real couponLegBPS</definition>
         <argsstring>() const </argsstring>
@@ -418,35 +418,35 @@
 <para>Returns the variation of the fixed-leg value given a one-basis-point change in the running spread. </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="160"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1abad29773115638e00029dcf11e635ed4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real upfrontBPS</definition>
         <argsstring>() const </argsstring>
         <name>upfrontBPS</name>
         <location file="/instruments/creditdefaultswap.hpp" line="161"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1aff1e2188d21b77de2dcf0d7760517876" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real couponLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>couponLegNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="162"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a765fd58f395da55f01c62d5af5ba1c01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real defaultLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>defaultLegNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="163"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1aad9137d80be70b001150a4bd3231f6d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real upfrontNPV</definition>
         <argsstring>() const </argsstring>
         <name>upfrontNPV</name>
         <location file="/instruments/creditdefaultswap.hpp" line="164"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1a191f03cc383196d7f37049a45ca2c488" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate impliedHazardRate</definition>
         <argsstring>(Real targetNPV, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter, Real recoveryRate=0.4, Real accuracy=1.0e-6) const </argsstring>
@@ -456,11 +456,11 @@
           <declname>targetNPV</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -477,12 +477,12 @@
 <para>Implied hazard rate calculation. </para>        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="note"><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
-<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="187"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="credit_default_swap_1aae9e3995e52f04f34657c731af050db3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate conventionalSpread</definition>
         <argsstring>(Real conventionalRecovery, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const DayCounter &amp;dayCounter) const </argsstring>
@@ -492,11 +492,11 @@
           <declname>conventionalRecovery</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <briefdescription>
@@ -504,7 +504,7 @@
         <detaileddescription>
 <para>Under a standard ISDA model and a set of standardised instrument characteristics, it is the running only quoted spread that will make a CDS contract have an NPV of 0 when quoted for that running only spread. Refer to: &quot;ISDA
            Standard CDS converter specification.&quot; May 2009.</para><para>The conventional recovery rate to apply in the calculation is as specified by ISDA, not necessarily equal to the market-quoted one. It is typically 0.4 for SeniorSec and 0.2 for subordinate.</para><para><simplesect kind="note"><para>The conversion employs a flat hazard rate. As a result, you will not recover the market quotes.</para><simplesectsep/><para>This method performs the calculation with the instrument characteristics. It will coincide with the ISDA calculation if your object has the standard characteristics. Notably:<itemizedlist>
-<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="struct_quant_lib_1_1_i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
+<listitem><para>The calendar should have no bank holidays, just weekends.</para></listitem><listitem><para>The yield curve should be LIBOR piecewise constant in fwd rates, with a discount factor of 1 on the calculation date, which coincides with the trade date.</para></listitem><listitem><para>Convention should be Following for yield curve and contract cashflows.</para></listitem><listitem><para>The CDS should pay accrued and mature on standard <ref refid="i_m_m" kindref="compound">IMM</ref> dates, settle on trade date +1 and upfront settle on trade date +3. </para></listitem></itemizedlist>
 </para></simplesect>
 </para>        </detaileddescription>
         <location file="/instruments/creditdefaultswap.hpp" line="222"/>

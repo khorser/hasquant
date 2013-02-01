@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_parameter_1_1_impl" kind="class" prot="protected" abstract="yes">
+  <compounddef id="parameter_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::Parameter::Impl</compoundname>
     <includes local="no">/models/parameter.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="parameter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
         <location file="/models/parameter.hpp" line="42" bodyfile="/models/parameter.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_parameter_1_1_impl_1a999cdde07a48215158d3f676d7544a52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="parameter_1_1_impl_1a999cdde07a48215158d3f676d7544a52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real value</definition>
         <argsstring>(const Array &amp;params, Time t) const =0</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
         <param>

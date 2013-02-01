@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer" kind="class" prot="public">
+  <compounddef id="longstaff_schwartz_multi_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::LongstaffSchwartzMultiPathPricer</compoundname>
     <includes local="no">/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="longstaff_schwartz_multi_path_pricer_1aca0fe661d96748ce87b97822e680c25b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LongstaffSchwartzMultiPathPricer</definition>
         <argsstring>(const boost::shared_ptr&lt; PathPayoff &gt; &amp;, const std::vector&lt; Size &gt; &amp;, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;, const Array &amp;, Size, LsmBasisSystem::PolynomType)</argsstring>
         <name>LongstaffSchwartzMultiPathPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt; &amp;</type>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -29,19 +29,19 @@
         </param>
         <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="longstaff_schwartz_multi_path_pricer_1ab8d3cda01fecbe97dc404a507bbddab3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;multiPath) const </argsstring>
         <name>operator()</name>
-        <reimplements refid="class_quant_lib_1_1_path_pricer_1a8d202422e04c42b1c33fe366569a4ef5">operator()</reimplements>
+        <reimplements refid="path_pricer_1a8d202422e04c42b1c33fe366569a4ef5">operator()</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>multiPath</declname>
         </param>
         <location file="/experimental/mcbasket/longstaffschwartzmultipathpricer.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="longstaff_schwartz_multi_path_pricer_1a8946c11a6ad8cd19bc92048019269157" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void calibrate</definition>
         <argsstring>()</argsstring>

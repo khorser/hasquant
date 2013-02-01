@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1clipped__function" kind="class" prot="public">
+  <compounddef id="clipped__function" kind="class" prot="public">
     <compoundname>QuantLib::clipped_function</compoundname>
     <templateparamlist>
       <param>
@@ -11,14 +11,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1clipped__function_1a13867152e938c32ac76e39ccaf25ca8c" prot="public" static="no">
+      <memberdef kind="typedef" id="clipped__function_1a13867152e938c32ac76e39ccaf25ca8c" prot="public" static="no">
         <type>F::argument_type</type>
         <definition>typedef F::argument_type argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
         <location file="/math/functional.hpp" line="95" bodyfile="/math/functional.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1clipped__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
+      <memberdef kind="typedef" id="clipped__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
         <type>F::result_type</type>
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
@@ -27,7 +27,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1clipped__function_1a6df61fe8997dc8521e2bcc61f88265a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="clipped__function_1a6df61fe8997dc8521e2bcc61f88265a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>clipped_function</definition>
         <argsstring>(const F &amp;f, const R &amp;r)</argsstring>
@@ -42,7 +42,7 @@
         </param>
         <location file="/math/functional.hpp" line="97" bodyfile="/math/functional.hpp" bodystart="97" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1clipped__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="clipped__function_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
         <definition>result_type operator()</definition>
         <argsstring>(const argument_type &amp;x) const </argsstring>

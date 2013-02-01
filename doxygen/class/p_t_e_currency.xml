@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_p_t_e_currency" kind="class" prot="public">
+  <compounddef id="p_t_e_currency" kind="class" prot="public">
     <compoundname>QuantLib::PTECurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_p_t_e_currency_1ad1a32e77ca722486ac8adc3a7c07613b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="p_t_e_currency_1ad1a32e77ca722486ac8adc3a7c07613b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PTECurrency</definition>
         <argsstring>()</argsstring>

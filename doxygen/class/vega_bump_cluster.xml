@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_vega_bump_cluster" kind="class" prot="public">
+  <compounddef id="vega_bump_cluster" kind="class" prot="public">
     <compoundname>QuantLib::VegaBumpCluster</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1abe52dc478dc4f0d482b1c1d202487fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1abe52dc478dc4f0d482b1c1d202487fd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VegaBumpCluster</definition>
         <argsstring>(Size factorBegin, Size factorEnd, Size rateBegin, Size rateEnd, Size stepBegin, Size stepEnd)</argsstring>
@@ -34,7 +34,7 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1a59baeb7b754778030da511ccce5e305d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1a59baeb7b754778030da511ccce5e305d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool doesIntersect</definition>
         <argsstring>(const VegaBumpCluster &amp;comparee) const </argsstring>
@@ -45,53 +45,53 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1abcc75683281cd1e41ccc7219f72a2d3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1abcc75683281cd1e41ccc7219f72a2d3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isCompatible</definition>
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;volStructure) const </argsstring>
         <name>isCompatible</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1a1b37c316e383d8b7d1eacfa724667ec1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1a1b37c316e383d8b7d1eacfa724667ec1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size factorBegin</definition>
         <argsstring>() const </argsstring>
         <name>factorBegin</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="50" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="49" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1a0308a1f82149a0add7795cebbf315045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1a0308a1f82149a0add7795cebbf315045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size factorEnd</definition>
         <argsstring>() const </argsstring>
         <name>factorEnd</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="55" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="54" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1ab49dffcb8ae5a135b422484446d8e06d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1ab49dffcb8ae5a135b422484446d8e06d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size rateBegin</definition>
         <argsstring>() const </argsstring>
         <name>rateBegin</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="61" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="60" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1a3ec3944b4a201881dae10945a3639739" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1a3ec3944b4a201881dae10945a3639739" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size rateEnd</definition>
         <argsstring>() const </argsstring>
         <name>rateEnd</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="65" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="64" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1a3f1711b947eff07183a5e48f01783788" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1a3f1711b947eff07183a5e48f01783788" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size stepBegin</definition>
         <argsstring>() const </argsstring>
         <name>stepBegin</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="70" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="69" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_cluster_1accf0885e018615b4acce832cf53f9d4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_cluster_1accf0885e018615b4acce832cf53f9d4b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size stepEnd</definition>
         <argsstring>() const </argsstring>

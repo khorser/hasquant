@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_heston_vanilla_engine" kind="class" prot="public">
+  <compounddef id="fd_heston_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdHestonVanillaEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/fdhestonvanillaengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_vanilla_engine_1aefc54be3b2935837e5e6c0cf7f715065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_heston_vanilla_engine_1aefc54be3b2935837e5e6c0cf7f715065" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdHestonVanillaEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdHestonVanillaEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -40,23 +40,23 @@
         </param>
         <location file="/pricingengines/vanilla/fdhestonvanillaengine.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fd_heston_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/vanilla/fdhestonvanillaengine.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_vanilla_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fd_heston_vanilla_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/pricingengines/vanilla/fdhestonvanillaengine.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_vanilla_engine_1ae2f6f45639526bcc0a5daae4909834e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_heston_vanilla_engine_1ae2f6f45639526bcc0a5daae4909834e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void enableMultipleStrikesCaching</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;strikes)</argsstring>
@@ -67,7 +67,7 @@
         </param>
         <location file="/pricingengines/vanilla/fdhestonvanillaengine.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_vanilla_engine_1ad79cc2a7ea1df7c066d8e3ae9a49bd4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_heston_vanilla_engine_1ad79cc2a7ea1df7c066d8e3ae9a49bd4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>FdmSolverDesc</type>
         <definition>FdmSolverDesc getSolverDesc</definition>
         <argsstring>(Real equityScaleFactor) const </argsstring>
@@ -80,7 +80,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Finite-Differences Heston Vanilla <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> engine. </para>    </briefdescription>
+<para>Finite-Differences Heston Vanilla <ref refid="option" kindref="compound">Option</ref> engine. </para>    </briefdescription>
     <detaileddescription>
 <para><xrefsect id="test_1_test000128"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in web/literature and comparison with Black pricing. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/vanilla/fdhestonvanillaengine.hpp" line="48" bodyfile="/pricingengines/vanilla/fdhestonvanillaengine.hpp" bodystart="45" bodyend="74"/>

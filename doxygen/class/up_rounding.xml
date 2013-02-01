@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_up_rounding" kind="class" prot="public">
+  <compounddef id="up_rounding" kind="class" prot="public">
     <compoundname>QuantLib::UpRounding</compoundname>
     <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_up_rounding_1a18150de2e5f572059548ca6f566b1e89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="up_rounding_1a18150de2e5f572059548ca6f566b1e89" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>UpRounding</definition>
         <argsstring>(Integer precision, Integer digit=5)</argsstring>

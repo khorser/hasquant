@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_delta_calculator" kind="class" prot="public">
+  <compounddef id="black_delta_calculator" kind="class" prot="public">
     <compoundname>QuantLib::BlackDeltaCalculator</compoundname>
     <includes local="no">/experimental/fx/blackdeltacalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1ac766f81e5a714ebf5e0d3a943bba6c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1ac766f81e5a714ebf5e0d3a943bba6c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackDeltaCalculator</definition>
         <argsstring>(Option::Type ot, DeltaVolQuote::DeltaType dt, Real spot, DiscountFactor dDiscount, DiscountFactor fDiscount, Real stdDev)</argsstring>
@@ -35,7 +35,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1af21c1e320e11c719a1bdc7a3844ce7d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1af21c1e320e11c719a1bdc7a3844ce7d6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real deltaFromStrike</definition>
         <argsstring>(Real strike) const </argsstring>
@@ -46,7 +46,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1ab6d7007264040c106eea8dd57935334f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1ab6d7007264040c106eea8dd57935334f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real strikeFromDelta</definition>
         <argsstring>(Real delta) const </argsstring>
@@ -57,7 +57,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a57e8325fdb3550953469520a47252606" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a57e8325fdb3550953469520a47252606" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real cumD1</definition>
         <argsstring>(Real strike) const </argsstring>
@@ -68,7 +68,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a4542ea9587c45bd875673934a6ff7357" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a4542ea9587c45bd875673934a6ff7357" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real cumD2</definition>
         <argsstring>(Real strike) const </argsstring>
@@ -79,7 +79,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a3bdc6c35dfa49a8b6bbf867b089c1a67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a3bdc6c35dfa49a8b6bbf867b089c1a67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nD1</definition>
         <argsstring>(Real strike) const </argsstring>
@@ -90,7 +90,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a9fac81f2874ab025b4d33cd34be9a781" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a9fac81f2874ab025b4d33cd34be9a781" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nD2</definition>
         <argsstring>(Real strike) const </argsstring>
@@ -101,7 +101,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a74f62bb41e5e6046394e053fb605c637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a74f62bb41e5e6046394e053fb605c637" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setDeltaType</definition>
         <argsstring>(DeltaVolQuote::DeltaType dt)</argsstring>
@@ -112,7 +112,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1a3ed7a84bd09bb386627eff272fcb882a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1a3ed7a84bd09bb386627eff272fcb882a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setOptionType</definition>
         <argsstring>(Option::Type ot)</argsstring>
@@ -123,7 +123,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_calculator_1afe9d0eb583b6cb13e02b5da89403615e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_calculator_1afe9d0eb583b6cb13e02b5da89403615e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmStrike</definition>
         <argsstring>(DeltaVolQuote::AtmType atmT) const </argsstring>

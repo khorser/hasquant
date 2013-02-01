@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_swaption_engine" kind="class" prot="public">
+  <compounddef id="black_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackSwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/blackswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_swaption_engine_1abd24ff35a976366d04e4cdcb3e489b51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackSwaptionEngine</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, Volatility vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>BlackSwaptionEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -18,64 +18,64 @@
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a98b10c260bbcb19900e976a19909b60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_swaption_engine_1a98b10c260bbcb19900e976a19909b60c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackSwaptionEngine</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; Quote &gt; &amp;vol, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>BlackSwaptionEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a25dd2687fa0325a6a488661fc9a0fe40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_swaption_engine_1a25dd2687fa0325a6a488661fc9a0fe40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackSwaptionEngine</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, const Handle&lt; SwaptionVolatilityStructure &gt; &amp;vol)</argsstring>
         <name>BlackSwaptionEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>vol</declname>
         </param>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="black_swaption_engine_1aa6d8cf746064bbf8580d58fc2650d977" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; termStructure</definition>
         <argsstring>()</argsstring>
         <name>termStructure</name>
         <location file="/pricingengines/swaption/blackswaptionengine.hpp" line="53" bodyfile="/pricingengines/swaption/blackswaptionengine.hpp" bodystart="53" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_swaption_engine_1a6c5808888339733d1c7217afb71353ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
+      <memberdef kind="function" id="black_swaption_engine_1a6c5808888339733d1c7217afb71353ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt;</type>
         <definition>Handle&lt;SwaptionVolatilityStructure&gt; volatility</definition>
         <argsstring>()</argsstring>
         <name>volatility</name>

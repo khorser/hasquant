@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_linear_least_squares_regression" kind="class" prot="public">
+  <compounddef id="linear_least_squares_regression" kind="class" prot="public">
     <compoundname>QuantLib::LinearLeastSquaresRegression</compoundname>
     <templateparamlist>
       <param>
@@ -9,7 +9,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_linear_least_squares_regression_1a932100893775d8c2540f45e412a3d97f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="linear_least_squares_regression_1a932100893775d8c2540f45e412a3d97f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LinearLeastSquaresRegression</definition>
         <argsstring>(const std::vector&lt; ArgumentType &gt; &amp;x, const std::vector&lt; Real &gt; &amp;y, const std::vector&lt; boost::function1&lt; Real, ArgumentType &gt; &gt; &amp;v)</argsstring>

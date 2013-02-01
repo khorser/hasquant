@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_floating_rate_bond" kind="class" prot="public">
+  <compounddef id="floating_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::FloatingRateBond</compoundname>
     <includes local="no">/instruments/bonds/floatingratebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_bond_1a50e7318255db90edb37d005ba9864be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_bond_1a50e7318255db90edb37d005ba9864be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FloatingRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const DayCounter &amp;accrualDayCounter, BusinessDayConvention paymentConvention=Following, Natural fixingDays=Null&lt; Natural &gt;(), const std::vector&lt; Real &gt; &amp;gearings=std::vector&lt; Real &gt;(1, 1.0), const std::vector&lt; Spread &gt; &amp;spreads=std::vector&lt; Spread &gt;(1, 0.0), const std::vector&lt; Rate &gt; &amp;caps=std::vector&lt; Rate &gt;(), const std::vector&lt; Rate &gt; &amp;floors=std::vector&lt; Rate &gt;(), bool inArrears=false, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
@@ -18,15 +18,15 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -37,7 +37,7 @@
         <param>
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -70,13 +70,13 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/instruments/bonds/floatingratebond.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_bond_1ad6359baf95606fc168fe07e87912b603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_bond_1ad6359baf95606fc168fe07e87912b603" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FloatingRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Date &amp;startDate, const Date &amp;maturityDate, Frequency couponFrequency, const Calendar &amp;calendar, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const DayCounter &amp;accrualDayCounter, BusinessDayConvention accrualConvention=Following, BusinessDayConvention paymentConvention=Following, Natural fixingDays=Null&lt; Natural &gt;(), const std::vector&lt; Real &gt; &amp;gearings=std::vector&lt; Real &gt;(1, 1.0), const std::vector&lt; Spread &gt; &amp;spreads=std::vector&lt; Spread &gt;(1, 0.0), const std::vector&lt; Rate &gt; &amp;caps=std::vector&lt; Rate &gt;(), const std::vector&lt; Rate &gt; &amp;floors=std::vector&lt; Rate &gt;(), bool inArrears=false, Real redemption=100.0, const Date &amp;issueDate=Date(), const Date &amp;stubDate=Date(), DateGeneration::Rule rule=DateGeneration::Backward, bool endOfMonth=false)</argsstring>
@@ -90,11 +90,11 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -102,15 +102,15 @@
           <declname>couponFrequency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -126,7 +126,7 @@
         <param>
           <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
           <declname>fixingDays</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref> &gt;()</defval>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -159,19 +159,19 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>stubDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
-          <defval><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" kindref="member">DateGeneration::Backward</ref></defval>
+          <defval><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" kindref="member">DateGeneration::Backward</ref></defval>
         </param>
         <param>
           <type>bool</type>

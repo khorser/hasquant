@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_engine" kind="class" prot="public">
+  <compounddef id="generic_engine" kind="class" prot="public">
     <compoundname>QuantLib::GenericEngine</compoundname>
     <includes local="no">/pricingengine.hpp</includes>
     <templateparamlist>
@@ -16,36 +16,36 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="generic_engine_1a8203e2bb2b5d6673a84a7bec39346ea5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>PricingEngine::arguments *</type>
         <definition>PricingEngine::arguments* getArguments</definition>
         <argsstring>() const </argsstring>
         <name>getArguments</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1acadfc179f7be93951a88d8d9785402d3">getArguments</reimplements>
+        <reimplements refid="pricing_engine_1acadfc179f7be93951a88d8d9785402d3">getArguments</reimplements>
         <location file="/pricingengine.hpp" line="66" bodyfile="/pricingengine.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="generic_engine_1a957a6482d3d97ecb17f7de2c13024f2c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>const PricingEngine::results *</type>
         <definition>const PricingEngine::results* getResults</definition>
         <argsstring>() const </argsstring>
         <name>getResults</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad">getResults</reimplements>
+        <reimplements refid="pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad">getResults</reimplements>
         <location file="/pricingengine.hpp" line="67" bodyfile="/pricingengine.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="generic_engine_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
+        <reimplements refid="pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <location file="/pricingengine.hpp" line="68" bodyfile="/pricingengine.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="generic_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/pricingengine.hpp" line="69" bodyfile="/pricingengine.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
       </sectiondef>

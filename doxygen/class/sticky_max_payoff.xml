@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sticky_max_payoff" kind="class" prot="public">
+  <compounddef id="sticky_max_payoff" kind="class" prot="public">
     <compoundname>QuantLib::StickyMaxPayoff</compoundname>
     <includes local="no">/instruments/stickyratchet.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sticky_max_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <reimplements refid="class_quant_lib_1_1_double_sticky_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplements>
+        <reimplements refid="double_sticky_ratchet_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07">name</reimplements>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/instruments/stickyratchet.hpp" line="146" bodyfile="/instruments/stickyratchet.hpp" bodystart="146" bodyend="146"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sticky_max_payoff_1a0aa87631a2fb41687528d78674ce5aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sticky_max_payoff_1a0aa87631a2fb41687528d78674ce5aee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>StickyMaxPayoff</definition>
         <argsstring>(Real gearing1, Real gearing2, Real gearing3, Real spread1, Real spread2, Real spread3, Real initialValue1, Real initialValue2, Real accrualFactor)</argsstring>

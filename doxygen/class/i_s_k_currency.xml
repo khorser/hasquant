@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_i_s_k_currency" kind="class" prot="public">
+  <compounddef id="i_s_k_currency" kind="class" prot="public">
     <compoundname>QuantLib::ISKCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_i_s_k_currency_1a965b35280c33cfafc0ad12c36ec6c523" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="i_s_k_currency_1a965b35280c33cfafc0ad12c36ec6c523" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ISKCurrency</definition>
         <argsstring>()</argsstring>

@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_kirk_spread_option_engine" kind="class" prot="public">
+  <compounddef id="kirk_spread_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkSpreadOptionEngine</compoundname>
     <includes local="no">/experimental/exoticoptions/kirkspreadoptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_kirk_spread_option_engine_1adeca2f6bb78ecce837f7eed05668ba2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="kirk_spread_option_engine_1adeca2f6bb78ecce837f7eed05668ba2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>KirkSpreadOptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; BlackProcess &gt; &amp;process1, const boost::shared_ptr&lt; BlackProcess &gt; &amp;process2, const Handle&lt; Quote &gt; &amp;correlation)</argsstring>
         <name>KirkSpreadOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
           <declname>process1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
           <declname>process2</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>correlation</declname>
         </param>
         <location file="/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kirk_spread_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="kirk_spread_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/exoticoptions/kirkspreadoptionengine.hpp" line="39"/>
       </memberdef>
       </sectiondef>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_zero_condition" kind="class" prot="public">
+  <compounddef id="zero_condition" kind="class" prot="public">
     <compoundname>QuantLib::ZeroCondition</compoundname>
     <includes local="no">/methods/finitedifferences/zerocondition.hpp</includes>
     <templateparamlist>
@@ -9,12 +9,12 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="zero_condition_1abd66e856646ef33d2ae796fb9d86f27f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(array_type &amp;a, Time) const </argsstring>
         <name>applyTo</name>
-        <reimplements refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
+        <reimplements refid="step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
         <param>
           <type>array_type &amp;</type>
           <declname>a</declname>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_segment_integral" kind="class" prot="public">
+  <compounddef id="segment_integral" kind="class" prot="public">
     <compoundname>QuantLib::SegmentIntegral</compoundname>
     <includes local="no">/math/integrals/segmentintegral.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_segment_integral_1a3bc5927b1280d2893f72b40b9e817bc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="segment_integral_1a3bc5927b1280d2893f72b40b9e817bc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SegmentIntegral</definition>
         <argsstring>(Size intervals)</argsstring>

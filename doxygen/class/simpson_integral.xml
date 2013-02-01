@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_simpson_integral" kind="class" prot="public">
+  <compounddef id="simpson_integral" kind="class" prot="public">
     <compoundname>QuantLib::SimpsonIntegral</compoundname>
     <includes local="no">/math/integrals/simpsonintegral.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_simpson_integral_1a0fc90f4cf7b13eda7b657cf829bbdba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simpson_integral_1a0fc90f4cf7b13eda7b657cf829bbdba2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SimpsonIntegral</definition>
         <argsstring>(Real accuracy, Size maxIterations)</argsstring>

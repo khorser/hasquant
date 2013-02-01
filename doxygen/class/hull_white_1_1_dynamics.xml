@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_hull_white_1_1_dynamics" kind="class" prot="public">
+  <compounddef id="hull_white_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::HullWhite::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1_1_dynamics_1a007a2e1b524bd7656fd5528934b497f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_1_1_dynamics_1a007a2e1b524bd7656fd5528934b497f7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Dynamics</definition>
         <argsstring>(const Parameter &amp;fitting, Real a, Real sigma)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
           <declname>fitting</declname>
         </param>
         <param>
@@ -23,12 +23,12 @@
         </param>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="103" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="98" bodyend="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="hull_white_1_1_dynamics_1a00698c9d9d95a41870fc6c0f44eb2039" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variable</definition>
         <argsstring>(Time t, Rate r) const </argsstring>
         <name>variable</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
+        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -41,12 +41,12 @@
 <para>Compute state variable from short rate. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="105" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="105" bodyend="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="hull_white_1_1_dynamics_1a82b3e8bce9d599205fdfa81222834500" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real shortRate</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>shortRate</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
+        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

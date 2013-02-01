@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bootstrap_error" kind="class" prot="public">
+  <compounddef id="bootstrap_error" kind="class" prot="public">
     <compoundname>QuantLib::BootstrapError</compoundname>
     <includes local="no">/termstructures/bootstraperror.hpp</includes>
     <templateparamlist>
       <param>
-        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bootstrap_error_1aeda99f9b3820c7bfbbffabf336bace2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BootstrapError</definition>
         <argsstring>(const Curve *curve, const boost::shared_ptr&lt; typename Traits::helper &gt; &amp;instrument, Size segment)</argsstring>
         <name>BootstrapError</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <type>const <ref refid="curve" kindref="compound">Curve</ref> *</type>
           <declname>curve</declname>
         </param>
         <param>
@@ -28,7 +28,7 @@
         </param>
         <location file="/termstructures/bootstraperror.hpp" line="42" bodyfile="/termstructures/bootstraperror.hpp" bodystart="57" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bootstrap_error_1a4ddfce779ee421565fab731da6be3f0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Rate guess) const </argsstring>
@@ -39,7 +39,7 @@
         </param>
         <location file="/termstructures/bootstraperror.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bootstrap_error_1a7d03a9f9dde0af34767ef0344d62ad74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bootstrap_error_1a7d03a9f9dde0af34767ef0344d62ad74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; typename Traits::helper &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;typename Traits::helper&gt;&amp; helper</definition>
         <argsstring>()</argsstring>

@@ -1,39 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sampled_curve" kind="class" prot="public">
+  <compounddef id="sampled_curve" kind="class" prot="public">
     <compoundname>QuantLib::SampledCurve</compoundname>
     <includes local="no">/math/sampledcurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a18f3fc173b257b53b10911b63b976b32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="sampled_curve_1a18f3fc173b257b53b10911b63b976b32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>const Array &amp; grid</definition>
         <argsstring>() const </argsstring>
         <name>grid</name>
         <location file="/math/sampledcurve.hpp" line="43" bodyfile="/math/sampledcurve.hpp" bodystart="171" bodyend="173"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1ab2403367ab00aa783f1b2363ce78ad66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="sampled_curve_1ab2403367ab00aa783f1b2363ce78ad66" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>Array &amp; grid</definition>
         <argsstring>()</argsstring>
         <name>grid</name>
         <location file="/math/sampledcurve.hpp" line="44" bodyfile="/math/sampledcurve.hpp" bodystart="167" bodyend="169"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1aff5a50a26cd2ee8637b577aa67e76415" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="sampled_curve_1aff5a50a26cd2ee8637b577aa67e76415" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>const Array &amp; values</definition>
         <argsstring>() const </argsstring>
         <name>values</name>
         <location file="/math/sampledcurve.hpp" line="45" bodyfile="/math/sampledcurve.hpp" bodystart="175" bodyend="177"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a961568dd33ca3eabc742f02ee4b49e22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="sampled_curve_1a961568dd33ca3eabc742f02ee4b49e22" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>Array &amp; values</definition>
         <argsstring>()</argsstring>
         <name>values</name>
         <location file="/math/sampledcurve.hpp" line="46" bodyfile="/math/sampledcurve.hpp" bodystart="179" bodyend="181"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1ab1170f0b03996acbcd156d1cc7166eef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1ab1170f0b03996acbcd156d1cc7166eef" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gridValue</definition>
         <argsstring>(Size i) const </argsstring>
@@ -44,7 +44,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="47" bodyfile="/math/sampledcurve.hpp" bodystart="183" bodyend="185"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1add903f848b9c8d2774faa6b889df17bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1add903f848b9c8d2774faa6b889df17bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
         <definition>Real &amp; gridValue</definition>
         <argsstring>(Size i)</argsstring>
@@ -55,7 +55,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="48" bodyfile="/math/sampledcurve.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a72ae2e219d43e0a6d8c0e16dec878bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a72ae2e219d43e0a6d8c0e16dec878bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Size i) const </argsstring>
@@ -66,7 +66,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="49" bodyfile="/math/sampledcurve.hpp" bodystart="191" bodyend="193"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a0fddf660c31f55b9332f76c1c9c1c63c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a0fddf660c31f55b9332f76c1c9c1c63c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &amp;</type>
         <definition>Real &amp; value</definition>
         <argsstring>(Size i)</argsstring>
@@ -77,14 +77,14 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="50" bodyfile="/math/sampledcurve.hpp" bodystart="195" bodyend="197"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/math/sampledcurve.hpp" line="51" bodyfile="/math/sampledcurve.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -94,29 +94,29 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>modifiers</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a8541de208eee38913c00afe9175ec8eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a8541de208eee38913c00afe9175ec8eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setGrid</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>setGrid</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <defname>g</defname>
         </param>
         <location file="/math/sampledcurve.hpp" line="57" bodyfile="/math/sampledcurve.hpp" bodystart="207" bodyend="209"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a7c1fbd82fbe23f43016e4ef5ee6a8dc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a7c1fbd82fbe23f43016e4ef5ee6a8dc0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setValues</definition>
         <argsstring>(const Array &amp;)</argsstring>
         <name>setValues</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <defname>g</defname>
         </param>
         <location file="/math/sampledcurve.hpp" line="58" bodyfile="/math/sampledcurve.hpp" bodystart="211" bodyend="213"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a3fd0d675b2e09c390f9ea21b18db972f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a3fd0d675b2e09c390f9ea21b18db972f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class F</type>
@@ -135,7 +135,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a0896401cdaf8f83ed681dbdbfa899de5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a0896401cdaf8f83ed681dbdbfa899de5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real valueAtCenter</definition>
         <argsstring>() const </argsstring>
@@ -144,7 +144,7 @@
 <para><xrefsect id="todo_1_todo000036"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>replace or complement with a more general function valueAt(spot) </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/math/sampledcurve.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a08ebad730457427955f35413acddf0a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a08ebad730457427955f35413acddf0a4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real firstDerivativeAtCenter</definition>
         <argsstring>() const </argsstring>
@@ -153,7 +153,7 @@
 <para><xrefsect id="todo_1_todo000037"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>replace or complement with a more general function firstDerivativeAt(spot) </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/math/sampledcurve.hpp" line="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a9a3cbb8bccf5dd436d46d5c6104ed220" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a9a3cbb8bccf5dd436d46d5c6104ed220" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondDerivativeAtCenter</definition>
         <argsstring>() const </argsstring>
@@ -165,18 +165,18 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>utilities</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1aebf6f19f1f00c1ec7f4e7528cc668535" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1aebf6f19f1f00c1ec7f4e7528cc668535" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void swap</definition>
         <argsstring>(SampledCurve &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
+          <type><ref refid="sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/sampledcurve.hpp" line="86" bodyfile="/math/sampledcurve.hpp" bodystart="215" bodyend="219"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1ac4a6e242726d5fed17b0743597dd10eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1ac4a6e242726d5fed17b0743597dd10eb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setLogGrid</definition>
         <argsstring>(Real min, Real max)</argsstring>
@@ -191,7 +191,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="87" bodyfile="/math/sampledcurve.hpp" bodystart="87" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a53965cd422c566d8110b1802dcf2b34c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a53965cd422c566d8110b1802dcf2b34c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void regridLogGrid</definition>
         <argsstring>(Real min, Real max)</argsstring>
@@ -206,7 +206,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="90" bodyfile="/math/sampledcurve.hpp" bodystart="90" bodyend="93"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1aa2a50c920940b35011c5b3bf4d035cbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1aa2a50c920940b35011c5b3bf4d035cbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void shiftGrid</definition>
         <argsstring>(Real s)</argsstring>
@@ -217,7 +217,7 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="94" bodyfile="/math/sampledcurve.hpp" bodystart="94" bodyend="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a01e5fcc3c4d63dd57d2e6c65bc1f22bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a01e5fcc3c4d63dd57d2e6c65bc1f22bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void scaleGrid</definition>
         <argsstring>(Real s)</argsstring>
@@ -228,18 +228,18 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="97" bodyfile="/math/sampledcurve.hpp" bodystart="97" bodyend="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1aca8ca42a58186edd15f8b818add852e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1aca8ca42a58186edd15f8b818add852e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void regrid</definition>
         <argsstring>(const Array &amp;new_grid)</argsstring>
         <name>regrid</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>new_grid</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a5e14acdfed84bb5cc2e9348a6b6f0176" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a5e14acdfed84bb5cc2e9348a6b6f0176" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -250,7 +250,7 @@
         <argsstring>(const Array &amp;new_grid, T func)</argsstring>
         <name>regrid</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>new_grid</declname>
         </param>
         <param>
@@ -259,13 +259,13 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="104" bodyfile="/math/sampledcurve.hpp" bodystart="103" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1ad08ef2bfaf108f3a89235de5766cf955" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1ad08ef2bfaf108f3a89235de5766cf955" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
           </param>
         </templateparamlist>
-        <type>const <ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
+        <type>const <ref refid="sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
         <definition>const SampledCurve&amp; transform</definition>
         <argsstring>(T x)</argsstring>
         <name>transform</name>
@@ -275,13 +275,13 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="129" bodyfile="/math/sampledcurve.hpp" bodystart="129" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a150de76325d6e770c15ddfed23e5078f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a150de76325d6e770c15ddfed23e5078f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
           </param>
         </templateparamlist>
-        <type>const <ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
+        <type>const <ref refid="sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
         <definition>const SampledCurve&amp; transformGrid</definition>
         <argsstring>(T x)</argsstring>
         <name>transformGrid</name>
@@ -293,7 +293,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a33580ac5a3826007cedae397d3886ec0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a33580ac5a3826007cedae397d3886ec0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SampledCurve</definition>
         <argsstring>(Size gridSize=0)</argsstring>
@@ -305,24 +305,24 @@
         </param>
         <location file="/math/sampledcurve.hpp" line="37" bodyfile="/math/sampledcurve.hpp" bodystart="155" bodyend="156"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a3395bc686f94369e618e3a3d2a78739e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sampled_curve_1a3395bc686f94369e618e3a3d2a78739e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SampledCurve</definition>
         <argsstring>(const Array &amp;grid)</argsstring>
         <name>SampledCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <location file="/math/sampledcurve.hpp" line="38" bodyfile="/math/sampledcurve.hpp" bodystart="158" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sampled_curve_1a5a799d2bcd0380a60b89efa5136167ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
+      <memberdef kind="function" id="sampled_curve_1a5a799d2bcd0380a60b89efa5136167ca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
         <definition>SampledCurve &amp; operator=</definition>
         <argsstring>(const SampledCurve &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
+          <type>const <ref refid="sampled_curve" kindref="compound">SampledCurve</ref> &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/sampledcurve.hpp" line="39" bodyfile="/math/sampledcurve.hpp" bodystart="161" bodyend="165"/>

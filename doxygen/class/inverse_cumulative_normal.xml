@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_inverse_cumulative_normal" kind="class" prot="public">
+  <compounddef id="inverse_cumulative_normal" kind="class" prot="public">
     <compoundname>QuantLib::InverseCumulativeNormal</compoundname>
     <includes local="no">/math/distributions/normaldistribution.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="inverse_cumulative_normal_1a41592546fa9c0a2cab53cce8254959ef" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InverseCumulativeNormal</definition>
         <argsstring>(Real average=0.0, Real sigma=1.0)</argsstring>
@@ -21,7 +21,7 @@
         </param>
         <location file="/math/distributions/normaldistribution.hpp" line="105" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="270" bodyend="277"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="inverse_cumulative_normal_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>
@@ -34,7 +34,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inverse_cumulative_normal_1adf56cbfabafe9c6bbf4366412f9ea7d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="inverse_cumulative_normal_1adf56cbfabafe9c6bbf4366412f9ea7d5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>static Real standard_value</definition>
         <argsstring>(Real x)</argsstring>

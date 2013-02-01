@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_boundary_condition" kind="class" prot="public" abstract="yes">
+  <compounddef id="boundary_condition" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BoundaryCondition</compoundname>
     <includes local="no">/methods/finitedifferences/boundarycondition.hpp</includes>
     <templateparamlist>
@@ -11,29 +11,29 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" static="no">
+      <memberdef kind="enum" id="boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00" prot="public" static="no">
         <name>Side</name>
-        <enumvalue id="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ac9d3e887722f2bc482bcca9d41c512af" prot="public">
+        <enumvalue id="boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ac9d3e887722f2bc482bcca9d41c512af" prot="public">
           <name>None</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ae70afef0d3ff7aca74e17e85ff6c9f2e" prot="public">
+        <enumvalue id="boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00ae70afef0d3ff7aca74e17e85ff6c9f2e" prot="public">
           <name>Upper</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00af886b397626076218462d53d50eb96bc" prot="public">
+        <enumvalue id="boundary_condition_1a8c0137d7160ad71b6ed265c53c99ed00af886b397626076218462d53d50eb96bc" prot="public">
           <name>Lower</name>
         </enumvalue>
         <detaileddescription>
 <para><xrefsect id="todo_1_todo000044"><xreftitle>Possible enhancements</xreftitle><xrefdescription><para>Generalize for n-dimensional conditions </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="41" bodyfile="/methods/finitedifferences/boundarycondition.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_boundary_condition_1a158330dcc465dcd323e801d462791ac4" prot="public" static="no">
+      <memberdef kind="typedef" id="boundary_condition_1a158330dcc465dcd323e801d462791ac4" prot="public" static="no">
         <type>Operator</type>
         <definition>typedef Operator operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="38" bodyfile="/methods/finitedifferences/boundarycondition.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_boundary_condition_1a736e8d4a0263c9dd7a6f33aa7615c767" prot="public" static="no">
+      <memberdef kind="typedef" id="boundary_condition_1a736e8d4a0263c9dd7a6f33aa7615c767" prot="public" static="no">
         <type>Operator::array_type</type>
         <definition>typedef Operator::array_type array_type</definition>
         <argsstring></argsstring>
@@ -42,14 +42,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1aadb0c87dae0ef14d92760cbc517f5330" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="boundary_condition_1aadb0c87dae0ef14d92760cbc517f5330" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BoundaryCondition</definition>
         <argsstring>()</argsstring>
         <name>~BoundaryCondition</name>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="43" bodyfile="/methods/finitedifferences/boundarycondition.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1a54cb24c54bd6209f5050ff45f49f5c4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="boundary_condition_1a54cb24c54bd6209f5050ff45f49f5c4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void applyBeforeApplying</definition>
         <argsstring>(operator_type &amp;) const =0</argsstring>
@@ -61,7 +61,7 @@
 <para>This method modifies an operator <formula id="46">$ L $</formula> before it is applied to an array <formula id="271">$ u $</formula> so that <formula id="272">$ v = Lu $</formula> will satisfy the given condition. </para>        </detaileddescription>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1ad39ad7ad5ed0434b46036b0179e225f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="boundary_condition_1ad39ad7ad5ed0434b46036b0179e225f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void applyAfterApplying</definition>
         <argsstring>(array_type &amp;) const =0</argsstring>
@@ -73,7 +73,7 @@
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1a3b7d9d45ad90d4008c468da1fa4261f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="boundary_condition_1a3b7d9d45ad90d4008c468da1fa4261f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void applyBeforeSolving</definition>
         <argsstring>(operator_type &amp;, array_type &amp;rhs) const =0</argsstring>
@@ -89,7 +89,7 @@
 <para>This method modifies an operator <formula id="46">$ L $</formula> before the linear system <formula id="273">$ Lu&apos; = u $</formula> is solved so that <formula id="274">$ u&apos; $</formula> will satisfy the given condition. </para>        </detaileddescription>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1a22a8d3cbef1d118eda60ed4c5e8cf6a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="boundary_condition_1a22a8d3cbef1d118eda60ed4c5e8cf6a9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void applyAfterSolving</definition>
         <argsstring>(array_type &amp;) const =0</argsstring>
@@ -101,7 +101,7 @@
 <para>This method modifies an array <formula id="271">$ u $</formula> so that it satisfies the given condition. </para>        </detaileddescription>
         <location file="/methods/finitedifferences/boundarycondition.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_1af133a9178f8e738a5e5c51670cb37b1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="boundary_condition_1af133a9178f8e738a5e5c51670cb37b1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void setTime</definition>
         <argsstring>(Time t)=0</argsstring>

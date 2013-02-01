@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_optimization_method" kind="class" prot="public" abstract="yes">
+  <compounddef id="optimization_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OptimizationMethod</compoundname>
     <includes local="no">/math/optimization/method.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="optimization_method_1a3237213b0884c6c56f304b2da7a0a60a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~OptimizationMethod</definition>
         <argsstring>()</argsstring>
         <name>~OptimizationMethod</name>
         <location file="/math/optimization/method.hpp" line="38" bodyfile="/math/optimization/method.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="optimization_method_1a6bf9f0581475e7a28bdf478f941f116e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>EndCriteria::Type</type>
         <definition>virtual EndCriteria::Type minimize</definition>
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)=0</argsstring>
         <name>minimize</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <briefdescription>

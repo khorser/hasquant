@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bates_double_exp_engine" kind="class" prot="public">
+  <compounddef id="bates_double_exp_engine" kind="class" prot="public">
     <compoundname>QuantLib::BatesDoubleExpEngine</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_engine_1a8dae98edf4dc2831d29e6524b5cdbdb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_engine_1a8dae98edf4dc2831d29e6524b5cdbdb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BatesDoubleExpEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; BatesDoubleExpModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
@@ -19,7 +19,7 @@
         </param>
         <location file="/pricingengines/vanilla/batesengine.hpp" line="134"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bates_double_exp_engine_1ac59673b938a11b6c81b03ee08378a1c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bates_double_exp_engine_1ac59673b938a11b6c81b03ee08378a1c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BatesDoubleExpEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; BatesDoubleExpModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>

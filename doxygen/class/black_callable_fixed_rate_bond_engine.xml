@@ -1,49 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine" kind="class" prot="public">
+  <compounddef id="black_callable_fixed_rate_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::BlackCallableFixedRateBondEngine</compoundname>
     <includes local="no">/experimental/callablebonds/blackcallablebondengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1ab2a178c9173ba1f65ca26e9362eea5bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_callable_fixed_rate_bond_engine_1ab2a178c9173ba1f65ca26e9362eea5bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackCallableFixedRateBondEngine</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;fwdYieldVol, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>BlackCallableFixedRateBondEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>fwdYieldVol</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
         <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1abd99101d99cde5e812c018d8ed9fca86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_callable_fixed_rate_bond_engine_1abd99101d99cde5e812c018d8ed9fca86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackCallableFixedRateBondEngine</definition>
         <argsstring>(const Handle&lt; CallableBondVolatilityStructure &gt; &amp;yieldVolStructure, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve)</argsstring>
         <name>BlackCallableFixedRateBondEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_callable_bond_volatility_structure" kindref="compound">CallableBondVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="callable_bond_volatility_structure" kindref="compound">CallableBondVolatilityStructure</ref> &gt; &amp;</type>
           <declname>yieldVolStructure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <briefdescription>
 <para>volatility is the quoted fwd yield volatility, not price vol </para>        </briefdescription>
         <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="black_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/callablebonds/blackcallablebondengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>

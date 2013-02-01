@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_matrix" kind="class" prot="public">
+  <compounddef id="matrix" kind="class" prot="public">
     <compoundname>QuantLib::Matrix</compoundname>
     <includes local="no">/math/matrix.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors, destructor, and assignment</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a3aede62f513da27e6f61ae7a972b4f96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a3aede62f513da27e6f61ae7a972b4f96" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Matrix</definition>
         <argsstring>()</argsstring>
@@ -14,7 +14,7 @@
 <para>creates a null matrix </para>        </briefdescription>
         <location file="/math/matrix.hpp" line="44" bodyfile="/math/matrix.hpp" bodystart="184" bodyend="185"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a701a8e8f62aed6b7496b48e1f57db824" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a701a8e8f62aed6b7496b48e1f57db824" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Matrix</definition>
         <argsstring>(Size rows, Size columns)</argsstring>
@@ -31,7 +31,7 @@
 <para>creates a matrix with the given dimensions </para>        </briefdescription>
         <location file="/math/matrix.hpp" line="46" bodyfile="/math/matrix.hpp" bodystart="187" bodyend="189"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a87bcdd5b5f33ccbcde36aa1d237af97c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a87bcdd5b5f33ccbcde36aa1d237af97c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Matrix</definition>
         <argsstring>(Size rows, Size columns, Real value)</argsstring>
@@ -52,46 +52,46 @@
 <para>creates the matrix and fills it with <computeroutput>value</computeroutput> </para>        </briefdescription>
         <location file="/math/matrix.hpp" line="48" bodyfile="/math/matrix.hpp" bodystart="191" bodyend="195"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1adb458d0a51fee7c80c34482e88b84de7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1adb458d0a51fee7c80c34482e88b84de7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Matrix</definition>
         <argsstring>(const Matrix &amp;)</argsstring>
         <name>Matrix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/matrix.hpp" line="49" bodyfile="/math/matrix.hpp" bodystart="197" bodyend="204"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a18559c34691fddf02fe9024ce196cb09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a18559c34691fddf02fe9024ce196cb09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Matrix</definition>
         <argsstring>(const Disposable&lt; Matrix &gt; &amp;)</argsstring>
         <name>Matrix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/matrix.hpp" line="50" bodyfile="/math/matrix.hpp" bodystart="206" bodyend="209"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abe73cd0177a33a456bb5ab08b1855344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1abe73cd0177a33a456bb5ab08b1855344" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>Matrix &amp; operator=</definition>
         <argsstring>(const Matrix &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/matrix.hpp" line="51" bodyfile="/math/matrix.hpp" bodystart="211" bodyend="216"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a81096f71e82f047e98c5117c5868f70d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1a81096f71e82f047e98c5117c5868f70d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>Matrix &amp; operator=</definition>
         <argsstring>(const Disposable&lt; Matrix &gt; &amp;)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/matrix.hpp" line="52" bodyfile="/math/matrix.hpp" bodystart="218" bodyend="221"/>
@@ -99,13 +99,13 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Algebraic operators</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1af9e9ef3ae7410799e5d1ac6b6d74dc68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1af9e9ef3ae7410799e5d1ac6b6d74dc68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix &amp; operator+=</definition>
         <argsstring>(const Matrix &amp;)</argsstring>
         <name>operator+=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>m</defname>
         </param>
         <detaileddescription>
@@ -113,19 +113,19 @@
 </para>        </detaileddescription>
         <location file="/math/matrix.hpp" line="60" bodyfile="/math/matrix.hpp" bodystart="230" bodyend="239"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a5fe157d2a6b00251b2b7d4a0cbc059c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1a5fe157d2a6b00251b2b7d4a0cbc059c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix &amp; operator-=</definition>
         <argsstring>(const Matrix &amp;)</argsstring>
         <name>operator-=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>m</defname>
         </param>
         <location file="/math/matrix.hpp" line="61" bodyfile="/math/matrix.hpp" bodystart="241" bodyend="250"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aea9e9cac1393ed48c61c9658e3572c34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1aea9e9cac1393ed48c61c9658e3572c34" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix &amp; operator*=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator*=</name>
@@ -135,8 +135,8 @@
         </param>
         <location file="/math/matrix.hpp" line="62" bodyfile="/math/matrix.hpp" bodystart="252" bodyend="256"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1560f8a2756a34d48eadac60ecb72c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="matrix_1a1560f8a2756a34d48eadac60ecb72c9e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix &amp; operator/=</definition>
         <argsstring>(Real)</argsstring>
         <name>operator/=</name>
@@ -149,63 +149,63 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Iterator access</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a8dab01299165c66aa99a54f83df7d846" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a8dab01299165c66aa99a54f83df7d846" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>Matrix::const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
         <location file="/math/matrix.hpp" line="83" bodyfile="/math/matrix.hpp" bodystart="264" bodyend="266"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a5cd4a3c124542ff7e6a327775fe733cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a5cd4a3c124542ff7e6a327775fe733cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>iterator</type>
         <definition>Matrix::iterator begin</definition>
         <argsstring>()</argsstring>
         <name>begin</name>
         <location file="/math/matrix.hpp" line="84" bodyfile="/math/matrix.hpp" bodystart="268" bodyend="270"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae046cf0c7c1f2e44864a67fcbd3bc37b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ae046cf0c7c1f2e44864a67fcbd3bc37b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>Matrix::const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
         <location file="/math/matrix.hpp" line="85" bodyfile="/math/matrix.hpp" bodystart="272" bodyend="274"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a38d30f37dbda21e5685bd4c8f8a04b54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a38d30f37dbda21e5685bd4c8f8a04b54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>iterator</type>
         <definition>Matrix::iterator end</definition>
         <argsstring>()</argsstring>
         <name>end</name>
         <location file="/math/matrix.hpp" line="86" bodyfile="/math/matrix.hpp" bodystart="276" bodyend="278"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aba90030a737647500e21d8b5553f9fea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1aba90030a737647500e21d8b5553f9fea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>Matrix::const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
         <location file="/math/matrix.hpp" line="87" bodyfile="/math/matrix.hpp" bodystart="280" bodyend="282"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a6373cc711367ba1881bfe5d3f13ea40f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a6373cc711367ba1881bfe5d3f13ea40f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_iterator</type>
         <definition>Matrix::reverse_iterator rbegin</definition>
         <argsstring>()</argsstring>
         <name>rbegin</name>
         <location file="/math/matrix.hpp" line="88" bodyfile="/math/matrix.hpp" bodystart="284" bodyend="286"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae2b01d5be2b6bd64f82064a48e644ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ae2b01d5be2b6bd64f82064a48e644ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>Matrix::const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
         <name>rend</name>
         <location file="/math/matrix.hpp" line="89" bodyfile="/math/matrix.hpp" bodystart="288" bodyend="290"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ac0615a909a24d4e71460cabbf59794a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ac0615a909a24d4e71460cabbf59794a2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_iterator</type>
         <definition>Matrix::reverse_iterator rend</definition>
         <argsstring>()</argsstring>
         <name>rend</name>
         <location file="/math/matrix.hpp" line="90" bodyfile="/math/matrix.hpp" bodystart="292" bodyend="294"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa983037191bfd12b2fbf1f7bacc7c488" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1aa983037191bfd12b2fbf1f7bacc7c488" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_row_iterator</type>
         <definition>Matrix::const_row_iterator row_begin</definition>
         <argsstring>(Size i) const </argsstring>
@@ -216,7 +216,7 @@
         </param>
         <location file="/math/matrix.hpp" line="91" bodyfile="/math/matrix.hpp" bodystart="297" bodyend="304"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0ba8451fef9b8e764408a0806b159235" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a0ba8451fef9b8e764408a0806b159235" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>row_iterator</type>
         <definition>Matrix::row_iterator row_begin</definition>
         <argsstring>(Size i)</argsstring>
@@ -227,7 +227,7 @@
         </param>
         <location file="/math/matrix.hpp" line="92" bodyfile="/math/matrix.hpp" bodystart="306" bodyend="313"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aab050a4b0aa85b042da6533525f13977" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1aab050a4b0aa85b042da6533525f13977" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_row_iterator</type>
         <definition>Matrix::const_row_iterator row_end</definition>
         <argsstring>(Size i) const </argsstring>
@@ -238,7 +238,7 @@
         </param>
         <location file="/math/matrix.hpp" line="93" bodyfile="/math/matrix.hpp" bodystart="315" bodyend="322"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a619c3165548ec37e1dc529f248b49415" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a619c3165548ec37e1dc529f248b49415" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>row_iterator</type>
         <definition>Matrix::row_iterator row_end</definition>
         <argsstring>(Size i)</argsstring>
@@ -249,7 +249,7 @@
         </param>
         <location file="/math/matrix.hpp" line="94" bodyfile="/math/matrix.hpp" bodystart="324" bodyend="331"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a8fa8f65e77ba784a6efd2c8fcb8030ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a8fa8f65e77ba784a6efd2c8fcb8030ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_row_iterator</type>
         <definition>Matrix::const_reverse_row_iterator row_rbegin</definition>
         <argsstring>(Size i) const </argsstring>
@@ -260,7 +260,7 @@
         </param>
         <location file="/math/matrix.hpp" line="95" bodyfile="/math/matrix.hpp" bodystart="334" bodyend="336"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1acd9c3b4faa2fa1c7fe0a39eeb12e890a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1acd9c3b4faa2fa1c7fe0a39eeb12e890a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_row_iterator</type>
         <definition>Matrix::reverse_row_iterator row_rbegin</definition>
         <argsstring>(Size i)</argsstring>
@@ -271,7 +271,7 @@
         </param>
         <location file="/math/matrix.hpp" line="96" bodyfile="/math/matrix.hpp" bodystart="338" bodyend="340"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a48ff0f83b990ddecbcfb8a0c5eeb3298" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a48ff0f83b990ddecbcfb8a0c5eeb3298" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_row_iterator</type>
         <definition>Matrix::const_reverse_row_iterator row_rend</definition>
         <argsstring>(Size i) const </argsstring>
@@ -282,7 +282,7 @@
         </param>
         <location file="/math/matrix.hpp" line="97" bodyfile="/math/matrix.hpp" bodystart="343" bodyend="345"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ab2f057a3df14d6e9501f9d03fd758d49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ab2f057a3df14d6e9501f9d03fd758d49" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_row_iterator</type>
         <definition>Matrix::reverse_row_iterator row_rend</definition>
         <argsstring>(Size i)</argsstring>
@@ -293,8 +293,8 @@
         </param>
         <location file="/math/matrix.hpp" line="98" bodyfile="/math/matrix.hpp" bodystart="347" bodyend="349"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a41b20334fc2e815f64904cc1bc4c07a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">const_column_iterator</ref></type>
+      <memberdef kind="function" id="matrix_1a41b20334fc2e815f64904cc1bc4c07a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="step__iterator" kindref="compound">const_column_iterator</ref></type>
         <definition>Matrix::const_column_iterator column_begin</definition>
         <argsstring>(Size i) const </argsstring>
         <name>column_begin</name>
@@ -304,8 +304,8 @@
         </param>
         <location file="/math/matrix.hpp" line="99" bodyfile="/math/matrix.hpp" bodystart="352" bodyend="359"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a12daadbc027a549e80230721ee4a4cfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">column_iterator</ref></type>
+      <memberdef kind="function" id="matrix_1a12daadbc027a549e80230721ee4a4cfa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="step__iterator" kindref="compound">column_iterator</ref></type>
         <definition>Matrix::column_iterator column_begin</definition>
         <argsstring>(Size i)</argsstring>
         <name>column_begin</name>
@@ -315,8 +315,8 @@
         </param>
         <location file="/math/matrix.hpp" line="100" bodyfile="/math/matrix.hpp" bodystart="361" bodyend="368"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa5ff87b128d1d74c67aea30ebdb9ed73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">const_column_iterator</ref></type>
+      <memberdef kind="function" id="matrix_1aa5ff87b128d1d74c67aea30ebdb9ed73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="step__iterator" kindref="compound">const_column_iterator</ref></type>
         <definition>Matrix::const_column_iterator column_end</definition>
         <argsstring>(Size i) const </argsstring>
         <name>column_end</name>
@@ -326,8 +326,8 @@
         </param>
         <location file="/math/matrix.hpp" line="101" bodyfile="/math/matrix.hpp" bodystart="371" bodyend="378"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a4797c1371f55c7aacbe45229a57b294e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">column_iterator</ref></type>
+      <memberdef kind="function" id="matrix_1a4797c1371f55c7aacbe45229a57b294e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="step__iterator" kindref="compound">column_iterator</ref></type>
         <definition>Matrix::column_iterator column_end</definition>
         <argsstring>(Size i)</argsstring>
         <name>column_end</name>
@@ -337,7 +337,7 @@
         </param>
         <location file="/math/matrix.hpp" line="102" bodyfile="/math/matrix.hpp" bodystart="380" bodyend="387"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a4156c8f23ac3d030c26e62c54e143080" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a4156c8f23ac3d030c26e62c54e143080" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_column_iterator</type>
         <definition>Matrix::const_reverse_column_iterator column_rbegin</definition>
         <argsstring>(Size i) const </argsstring>
@@ -348,7 +348,7 @@
         </param>
         <location file="/math/matrix.hpp" line="103" bodyfile="/math/matrix.hpp" bodystart="390" bodyend="392"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abe56132398da3b7df80e868e46606115" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1abe56132398da3b7df80e868e46606115" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_column_iterator</type>
         <definition>Matrix::reverse_column_iterator column_rbegin</definition>
         <argsstring>(Size i)</argsstring>
@@ -359,7 +359,7 @@
         </param>
         <location file="/math/matrix.hpp" line="104" bodyfile="/math/matrix.hpp" bodystart="395" bodyend="397"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0f0b0c3c30d95d465cb540a9d24bb018" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a0f0b0c3c30d95d465cb540a9d24bb018" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_column_iterator</type>
         <definition>Matrix::const_reverse_column_iterator column_rend</definition>
         <argsstring>(Size i) const </argsstring>
@@ -370,7 +370,7 @@
         </param>
         <location file="/math/matrix.hpp" line="105" bodyfile="/math/matrix.hpp" bodystart="400" bodyend="402"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9c049aca593b7236c024f4ddd9edabbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a9c049aca593b7236c024f4ddd9edabbf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>reverse_column_iterator</type>
         <definition>Matrix::reverse_column_iterator column_rend</definition>
         <argsstring>(Size i)</argsstring>
@@ -384,7 +384,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Element access</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a4cf65c6c5e0610a897abda840356c30a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a4cf65c6c5e0610a897abda840356c30a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_row_iterator</type>
         <definition>Matrix::const_row_iterator operator[]</definition>
         <argsstring>(Size) const </argsstring>
@@ -395,7 +395,7 @@
         </param>
         <location file="/math/matrix.hpp" line="111" bodyfile="/math/matrix.hpp" bodystart="410" bodyend="412"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1986bf419e53969eeee3f95b02c708cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a1986bf419e53969eeee3f95b02c708cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_row_iterator</type>
         <definition>Matrix::const_row_iterator at</definition>
         <argsstring>(Size) const </argsstring>
@@ -406,7 +406,7 @@
         </param>
         <location file="/math/matrix.hpp" line="112" bodyfile="/math/matrix.hpp" bodystart="415" bodyend="418"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa81ad20c93d236084fa25efd9ca92337" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1aa81ad20c93d236084fa25efd9ca92337" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>row_iterator</type>
         <definition>Matrix::row_iterator operator[]</definition>
         <argsstring>(Size)</argsstring>
@@ -417,7 +417,7 @@
         </param>
         <location file="/math/matrix.hpp" line="113" bodyfile="/math/matrix.hpp" bodystart="420" bodyend="422"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1acab29082cda83fa27661e845fea8af2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1acab29082cda83fa27661e845fea8af2a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>row_iterator</type>
         <definition>Matrix::row_iterator at</definition>
         <argsstring>(Size)</argsstring>
@@ -428,8 +428,8 @@
         </param>
         <location file="/math/matrix.hpp" line="114" bodyfile="/math/matrix.hpp" bodystart="424" bodyend="427"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1dc876da4de07ce3f446f0315e72a2c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a1dc876da4de07ce3f446f0315e72a2c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt; Array &gt; diagonal</definition>
         <argsstring>(void) const </argsstring>
         <name>diagonal</name>
@@ -441,21 +441,21 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae463561d0696edea59bb1ad6c1aab82f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ae463561d0696edea59bb1ad6c1aab82f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size rows</definition>
         <argsstring>() const </argsstring>
         <name>rows</name>
         <location file="/math/matrix.hpp" line="120" bodyfile="/math/matrix.hpp" bodystart="437" bodyend="439"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ad3e5b8b119f5898b3d12d2dbcdf89100" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size columns</definition>
         <argsstring>() const </argsstring>
         <name>columns</name>
         <location file="/math/matrix.hpp" line="121" bodyfile="/math/matrix.hpp" bodystart="441" bodyend="443"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -465,98 +465,98 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utilities</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a8b6bd270cf6df33aeb61928ecfd88dee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a8b6bd270cf6df33aeb61928ecfd88dee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void swap</definition>
         <argsstring>(Matrix &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <defname>from</defname>
         </param>
         <location file="/math/matrix.hpp" line="127" bodyfile="/math/matrix.hpp" bodystart="223" bodyend="228"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a2fea9c8bdadaab95246ddd3547b79652" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1a2fea9c8bdadaab95246ddd3547b79652" prot="public" static="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> *</type>
         <definition>typedef Real* iterator</definition>
         <argsstring></argsstring>
         <name>iterator</name>
         <location file="/math/matrix.hpp" line="66" bodyfile="/math/matrix.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a0282fb9d40dbac6ced245bd67c194257" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1a0282fb9d40dbac6ced245bd67c194257" prot="public" static="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> *</type>
         <definition>typedef const Real* const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
         <location file="/math/matrix.hpp" line="67" bodyfile="/math/matrix.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1af460725d447791acfd9f7b85856c0b91" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1af460725d447791acfd9f7b85856c0b91" prot="public" static="no">
         <type>boost::reverse_iterator&lt; iterator &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;iterator&gt; reverse_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_iterator</name>
         <location file="/math/matrix.hpp" line="68" bodyfile="/math/matrix.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a1902a26c330085fea93accc4cc10d5fe" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1a1902a26c330085fea93accc4cc10d5fe" prot="public" static="no">
         <type>boost::reverse_iterator&lt; const_iterator &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;const_iterator&gt; const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
         <location file="/math/matrix.hpp" line="69" bodyfile="/math/matrix.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a9b1ce1ec83276b70eae647b0b2b28910" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1a9b1ce1ec83276b70eae647b0b2b28910" prot="public" static="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> *</type>
         <definition>typedef Real* row_iterator</definition>
         <argsstring></argsstring>
         <name>row_iterator</name>
         <location file="/math/matrix.hpp" line="70" bodyfile="/math/matrix.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1affee08e33e5d41deaff785910ac653ca" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1affee08e33e5d41deaff785910ac653ca" prot="public" static="no">
         <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> *</type>
         <definition>typedef const Real* const_row_iterator</definition>
         <argsstring></argsstring>
         <name>const_row_iterator</name>
         <location file="/math/matrix.hpp" line="71" bodyfile="/math/matrix.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ad46c9d05f90a19ddab72f0bbc4260023" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1ad46c9d05f90a19ddab72f0bbc4260023" prot="public" static="no">
         <type>boost::reverse_iterator&lt; row_iterator &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;row_iterator&gt; reverse_row_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_row_iterator</name>
         <location file="/math/matrix.hpp" line="72" bodyfile="/math/matrix.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ae1c1bc28c3d8abe06f7749edf787502a" prot="public" static="no">
+      <memberdef kind="typedef" id="matrix_1ae1c1bc28c3d8abe06f7749edf787502a" prot="public" static="no">
         <type>boost::reverse_iterator&lt; const_row_iterator &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;const_row_iterator&gt; const_reverse_row_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_row_iterator</name>
         <location file="/math/matrix.hpp" line="74" bodyfile="/math/matrix.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ac3d8a5c7f0147d2d76feb480361d7d5a" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">step_iterator</ref>&lt; iterator &gt;</type>
+      <memberdef kind="typedef" id="matrix_1ac3d8a5c7f0147d2d76feb480361d7d5a" prot="public" static="no">
+        <type><ref refid="step__iterator" kindref="compound">step_iterator</ref>&lt; iterator &gt;</type>
         <definition>typedef step_iterator&lt;iterator&gt; column_iterator</definition>
         <argsstring></argsstring>
         <name>column_iterator</name>
         <location file="/math/matrix.hpp" line="75" bodyfile="/math/matrix.hpp" bodystart="75" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1ac6d572f54173d49c75740a22c9c36609" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1step__iterator" kindref="compound">step_iterator</ref>&lt; const_iterator &gt;</type>
+      <memberdef kind="typedef" id="matrix_1ac6d572f54173d49c75740a22c9c36609" prot="public" static="no">
+        <type><ref refid="step__iterator" kindref="compound">step_iterator</ref>&lt; const_iterator &gt;</type>
         <definition>typedef step_iterator&lt;const_iterator&gt; const_column_iterator</definition>
         <argsstring></argsstring>
         <name>const_column_iterator</name>
         <location file="/math/matrix.hpp" line="76" bodyfile="/math/matrix.hpp" bodystart="76" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a0172813d0237da300d91ed8930f20a61" prot="public" static="no">
-        <type>boost::reverse_iterator&lt; <ref refid="class_quant_lib_1_1step__iterator" kindref="compound">column_iterator</ref> &gt;</type>
+      <memberdef kind="typedef" id="matrix_1a0172813d0237da300d91ed8930f20a61" prot="public" static="no">
+        <type>boost::reverse_iterator&lt; <ref refid="step__iterator" kindref="compound">column_iterator</ref> &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;column_iterator&gt; reverse_column_iterator</definition>
         <argsstring></argsstring>
         <name>reverse_column_iterator</name>
         <location file="/math/matrix.hpp" line="78" bodyfile="/math/matrix.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_matrix_1a51b452fec445b4d94800582fd8c9e463" prot="public" static="no">
-        <type>boost::reverse_iterator&lt; <ref refid="class_quant_lib_1_1step__iterator" kindref="compound">const_column_iterator</ref> &gt;</type>
+      <memberdef kind="typedef" id="matrix_1a51b452fec445b4d94800582fd8c9e463" prot="public" static="no">
+        <type>boost::reverse_iterator&lt; <ref refid="step__iterator" kindref="compound">const_column_iterator</ref> &gt;</type>
         <definition>typedef boost::reverse_iterator&lt;const_column_iterator&gt; const_reverse_column_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_column_iterator</name>
@@ -564,47 +564,47 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a1fe41a3027d4b54101228a2de063e329" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a1fe41a3027d4b54101228a2de063e329" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator+</definition>
         <argsstring>(const Matrix &amp;, const Matrix &amp;)</argsstring>
         <name>operator+</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="137" bodyfile="/math/matrix.hpp" bodystart="449" bodyend="461"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aa43bca990eddf9cbce12bb42bb64ccff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1aa43bca990eddf9cbce12bb42bb64ccff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator-</definition>
         <argsstring>(const Matrix &amp;, const Matrix &amp;)</argsstring>
         <name>operator-</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="139" bodyfile="/math/matrix.hpp" bodystart="463" bodyend="475"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abfffb965f4d5f87d60b29d3ea5703e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1abfffb965f4d5f87d60b29d3ea5703e76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator*</definition>
         <argsstring>(const Matrix &amp;, Real)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <location file="/math/matrix.hpp" line="141" bodyfile="/math/matrix.hpp" bodystart="477" bodyend="482"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9e5ccc219fb3a796f3a130fb0c40e0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a9e5ccc219fb3a796f3a130fb0c40e0d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator*</definition>
         <argsstring>(Real, const Matrix &amp;)</argsstring>
         <name>operator*</name>
@@ -612,88 +612,88 @@
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="143" bodyfile="/math/matrix.hpp" bodystart="484" bodyend="489"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a87bdcd1ea436e955114c491d050f272a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a87bdcd1ea436e955114c491d050f272a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator/</definition>
         <argsstring>(const Matrix &amp;, Real)</argsstring>
         <name>operator/</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
         <location file="/math/matrix.hpp" line="145" bodyfile="/math/matrix.hpp" bodystart="491" bodyend="496"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ace5ee0209b868ae8a10202bfaf71785c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1ace5ee0209b868ae8a10202bfaf71785c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator*</definition>
         <argsstring>(const Array &amp;, const Matrix &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="151" bodyfile="/math/matrix.hpp" bodystart="498" bodyend="509"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aaed7ab749d31914e1dd899b48567dc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1aaed7ab749d31914e1dd899b48567dc53" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>const Disposable&lt; Array &gt; operator*</definition>
         <argsstring>(const Matrix &amp;, const Array &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="153" bodyfile="/math/matrix.hpp" bodystart="511" bodyend="521"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a0f7e6b8d26865ac5d8460da8985eea23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a0f7e6b8d26865ac5d8460da8985eea23" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; operator*</definition>
         <argsstring>(const Matrix &amp;, const Matrix &amp;)</argsstring>
         <name>operator*</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="155" bodyfile="/math/matrix.hpp" bodystart="523" bodyend="537"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a2dda6bd778bb64e7732fe6a6bbf8675d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1a2dda6bd778bb64e7732fe6a6bbf8675d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; transpose</definition>
         <argsstring>(const Matrix &amp;)</argsstring>
         <name>transpose</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="160" bodyfile="/math/matrix.hpp" bodystart="539" bodyend="547"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aabd56590af05a9196bc52b253ef9b81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1aabd56590af05a9196bc52b253ef9b81d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; outerProduct</definition>
         <argsstring>(const Array &amp;v1, const Array &amp;v2)</argsstring>
         <name>outerProduct</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>v1</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>v2</declname>
         </param>
         <location file="/math/matrix.hpp" line="163" bodyfile="/math/matrix.hpp" bodystart="549" bodyend="552"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a2b2997ae613816d97a805c5815a282b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a2b2997ae613816d97a805c5815a282b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class Iterator1</type>
@@ -702,7 +702,7 @@
             <type>class Iterator2</type>
           </param>
         </templateparamlist>
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; outerProduct</definition>
         <argsstring>(Iterator1 v1begin, Iterator1 v1end, Iterator2 v2begin, Iterator2 v2end)</argsstring>
         <name>outerProduct</name>
@@ -724,20 +724,20 @@
         </param>
         <location file="/math/matrix.hpp" line="168" bodyfile="/math/matrix.hpp" bodystart="555" bodyend="573"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1a9df8756a7a5832acb371e2a6aaa9a89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1a9df8756a7a5832acb371e2a6aaa9a89b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void swap</definition>
         <argsstring>(Matrix &amp;, Matrix &amp;)</argsstring>
         <name>swap</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type><ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="171" bodyfile="/math/matrix.hpp" bodystart="575" bodyend="577"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1af0d6a8b04f5a8094992e498ca5a71142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1af0d6a8b04f5a8094992e498ca5a71142" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream &amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;, const Matrix &amp;)</argsstring>
@@ -746,39 +746,39 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <location file="/math/matrix.hpp" line="174" bodyfile="/math/matrix.hpp" bodystart="579" bodyend="588"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1aeff3737ade047fc73a0a756ffab60c9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1aeff3737ade047fc73a0a756ffab60c9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt; Matrix &gt; inverse</definition>
         <argsstring>(const Matrix &amp;m)</argsstring>
         <name>inverse</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>m</declname>
         </param>
         <location file="/math/matrix.hpp" line="177"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1afd66b122c895badf4e5d31d7e250b100" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="matrix_1afd66b122c895badf4e5d31d7e250b100" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real determinant</definition>
         <argsstring>(const Matrix &amp;m)</argsstring>
         <name>determinant</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>m</declname>
         </param>
         <location file="/math/matrix.hpp" line="180"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1ae99bf007dfbac44521a082ca343c4160" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1ae99bf007dfbac44521a082ca343c4160" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; CholeskyDecomposition</definition>
         <argsstring>(const Matrix &amp;m, bool flexible=false)</argsstring>
         <name>CholeskyDecomposition</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>m</declname>
         </param>
         <param>
@@ -788,13 +788,13 @@
         </param>
         <location file="/math/matrixutilities/choleskydecomposition.hpp" line="33"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1abbbd1fbdec84c274b421380416f9716a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1abbbd1fbdec84c274b421380416f9716a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; pseudoSqrt</definition>
         <argsstring>(const Matrix &amp;, SalvagingAlgorithm::Type=SalvagingAlgorithm::None)</argsstring>
         <name>pseudoSqrt</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
           <type>SalvagingAlgorithm::Type</type>
@@ -809,13 +809,13 @@
 </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/math/matrixutilities/pseudosqrt.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_matrix_1af4208d81b345ebe9f2defb4f839ede1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="matrix_1af4208d81b345ebe9f2defb4f839ede1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>const Disposable&lt; Matrix &gt; rankReducedSqrt</definition>
         <argsstring>(const Matrix &amp;, Size maxRank, Real componentRetainedPercentage, SalvagingAlgorithm::Type)</argsstring>
         <name>rankReducedSqrt</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -839,7 +839,7 @@
     <briefdescription>
 <para>Matrix used in linear algebra. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the concept of <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> as used in linear algebra. As such, it is <bold>not</bold> meant to be used as a container. </para>    </detaileddescription>
+<para>This class implements the concept of <ref refid="matrix" kindref="compound">Matrix</ref> as used in linear algebra. As such, it is <bold>not</bold> meant to be used as a container. </para>    </detaileddescription>
     <location file="/math/matrix.hpp" line="39" bodyfile="/math/matrix.hpp" bodystart="39" bodyend="132"/>
   </compounddef>
 </doxygen>

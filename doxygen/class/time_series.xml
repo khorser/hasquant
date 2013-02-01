@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_time_series" kind="class" prot="public">
+  <compounddef id="time_series" kind="class" prot="public">
     <compoundname>QuantLib::TimeSeries</compoundname>
     <includes local="no">/timeseries.hpp</includes>
-    <innerclass refid="struct_quant_lib_1_1_time_series_1_1reverse" prot="public">QuantLib::TimeSeries::reverse</innerclass>
-    <innerclass refid="struct_quant_lib_1_1_time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4" prot="public">QuantLib::TimeSeries::reverse&lt; container, std::bidirectional_iterator_tag &gt;</innerclass>
+    <innerclass refid="time_series_1_1reverse" prot="public">QuantLib::TimeSeries::reverse</innerclass>
+    <innerclass refid="time_series_1_1reverse_3_01container_00_01std_1_1bidirectional__iterator__tag_01_4" prot="public">QuantLib::TimeSeries::reverse&lt; container, std::bidirectional_iterator_tag &gt;</innerclass>
     <templateparamlist>
       <param>
         <type>class</type>
@@ -15,13 +15,13 @@
         <type>class</type>
         <declname>Container</declname>
         <defname>Container</defname>
-        <defval>std::map&lt;<ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, T&gt;</defval>
+        <defval>std::map&lt;<ref refid="date" kindref="compound">Date</ref>, T&gt;</defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a89f577dafd1b1413b3efb0964c14d92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="time_series_1a89f577dafd1b1413b3efb0964c14d92b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date firstDate</definition>
         <argsstring>() const </argsstring>
         <name>firstDate</name>
@@ -29,8 +29,8 @@
 <para>returns the first date for which a historical datum exists </para>        </briefdescription>
         <location file="/timeseries.hpp" line="84" bodyfile="/timeseries.hpp" bodystart="244" bodyend="247"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="time_series_1a82fb26af3e6b94b1bad6e21f0d6a56ac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date lastDate</definition>
         <argsstring>() const </argsstring>
         <name>lastDate</name>
@@ -38,7 +38,7 @@
 <para>returns the last date for which a historical datum exists </para>        </briefdescription>
         <location file="/timeseries.hpp" line="86" bodyfile="/timeseries.hpp" bodystart="250" bodyend="253"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
@@ -47,7 +47,7 @@
 <para>returns the number of historical data including null ones </para>        </briefdescription>
         <location file="/timeseries.hpp" line="88" bodyfile="/timeseries.hpp" bodystart="256" bodyend="258"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -59,26 +59,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Historical data access</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a640449f3131e686290c6c1d0bbb043b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a640449f3131e686290c6c1d0bbb043b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>T</type>
         <definition>T operator[]</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>operator[]</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <briefdescription>
 <para>returns the (possibly null) datum corresponding to the given date </para>        </briefdescription>
         <location file="/timeseries.hpp" line="95" bodyfile="/timeseries.hpp" bodystart="95" bodyend="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a3f62282db5196704781ec6e5caa6c48f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a3f62282db5196704781ec6e5caa6c48f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>T &amp;</type>
         <definition>T&amp; operator[]</definition>
         <argsstring>(const Date &amp;d)</argsstring>
         <name>operator[]</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/timeseries.hpp" line="101" bodyfile="/timeseries.hpp" bodystart="101" bodyend="105"/>
@@ -86,84 +86,84 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Iterators</header>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a0833e882f7bd9b10baa8f4ff433ebbd4" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a0833e882f7bd9b10baa8f4ff433ebbd4" prot="public" static="no">
         <type>Container::const_iterator</type>
         <definition>typedef Container::const_iterator const_iterator</definition>
         <argsstring></argsstring>
         <name>const_iterator</name>
         <location file="/timeseries.hpp" line="110" bodyfile="/timeseries.hpp" bodystart="110" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a2878d2ee9f1778d403b2182847be3e98" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a2878d2ee9f1778d403b2182847be3e98" prot="public" static="no">
         <type>const_iterator::iterator_category</type>
         <definition>typedef const_iterator::iterator_category iterator_category</definition>
         <argsstring></argsstring>
         <name>iterator_category</name>
         <location file="/timeseries.hpp" line="111" bodyfile="/timeseries.hpp" bodystart="111" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a7a72a3f02e1280fbc781131354a238d4" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a7a72a3f02e1280fbc781131354a238d4" prot="public" static="no">
         <type>boost::mpl::if_&lt; boost::mpl::or_&lt; boost::is_same&lt; iterator_category, std::bidirectional_iterator_tag &gt;, boost::is_base_of&lt; std::bidirectional_iterator_tag, iterator_category &gt; &gt;, std::bidirectional_iterator_tag, std::input_iterator_tag &gt;::type</type>
         <definition>typedef boost::mpl::if_&lt; boost::mpl::or_ &lt; boost::is_same&lt;iterator_category, std::bidirectional_iterator_tag&gt;, boost::is_base_of&lt;std::bidirectional_iterator_tag, iterator_category&gt; &gt;, std::bidirectional_iterator_tag, std::input_iterator_tag&gt;::type enable_reverse</definition>
         <argsstring></argsstring>
         <name>enable_reverse</name>
         <location file="/timeseries.hpp" line="154" bodyfile="/timeseries.hpp" bodystart="154" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ad2e38d522cf4cf9741a1cd206e407827" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1ad2e38d522cf4cf9741a1cd206e407827" prot="public" static="no">
         <type>reverse&lt; Container, enable_reverse &gt;::const_reverse_iterator</type>
         <definition>typedef reverse&lt;Container, enable_reverse&gt;::const_reverse_iterator const_reverse_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_iterator</name>
         <location file="/timeseries.hpp" line="158" bodyfile="/timeseries.hpp" bodystart="158" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1adfa4ecaac56b7d08d4be0e2628fe99b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1adfa4ecaac56b7d08d4be0e2628fe99b3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>TimeSeries&lt; T, C &gt;::const_iterator cbegin</definition>
         <argsstring>() const </argsstring>
         <name>cbegin</name>
         <location file="/timeseries.hpp" line="160" bodyfile="/timeseries.hpp" bodystart="267" bodyend="269"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a070fb0160557357d1da2136167cae197" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a070fb0160557357d1da2136167cae197" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>TimeSeries&lt; T, C &gt;::const_iterator cend</definition>
         <argsstring>() const </argsstring>
         <name>cend</name>
         <location file="/timeseries.hpp" line="161" bodyfile="/timeseries.hpp" bodystart="273" bodyend="275"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1aa4b02d4f1a8500fb07a551069060709f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator begin</definition>
         <argsstring>() const </argsstring>
         <name>begin</name>
         <location file="/timeseries.hpp" line="162" bodyfile="/timeseries.hpp" bodystart="162" bodyend="162"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a350132543d80a1c1e5be844e6d2878ea" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>const_iterator end</definition>
         <argsstring>() const </argsstring>
         <name>end</name>
         <location file="/timeseries.hpp" line="163" bodyfile="/timeseries.hpp" bodystart="163" bodyend="163"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad46fdce4a2ae356bce3b801db2bcc918" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ad46fdce4a2ae356bce3b801db2bcc918" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator crbegin</definition>
         <argsstring>() const </argsstring>
         <name>crbegin</name>
         <location file="/timeseries.hpp" line="164" bodyfile="/timeseries.hpp" bodystart="164" bodyend="166"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a0ec903d2e9ea165b0460f1f6d40da203" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a0ec903d2e9ea165b0460f1f6d40da203" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator crend</definition>
         <argsstring>() const </argsstring>
         <name>crend</name>
         <location file="/timeseries.hpp" line="167" bodyfile="/timeseries.hpp" bodystart="167" bodyend="169"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a04886aa70c34d66738e78bf70c675e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a04886aa70c34d66738e78bf70c675e66" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator rbegin</definition>
         <argsstring>() const </argsstring>
         <name>rbegin</name>
         <location file="/timeseries.hpp" line="170" bodyfile="/timeseries.hpp" bodystart="170" bodyend="170"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ab3c414470d5cea2986cfab7a90146cb6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_iterator</type>
         <definition>const_reverse_iterator rend</definition>
         <argsstring>() const </argsstring>
@@ -173,84 +173,84 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Projection iterators</header>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1adfd63076fc2a23f5bcdb0e0ec2639e90" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1adfd63076fc2a23f5bcdb0e0ec2639e90" prot="public" static="no">
         <type>boost::transform_iterator&lt; projection_time, const_iterator &gt;</type>
         <definition>typedef boost::transform_iterator&lt;projection_time, const_iterator&gt; const_time_iterator</definition>
         <argsstring></argsstring>
         <name>const_time_iterator</name>
         <location file="/timeseries.hpp" line="186" bodyfile="/timeseries.hpp" bodystart="186" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1ab013c8ecd3104d80275dcffe6bd3f832" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1ab013c8ecd3104d80275dcffe6bd3f832" prot="public" static="no">
         <type>boost::transform_iterator&lt; projection_value, const_iterator &gt;</type>
         <definition>typedef boost::transform_iterator&lt;projection_value, const_iterator&gt; const_value_iterator</definition>
         <argsstring></argsstring>
         <name>const_value_iterator</name>
         <location file="/timeseries.hpp" line="188" bodyfile="/timeseries.hpp" bodystart="188" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a1f45529030690957b9056280e0c9b9f4" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a1f45529030690957b9056280e0c9b9f4" prot="public" static="no">
         <type>boost::transform_iterator&lt; projection_time, const_reverse_iterator &gt;</type>
         <definition>typedef boost::transform_iterator&lt;projection_time, const_reverse_iterator&gt; const_reverse_time_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_time_iterator</name>
         <location file="/timeseries.hpp" line="191" bodyfile="/timeseries.hpp" bodystart="191" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a6d61c242afa234175931e1a22bc17def" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a6d61c242afa234175931e1a22bc17def" prot="public" static="no">
         <type>boost::transform_iterator&lt; projection_value, const_reverse_iterator &gt;</type>
         <definition>typedef boost::transform_iterator&lt;projection_value, const_reverse_iterator&gt; const_reverse_value_iterator</definition>
         <argsstring></argsstring>
         <name>const_reverse_value_iterator</name>
         <location file="/timeseries.hpp" line="194" bodyfile="/timeseries.hpp" bodystart="194" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1abdd30016a6436914a62b13ba3de0903a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1abdd30016a6436914a62b13ba3de0903a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_value_iterator</type>
         <definition>const_value_iterator cbegin_values</definition>
         <argsstring>() const </argsstring>
         <name>cbegin_values</name>
         <location file="/timeseries.hpp" line="196" bodyfile="/timeseries.hpp" bodystart="196" bodyend="198"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad0669ab57125e3f515111a834811156a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ad0669ab57125e3f515111a834811156a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_value_iterator</type>
         <definition>const_value_iterator cend_values</definition>
         <argsstring>() const </argsstring>
         <name>cend_values</name>
         <location file="/timeseries.hpp" line="199" bodyfile="/timeseries.hpp" bodystart="199" bodyend="201"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a9c6e35946c44a2f0c3b07540d9744f93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a9c6e35946c44a2f0c3b07540d9744f93" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_value_iterator</type>
         <definition>const_reverse_value_iterator crbegin_values</definition>
         <argsstring>() const </argsstring>
         <name>crbegin_values</name>
         <location file="/timeseries.hpp" line="202" bodyfile="/timeseries.hpp" bodystart="202" bodyend="204"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a72dc5bc6e2cc8cb0f0903c37917e3e5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a72dc5bc6e2cc8cb0f0903c37917e3e5d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_value_iterator</type>
         <definition>const_reverse_value_iterator crend_values</definition>
         <argsstring>() const </argsstring>
         <name>crend_values</name>
         <location file="/timeseries.hpp" line="205" bodyfile="/timeseries.hpp" bodystart="205" bodyend="207"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a37aa772e9d8e45e75e5b96059e94b7ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a37aa772e9d8e45e75e5b96059e94b7ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_time_iterator</type>
         <definition>const_time_iterator cbegin_time</definition>
         <argsstring>() const </argsstring>
         <name>cbegin_time</name>
         <location file="/timeseries.hpp" line="209" bodyfile="/timeseries.hpp" bodystart="209" bodyend="211"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1aabed837e1be8183331ca2d748d9da284" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1aabed837e1be8183331ca2d748d9da284" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_time_iterator</type>
         <definition>const_time_iterator cend_time</definition>
         <argsstring>() const </argsstring>
         <name>cend_time</name>
         <location file="/timeseries.hpp" line="212" bodyfile="/timeseries.hpp" bodystart="212" bodyend="214"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a5bceffdab80dd4eb627aa93ed62b64e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a5bceffdab80dd4eb627aa93ed62b64e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_time_iterator</type>
         <definition>const_reverse_time_iterator crbegin_time</definition>
         <argsstring>() const </argsstring>
         <name>crbegin_time</name>
         <location file="/timeseries.hpp" line="215" bodyfile="/timeseries.hpp" bodystart="215" bodyend="217"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ad497641edba218b035841660a6eb897d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ad497641edba218b035841660a6eb897d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const_reverse_time_iterator</type>
         <definition>const_reverse_time_iterator crend_time</definition>
         <argsstring>() const </argsstring>
@@ -260,19 +260,19 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utilities</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a29ddcedccaeac592df6f492817d24243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a29ddcedccaeac592df6f492817d24243" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const_iterator</type>
         <definition>TimeSeries&lt; T, C &gt;::const_iterator find</definition>
         <argsstring>(const Date &amp;)</argsstring>
         <name>find</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <defname>d</defname>
         </param>
         <location file="/timeseries.hpp" line="224" bodyfile="/timeseries.hpp" bodystart="279" bodyend="286"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab7b03c23ac83d89c3637b46769c665b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+      <memberdef kind="function" id="time_series_1ab7b03c23ac83d89c3637b46769c665b7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt; Date &gt; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
@@ -280,7 +280,7 @@
 <para>returns the dates for which historical data exist </para>        </briefdescription>
         <location file="/timeseries.hpp" line="226" bodyfile="/timeseries.hpp" bodystart="289" bodyend="295"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1afbac7e75441b2d40f9f5de2897f3604b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1afbac7e75441b2d40f9f5de2897f3604b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; T &gt;</type>
         <definition>std::vector&lt; T &gt; values</definition>
         <argsstring>() const </argsstring>
@@ -291,14 +291,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a3f309f410cacd8b9af5dd47d20fb559d" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="typedef" id="time_series_1a3f309f410cacd8b9af5dd47d20fb559d" prot="public" static="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>typedef Date key_type</definition>
         <argsstring></argsstring>
         <name>key_type</name>
         <location file="/timeseries.hpp" line="52" bodyfile="/timeseries.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_time_series_1a265a253612b46abed17c61b0a5e5ce30" prot="public" static="no">
+      <memberdef kind="typedef" id="time_series_1a265a253612b46abed17c61b0a5e5ce30" prot="public" static="no">
         <type>T</type>
         <definition>typedef T value_type</definition>
         <argsstring></argsstring>
@@ -307,7 +307,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1ab23fa5e29fa4062e597a71f8750e1672" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1ab23fa5e29fa4062e597a71f8750e1672" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TimeSeries</definition>
         <argsstring>()</argsstring>
@@ -316,7 +316,7 @@
 <para>Default constructor </para>        </detaileddescription>
         <location file="/timeseries.hpp" line="58" bodyfile="/timeseries.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a54ab85f64119aaa3d8c3f36cd0f4721b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a54ab85f64119aaa3d8c3f36cd0f4721b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class DateIterator</type>
@@ -345,7 +345,7 @@
 <para>This constructor initializes the history with a set of values passed as two sequences, the first containing dates and the second containing corresponding values. </para>        </detaileddescription>
         <location file="/timeseries.hpp" line="65" bodyfile="/timeseries.hpp" bodystart="64" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_time_series_1a8da6e1561f3db735697a77e87f7c937f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="time_series_1a8da6e1561f3db735697a77e87f7c937f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class ValueIterator</type>
@@ -356,7 +356,7 @@
         <argsstring>(const Date &amp;firstDate, ValueIterator begin, ValueIterator end)</argsstring>
         <name>TimeSeries</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>firstDate</declname>
         </param>
         <param>

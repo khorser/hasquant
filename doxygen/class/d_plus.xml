@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_d_plus" kind="class" prot="public">
+  <compounddef id="d_plus" kind="class" prot="public">
     <compoundname>QuantLib::DPlus</compoundname>
     <includes local="no">/methods/finitedifferences/dplus.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_d_plus_1ae7d949ee7e843bd1f4a7c6a18dd493c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="d_plus_1ae7d949ee7e843bd1f4a7c6a18dd493c7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DPlus</definition>
         <argsstring>(Size gridPoints, Real h)</argsstring>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_curve" kind="class" prot="public">
+  <compounddef id="interpolated_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedCurve</compoundname>
     <includes local="no">/termstructures/interpolatedcurve.hpp</includes>
     <templateparamlist>
@@ -10,7 +10,7 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Building</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a84cbe87fa8e8b64ada801479fa7e2ee1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_curve_1a84cbe87fa8e8b64ada801479fa7e2ee1" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCurve</definition>
         <argsstring>(const std::vector&lt; Time &gt; &amp;times, const std::vector&lt; Real &gt; &amp;data, const Interpolator &amp;i=Interpolator())</argsstring>
@@ -30,7 +30,7 @@
         </param>
         <location file="/termstructures/interpolatedcurve.hpp" line="45" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="42" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1af65ba2657e570befd6d47b554d41be2c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_curve_1af65ba2657e570befd6d47b554d41be2c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCurve</definition>
         <argsstring>(const std::vector&lt; Time &gt; &amp;times, const Interpolator &amp;i=Interpolator())</argsstring>
@@ -46,7 +46,7 @@
         </param>
         <location file="/termstructures/interpolatedcurve.hpp" line="49" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a3fce8f7f7406e558c914ada1f040b2d9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_curve_1a3fce8f7f7406e558c914ada1f040b2d9" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCurve</definition>
         <argsstring>(Size n, const Interpolator &amp;i=Interpolator())</argsstring>
@@ -62,7 +62,7 @@
         </param>
         <location file="/termstructures/interpolatedcurve.hpp" line="53" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a1f1a36b149b457570e7fe01bc5b6370f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_curve_1a1f1a36b149b457570e7fe01bc5b6370f" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCurve</definition>
         <argsstring>(const Interpolator &amp;i=Interpolator())</argsstring>
@@ -77,24 +77,24 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Copying</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1ad09da2c682c289e3568976b51ca4b27c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_curve_1ad09da2c682c289e3568976b51ca4b27c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCurve</definition>
         <argsstring>(const InterpolatedCurve &amp;c)</argsstring>
         <name>InterpolatedCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+          <type>const <ref refid="interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
           <declname>c</declname>
         </param>
         <location file="/termstructures/interpolatedcurve.hpp" line="62" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="61" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_curve_1a05f5195d566a3ab81f70a8e67001934c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+      <memberdef kind="function" id="interpolated_curve_1a05f5195d566a3ab81f70a8e67001934c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
         <definition>InterpolatedCurve&amp; operator=</definition>
         <argsstring>(const InterpolatedCurve &amp;c)</argsstring>
         <name>operator=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
+          <type>const <ref refid="interpolated_curve" kindref="compound">InterpolatedCurve</ref> &amp;</type>
           <declname>c</declname>
         </param>
         <location file="/termstructures/interpolatedcurve.hpp" line="66" bodyfile="/termstructures/interpolatedcurve.hpp" bodystart="66" bodyend="72"/>

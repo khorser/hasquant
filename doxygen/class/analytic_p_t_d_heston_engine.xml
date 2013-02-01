@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_p_t_d_heston_engine" kind="class" prot="public">
+  <compounddef id="analytic_p_t_d_heston_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticPTDHestonEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/analyticptdhestonengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1abc142be262ed116e6fc4935c01b1dfed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_p_t_d_heston_engine_1abc142be262ed116e6fc4935c01b1dfed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticPTDHestonEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;model, Real relTolerance, Size maxEvaluations)</argsstring>
         <name>AnalyticPTDHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -23,13 +23,13 @@
         </param>
         <location file="/pricingengines/vanilla/analyticptdhestonengine.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1ab3cabff5450770405b8bea135479b89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_p_t_d_heston_engine_1ab3cabff5450770405b8bea135479b89e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticPTDHestonEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; PiecewiseTimeDependentHestonModel &gt; &amp;model, Size integrationOrder=144)</argsstring>
         <name>AnalyticPTDHestonEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="piecewise_time_dependent_heston_model" kindref="compound">PiecewiseTimeDependentHestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -39,12 +39,12 @@
         </param>
         <location file="/pricingengines/vanilla/analyticptdhestonengine.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_p_t_d_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="analytic_p_t_d_heston_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/vanilla/analyticptdhestonengine.hpp" line="72"/>
       </memberdef>
       </sectiondef>

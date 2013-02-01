@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_m_s_m_m_drift_calculator" kind="class" prot="public">
+  <compounddef id="c_m_s_m_m_drift_calculator" kind="class" prot="public">
     <compoundname>QuantLib::CMSMMDriftCalculator</compoundname>
     <includes local="no">/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a5e38ed5805e19e65cfde4d3156b38ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_m_s_m_m_drift_calculator_1a5e38ed5805e19e65cfde4d3156b38ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CMSMMDriftCalculator</definition>
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive, Size spanningFwds)</argsstring>
         <name>CMSMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -35,13 +35,13 @@
         </param>
         <location file="/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_m_s_m_m_drift_calculator_1a92c0dc56015a87c865ec05f87b70f9e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_m_s_m_m_drift_calculator_1a92c0dc56015a87c865ec05f87b70f9e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compute</definition>
         <argsstring>(const CMSwapCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_c_m_swap_curve_state" kindref="compound">CMSwapCurveState</ref> &amp;</type>
+          <type>const <ref refid="c_m_swap_curve_state" kindref="compound">CMSwapCurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -56,7 +56,7 @@
     <briefdescription>
 <para>Drift computation for CMS market models. </para>    </briefdescription>
     <detaileddescription>
-<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" line="42" bodyfile="/models/marketmodels/driftcomputation/cmsmmdriftcalculator.hpp" bodystart="42" bodyend="68"/>
   </compounddef>
 </doxygen>

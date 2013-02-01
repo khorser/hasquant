@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swap_rate_trigger" kind="class" prot="public">
+  <compounddef id="swap_rate_trigger" kind="class" prot="public">
     <compoundname>QuantLib::SwapRateTrigger</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1a318b08f230f541f21df3be6d6bead337" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1a318b08f230f541f21df3be6d6bead337" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwapRateTrigger</definition>
         <argsstring>(const std::vector&lt; Time &gt; &amp;rateTimes, const std::vector&lt; Rate &gt; &amp;swapTriggers, const std::vector&lt; Time &gt; &amp;exerciseTimes)</argsstring>
@@ -22,51 +22,51 @@
         </param>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="33"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1aa8dcb0de162131db7bd1609d221445ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1aa8dcb0de162131db7bd1609d221445ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>() const </argsstring>
         <name>exerciseTimes</name>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1ab721c6778f9fcc704d178a60cdd7c32f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; relevantTimes</definition>
         <argsstring>() const </argsstring>
         <name>relevantTimes</name>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1af66beb74da59fb4825934b77b8d2c469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1af66beb74da59fb4825934b77b8d2c469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool exercise</definition>
         <argsstring>(const CurveState &amp;currentState) const </argsstring>
         <name>exercise</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>currentState</declname>
         </param>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1aec2d702d48459594eb8f12eaec1920bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_rate_trigger_1aec2d702d48459594eb8f12eaec1920bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void nextStep</definition>
         <argsstring>(const CurveState &amp;currentState)</argsstring>
         <name>nextStep</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>currentState</declname>
         </param>
         <location file="/models/marketmodels/callability/swapratetrigger.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_rate_trigger_1acd9318273e52073d486e779f628ca372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::auto_ptr&lt; ExerciseStrategy&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="swap_rate_trigger_1acd9318273e52073d486e779f628ca372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::auto_ptr&lt; ExerciseStrategy&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &gt;</type>
         <definition>std::auto_ptr&lt;ExerciseStrategy&lt;CurveState&gt; &gt; clone</definition>
         <argsstring>() const </argsstring>
         <name>clone</name>

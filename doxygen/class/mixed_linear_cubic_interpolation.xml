@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_mixed_linear_cubic_interpolation" kind="class" prot="public">
+  <compounddef id="mixed_linear_cubic_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearCubicInterpolation</compoundname>
     <includes local="no">/math/interpolations/mixedinterpolation.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_interpolation_1a2ee3257a82ef7279bbf7c00b6856d189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="mixed_linear_cubic_interpolation_1a2ee3257a82ef7279bbf7c00b6856d189" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -34,7 +34,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
+          <type><ref refid="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
           <declname>da</declname>
         </param>
         <param>
@@ -42,7 +42,7 @@
           <declname>monotonic</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>leftC</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
           <declname>leftConditionValue</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>rightC</declname>
         </param>
         <param>

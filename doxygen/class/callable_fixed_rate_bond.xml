@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callable_fixed_rate_bond" kind="class" prot="public">
+  <compounddef id="callable_fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::CallableFixedRateBond</compoundname>
     <includes local="no">/experimental/callablebonds/callablebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_fixed_rate_bond_1ad5ef8d0800f4a070f1102d5c56de55be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_fixed_rate_bond_1ad5ef8d0800f4a070f1102d5c56de55be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableFixedRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;accrualDayCounter, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date(), const CallabilitySchedule &amp;putCallSchedule=CallabilitySchedule())</argsstring>
@@ -18,7 +18,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -40,9 +40,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type>const CallabilitySchedule &amp;</type>
@@ -51,12 +51,12 @@
         </param>
         <location file="/experimental/callablebonds/callablebond.hpp" line="164"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_fixed_rate_bond_1af6f2357affd0584e0db188a557bdef03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="callable_fixed_rate_bond_1af6f2357affd0584e0db188a557bdef03" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *args) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_1a71e3006b83c8b484bc57296fe94bf36d">setupArguments</reimplements>
+        <reimplements refid="callable_bond_1a71e3006b83c8b484bc57296fe94bf36d">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_poisson_distribution" kind="class" prot="public">
+  <compounddef id="poisson_distribution" kind="class" prot="public">
     <compoundname>QuantLib::PoissonDistribution</compoundname>
     <includes local="no">/math/distributions/poissondistribution.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="poisson_distribution_1abb0591db83690c6437c7337462ebfea7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PoissonDistribution</definition>
         <argsstring>(Real mu)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/math/distributions/poissondistribution.hpp" line="42" bodyfile="/math/distributions/poissondistribution.hpp" bodystart="90" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="poisson_distribution_1a860deba0e182257980641badf4554fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(BigNatural k) const </argsstring>

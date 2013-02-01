@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sphere_cylinder_optimizer" kind="class" prot="public">
+  <compounddef id="sphere_cylinder_optimizer" kind="class" prot="public">
     <compoundname>QuantLib::SphereCylinderOptimizer</compoundname>
     <includes local="no">/math/optimization/spherecylinder.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1ab418732e2b63785866f16eeb4b522276" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sphere_cylinder_optimizer_1ab418732e2b63785866f16eeb4b522276" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SphereCylinderOptimizer</definition>
         <argsstring>(Real r, Real s, Real alpha, Real z1, Real z2, Real z3, Real zweight=1.0)</argsstring>
@@ -40,14 +40,14 @@
         </param>
         <location file="/math/optimization/spherecylinder.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a160f8b811bc08b1ecbd4cd75e23d66d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sphere_cylinder_optimizer_1a160f8b811bc08b1ecbd4cd75e23d66d9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isIntersectionNonEmpty</definition>
         <argsstring>() const </argsstring>
         <name>isIntersectionNonEmpty</name>
         <location file="/math/optimization/spherecylinder.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1a8b8ec5617c0a4397e24553320e08f9f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sphere_cylinder_optimizer_1a8b8ec5617c0a4397e24553320e08f9f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void findClosest</definition>
         <argsstring>(Size maxIterations, Real tolerance, Real &amp;y1, Real &amp;y2, Real &amp;y3) const </argsstring>
@@ -74,7 +74,7 @@
         </param>
         <location file="/math/optimization/spherecylinder.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sphere_cylinder_optimizer_1ae1eda24db01e95018b8bba94b9a54e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sphere_cylinder_optimizer_1ae1eda24db01e95018b8bba94b9a54e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool findByProjection</definition>
         <argsstring>(Real &amp;y1, Real &amp;y2, Real &amp;y3) const </argsstring>

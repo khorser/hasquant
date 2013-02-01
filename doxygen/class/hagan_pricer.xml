@@ -1,87 +1,87 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_hagan_pricer" kind="class" prot="public" abstract="yes">
+  <compounddef id="hagan_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::HaganPricer</compoundname>
     <includes local="no">/cashflows/conundrumpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="hagan_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328">swapletPrice</reimplements>
         <location file="/cashflows/conundrumpricer.hpp" line="202"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hagan_pricer_1a6b1f49bd6af811c09ef3c3c9fc6966ec" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const </argsstring>
         <name>swapletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb">swapletRate</reimplements>
         <location file="/cashflows/conundrumpricer.hpp" line="203"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hagan_pricer_1ad67dc18a514164cf8613c26cdea77f43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real capletPrice</definition>
         <argsstring>(Rate effectiveCap) const </argsstring>
         <name>capletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423">capletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423">capletPrice</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="204"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hagan_pricer_1a2f09b29df80f1269a4e1b51e95b1cd87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate capletRate</definition>
         <argsstring>(Rate effectiveCap) const </argsstring>
         <name>capletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad">capletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad">capletRate</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveCap</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="205"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hagan_pricer_1ad9799bfd308c5a452100d5fbd029d05e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real floorletPrice</definition>
         <argsstring>(Rate effectiveFloor) const </argsstring>
         <name>floorletPrice</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d">floorletPrice</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d">floorletPrice</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="206"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hagan_pricer_1ac6b87a9344019ccd085c71b0d78ee648" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate floorletRate</definition>
         <argsstring>(Rate effectiveFloor) const </argsstring>
         <name>floorletRate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672">floorletRate</reimplements>
+        <reimplements refid="floating_rate_coupon_pricer_1a214779867426164db11377dadc63d672">floorletRate</reimplements>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>effectiveFloor</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="207"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1a7c89093abfeb25762659fbc97a854ec3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hagan_pricer_1a7c89093abfeb25762659fbc97a854ec3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real meanReversion</definition>
         <argsstring>() const </argsstring>
         <name>meanReversion</name>
         <location file="/cashflows/conundrumpricer.hpp" line="209"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hagan_pricer_1af3746c23762d11af02d2c60d56c16455" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="hagan_pricer_1af3746c23762d11af02d2c60d56c16455" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setMeanReversion</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>setMeanReversion</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="210" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="210" bodyend="215"/>

@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_actual_actual" kind="class" prot="public">
+  <compounddef id="actual_actual" kind="class" prot="public">
     <compoundname>QuantLib::ActualActual</compoundname>
     <includes local="no">/time/daycounters/actualactual.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
+      <memberdef kind="enum" id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578" prot="public" static="no">
         <name>Convention</name>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ad4f4e6a61c8904675510f6531295b438" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ad4f4e6a61c8904675510f6531295b438" prot="public">
           <name>ISMA</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ab6eb09f3e2e2185fb94794f3645744b7" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ab6eb09f3e2e2185fb94794f3645744b7" prot="public">
           <name>Bond</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a98585fde8dc70056789d25e9b7263825" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a98585fde8dc70056789d25e9b7263825" prot="public">
           <name>ISDA</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a3b28d2384d6b47d3bbc877a6a59e9d95" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a3b28d2384d6b47d3bbc877a6a59e9d95" prot="public">
           <name>Historical</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a359e9a601e2f250db2a26e811b34cda9" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578a359e9a601e2f250db2a26e811b34cda9" prot="public">
           <name>Actual365</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578aac90391ea0f8cf15843763043f1f0d79" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578aac90391ea0f8cf15843763043f1f0d79" prot="public">
           <name>AFB</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ace4bbf6b266e46026b96604c29c2f39b" prot="public">
+        <enumvalue id="actual_actual_1a63f911c95b83cbc4ac0d194f99c67578ace4bbf6b266e46026b96604c29c2f39b" prot="public">
           <name>Euro</name>
         </enumvalue>
         <location file="/time/daycounters/actualactual.hpp" line="51" bodyfile="/time/daycounters/actualactual.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_actual_actual_1a2f6af47d8c7920afbd03b2c650d2215a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="actual_actual_1a2f6af47d8c7920afbd03b2c650d2215a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ActualActual</definition>
         <argsstring>(Convention c=ActualActual::ISDA)</argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gaussian_random_default_model" kind="class" prot="public">
+  <compounddef id="gaussian_random_default_model" kind="class" prot="public">
     <compoundname>QuantLib::GaussianRandomDefaultModel</compoundname>
     <includes local="no">/experimental/credit/randomdefaultmodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_random_default_model_1a01f45fe4006a155bb158a9f55f534ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_random_default_model_1a01f45fe4006a155bb158a9f55f534ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GaussianRandomDefaultModel</definition>
         <argsstring>(boost::shared_ptr&lt; Pool &gt; pool, const std::vector&lt; DefaultProbKey &gt; &amp;defaultKeys, Handle&lt; OneFactorCopula &gt; copula, Real accuracy, long seed)</argsstring>
@@ -14,11 +14,11 @@
           <declname>pool</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
           <declname>defaultKeys</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
           <declname>copula</declname>
         </param>
         <param>
@@ -31,12 +31,12 @@
         </param>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_random_default_model_1ac793b8fd2de34a6c7f3e7dce559ef39b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="gaussian_random_default_model_1ac793b8fd2de34a6c7f3e7dce559ef39b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void nextSequence</definition>
         <argsstring>(Real tmax=QL_MAX_REAL)</argsstring>
         <name>nextSequence</name>
-        <reimplements refid="class_quant_lib_1_1_random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8">nextSequence</reimplements>
+        <reimplements refid="random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8">nextSequence</reimplements>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>tmax</declname>
@@ -46,12 +46,12 @@
 <para>Generate a sequence of random default times, one for each name in the pool, and store the result in the Pool using method setTime(name). tmax denotes the maximum relevant time- default times &gt; tmax are not computed but set to tmax + 1 instead to save coputation time. </para>        </detaileddescription>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_random_default_model_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="gaussian_random_default_model_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
-        <reimplements refid="class_quant_lib_1_1_random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
+        <reimplements refid="random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1">reset</reimplements>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="71"/>
       </memberdef>
       </sectiondef>

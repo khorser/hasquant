@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lattice_short_rate_model_engine" kind="class" prot="public">
+  <compounddef id="lattice_short_rate_model_engine" kind="class" prot="public">
     <compoundname>QuantLib::LatticeShortRateModelEngine</compoundname>
     <includes local="no">/pricingengines/latticeshortratemodelengine.hpp</includes>
     <templateparamlist>
@@ -16,13 +16,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1a747300dccfd365b1b752a419234534f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lattice_short_rate_model_engine_1a747300dccfd365b1b752a419234534f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LatticeShortRateModelEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, Size timeSteps)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -31,13 +31,13 @@
         </param>
         <location file="/pricingengines/latticeshortratemodelengine.hpp" line="43" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="58" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1aaa4869e006043fd23877d570331730ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lattice_short_rate_model_engine_1aaa4869e006043fd23877d570331730ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LatticeShortRateModelEngine</definition>
         <argsstring>(const Handle&lt; ShortRateModel &gt; &amp;model, Size timeSteps)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -46,27 +46,27 @@
         </param>
         <location file="/pricingengines/latticeshortratemodelengine.hpp" line="46" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="69" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1acbc8f3ff77b5c912ed7558b6eb8c23b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lattice_short_rate_model_engine_1acbc8f3ff77b5c912ed7558b6eb8c23b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LatticeShortRateModelEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const TimeGrid &amp;timeGrid)</argsstring>
         <name>LatticeShortRateModelEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <location file="/pricingengines/latticeshortratemodelengine.hpp" line="49" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="80" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="lattice_short_rate_model_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/pricingengines/latticeshortratemodelengine.hpp" line="50" bodyfile="/pricingengines/latticeshortratemodelengine.hpp" bodystart="89" bodyend="94"/>
       </memberdef>
       </sectiondef>

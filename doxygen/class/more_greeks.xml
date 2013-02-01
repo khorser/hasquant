@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_more_greeks" kind="class" prot="public">
+  <compounddef id="more_greeks" kind="class" prot="public">
     <compoundname>QuantLib::MoreGreeks</compoundname>
     <includes local="no">/option.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1ade07d7d6e2dd62225dd75988c763ad50" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="more_greeks_1ade07d7d6e2dd62225dd75988c763ad50" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real itmCashProbability</definition>
         <argsstring></argsstring>
         <name>itmCashProbability</name>
         <location file="/option.hpp" line="88" bodyfile="/option.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1a8e14062b135dfc72b01a9686ae83b7cb" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="more_greeks_1a8e14062b135dfc72b01a9686ae83b7cb" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real deltaForward</definition>
         <argsstring></argsstring>
         <name>deltaForward</name>
         <location file="/option.hpp" line="88" bodyfile="/option.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1a772bf8dd12659167e62e44b43cc71c9e" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="more_greeks_1a772bf8dd12659167e62e44b43cc71c9e" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real elasticity</definition>
         <argsstring></argsstring>
         <name>elasticity</name>
         <location file="/option.hpp" line="88" bodyfile="/option.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1ac693db2827cc856c59ac92a18f6975cb" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="more_greeks_1ac693db2827cc856c59ac92a18f6975cb" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaPerDay</definition>
         <argsstring></argsstring>
         <name>thetaPerDay</name>
         <location file="/option.hpp" line="88" bodyfile="/option.hpp" bodystart="88" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_more_greeks_1a50765ef4c62d0feb685efd9cf29ac4d3" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="more_greeks_1a50765ef4c62d0feb685efd9cf29ac4d3" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real strikeSensitivity</definition>
         <argsstring></argsstring>
@@ -41,7 +41,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_more_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="more_greeks_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

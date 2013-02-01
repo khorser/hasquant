@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_multi_path_generator" kind="class" prot="public">
+  <compounddef id="multi_path_generator" kind="class" prot="public">
     <compoundname>QuantLib::MultiPathGenerator</compoundname>
     <includes local="no">/methods/montecarlo/multipathgenerator.hpp</includes>
     <templateparamlist>
@@ -9,8 +9,8 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_path_generator_1a0f7a5af246b6d497bbf49e20515d29b2" prot="public" static="no">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &gt;</type>
+      <memberdef kind="typedef" id="multi_path_generator_1a0f7a5af246b6d497bbf49e20515d29b2" prot="public" static="no">
+        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="multi_path" kindref="compound">MultiPath</ref> &gt;</type>
         <definition>typedef Sample&lt;MultiPath&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -18,17 +18,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1aec953e0036be310f7660675a4915a9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="multi_path_generator_1aec953e0036be310f7660675a4915a9f8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MultiPathGenerator</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess &gt; &amp;, const TimeGrid &amp;, GSG generator, bool brownianBridge=false)</argsstring>
         <name>MultiPathGenerator</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &gt; &amp;</type>
           <defname>process</defname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <defname>times</defname>
         </param>
         <param>
@@ -42,15 +42,15 @@
         </param>
         <location file="/methods/montecarlo/multipathgenerator.hpp" line="56" bodyfile="/methods/montecarlo/multipathgenerator.hpp" bodystart="71" bodyend="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1a08dcfc5879d85c52e6a463515b6bb7a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref> &amp;</type>
+      <memberdef kind="function" id="multi_path_generator_1a08dcfc5879d85c52e6a463515b6bb7a3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
         <definition>const MultiPathGenerator&lt; GSG &gt;::sample_type &amp; next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>
         <location file="/methods/montecarlo/multipathgenerator.hpp" line="57" bodyfile="/methods/montecarlo/multipathgenerator.hpp" bodystart="92" bodyend="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_path_generator_1a367af962c96536f36f35c4e924d5e69b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref> &amp;</type>
+      <memberdef kind="function" id="multi_path_generator_1a367af962c96536f36f35c4e924d5e69b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="sample" kindref="compound">sample_type</ref> &amp;</type>
         <definition>const MultiPathGenerator&lt; GSG &gt;::sample_type &amp; antithetic</definition>
         <argsstring>() const </argsstring>
         <name>antithetic</name>

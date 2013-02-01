@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_parameters_transformation" kind="class" prot="public" abstract="yes">
+  <compounddef id="parameters_transformation" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ParametersTransformation</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_parameters_transformation_1ab78413e4bcca36b38d5827d165bb5db5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="parameters_transformation_1ab78413e4bcca36b38d5827d165bb5db5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ParametersTransformation</definition>
         <argsstring>()</argsstring>
         <name>~ParametersTransformation</name>
         <location file="/math/optimization/costfunction.hpp" line="69" bodyfile="/math/optimization/costfunction.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_parameters_transformation_1a44803e157c0ce565961dfad848ab39da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+      <memberdef kind="function" id="parameters_transformation_1a44803e157c0ce565961dfad848ab39da" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref></type>
         <definition>virtual Array direct</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>direct</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/math/optimization/costfunction.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_parameters_transformation_1a587ae542f0b4f06f6619235e5d43ef53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+      <memberdef kind="function" id="parameters_transformation_1a587ae542f0b4f06f6619235e5d43ef53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref></type>
         <definition>virtual Array inverse</definition>
         <argsstring>(const Array &amp;x) const =0</argsstring>
         <name>inverse</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/math/optimization/costfunction.hpp" line="71"/>

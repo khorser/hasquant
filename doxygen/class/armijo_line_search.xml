@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_armijo_line_search" kind="class" prot="public">
+  <compounddef id="armijo_line_search" kind="class" prot="public">
     <compoundname>QuantLib::ArmijoLineSearch</compoundname>
     <includes local="no">/math/optimization/armijo.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="armijo_line_search_1aa9b7b48a8c23873cce8850ca4c91b983" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ArmijoLineSearch</definition>
         <argsstring>(Real eps=1e-8, Real alpha=0.05, Real beta=0.65)</argsstring>
@@ -28,14 +28,14 @@
 <para>Default constructor. </para>        </briefdescription>
         <location file="/math/optimization/armijo.hpp" line="54" bodyfile="/math/optimization/armijo.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="armijo_line_search_1a5d35ecca8f9fb5e845371eb48e90d3f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Problem &amp;P, EndCriteria::Type &amp;ecType, const EndCriteria &amp;, const Real t_ini)</argsstring>
         <name>operator()</name>
-        <reimplements refid="class_quant_lib_1_1_line_search_1a97d8cb294aaa9a7bc88678370e80f31e">operator()</reimplements>
+        <reimplements refid="line_search_1a97d8cb294aaa9a7bc88678370e80f31e">operator()</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>
         </param>
         <param>
@@ -43,7 +43,7 @@
           <declname>ecType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
         </param>
         <param>
           <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>

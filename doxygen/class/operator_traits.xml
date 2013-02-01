@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_operator_traits" kind="class" prot="public">
+  <compounddef id="operator_traits" kind="class" prot="public">
     <compoundname>QuantLib::OperatorTraits</compoundname>
     <templateparamlist>
       <param>
@@ -8,36 +8,36 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_operator_traits_1a158330dcc465dcd323e801d462791ac4" prot="public" static="no">
+      <memberdef kind="typedef" id="operator_traits_1a158330dcc465dcd323e801d462791ac4" prot="public" static="no">
         <type>Operator</type>
         <definition>typedef Operator operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
         <location file="/methods/finitedifferences/operatortraits.hpp" line="35" bodyfile="/methods/finitedifferences/operatortraits.hpp" bodystart="35" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_operator_traits_1a736e8d4a0263c9dd7a6f33aa7615c767" prot="public" static="no">
+      <memberdef kind="typedef" id="operator_traits_1a736e8d4a0263c9dd7a6f33aa7615c767" prot="public" static="no">
         <type>Operator::array_type</type>
         <definition>typedef Operator::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
         <location file="/methods/finitedifferences/operatortraits.hpp" line="36" bodyfile="/methods/finitedifferences/operatortraits.hpp" bodystart="36" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_operator_traits_1a49aecf7965a775f25fe3bba33ac87a8b" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">BoundaryCondition</ref>&lt; operator_type &gt;</type>
+      <memberdef kind="typedef" id="operator_traits_1a49aecf7965a775f25fe3bba33ac87a8b" prot="public" static="no">
+        <type><ref refid="boundary_condition" kindref="compound">BoundaryCondition</ref>&lt; operator_type &gt;</type>
         <definition>typedef BoundaryCondition&lt;operator_type&gt; bc_type</definition>
         <argsstring></argsstring>
         <name>bc_type</name>
         <location file="/methods/finitedifferences/operatortraits.hpp" line="37" bodyfile="/methods/finitedifferences/operatortraits.hpp" bodystart="37" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_operator_traits_1a8e42ab6213980dc041bfb2274e5d8279" prot="public" static="no">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">bc_type</ref> &gt; &gt;</type>
+      <memberdef kind="typedef" id="operator_traits_1a8e42ab6213980dc041bfb2274e5d8279" prot="public" static="no">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="boundary_condition" kindref="compound">bc_type</ref> &gt; &gt;</type>
         <definition>typedef std::vector&lt;boost::shared_ptr&lt;bc_type&gt; &gt; bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
         <location file="/methods/finitedifferences/operatortraits.hpp" line="38" bodyfile="/methods/finitedifferences/operatortraits.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_operator_traits_1a9c398736e49b1d74db6090c0254dbcbf" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_step_condition" kindref="compound">StepCondition</ref>&lt; array_type &gt;</type>
+      <memberdef kind="typedef" id="operator_traits_1a9c398736e49b1d74db6090c0254dbcbf" prot="public" static="no">
+        <type><ref refid="step_condition" kindref="compound">StepCondition</ref>&lt; array_type &gt;</type>
         <definition>typedef StepCondition&lt;array_type&gt; condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>

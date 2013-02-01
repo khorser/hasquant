@@ -1,47 +1,47 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote" kind="class" prot="public">
+  <compounddef id="eurodollar_futures_implied_std_dev_quote" kind="class" prot="public">
     <compoundname>QuantLib::EurodollarFuturesImpliedStdDevQuote</compoundname>
     <includes local="no">/quotes/eurodollarfuturesquote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="eurodollar_futures_implied_std_dev_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
         <location file="/quotes/eurodollarfuturesquote.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="eurodollar_futures_implied_std_dev_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isValid</definition>
         <argsstring>() const </argsstring>
         <name>isValid</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
-<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
         <location file="/quotes/eurodollarfuturesquote.hpp" line="48"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_eurodollar_futures_implied_std_dev_quote_1a4e390fee0294428a7285ae8c59dcd4f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="eurodollar_futures_implied_std_dev_quote_1a4e390fee0294428a7285ae8c59dcd4f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EurodollarFuturesImpliedStdDevQuote</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;forward, const Handle&lt; Quote &gt; &amp;callPrice, const Handle&lt; Quote &gt; &amp;putPrice, Real strike, Real guess=.15, Real accuracy=1.0e-6, Natural maxIter=100)</argsstring>
         <name>EurodollarFuturesImpliedStdDevQuote</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>forward</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>callPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>putPrice</declname>
         </param>
         <param>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_brownian_generator_factory" kind="class" prot="public" abstract="yes">
+  <compounddef id="brownian_generator_factory" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::BrownianGeneratorFactory</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="brownian_generator_factory_1aedba358504a27dd3886c8aff89eaf078" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~BrownianGeneratorFactory</definition>
         <argsstring>()</argsstring>
         <name>~BrownianGeneratorFactory</name>
         <location file="/models/marketmodels/browniangenerator.hpp" line="44" bodyfile="/models/marketmodels/browniangenerator.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_brownian_generator_factory_1a475996ed05d83e9509d7691ae903c251" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="brownian_generator_factory_1a475996ed05d83e9509d7691ae903c251" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>boost::shared_ptr&lt; BrownianGenerator &gt;</type>
         <definition>virtual boost::shared_ptr&lt;BrownianGenerator&gt; create</definition>
         <argsstring>(Size factors, Size steps) const =0</argsstring>

@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_flat_hazard_rate" kind="class" prot="public">
+  <compounddef id="flat_hazard_rate" kind="class" prot="public">
     <compoundname>QuantLib::FlatHazardRate</compoundname>
     <includes local="no">/termstructures/credit/flathazardrate.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a431de07f0370cdeda26185ef1f1822d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_hazard_rate_1a431de07f0370cdeda26185ef1f1822d9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatHazardRate</definition>
         <argsstring>(const Date &amp;referenceDate, const Handle&lt; Quote &gt; &amp;hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a7497e7909612438d08247986fe9b2310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_hazard_rate_1a7497e7909612438d08247986fe9b2310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatHazardRate</definition>
         <argsstring>(const Date &amp;referenceDate, Rate hazardRate, const DayCounter &amp;)</argsstring>
         <name>FlatHazardRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -37,11 +37,11 @@
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a0ad1848fe7d61e048e54112565af0eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_hazard_rate_1a0ad1848fe7d61e048e54112565af0eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatHazardRate</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const Handle&lt; Quote &gt; &amp;hazardRate, const DayCounter &amp;)</argsstring>
@@ -51,19 +51,19 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1aee7f38961be4bffcb20b26bb301df183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_hazard_rate_1aee7f38961be4bffcb20b26bb301df183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatHazardRate</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Rate hazardRate, const DayCounter &amp;)</argsstring>
@@ -73,7 +73,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -81,19 +81,19 @@
           <declname>hazardRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/termstructures/credit/flathazardrate.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_hazard_rate_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="flat_hazard_rate_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/credit/flathazardrate.hpp" line="56" bodyfile="/termstructures/credit/flathazardrate.hpp" bodystart="56" bodyend="56"/>

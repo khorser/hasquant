@@ -1,66 +1,66 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sabr_vol_surface" kind="class" prot="public">
+  <compounddef id="sabr_vol_surface" kind="class" prot="public">
     <compoundname>QuantLib::SabrVolSurface</compoundname>
     <includes local="no">/experimental/volatility/sabrvolsurface.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="sabr_vol_surface_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="51" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="sabr_vol_surface_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="52" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1a3b8677915d5a95b48578b82ed1d7508f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxTime</definition>
         <argsstring>() const </argsstring>
         <name>maxTime</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
+        <reimplements refid="term_structure_1a3b8677915d5a95b48578b82ed1d7508f">maxTime</reimplements>
         <briefdescription>
 <para>the latest time for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="53" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="115" bodyend="117"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="sabr_vol_surface_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
+        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="54" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="sabr_vol_surface_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
+        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="55" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="123" bodyend="125"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
+        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="56" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="127" bodyend="129"/>
@@ -68,22 +68,22 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>VolatilityTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="60" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="61" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="135" bodyend="137"/>
@@ -91,26 +91,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="interest_rate_vol_surface_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="66"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>BlackVolSurface interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a93c505c12c2788be4e6614ba5b30ccff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="sabr_vol_surface_1a93c505c12c2788be4e6614ba5b30ccff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time) const </argsstring>
         <name>smileSectionImpl</name>
-        <reimplements refid="class_quant_lib_1_1_black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c">smileSectionImpl</reimplements>
+        <reimplements refid="black_vol_surface_1a0234ac85220b034978d6c07c34a4c29c">smileSectionImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -119,36 +119,36 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a50c79da67f8bc7df135c5925123cd11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1a50c79da67f8bc7df135c5925123cd11b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SabrVolSurface</definition>
         <argsstring>(const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;, const Handle&lt; BlackAtmVolCurve &gt; &amp;, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Spread &gt; &amp;atmRateSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads)</argsstring>
         <name>SabrVolSurface</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
@@ -156,42 +156,42 @@
           <declname>atmRateSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1aa7730d9126678d4837ee600ee25a33a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="sabr_vol_surface_1aa7730d9126678d4837ee600ee25a33a1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_atm_vol_curve" kindref="compound">BlackAtmVolCurve</ref> &gt; &amp;</type>
         <definition>const Handle&lt; BlackAtmVolCurve &gt; &amp; atmCurve</definition>
         <argsstring>() const </argsstring>
         <name>atmCurve</name>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="63" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1aa98becc004689259db6b16fe04d0c3b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1aa98becc004689259db6b16fe04d0c3b8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>std::vector&lt; Volatility &gt; volatilitySpreads</definition>
         <argsstring>(const Period &amp;) const </argsstring>
         <name>volatilitySpreads</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <defname>p</defname>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="68" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="144" bodyend="146"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_vol_surface_1a0f371eeae9f8f89ce8177920b3abaa5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_vol_surface_1a0f371eeae9f8f89ce8177920b3abaa5c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>std::vector&lt;Volatility&gt; volatilitySpreads</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>volatilitySpreads</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <location file="/experimental/volatility/sabrvolsurface.hpp" line="69"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_s_a_b_r" kindref="compound">SABR</ref> volatility (smile) surface. </para>    </briefdescription>
+<para><ref refid="s_a_b_r" kindref="compound">SABR</ref> volatility (smile) surface. </para>    </briefdescription>
     <detaileddescription>
 <para>blah blah </para>    </detaileddescription>
     <location file="/experimental/volatility/sabrvolsurface.hpp" line="39" bodyfile="/experimental/volatility/sabrvolsurface.hpp" bodystart="39" bodyend="103"/>

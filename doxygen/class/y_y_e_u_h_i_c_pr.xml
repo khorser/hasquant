@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_y_y_e_u_h_i_c_pr" kind="class" prot="public">
+  <compounddef id="y_y_e_u_h_i_c_pr" kind="class" prot="public">
     <compoundname>QuantLib::YYEUHICPr</compoundname>
     <includes local="no">/indexes/inflation/euhicp.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_y_y_e_u_h_i_c_pr_1a3b81b2f2c19fdcfe1147757cdc7d51a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="y_y_e_u_h_i_c_pr_1a3b81b2f2c19fdcfe1147757cdc7d51a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>YYEUHICPr</definition>
         <argsstring>(bool interpolated, const Handle&lt; YoYInflationTermStructure &gt; &amp;ts=Handle&lt; YoYInflationTermStructure &gt;())</argsstring>
@@ -14,9 +14,9 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/inflation/euhicp.hpp" line="115" bodyfile="/indexes/inflation/euhicp.hpp" bodystart="104" bodyend="115"/>
       </memberdef>

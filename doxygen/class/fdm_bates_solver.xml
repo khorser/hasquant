@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_bates_solver" kind="class" prot="public">
+  <compounddef id="fdm_bates_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmBatesSolver</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1a83b677e67301ce4ef739b904137f39ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_bates_solver_1a83b677e67301ce4ef739b904137f39ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmBatesSolver</definition>
         <argsstring>(const Handle&lt; BatesProcess &gt; &amp;process, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer(), Size integroIntegrationOrder=12, const Handle&lt; FdmQuantoHelper &gt; &amp;quantoHelper=Handle&lt; FdmQuantoHelper &gt;())</argsstring>
         <name>FdmBatesSolver</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="bates_process" kindref="compound">BatesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -27,13 +27,13 @@
           <defval>12</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt; &amp;</type>
           <declname>quantoHelper</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; FdmQuantoHelper &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1ab8fd00284ad45098410cd5ee6459b63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_bates_solver_1ab8fd00284ad45098410cd5ee6459b63e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
@@ -48,7 +48,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1abf33919cc846b46bdcbdf6c872faab27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_bates_solver_1abf33919cc846b46bdcbdf6c872faab27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
@@ -63,7 +63,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1a107a23125d03c64ff74f7e256b763f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_bates_solver_1a107a23125d03c64ff74f7e256b763f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>
@@ -78,7 +78,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbatessolver.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_bates_solver_1a7c66cb8dce1133961b76fd3fc999de60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_bates_solver_1a7c66cb8dce1133961b76fd3fc999de60" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s, Real v) const </argsstring>

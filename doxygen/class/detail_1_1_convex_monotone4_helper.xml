@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_convex_monotone4_helper" kind="class" prot="public">
+  <compounddef id="detail_1_1_convex_monotone4_helper" kind="class" prot="public">
     <compoundname>QuantLib::detail::ConvexMonotone4Helper</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone4_helper_1a28176a128f8ecf01142ae55053ccf23a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone4_helper_1a28176a128f8ecf01142ae55053ccf23a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConvexMonotone4Helper</definition>
         <argsstring>(Real xPrev, Real xNext, Real gPrev, Real gNext, Real fAverage, Real eta4, Real prevPrimitive)</argsstring>
@@ -38,7 +38,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="237" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="232" bodyend="239"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone4_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone4_helper_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
@@ -49,7 +49,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="241" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="241" bodyend="248"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone4_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone4_helper_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
@@ -60,7 +60,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="250" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="250" bodyend="262"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone4_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone4_helper_1a6f8473434a1d8e2cad3f2d2c2d03e8e7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fNext</definition>
         <argsstring>() const </argsstring>

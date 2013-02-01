@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bi_c_gstab" kind="class" prot="public">
+  <compounddef id="bi_c_gstab" kind="class" prot="public">
     <compoundname>QuantLib::BiCGstab</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_bi_c_gstab_1a2e4847834a0cb8ba6c4ed3993a5bc652" prot="public" static="no">
-        <type>boost::function1&lt; <ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;, const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp; &gt;</type>
+      <memberdef kind="typedef" id="bi_c_gstab_1a2e4847834a0cb8ba6c4ed3993a5bc652" prot="public" static="no">
+        <type>boost::function1&lt; <ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;, const <ref refid="array" kindref="compound">Array</ref> &amp; &gt;</type>
         <definition>typedef boost::function1&lt;Disposable&lt;Array&gt; , const Array&amp; &gt; MatrixMult</definition>
         <argsstring></argsstring>
         <name>MatrixMult</name>
@@ -12,7 +12,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bi_c_gstab_1a4a71a40540bff0074379021cae0c6574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bi_c_gstab_1a4a71a40540bff0074379021cae0c6574" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BiCGstab</definition>
         <argsstring>(const MatrixMult &amp;A, Size maxIter, Real relTol, const MatrixMult &amp;preConditioner=MatrixMult())</argsstring>
@@ -36,19 +36,19 @@
         </param>
         <location file="/math/matrixutilities/bicgstab.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bi_c_gstab_1ace2eda60857bf017f640c9a12a8cb24c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bi_c_gstab_1ace2eda60857bf017f640c9a12a8cb24c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>BiCGStabResult</type>
         <definition>BiCGStabResult solve</definition>
         <argsstring>(const Array &amp;b, const Array &amp;x0=Array()) const </argsstring>
         <name>solve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>b</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
-          <defval><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref>()</defval>
+          <defval><ref refid="array" kindref="compound">Array</ref>()</defval>
         </param>
         <location file="/math/matrixutilities/bicgstab.hpp" line="46"/>
       </memberdef>

@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callable_bond_constant_volatility" kind="class" prot="public">
+  <compounddef id="callable_bond_constant_volatility" kind="class" prot="public">
     <compoundname>QuantLib::CallableBondConstantVolatility</compoundname>
     <includes local="no">/experimental/callablebonds/callablebondconstantvol.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="callable_bond_constant_volatility_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="54" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="55" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="55" bodyend="55"/>
@@ -28,52 +28,52 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>CallableBondConstantVolatility interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a222e287d5aaa40149f1f067f1beceadb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a222e287d5aaa40149f1f067f1beceadb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         <definition>const Period &amp; maxBondTenor</definition>
         <argsstring>() const </argsstring>
         <name>maxBondTenor</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a7d242cf24fadcf875b9e2f621014c4ef">maxBondTenor</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1a7d242cf24fadcf875b9e2f621014c4ef">maxBondTenor</reimplements>
         <briefdescription>
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="59" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="78" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aeddd916230722ca9ad5f39884802d280" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1aeddd916230722ca9ad5f39884802d280" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maxBondLength</definition>
         <argsstring>() const </argsstring>
         <name>maxBondLength</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82">maxBondLength</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82">maxBondLength</reimplements>
         <briefdescription>
 <para>the largest bondLength for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="60" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="82" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="61" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="86" bodyend="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="62" bodyfile="/experimental/callablebonds/callablebondconstantvol.hpp" bodystart="90" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a47909aba7db97bc5c0f7488dd5aff4da" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a47909aba7db97bc5c0f7488dd5aff4da" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatilityImpl</definition>
         <argsstring>(Time, Time, Rate) const </argsstring>
         <name>volatilityImpl</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1afdb2be57d772473c6e0c75f64d285ecd">volatilityImpl</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1afdb2be57d772473c6e0c75f64d285ecd">volatilityImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>optionTime</declname>
@@ -90,12 +90,12 @@
 <para>implements the actual volatility calculation in derived classes </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1acb4caa90bf5be93d7aafe6d04a038315" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="callable_bond_constant_volatility_1acb4caa90bf5be93d7aafe6d04a038315" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time optionTime, Time bondLength) const </argsstring>
         <name>smileSectionImpl</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1ad800880a89cf9da617d99bf0b0622a03">smileSectionImpl</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1ad800880a89cf9da617d99bf0b0622a03">smileSectionImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>optionTime</declname>
@@ -108,17 +108,17 @@
 <para>return smile section </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a0ae7b5a492d2300c7aedd3a0885d7d19" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a0ae7b5a492d2300c7aedd3a0885d7d19" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatilityImpl</definition>
         <argsstring>(const Date &amp;, const Period &amp;, Rate) const </argsstring>
         <name>volatilityImpl</name>
-        <reimplements refid="class_quant_lib_1_1_callable_bond_volatility_structure_1a9801b355cbd42caad93cebc2f9714925">volatilityImpl</reimplements>
+        <reimplements refid="callable_bond_volatility_structure_1a9801b355cbd42caad93cebc2f9714925">volatilityImpl</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
@@ -127,13 +127,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1afa4061e2c92fd12d1cd25942355b70c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1afa4061e2c92fd12d1cd25942355b70c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondConstantVolatility</definition>
         <argsstring>(const Date &amp;referenceDate, Volatility volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>CallableBondConstantVolatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -141,31 +141,31 @@
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a70946fb2c5f6a2637486a04e1e8c1152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a70946fb2c5f6a2637486a04e1e8c1152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondConstantVolatility</definition>
         <argsstring>(const Date &amp;referenceDate, const Handle&lt; Quote &gt; &amp;volatility, const DayCounter &amp;dayCounter)</argsstring>
         <name>CallableBondConstantVolatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a2b909f742a1de122e5ad98561c672007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a2b909f742a1de122e5ad98561c672007" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondConstantVolatility</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, Volatility volatility, const DayCounter &amp;dayCounter)</argsstring>
@@ -175,19 +175,19 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_constant_volatility_1a281345af118d31c01c35f2b2870d4587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_constant_volatility_1a281345af118d31c01c35f2b2870d4587" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondConstantVolatility</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, const Handle&lt; Quote &gt; &amp;volatility, const DayCounter &amp;dayCounter)</argsstring>
@@ -197,14 +197,14 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondconstantvol.hpp" line="51"/>

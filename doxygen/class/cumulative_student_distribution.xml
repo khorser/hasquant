@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cumulative_student_distribution" kind="class" prot="public">
+  <compounddef id="cumulative_student_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativeStudentDistribution</compoundname>
     <includes local="no">/math/distributions/studenttdistribution.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cumulative_student_distribution_1a59de0ba1fb3af5faf23be775ded4efa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cumulative_student_distribution_1a59de0ba1fb3af5faf23be775ded4efa4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CumulativeStudentDistribution</definition>
         <argsstring>(Integer n)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/math/distributions/studenttdistribution.hpp" line="67" bodyfile="/math/distributions/studenttdistribution.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cumulative_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cumulative_student_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>

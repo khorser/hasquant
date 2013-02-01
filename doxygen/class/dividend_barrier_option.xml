@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_dividend_barrier_option" kind="class" prot="public">
+  <compounddef id="dividend_barrier_option" kind="class" prot="public">
     <compoundname>QuantLib::DividendBarrierOption</compoundname>
     <includes local="no">/instruments/dividendbarrieroption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1arguments" prot="public">QuantLib::DividendBarrierOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_dividend_barrier_option_1_1engine" prot="public">QuantLib::DividendBarrierOption::engine</innerclass>
+    <innerclass refid="dividend_barrier_option_1_1arguments" prot="public">QuantLib::DividendBarrierOption::arguments</innerclass>
+    <innerclass refid="dividend_barrier_option_1_1engine" prot="public">QuantLib::DividendBarrierOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_dividend_barrier_option_1a0eea23abdf323050b9c978fe20ac03bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="dividend_barrier_option_1a0eea23abdf323050b9c978fe20ac03bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DividendBarrierOption</definition>
         <argsstring>(Barrier::Type barrierType, Real barrier, Real rebate, const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, const std::vector&lt; Date &gt; &amp;dividendDates, const std::vector&lt; Real &gt; &amp;dividends)</argsstring>
@@ -24,15 +24,15 @@
           <declname>rebate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dividendDates</declname>
         </param>
         <param>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1detail_1_1_data_table" kind="struct" prot="public">
+  <compounddef id="detail_1_1_data_table" kind="struct" prot="public">
     <compoundname>QuantLib::detail::DataTable</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1_data_table_1aa69c3ab8418bc558c37eaf24ef6c8fee" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="detail_1_1_data_table_1aa69c3ab8418bc558c37eaf24ef6c8fee" prot="public" static="no" mutable="no">
         <type>std::vector&lt; X &gt;</type>
         <definition>std::vector&lt;X&gt; data_table_</definition>
         <argsstring></argsstring>
@@ -17,7 +17,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1a0b7ebb222c2323ce7c2e2ba08db06aca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1a0b7ebb222c2323ce7c2e2ba08db06aca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DataTable</definition>
         <argsstring>(const std::vector&lt; Size &gt;::const_iterator &amp;i)</argsstring>
@@ -28,7 +28,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="47" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="47" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1ad6cd2d1fd53d4e0ed53112cb127fb55b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1ad6cd2d1fd53d4e0ed53112cb127fb55b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DataTable</definition>
         <argsstring>(const SplineGrid::const_iterator &amp;i)</argsstring>
@@ -39,7 +39,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="51" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1ab82590214dc3a7524551efeed581d5e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1ab82590214dc3a7524551efeed581d5e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class U</type>
@@ -55,14 +55,14 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="55" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="55" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="59" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="59" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1a0d6996e4b0f7fff9ff2a0d161f217af7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1a0d6996e4b0f7fff9ff2a0d161f217af7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const X &amp;</type>
         <definition>const X&amp; operator[]</definition>
         <argsstring>(Size n) const </argsstring>
@@ -73,7 +73,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="62" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1_data_table_1aeb42a8d001d9949e48db9d085cb8b6f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_data_table_1aeb42a8d001d9949e48db9d085cb8b6f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>X &amp;</type>
         <definition>X&amp; operator[]</definition>
         <argsstring>(Size n)</argsstring>

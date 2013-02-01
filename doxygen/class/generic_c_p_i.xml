@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_c_p_i" kind="class" prot="public">
+  <compounddef id="generic_c_p_i" kind="class" prot="public">
     <compoundname>QuantLib::GenericCPI</compoundname>
     <includes local="no">/experimental/inflation/genericindexes.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_c_p_i_1a128b56a6f44cb160ef3c0f085718a99a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_c_p_i_1a128b56a6f44cb160ef3c0f085718a99a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericCPI</definition>
         <argsstring>(Frequency frequency, bool revised, bool interpolated, const Period &amp;lag, const Currency &amp;ccy, const Handle&lt; ZeroInflationTermStructure &gt; &amp;ts=Handle&lt; ZeroInflationTermStructure &gt;())</argsstring>
@@ -22,17 +22,17 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>ccy</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/experimental/inflation/genericindexes.hpp" line="59" bodyfile="/experimental/inflation/genericindexes.hpp" bodystart="45" bodyend="59"/>
       </memberdef>

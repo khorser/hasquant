@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_heston_variance_mesher" kind="class" prot="public">
+  <compounddef id="fdm_heston_variance_mesher" kind="class" prot="public">
     <compoundname>QuantLib::FdmHestonVarianceMesher</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1abacd1fc0a7f187759a204e1830e6cd22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_heston_variance_mesher_1abacd1fc0a7f187759a204e1830e6cd22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmHestonVarianceMesher</definition>
         <argsstring>(Size size, const boost::shared_ptr&lt; HestonProcess &gt; &amp;process, Time maturity, Size tAvgSteps=10, Real epsilon=0.0001)</argsstring>
@@ -13,7 +13,7 @@
           <declname>size</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_process" kindref="compound">HestonProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmhestonvariancemesher.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_heston_variance_mesher_1a3b8012e0b8766ef049647138d75c9e75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_heston_variance_mesher_1a3b8012e0b8766ef049647138d75c9e75" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real volaEstimate</definition>
         <argsstring>() const </argsstring>

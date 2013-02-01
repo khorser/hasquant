@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_p_i_cash_flow" kind="class" prot="public">
+  <compounddef id="c_p_i_cash_flow" kind="class" prot="public">
     <compoundname>QuantLib::CPICashFlow</compoundname>
     <includes local="no">/cashflows/cpicoupon.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a5d51a9777b4b4f18d4007f25091d25f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cash_flow_1a5d51a9777b4b4f18d4007f25091d25f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CPICashFlow</definition>
         <argsstring>(Real notional, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;index, const Date &amp;baseDate, Real baseFixing, const Date &amp;fixingDate, const Date &amp;paymentDate, bool growthOnly=false, CPI::InterpolationType interpolation=CPI::AsIndex, const Frequency &amp;frequency=QuantLib::NoFrequency)</argsstring>
@@ -14,11 +14,11 @@
           <declname>notional</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>baseDate</declname>
         </param>
         <param>
@@ -26,11 +26,11 @@
           <declname>baseFixing</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -50,7 +50,7 @@
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="139" bodyfile="/cashflows/cpicoupon.hpp" bodystart="127" bodyend="146"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real baseFixing</definition>
         <argsstring>() const </argsstring>
@@ -61,17 +61,17 @@
 <para>This does not have to agree with index on that date. </para>        </detaileddescription>
         <location file="/cashflows/cpicoupon.hpp" line="150"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="c_p_i_cash_flow_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <reimplements refid="class_quant_lib_1_1_indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
+        <reimplements refid="indexed_cash_flow_1a89ce98e9bb2a22127b03621ee6149660">baseDate</reimplements>
         <briefdescription>
 <para>you may not have a valid date </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="152"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a6fbb6ffa487bc0df2258f120de8ad1ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cash_flow_1a6fbb6ffa487bc0df2258f120de8ad1ca" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>CPI::InterpolationType</type>
         <definition>virtual CPI::InterpolationType interpolation</definition>
         <argsstring>() const </argsstring>
@@ -80,21 +80,21 @@
 <para>do you want linear/constant/as-index interpolation of future data? </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="155" bodyfile="/cashflows/cpicoupon.hpp" bodystart="155" bodyend="157"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cash_flow_1a2d031749634662c6fd7dd3679f26a487" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>virtual Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
         <location file="/cashflows/cpicoupon.hpp" line="158" bodyfile="/cashflows/cpicoupon.hpp" bodystart="158" bodyend="158"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cash_flow_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cash_flow_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <reimplements refid="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
         <briefdescription>
-<para>redefined to use <ref refid="class_quant_lib_1_1_c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" kindref="member">baseFixing()</ref> and interpolation </para>        </briefdescription>
+<para>redefined to use <ref refid="c_p_i_cash_flow_1a3734ff74e8dac1f6d7c475d16bb6e305" kindref="member">baseFixing()</ref> and interpolation </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="161"/>
       </memberdef>
       </sectiondef>

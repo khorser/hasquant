@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fritsch_butland_log_cubic" kind="class" prot="public">
+  <compounddef id="fritsch_butland_log_cubic" kind="class" prot="public">
     <compoundname>QuantLib::FritschButlandLogCubic</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fritsch_butland_log_cubic_1a8de6a46126664555573b899fd0091d48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fritsch_butland_log_cubic_1a8de6a46126664555573b899fd0091d48" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>

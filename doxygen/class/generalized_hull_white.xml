@@ -1,44 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generalized_hull_white" kind="class" prot="public">
+  <compounddef id="generalized_hull_white" kind="class" prot="public">
     <compoundname>QuantLib::GeneralizedHullWhite</compoundname>
     <includes local="no">/experimental/shortrate/generalizedhullwhite.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
+    <innerclass refid="generalized_hull_white_1_1_dynamics" prot="public">QuantLib::GeneralizedHullWhite::Dynamics</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="generalized_hull_white_1a9f14269c1d0f281c46c29faa702fc73b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GeneralizedHullWhite</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure)</argsstring>
         <name>GeneralizedHullWhite</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldtermStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>speedstructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>volstructure</declname>
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1aa56711fc82e513c4861c27ef105e479d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="generalized_hull_white_1aa56711fc82e513c4861c27ef105e479d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GeneralizedHullWhite</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;yieldtermStructure, const std::vector&lt; Date &gt; &amp;speedstructure, const std::vector&lt; Date &gt; &amp;volstructure, const std::vector&lt; Real &gt; &amp;speed, const std::vector&lt; Real &gt; &amp;vol)</argsstring>
         <name>GeneralizedHullWhite</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldtermStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>speedstructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>volstructure</declname>
         </param>
         <param>
@@ -51,24 +51,24 @@
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="generalized_hull_white_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
+        <reimplements refid="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="63" bodyfile="/experimental/shortrate/generalizedhullwhite.hpp" bodystart="63" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="generalized_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
+        <reimplements refid="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <location file="/experimental/shortrate/generalizedhullwhite.hpp" line="67"/>

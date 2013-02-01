@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" kind="class" prot="public">
+  <compounddef id="two_factor_model_1_1_short_rate_tree" kind="class" prot="public">
     <compoundname>QuantLib::TwoFactorModel::ShortRateTree</compoundname>
     <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a860511eeaaac9869f739edd9cf1df4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="two_factor_model_1_1_short_rate_tree_1a860511eeaaac9869f739edd9cf1df4d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ShortRateTree</definition>
         <argsstring>(const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree1, const boost::shared_ptr&lt; TrinomialTree &gt; &amp;tree2, const boost::shared_ptr&lt; ShortRateDynamics &gt; &amp;dynamics)</argsstring>
         <name>ShortRateTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
           <declname>tree1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="trinomial_tree" kindref="compound">TrinomialTree</ref> &gt; &amp;</type>
           <declname>tree2</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt; &amp;</type>
           <declname>dynamics</declname>
         </param>
         <briefdescription>
 <para>Plain tree build-up from short-rate dynamics. </para>        </briefdescription>
         <location file="/models/shortrate/twofactormodel.hpp" line="114"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree_1a02737f54768601c8214adcff0fe9145f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="two_factor_model_1_1_short_rate_tree_1a02737f54768601c8214adcff0fe9145f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor discount</definition>
         <argsstring>(Size i, Size index) const </argsstring>

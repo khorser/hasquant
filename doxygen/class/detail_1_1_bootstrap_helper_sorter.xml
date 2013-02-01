@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter" kind="class" prot="public">
+  <compounddef id="detail_1_1_bootstrap_helper_sorter" kind="class" prot="public">
     <compoundname>QuantLib::detail::BootstrapHelperSorter</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_bootstrap_helper_sorter_1accc37d0e149204259fca6ae8ab0778de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_bootstrap_helper_sorter_1accc37d0e149204259fca6ae8ab0778de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class Helper</type>

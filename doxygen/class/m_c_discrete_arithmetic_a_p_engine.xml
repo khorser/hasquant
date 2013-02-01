@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine" kind="class" prot="public">
+  <compounddef id="m_c_discrete_arithmetic_a_p_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCDiscreteArithmeticAPEngine</compoundname>
     <includes local="no">/pricingengines/asian/mc_discr_arith_av_price.hpp</includes>
     <templateparamlist>
@@ -14,22 +14,22 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine_1a12b0afca0d0545f874b60a1679bcc2af" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_generator_type</type>
+      <memberdef kind="typedef" id="m_c_discrete_arithmetic_a_p_engine_1a12b0afca0d0545f874b60a1679bcc2af" prot="public" static="no">
+        <type><ref refid="m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_generator_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/asian/mc_discr_arith_av_price.hpp" line="52" bodyfile="/pricingengines/asian/mc_discr_arith_av_price.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine_1a2cc9b340383469ff7487304d28de7519" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_pricer_type</type>
+      <memberdef kind="typedef" id="m_c_discrete_arithmetic_a_p_engine_1a2cc9b340383469ff7487304d28de7519" prot="public" static="no">
+        <type><ref refid="m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::path_pricer_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/asian/mc_discr_arith_av_price.hpp" line="55" bodyfile="/pricingengines/asian/mc_discr_arith_av_price.hpp" bodystart="55" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine_1a94d203ec01c1e71f8e7660f3173a646e" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::stats_type</type>
+      <memberdef kind="typedef" id="m_c_discrete_arithmetic_a_p_engine_1a94d203ec01c1e71f8e7660f3173a646e" prot="public" static="no">
+        <type><ref refid="m_c_discrete_averaging_asian_engine" kindref="compound">MCDiscreteAveragingAsianEngine</ref>&lt; RNG, S &gt;::stats_type</type>
         <definition>typedef MCDiscreteAveragingAsianEngine&lt;RNG,S&gt;::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
@@ -37,13 +37,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_discrete_arithmetic_a_p_engine_1aa05027edbe8c361c01bf45a1f2f908c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_discrete_arithmetic_a_p_engine_1aa05027edbe8c361c01bf45a1f2f908c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MCDiscreteArithmeticAPEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, bool brownianBridge, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCDiscreteArithmeticAPEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -80,7 +80,7 @@
     <briefdescription>
 <para>Monte Carlo pricing engine for discrete arithmetic average price Asian. </para>    </briefdescription>
     <detaileddescription>
-<para>Monte Carlo pricing engine for discrete arithmetic average price Asian options. It can use <ref refid="class_quant_lib_1_1_m_c_discrete_geometric_a_p_engine" kindref="compound">MCDiscreteGeometricAPEngine</ref> (Monte Carlo discrete arithmetic average price engine) and <ref refid="class_quant_lib_1_1_analytic_discrete_geometric_average_price_asian_engine" kindref="compound">AnalyticDiscreteGeometricAveragePriceAsianEngine</ref> (analytic discrete arithmetic average price engine) for control variation.</para><para><xrefsect id="test_1_test000089"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>Monte Carlo pricing engine for discrete arithmetic average price Asian options. It can use <ref refid="m_c_discrete_geometric_a_p_engine" kindref="compound">MCDiscreteGeometricAPEngine</ref> (Monte Carlo discrete arithmetic average price engine) and <ref refid="analytic_discrete_geometric_average_price_asian_engine" kindref="compound">AnalyticDiscreteGeometricAveragePriceAsianEngine</ref> (analytic discrete arithmetic average price engine) for control variation.</para><para><xrefsect id="test_1_test000089"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/pricingengines/asian/mc_discr_arith_av_price.hpp" line="48" bodyfile="/pricingengines/asian/mc_discr_arith_av_price.hpp" bodystart="47" bodyend="76"/>
   </compounddef>
 </doxygen>

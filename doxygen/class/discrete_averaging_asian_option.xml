@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discrete_averaging_asian_option" kind="class" prot="public">
+  <compounddef id="discrete_averaging_asian_option" kind="class" prot="public">
     <compoundname>QuantLib::DiscreteAveragingAsianOption</compoundname>
     <includes local="no">/instruments/asianoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1arguments" prot="public">QuantLib::DiscreteAveragingAsianOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_discrete_averaging_asian_option_1_1engine" prot="public">QuantLib::DiscreteAveragingAsianOption::engine</innerclass>
+    <innerclass refid="discrete_averaging_asian_option_1_1arguments" prot="public">QuantLib::DiscreteAveragingAsianOption::arguments</innerclass>
+    <innerclass refid="discrete_averaging_asian_option_1_1engine" prot="public">QuantLib::DiscreteAveragingAsianOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discrete_averaging_asian_option_1a1163a1753bc04da20319922eb653a1fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discrete_averaging_asian_option_1a1163a1753bc04da20319922eb653a1fa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscreteAveragingAsianOption</definition>
         <argsstring>(Average::Type averageType, Real runningAccumulator, Size pastFixings, const std::vector&lt; Date &gt; &amp;fixingDates, const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
@@ -24,25 +24,25 @@
           <declname>pastFixings</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>fixingDates</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/instruments/asianoption.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discrete_averaging_asian_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="discrete_averaging_asian_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

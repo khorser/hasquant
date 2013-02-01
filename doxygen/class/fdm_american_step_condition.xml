@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_american_step_condition" kind="class" prot="public">
+  <compounddef id="fdm_american_step_condition" kind="class" prot="public">
     <compoundname>QuantLib::FdmAmericanStepCondition</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_american_step_condition_1ad8fe63f18c00d6c8b2b61963ce67092c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_american_step_condition_1ad8fe63f18c00d6c8b2b61963ce67092c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmAmericanStepCondition</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;calculator)</argsstring>
@@ -18,13 +18,13 @@
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmamericanstepcondition.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_american_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_american_step_condition_1a5e3888b0f84d1bcf190acc696bb364d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(Array &amp;a, Time) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <param>

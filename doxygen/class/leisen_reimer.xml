@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_leisen_reimer" kind="class" prot="public">
+  <compounddef id="leisen_reimer" kind="class" prot="public">
     <compoundname>QuantLib::LeisenReimer</compoundname>
     <includes local="no">/methods/lattices/binomialtree.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_leisen_reimer_1ae6f6f0f91d3330e0a09a4a1d35b2ebb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="leisen_reimer_1ae6f6f0f91d3330e0a09a4a1d35b2ebb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LeisenReimer</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;, Time end, Size steps, Real strike)</argsstring>
         <name>LeisenReimer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -26,7 +26,7 @@
         </param>
         <location file="/methods/lattices/binomialtree.hpp" line="179"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_leisen_reimer_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="leisen_reimer_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real underlying</definition>
         <argsstring>(Size i, Size index) const </argsstring>
@@ -41,7 +41,7 @@
         </param>
         <location file="/methods/lattices/binomialtree.hpp" line="180" bodyfile="/methods/lattices/binomialtree.hpp" bodystart="180" bodyend="183"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_leisen_reimer_1aaad4caa3a86af086a7032fec98c26182" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="leisen_reimer_1aaad4caa3a86af086a7032fec98c26182" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real probability</definition>
         <argsstring>(Size, Size, Size branch) const </argsstring>

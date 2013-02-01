@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_vanilla_storage_option" kind="class" prot="public">
+  <compounddef id="vanilla_storage_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaStorageOption</compoundname>
     <includes local="no">/instruments/vanillastorageoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_vanilla_storage_option_1_1arguments" prot="public">QuantLib::VanillaStorageOption::arguments</innerclass>
+    <innerclass refid="vanilla_storage_option_1_1arguments" prot="public">QuantLib::VanillaStorageOption::arguments</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1a4082442772cb2df54c98993cae338371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vanilla_storage_option_1a4082442772cb2df54c98993cae338371" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>VanillaStorageOption</definition>
         <argsstring>(const boost::shared_ptr&lt; BermudanExercise &gt; &amp;ex, Real capacity, Real load, Real changeRate)</argsstring>
         <name>VanillaStorageOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_bermudan_exercise" kindref="compound">BermudanExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="bermudan_exercise" kindref="compound">BermudanExercise</ref> &gt; &amp;</type>
           <declname>ex</declname>
         </param>
         <param>
@@ -28,22 +28,22 @@
         </param>
         <location file="/instruments/vanillastorageoption.hpp" line="43" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="38" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="vanilla_storage_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplements>
+        <reimplements refid="one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/vanillastorageoption.hpp" line="45" bodyfile="/instruments/vanillastorageoption.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_storage_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="vanilla_storage_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

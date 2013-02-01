@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_face_value_claim" kind="class" prot="public">
+  <compounddef id="face_value_claim" kind="class" prot="public">
     <compoundname>QuantLib::FaceValueClaim</compoundname>
     <includes local="no">/instruments/claim.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_face_value_claim_1acf1dfd8d88311d4ea2f5630de7b995e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="face_value_claim_1acf1dfd8d88311d4ea2f5630de7b995e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real amount</definition>
         <argsstring>(const Date &amp;d, Real notional, Real recoveryRate) const </argsstring>
         <name>amount</name>
-        <reimplements refid="class_quant_lib_1_1_claim_1a72b7cb2651ac4d2b9143c54c49090d37">amount</reimplements>
+        <reimplements refid="claim_1a72b7cb2651ac4d2b9143c54c49090d37">amount</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_claim" kindref="compound">Claim</ref> on a notional. </para>    </briefdescription>
+<para><ref refid="claim" kindref="compound">Claim</ref> on a notional. </para>    </briefdescription>
     <location file="/instruments/claim.hpp" line="43" bodyfile="/instruments/claim.hpp" bodystart="43" bodyend="48"/>
   </compounddef>
 </doxygen>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_monte_carlo_c_d_o_engine1" kind="class" prot="public">
+  <compounddef id="monte_carlo_c_d_o_engine1" kind="class" prot="public">
     <compoundname>QuantLib::MonteCarloCDOEngine1</compoundname>
     <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_monte_carlo_c_d_o_engine1_1a1d0aac01bf264d42d957539b299701e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="monte_carlo_c_d_o_engine1_1a1d0aac01bf264d42d957539b299701e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MonteCarloCDOEngine1</definition>
         <argsstring>(boost::shared_ptr&lt; RandomDefaultModel &gt; rdm, Size samples)</argsstring>
         <name>MonteCarloCDOEngine1</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="random_default_model" kindref="compound">RandomDefaultModel</ref> &gt;</type>
           <declname>rdm</declname>
         </param>
         <param>
@@ -21,7 +21,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the exptected tranche loss distribution. </para>    </briefdescription>
+<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, Monte Carlo for the exptected tranche loss distribution. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="104" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="104" bodyend="152"/>
   </compounddef>
 </doxygen>

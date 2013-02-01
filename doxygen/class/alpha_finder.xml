@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_alpha_finder" kind="class" prot="public">
+  <compounddef id="alpha_finder" kind="class" prot="public">
     <compoundname>QuantLib::AlphaFinder</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a31ab05f9e319e7305dac9a4a7a944552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="alpha_finder_1a31ab05f9e319e7305dac9a4a7a944552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AlphaFinder</definition>
         <argsstring>(boost::shared_ptr&lt; AlphaForm &gt; parametricform)</argsstring>
@@ -14,7 +14,7 @@
         </param>
         <location file="/models/marketmodels/models/alphafinder.hpp" line="31"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1aa3db6f08205aef4ed57648df26d1b476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="alpha_finder_1aa3db6f08205aef4ed57648df26d1b476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool solve</definition>
         <argsstring>(Real alpha0, Integer stepindex, const std::vector&lt; Volatility &gt; &amp;rateonevols, const std::vector&lt; Volatility &gt; &amp;ratetwohomogeneousvols, const std::vector&lt; Real &gt; &amp;correlations, Real w0, Real w1, Real targetVariance, Real tolerance, Real alphaMax, Real alphaMin, Integer steps, Real &amp;alpha, Real &amp;a, Real &amp;b, std::vector&lt; Volatility &gt; &amp;ratetwovols)</argsstring>
@@ -85,7 +85,7 @@
         </param>
         <location file="/models/marketmodels/models/alphafinder.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_finder_1a81960a8ba8173e3c03d53c98aa770c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="alpha_finder_1a81960a8ba8173e3c03d53c98aa770c4c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool solveWithMaxHomogeneity</definition>
         <argsstring>(Real alpha0, Integer stepindex, const std::vector&lt; Volatility &gt; &amp;rateonevols, const std::vector&lt; Volatility &gt; &amp;ratetwohomogeneousvols, const std::vector&lt; Real &gt; &amp;correlations, Real w0, Real w1, Real targetVariance, Real tolerance, Real alphaMax, Real alphaMin, Integer steps, Real &amp;alpha, Real &amp;a, Real &amp;b, std::vector&lt; Volatility &gt; &amp;ratetwovols)</argsstring>

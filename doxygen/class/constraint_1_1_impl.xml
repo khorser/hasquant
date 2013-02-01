@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_constraint_1_1_impl" kind="class" prot="protected" abstract="yes">
+  <compounddef id="constraint_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::Constraint::Impl</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="constraint_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
         <location file="/math/optimization/constraint.hpp" line="37" bodyfile="/math/optimization/constraint.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1_1_impl_1a8efc263c16ea9e44152789acc3b87166" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="constraint_1_1_impl_1a8efc263c16ea9e44152789acc3b87166" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool test</definition>
         <argsstring>(const Array &amp;params) const =0</argsstring>
         <name>test</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
         <briefdescription>

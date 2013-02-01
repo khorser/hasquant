@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_risky_asset_swap_option" kind="class" prot="public">
+  <compounddef id="risky_asset_swap_option" kind="class" prot="public">
     <compoundname>QuantLib::RiskyAssetSwapOption</compoundname>
     <includes local="no">/experimental/credit/riskyassetswapoption.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_asset_swap_option_1af4042bbdb0c2af36e3a8c07f90070c1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="risky_asset_swap_option_1af4042bbdb0c2af36e3a8c07f90070c1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RiskyAssetSwapOption</definition>
         <argsstring>(bool payer, const boost::shared_ptr&lt; RiskyAssetSwap &gt; &amp;asw, const Date &amp;expiry, Rate marketSpread, Volatility spreadVolatility)</argsstring>
@@ -14,11 +14,11 @@
           <declname>payer</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_risky_asset_swap" kindref="compound">RiskyAssetSwap</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="risky_asset_swap" kindref="compound">RiskyAssetSwap</ref> &gt; &amp;</type>
           <declname>asw</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>expiry</declname>
         </param>
         <param>

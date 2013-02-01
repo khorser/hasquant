@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_calibrated_model" kind="class" prot="public">
+  <compounddef id="calibrated_model" kind="class" prot="public">
     <compoundname>QuantLib::CalibratedModel</compoundname>
     <includes local="no">/models/model.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
+    <innerclass refid="calibrated_model_1_1_private_constraint" prot="public">QuantLib::CalibratedModel::PrivateConstraint</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="calibrated_model_1ab43067bd779206b1a734151bd62e9c5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CalibratedModel</definition>
         <argsstring>(Size nArguments)</argsstring>
@@ -16,34 +16,34 @@
         </param>
         <location file="/models/model.hpp" line="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="calibrated_model_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/models/model.hpp" line="83" bodyfile="/models/model.hpp" bodystart="83" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="calibrated_model_1a4660051913f0c11b1f10fbe3320d894f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calibrate</definition>
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;, OptimizationMethod &amp;method, const EndCriteria &amp;endCriteria, const Constraint &amp;constraint=Constraint(), const std::vector&lt; Real &gt; &amp;weights=std::vector&lt; Real &gt;())</argsstring>
         <name>calibrate</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &amp;</type>
+          <type><ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &amp;</type>
           <declname>method</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
-          <defval><ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref>()</defval>
+          <defval><ref refid="constraint" kindref="compound">Constraint</ref>()</defval>
         </param>
         <param>
           <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -56,28 +56,28 @@
 <para>An additional constraint can be passed which must be satisfied in addition to the constraints of the model. </para>        </detaileddescription>
         <location file="/models/model.hpp" line="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="calibrated_model_1ab56059971ed8cca14f10cad597049e48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(const Array &amp;params, const std::vector&lt; boost::shared_ptr&lt; CalibrationHelper &gt; &gt; &amp;)</argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="calibration_helper" kindref="compound">CalibrationHelper</ref> &gt; &gt; &amp;</type>
         </param>
         <location file="/models/model.hpp" line="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="calibrated_model_1a8222cafc2215551be69895aaa8f12bed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="constraint" kindref="compound">Constraint</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; Constraint &gt; &amp; constraint</definition>
         <argsstring>() const </argsstring>
         <name>constraint</name>
         <location file="/models/model.hpp" line="102" bodyfile="/models/model.hpp" bodystart="135" bodyend="137"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="calibrated_model_1a47010658b99d25188edc0f6eeb8d2ff3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>EndCriteria::Type</type>
         <definition>EndCriteria::Type endCriteria</definition>
         <argsstring>()</argsstring>
@@ -86,8 +86,8 @@
 <para>returns end criteria result </para>        </briefdescription>
         <location file="/models/model.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="calibrated_model_1abf0665e7524410c40a874b86db642511" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; params</definition>
         <argsstring>() const </argsstring>
         <name>params</name>
@@ -95,13 +95,13 @@
 <para>Returns array of arguments on which calibration is done. </para>        </briefdescription>
         <location file="/models/model.hpp" line="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void setParams</definition>
         <argsstring>(const Array &amp;params)</argsstring>
         <name>setParams</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
         <location file="/models/model.hpp" line="108"/>

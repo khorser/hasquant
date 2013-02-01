@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lm_linear_exponential_correlation_model" kind="class" prot="public">
+  <compounddef id="lm_linear_exponential_correlation_model" kind="class" prot="public">
     <compoundname>QuantLib::LmLinearExponentialCorrelationModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/lmlinexpcorrmodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a17c7b2f896510e15ceae04e65752a184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1a17c7b2f896510e15ceae04e65752a184" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LmLinearExponentialCorrelationModel</definition>
         <argsstring>(Size size, Real rho, Real beta, Size factors=Null&lt; Size &gt;())</argsstring>
@@ -24,50 +24,50 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>factors</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1aece7d943db6a6ba2e6be587b331f2f2d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt;Matrix&gt; correlation</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>correlation</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a6ffd4397b3f271a1f2983b7bd9c8663f">correlation</reimplements>
+        <reimplements refid="lm_correlation_model_1a6ffd4397b3f271a1f2983b7bd9c8663f">correlation</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1a89b49dba17253f9cec1d56fb4eab5c77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt;Matrix&gt; pseudoSqrt</definition>
         <argsstring>(Time t, const Array &amp;x=Null&lt; Array &gt;()) const </argsstring>
         <name>pseudoSqrt</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a76b6af06f81c4bb4a3a3ca10f98ffc1f">pseudoSqrt</reimplements>
+        <reimplements refid="lm_correlation_model_1a76b6af06f81c4bb4a3a3ca10f98ffc1f">pseudoSqrt</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;()</defval>
         </param>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1ac682238d13ec98c83b2465623b328d5a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real correlation</definition>
         <argsstring>(Size i, Size j, Time t, const Array &amp;x) const </argsstring>
         <name>correlation</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1a2163be175b4a3739ebfe7474bc85d708">correlation</reimplements>
+        <reimplements refid="lm_correlation_model_1a2163be175b4a3739ebfe7474bc85d708">correlation</reimplements>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>i</declname>
@@ -81,25 +81,25 @@
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
+        <reimplements refid="lm_correlation_model_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lm_linear_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="lm_linear_exponential_correlation_model_1a92b503ccdf6573ec7f869424095de04c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isTimeIndependent</definition>
         <argsstring>() const </argsstring>
         <name>isTimeIndependent</name>
-        <reimplements refid="class_quant_lib_1_1_lm_correlation_model_1ac0c142358bb6b07bc7dabb4489de7f84">isTimeIndependent</reimplements>
+        <reimplements refid="lm_correlation_model_1ac0c142358bb6b07bc7dabb4489de7f84">isTimeIndependent</reimplements>
         <location file="/legacy/libormarketmodels/lmlinexpcorrmodel.hpp" line="57"/>
       </memberdef>
       </sectiondef>

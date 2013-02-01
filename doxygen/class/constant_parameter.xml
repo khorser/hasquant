@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_constant_parameter" kind="class" prot="public">
+  <compounddef id="constant_parameter" kind="class" prot="public">
     <compoundname>QuantLib::ConstantParameter</compoundname>
     <includes local="no">/models/parameter.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_parameter_1a5a1b1ae66d386c628ff6cea0815d4c8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="constant_parameter_1a5a1b1ae66d386c628ff6cea0815d4c8f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConstantParameter</definition>
         <argsstring>(const Constraint &amp;constraint)</argsstring>
         <name>ConstantParameter</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
         </param>
         <location file="/models/parameter.hpp" line="85" bodyfile="/models/parameter.hpp" bodystart="80" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constant_parameter_1af7e3832d393aa756c2e82802a63320d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="constant_parameter_1af7e3832d393aa756c2e82802a63320d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConstantParameter</definition>
         <argsstring>(Real value, const Constraint &amp;constraint)</argsstring>
@@ -25,7 +25,7 @@
           <declname>value</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_constraint" kindref="compound">Constraint</ref> &amp;</type>
+          <type>const <ref refid="constraint" kindref="compound">Constraint</ref> &amp;</type>
           <declname>constraint</declname>
         </param>
         <location file="/models/parameter.hpp" line="92" bodyfile="/models/parameter.hpp" bodystart="87" bodyend="96"/>

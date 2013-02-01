@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_husler_reiss_copula" kind="class" prot="public">
+  <compounddef id="husler_reiss_copula" kind="class" prot="public">
     <compoundname>QuantLib::HuslerReissCopula</compoundname>
     <includes local="no">/math/copulas/huslerreisscopula.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_husler_reiss_copula_1addd51489f5516824f4df85a64c092687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="husler_reiss_copula_1addd51489f5516824f4df85a64c092687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HuslerReissCopula</definition>
         <argsstring>(Real theta_)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/math/copulas/huslerreisscopula.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_husler_reiss_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="husler_reiss_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x, Real y) const </argsstring>

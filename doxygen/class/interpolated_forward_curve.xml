@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_forward_curve" kind="class" prot="public">
+  <compounddef id="interpolated_forward_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedForwardCurve</compoundname>
     <includes local="no">/termstructures/yield/forwardcurve.hpp</includes>
     <templateparamlist>
@@ -10,12 +10,12 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_forward_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/yield/forwardcurve.hpp" line="65" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="113" bodyend="115"/>
@@ -23,36 +23,36 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>other inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/yield/forwardcurve.hpp" line="69" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="interpolated_forward_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/termstructures/yield/forwardcurve.hpp" line="70" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/yield/forwardcurve.hpp" line="71" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="131" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a5c239d4bdc99dae223cb2de026ea3925" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1a5c239d4bdc99dae223cb2de026ea3925" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; forwards</definition>
         <argsstring>() const </argsstring>
         <name>forwards</name>
         <location file="/termstructures/yield/forwardcurve.hpp" line="72" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="interpolated_forward_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -61,12 +61,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>ForwardRateStructure implementation</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1af9a0dab6e2bfb4a21dce277a40fcf928" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1af9a0dab6e2bfb4a21dce277a40fcf928" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate forwardImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>forwardImpl</name>
-        <reimplements refid="class_quant_lib_1_1_forward_rate_structure_1aba98e032168bf53ec33f971ff872fa40">forwardImpl</reimplements>
+        <reimplements refid="forward_rate_structure_1aba98e032168bf53ec33f971ff872fa40">forwardImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -74,12 +74,12 @@
 <para>instantaneous forward-rate calculation </para>        </briefdescription>
         <location file="/termstructures/yield/forwardcurve.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a7b3637b3975a6b4b75b71f31793d4687" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1a7b3637b3975a6b4b75b71f31793d4687" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate zeroYieldImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>zeroYieldImpl</name>
-        <reimplements refid="class_quant_lib_1_1_forward_rate_structure_1a5da0d2e596148e3aa538b6e47a8ecf63">zeroYieldImpl</reimplements>
+        <reimplements refid="forward_rate_structure_1a5da0d2e596148e3aa538b6e47a8ecf63">zeroYieldImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -89,13 +89,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a412ee31d3796ca98b65003ad7de2a5b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1a412ee31d3796ca98b65003ad7de2a5b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedForwardCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Rate &gt; &amp;forwards, const DayCounter &amp;dayCounter, const Calendar &amp;cal=Calendar(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>InterpolatedForwardCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -103,23 +103,23 @@
           <declname>forwards</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type>const Interpolator &amp;</type>
@@ -128,13 +128,13 @@
         </param>
         <location file="/termstructures/yield/forwardcurve.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1ae1b2116ada24fea74bff49878ef55f5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1ae1b2116ada24fea74bff49878ef55f5f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedForwardCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Rate &gt; &amp;forwards, const DayCounter &amp;dayCounter, const Calendar &amp;calendar, const Interpolator &amp;interpolator)</argsstring>
         <name>InterpolatedForwardCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -142,11 +142,11 @@
           <declname>forwards</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -155,13 +155,13 @@
         </param>
         <location file="/termstructures/yield/forwardcurve.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_forward_curve_1a94703f7a4c0cf2ba66a2fa206de931c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_forward_curve_1a94703f7a4c0cf2ba66a2fa206de931c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedForwardCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Rate &gt; &amp;forwards, const DayCounter &amp;dayCounter, const Interpolator &amp;interpolator)</argsstring>
         <name>InterpolatedForwardCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -169,7 +169,7 @@
           <declname>forwards</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -180,7 +180,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of forward rates. </para>    </briefdescription>
+<para><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of forward rates. </para>    </briefdescription>
     <location file="/termstructures/yield/forwardcurve.hpp" line="40" bodyfile="/termstructures/yield/forwardcurve.hpp" bodystart="39" bodyend="102"/>
   </compounddef>
 </doxygen>

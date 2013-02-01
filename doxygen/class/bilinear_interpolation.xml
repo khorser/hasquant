@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bilinear_interpolation" kind="class" prot="public">
+  <compounddef id="bilinear_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::BilinearInterpolation</compoundname>
     <includes local="no">/math/interpolations/bilinearinterpolation.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bilinear_interpolation_1a78468924677d48507cbf6eeb1601d3b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="bilinear_interpolation_1a78468924677d48507cbf6eeb1601d3b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>

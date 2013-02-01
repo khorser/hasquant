@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cumulative_normal_distribution" kind="class" prot="public">
+  <compounddef id="cumulative_normal_distribution" kind="class" prot="public">
     <compoundname>QuantLib::CumulativeNormalDistribution</compoundname>
     <includes local="no">/math/distributions/normaldistribution.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cumulative_normal_distribution_1a156cf72a9a0fd5ef1f994ce00ad1535c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cumulative_normal_distribution_1a156cf72a9a0fd5ef1f994ce00ad1535c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CumulativeNormalDistribution</definition>
         <argsstring>(Real average=0.0, Real sigma=1.0)</argsstring>
@@ -21,7 +21,7 @@
         </param>
         <location file="/math/distributions/normaldistribution.hpp" line="72" bodyfile="/math/distributions/normaldistribution.hpp" bodystart="256" bodyend="263"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cumulative_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cumulative_normal_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>
@@ -32,7 +32,7 @@
         </param>
         <location file="/math/distributions/normaldistribution.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cumulative_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cumulative_normal_distribution_1a1ff827eed65218edc219994791061dd2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivative</definition>
         <argsstring>(Real x) const </argsstring>

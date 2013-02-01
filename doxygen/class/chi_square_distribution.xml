@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_chi_square_distribution" kind="class" prot="public">
+  <compounddef id="chi_square_distribution" kind="class" prot="public">
     <compoundname>QuantLib::ChiSquareDistribution</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_chi_square_distribution_1aeffd9d1df36e75e859d902163cf0c8c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="chi_square_distribution_1aeffd9d1df36e75e859d902163cf0c8c5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ChiSquareDistribution</definition>
         <argsstring>(Real df)</argsstring>
@@ -14,7 +14,7 @@
         </param>
         <location file="/math/distributions/chisquaredistribution.hpp" line="35" bodyfile="/math/distributions/chisquaredistribution.hpp" bodystart="35" bodyend="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="chi_square_distribution_1a2855dcad0a5b318fae86eb385ff86c0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x) const </argsstring>

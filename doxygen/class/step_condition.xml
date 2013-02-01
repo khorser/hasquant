@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_step_condition" kind="class" prot="public" abstract="yes">
+  <compounddef id="step_condition" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::StepCondition</compoundname>
     <includes local="no">/methods/finitedifferences/stepcondition.hpp</includes>
     <templateparamlist>
@@ -11,14 +11,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="step_condition_1a248ace1915510572c686ee30c7e550cf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~StepCondition</definition>
         <argsstring>()</argsstring>
         <name>~StepCondition</name>
         <location file="/methods/finitedifferences/stepcondition.hpp" line="37" bodyfile="/methods/finitedifferences/stepcondition.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="step_condition_1afdc3da6d1c176db553a6e53b46684206" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void applyTo</definition>
         <argsstring>(array_type &amp;a, Time t) const =0</argsstring>

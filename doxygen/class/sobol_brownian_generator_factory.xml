@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sobol_brownian_generator_factory" kind="class" prot="public">
+  <compounddef id="sobol_brownian_generator_factory" kind="class" prot="public">
     <compoundname>QuantLib::SobolBrownianGeneratorFactory</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_factory_1a60afb9b2052e5498c0391ff9cacf57b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sobol_brownian_generator_factory_1a60afb9b2052e5498c0391ff9cacf57b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SobolBrownianGeneratorFactory</definition>
         <argsstring>(SobolBrownianGenerator::Ordering ordering, unsigned long seed=0, SobolRsg::DirectionIntegers directionIntegers=SobolRsg::Jaeckel)</argsstring>
         <name>SobolBrownianGeneratorFactory</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355" kindref="member">SobolBrownianGenerator::Ordering</ref></type>
+          <type><ref refid="sobol_brownian_generator_1a0248f65bd948236b9f656ce6c5d65355" kindref="member">SobolBrownianGenerator::Ordering</ref></type>
           <declname>ordering</declname>
         </param>
         <param>
@@ -24,7 +24,7 @@
         </param>
         <location file="/models/marketmodels/browniangenerators/sobolbrowniangenerator.hpp" line="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sobol_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sobol_brownian_generator_factory_1aaa3301555416894e03fd0274388fcdb6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; BrownianGenerator &gt;</type>
         <definition>boost::shared_ptr&lt;BrownianGenerator&gt; create</definition>
         <argsstring>(Size factors, Size steps) const </argsstring>

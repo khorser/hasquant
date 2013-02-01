@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_g2" kind="class" prot="public">
+  <compounddef id="g2" kind="class" prot="public">
     <compoundname>QuantLib::G2</compoundname>
     <includes local="no">/models/shortrate/twofactormodels/g2.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_g2_1_1_dynamics" prot="public">QuantLib::G2::Dynamics</innerclass>
-    <innerclass refid="class_quant_lib_1_1_g2_1_1_fitting_parameter" prot="public">QuantLib::G2::FittingParameter</innerclass>
+    <innerclass refid="g2_1_1_dynamics" prot="public">QuantLib::G2::Dynamics</innerclass>
+    <innerclass refid="g2_1_1_fitting_parameter" prot="public">QuantLib::G2::FittingParameter</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a1b9ab301f7d3d660be61f73e3a384704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g2_1a1b9ab301f7d3d660be61f73e3a384704" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>G2</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a=0.1, Real sigma=0.01, Real b=0.1, Real eta=0.01, Real rho=-0.75)</argsstring>
         <name>G2</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -42,22 +42,22 @@
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="g2_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
+        <reimplements refid="two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>Returns the short-rate dynamics. </para>        </briefdescription>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a6e6da6d0ea51cae74b4ec8903bf09f18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="g2_1a6e6da6d0ea51cae74b4ec8903bf09f18" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real discountBond</definition>
         <argsstring>(Time now, Time maturity, Array factors) const </argsstring>
         <name>discountBond</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1">discountBond</reimplements>
+        <reimplements refid="affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1">discountBond</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>now</declname>
@@ -67,12 +67,12 @@
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+          <type><ref refid="array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="68" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="66" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a892bc207d2b8c0119a2ac775a2909e81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g2_1a892bc207d2b8c0119a2ac775a2909e81" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBond</definition>
         <argsstring>(Time, Time, Rate, Rate) const </argsstring>
@@ -91,12 +91,12 @@
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="g2_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
+        <reimplements refid="affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>
@@ -115,13 +115,13 @@
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1a753509dd7d4a657ab5fe37de3a12d063" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g2_1a753509dd7d4a657ab5fe37de3a12d063" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real swaption</definition>
         <argsstring>(const Swaption::arguments &amp;arguments, Rate fixedRate, Real range, Size intervals) const </argsstring>
         <name>swaption</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_swaption_1_1arguments" kindref="compound">Swaption::arguments</ref> &amp;</type>
+          <type>const <ref refid="swaption_1_1arguments" kindref="compound">Swaption::arguments</ref> &amp;</type>
           <declname>arguments</declname>
         </param>
         <param>
@@ -138,12 +138,12 @@
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="g2_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor discount</definition>
         <argsstring>(Time t) const </argsstring>
         <name>discount</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1ad70c7f05240b55443c045ba1d209f829">discount</reimplements>
+        <reimplements refid="affine_model_1ad70c7f05240b55443c045ba1d209f829">discount</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

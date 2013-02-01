@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_overnight_indexed_coupon" kind="class" prot="public">
+  <compounddef id="overnight_indexed_coupon" kind="class" prot="public">
     <compoundname>QuantLib::OvernightIndexedCoupon</compoundname>
     <includes local="no">/cashflows/overnightindexedcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="overnight_indexed_coupon_1a3ac803b91c3e929f54f9094ce1719bad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; fixingDates</definition>
         <argsstring>() const </argsstring>
         <name>fixingDates</name>
@@ -14,7 +14,7 @@
 <para>fixing dates for the rates to be compounded </para>        </briefdescription>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="52" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1ac6474d91c55944f4922255494b9561e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_coupon_1ac6474d91c55944f4922255494b9561e9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; dt</definition>
         <argsstring>() const </argsstring>
@@ -23,7 +23,7 @@
 <para>accrual (compounding) periods </para>        </briefdescription>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="54" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="54" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a077b9a68b3d014b3e2f83fb64e1932ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_coupon_1a077b9a68b3d014b3e2f83fb64e1932ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; indexFixings</definition>
         <argsstring>() const </argsstring>
@@ -32,8 +32,8 @@
 <para>fixings to be compounded </para>        </briefdescription>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a400cf30b238cb25c1338c90cac6fd9b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="overnight_indexed_coupon_1a400cf30b238cb25c1338c90cac6fd9b1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; valueDates</definition>
         <argsstring>() const </argsstring>
         <name>valueDates</name>
@@ -44,12 +44,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>FloatingRateCoupon interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="overnight_indexed_coupon_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
+        <reimplements refid="floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff">fixingDate</reimplements>
         <briefdescription>
 <para>the date when the coupon is fully determined </para>        </briefdescription>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="63" bodyfile="/cashflows/overnightindexedcoupon.hpp" bodystart="63" bodyend="63"/>
@@ -57,26 +57,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="overnight_indexed_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="67"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_coupon_1a5df568754bf01c78a6f0720861a6b74a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_coupon_1a5df568754bf01c78a6f0720861a6b74a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OvernightIndexedCoupon</definition>
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, Real gearing=1.0, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter())</argsstring>
         <name>OvernightIndexedCoupon</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -84,11 +84,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -106,19 +106,19 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <location file="/cashflows/overnightindexedcoupon.hpp" line="48"/>
       </memberdef>

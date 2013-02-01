@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_l_m_m_drift_calculator" kind="class" prot="public">
+  <compounddef id="l_m_m_drift_calculator" kind="class" prot="public">
     <compoundname>QuantLib::LMMDriftCalculator</compoundname>
     <includes local="no">/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a5f59294bf671397ce92ff088c2c00295" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1a5f59294bf671397ce92ff088c2c00295" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LMMDriftCalculator</definition>
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
         <name>LMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -31,13 +31,13 @@
         </param>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1ad7fea652507b0766c40cbd68d7ad379e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compute</definition>
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -48,7 +48,7 @@
 <para>Computes the drifts. </para>        </briefdescription>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1aeba77f1f3594f94b7bf1c91b31216b53" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compute</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
@@ -63,13 +63,13 @@
         </param>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1a8d6ead3d89b1e73881a6bc881ff55556" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void computePlain</definition>
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>computePlain</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -80,7 +80,7 @@
 <para>Computes the drifts without factor reduction as in eqs. 2, 4 of ref. [1] (uses the covariance matrix directly). </para>        </detaileddescription>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1ae3c239a9149912778a14c1fc56305727" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void computePlain</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
@@ -95,13 +95,13 @@
         </param>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1a41a04a342572a27ae6438d1e2d327d7b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void computeReduced</definition>
         <argsstring>(const LMMCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>computeReduced</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
+          <type>const <ref refid="l_m_m_curve_state" kindref="compound">LMMCurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -112,7 +112,7 @@
 <para>Computes the drifts with factor reduction as in eq. 7 of ref. [1] (uses pseudo square root of the covariance matrix). </para>        </detaileddescription>
         <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_l_m_m_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="l_m_m_drift_calculator_1ab74cccc3449d4d7b62d0daa81cd25dce" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void computeReduced</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;fwds, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
@@ -131,7 +131,7 @@
     <briefdescription>
 <para>Drift computation for log-normal Libor market models. </para>    </briefdescription>
     <detaileddescription>
-<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
+<para>Returns the drift <formula id="285">$ \mu \Delta t $</formula>. See Mark Joshi, <emphasis>Rapid Computation of Drifts in a Reduced Factor <ref refid="libor" kindref="compound">Libor</ref> Market Model</emphasis>, Wilmott Magazine, May 2003. </para>    </detaileddescription>
     <location file="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" line="40" bodyfile="/models/marketmodels/driftcomputation/lmmdriftcalculator.hpp" bodystart="40" bodyend="78"/>
   </compounddef>
 </doxygen>

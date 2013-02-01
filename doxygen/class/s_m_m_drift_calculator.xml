@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_s_m_m_drift_calculator" kind="class" prot="public">
+  <compounddef id="s_m_m_drift_calculator" kind="class" prot="public">
     <compoundname>QuantLib::SMMDriftCalculator</compoundname>
     <includes local="no">/models/marketmodels/driftcomputation/smmdriftcalculator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="s_m_m_drift_calculator_1a265ebf5d92694fa86dd205528fdb7a06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SMMDriftCalculator</definition>
         <argsstring>(const Matrix &amp;pseudo, const std::vector&lt; Spread &gt; &amp;displacements, const std::vector&lt; Time &gt; &amp;taus, Size numeraire, Size alive)</argsstring>
         <name>SMMDriftCalculator</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>pseudo</declname>
         </param>
         <param>
@@ -31,13 +31,13 @@
         </param>
         <location file="/models/marketmodels/driftcomputation/smmdriftcalculator.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="s_m_m_drift_calculator_1a86224e0e76eb431600252d64427536c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void compute</definition>
         <argsstring>(const CoterminalSwapCurveState &amp;cs, std::vector&lt; Real &gt; &amp;drifts) const </argsstring>
         <name>compute</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_coterminal_swap_curve_state" kindref="compound">CoterminalSwapCurveState</ref> &amp;</type>
+          <type>const <ref refid="coterminal_swap_curve_state" kindref="compound">CoterminalSwapCurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>

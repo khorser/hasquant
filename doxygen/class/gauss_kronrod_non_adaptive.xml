@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gauss_kronrod_non_adaptive" kind="class" prot="public">
+  <compounddef id="gauss_kronrod_non_adaptive" kind="class" prot="public">
     <compoundname>QuantLib::GaussKronrodNonAdaptive</compoundname>
     <includes local="no">/math/integrals/kronrodintegral.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1ab4d774d801573bf249162d60d261a410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gauss_kronrod_non_adaptive_1ab4d774d801573bf249162d60d261a410" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GaussKronrodNonAdaptive</definition>
         <argsstring>(Real absoluteAccuracy, Size maxEvaluations, Real relativeAccuracy)</argsstring>
@@ -23,7 +23,7 @@
         </param>
         <location file="/math/integrals/kronrodintegral.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1a7a841c963a1d6079b1608dcaf1649eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gauss_kronrod_non_adaptive_1a7a841c963a1d6079b1608dcaf1649eb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setRelativeAccuracy</definition>
         <argsstring>(Real)</argsstring>
@@ -33,7 +33,7 @@
         </param>
         <location file="/math/integrals/kronrodintegral.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_kronrod_non_adaptive_1a6a0fc2014460e4c03cbed6223dfebbbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gauss_kronrod_non_adaptive_1a6a0fc2014460e4c03cbed6223dfebbbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real relativeAccuracy</definition>
         <argsstring>() const </argsstring>

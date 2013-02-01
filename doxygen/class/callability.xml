@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callability" kind="class" prot="public">
+  <compounddef id="callability" kind="class" prot="public">
     <compoundname>QuantLib::Callability</compoundname>
     <includes local="no">/instruments/callabilityschedule.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
+    <innerclass refid="callability_1_1_price" prot="public">QuantLib::Callability::Price</innerclass>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="callability_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
         <location file="/instruments/callabilityschedule.hpp" line="66" bodyfile="/instruments/callabilityschedule.hpp" bodystart="66" bodyend="66"/>
@@ -19,26 +19,26 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callability_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/instruments/callabilityschedule.hpp" line="70" bodyfile="/instruments/callabilityschedule.hpp" bodystart="78" bodyend="84"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="callability_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
+        <enumvalue id="callability_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
           <name>Call</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
+        <enumvalue id="callability_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
           <name>Put</name>
         </enumvalue>
         <briefdescription>
@@ -47,34 +47,34 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callability_1aeb9063d369a5d78faba8e19783dc0016" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Callability</definition>
         <argsstring>(const Price &amp;price, Type type, const Date &amp;date)</argsstring>
         <name>Callability</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+          <type>const <ref refid="callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
           <declname>price</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+          <type><ref refid="callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
           <declname>type</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/instruments/callabilityschedule.hpp" line="58" bodyfile="/instruments/callabilityschedule.hpp" bodystart="57" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1a45e2518616fcb5eda062598143213af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
+      <memberdef kind="function" id="callability_1a45e2518616fcb5eda062598143213af1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="callability_1_1_price" kindref="compound">Price</ref> &amp;</type>
         <definition>const Price&amp; price</definition>
         <argsstring>() const </argsstring>
         <name>price</name>
         <location file="/instruments/callabilityschedule.hpp" line="59" bodyfile="/instruments/callabilityschedule.hpp" bodystart="59" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
+      <memberdef kind="function" id="callability_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="callability_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">Type</ref></type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>

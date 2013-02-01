@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_taiwan" kind="class" prot="public">
+  <compounddef id="taiwan" kind="class" prot="public">
     <compoundname>QuantLib::Taiwan</compoundname>
     <includes local="no">/time/calendars/taiwan.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_taiwan_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+      <memberdef kind="enum" id="taiwan_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
-        <enumvalue id="class_quant_lib_1_1_taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" prot="public">
+        <enumvalue id="taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" prot="public">
           <name>TSEC</name>
           <briefdescription>
-<para><ref refid="class_quant_lib_1_1_taiwan" kindref="compound">Taiwan</ref> stock exchange. </para>          </briefdescription>
+<para><ref refid="taiwan" kindref="compound">Taiwan</ref> stock exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/taiwan.hpp" line="64" bodyfile="/time/calendars/taiwan.hpp" bodystart="64" bodyend="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_taiwan_1a18669d8bf21407ff9261d0b4d209ca49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="taiwan_1a18669d8bf21407ff9261d0b4d209ca49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Taiwan</definition>
         <argsstring>(Market m=TSEC)</argsstring>
         <name>Taiwan</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_taiwan_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type><ref refid="taiwan_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>m</declname>
-          <defval><ref refid="class_quant_lib_1_1_taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" kindref="member">TSEC</ref></defval>
+          <defval><ref refid="taiwan_1abe41cfffd960e29a5d8b07be00aeda42ab8e0eb69f1ae75207887641754e1a6cf" kindref="member">TSEC</ref></defval>
         </param>
         <location file="/time/calendars/taiwan.hpp" line="66"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Taiwanese calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the <ref refid="class_quant_lib_1_1_taiwan" kindref="compound">Taiwan</ref> stock exchange (data from <ulink url="http://www.tse.com.tw/en/trading/trading_days.php">http://www.tse.com.tw/en/trading/trading_days.php</ulink>): <itemizedlist>
+<para>Holidays for the <ref refid="taiwan" kindref="compound">Taiwan</ref> stock exchange (data from <ulink url="http://www.tse.com.tw/en/trading/trading_days.php">http://www.tse.com.tw/en/trading/trading_days.php</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_yo_y_optionlet_helper" kind="class" prot="public">
+  <compounddef id="yo_y_optionlet_helper" kind="class" prot="public">
     <compoundname>QuantLib::YoYOptionletHelper</compoundname>
     <includes local="no">/experimental/inflation/yoyoptionlethelpers.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_helper_1aa78ed1ef91ded4ca834de028aa8628e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_helper_1aa78ed1ef91ded4ca834de028aa8628e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>YoYOptionletHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;price, Real notional, YoYInflationCapFloor::Type capFloorType, Period &amp;lag, const DayCounter &amp;yoyDayCounter, const Calendar &amp;paymentCalendar, Natural fixingDays, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;index, Rate strike, Size n, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;pricer)</argsstring>
         <name>YoYOptionletHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>price</declname>
         </param>
         <param>
@@ -22,15 +22,15 @@
           <declname>capFloorType</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>yoyDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>paymentCalendar</declname>
         </param>
         <param>
@@ -38,7 +38,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -50,19 +50,19 @@
           <declname>n</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <location file="/experimental/inflation/yoyoptionlethelpers.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_helper_1a464b4c5152e08c1ba4be3b8c3822aef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="yo_y_optionlet_helper_1a464b4c5152e08c1ba4be3b8c3822aef6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setTermStructure</definition>
         <argsstring>(YoYOptionletVolatilitySurface *)</argsstring>
         <name>setTermStructure</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce">setTermStructure</reimplements>
+        <reimplements refid="bootstrap_helper_1ac8bb5ca2d4e7d7754be9f69e43a054ce">setTermStructure</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
+          <type><ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> *</type>
         </param>
         <briefdescription>
 <para>sets the term structure to be used for pricing </para>        </briefdescription>
@@ -70,12 +70,12 @@
 <para><xrefsect id="caveats_1_caveats000108"><xreftitle>Warning</xreftitle><xrefdescription><para>Being a pointer and not a shared_ptr, the term structure is not guaranteed to remain allocated for the whole life of the rate helper. It is responsibility of the programmer to ensure that the pointer remains valid. It is advised that this method is called only inside the term structure being bootstrapped, setting the pointer to <bold>this</bold>, i.e., the term structure itself. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/inflation/yoyoptionlethelpers.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="yo_y_optionlet_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
         <location file="/experimental/inflation/yoyoptionlethelpers.hpp" line="51"/>
       </memberdef>
       </sectiondef>

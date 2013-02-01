@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_short_rate_model" kind="class" prot="public" abstract="yes">
+  <compounddef id="short_rate_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ShortRateModel</compoundname>
     <includes local="no">/models/model.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="short_rate_model_1acd870a956670fdf361759405e3d2e5eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ShortRateModel</definition>
         <argsstring>(Size nArguments)</argsstring>
@@ -15,13 +15,13 @@
         </param>
         <location file="/models/model.hpp" line="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;) const =0</argsstring>
         <name>tree</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
         </param>
         <location file="/models/model.hpp" line="129"/>
       </memberdef>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_zero_inflation_curve" kind="class" prot="public">
+  <compounddef id="interpolated_zero_inflation_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedZeroInflationCurve</compoundname>
     <includes local="no">/termstructures/inflation/interpolatedzeroinflationcurve.hpp</includes>
     <templateparamlist>
@@ -10,24 +10,24 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>InflationTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <reimplements refid="class_quant_lib_1_1_inflation_term_structure_1afec07013d98138f010a327210da23b50">baseDate</reimplements>
+        <reimplements refid="inflation_term_structure_1afec07013d98138f010a327210da23b50">baseDate</reimplements>
         <briefdescription>
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="57" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="58" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="190" bodyend="198"/>
@@ -35,36 +35,36 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="63" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="214" bodyend="216"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="64" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="208" bodyend="210"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="65" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="226" bodyend="228"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a35b228cdc9b475616865d3d093877ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a35b228cdc9b475616865d3d093877ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Rate &gt; &amp; rates</definition>
         <argsstring>() const </argsstring>
         <name>rates</name>
         <location file="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" line="66" bodyfile="/termstructures/inflation/interpolatedzeroinflationcurve.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1ae36e55af23c117164f4329ad5daa9adf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1ae36e55af23c117164f4329ad5daa9adf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Rate &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -73,12 +73,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>ZeroInflationTermStructure Interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a49e357360d4fec74eaa7858281dd662c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a49e357360d4fec74eaa7858281dd662c" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate zeroRateImpl</definition>
         <argsstring>(Time t) const </argsstring>
         <name>zeroRateImpl</name>
-        <reimplements refid="class_quant_lib_1_1_zero_inflation_term_structure_1aca52e7fe785fca72b56319107c8f47b0">zeroRateImpl</reimplements>
+        <reimplements refid="zero_inflation_term_structure_1aca52e7fe785fca72b56319107c8f47b0">zeroRateImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -89,25 +89,25 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_zero_inflation_curve_1a20a6bbceeb31afd577617566395ccb48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_zero_inflation_curve_1a20a6bbceeb31afd577617566395ccb48" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedZeroInflationCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const DayCounter &amp;dayCounter, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, const Handle&lt; YieldTermStructure &gt; &amp;yTS, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Rate &gt; &amp;rates, const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>InterpolatedZeroInflationCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -119,11 +119,11 @@
           <declname>indexIsInterpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yTS</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>

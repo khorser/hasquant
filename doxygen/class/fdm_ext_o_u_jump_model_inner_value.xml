@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value" kind="class" prot="public">
+  <compounddef id="fdm_ext_o_u_jump_model_inner_value" kind="class" prot="public">
     <compoundname>QuantLib::FdmExtOUJumpModelInnerValue</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a5473e5fd78d535844f5f297f680685b9" prot="public" static="no">
+      <memberdef kind="typedef" id="fdm_ext_o_u_jump_model_inner_value_1a5473e5fd78d535844f5f297f680685b9" prot="public" static="no">
         <type>std::vector&lt; std::pair&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>typedef std::vector&lt;std::pair&lt;Time, Real&gt; &gt; Shape</definition>
         <argsstring></argsstring>
@@ -12,13 +12,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a9b2fa67786ab7695ac9c86229c606973" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ext_o_u_jump_model_inner_value_1a9b2fa67786ab7695ac9c86229c606973" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FdmExtOUJumpModelInnerValue</definition>
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; Shape &gt; &amp;shape=boost::shared_ptr&lt; Shape &gt;())</argsstring>
         <name>FdmExtOUJumpModelInnerValue</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -32,7 +32,7 @@
         </param>
         <location file="/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="45" bodyfile="/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="39" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ext_o_u_jump_model_inner_value_1a7d500837cad064e46b8c0a84800e9925" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real innerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)</argsstring>
@@ -47,7 +47,7 @@
         </param>
         <location file="/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" line="47" bodyfile="/experimental/finitedifferences/fdmextoujumpmodelinnervalue.hpp" bodystart="47" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_ext_o_u_jump_model_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_ext_o_u_jump_model_inner_value_1a369767242f339b7f78a289bc54307120" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real avgInnerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)</argsstring>

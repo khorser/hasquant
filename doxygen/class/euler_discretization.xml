@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_euler_discretization" kind="class" prot="public">
+  <compounddef id="euler_discretization" kind="class" prot="public">
     <compoundname>QuantLib::EulerDiscretization</compoundname>
     <includes local="no">/processes/eulerdiscretization.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="euler_discretization_1a4ccb2b71c5b53c2450145b60e512e60d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; drift</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>drift</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a34bda8631ccdcbafb2dc5da0fc4d05ce">drift</reimplements>
+        <reimplements refid="stochastic_process_1_1discretization_1a34bda8631ccdcbafb2dc5da0fc4d05ce">drift</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -29,14 +29,14 @@
 <para>Returns an approximation of the drift defined as <formula id="338">$ \mu(t_0, \mathbf{x}_0) \Delta t $</formula>. </para>        </detaileddescription>
         <location file="/processes/eulerdiscretization.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="euler_discretization_1aace3fe63ebb3a6ce20936fa350225fc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real drift</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
         <name>drift</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1afe744d667f97faf96e673cbde379b597">drift</reimplements>
+        <reimplements refid="stochastic_process1_d_1_1discretization_1afe744d667f97faf96e673cbde379b597">drift</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -54,21 +54,21 @@
 <para>Returns an approximation of the drift defined as <formula id="339">$ \mu(t_0, x_0) \Delta t $</formula>. </para>        </detaileddescription>
         <location file="/processes/eulerdiscretization.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="euler_discretization_1a27957fdcfeb5f78298809f5f68a00049" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>diffusion</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a2ba0ace71b0d2f7b758d1685e59e7c40">diffusion</reimplements>
+        <reimplements refid="stochastic_process_1_1discretization_1a2ba0ace71b0d2f7b758d1685e59e7c40">diffusion</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -79,14 +79,14 @@
 <para>Returns an approximation of the diffusion defined as <formula id="340">$ \sigma(t_0, \mathbf{x}_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
         <location file="/processes/eulerdiscretization.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="euler_discretization_1a2fe5ea3e1cb704f46b5feb48d6392f52" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real diffusion</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
         <name>diffusion</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a2b3c25680a5820b79568dcd4b9a81b65">diffusion</reimplements>
+        <reimplements refid="stochastic_process1_d_1_1discretization_1a2b3c25680a5820b79568dcd4b9a81b65">diffusion</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
@@ -104,21 +104,21 @@
 <para>Returns an approximation of the diffusion defined as <formula id="341">$ \sigma(t_0, x_0) \sqrt{\Delta t} $</formula>. </para>        </detaileddescription>
         <location file="/processes/eulerdiscretization.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="euler_discretization_1a12f8c34783b3d11ade94edb16ec555e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt;Matrix&gt; covariance</definition>
         <argsstring>(const StochasticProcess &amp;, Time t0, const Array &amp;x0, Time dt) const </argsstring>
         <name>covariance</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1_1discretization_1a8c5e010d99024e4340bf7f694f3abcb5">covariance</reimplements>
+        <reimplements refid="stochastic_process_1_1discretization_1a8c5e010d99024e4340bf7f694f3abcb5">covariance</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -129,14 +129,14 @@
 <para>Returns an approximation of the covariance defined as <formula id="342">$ \sigma(t_0, \mathbf{x}_0)^2 \Delta t $</formula>. </para>        </detaileddescription>
         <location file="/processes/eulerdiscretization.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="euler_discretization_1a0fb3806021f712a2284bad6a4b87b63f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring>(const StochasticProcess1D &amp;, Time t0, Real x0, Time dt) const </argsstring>
         <name>variance</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1_1discretization_1a45a2880c7e449f4fa332d25b1f9bbfcb">variance</reimplements>
+        <reimplements refid="stochastic_process1_d_1_1discretization_1a45a2880c7e449f4fa332d25b1f9bbfcb">variance</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>

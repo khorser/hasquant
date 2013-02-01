@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discretized_asset" kind="class" prot="public" abstract="yes">
+  <compounddef id="discretized_asset" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::DiscretizedAsset</compoundname>
     <includes local="no">/discretizedasset.hpp</includes>
       <sectiondef kind="user-defined">
       <header>inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a5868da364bb0ac7ca08b2c72d3fb2f78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a5868da364bb0ac7ca08b2c72d3fb2f78" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time time</definition>
         <argsstring>() const </argsstring>
         <name>time</name>
         <location file="/discretizedasset.hpp" line="44" bodyfile="/discretizedasset.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a252c914b2d10cfe6e7d555128185d5d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a252c914b2d10cfe6e7d555128185d5d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &amp;</type>
         <definition>Time&amp; time</definition>
         <argsstring>()</argsstring>
         <name>time</name>
         <location file="/discretizedasset.hpp" line="45" bodyfile="/discretizedasset.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="discretized_asset_1a48c7f1d36a56d07e9e3e80d431cbd83f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>const Array&amp; values</definition>
         <argsstring>() const </argsstring>
         <name>values</name>
         <location file="/discretizedasset.hpp" line="47" bodyfile="/discretizedasset.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+      <memberdef kind="function" id="discretized_asset_1aa3153146194de0ef429000ccd8c7eb25" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
         <definition>Array&amp; values</definition>
         <argsstring>()</argsstring>
         <name>values</name>
         <location file="/discretizedasset.hpp" line="48" bodyfile="/discretizedasset.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="discretized_asset_1ac84cebad0f78a2f5a5e9228b900bfab5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;Lattice&gt;&amp; method</definition>
         <argsstring>() const </argsstring>
         <name>method</name>
@@ -43,14 +43,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>High-level interface</header>
-      <description><para>Users of discretized assets should use these methods in order to initialize, evolve and take the present value of the assets. They call the corresponding methods in the <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> interface, to which we refer for documentation. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a6cef7fe12b71383095431da763298442" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <description><para>Users of discretized assets should use these methods in order to initialize, evolve and take the present value of the assets. They call the corresponding methods in the <ref refid="lattice" kindref="compound">Lattice</ref> interface, to which we refer for documentation. </para></description>
+      <memberdef kind="function" id="discretized_asset_1a6cef7fe12b71383095431da763298442" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void initialize</definition>
         <argsstring>(const boost::shared_ptr&lt; Lattice &gt; &amp;, Time t)</argsstring>
         <name>initialize</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt; &amp;</type>
           <defname>method</defname>
         </param>
         <param>
@@ -59,7 +59,7 @@
         </param>
         <location file="/discretizedasset.hpp" line="66" bodyfile="/discretizedasset.hpp" bodystart="182" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aef4cbc1d4c3994be66cc8b8a943e5151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1aef4cbc1d4c3994be66cc8b8a943e5151" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void rollback</definition>
         <argsstring>(Time to)</argsstring>
@@ -70,7 +70,7 @@
         </param>
         <location file="/discretizedasset.hpp" line="67" bodyfile="/discretizedasset.hpp" bodystart="189" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1aa2f3ac04333282912860221a3b90e23b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1aa2f3ac04333282912860221a3b90e23b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void partialRollback</definition>
         <argsstring>(Time to)</argsstring>
@@ -81,7 +81,7 @@
         </param>
         <location file="/discretizedasset.hpp" line="68" bodyfile="/discretizedasset.hpp" bodystart="193" bodyend="195"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a6c08e31d5f5a5d45b311bae8c7f4b0f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a6c08e31d5f5a5d45b311bae8c7f4b0f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real presentValue</definition>
         <argsstring>()</argsstring>
@@ -91,8 +91,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Low-level interface</header>
-      <description><para>These methods (that developers should override when deriving from <ref refid="class_quant_lib_1_1_discretized_asset" kindref="compound">DiscretizedAsset</ref>) are to be used by numerical methods and not directly by users, with the exception of <ref refid="class_quant_lib_1_1_discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" kindref="member">adjustValues()</ref>, <ref refid="class_quant_lib_1_1_discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" kindref="member">preAdjustValues()</ref> and <ref refid="class_quant_lib_1_1_discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" kindref="member">postAdjustValues()</ref> that can be used together with partialRollback(). </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a95238187618927d950bb01e363f772dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <description><para>These methods (that developers should override when deriving from <ref refid="discretized_asset" kindref="compound">DiscretizedAsset</ref>) are to be used by numerical methods and not directly by users, with the exception of <ref refid="discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" kindref="member">adjustValues()</ref>, <ref refid="discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" kindref="member">preAdjustValues()</ref> and <ref refid="discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" kindref="member">postAdjustValues()</ref> that can be used together with partialRollback(). </para></description>
+      <memberdef kind="function" id="discretized_asset_1a95238187618927d950bb01e363f772dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>(Size size)=0</argsstring>
@@ -102,28 +102,28 @@
           <declname>size</declname>
         </param>
         <detaileddescription>
-<para>This method should initialize the asset values to an <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
+<para>This method should initialize the asset values to an <ref refid="array" kindref="compound">Array</ref> of the given size and with values depending on the particular asset. </para>        </detaileddescription>
         <location file="/discretizedasset.hpp" line="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a550c12c68b9f731f0017dd8f826c7afa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void preAdjustValues</definition>
         <argsstring>()</argsstring>
         <name>preAdjustValues</name>
         <detaileddescription>
-<para>This method will be invoked after rollback and before any other asset (i.e., an option on this one) has any chance to look at the values. For instance, payments happening at times already spanned by the rollback will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="class_quant_lib_1_1_discretized_asset_1a1cd0989529ea6494ee706dd772506455" kindref="member">preAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
+<para>This method will be invoked after rollback and before any other asset (i.e., an option on this one) has any chance to look at the values. For instance, payments happening at times already spanned by the rollback will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="discretized_asset_1a1cd0989529ea6494ee706dd772506455" kindref="member">preAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
         <location file="/discretizedasset.hpp" line="98" bodyfile="/discretizedasset.hpp" bodystart="201" bodyend="206"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a5c6657e78e9d0771e7df6761853e2042" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void postAdjustValues</definition>
         <argsstring>()</argsstring>
         <name>postAdjustValues</name>
         <detaileddescription>
-<para>This method will be invoked after rollback and after any other asset had their chance to look at the values. For instance, payments happening at the present time (and therefore not included in an option to be exercised at this time) will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="class_quant_lib_1_1_discretized_asset_1a371a4f1247c8ff3fc41d288a3ab3164a" kindref="member">postAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
+<para>This method will be invoked after rollback and after any other asset had their chance to look at the values. For instance, payments happening at the present time (and therefore not included in an option to be exercised at this time) will be added here.</para><para>This method is not virtual; derived classes must override the protected <ref refid="discretized_asset_1a371a4f1247c8ff3fc41d288a3ab3164a" kindref="member">postAdjustValuesImpl()</ref> method instead. </para>        </detaileddescription>
         <location file="/discretizedasset.hpp" line="109" bodyfile="/discretizedasset.hpp" bodystart="208" bodyend="213"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1a3fd0b540d11b207a4dffcac657330b3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void adjustValues</definition>
         <argsstring>()</argsstring>
@@ -132,7 +132,7 @@
 <para>This method performs both pre- and post-adjustment </para>        </detaileddescription>
         <location file="/discretizedasset.hpp" line="112" bodyfile="/discretizedasset.hpp" bodystart="112" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1ace8de2f1297ce9bfbfb64cdf13f98ddc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="discretized_asset_1ace8de2f1297ce9bfbfb64cdf13f98ddc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>virtual std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const =0</argsstring>
@@ -144,14 +144,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1afad0751d0bfc43043efa52445e6f40e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_asset_1afad0751d0bfc43043efa52445e6f40e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>DiscretizedAsset</definition>
         <argsstring>()</argsstring>
         <name>DiscretizedAsset</name>
         <location file="/discretizedasset.hpp" line="39" bodyfile="/discretizedasset.hpp" bodystart="37" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_asset_1a2790be8448a44e9a466515cec789566d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="discretized_asset_1a2790be8448a44e9a466515cec789566d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~DiscretizedAsset</definition>
         <argsstring>()</argsstring>

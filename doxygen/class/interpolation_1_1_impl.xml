@@ -1,52 +1,52 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolation_1_1_impl" kind="class" prot="protected" abstract="yes">
+  <compounddef id="interpolation_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::Interpolation::Impl</compoundname>
     <includes local="no">/math/interpolation.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
         <location file="/math/interpolation.hpp" line="47" bodyfile="/math/interpolation.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a99b02345a8a15d3c5ea2844a2253f510" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a99b02345a8a15d3c5ea2844a2253f510" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void update</definition>
         <argsstring>()=0</argsstring>
         <name>update</name>
         <location file="/math/interpolation.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a55a9dc8ca1fcece87abe8e4a8e075cbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a55a9dc8ca1fcece87abe8e4a8e075cbc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real xMin</definition>
         <argsstring>() const =0</argsstring>
         <name>xMin</name>
         <location file="/math/interpolation.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a7d1806bb5aaf76faa0458141176cee59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real xMax</definition>
         <argsstring>() const =0</argsstring>
         <name>xMax</name>
         <location file="/math/interpolation.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a7d9e92e02c01de190de9ebb26a88d039" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>virtual std::vector&lt;Real&gt; xValues</definition>
         <argsstring>() const =0</argsstring>
         <name>xValues</name>
         <location file="/math/interpolation.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1ac27e584d07fa9748bf3e4142faee2e63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>virtual std::vector&lt;Real&gt; yValues</definition>
         <argsstring>() const =0</argsstring>
         <name>yValues</name>
         <location file="/math/interpolation.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a93b4952f0cf5b8e8dfb2580e0f638372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a93b4952f0cf5b8e8dfb2580e0f638372" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool isInRange</definition>
         <argsstring>(Real) const =0</argsstring>
@@ -56,7 +56,7 @@
         </param>
         <location file="/math/interpolation.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a3b5ae807c2e8aa314861fda7a86c859e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a3b5ae807c2e8aa314861fda7a86c859e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real value</definition>
         <argsstring>(Real) const =0</argsstring>
@@ -66,7 +66,7 @@
         </param>
         <location file="/math/interpolation.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1ac648b9d3443bd0bdf66a726466b26d17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1ac648b9d3443bd0bdf66a726466b26d17" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real primitive</definition>
         <argsstring>(Real) const =0</argsstring>
@@ -76,7 +76,7 @@
         </param>
         <location file="/math/interpolation.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1aa9b3d52912b522cf1e92faf6b9303f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1aa9b3d52912b522cf1e92faf6b9303f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real derivative</definition>
         <argsstring>(Real) const =0</argsstring>
@@ -86,7 +86,7 @@
         </param>
         <location file="/math/interpolation.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolation_1_1_impl_1a2210d23e8e649096c89494facf217fb4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="interpolation_1_1_impl_1a2210d23e8e649096c89494facf217fb4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real secondDerivative</definition>
         <argsstring>(Real) const =0</argsstring>

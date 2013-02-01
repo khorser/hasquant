@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_market_model_pathwise_discounter" kind="class" prot="public">
+  <compounddef id="market_model_pathwise_discounter" kind="class" prot="public">
     <compoundname>QuantLib::MarketModelPathwiseDiscounter</compoundname>
     <includes local="no">/models/marketmodels/pathwisediscounter.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="market_model_pathwise_discounter_1a86d15ad123e36cbab665cd838c71efec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MarketModelPathwiseDiscounter</definition>
         <argsstring>(Time paymentTime, const std::vector&lt; Time &gt; &amp;rateTimes)</argsstring>
@@ -19,17 +19,17 @@
         </param>
         <location file="/models/marketmodels/pathwisediscounter.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_pathwise_discounter_1a8c038aa3804b532c86d8847a003caea7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="market_model_pathwise_discounter_1a8c038aa3804b532c86d8847a003caea7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void getFactors</definition>
         <argsstring>(const Matrix &amp;LIBORRates, const Matrix &amp;Discounts, Size currentStep, std::vector&lt; Real &gt; &amp;factors) const </argsstring>
         <name>getFactors</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>LIBORRates</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>Discounts</declname>
         </param>
         <param>

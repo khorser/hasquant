@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lecuyer_uniform_rng" kind="class" prot="public">
+  <compounddef id="lecuyer_uniform_rng" kind="class" prot="public">
     <compoundname>QuantLib::LecuyerUniformRng</compoundname>
     <includes local="no">/math/randomnumbers/lecuyeruniformrng.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_lecuyer_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
+      <memberdef kind="typedef" id="lecuyer_uniform_rng_1ad6ae312199547dfd98f3b79b89a036f0" prot="public" static="no">
+        <type><ref refid="sample" kindref="compound">Sample</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>typedef Sample&lt;Real&gt; sample_type</definition>
         <argsstring></argsstring>
         <name>sample_type</name>
@@ -13,7 +13,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lecuyer_uniform_rng_1a148a11db369ad4f65dee641ecb0f8215" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lecuyer_uniform_rng_1a148a11db369ad4f65dee641ecb0f8215" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>LecuyerUniformRng</definition>
         <argsstring>(long seed=0)</argsstring>
@@ -27,8 +27,8 @@
 <para>if the given seed is 0, a random seed will be chosen based on clock() </para>        </detaileddescription>
         <location file="/math/randomnumbers/lecuyeruniformrng.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_lecuyer_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="struct_quant_lib_1_1_sample" kindref="compound">sample_type</ref></type>
+      <memberdef kind="function" id="lecuyer_uniform_rng_1aa348e1b433db27307b840e4a41684b34" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="sample" kindref="compound">sample_type</ref></type>
         <definition>sample_type next</definition>
         <argsstring>() const </argsstring>
         <name>next</name>

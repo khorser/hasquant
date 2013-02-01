@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_jamshidian_swaption_engine" kind="class" prot="public">
+  <compounddef id="jamshidian_swaption_engine" kind="class" prot="public">
     <compoundname>QuantLib::JamshidianSwaptionEngine</compoundname>
     <includes local="no">/pricingengines/swaption/jamshidianswaptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_jamshidian_swaption_engine_1a7d7af11a3b699b7c95584b713eb0d95e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="jamshidian_swaption_engine_1a7d7af11a3b699b7c95584b713eb0d95e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>JamshidianSwaptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; OneFactorAffineModel &gt; &amp;model, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>JamshidianSwaptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_affine_model" kindref="compound">OneFactorAffineModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="one_factor_affine_model" kindref="compound">OneFactorAffineModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <detaileddescription>
 <para><simplesect kind="note"><para>the term structure is only needed when the short-rate model cannot provide one itself. </para></simplesect>
 </para>        </detaileddescription>
         <location file="/pricingengines/swaption/jamshidianswaptionengine.hpp" line="54" bodyfile="/pricingengines/swaption/jamshidianswaptionengine.hpp" bodystart="47" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_jamshidian_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="jamshidian_swaption_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/swaption/jamshidianswaptionengine.hpp" line="57"/>
       </memberdef>
       </sectiondef>

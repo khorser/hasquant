@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
+  <compounddef id="cox_ingersoll_ross_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss::Dynamics</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/coxingersollross.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1aff354dfa3257a4f6886a4d3abfd3ed6c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Dynamics</definition>
         <argsstring>(Real theta, Real k, Real sigma, Real x0)</argsstring>
@@ -27,12 +27,12 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="116" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="111" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1a4d96c2f86c87ab3ce822d6b3453a7348" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real variable</definition>
         <argsstring>(Time, Rate r) const </argsstring>
         <name>variable</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
+        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a6b79be60ee10b8ec07aaa99f264e0ceb">variable</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -45,12 +45,12 @@
 <para>Compute state variable from short rate. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="118" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_dynamics_1a5a7c08ebb85d71ff46b8c5efd92269b6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real shortRate</definition>
         <argsstring>(Time, Real y) const </argsstring>
         <name>shortRate</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
+        <reimplements refid="one_factor_model_1_1_short_rate_dynamics_1a010597b04b12c384563585e599331ec4">shortRate</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>

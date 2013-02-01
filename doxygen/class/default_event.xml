@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_default_event" kind="class" prot="public">
+  <compounddef id="default_event" kind="class" prot="public">
     <compoundname>QuantLib::DefaultEvent</compoundname>
     <includes local="no">/experimental/credit/defaultevent.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_default_event_1_1_default_settlement" prot="public">QuantLib::DefaultEvent::DefaultSettlement</innerclass>
+    <innerclass refid="default_event_1_1_default_settlement" prot="public">QuantLib::DefaultEvent::DefaultSettlement</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a538254ee240ed75fde17e25d55c65c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a538254ee240ed75fde17e25d55c65c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DefaultEvent</definition>
         <argsstring>(const Date &amp;creditEventDate, const DefaultType &amp;atomicEvType, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate=Null&lt; Date &gt;(), const std::map&lt; Seniority, Real &gt; &amp;recoveryRates=rate_map())</argsstring>
         <name>DefaultEvent</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &amp;</type>
+          <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
           <declname>atomicEvType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -27,9 +27,9 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>settleDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type>const std::map&lt; <ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
@@ -40,21 +40,21 @@
 <para>Credit event with optional settlement information. Represents a credit event that has taken place. Realized events are of an atomic type. If the settlement information is given seniorities present are the seniorities/bonds affected by the event. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="100"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1ac4affece3915597c9325f07e8f292be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1ac4affece3915597c9325f07e8f292be7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DefaultEvent</definition>
         <argsstring>(const Date &amp;creditEventDate, const DefaultType &amp;atomicEvType, const Currency &amp;curr, Seniority bondsSen, const Date &amp;settleDate=Null&lt; Date &gt;(), Real recoveryRate=0.4)</argsstring>
         <name>DefaultEvent</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>creditEventDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &amp;</type>
+          <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
           <declname>atomicEvType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>curr</declname>
         </param>
         <param>
@@ -62,9 +62,9 @@
           <declname>bondsSen</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>settleDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -75,53 +75,53 @@
 <para>Use NoSeniority to settle to all seniorities with that recovery. In that case the event is assumed to have affected all seniorities. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="111"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="default_event_1a10f7d7687d98bfb4979aaa4c86c86a54" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date date</definition>
         <argsstring>() const </argsstring>
         <name>date</name>
-        <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <briefdescription>
 <para>returns the date at which the event occurs </para>        </briefdescription>
         <location file="/experimental/credit/defaultevent.hpp" line="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a6fef86acecb34c639bdbe8b1cb52a18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isRestructuring</definition>
         <argsstring>() const </argsstring>
         <name>isRestructuring</name>
         <location file="/experimental/credit/defaultevent.hpp" line="114" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="114" bodyend="114"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a3c0ebe326f24d183b76e69b2db54f04f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a3c0ebe326f24d183b76e69b2db54f04f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isDefault</definition>
         <argsstring>() const </argsstring>
         <name>isDefault</name>
         <location file="/experimental/credit/defaultevent.hpp" line="115" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="115" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a6396845b5459f6de8ef0296651a62294" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a6396845b5459f6de8ef0296651a62294" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool hasSettled</definition>
         <argsstring>() const </argsstring>
         <name>hasSettled</name>
         <location file="/experimental/credit/defaultevent.hpp" line="116" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="116" bodyend="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a49d7fb04fe9b96881799ff9cb0958691" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a49d7fb04fe9b96881799ff9cb0958691" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const DefaultSettlement &amp;</type>
         <definition>const DefaultSettlement&amp; settlement</definition>
         <argsstring>() const </argsstring>
         <name>settlement</name>
         <location file="/experimental/credit/defaultevent.hpp" line="119" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="119" bodyend="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a2c28bc2ecab4fcb305aecac24e805fcb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &amp;</type>
+      <memberdef kind="function" id="default_event_1a2c28bc2ecab4fcb305aecac24e805fcb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="default_type" kindref="compound">DefaultType</ref> &amp;</type>
         <definition>const DefaultType&amp; defaultType</definition>
         <argsstring>() const </argsstring>
         <name>defaultType</name>
         <location file="/experimental/credit/defaultevent.hpp" line="122" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="default_event_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
@@ -129,7 +129,7 @@
 <para>returns the currency of the bond this event refers to. </para>        </briefdescription>
         <location file="/experimental/credit/defaultevent.hpp" line="126" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a147fb3038f22fa7a4712735336e744e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="default_event_1a147fb3038f22fa7a4712735336e744e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1a67b45b4a8252bded773b222c6f9428dc" kindref="member">Seniority</ref></type>
         <definition>Seniority eventSeniority</definition>
         <argsstring>() const </argsstring>
@@ -138,7 +138,7 @@
 <para>returns the seniority of the bond that triggered the event. </para>        </briefdescription>
         <location file="/experimental/credit/defaultevent.hpp" line="130" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="130" bodyend="132"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a3e74393b4a53bec2a028d1c24600951c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="default_event_1a3e74393b4a53bec2a028d1c24600951c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real recoveryRate</definition>
         <argsstring>(Seniority seniority) const </argsstring>
@@ -151,40 +151,40 @@
 <para>returns a value if the event lead to a settlement for the requested seniority. Specializations on the default atomics and recoveries could change the default policy. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="137" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="137" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a74080ac3a33888b3ba71cf8c96332d4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="default_event_1a74080ac3a33888b3ba71cf8c96332d4a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>virtual bool matchesEventType</definition>
         <argsstring>(const boost::shared_ptr&lt; DefaultType &gt; &amp;contractEvType) const </argsstring>
         <name>matchesEventType</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &amp;</type>
           <declname>contractEvType</declname>
         </param>
         <detaileddescription>
 <para>matches the event if this event would trigger a contract related to the requested event type. Notice the contractual event types are not neccesarily atomic. Notice it does not check seniority or currency only event type. typically used from Issuer </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="151" bodyfile="/experimental/credit/defaultevent.hpp" bodystart="150" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1aeca84afdcb5d299984f01c26e3fa5204" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="default_event_1aeca84afdcb5d299984f01c26e3fa5204" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>virtual bool matchesDefaultKey</definition>
         <argsstring>(const DefaultProbKey &amp;contractKey) const </argsstring>
         <name>matchesDefaultKey</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>contractKey</declname>
         </param>
         <detaileddescription>
 <para>Returns true if this event would trigger a contract with the arguments characteristics. </para>        </detaileddescription>
         <location file="/experimental/credit/defaultevent.hpp" line="163"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="default_event_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/experimental/credit/defaultevent.hpp" line="165"/>
       </memberdef>

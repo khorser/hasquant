@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bond_1_1arguments" kind="class" prot="public">
+  <compounddef id="bond_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Bond::arguments</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="bond_1_1arguments_1a0ec60e030dd7531c0199d8a1f92792ae" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date settlementDate</definition>
         <argsstring></argsstring>
         <name>settlementDate</name>
         <location file="/instruments/bond.hpp" line="273" bodyfile="/instruments/bond.hpp" bodystart="273" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="bond_1_1arguments_1a89cfb42d35b2f88416faf2c2b0737b29" prot="public" static="no" mutable="no">
         <type><ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref></type>
         <definition>Leg cashflows</definition>
         <argsstring></argsstring>
         <name>cashflows</name>
         <location file="/instruments/bond.hpp" line="274" bodyfile="/instruments/bond.hpp" bodystart="274" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="variable" id="bond_1_1arguments_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bond_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

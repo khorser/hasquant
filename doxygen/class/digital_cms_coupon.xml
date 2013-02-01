@@ -1,36 +1,36 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_digital_cms_coupon" kind="class" prot="public">
+  <compounddef id="digital_cms_coupon" kind="class" prot="public">
     <compoundname>QuantLib::DigitalCmsCoupon</compoundname>
     <includes local="no">/cashflows/digitalcmscoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="digital_cms_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="digital_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflows/digitalcmscoupon.hpp" line="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_cms_coupon_1a599a52c89048aec18b0f0ff10a984606" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="digital_cms_coupon_1a599a52c89048aec18b0f0ff10a984606" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DigitalCmsCoupon</definition>
         <argsstring>(const boost::shared_ptr&lt; CmsCoupon &gt; &amp;underlying, Rate callStrike=Null&lt; Rate &gt;(), Position::Type callPosition=Position::Long, bool isCallATMIncluded=false, Rate callDigitalPayoff=Null&lt; Rate &gt;(), Rate putStrike=Null&lt; Rate &gt;(), Position::Type putPosition=Position::Long, bool isPutATMIncluded=false, Rate putDigitalPayoff=Null&lt; Rate &gt;(), const boost::shared_ptr&lt; DigitalReplication &gt; &amp;replication=boost::shared_ptr&lt; DigitalReplication &gt;())</argsstring>
         <name>DigitalCmsCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cms_coupon" kindref="compound">CmsCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callStrike</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -45,12 +45,12 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>callDigitalPayoff</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putStrike</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>Position::Type</type>
@@ -65,7 +65,7 @@
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>putDigitalPayoff</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type>const boost::shared_ptr&lt; DigitalReplication &gt; &amp;</type>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_zero_coupon_bond" kind="class" prot="public">
+  <compounddef id="zero_coupon_bond" kind="class" prot="public">
     <compoundname>QuantLib::ZeroCouponBond</compoundname>
     <includes local="no">/instruments/bonds/zerocouponbond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_coupon_bond_1ae285da9b726c82741bc75ea4b379c42c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="zero_coupon_bond_1ae285da9b726c82741bc75ea4b379c42c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroCouponBond</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, Real faceAmount, const Date &amp;maturityDate, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
@@ -14,7 +14,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -36,9 +36,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/instruments/bonds/zerocouponbond.hpp" line="46"/>
       </memberdef>

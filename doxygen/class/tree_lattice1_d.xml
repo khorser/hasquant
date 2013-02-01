@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_tree_lattice1_d" kind="class" prot="public">
+  <compounddef id="tree_lattice1_d" kind="class" prot="public">
     <compoundname>QuantLib::TreeLattice1D</compoundname>
     <includes local="no">/methods/lattices/lattice1d.hpp</includes>
     <templateparamlist>
@@ -11,13 +11,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice1_d_1a9b4bb30e9396e4b4cb9cf821ddc4645d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="tree_lattice1_d_1a9b4bb30e9396e4b4cb9cf821ddc4645d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TreeLattice1D</definition>
         <argsstring>(const TimeGrid &amp;timeGrid, Size n)</argsstring>
         <name>TreeLattice1D</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
@@ -26,19 +26,19 @@
         </param>
         <location file="/methods/lattices/lattice1d.hpp" line="42" bodyfile="/methods/lattices/lattice1d.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="tree_lattice1_d_1a9f0bc6b9482a95d66e1be219d3447589" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; grid</definition>
         <argsstring>(Time t) const </argsstring>
         <name>grid</name>
-        <reimplements refid="class_quant_lib_1_1_lattice_1a85dadec35b0b9775e93b8c0d826447ba">grid</reimplements>
+        <reimplements refid="lattice_1a85dadec35b0b9775e93b8c0d826447ba">grid</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
         <location file="/methods/lattices/lattice1d.hpp" line="43" bodyfile="/methods/lattices/lattice1d.hpp" bodystart="43" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_lattice1_d_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="tree_lattice1_d_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real underlying</definition>
         <argsstring>(Size i, Size index) const </argsstring>

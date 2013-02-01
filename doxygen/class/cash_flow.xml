@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cash_flow" kind="class" prot="public" abstract="yes">
+  <compounddef id="cash_flow" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CashFlow</compoundname>
     <includes local="no">/cashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="cash_flow_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date date</definition>
         <argsstring>() const =0</argsstring>
         <name>date</name>
-        <reimplements refid="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
+        <reimplements refid="event_1ac659412fae5cc99a0fdf25f7f4b9562e">date</reimplements>
         <detaileddescription>
 <para><simplesect kind="note"><para>This is inherited from the event class </para></simplesect>
 </para>        </detaileddescription>
         <location file="/cashflow.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cash_flow_1a124a26b60637ae9384e543ed3f483064" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool hasOccurred</definition>
         <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
         <name>hasOccurred</name>
-        <reimplements refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb">hasOccurred</reimplements>
+        <reimplements refid="event_1aca737dd96c9485ce9613e5fb187c46eb">hasOccurred</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -35,13 +35,13 @@
         <briefdescription>
 <para>returns true if an event has already occurred before a date </para>        </briefdescription>
         <detaileddescription>
-<para>overloads <ref refid="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> in order to take QL_TODAYS_PAYMENTS in account </para>        </detaileddescription>
+<para>overloads <ref refid="event_1aca737dd96c9485ce9613e5fb187c46eb" kindref="member">Event::hasOccurred</ref> in order to take QL_TODAYS_PAYMENTS in account </para>        </detaileddescription>
         <location file="/cashflow.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real amount</definition>
         <argsstring>() const =0</argsstring>
@@ -56,20 +56,20 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cash_flow_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="event_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflow.hpp" line="64"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="cash_flow_1a5c67a12dd31b944b66d566b759297aa0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~CashFlow</definition>
         <argsstring>()</argsstring>

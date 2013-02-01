@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_black_scholes_barrier_engine" kind="class" prot="public">
+  <compounddef id="fd_black_scholes_barrier_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdBlackScholesBarrierEngine</compoundname>
     <includes local="no">/pricingengines/barrier/fdblackscholesbarrierengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_barrier_engine_1abf04b7b6e67b0cbea2216f0f3990fbcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_black_scholes_barrier_engine_1abf04b7b6e67b0cbea2216f0f3990fbcb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdBlackScholesBarrierEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size tGrid=100, Size xGrid=100, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas(), bool localVol=false, Real illegalLocalVolOverwrite=-Null&lt; Real &gt;())</argsstring>
         <name>FdBlackScholesBarrierEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -41,16 +41,16 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>illegalLocalVolOverwrite</declname>
-          <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>-<ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/pricingengines/barrier/fdblackscholesbarrierengine.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_black_scholes_barrier_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fd_black_scholes_barrier_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/barrier/fdblackscholesbarrierengine.hpp" line="56"/>
       </memberdef>
       </sectiondef>

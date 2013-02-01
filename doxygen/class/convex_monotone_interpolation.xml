@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_convex_monotone_interpolation" kind="class" prot="public">
+  <compounddef id="convex_monotone_interpolation" kind="class" prot="public">
     <compoundname>QuantLib::ConvexMonotoneInterpolation</compoundname>
     <includes local="no">/math/interpolations/convexmonotoneinterpolation.hpp</includes>
     <templateparamlist>
@@ -12,7 +12,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1aba0c71f5eff7f25db399620fa8f08834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_interpolation_1aba0c71f5eff7f25db399620fa8f08834" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConvexMonotoneInterpolation</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Real quadraticity, Real monotonicity, bool forcePositive, bool flatFinalPeriod=false, const helper_map &amp;preExistingHelpers=helper_map())</argsstring>
@@ -53,18 +53,18 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="760" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="755" bodyend="771"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1acd198c9e05035dbcc984bad80de3440b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_interpolation_1acd198c9e05035dbcc984bad80de3440b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConvexMonotoneInterpolation</definition>
         <argsstring>(Interpolation &amp;interp)</argsstring>
         <name>ConvexMonotoneInterpolation</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref> &amp;</type>
+          <type><ref refid="interpolation" kindref="compound">Interpolation</ref> &amp;</type>
           <declname>interp</declname>
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="774" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="773" bodyend="774"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_convex_monotone_interpolation_1a3564e6366dd012b3ea99a597e814c3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="convex_monotone_interpolation_1a3564e6366dd012b3ea99a597e814c3d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::map&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, boost::shared_ptr&lt; detail::SectionHelper &gt; &gt;</type>
         <definition>std::map&lt;Real, boost::shared_ptr&lt;detail::SectionHelper&gt; &gt; getExistingHelpers</definition>
         <argsstring>()</argsstring>

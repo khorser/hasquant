@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discretized_vanilla_option" kind="class" prot="public">
+  <compounddef id="discretized_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedVanillaOption</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_vanilla_option_1aff1c6287c152af8b1fe0e63e9b612a6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_vanilla_option_1aff1c6287c152af8b1fe0e63e9b612a6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscretizedVanillaOption</definition>
         <argsstring>(const VanillaOption::arguments &amp;, const StochasticProcess &amp;process, const TimeGrid &amp;grid=TimeGrid())</argsstring>
         <name>DiscretizedVanillaOption</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_option_1_1arguments" kindref="compound">VanillaOption::arguments</ref> &amp;</type>
+          <type>const <ref refid="option_1_1arguments" kindref="compound">VanillaOption::arguments</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
+          <type>const <ref refid="stochastic_process" kindref="compound">StochasticProcess</ref> &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
-          <defval><ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref>()</defval>
+          <defval><ref refid="time_grid" kindref="compound">TimeGrid</ref>()</defval>
         </param>
         <location file="/pricingengines/vanilla/discretizedvanillaoption.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_vanilla_option_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_vanilla_option_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>(Size size)</argsstring>
@@ -33,7 +33,7 @@
         </param>
         <location file="/pricingengines/vanilla/discretizedvanillaoption.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_vanilla_option_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="discretized_vanilla_option_1a6e828e998575c34212a2a16f6cba617d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; mandatoryTimes</definition>
         <argsstring>() const </argsstring>

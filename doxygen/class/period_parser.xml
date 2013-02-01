@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_period_parser" kind="class" prot="public">
+  <compounddef id="period_parser" kind="class" prot="public">
     <compoundname>QuantLib::PeriodParser</compoundname>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="function" id="period_parser_1a677ff2d2cd222bbaeb5128969fadbb64" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>static Period parse</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>parse</name>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1binary__compose3__function" kind="class" prot="public">
+  <compounddef id="binary__compose3__function" kind="class" prot="public">
     <compoundname>QuantLib::binary_compose3_function</compoundname>
     <templateparamlist>
       <param>
@@ -14,21 +14,21 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1ab0fe93287a99040a88ba6bd9a7efd358" prot="public" static="no">
+      <memberdef kind="typedef" id="binary__compose3__function_1ab0fe93287a99040a88ba6bd9a7efd358" prot="public" static="no">
         <type>G::argument_type</type>
         <definition>typedef G::argument_type first_argument_type</definition>
         <argsstring></argsstring>
         <name>first_argument_type</name>
         <location file="/math/functional.hpp" line="137" bodyfile="/math/functional.hpp" bodystart="137" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" static="no">
+      <memberdef kind="typedef" id="binary__compose3__function_1a2942438be31cb1463380b9d8d8999402" prot="public" static="no">
         <type>H::argument_type</type>
         <definition>typedef H::argument_type second_argument_type</definition>
         <argsstring></argsstring>
         <name>second_argument_type</name>
         <location file="/math/functional.hpp" line="138" bodyfile="/math/functional.hpp" bodystart="138" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
+      <memberdef kind="typedef" id="binary__compose3__function_1a4cf2df542e3bed6ef93ff54d61aa8844" prot="public" static="no">
         <type>F::result_type</type>
         <definition>typedef F::result_type result_type</definition>
         <argsstring></argsstring>
@@ -37,7 +37,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="binary__compose3__function_1aef75a733bd9c4c34e308d7ef91a20276" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>binary_compose3_function</definition>
         <argsstring>(const F &amp;f, const G &amp;g, const H &amp;h)</argsstring>
@@ -56,7 +56,7 @@
         </param>
         <location file="/math/functional.hpp" line="142" bodyfile="/math/functional.hpp" bodystart="141" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="binary__compose3__function_1a5fcf156dc7dabb974e3c9837d010bebe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
         <definition>result_type operator()</definition>
         <argsstring>(const first_argument_type &amp;x, const second_argument_type &amp;y) const </argsstring>

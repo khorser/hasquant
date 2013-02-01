@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_floating_rate_coupon" kind="class" prot="public">
+  <compounddef id="floating_rate_coupon" kind="class" prot="public">
     <compoundname>QuantLib::FloatingRateCoupon</compoundname>
     <includes local="no">/cashflows/floatingratecoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>CashFlow interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <reimplements refid="class_quant_lib_1_1_cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <reimplements refid="cash_flow_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
         <briefdescription>
 <para>returns the amount of the cash flow </para>        </briefdescription>
         <detaileddescription>
@@ -21,45 +21,45 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Coupon interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
+        <reimplements refid="coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ad88cf27f1c994a91f4f2ba821bbb6f8b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real price</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;discountingCurve) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingCurve</declname>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="floating_rate_coupon_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
+        <reimplements refid="coupon_1a9d30a3965ddf6100738ec4624c56d847">dayCounter</reimplements>
         <briefdescription>
 <para>day counter for accrual calculation </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="68" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="68" bodyend="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1adc435be6b06dfaeefc8f8ea1d5cfb993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real accruedAmount</definition>
         <argsstring>(const Date &amp;) const </argsstring>
         <name>accruedAmount</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf">accruedAmount</reimplements>
+        <reimplements refid="coupon_1ad6b1c6e4a74184e4a2079858a75d3fcf">accruedAmount</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         </param>
         <briefdescription>
 <para>accrued amount at the given date </para>        </briefdescription>
@@ -68,8 +68,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="floating_rate_coupon_1a3abd7ea3a1e190b4a16ba6cdb32aa6b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; InterestRateIndex &gt; &amp; index</definition>
         <argsstring>() const </argsstring>
         <name>index</name>
@@ -77,7 +77,7 @@
 <para>floating index </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="75" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a525a1bb58e63aa211a97c570b1aafc72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural fixingDays</definition>
         <argsstring>() const </argsstring>
@@ -86,8 +86,8 @@
 <para>fixing days </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="77" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="floating_rate_coupon_1ac1b6485ac61fa2e97bdfc38fe97044ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
@@ -95,7 +95,7 @@
 <para>fixing date </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a0f952b048e0a0ccbf2f0d6ffa3aa1832" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gearing</definition>
         <argsstring>() const </argsstring>
@@ -104,7 +104,7 @@
 <para>index gearing, i.e. multiplicative coefficient for the index </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="81" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ad7a3e2124c58cf10df93a8def9a2fafb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread spread</definition>
         <argsstring>() const </argsstring>
@@ -113,7 +113,7 @@
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="83" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1abb75c00a042f794562147c2a5f81b08a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate indexFixing</definition>
         <argsstring>() const </argsstring>
@@ -122,7 +122,7 @@
 <para>fixing of the underlying index </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate convexityAdjustment</definition>
         <argsstring>() const </argsstring>
@@ -131,7 +131,7 @@
 <para>convexity adjustment </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="87" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
@@ -140,7 +140,7 @@
 <para>convexity-adjusted fixing </para>        </briefdescription>
         <location file="/cashflows/floatingratecoupon.hpp" line="89" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ab847c12bc9de50d7209aae33a4fa1c13" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isInArrears</definition>
         <argsstring>() const </argsstring>
@@ -152,38 +152,38 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/cashflows/floatingratecoupon.hpp" line="96" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="96" bodyend="96"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
+        <reimplements refid="coupon_1a896099363a2a409d2485c3ce9e4e4265">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="101" bodyfile="/cashflows/floatingratecoupon.hpp" bodystart="143" bodyend="150"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ab89801171c9400f3164ba182e21192d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FloatingRateCoupon</definition>
         <argsstring>(const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; InterestRateIndex &gt; &amp;index, Real gearing=1.0, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date(), const DayCounter &amp;dayCounter=DayCounter(), bool isInArrears=false)</argsstring>
         <name>FloatingRateCoupon</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -191,11 +191,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -203,7 +203,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -217,19 +217,19 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
           <type>bool</type>
@@ -238,18 +238,18 @@
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1ade8776ea16ef3f56f7b96afae4135186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="floating_rate_coupon_1ade8776ea16ef3f56f7b96afae4135186" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setPricer</definition>
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
         </param>
         <location file="/cashflows/floatingratecoupon.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt;</type>
+      <memberdef kind="function" id="floating_rate_coupon_1aafc293967ad3568fd5b8a6f38016898c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; FloatingRateCouponPricer &gt; pricer</definition>
         <argsstring>() const </argsstring>
         <name>pricer</name>

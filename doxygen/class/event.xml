@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_event" kind="class" prot="public" abstract="yes">
+  <compounddef id="event" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Event</compoundname>
     <includes local="no">/event.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Event interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="event_1ac659412fae5cc99a0fdf25f7f4b9562e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date date</definition>
         <argsstring>() const =0</argsstring>
         <name>date</name>
@@ -14,15 +14,15 @@
 <para>returns the date at which the event occurs </para>        </briefdescription>
         <location file="/event.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="event_1aca737dd96c9485ce9613e5fb187c46eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>virtual bool hasOccurred</definition>
         <argsstring>(const Date &amp;refDate=Date(), boost::optional&lt; bool &gt; includeRefDate=boost::none) const </argsstring>
         <name>hasOccurred</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type>boost::optional&lt; bool &gt;</type>
@@ -38,19 +38,19 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_event_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="event_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/event.hpp" line="59"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_event_1aa28124883bfb17601f85db7e635094b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="event_1aa28124883bfb17601f85db7e635094b1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Event</definition>
         <argsstring>()</argsstring>

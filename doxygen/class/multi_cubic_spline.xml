@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_multi_cubic_spline" kind="class" prot="public">
+  <compounddef id="multi_cubic_spline" kind="class" prot="public">
     <compoundname>QuantLib::MultiCubicSpline</compoundname>
     <includes local="no">/math/interpolations/multicubicspline.hpp</includes>
     <templateparamlist>
@@ -11,49 +11,49 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a015b0e85ee81e3da61427f7a4c0d42ee" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1a015b0e85ee81e3da61427f7a4c0d42ee" prot="public" static="no">
         <type>c_splint::argument_type</type>
         <definition>typedef c_splint::argument_type argument_type</definition>
         <argsstring></argsstring>
         <name>argument_type</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="470" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="470" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a1041b4d77c5a2dc893d85075b9683901" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1a1041b4d77c5a2dc893d85075b9683901" prot="public" static="no">
         <type>c_splint::result_type</type>
         <definition>typedef c_splint::result_type result_type</definition>
         <argsstring></argsstring>
         <name>result_type</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="471" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="471" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1ad52271a2cb04f2fa648165cc57c2606a" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1ad52271a2cb04f2fa648165cc57c2606a" prot="public" static="no">
         <type>c_splint::data_table</type>
         <definition>typedef c_splint::data_table data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="472" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="472" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1abb2defc9d91d720b0608c60bc1e54450" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1abb2defc9d91d720b0608c60bc1e54450" prot="public" static="no">
         <type>c_splint::return_type</type>
         <definition>typedef c_splint::return_type return_type</definition>
         <argsstring></argsstring>
         <name>return_type</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="473" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="473" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a4155be31bdd2d49d7f4f2276773a470c" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1a4155be31bdd2d49d7f4f2276773a470c" prot="public" static="no">
         <type>c_splint::output_data</type>
         <definition>typedef c_splint::output_data output_data</definition>
         <argsstring></argsstring>
         <name>output_data</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="474" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="474" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a212b7ae9248cc51f5df6690ac9aab14e" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1a212b7ae9248cc51f5df6690ac9aab14e" prot="public" static="no">
         <type>c_splint::dimensions</type>
         <definition>typedef c_splint::dimensions dimensions</definition>
         <argsstring></argsstring>
         <name>dimensions</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="475" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="475" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_multi_cubic_spline_1a6586602618017024fdcd66a924e147e8" prot="public" static="no">
+      <memberdef kind="typedef" id="multi_cubic_spline_1a6586602618017024fdcd66a924e147e8" prot="public" static="no">
         <type>c_splint::data</type>
         <definition>typedef c_splint::data data</definition>
         <argsstring></argsstring>
@@ -62,7 +62,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1acdd17fa93ecf7947e0a70431f9d2e28c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="multi_cubic_spline_1acdd17fa93ecf7947e0a70431f9d2e28c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MultiCubicSpline</definition>
         <argsstring>(const SplineGrid &amp;grid, const data_table &amp;y, const std::vector&lt; bool &gt; &amp;ae=std::vector&lt; bool &gt;(20, false))</argsstring>
@@ -82,7 +82,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="481" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="477" bodyend="484"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="multi_cubic_spline_1a77115db0bafb1f6fd97e51216e552b6d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>result_type</type>
         <definition>result_type operator()</definition>
         <argsstring>(const argument_type &amp;x) const </argsstring>
@@ -93,14 +93,14 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="485" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="485" bodyend="490"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a34b4b0a9ab266c603ce441c4cf9db4c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="multi_cubic_spline_1a34b4b0a9ab266c603ce441c4cf9db4c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void set_shared_increments</definition>
         <argsstring>() const </argsstring>
         <name>set_shared_increments</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="491" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="508" bodyend="533"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_multi_cubic_spline_1a54a993ffaa599e4ca5e431d59183c3d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="multi_cubic_spline_1a54a993ffaa599e4ca5e431d59183c3d1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void set_shared_coefficients</definition>
         <argsstring>(const argument_type &amp;x) const </argsstring>

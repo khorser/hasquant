@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_simple_quote" kind="class" prot="public">
+  <compounddef id="simple_quote" kind="class" prot="public">
     <compoundname>QuantLib::SimpleQuote</compoundname>
     <includes local="no">/quotes/simplequote.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Quote interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="simple_quote_1ab7f31cfaca49d25079e464ca462d691c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>() const </argsstring>
         <name>value</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
+        <reimplements refid="quote_1ab60805c81ba477be9e2c45b12a8f4f9e">value</reimplements>
         <briefdescription>
 <para>returns the current value </para>        </briefdescription>
         <location file="/quotes/simplequote.hpp" line="38" bodyfile="/quotes/simplequote.hpp" bodystart="56" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="simple_quote_1aac1b70a2ed67ead038c4d3f5ac4d8a81" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>bool</type>
         <definition>bool isValid</definition>
         <argsstring>() const </argsstring>
         <name>isValid</name>
-        <reimplements refid="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
+        <reimplements refid="quote_1a84d80615491ecea423f99490445b73ae">isValid</reimplements>
         <briefdescription>
-<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
         <location file="/quotes/simplequote.hpp" line="39" bodyfile="/quotes/simplequote.hpp" bodystart="61" bodyend="63"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Modifiers</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simple_quote_1a7c026a3ee76cc34dae9493945f020af6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real setValue</definition>
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
@@ -36,13 +36,13 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>returns the difference between the new value and the old value </para>        </briefdescription>
         <location file="/quotes/simplequote.hpp" line="44" bodyfile="/quotes/simplequote.hpp" bodystart="65" bodyend="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simple_quote_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>
@@ -51,7 +51,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_quote_1aa3842da21c4ba0b230d9481d63c3b06c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simple_quote_1aa3842da21c4ba0b230d9481d63c3b06c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SimpleQuote</definition>
         <argsstring>(Real value=Null&lt; Real &gt;())</argsstring>
@@ -59,7 +59,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>value</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/quotes/simplequote.hpp" line="35" bodyfile="/quotes/simplequote.hpp" bodystart="53" bodyend="54"/>
       </memberdef>

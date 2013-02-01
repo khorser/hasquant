@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_australia" kind="class" prot="public">
+  <compounddef id="australia" kind="class" prot="public">
     <compoundname>QuantLib::Australia</compoundname>
     <includes local="no">/time/calendars/australia.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_australia_1a6f2e6af341d104f01df32e128ae2b918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="australia_1a6f2e6af341d104f01df32e128ae2b918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Australia</definition>
         <argsstring>()</argsstring>
@@ -23,7 +23,7 @@
 <listitem>
 <para>New Year&apos;s Day, January 1st </para></listitem>
 <listitem>
-<para><ref refid="class_quant_lib_1_1_australia" kindref="compound">Australia</ref> Day, January 26th (possibly moved to Monday) </para></listitem>
+<para><ref refid="australia" kindref="compound">Australia</ref> Day, January 26th (possibly moved to Monday) </para></listitem>
 <listitem>
 <para>Good Friday </para></listitem>
 <listitem>

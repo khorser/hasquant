@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_convertible_fixed_coupon_bond" kind="class" prot="public">
+  <compounddef id="convertible_fixed_coupon_bond" kind="class" prot="public">
     <compoundname>QuantLib::ConvertibleFixedCouponBond</compoundname>
     <includes local="no">/experimental/convertiblebonds/convertiblebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_convertible_fixed_coupon_bond_1a16291a67f8c6bfffe0a97f3e8b7c8bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="convertible_fixed_coupon_bond_1a16291a67f8c6bfffe0a97f3e8b7c8bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ConvertibleFixedCouponBond</definition>
         <argsstring>(const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, Real conversionRatio, const DividendSchedule &amp;dividends, const CallabilitySchedule &amp;callability, const Handle&lt; Quote &gt; &amp;creditSpread, const Date &amp;issueDate, Natural settlementDays, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;dayCounter, const Schedule &amp;schedule, Real redemption=100)</argsstring>
         <name>ConvertibleFixedCouponBond</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -26,11 +26,11 @@
           <declname>callability</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>creditSpread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
         </param>
         <param>
@@ -42,11 +42,11 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -60,7 +60,7 @@
     <briefdescription>
 <para>convertible fixed-coupon bond </para>    </briefdescription>
     <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000010"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from <ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000010"><xreftitle>Warning</xreftitle><xrefdescription><para>Most methods inherited from <ref refid="bond" kindref="compound">Bond</ref> (such as yield or the yield-based dirtyPrice and cleanPrice) refer to the underlying plain-vanilla bond and do not take convertibility and callability into account. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/convertiblebonds/convertiblebond.hpp" line="109" bodyfile="/experimental/convertiblebonds/convertiblebond.hpp" bodystart="109" bodyend="123"/>
   </compounddef>
 </doxygen>

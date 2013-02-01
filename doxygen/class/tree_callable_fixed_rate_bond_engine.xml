@@ -1,58 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine" kind="class" prot="public">
+  <compounddef id="tree_callable_fixed_rate_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::TreeCallableFixedRateBondEngine</compoundname>
     <includes local="no">/experimental/callablebonds/treecallablebondengine.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
       <description><para><simplesect kind="note"><para>the term structure is only needed when the short-rate model cannot provide one itself. </para></simplesect>
 </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine_1a1cc36fd6c3b9bfd100620dcb97270886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tree_callable_fixed_rate_bond_engine_1a1cc36fd6c3b9bfd100620dcb97270886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TreeCallableFixedRateBondEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;, const Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCallableFixedRateBondEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
         </param>
         <param>
           <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine_1a6c95d92dec5732fade8b82de214eaba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="tree_callable_fixed_rate_bond_engine_1a6c95d92dec5732fade8b82de214eaba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TreeCallableFixedRateBondEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;, const TimeGrid &amp;timeGrid, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCallableFixedRateBondEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="52"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="tree_callable_fixed_rate_bond_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>

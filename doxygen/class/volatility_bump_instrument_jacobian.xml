@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_volatility_bump_instrument_jacobian" kind="class" prot="public">
+  <compounddef id="volatility_bump_instrument_jacobian" kind="class" prot="public">
     <compoundname>QuantLib::VolatilityBumpInstrumentJacobian</compoundname>
-    <innerclass refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_cap" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Cap</innerclass>
-    <innerclass refid="struct_quant_lib_1_1_volatility_bump_instrument_jacobian_1_1_swaption" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Swaption</innerclass>
+    <innerclass refid="volatility_bump_instrument_jacobian_1_1_cap" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Cap</innerclass>
+    <innerclass refid="volatility_bump_instrument_jacobian_1_1_swaption" prot="public">QuantLib::VolatilityBumpInstrumentJacobian::Swaption</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a4733b81cad6142c6eda26dbf7dff5a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_bump_instrument_jacobian_1a4733b81cad6142c6eda26dbf7dff5a65" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VolatilityBumpInstrumentJacobian</definition>
         <argsstring>(const VegaBumpCollection &amp;bumps, const std::vector&lt; Swaption &gt; &amp;swaptions, const std::vector&lt; Cap &gt; &amp;caps)</argsstring>
         <name>VolatilityBumpInstrumentJacobian</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
+          <type>const <ref refid="vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
           <declname>bumps</declname>
         </param>
         <param>
@@ -24,14 +24,14 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a3f96a924f595b6c38156acbfb26dc988" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
+      <memberdef kind="function" id="volatility_bump_instrument_jacobian_1a3f96a924f595b6c38156acbfb26dc988" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="vega_bump_collection" kindref="compound">VegaBumpCollection</ref> &amp;</type>
         <definition>const VegaBumpCollection&amp; getInputBumps</definition>
         <argsstring>() const </argsstring>
         <name>getInputBumps</name>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="57" bodyfile="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" bodystart="56" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a6a9e4faf3bee0ac83e22202182c135ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_bump_instrument_jacobian_1a6a9e4faf3bee0ac83e22202182c135ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>const std::vector&lt;Real&gt; derivativesVolatility</definition>
         <argsstring>(Size j) const </argsstring>
@@ -42,7 +42,7 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a8ec3d8f8ba0de5392701edafc7882d45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="volatility_bump_instrument_jacobian_1a8ec3d8f8ba0de5392701edafc7882d45" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>const std::vector&lt;Real&gt; onePercentBump</definition>
         <argsstring>(Size j) const </argsstring>
@@ -53,8 +53,8 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/bumpinstrumentjacobian.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_volatility_bump_instrument_jacobian_1a420548ad33b833b5d34cfb5958186bf0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="volatility_bump_instrument_jacobian_1a420548ad33b833b5d34cfb5958186bf0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; getAllOnePercentBumps</definition>
         <argsstring>() const </argsstring>
         <name>getAllOnePercentBumps</name>

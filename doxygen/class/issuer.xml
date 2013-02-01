@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_issuer" kind="class" prot="public">
+  <compounddef id="issuer" kind="class" prot="public">
     <compoundname>QuantLib::Issuer</compoundname>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="issuer_1a1b1952a0d8fa17fcb9b0504fd0bb83ab" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;DefaultProbabilityTermStructure&gt;&amp; defaultProbability</definition>
         <argsstring>(const DefaultProbKey &amp;key) const </argsstring>
         <name>defaultProbability</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>key</declname>
         </param>
         <location file="/experimental/credit/issuer.hpp" line="70"/>
@@ -18,21 +18,21 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utilities</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1aa5fcaca208d3a18ee259122144495a06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_event" kindref="compound">DefaultEvent</ref> &gt;</type>
+      <memberdef kind="function" id="issuer_1aa5fcaca208d3a18ee259122144495a06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="default_event" kindref="compound">DefaultEvent</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;DefaultEvent&gt; defaultedBetween</definition>
         <argsstring>(const Date &amp;start, const Date &amp;end, const DefaultProbKey &amp;key, bool includeRefDate=false) const </argsstring>
         <name>defaultedBetween</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>end</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>key</declname>
         </param>
         <param>
@@ -46,8 +46,8 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_issuer_1a3f1c8e1e41fdad27a733ed7a14560904" prot="public" static="no">
-        <type>std::pair&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>, <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt;</type>
+      <memberdef kind="typedef" id="issuer_1a3f1c8e1e41fdad27a733ed7a14560904" prot="public" static="no">
+        <type>std::pair&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref>, <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt;</type>
         <definition>typedef std::pair&lt;DefaultProbKey, Handle&lt;DefaultProbabilityTermStructure&gt; &gt; key_curve_pair</definition>
         <argsstring></argsstring>
         <name>key_curve_pair</name>
@@ -55,7 +55,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="issuer_1afd7dca7a5176138f5c0770e4e3f796a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Issuer</definition>
         <argsstring>(const std::vector&lt; key_curve_pair &gt; &amp;probabilities=std::vector&lt; key_curve_pair &gt;(), const DefaultEventSet &amp;events=DefaultEventSet())</argsstring>
@@ -74,17 +74,17 @@
 <para>The first argument represents the probability of an issuer of having any of its bonds with the given seniority, currency incurring in that particular event. The second argument represents the history of past events. Theres no check on wether the event list makes sense, events can occur several times and several of them can take place on the same date.</para><para>To do: add settlement event access </para>        </detaileddescription>
         <location file="/experimental/credit/issuer.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="issuer_1a1df735b27e4f4f1eae5efe0e89408c98" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Issuer</definition>
         <argsstring>(const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; DefaultType &gt; &gt; &gt; &amp;eventTypes, const std::vector&lt; Currency &gt; &amp;currencies, const std::vector&lt; Seniority &gt; &amp;seniorities, const std::vector&lt; Handle&lt; DefaultProbabilityTermStructure &gt; &gt; &amp;curves, const DefaultEventSet &amp;events=DefaultEventSet())</argsstring>
         <name>Issuer</name>
         <param>
-          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_type" kindref="compound">DefaultType</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; boost::shared_ptr&lt; <ref refid="default_type" kindref="compound">DefaultType</ref> &gt; &gt; &gt; &amp;</type>
           <declname>eventTypes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="currency" kindref="compound">Currency</ref> &gt; &amp;</type>
           <declname>currencies</declname>
         </param>
         <param>
@@ -92,7 +92,7 @@
           <declname>seniorities</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt; &gt; &amp;</type>
           <declname>curves</declname>
         </param>
         <param>
@@ -102,21 +102,21 @@
         </param>
         <location file="/experimental/credit/issuer.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_default_event" kindref="compound">DefaultEvent</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="issuer_1a19bd6b49217422b9d86b12fefd9d288f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="default_event" kindref="compound">DefaultEvent</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;DefaultEvent&gt; &gt; defaultsBetween</definition>
         <argsstring>(const Date &amp;start, const Date &amp;end, const DefaultProbKey &amp;contractKey, bool includeRefDate) const </argsstring>
         <name>defaultsBetween</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>start</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>end</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>contractKey</declname>
         </param>
         <param>

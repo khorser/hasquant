@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_p_i_coupon" kind="class" prot="public">
+  <compounddef id="c_p_i_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CPICoupon</compoundname>
     <includes local="no">/cashflows/cpicoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a73f485121a325bf2585dc27479916da8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a73f485121a325bf2585dc27479916da8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fixedRate</definition>
         <argsstring>() const </argsstring>
@@ -14,7 +14,7 @@
 <para>fixed rate that will be inflated by the index ratio </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="83" bodyfile="/cashflows/cpicoupon.hpp" bodystart="220" bodyend="222"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a9180ec724c28efa1fac9bfe986bde5e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a9180ec724c28efa1fac9bfe986bde5e8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Real spread</definition>
         <argsstring>() const </argsstring>
@@ -23,7 +23,7 @@
 <para>spread paid over the fixing of the underlying index </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="85" bodyfile="/cashflows/cpicoupon.hpp" bodystart="224" bodyend="226"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a3fc865a7893694a17491eca24f7df3a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate adjustedFixing</definition>
         <argsstring>() const </argsstring>
@@ -32,17 +32,17 @@
 <para>adjusted fixing (already divided by the base fixing) </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="88" bodyfile="/cashflows/cpicoupon.hpp" bodystart="228" bodyend="230"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a23cbd01fcfcd4d0077f26fca43fb9b41" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate indexFixing</definition>
         <argsstring>() const </argsstring>
         <name>indexFixing</name>
-        <reimplements refid="class_quant_lib_1_1_inflation_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
+        <reimplements refid="inflation_coupon_1abb75c00a042f794562147c2a5f81b08a">indexFixing</reimplements>
         <briefdescription>
 <para>allows for a different interpolation from the index </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="90" bodyfile="/cashflows/cpicoupon.hpp" bodystart="232" bodyend="234"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a7076f32553ee48e0680b92904cf7cecd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a7076f32553ee48e0680b92904cf7cecd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate baseCPI</definition>
         <argsstring>() const </argsstring>
@@ -53,7 +53,7 @@
 <para><xrefsect id="caveats_1_caveats000003"><xreftitle>Warning</xreftitle><xrefdescription><para>make sure that the interpolation used to create this is what you are using for the fixing, i.e. the observationInterpolation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/cashflows/cpicoupon.hpp" line="96" bodyfile="/cashflows/cpicoupon.hpp" bodystart="236" bodyend="238"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a62db405966d340dced7d2c24418e43d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>CPI::InterpolationType</type>
         <definition>CPI::InterpolationType observationInterpolation</definition>
         <argsstring>() const </argsstring>
@@ -62,21 +62,21 @@
 <para>how do you observe the index? as-is, flat, linear? </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="98" bodyfile="/cashflows/cpicoupon.hpp" bodystart="240" bodyend="242"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a5da913aeed0edf77297364893db12269" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a5da913aeed0edf77297364893db12269" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate indexObservation</definition>
         <argsstring>(const Date &amp;onDate) const </argsstring>
         <name>indexObservation</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>onDate</declname>
         </param>
         <briefdescription>
 <para>utility method, calls indexFixing </para>        </briefdescription>
         <location file="/cashflows/cpicoupon.hpp" line="100" bodyfile="/cashflows/cpicoupon.hpp" bodystart="244" bodyend="246"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a7d55ac3f4ee40d96136b8aab08ea81bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+      <memberdef kind="function" id="c_p_i_coupon_1a7d55ac3f4ee40d96136b8aab08ea81bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; ZeroInflationIndex &gt; cpiIndex</definition>
         <argsstring>() const </argsstring>
         <name>cpiIndex</name>
@@ -87,20 +87,20 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="inflation_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="107"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_coupon_1a2912608d42f1189af67009e7840a3bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_coupon_1a2912608d42f1189af67009e7840a3bd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CPICoupon</definition>
         <argsstring>(Real baseCPI, const Date &amp;paymentDate, Real nominal, const Date &amp;startDate, const Date &amp;endDate, Natural fixingDays, const boost::shared_ptr&lt; ZeroInflationIndex &gt; &amp;index, const Period &amp;observationLag, CPI::InterpolationType observationInterpolation, const DayCounter &amp;dayCounter, Real fixedRate, Spread spread=0.0, const Date &amp;refPeriodStart=Date(), const Date &amp;refPeriodEnd=Date())</argsstring>
@@ -110,7 +110,7 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
@@ -118,11 +118,11 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
@@ -130,11 +130,11 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -142,7 +142,7 @@
           <declname>observationInterpolation</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -155,14 +155,14 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/cashflows/cpicoupon.hpp" line="78"/>
       </memberdef>

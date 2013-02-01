@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gauss_lobatto_integral" kind="class" prot="public">
+  <compounddef id="gauss_lobatto_integral" kind="class" prot="public">
     <compoundname>QuantLib::GaussLobattoIntegral</compoundname>
     <includes local="no">/math/integrals/gausslobattointegral.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_lobatto_integral_1a22e1010dd30105e19d6f6b777128f45a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gauss_lobatto_integral_1a22e1010dd30105e19d6f6b777128f45a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GaussLobattoIntegral</definition>
         <argsstring>(Size maxIterations, Real absAccuracy, Real relAccuracy=Null&lt; Real &gt;(), bool useConvergenceEstimate=true)</argsstring>
@@ -20,7 +20,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>relAccuracy</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <param>
           <type>bool</type>

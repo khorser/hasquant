@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_null_condition" kind="class" prot="public">
+  <compounddef id="null_condition" kind="class" prot="public">
     <compoundname>QuantLib::NullCondition</compoundname>
     <includes local="no">/methods/finitedifferences/stepcondition.hpp</includes>
     <templateparamlist>
@@ -9,12 +9,12 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_null_condition_1a878bab06de00a1b5dfee2a25928f75ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="null_condition_1a878bab06de00a1b5dfee2a25928f75ba" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(array_type &amp;, Time) const </argsstring>
         <name>applyTo</name>
-        <reimplements refid="class_quant_lib_1_1_step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
+        <reimplements refid="step_condition_1afdc3da6d1c176db553a6e53b46684206">applyTo</reimplements>
         <param>
           <type>array_type &amp;</type>
         </param>

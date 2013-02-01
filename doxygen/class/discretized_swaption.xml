@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_discretized_swaption" kind="class" prot="public">
+  <compounddef id="discretized_swaption" kind="class" prot="public">
     <compoundname>QuantLib::DiscretizedSwaption</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_swaption_1a40898e73d462ae1e01a125341cf30ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_swaption_1a40898e73d462ae1e01a125341cf30ec1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DiscretizedSwaption</definition>
         <argsstring>(const Swaption::arguments &amp;, const Date &amp;referenceDate, const DayCounter &amp;dayCounter)</argsstring>
         <name>DiscretizedSwaption</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_swaption_1_1arguments" kindref="compound">Swaption::arguments</ref> &amp;</type>
+          <type>const <ref refid="swaption_1_1arguments" kindref="compound">Swaption::arguments</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/pricingengines/swaption/discretizedswaption.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_discretized_swaption_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="discretized_swaption_1a1142d869230e14e04fc5d755b9b15e52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>(Size size)</argsstring>

@@ -1,39 +1,39 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_commodity_unit_cost" kind="class" prot="public">
+  <compounddef id="commodity_unit_cost" kind="class" prot="public">
     <compoundname>QuantLib::CommodityUnitCost</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1ae0adde80ae10226cf9b4a38d0e2f60bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_unit_cost_1ae0adde80ae10226cf9b4a38d0e2f60bd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CommodityUnitCost</definition>
         <argsstring>()</argsstring>
         <name>CommodityUnitCost</name>
         <location file="/experimental/commodities/commodityunitcost.hpp" line="34" bodyfile="/experimental/commodities/commodityunitcost.hpp" bodystart="34" bodyend="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1afa109e53a596e5ad2d985ba8dd96cd9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_unit_cost_1afa109e53a596e5ad2d985ba8dd96cd9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CommodityUnitCost</definition>
         <argsstring>(const Money &amp;amount, const UnitOfMeasure &amp;unitOfMeasure)</argsstring>
         <name>CommodityUnitCost</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+          <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
         <location file="/experimental/commodities/commodityunitcost.hpp" line="37" bodyfile="/experimental/commodities/commodityunitcost.hpp" bodystart="35" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1ac5c99f8389e4128d193cce78549e69d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_money" kindref="compound">Money</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_unit_cost_1ac5c99f8389e4128d193cce78549e69d2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="money" kindref="compound">Money</ref> &amp;</type>
         <definition>const Money&amp; amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
         <location file="/experimental/commodities/commodityunitcost.hpp" line="39" bodyfile="/experimental/commodities/commodityunitcost.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_unit_cost_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_unit_cost_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>

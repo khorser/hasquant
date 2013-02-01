@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer" kind="class" prot="public">
+  <compounddef id="unit_displaced_black_yo_y_inflation_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::UnitDisplacedBlackYoYInflationCouponPricer</compoundname>
     <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1aaf117f45aba9582f1937b3b5ad3eb8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="unit_displaced_black_yo_y_inflation_coupon_pricer_1aaf117f45aba9582f1937b3b5ad3eb8f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>UnitDisplacedBlackYoYInflationCouponPricer</definition>
         <argsstring>(const Handle&lt; YoYOptionletVolatilitySurface &gt; &amp;capletVol=Handle&lt; YoYOptionletVolatilitySurface &gt;())</argsstring>
         <name>UnitDisplacedBlackYoYInflationCouponPricer</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt; &amp;</type>
           <declname>capletVol</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yo_y_optionlet_volatility_surface" kindref="compound">YoYOptionletVolatilitySurface</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="150" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="147" bodyend="150"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_displaced_black_yo_y_inflation_coupon_pricer_1acfc8acdaa2629202e579ae7c9c6ea74d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="unit_displaced_black_yo_y_inflation_coupon_pricer_1acfc8acdaa2629202e579ae7c9c6ea74d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~UnitDisplacedBlackYoYInflationCouponPricer</definition>
         <argsstring>()</argsstring>

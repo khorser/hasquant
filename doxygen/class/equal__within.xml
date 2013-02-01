@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1equal__within" kind="class" prot="public">
+  <compounddef id="equal__within" kind="class" prot="public">
     <compoundname>QuantLib::equal_within</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1equal__within_1aba10874b24bb791afbb80c466b07dd80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="equal__within_1aba10874b24bb791afbb80c466b07dd80" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>equal_within</definition>
         <argsstring>(const T &amp;eps)</argsstring>
@@ -19,7 +19,7 @@
         </param>
         <location file="/math/functional.hpp" line="83" bodyfile="/math/functional.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1equal__within_1ab4d9bad9ac6c628cadf62cbea4eec9e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="equal__within_1ab4d9bad9ac6c628cadf62cbea4eec9e0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator()</definition>
         <argsstring>(const T a, const T b) const </argsstring>

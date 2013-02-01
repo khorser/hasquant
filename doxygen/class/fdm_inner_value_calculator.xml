@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_inner_value_calculator" kind="class" prot="public" abstract="yes">
+  <compounddef id="fdm_inner_value_calculator" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmInnerValueCalculator</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="fdm_inner_value_calculator_1a7c9a2325c52a4215a9772132ade582ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~FdmInnerValueCalculator</definition>
         <argsstring>()</argsstring>
         <name>~FdmInnerValueCalculator</name>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="42" bodyfile="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1abf190c44cd8a17439c5121804d753e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="fdm_inner_value_calculator_1abf190c44cd8a17439c5121804d753e60" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real innerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)=0</argsstring>
@@ -25,7 +25,7 @@
         </param>
         <location file="/methods/finitedifferences/utilities/fdminnervaluecalculator.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_inner_value_calculator_1a974ef05390467116171bc6cf8891d72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="fdm_inner_value_calculator_1a974ef05390467116171bc6cf8891d72d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real avgInnerValue</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Time t)=0</argsstring>

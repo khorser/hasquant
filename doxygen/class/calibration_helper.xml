@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_calibration_helper" kind="class" prot="public" abstract="yes">
+  <compounddef id="calibration_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CalibrationHelper</compoundname>
     <includes local="no">/models/calibrationhelper.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033" prot="public" static="no">
+      <memberdef kind="enum" id="calibration_helper_1a34370195c7123743b79df0fbedd9e033" prot="public" static="no">
         <name>CalibrationErrorType</name>
-        <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf604e0665fd047d7badbdaf88ddfc61" prot="public">
+        <enumvalue id="calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf604e0665fd047d7badbdaf88ddfc61" prot="public">
           <name>RelativePriceError</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033a83494bc1850f0e4c4802e2b8d2e4aa51" prot="public">
+        <enumvalue id="calibration_helper_1a34370195c7123743b79df0fbedd9e033a83494bc1850f0e4c4802e2b8d2e4aa51" prot="public">
           <name>PriceError</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf711a9a55e986cdd866fc61bd1d65b6" prot="public">
+        <enumvalue id="calibration_helper_1a34370195c7123743b79df0fbedd9e033aaf711a9a55e986cdd866fc61bd1d65b6" prot="public">
           <name>ImpliedVolError</name>
         </enumvalue>
         <location file="/models/calibrationhelper.hpp" line="38" bodyfile="/models/calibrationhelper.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a1c1f699e86af3c7d725555ee8640d319" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="calibration_helper_1a1c1f699e86af3c7d725555ee8640d319" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CalibrationHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, CalibrationErrorType calibrationErrorType=RelativePriceError)</argsstring>
         <name>CalibrationHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -39,15 +39,15 @@
         </param>
         <location file="/models/calibrationhelper.hpp" line="46" bodyfile="/models/calibrationhelper.hpp" bodystart="41" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="calibration_helper_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/models/calibrationhelper.hpp" line="50" bodyfile="/models/calibrationhelper.hpp" bodystart="50" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="calibration_helper_1aa1d5a2a3e1205bdc482f59182282c426" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real marketValue</definition>
         <argsstring>() const </argsstring>
@@ -56,7 +56,7 @@
 <para>returns the actual price of the instrument (from volatility) </para>        </briefdescription>
         <location file="/models/calibrationhelper.hpp" line="56" bodyfile="/models/calibrationhelper.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="calibration_helper_1a573ec85444166decbaa5888155b9fa39" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real modelValue</definition>
         <argsstring>() const =0</argsstring>
@@ -65,7 +65,7 @@
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
         <location file="/models/calibrationhelper.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ac9e6e106b8ad56b7bf89a48b8a004857" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="calibration_helper_1ac9e6e106b8ad56b7bf89a48b8a004857" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real calibrationError</definition>
         <argsstring>()</argsstring>
@@ -74,7 +74,7 @@
 <para>returns the error resulting from the model valuation </para>        </briefdescription>
         <location file="/models/calibrationhelper.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="calibration_helper_1a06c670b250bcd21e9787ebc007093545" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void addTimesTo</definition>
         <argsstring>(std::list&lt; Time &gt; &amp;times) const =0</argsstring>
@@ -85,7 +85,7 @@
         </param>
         <location file="/models/calibrationhelper.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a83cd0c8293969d49634c639a632141f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="calibration_helper_1a83cd0c8293969d49634c639a632141f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real targetValue, Real accuracy, Size maxEvaluations, Volatility minVol, Volatility maxVol) const </argsstring>
@@ -114,7 +114,7 @@
 <para>Black volatility implied by the model. </para>        </briefdescription>
         <location file="/models/calibrationhelper.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="calibration_helper_1ae916246904fe19039c315903020642ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real blackPrice</definition>
         <argsstring>(Volatility volatility) const =0</argsstring>
@@ -127,13 +127,13 @@
 <para>Black price given a volatility. </para>        </briefdescription>
         <location file="/models/calibrationhelper.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_calibration_helper_1a5ef2cc90f16cf902829ac616f7b5278c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="calibration_helper_1a5ef2cc90f16cf902829ac616f7b5278c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setPricingEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine)</argsstring>
         <name>setPricingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
         </param>
         <location file="/models/calibrationhelper.hpp" line="76" bodyfile="/models/calibrationhelper.hpp" bodystart="76" bodyend="78"/>

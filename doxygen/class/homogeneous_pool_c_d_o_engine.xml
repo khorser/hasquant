@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_homogeneous_pool_c_d_o_engine" kind="class" prot="public">
+  <compounddef id="homogeneous_pool_c_d_o_engine" kind="class" prot="public">
     <compoundname>QuantLib::HomogeneousPoolCDOEngine</compoundname>
     <includes local="no">/experimental/credit/syntheticcdoengines.hpp</includes>
     <templateparamlist>
@@ -9,13 +9,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_homogeneous_pool_c_d_o_engine_1ace7b042f1370876b141ffce56dfc2d04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="homogeneous_pool_c_d_o_engine_1ace7b042f1370876b141ffce56dfc2d04" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>HomogeneousPoolCDOEngine</definition>
         <argsstring>(const Handle&lt; OneFactorCopula &gt; copula, Size nBuckets)</argsstring>
         <name>HomogeneousPoolCDOEngine</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="one_factor_copula" kindref="compound">OneFactorCopula</ref> &gt;</type>
           <declname>copula</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_c_d_o" kindref="compound">CDO</ref> engine, loss distribution convolution for finite homogeneous pool. </para>    </briefdescription>
+<para><ref refid="c_d_o" kindref="compound">CDO</ref> engine, loss distribution convolution for finite homogeneous pool. </para>    </briefdescription>
     <location file="/experimental/credit/syntheticcdoengines.hpp" line="173" bodyfile="/experimental/credit/syntheticcdoengines.hpp" bodystart="173" bodyend="192"/>
   </compounddef>
 </doxygen>

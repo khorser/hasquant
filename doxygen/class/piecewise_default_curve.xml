@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_piecewise_default_curve" kind="class" prot="public">
+  <compounddef id="piecewise_default_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseDefaultCurve</compoundname>
     <includes local="no">/termstructures/credit/piecewisedefaultcurve.hpp</includes>
     <templateparamlist>
@@ -14,18 +14,18 @@
         <type>template&lt; class &gt; class</type>
         <declname>Bootstrap</declname>
         <defname>Bootstrap</defname>
-        <defval><ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+        <defval><ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ae88bdedd1988e3787e9d978aebef9714" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1ae88bdedd1988e3787e9d978aebef9714" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator())</argsstring>
         <name>PiecewiseDefaultCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -33,18 +33,18 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -58,13 +58,13 @@
         </param>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="74" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="64" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1af9197b8671844a2e853c84372c9f23dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1af9197b8671844a2e853c84372c9f23dd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator())</argsstring>
         <name>PiecewiseDefaultCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -72,7 +72,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -86,13 +86,13 @@
         </param>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="86" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="77" bodyend="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a8362a0a7d6e1086edfa05d5c1f341f56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1a8362a0a7d6e1086edfa05d5c1f341f56" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i)</argsstring>
         <name>PiecewiseDefaultCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
@@ -100,7 +100,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -109,7 +109,7 @@
         </param>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="97" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="89" bodyend="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1aa6f78e9689f729dcfb0b926c570d9e40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1aa6f78e9689f729dcfb0b926c570d9e40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator())</argsstring>
@@ -119,7 +119,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -127,18 +127,18 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -152,7 +152,7 @@
         </param>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="111" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="100" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a1e33eab94376aaba73208040750687ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1a1e33eab94376aaba73208040750687ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, Real accuracy, const Interpolator &amp;i=Interpolator())</argsstring>
@@ -162,7 +162,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -170,7 +170,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -184,7 +184,7 @@
         </param>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="124" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="114" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a8f330e931eed76bab8d012839e5b421c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1a8f330e931eed76bab8d012839e5b421c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseDefaultCurve</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;calendar, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, const DayCounter &amp;dayCounter, const Interpolator &amp;i)</argsstring>
@@ -194,7 +194,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -202,7 +202,7 @@
           <declname>instruments</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -214,8 +214,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_default_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -224,29 +224,29 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>base_curve interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="146" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="188" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="piecewise_default_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="147" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="195" bodyend="198"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="148" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="202" bodyend="205"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="piecewise_default_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -255,24 +255,24 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_default_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="piecewise_default_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
+        <reimplements refid="lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="153" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="215" bodyend="218"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_default_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
         <location file="/termstructures/credit/piecewisedefaultcurve.hpp" line="60" bodyfile="/termstructures/credit/piecewisedefaultcurve.hpp" bodystart="60" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_default_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_default_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>

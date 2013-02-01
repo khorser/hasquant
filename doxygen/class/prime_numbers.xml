@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_prime_numbers" kind="class" prot="public">
+  <compounddef id="prime_numbers" kind="class" prot="public">
     <compoundname>QuantLib::PrimeNumbers</compoundname>
     <includes local="no">/math/primenumbers.hpp</includes>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="prime_numbers_1a118ca53a54e9ba31771da1f1909aa4b6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="namespace_quant_lib_1ae3df3f13e67885465f4e359b3bffa4e6" kindref="member">BigNatural</ref></type>
         <definition>static BigNatural get</definition>
         <argsstring>(Size absoluteIndex)</argsstring>

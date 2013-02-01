@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_vol_cube2" kind="class" prot="public">
+  <compounddef id="swaption_vol_cube2" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolCube2</compoundname>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube2_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -14,8 +14,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityCube inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1a76f975c1961892f90f7e26169d80cd11" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_vol_cube2_1a76f975c1961892f90f7e26169d80cd11" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; volSpreads</definition>
         <argsstring>(Size i) const </argsstring>
         <name>volSpreads</name>
@@ -25,23 +25,23 @@
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="61" bodyfile="/termstructures/volatility/swaption/swaptionvolcube2.hpp" bodystart="61" bodyend="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1ad755da1a3ef6e55fff3e0777ab075948" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="swaption_vol_cube2_1ad755da1a3ef6e55fff3e0777ab075948" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;swapTenor) const </argsstring>
         <name>smileSectionImpl</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1a04f2608add446a8af9cfe54291488e82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="swaption_vol_cube2_1a04f2608add446a8af9cfe54291488e82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time optionTime, Time swapLength) const </argsstring>
         <name>smileSectionImpl</name>
@@ -57,21 +57,21 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube2_1aa6961bd57430aba0e756491bc0ad80b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube2_1aa6961bd57430aba0e756491bc0ad80b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolCube2</definition>
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;atmVolStructure, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; Spread &gt; &amp;strikeSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndexBase, const boost::shared_ptr&lt; SwapIndex &gt; &amp;shortSwapIndexBase, bool vegaWeightedSmileFit)</argsstring>
         <name>SwaptionVolCube2</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>atmVolStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
@@ -79,15 +79,15 @@
           <declname>strikeSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>swapIndexBase</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>shortSwapIndexBase</declname>
         </param>
         <param>
@@ -95,7 +95,7 @@
           <declname>vegaWeightedSmileFit</declname>
         </param>
         <detaileddescription>
-<para>The swaption vol cube is made up of ordered swaption vol surface layers, each layer referring to a swap index of a given length (in years), all indexes belonging to the same family. In order to identify the family (and its market conventions) an index of whatever length from that family must be passed in as swapIndexBase.</para><para>Often for short swap length the swap index family is different, e.g. the EUR case: swap vs 6M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> is used for length&gt;1Y, while swap vs 3M <ref refid="class_quant_lib_1_1_euribor" kindref="compound">Euribor</ref> is used for the 1Y length. The shortSwapIndexBase is used to identify this second family. </para>        </detaileddescription>
+<para>The swaption vol cube is made up of ordered swaption vol surface layers, each layer referring to a swap index of a given length (in years), all indexes belonging to the same family. In order to identify the family (and its market conventions) an index of whatever length from that family must be passed in as swapIndexBase.</para><para>Often for short swap length the swap index family is different, e.g. the EUR case: swap vs 6M <ref refid="euribor" kindref="compound">Euribor</ref> is used for length&gt;1Y, while swap vs 3M <ref refid="euribor" kindref="compound">Euribor</ref> is used for the 1Y length. The shortSwapIndexBase is used to identify this second family. </para>        </detaileddescription>
         <location file="/termstructures/volatility/swaption/swaptionvolcube2.hpp" line="54"/>
       </memberdef>
       </sectiondef>

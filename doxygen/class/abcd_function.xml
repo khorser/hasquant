@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_abcd_function" kind="class" prot="public">
+  <compounddef id="abcd_function" kind="class" prot="public">
     <compoundname>QuantLib::AbcdFunction</compoundname>
     <includes local="no">/termstructures/volatility/abcd.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1aa5b24da2df7808a41fd0459e90d2274e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1aa5b24da2df7808a41fd0459e90d2274e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AbcdFunction</definition>
         <argsstring>(Real a=-0.06, Real b=0.17, Real c=0.54, Real d=0.17)</argsstring>
@@ -31,7 +31,7 @@
         </param>
         <location file="/termstructures/volatility/abcd.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a09ac2731682139dfb5c039d5ef86c4c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a09ac2731682139dfb5c039d5ef86c4c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Time u) const </argsstring>
@@ -44,7 +44,7 @@
 <para>volatility function value at time u: <formula id="374">\[ f(u) \]</formula> </para>        </briefdescription>
         <location file="/termstructures/volatility/abcd.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a50874afe0c200b1f432e8363bebf48dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a50874afe0c200b1f432e8363bebf48dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maximumLocation</definition>
         <argsstring>() const </argsstring>
@@ -53,7 +53,7 @@
 <para>time at which the volatility function reaches maximum (if any) </para>        </briefdescription>
         <location file="/termstructures/volatility/abcd.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a2887fc1efb1681ad197396c8be8d06c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a2887fc1efb1681ad197396c8be8d06c0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maximumVolatility</definition>
         <argsstring>() const </argsstring>
@@ -62,7 +62,7 @@
 <para>maximum value of the volatility function </para>        </briefdescription>
         <location file="/termstructures/volatility/abcd.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1abdba3791aa74b6cbc2716cecdfb4f564" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1abdba3791aa74b6cbc2716cecdfb4f564" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real shortTermVolatility</definition>
         <argsstring>() const </argsstring>
@@ -71,7 +71,7 @@
 <para>volatility function value at time 0: <formula id="375">\[ f(0) \]</formula> </para>        </briefdescription>
         <location file="/termstructures/volatility/abcd.hpp" line="63" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a3bff4463bab99b5233cd9e4909bc7e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a3bff4463bab99b5233cd9e4909bc7e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real longTermVolatility</definition>
         <argsstring>() const </argsstring>
@@ -80,7 +80,7 @@
 <para>volatility function value at time +inf: <formula id="376">\[ f(\inf) \]</formula> </para>        </briefdescription>
         <location file="/termstructures/volatility/abcd.hpp" line="66" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a4123ca84ef3fb8f01a84776142021bbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a4123ca84ef3fb8f01a84776142021bbd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real covariance</definition>
         <argsstring>(Time t, Time T, Time S) const </argsstring>
@@ -101,7 +101,7 @@
 <para>instantaneous covariance function at time t between T-fixing and S-fixing rates <formula id="377">\[ f(T-t)f(S-t) \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1abf1efc7759df5a67c86ad7dd46ef07b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1abf1efc7759df5a67c86ad7dd46ef07b6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real covariance</definition>
         <argsstring>(Time t1, Time t2, Time T, Time S) const </argsstring>
@@ -126,7 +126,7 @@
 <para>integral of the instantaneous covariance function between time t1 and t2 for T-fixing and S-fixing rates <formula id="378">\[ \int_{t1}^{t2} f(T-t)f(S-t)dt \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a71d1c4666515c7f912687f9315e87908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a71d1c4666515c7f912687f9315e87908" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real volatility</definition>
         <argsstring>(Time tMin, Time tMax, Time T) const </argsstring>
@@ -147,7 +147,7 @@
 <para>average volatility in [tMin,tMax] of T-fixing rate: <formula id="379">\[ \sqrt{ \frac{\int_{tMin}^{tMax} f^2(T-u)du}{tMax-tMin} } \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a9e7254d43b94577f386d04739ead10cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a9e7254d43b94577f386d04739ead10cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring>(Time tMin, Time tMax, Time T) const </argsstring>
@@ -168,7 +168,7 @@
 <para>variance between tMin and tMax of T-fixing rate: <formula id="380">\[ \frac{\int_{tMin}^{tMax} f^2(T-u)du}{tMax-tMin} \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a5c1cb404ffda59fac71aca8171bdfe9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a5c1cb404ffda59fac71aca8171bdfe9b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real instantaneousVolatility</definition>
         <argsstring>(Time t, Time T) const </argsstring>
@@ -185,7 +185,7 @@
 <para>instantaneous volatility at time t of the T-fixing rate: <formula id="381">\[ f(T-t) \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="90"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1ae4b1ff446696e681cc2ae3c9f10e06ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1ae4b1ff446696e681cc2ae3c9f10e06ff" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real instantaneousVariance</definition>
         <argsstring>(Time t, Time T) const </argsstring>
@@ -202,7 +202,7 @@
 <para>instantaneous variance at time t of T-fixing rate: <formula id="382">\[ f(T-t)f(T-t) \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a79722f1d9d039d384bf8bc2066e3ba5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a79722f1d9d039d384bf8bc2066e3ba5f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real instantaneousCovariance</definition>
         <argsstring>(Time u, Time T, Time S) const </argsstring>
@@ -223,7 +223,7 @@
 <para>instantaneous covariance at time t between T and S fixing rates: <formula id="383">\[ f(T-u)f(S-u) \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="98"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1aaf39b293ac7bc0d4494f772f48984b0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1aaf39b293ac7bc0d4494f772f48984b0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Time t, Time T, Time S) const </argsstring>
@@ -244,7 +244,7 @@
 <para>indefinite integral of the instantaneous covariance function at time t between T-fixing and S-fixing rates <formula id="384">\[ \int f(T-t)f(S-t)dt \]</formula> </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1aeb6c2cfe0928889369fc49347418ce31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real a</definition>
         <argsstring>() const </argsstring>
@@ -253,21 +253,21 @@
 <para>Inspectors </para>        </detaileddescription>
         <location file="/termstructures/volatility/abcd.hpp" line="107" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="107" bodyend="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1ad1cf85afbb81add225d9d591923cae35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real b</definition>
         <argsstring>() const </argsstring>
         <name>b</name>
         <location file="/termstructures/volatility/abcd.hpp" line="108" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1acd8075f42c1494dfe8ba083550bc3ad4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1acd8075f42c1494dfe8ba083550bc3ad4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real c</definition>
         <argsstring>() const </argsstring>
         <name>c</name>
         <location file="/termstructures/volatility/abcd.hpp" line="109" bodyfile="/termstructures/volatility/abcd.hpp" bodystart="109" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_abcd_function_1a8743fd2d2de27e48775635a148f15159" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="abcd_function_1a8743fd2d2de27e48775635a148f15159" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real d</definition>
         <argsstring>() const </argsstring>

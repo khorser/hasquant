@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_vol_cube1" kind="class" prot="public">
+  <compounddef id="swaption_vol_cube1" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionVolCube1</compoundname>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -14,8 +14,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SwaptionVolatilityCube interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a04f2608add446a8af9cfe54291488e82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="swaption_vol_cube1_1a04f2608add446a8af9cfe54291488e82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;SmileSection&gt; smileSectionImpl</definition>
         <argsstring>(Time optionTime, Time swapLength) const </argsstring>
         <name>smileSectionImpl</name>
@@ -32,8 +32,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1ae2b1fce168bdea1f9f28dabe5a184e26" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="swaption_vol_cube1_1ae2b1fce168bdea1f9f28dabe5a184e26" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; marketVolCube</definition>
         <argsstring>(Size i) const </argsstring>
         <name>marketVolCube</name>
@@ -43,29 +43,29 @@
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="118" bodyfile="/termstructures/volatility/swaption/swaptionvolcube1.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1ad86f57435c8c23d32a946abbc3c15832" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+      <memberdef kind="function" id="swaption_vol_cube1_1ad86f57435c8c23d32a946abbc3c15832" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix sparseSabrParameters</definition>
         <argsstring>() const </argsstring>
         <name>sparseSabrParameters</name>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="121"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1ab8105829169d513a9812c3852b3e62a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+      <memberdef kind="function" id="swaption_vol_cube1_1ab8105829169d513a9812c3852b3e62a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix denseSabrParameters</definition>
         <argsstring>() const </argsstring>
         <name>denseSabrParameters</name>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="122"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a5fbd63ec05bc7ff9c64b9163baf22b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+      <memberdef kind="function" id="swaption_vol_cube1_1a5fbd63ec05bc7ff9c64b9163baf22b8f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix marketVolCube</definition>
         <argsstring>() const </argsstring>
         <name>marketVolCube</name>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a63e3b8e7b614417a924116b5e164c8ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+      <memberdef kind="function" id="swaption_vol_cube1_1a63e3b8e7b614417a924116b5e164c8ea" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix volCubeAtmCalibrated</definition>
         <argsstring>() const </argsstring>
         <name>volCubeAtmCalibrated</name>
@@ -73,21 +73,21 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1a4eb4dc0248e058704cfb79454c21f231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube1_1a4eb4dc0248e058704cfb79454c21f231" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionVolCube1</definition>
         <argsstring>(const Handle&lt; SwaptionVolatilityStructure &gt; &amp;atmVolStructure, const std::vector&lt; Period &gt; &amp;optionTenors, const std::vector&lt; Period &gt; &amp;swapTenors, const std::vector&lt; Spread &gt; &amp;strikeSpreads, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;volSpreads, const boost::shared_ptr&lt; SwapIndex &gt; &amp;swapIndexBase, const boost::shared_ptr&lt; SwapIndex &gt; &amp;shortSwapIndexBase, bool vegaWeightedSmileFit, const std::vector&lt; std::vector&lt; Handle&lt; Quote &gt; &gt; &gt; &amp;parametersGuess, const std::vector&lt; bool &gt; &amp;isParameterFixed, bool isAtmCalibrated, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), Real maxErrorTolerance=Null&lt; Real &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;optMethod=boost::shared_ptr&lt; OptimizationMethod &gt;())</argsstring>
         <name>SwaptionVolCube1</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="swaption_volatility_structure" kindref="compound">SwaptionVolatilityStructure</ref> &gt; &amp;</type>
           <declname>atmVolStructure</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>optionTenors</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>swapTenors</declname>
         </param>
         <param>
@@ -95,15 +95,15 @@
           <declname>strikeSpreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
           <declname>volSpreads</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>swapIndexBase</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt; &amp;</type>
           <declname>shortSwapIndexBase</declname>
         </param>
         <param>
@@ -111,7 +111,7 @@
           <declname>vegaWeightedSmileFit</declname>
         </param>
         <param>
-          <type>const std::vector&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &gt; &amp;</type>
           <declname>parametersGuess</declname>
         </param>
         <param>
@@ -123,23 +123,23 @@
           <declname>isAtmCalibrated</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>maxErrorTolerance</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
           <declname>optMethod</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="105"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1ae70570dcb752c5ffa1755aed1b43cb14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube1_1ae70570dcb752c5ffa1755aed1b43cb14" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void sabrCalibrationSection</definition>
         <argsstring>(const Cube &amp;marketVolCube, Cube &amp;parametersCube, const Period &amp;swapTenor) const </argsstring>
@@ -153,12 +153,12 @@
           <declname>parametersCube</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_vol_cube1_1ad1726e26a8aa53e27f337a416ba59058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_vol_cube1_1ad1726e26a8aa53e27f337a416ba59058" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void recalibration</definition>
         <argsstring>(Real beta, const Period &amp;swapTenor)</argsstring>
@@ -168,7 +168,7 @@
           <declname>beta</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>swapTenor</declname>
         </param>
         <location file="/termstructures/volatility/swaption/swaptionvolcube1.hpp" line="130"/>

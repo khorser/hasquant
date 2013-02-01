@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::Option::arguments</compoundname>
     <includes local="no">/option.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="variable" id="option_1_1arguments_1addf4396eda69a064ee32aa220dd463d8" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring></argsstring>
         <name>payoff</name>
         <location file="/option.hpp" line="64" bodyfile="/option.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+      <memberdef kind="variable" id="option_1_1arguments_1a05e73fdf91ede14a13eeabe2aaaa961f" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring></argsstring>
         <name>exercise</name>
@@ -20,14 +20,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
         <location file="/option.hpp" line="59" bodyfile="/option.hpp" bodystart="59" bodyend="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

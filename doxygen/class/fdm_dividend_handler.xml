@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_dividend_handler" kind="class" prot="public">
+  <compounddef id="fdm_dividend_handler" kind="class" prot="public">
     <compoundname>QuantLib::FdmDividendHandler</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a85de6ca5372c93adfabedadf187e7bf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_dividend_handler_1a85de6ca5372c93adfabedadf187e7bf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmDividendHandler</definition>
         <argsstring>(const DividendSchedule &amp;schedule, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const Date &amp;referenceDate, const DayCounter &amp;dayCounter, Size equityDirection)</argsstring>
@@ -17,11 +17,11 @@
           <declname>mesher</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -30,13 +30,13 @@
         </param>
         <location file="/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_dividend_handler_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <param>
@@ -45,21 +45,21 @@
         </param>
         <location file="/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a0a837f2115f72e3be03837a7a5b7c8b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_dividend_handler_1a0a837f2115f72e3be03837a7a5b7c8b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; dividendTimes</definition>
         <argsstring>() const </argsstring>
         <name>dividendTimes</name>
         <location file="/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a437e8f80fe90518c362999111be8ed63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="fdm_dividend_handler_1a437e8f80fe90518c362999111be8ed63" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Date&gt;&amp; dividendDates</definition>
         <argsstring>() const </argsstring>
         <name>dividendDates</name>
         <location file="/methods/finitedifferences/utilities/fdmdividendhandler.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_dividend_handler_1a3baca721afe17fd9e82bff459bfde07f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_dividend_handler_1a3baca721afe17fd9e82bff459bfde07f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; dividends</definition>
         <argsstring>() const </argsstring>

@@ -1,55 +1,55 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_deposit_rate_helper" kind="class" prot="public">
+  <compounddef id="deposit_rate_helper" kind="class" prot="public">
     <compoundname>QuantLib::DepositRateHelper</compoundname>
     <includes local="no">/termstructures/yield/ratehelpers.hpp</includes>
       <sectiondef kind="user-defined">
       <header>RateHelper interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
+        <reimplements refid="bootstrap_helper_1a084bbc018cd8351e5acbe2f64d153efa">impliedQuote</reimplements>
         <location file="/termstructures/yield/ratehelpers.hpp" line="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a128a17ae0d2d2b95a63f9c3f49d44c31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTermStructure</definition>
         <argsstring>(YieldTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
+          <type><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> *</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="124"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="bootstrap_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="128"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1ad5435561466b2c20cb9128901222960c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1ad5435561466b2c20cb9128901222960c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DepositRateHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const Period &amp;tenor, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
         <name>DepositRateHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -57,7 +57,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -69,12 +69,12 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a206ac6021e19128ce1c3d3a9678bddde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a206ac6021e19128ce1c3d3a9678bddde" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DepositRateHelper</definition>
         <argsstring>(Rate rate, const Period &amp;tenor, Natural fixingDays, const Calendar &amp;calendar, BusinessDayConvention convention, bool endOfMonth, const DayCounter &amp;dayCounter)</argsstring>
@@ -84,7 +84,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -92,7 +92,7 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -104,27 +104,27 @@
           <declname>endOfMonth</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="116"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a68d9c871a6079d86eeb37ae5533f810f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a68d9c871a6079d86eeb37ae5533f810f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DepositRateHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;rate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
         <name>DepositRateHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_deposit_rate_helper_1a9e1952132092e1635687d2e3f8d9ba8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="deposit_rate_helper_1a9e1952132092e1635687d2e3f8d9ba8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DepositRateHelper</definition>
         <argsstring>(Rate rate, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
@@ -134,7 +134,7 @@
           <declname>rate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <location file="/termstructures/yield/ratehelpers.hpp" line="120"/>

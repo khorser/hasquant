@@ -1,22 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_term_structure_consistent_model" kind="class" prot="public">
+  <compounddef id="term_structure_consistent_model" kind="class" prot="public">
     <compoundname>QuantLib::TermStructureConsistentModel</compoundname>
     <includes local="no">/models/model.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="term_structure_consistent_model_1abc88328a9ce3013c5c8689ee87a0205c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TermStructureConsistentModel</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure)</argsstring>
         <name>TermStructureConsistentModel</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <location file="/models/model.hpp" line="69" bodyfile="/models/model.hpp" bodystart="67" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="term_structure_consistent_model_1aba911fdc1eafb640ce92861b77b04252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; termStructure</definition>
         <argsstring>() const </argsstring>
         <name>termStructure</name>

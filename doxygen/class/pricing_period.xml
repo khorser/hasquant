@@ -1,41 +1,41 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pricing_period" kind="class" prot="public">
+  <compounddef id="pricing_period" kind="class" prot="public">
     <compoundname>QuantLib::PricingPeriod</compoundname>
     <includes local="no">/experimental/commodities/pricingperiod.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_period_1a0bbfdd8aebce3a0ef7699b865100c636" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="pricing_period_1a0bbfdd8aebce3a0ef7699b865100c636" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PricingPeriod</definition>
         <argsstring>(const Date &amp;startDate, const Date &amp;endDate, const Date &amp;paymentDate, const Quantity &amp;quantity)</argsstring>
         <name>PricingPeriod</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>paymentDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
           <declname>quantity</declname>
         </param>
         <location file="/experimental/commodities/pricingperiod.hpp" line="40" bodyfile="/experimental/commodities/pricingperiod.hpp" bodystart="37" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_period_1afbb01189661a04d625dca0e40b60481d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="pricing_period_1afbb01189661a04d625dca0e40b60481d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date&amp; paymentDate</definition>
         <argsstring>() const </argsstring>
         <name>paymentDate</name>
         <location file="/experimental/commodities/pricingperiod.hpp" line="42" bodyfile="/experimental/commodities/pricingperiod.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_period_1ad8cfcb13eeb6b4122711b52bf1f5c5d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
+      <memberdef kind="function" id="pricing_period_1ad8cfcb13eeb6b4122711b52bf1f5c5d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
         <definition>const Quantity&amp; quantity</definition>
         <argsstring>() const </argsstring>
         <name>quantity</name>

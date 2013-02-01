@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_v_e_b_currency" kind="class" prot="public">
+  <compounddef id="v_e_b_currency" kind="class" prot="public">
     <compoundname>QuantLib::VEBCurrency</compoundname>
     <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_v_e_b_currency_1a2290a3f4b92568ff297629cc628a157a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="v_e_b_currency_1a2290a3f4b92568ff297629cc628a157a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>VEBCurrency</definition>
         <argsstring>()</argsstring>

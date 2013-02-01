@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_backward_solver" kind="class" prot="public">
+  <compounddef id="fdm_backward_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmBackwardSolver</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_backward_solver_1a1813b44fed97254f385fac37cfca09ee" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">FdmLinearOp::array_type</ref></type>
+      <memberdef kind="typedef" id="fdm_backward_solver_1a1813b44fed97254f385fac37cfca09ee" prot="public" static="no">
+        <type><ref refid="array" kindref="compound">FdmLinearOp::array_type</ref></type>
         <definition>typedef FdmLinearOp::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
@@ -12,7 +12,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_backward_solver_1a7f0a78b53be196297700ab572228b2e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_backward_solver_1a7f0a78b53be196297700ab572228b2e0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmBackwardSolver</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;map, const FdmBoundaryConditionSet &amp;bcSet, const boost::shared_ptr&lt; FdmStepConditionComposite &gt; condition, const FdmSchemeDesc &amp;schemeDesc)</argsstring>
@@ -35,13 +35,13 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmbackwardsolver.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_backward_solver_1a10bae81483a79f1a32bb2e528cd7bc5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_backward_solver_1a10bae81483a79f1a32bb2e528cd7bc5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void rollback</definition>
         <argsstring>(array_type &amp;a, Time from, Time to, Size steps, Size dampingSteps)</argsstring>
         <name>rollback</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">array_type</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <param>

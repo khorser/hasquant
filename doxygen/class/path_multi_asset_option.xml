@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_path_multi_asset_option" kind="class" prot="public" abstract="yes">
+  <compounddef id="path_multi_asset_option" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PathMultiAssetOption</compoundname>
     <includes local="no">/experimental/mcbasket/pathmultiassetoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_path_multi_asset_option_1_1arguments" prot="public">QuantLib::PathMultiAssetOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_path_multi_asset_option_1_1engine" prot="public">QuantLib::PathMultiAssetOption::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_path_multi_asset_option_1_1results" prot="public">QuantLib::PathMultiAssetOption::results</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1arguments" prot="public">QuantLib::PathMultiAssetOption::arguments</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1engine" prot="public">QuantLib::PathMultiAssetOption::engine</innerclass>
+    <innerclass refid="path_multi_asset_option_1_1results" prot="public">QuantLib::PathMultiAssetOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -31,45 +31,45 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
+      <memberdef kind="function" id="path_multi_asset_option_1a3762cf1ede25044eb5380658e479a49f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="path_payoff" kindref="compound">PathPayoff</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;PathPayoff&gt; pathPayoff</definition>
         <argsstring>() const =0</argsstring>
         <name>pathPayoff</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a1aa73071c45512677295c1e059e47060" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+      <memberdef kind="function" id="path_multi_asset_option_1a1aa73071c45512677295c1e059e47060" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>virtual std::vector&lt;Date&gt; fixingDates</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingDates</name>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1a1ea01b653cd3880c3e5d8bc34af412d3" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupExpired</definition>
         <argsstring>() const </argsstring>
         <name>setupExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
+        <reimplements refid="instrument_1a1ea01b653cd3880c3e5d8bc34af412d3">setupExpired</reimplements>
         <detaileddescription>
 <para>This method must leave the instrument in a consistent state when the expiration condition is met. </para>        </detaileddescription>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a9976ee9f3c76512bc22c86f56c67f092" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1a9976ee9f3c76512bc22c86f56c67f092" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>PathMultiAssetOption</definition>
         <argsstring>(const boost::shared_ptr&lt; PricingEngine &gt; &amp;engine=boost::shared_ptr&lt; PricingEngine &gt;())</argsstring>
         <name>PathMultiAssetOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt; &amp;</type>
           <declname>engine</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_pricing_engine" kindref="compound">PricingEngine</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="pricing_engine" kindref="compound">PricingEngine</ref> &gt;()</defval>
         </param>
         <location file="/experimental/mcbasket/pathmultiassetoption.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_multi_asset_option_1a0803235b46bc121d4737d821c1e4e277" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="path_multi_asset_option_1a0803235b46bc121d4737d821c1e4e277" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~PathMultiAssetOption</definition>
         <argsstring>()</argsstring>

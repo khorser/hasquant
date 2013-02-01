@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_early_exercise" kind="class" prot="public">
+  <compounddef id="early_exercise" kind="class" prot="public">
     <compoundname>QuantLib::EarlyExercise</compoundname>
     <includes local="no">/exercise.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="early_exercise_1acc512078299c8007a14deb5c7f94db10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>EarlyExercise</definition>
         <argsstring>(Type type, bool payoffAtExpiry=false)</argsstring>
@@ -20,7 +20,7 @@
         </param>
         <location file="/exercise.hpp" line="60" bodyfile="/exercise.hpp" bodystart="58" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="early_exercise_1afc233529c1530b5a9409277a3e75242f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool payoffAtExpiry</definition>
         <argsstring>() const </argsstring>

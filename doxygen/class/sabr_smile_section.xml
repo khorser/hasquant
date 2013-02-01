@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sabr_smile_section" kind="class" prot="public">
+  <compounddef id="sabr_smile_section" kind="class" prot="public">
     <compoundname>QuantLib::SabrSmileSection</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1a45b84be721584b99e56477c05da34926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_smile_section_1a45b84be721584b99e56477c05da34926" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SabrSmileSection</definition>
         <argsstring>(Time timeToExpiry, Rate forward, const std::vector&lt; Real &gt; &amp;sabrParameters)</argsstring>
@@ -22,13 +22,13 @@
         </param>
         <location file="/termstructures/volatility/sabrsmilesection.hpp" line="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1aaba12fd7c49dd8e6821f18483ee4fac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_smile_section_1aaba12fd7c49dd8e6821f18483ee4fac0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SabrSmileSection</definition>
         <argsstring>(const Date &amp;d, Rate forward, const std::vector&lt; Real &gt; &amp;sabrParameters, const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>SabrSmileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -40,27 +40,27 @@
           <declname>sabrParameters</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <location file="/termstructures/volatility/sabrsmilesection.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/sabrsmilesection.hpp" line="42" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/sabrsmilesection.hpp" line="43" bodyfile="/termstructures/volatility/sabrsmilesection.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>

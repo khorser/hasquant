@@ -1,32 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_adapted_path_payoff" kind="class" prot="public" abstract="yes">
+  <compounddef id="adapted_path_payoff" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::AdaptedPathPayoff</compoundname>
-    <innerclass refid="class_quant_lib_1_1_adapted_path_payoff_1_1_valuation_data" prot="public">QuantLib::AdaptedPathPayoff::ValuationData</innerclass>
+    <innerclass refid="adapted_path_payoff_1_1_valuation_data" prot="public">QuantLib::AdaptedPathPayoff::ValuationData</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_adapted_path_payoff_1a4fc1c7b18d5496f70710a11e9101665e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="adapted_path_payoff_1a4fc1c7b18d5496f70710a11e9101665e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void value</definition>
         <argsstring>(const Matrix &amp;path, const std::vector&lt; Handle&lt; YieldTermStructure &gt; &gt; &amp;forwardTermStructures, Array &amp;payments, Array &amp;exercises, std::vector&lt; Array &gt; &amp;states) const </argsstring>
         <name>value</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &gt; &amp;</type>
           <declname>forwardTermStructures</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>payments</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>exercises</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &amp;</type>
           <declname>states</declname>
         </param>
         <location file="/experimental/mcbasket/adaptedpathpayoff.hpp" line="73"/>

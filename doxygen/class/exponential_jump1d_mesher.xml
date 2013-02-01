@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_exponential_jump1d_mesher" kind="class" prot="public">
+  <compounddef id="exponential_jump1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::ExponentialJump1dMesher</compoundname>
     <includes local="no">/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1a71d3a400f8107ad1d604361cfc4012c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_jump1d_mesher_1a71d3a400f8107ad1d604361cfc4012c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExponentialJump1dMesher</definition>
         <argsstring>(Size steps, Real beta, Real jumpIntensity, Real eta, Real eps=1e-3)</argsstring>
@@ -32,7 +32,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1ab9e5c47b8969137e52b09ddced8ab89f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_jump1d_mesher_1ab9e5c47b8969137e52b09ddced8ab89f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real jumpSizeDensity</definition>
         <argsstring>(Real x) const </argsstring>
@@ -43,7 +43,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1acff366d655a8362deeca6f395fecf82f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_jump1d_mesher_1acff366d655a8362deeca6f395fecf82f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real jumpSizeDensity</definition>
         <argsstring>(Real x, Time t) const </argsstring>
@@ -58,7 +58,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1abe9536c90c8392c86dd8562d48eff07c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_jump1d_mesher_1abe9536c90c8392c86dd8562d48eff07c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real jumpSizeDistribution</definition>
         <argsstring>(Real x) const </argsstring>
@@ -69,7 +69,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/exponentialjump1dmesher.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exponential_jump1d_mesher_1affefbc63d3a01fdae697efebcd5c56c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exponential_jump1d_mesher_1affefbc63d3a01fdae697efebcd5c56c1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real jumpSizeDistribution</definition>
         <argsstring>(Real x, Time t) const </argsstring>

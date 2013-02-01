@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_european_path_pricer" kind="class" prot="public">
+  <compounddef id="european_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::EuropeanPathPricer</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_european_path_pricer_1a4083a0146e1595c0f653ec8d7f0fd9d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="european_path_pricer_1a4083a0146e1595c0f653ec8d7f0fd9d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>EuropeanPathPricer</definition>
         <argsstring>(Option::Type type, Real strike, DiscountFactor discount)</argsstring>
@@ -22,13 +22,13 @@
         </param>
         <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="98" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="248" bodyend="254"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_european_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="european_path_pricer_1aba860160c558ccdc77f540c899f41bfd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(const Path &amp;path) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <location file="/pricingengines/vanilla/mceuropeanengine.hpp" line="99" bodyfile="/pricingengines/vanilla/mceuropeanengine.hpp" bodystart="256" bodyend="259"/>

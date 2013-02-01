@@ -1,35 +1,35 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cliquet_option" kind="class" prot="public">
+  <compounddef id="cliquet_option" kind="class" prot="public">
     <compoundname>QuantLib::CliquetOption</compoundname>
     <includes local="no">/instruments/cliquetoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1arguments" prot="public">QuantLib::CliquetOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cliquet_option_1_1engine" prot="public">QuantLib::CliquetOption::engine</innerclass>
+    <innerclass refid="cliquet_option_1_1arguments" prot="public">QuantLib::CliquetOption::arguments</innerclass>
+    <innerclass refid="cliquet_option_1_1engine" prot="public">QuantLib::CliquetOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cliquet_option_1a14988ea07051e642fa62d73c4ff3fed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cliquet_option_1a14988ea07051e642fa62d73c4ff3fed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CliquetOption</definition>
         <argsstring>(const boost::shared_ptr&lt; PercentageStrikePayoff &gt; &amp;, const boost::shared_ptr&lt; EuropeanExercise &gt; &amp;maturity, const std::vector&lt; Date &gt; &amp;resetDates)</argsstring>
         <name>CliquetOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_percentage_strike_payoff" kindref="compound">PercentageStrikePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="percentage_strike_payoff" kindref="compound">PercentageStrikePayoff</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_european_exercise" kindref="compound">EuropeanExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="european_exercise" kindref="compound">EuropeanExercise</ref> &gt; &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>resetDates</declname>
         </param>
         <location file="/instruments/cliquetoption.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cliquet_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cliquet_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

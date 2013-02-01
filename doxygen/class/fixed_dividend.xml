@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fixed_dividend" kind="class" prot="public">
+  <compounddef id="fixed_dividend" kind="class" prot="public">
     <compoundname>QuantLib::FixedDividend</compoundname>
     <includes local="no">/cashflows/dividend.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Dividend interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_dividend_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="fixed_dividend_1a16b8c27249065cfd9c5a2df99c217fac" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
-        <reimplements refid="class_quant_lib_1_1_dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
+        <reimplements refid="dividend_1a9b47a18fd731fee50de8227ea00f85ca">amount</reimplements>
         <briefdescription>
 <para>returns the amount of the cash flow </para>        </briefdescription>
         <detaileddescription>
@@ -18,12 +18,12 @@
 </para>        </detaileddescription>
         <location file="/cashflows/dividend.hpp" line="65" bodyfile="/cashflows/dividend.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_dividend_1afb22d24f9de61304f9bf6072e9206a0e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="fixed_dividend_1afb22d24f9de61304f9bf6072e9206a0e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real amount</definition>
         <argsstring>(Real) const </argsstring>
         <name>amount</name>
-        <reimplements refid="class_quant_lib_1_1_dividend_1a4851910d5646519c98bb6ee48bab8648">amount</reimplements>
+        <reimplements refid="dividend_1a4851910d5646519c98bb6ee48bab8648">amount</reimplements>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         </param>
@@ -31,7 +31,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_dividend_1a66e30a0489235def3691267c084bd982" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fixed_dividend_1a66e30a0489235def3691267c084bd982" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FixedDividend</definition>
         <argsstring>(Real amount, const Date &amp;date)</argsstring>
@@ -41,7 +41,7 @@
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/dividend.hpp" line="62" bodyfile="/cashflows/dividend.hpp" bodystart="61" bodyend="62"/>

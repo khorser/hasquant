@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_libor" kind="class" prot="public">
+  <compounddef id="libor" kind="class" prot="public">
     <compoundname>QuantLib::Libor</compoundname>
     <includes local="no">/indexes/ibor/libor.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Date calculations</header>
       <description><para>see <ulink url="http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412">http://www.bba.org.uk/bba/jsp/polopoly.jsp?d=225&amp;a=1412</ulink> </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_1a01fafdb3585a34706678b12af90b1cf9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="libor_1a01fafdb3585a34706678b12af90b1cf9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date valueDate</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>valueDate</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_index_1a01fafdb3585a34706678b12af90b1cf9">valueDate</reimplements>
+        <reimplements refid="interest_rate_index_1a01fafdb3585a34706678b12af90b1cf9">valueDate</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <location file="/indexes/ibor/libor.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="libor_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>(const Date &amp;valueDate) const </argsstring>
         <name>maturityDate</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
+        <reimplements refid="interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
         <location file="/indexes/ibor/libor.hpp" line="54"/>
@@ -33,14 +33,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other methods</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_1a1a7804d7c4d753ee70800b8913a50622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+      <memberdef kind="function" id="libor_1a1a7804d7c4d753ee70800b8913a50622" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;IborIndex&gt; clone</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;h) const </argsstring>
         <name>clone</name>
-        <reimplements refid="class_quant_lib_1_1_ibor_index_1a0940a98cfe26d1a55530dc50814f0a48">clone</reimplements>
+        <reimplements refid="ibor_index_1a0940a98cfe26d1a55530dc50814f0a48">clone</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <briefdescription>
@@ -49,7 +49,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_1a31d1278ed064aaf773b5e8dfc4fd5c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="libor_1a31d1278ed064aaf773b5e8dfc4fd5c64" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Libor</definition>
         <argsstring>(const std::string &amp;familyName, const Period &amp;tenor, Natural settlementDays, const Currency &amp;currency, const Calendar &amp;financialCenterCalendar, const DayCounter &amp;dayCounter, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
@@ -59,7 +59,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -67,21 +67,21 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>financialCenterCalendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/ibor/libor.hpp" line="47"/>
       </memberdef>

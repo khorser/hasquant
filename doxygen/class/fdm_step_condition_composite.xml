@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_step_condition_composite" kind="class" prot="public">
+  <compounddef id="fdm_step_condition_composite" kind="class" prot="public">
     <compoundname>QuantLib::FdmStepConditionComposite</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_step_condition_composite_1a6bc126e9ab7843921a5b5d2b5018adcf" prot="public" static="no">
-        <type>std::list&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_step_condition" kindref="compound">StepCondition</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt; &gt;</type>
+      <memberdef kind="typedef" id="fdm_step_condition_composite_1a6bc126e9ab7843921a5b5d2b5018adcf" prot="public" static="no">
+        <type>std::list&lt; boost::shared_ptr&lt; <ref refid="step_condition" kindref="compound">StepCondition</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt; &gt; &gt;</type>
         <definition>typedef std::list&lt;boost::shared_ptr&lt;StepCondition&lt;Array&gt; &gt; &gt; Conditions</definition>
         <argsstring></argsstring>
         <name>Conditions</name>
@@ -12,7 +12,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a25f249e0532f5a2174b4075de3a45d86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1a25f249e0532f5a2174b4075de3a45d86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmStepConditionComposite</definition>
         <argsstring>(const std::list&lt; std::vector&lt; Time &gt; &gt; &amp;stoppingTimes, const Conditions &amp;conditions)</argsstring>
@@ -27,13 +27,13 @@
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1a8fd6385c73b92accf5aefa2c0d95134e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(Array &amp;a, Time t) const </argsstring>
         <name>applyTo</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <param>
@@ -42,14 +42,14 @@
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1ae273746d46d552b36e079755fa097178" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1ae273746d46d552b36e079755fa097178" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Time&gt;&amp; stoppingTimes</definition>
         <argsstring>() const </argsstring>
         <name>stoppingTimes</name>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1a273bef697c0714099c4268d1dcf15be2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1a273bef697c0714099c4268d1dcf15be2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const Conditions &amp;</type>
         <definition>const Conditions&amp; conditions</definition>
         <argsstring>() const </argsstring>
@@ -58,7 +58,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1abbc01083af72f7cdc866613abbc2b3de" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1abbc01083af72f7cdc866613abbc2b3de" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; FdmStepConditionComposite &gt;</type>
         <definition>static boost::shared_ptr&lt;FdmStepConditionComposite&gt; joinConditions</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmSnapshotCondition &gt; &amp;c1, const boost::shared_ptr&lt; FdmStepConditionComposite &gt; &amp;c2)</argsstring>
@@ -73,7 +73,7 @@
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_step_condition_composite_1ac74c9d62ffde57df16d50ce6a788c741" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_step_condition_composite_1ac74c9d62ffde57df16d50ce6a788c741" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; FdmStepConditionComposite &gt;</type>
         <definition>static boost::shared_ptr&lt;FdmStepConditionComposite&gt; vanillaComposite</definition>
         <argsstring>(const DividendSchedule &amp;schedule, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher, const boost::shared_ptr&lt; FdmInnerValueCalculator &gt; &amp;calculator, const Date &amp;refDate, const DayCounter &amp;dayCounter)</argsstring>
@@ -83,7 +83,7 @@
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <param>
@@ -95,11 +95,11 @@
           <declname>calculator</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/methods/finitedifferences/stepconditions/fdmstepconditioncomposite.hpp" line="65"/>

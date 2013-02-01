@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_flat_vol_factory" kind="class" prot="public">
+  <compounddef id="flat_vol_factory" kind="class" prot="public">
     <compoundname>QuantLib::FlatVolFactory</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1a093886b811d5fa9f94a291aabebf53cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_vol_factory_1a093886b811d5fa9f94a291aabebf53cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FlatVolFactory</definition>
         <argsstring>(Real longTermCorrelation, Real beta, const std::vector&lt; Time &gt; &amp;times, const std::vector&lt; Volatility &gt; &amp;vols, const Handle&lt; YieldTermStructure &gt; &amp;yieldCurve, Spread displacement)</argsstring>
@@ -25,7 +25,7 @@
           <declname>vols</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldCurve</declname>
         </param>
         <param>
@@ -34,13 +34,13 @@
         </param>
         <location file="/models/marketmodels/models/flatvol.hpp" line="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt;</type>
+      <memberdef kind="function" id="flat_vol_factory_1acf20dc18634c1e53c82ecf40a807a70b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;MarketModel&gt; create</definition>
         <argsstring>(const EvolutionDescription &amp;, Size numberOfFactors) const </argsstring>
         <name>create</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
@@ -48,7 +48,7 @@
         </param>
         <location file="/models/marketmodels/models/flatvol.hpp" line="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_vol_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="flat_vol_factory_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>

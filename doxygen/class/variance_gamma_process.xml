@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_variance_gamma_process" kind="class" prot="public">
+  <compounddef id="variance_gamma_process" kind="class" prot="public">
     <compoundname>QuantLib::VarianceGammaProcess</compoundname>
     <includes local="no">/experimental/variancegamma/variancegammaprocess.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1aedd0446a44f48ee92068daf14f6a8b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="variance_gamma_process_1aedd0446a44f48ee92068daf14f6a8b56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VarianceGammaProcess</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;s0, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, Real sigma, Real nu, Real theta)</argsstring>
         <name>VarianceGammaProcess</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>s0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
@@ -35,22 +35,22 @@
         </param>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="variance_gamma_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real x0</definition>
         <argsstring>() const </argsstring>
         <name>x0</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
+        <reimplements refid="stochastic_process1_d_1ac02c619851c7c95e6a7f08a284c568b0">x0</reimplements>
         <briefdescription>
 <para>returns the initial value of the state variable </para>        </briefdescription>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="variance_gamma_process_1a545d33724b1d6d312eb8a17f73571842" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real drift</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>drift</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
+        <reimplements refid="stochastic_process1_d_1a6bded8896a46fad4d189950552432cd3">drift</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -63,12 +63,12 @@
 <para>returns the drift part of the equation, i.e. <formula id="360">$ \mu(t, x_t) $</formula> </para>        </briefdescription>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="variance_gamma_process_1ab4d7fe4af7a6dd0ae710c073569821e4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real diffusion</definition>
         <argsstring>(Time t, Real x) const </argsstring>
         <name>diffusion</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
+        <reimplements refid="stochastic_process1_d_1afaf479da3baa52185b369071b1689d89">diffusion</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -81,43 +81,43 @@
 <para>returns the diffusion part of the equation, i.e. <formula id="361">$ \sigma(t, x_t) $</formula> </para>        </briefdescription>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="variance_gamma_process_1a78bca11664a7d403bde6a9842f72ae61" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real sigma</definition>
         <argsstring>() const </argsstring>
         <name>sigma</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="62" bodyfile="/experimental/variancegamma/variancegammaprocess.hpp" bodystart="62" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="variance_gamma_process_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="63" bodyfile="/experimental/variancegamma/variancegammaprocess.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="variance_gamma_process_1a7a00901daf5bbc66f00e4772cbe0c98f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real theta</definition>
         <argsstring>() const </argsstring>
         <name>theta</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="64" bodyfile="/experimental/variancegamma/variancegammaprocess.hpp" bodystart="64" bodyend="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a5454c7c9728f2ccef70ac7c9cc0fccee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="variance_gamma_process_1a5454c7c9728f2ccef70ac7c9cc0fccee" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
         <definition>const Handle&lt;Quote&gt;&amp; s0</definition>
         <argsstring>() const </argsstring>
         <name>s0</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="variance_gamma_process_1ad410a408dd37b79578b370b5219dbf80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; dividendYield</definition>
         <argsstring>() const </argsstring>
         <name>dividendYield</name>
         <location file="/experimental/variancegamma/variancegammaprocess.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_gamma_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="variance_gamma_process_1a925fdf9de4dd73519b36f975bc7917a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
         <definition>const Handle&lt;YieldTermStructure&gt;&amp; riskFreeRate</definition>
         <argsstring>() const </argsstring>
         <name>riskFreeRate</name>

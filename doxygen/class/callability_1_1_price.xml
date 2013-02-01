@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callability_1_1_price" kind="class" prot="public">
+  <compounddef id="callability_1_1_price" kind="class" prot="public">
     <compoundname>QuantLib::Callability::Price</compoundname>
     <includes local="no">/instruments/callabilityschedule.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7ac6af973c5e80fa24e058491cfc3ce3d7" prot="public">
+        <enumvalue id="callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7ac6af973c5e80fa24e058491cfc3ce3d7" prot="public">
           <name>Dirty</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7accea35f717039c64bc6ea05604ecddc0" prot="public">
+        <enumvalue id="callability_1_1_price_1a1d1cfd8ffb84e947f82999c682b666a7accea35f717039c64bc6ea05604ecddc0" prot="public">
           <name>Clean</name>
         </enumvalue>
         <location file="/instruments/callabilityschedule.hpp" line="42" bodyfile="/instruments/callabilityschedule.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1ae582fb779f6c1b5549fd220239816302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callability_1_1_price_1ae582fb779f6c1b5549fd220239816302" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Price</definition>
         <argsstring>()</argsstring>
         <name>Price</name>
         <location file="/instruments/callabilityschedule.hpp" line="43" bodyfile="/instruments/callabilityschedule.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1ab8ab494def066d8193e346cdea69a68d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callability_1_1_price_1ab8ab494def066d8193e346cdea69a68d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Price</definition>
         <argsstring>(Real amount, Type type)</argsstring>
@@ -38,14 +38,14 @@
         </param>
         <location file="/instruments/callabilityschedule.hpp" line="44" bodyfile="/instruments/callabilityschedule.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callability_1_1_price_1a1d4d65b7a73a47647d5355ba4372948e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real amount</definition>
         <argsstring>() const </argsstring>
         <name>amount</name>
         <location file="/instruments/callabilityschedule.hpp" line="45" bodyfile="/instruments/callabilityschedule.hpp" bodystart="45" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callability_1_1_price_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callability_1_1_price_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>

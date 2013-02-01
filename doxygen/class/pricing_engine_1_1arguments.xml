@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pricing_engine_1_1arguments" kind="class" prot="public" abstract="yes">
+  <compounddef id="pricing_engine_1_1arguments" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PricingEngine::arguments</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="pricing_engine_1_1arguments_1a09cc27057ecd43c170b2187ef57946cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~arguments</definition>
         <argsstring>()</argsstring>
         <name>~arguments</name>
         <location file="/pricingengine.hpp" line="47" bodyfile="/pricingengine.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1_1arguments_1a7e898751dcaf587c084beddf07066ac5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="pricing_engine_1_1arguments_1a7e898751dcaf587c084beddf07066ac5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void validate</definition>
         <argsstring>() const =0</argsstring>

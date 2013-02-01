@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_garman_klass_sigma5" kind="class" prot="public">
+  <compounddef id="garman_klass_sigma5" kind="class" prot="public">
     <compoundname>QuantLib::GarmanKlassSigma5</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_garman_klass_sigma5_1a7966ed5c4142c8e8592614770484c72b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="garman_klass_sigma5_1a7966ed5c4142c8e8592614770484c72b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GarmanKlassSigma5</definition>
         <argsstring>(Real y)</argsstring>

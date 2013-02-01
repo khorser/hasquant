@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_boundary_condition_set" kind="class" prot="public">
+  <compounddef id="boundary_condition_set" kind="class" prot="public">
     <compoundname>QuantLib::BoundaryConditionSet</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_set_1adadb3786bfe63eaec40510b17577a9f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="boundary_condition_set_1adadb3786bfe63eaec40510b17577a9f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void push_back</definition>
         <argsstring>(const bc_set &amp;a)</argsstring>
@@ -19,7 +19,7 @@
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="64" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_boundary_condition_set_1a953c41a20c8ce28203cde135390ddbc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="boundary_condition_set_1a953c41a20c8ce28203cde135390ddbc9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const bc_set &amp;</type>
         <definition>const bc_set&amp; operator[]</definition>
         <argsstring>(Size i) const </argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_levenberg_marquardt" kind="class" prot="public">
+  <compounddef id="levenberg_marquardt" kind="class" prot="public">
     <compoundname>QuantLib::LevenbergMarquardt</compoundname>
     <includes local="no">/math/optimization/levenbergmarquardt.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="levenberg_marquardt_1a25b3a603b8afafa6e17f5951e504eadf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LevenbergMarquardt</definition>
         <argsstring>(Real epsfcn=1.0e-8, Real xtol=1.0e-8, Real gtol=1.0e-8)</argsstring>
@@ -26,32 +26,32 @@
         </param>
         <location file="/math/optimization/levenbergmarquardt.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="levenberg_marquardt_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>EndCriteria::Type</type>
         <definition>virtual EndCriteria::Type minimize</definition>
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
         <name>minimize</name>
-        <reimplements refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
+        <reimplements refid="optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <briefdescription>
 <para>minimize the optimization problem P </para>        </briefdescription>
         <location file="/math/optimization/levenbergmarquardt.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="levenberg_marquardt_1a30cf1478e47879465dc409bf772d341c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>virtual Integer getInfo</definition>
         <argsstring>() const </argsstring>
         <name>getInfo</name>
         <location file="/math/optimization/levenbergmarquardt.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="levenberg_marquardt_1af5b3cbcb77cf6a5577918d83e848e415" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void fcn</definition>
         <argsstring>(int m, int n, double *x, double *fvec, int *iflag)</argsstring>

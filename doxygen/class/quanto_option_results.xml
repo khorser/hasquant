@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_quanto_option_results" kind="class" prot="public">
+  <compounddef id="quanto_option_results" kind="class" prot="public">
     <compoundname>QuantLib::QuantoOptionResults</compoundname>
     <includes local="no">/instruments/quantovanillaoption.hpp</includes>
     <templateparamlist>
@@ -11,21 +11,21 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_option_results_1a22b038229e304a87b5ee8e104fc6e0d2" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="quanto_option_results_1a22b038229e304a87b5ee8e104fc6e0d2" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qvega</definition>
         <argsstring></argsstring>
         <name>qvega</name>
         <location file="/instruments/quantovanillaoption.hpp" line="42" bodyfile="/instruments/quantovanillaoption.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_option_results_1ab226971d5d49e64a1612821867989936" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="quanto_option_results_1ab226971d5d49e64a1612821867989936" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qrho</definition>
         <argsstring></argsstring>
         <name>qrho</name>
         <location file="/instruments/quantovanillaoption.hpp" line="43" bodyfile="/instruments/quantovanillaoption.hpp" bodystart="43" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_quanto_option_results_1af668b46e2ea513bb6df4974bda3203ac" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="quanto_option_results_1af668b46e2ea513bb6df4974bda3203ac" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qlambda</definition>
         <argsstring></argsstring>
@@ -34,14 +34,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_option_results_1a8650e348397411cd7630c4aea540e30d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="quanto_option_results_1a8650e348397411cd7630c4aea540e30d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>QuantoOptionResults</definition>
         <argsstring>()</argsstring>
         <name>QuantoOptionResults</name>
         <location file="/instruments/quantovanillaoption.hpp" line="37" bodyfile="/instruments/quantovanillaoption.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_option_results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="quanto_option_results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_z_k_currency" kind="class" prot="public">
+  <compounddef id="c_z_k_currency" kind="class" prot="public">
     <compoundname>QuantLib::CZKCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_z_k_currency_1a9e6eb4c24e02bcd8c0cfb9b82af34039" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_z_k_currency_1a9e6eb4c24e02bcd8c0cfb9b82af34039" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CZKCurrency</definition>
         <argsstring>()</argsstring>

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function" kind="class" prot="protected">
+  <compounddef id="interpolated_yo_y_optionlet_stripper_1_1_objective_function" kind="class" prot="protected">
     <compoundname>QuantLib::InterpolatedYoYOptionletStripper::ObjectiveFunction</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aafe9555a1b241d82ed62ab32be14095c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1_1_objective_function_1aafe9555a1b241d82ed62ab32be14095c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ObjectiveFunction</definition>
         <argsstring>(YoYInflationCapFloor::Type type, Real slope, Rate K, Period &amp;lag, Natural fixingDays, boost::shared_ptr&lt; YoYInflationIndex &gt; anIndex, const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;p, Real priceToMatch)</argsstring>
@@ -21,7 +21,7 @@
           <declname>K</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type><ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -29,15 +29,15 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt;</type>
           <declname>anIndex</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
           <defname>surf</defname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
         </param>
         <location file="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" line="82" bodyfile="/experimental/inflation/interpolatedyoyoptionletstripper.hpp" bodystart="105" bodyend="149"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_optionlet_stripper_1_1_objective_function_1abdacd409ecccc5c455e3e09a60e2d4c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_yo_y_optionlet_stripper_1_1_objective_function_1abdacd409ecccc5c455e3e09a60e2d4c5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Volatility guess) const </argsstring>

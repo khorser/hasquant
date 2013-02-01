@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_cox_ingersoll_ross" kind="class" prot="public">
+  <compounddef id="extended_cox_ingersoll_ross" kind="class" prot="public">
     <compoundname>QuantLib::ExtendedCoxIngersollRoss</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/extendedcoxingersollross.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::ExtendedCoxIngersollRoss::Dynamics</innerclass>
-    <innerclass refid="class_quant_lib_1_1_extended_cox_ingersoll_ross_1_1_fitting_parameter" prot="public">QuantLib::ExtendedCoxIngersollRoss::FittingParameter</innerclass>
+    <innerclass refid="extended_cox_ingersoll_ross_1_1_dynamics" prot="public">QuantLib::ExtendedCoxIngersollRoss::Dynamics</innerclass>
+    <innerclass refid="extended_cox_ingersoll_ross_1_1_fitting_parameter" prot="public">QuantLib::ExtendedCoxIngersollRoss::FittingParameter</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a88667693f84f2d60e897a566c9fc1e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1a88667693f84f2d60e897a566c9fc1e7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExtendedCoxIngersollRoss</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real theta=0.1, Real k=0.1, Real sigma=0.1, Real x0=0.05)</argsstring>
         <name>ExtendedCoxIngersollRoss</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -37,36 +37,36 @@
         </param>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
+        <reimplements refid="cox_ingersoll_ross_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd">dynamics</reimplements>
+        <reimplements refid="cox_ingersoll_ross_1a625405160d212c8860ac39c19c9e91cd">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" line="55" bodyfile="/models/shortrate/onefactormodels/extendedcoxingersollross.hpp" bodystart="148" bodyend="151"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="extended_cox_ingersoll_ross_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
-        <reimplements refid="class_quant_lib_1_1_cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
+        <reimplements refid="cox_ingersoll_ross_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>

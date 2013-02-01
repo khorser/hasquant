@@ -1,59 +1,59 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_day_counter_1_1_impl" kind="class" prot="protected" abstract="yes">
+  <compounddef id="day_counter_1_1_impl" kind="class" prot="protected" abstract="yes">
     <compoundname>QuantLib::DayCounter::Impl</compoundname>
     <includes local="no">/time/daycounter.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="day_counter_1_1_impl_1ad46441eb366aba127b9f355e5c21405c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Impl</definition>
         <argsstring>()</argsstring>
         <name>~Impl</name>
         <location file="/time/daycounter.hpp" line="48" bodyfile="/time/daycounter.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="day_counter_1_1_impl_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
         <name>name</name>
         <location file="/time/daycounter.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="day_counter_1_1_impl_1a90dd5471f782a5f846b198b211f2f8f0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4f0ecbbf99e41b6d69cd54871d5d2b9e" kindref="member">BigInteger</ref></type>
         <definition>virtual BigInteger dayCount</definition>
         <argsstring>(const Date &amp;d1, const Date &amp;d2) const </argsstring>
         <name>dayCount</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d1</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d2</declname>
         </param>
         <briefdescription>
 <para>to be overloaded by more complex day counters </para>        </briefdescription>
         <location file="/time/daycounter.hpp" line="52" bodyfile="/time/daycounter.hpp" bodystart="51" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="day_counter_1_1_impl_1ae8632ad4f1823e4db1f0a933bc2814cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>virtual Time yearFraction</definition>
         <argsstring>(const Date &amp;d1, const Date &amp;d2, const Date &amp;refPeriodStart, const Date &amp;refPeriodEnd) const =0</argsstring>
         <name>yearFraction</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d1</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d2</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodStart</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refPeriodEnd</declname>
         </param>
         <location file="/time/daycounter.hpp" line="58"/>

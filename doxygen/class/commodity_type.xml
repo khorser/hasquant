@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_commodity_type" kind="class" prot="public">
+  <compounddef id="commodity_type" kind="class" prot="public">
     <compoundname>QuantLib::CommodityType</compoundname>
     <includes local="no">/experimental/commodities/commoditytype.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
         <definition>const std::string &amp; code</definition>
         <argsstring>() const </argsstring>
@@ -14,7 +14,7 @@
 <para>commodity code, e.g, &quot;HO&quot; </para>        </briefdescription>
         <location file="/experimental/commodities/commoditytype.hpp" line="49" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
         <definition>const std::string &amp; name</definition>
         <argsstring>() const </argsstring>
@@ -26,7 +26,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other information</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
@@ -37,7 +37,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a09c2a6e182b14dee1fa4190dd20359b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1a09c2a6e182b14dee1fa4190dd20359b2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CommodityType</definition>
         <argsstring>()</argsstring>
@@ -48,7 +48,7 @@
 <para>Instances built via this constructor have undefined behavior. Such instances can only act as placeholders and must be reassigned to a valid currency before being used. </para>        </detaileddescription>
         <location file="/experimental/commodities/commoditytype.hpp" line="44" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a8b6363fe49172948d3e690db183123de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1a8b6363fe49172948d3e690db183123de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityType</definition>
         <argsstring>(const std::string &amp;code, const std::string &amp;name)</argsstring>
@@ -65,33 +65,33 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a672fd02545f740f194d879cb2b260456" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1a672fd02545f740f194d879cb2b260456" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator==</definition>
         <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
         <name>operator==</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="77" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="107" bodyend="109"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1a77a9b9f71c1ed95bd31d2ad73dcc3202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1a77a9b9f71c1ed95bd31d2ad73dcc3202" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator!=</definition>
         <argsstring>(const CommodityType &amp;, const CommodityType &amp;)</argsstring>
         <name>operator!=</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="81" bodyfile="/experimental/commodities/commoditytype.hpp" bodystart="111" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_type_1ae9b4ce5917c9d8624983d67323e0b081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_type_1ae9b4ce5917c9d8624983d67323e0b081" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream &amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;, const CommodityType &amp;)</argsstring>
@@ -100,7 +100,7 @@
           <type>std::ostream &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         </param>
         <location file="/experimental/commodities/commoditytype.hpp" line="85"/>
       </memberdef>

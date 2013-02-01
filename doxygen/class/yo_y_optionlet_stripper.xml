@@ -1,63 +1,63 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_yo_y_optionlet_stripper" kind="class" prot="public" abstract="yes">
+  <compounddef id="yo_y_optionlet_stripper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::YoYOptionletStripper</compoundname>
     <includes local="no">/experimental/inflation/yoyoptionletstripper.hpp</includes>
       <sectiondef kind="user-defined">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1a5188210fcbaf217a55550e96c4909cfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1a5188210fcbaf217a55550e96c4909cfc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void initialize</definition>
         <argsstring>(const boost::shared_ptr&lt; YoYCapFloorTermPriceSurface &gt; &amp;, const boost::shared_ptr&lt; YoYInflationCapFloorEngine &gt; &amp;, const Real slope) const =0</argsstring>
         <name>initialize</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_cap_floor_term_price_surface" kindref="compound">YoYCapFloorTermPriceSurface</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_cap_floor_engine" kindref="compound">YoYInflationCapFloorEngine</ref> &gt; &amp;</type>
         </param>
         <param>
           <type>const <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>slope</declname>
         </param>
         <briefdescription>
-<para><ref refid="class_quant_lib_1_1_yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> interface. </para>        </briefdescription>
+<para><ref refid="yo_y_optionlet_stripper" kindref="compound">YoYOptionletStripper</ref> interface. </para>        </briefdescription>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>minStrike</name>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
         <name>maxStrike</name>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1ac959cc382e922f194db0da80ec9984d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1ac959cc382e922f194db0da80ec9984d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;</type>
         <definition>virtual std::vector&lt;Rate&gt; strikes</definition>
         <argsstring>() const =0</argsstring>
         <name>strikes</name>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1aea33d9a19826d827d20a9e73fe51298c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1aea33d9a19826d827d20a9e73fe51298c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt; &gt;</type>
         <definition>virtual std::pair&lt;std::vector&lt;Rate&gt;, std::vector&lt;Volatility&gt; &gt; slice</definition>
         <argsstring>(const Date &amp;d) const =0</argsstring>
         <name>slice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/experimental/inflation/yoyoptionletstripper.hpp" line="51"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_optionlet_stripper_1ae28bf8451f264c20221121f9d1e2da47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="yo_y_optionlet_stripper_1ae28bf8451f264c20221121f9d1e2da47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~YoYOptionletStripper</definition>
         <argsstring>()</argsstring>

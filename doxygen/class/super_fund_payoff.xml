@@ -1,46 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_super_fund_payoff" kind="class" prot="public">
+  <compounddef id="super_fund_payoff" kind="class" prot="public">
     <compoundname>QuantLib::SuperFundPayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="super_fund_payoff_1a37627d5d5bba7f4a8690c71c2ab3cb07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
-        <reimplements refid="class_quant_lib_1_1_payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
+        <reimplements refid="payoff_1a7f04e718c6856c4d3d77a496b6acad0d">name</reimplements>
         <detaileddescription>
 <para><xrefsect id="caveats_1_caveats000088"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between payoffs. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/instruments/payoffs.hpp" line="221" bodyfile="/instruments/payoffs.hpp" bodystart="221" bodyend="221"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="super_fund_payoff_1a8e9eb08690dcc10907f3eceb76e90bbe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real price) const </argsstring>
         <name>operator()</name>
-        <reimplements refid="class_quant_lib_1_1_payoff_1a6d8b8d4f6c9e7904c5de2786903518b6">operator()</reimplements>
+        <reimplements refid="payoff_1a6d8b8d4f6c9e7904c5de2786903518b6">operator()</reimplements>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>price</declname>
         </param>
         <location file="/instruments/payoffs.hpp" line="222"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="super_fund_payoff_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="payoff_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/instruments/payoffs.hpp" line="223"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1ade1dffd2bbafb10a7f164e1a9787455c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="super_fund_payoff_1ade1dffd2bbafb10a7f164e1a9787455c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SuperFundPayoff</definition>
         <argsstring>(Real strike, Real secondStrike)</argsstring>
@@ -55,7 +55,7 @@
         </param>
         <location file="/instruments/payoffs.hpp" line="211" bodyfile="/instruments/payoffs.hpp" bodystart="208" bodyend="218"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_super_fund_payoff_1a64eedb2ee7b46110f6c2b5e6d3ed025e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="super_fund_payoff_1a64eedb2ee7b46110f6c2b5e6d3ed025e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondStrike</definition>
         <argsstring>() const </argsstring>

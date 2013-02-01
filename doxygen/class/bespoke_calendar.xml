@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_bespoke_calendar" kind="class" prot="public">
+  <compounddef id="bespoke_calendar" kind="class" prot="public">
     <compoundname>QuantLib::BespokeCalendar</compoundname>
     <includes local="no">/time/calendars/bespokecalendar.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1a7f3c5b5278c667900534fb0e63f13c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bespoke_calendar_1a7f3c5b5278c667900534fb0e63f13c97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BespokeCalendar</definition>
         <argsstring>(const std::string &amp;name=&quot;&quot;)</argsstring>
@@ -18,7 +18,7 @@
 <para><xrefsect id="caveats_1_caveats000144"><xreftitle>Warning</xreftitle><xrefdescription><para>different bespoke calendars created with the same name (or different bespoke calendars created with no name) will compare as equal. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/time/calendars/bespokecalendar.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_bespoke_calendar_1a4fd5f300b4e29a8d91452121d64ca6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="bespoke_calendar_1a4fd5f300b4e29a8d91452121d64ca6e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void addWeekend</definition>
         <argsstring>(Weekday)</argsstring>

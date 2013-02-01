@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_chf_libor_swap_isda_fix" kind="class" prot="public">
+  <compounddef id="chf_libor_swap_isda_fix" kind="class" prot="public">
     <compoundname>QuantLib::ChfLiborSwapIsdaFix</compoundname>
     <includes local="no">/indexes/swap/chfliborswap.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_chf_libor_swap_isda_fix_1a2c581d7e194c404601c26a1da9c14f85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="chf_libor_swap_isda_fix_1a2c581d7e194c404601c26a1da9c14f85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ChfLiborSwapIsdaFix</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>ChfLiborSwapIsdaFix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/swap/chfliborswap.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_chf_libor_swap_isda_fix_1a0c2eb913df40e6a82f3ab3480c28e98b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="chf_libor_swap_isda_fix_1a0c2eb913df40e6a82f3ab3480c28e98b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ChfLiborSwapIsdaFix</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;forwarding, const Handle&lt; YieldTermStructure &gt; &amp;discounting)</argsstring>
         <name>ChfLiborSwapIsdaFix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
         <location file="/indexes/swap/chfliborswap.hpp" line="48"/>
@@ -43,7 +43,7 @@
     <briefdescription>
 <para>ChfLiborSwapIsdaFix index base class </para>    </briefdescription>
     <detaileddescription>
-<para>CHF Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 11am London. Annual 30/360 vs 6M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>, 1Y vs 3M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX4 or CHFSFIX=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
+<para>CHF Libor Swap indexes fixed by ISDA in cooperation with Reuters and Intercapital Brokers at 11am London. Annual 30/360 vs 6M <ref refid="libor" kindref="compound">Libor</ref>, 1Y vs 3M <ref refid="libor" kindref="compound">Libor</ref>. Reuters page ISDAFIX4 or CHFSFIX=.</para><para>Further info can be found at <ulink url="http://www.isda.org/fix/isdafix.html">http://www.isda.org/fix/isdafix.html</ulink> or Reuters page ISDAFIX. </para>    </detaileddescription>
     <location file="/indexes/swap/chfliborswap.hpp" line="41" bodyfile="/indexes/swap/chfliborswap.hpp" bodystart="41" bodyend="49"/>
   </compounddef>
 </doxygen>

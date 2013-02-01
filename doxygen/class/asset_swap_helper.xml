@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_asset_swap_helper" kind="class" prot="public">
+  <compounddef id="asset_swap_helper" kind="class" prot="public">
     <compoundname>QuantLib::AssetSwapHelper</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a57f70b6981a20fc936aeb38d1499b000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="asset_swap_helper_1a57f70b6981a20fc936aeb38d1499b000" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AssetSwapHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;spread, const Period &amp;tenor, Natural settlementDays, const Calendar &amp;calendar, const Period &amp;fixedPeriod, BusinessDayConvention fixedConvention, const DayCounter &amp;fixedDayCount, const Period &amp;floatPeriod, BusinessDayConvention floatConvention, const DayCounter &amp;floatDayCount, Real recoveryRate, const RelinkableHandle&lt; YieldTermStructure &gt; &amp;yieldTS, const Period &amp;integrationStepSize=Period())</argsstring>
         <name>AssetSwapHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -21,11 +21,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>fixedPeriod</declname>
         </param>
         <param>
@@ -33,11 +33,11 @@
           <declname>fixedConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>floatPeriod</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>floatConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>floatDayCount</declname>
         </param>
         <param>
@@ -53,30 +53,30 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="relinkable_handle" kindref="compound">RelinkableHandle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yieldTS</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>integrationStepSize</declname>
-          <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>()</defval>
+          <defval><ref refid="period" kindref="compound">Period</ref>()</defval>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="asset_swap_helper_1a9c69887bf51d43666aa7d5edfe124c0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real impliedQuote</definition>
         <argsstring>() const </argsstring>
         <name>impliedQuote</name>
         <location file="/experimental/credit/riskyassetswap.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_asset_swap_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="asset_swap_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTermStructure</definition>
         <argsstring>(DefaultProbabilityTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
+          <type><ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
         </param>
         <location file="/experimental/credit/riskyassetswap.hpp" line="105"/>
       </memberdef>

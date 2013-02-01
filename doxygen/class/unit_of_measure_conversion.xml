@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_unit_of_measure_conversion" kind="class" prot="public">
+  <compounddef id="unit_of_measure_conversion" kind="class" prot="public">
     <compoundname>QuantLib::UnitOfMeasureConversion</compoundname>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a69161ed58889bfab13dbd53a307ca534" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1a69161ed58889bfab13dbd53a307ca534" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>UnitOfMeasureConversion</definition>
         <argsstring>()</argsstring>
         <name>UnitOfMeasureConversion</name>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="43" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="108" bodyend="108"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1acea7cd5a63a1f48d7feed6e4a43cc33e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1acea7cd5a63a1f48d7feed6e4a43cc33e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>UnitOfMeasureConversion</definition>
         <argsstring>(const CommodityType &amp;commodityType, const UnitOfMeasure &amp;source, const UnitOfMeasure &amp;target, Real conversionFactor)</argsstring>
         <name>UnitOfMeasureConversion</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <param>
@@ -39,8 +39,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1af4b46201b6accf81619e8aaded44a41a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="unit_of_measure_conversion_1af4b46201b6accf81619e8aaded44a41a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure &amp; source</definition>
         <argsstring>() const </argsstring>
         <name>source</name>
@@ -48,8 +48,8 @@
 <para>the source UOM. </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="57" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="114" bodyend="116"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a1facf4ce5263c51fb04d511d7603fc8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="unit_of_measure_conversion_1a1facf4ce5263c51fb04d511d7603fc8a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure &amp; target</definition>
         <argsstring>() const </argsstring>
         <name>target</name>
@@ -57,8 +57,8 @@
 <para>the target UOM. </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="59" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="118" bodyend="120"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+      <memberdef kind="function" id="unit_of_measure_conversion_1a37755c700c75d5810577a5dfbd10446a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         <definition>const CommodityType &amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
@@ -66,7 +66,7 @@
 <para>the commodity type. </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="61" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="110" bodyend="112"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1ab5f62266ccba3960c8cbbc44213817af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1ab5f62266ccba3960c8cbbc44213817af" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>
         <definition>UnitOfMeasureConversion::Type type</definition>
         <argsstring>() const </argsstring>
@@ -75,7 +75,7 @@
 <para>the type </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="63" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="126" bodyend="128"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a3b17ecbd0d9986301281b6f446c5ad8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1a3b17ecbd0d9986301281b6f446c5ad8b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real conversionFactor</definition>
         <argsstring>() const </argsstring>
@@ -84,7 +84,7 @@
 <para>the conversion factor </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="65" bodyfile="/experimental/commodities/unitofmeasureconversion.hpp" bodystart="122" bodyend="124"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1a1f07e72047bf0b8cc3c9c6f0c18b1bf9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
         <definition>const std::string &amp; code</definition>
         <argsstring>() const </argsstring>
@@ -94,20 +94,20 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Utility methods</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1a044f1f3c3e89e8da3ff37797449925b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>
+      <memberdef kind="function" id="unit_of_measure_conversion_1a044f1f3c3e89e8da3ff37797449925b0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
         <definition>Quantity convert</definition>
         <argsstring>(const Quantity &amp;quantity) const </argsstring>
         <name>convert</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref> &amp;</type>
+          <type>const <ref refid="quantity" kindref="compound">Quantity</ref> &amp;</type>
           <declname>quantity</declname>
         </param>
         <briefdescription>
 <para>apply the conversion factor to a cash amount </para>        </briefdescription>
         <location file="/experimental/commodities/unitofmeasureconversion.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_unit_of_measure_conversion_1af17b10aa153892f31d9d000edb547397" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="unit_of_measure_conversion_1af17b10aa153892f31d9d000edb547397" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>UnitOfMeasureConversion</type>
         <definition>static UnitOfMeasureConversion chain</definition>
         <argsstring>(const UnitOfMeasureConversion &amp;r1, const UnitOfMeasureConversion &amp;r2)</argsstring>
@@ -126,14 +126,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public">
+        <enumvalue id="unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a5c694b75a28b59072272191aeb5f30a4" prot="public">
           <name>Direct</name>
           <detaileddescription>
 <para>given directly by the user </para>          </detaileddescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public">
+        <enumvalue id="unit_of_measure_conversion_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" prot="public">
           <name>Derived</name>
           <detaileddescription>
 <para>derived from conversion factors between other uoms </para>          </detaileddescription>

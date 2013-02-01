@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_czech_republic" kind="class" prot="public">
+  <compounddef id="czech_republic" kind="class" prot="public">
     <compoundname>QuantLib::CzechRepublic</compoundname>
     <includes local="no">/time/calendars/czechrepublic.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_czech_republic_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+      <memberdef kind="enum" id="czech_republic_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
-        <enumvalue id="class_quant_lib_1_1_czech_republic_1abe41cfffd960e29a5d8b07be00aeda42a398265c4c7d38a23a4de427ef934547a" prot="public">
+        <enumvalue id="czech_republic_1abe41cfffd960e29a5d8b07be00aeda42a398265c4c7d38a23a4de427ef934547a" prot="public">
           <name>PSE</name>
           <briefdescription>
 <para>Prague stock exchange. </para>          </briefdescription>
@@ -15,15 +15,15 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_czech_republic_1a51fdd6c3aa9d40fc2e3c4f05e25e0cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="czech_republic_1a51fdd6c3aa9d40fc2e3c4f05e25e0cdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CzechRepublic</definition>
         <argsstring>(Market m=PSE)</argsstring>
         <name>CzechRepublic</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_czech_republic_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type><ref refid="czech_republic_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>m</declname>
-          <defval><ref refid="class_quant_lib_1_1_czech_republic_1abe41cfffd960e29a5d8b07be00aeda42a398265c4c7d38a23a4de427ef934547a" kindref="member">PSE</ref></defval>
+          <defval><ref refid="czech_republic_1abe41cfffd960e29a5d8b07be00aeda42a398265c4c7d38a23a4de427ef934547a" kindref="member">PSE</ref></defval>
         </param>
         <location file="/time/calendars/czechrepublic.hpp" line="62"/>
       </memberdef>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_region" kind="class" prot="public">
+  <compounddef id="generic_region" kind="class" prot="public">
     <compoundname>QuantLib::GenericRegion</compoundname>
     <includes local="no">/experimental/inflation/genericindexes.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_region_1aaa4ba18d1abf35234358b8140738313c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_region_1aaa4ba18d1abf35234358b8140738313c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericRegion</definition>
         <argsstring>()</argsstring>

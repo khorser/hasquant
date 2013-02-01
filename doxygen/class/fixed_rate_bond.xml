@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fixed_rate_bond" kind="class" prot="public">
+  <compounddef id="fixed_rate_bond" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBond</compoundname>
     <includes local="no">/instruments/bonds/fixedratebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae6647c978d8f8da1dc38593db4a2efb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_1ae6647c978d8f8da1dc38593db4a2efb6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FixedRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;accrualDayCounter, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date(), const Calendar &amp;paymentCalendar=Calendar())</argsstring>
@@ -18,7 +18,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -26,7 +26,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -40,20 +40,20 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>paymentCalendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <briefdescription>
 <para>simple annual compounding coupon rates </para>        </briefdescription>
         <location file="/instruments/bonds/fixedratebond.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1aa5969561a3a16fdd3894e96dc4ab5f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_1aa5969561a3a16fdd3894e96dc4ab5f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FixedRateBond</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;couponCalendar, Real faceAmount, const Date &amp;startDate, const Date &amp;maturityDate, const Period &amp;tenor, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;accrualDayCounter, BusinessDayConvention accrualConvention=Following, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date(), const Date &amp;stubDate=Date(), DateGeneration::Rule rule=DateGeneration::Backward, bool endOfMonth=false, const Calendar &amp;paymentCalendar=Calendar())</argsstring>
@@ -63,7 +63,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>couponCalendar</declname>
         </param>
         <param>
@@ -71,15 +71,15 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -87,7 +87,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>accrualDayCounter</declname>
         </param>
         <param>
@@ -106,19 +106,19 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>stubDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
-          <defval><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" kindref="member">DateGeneration::Backward</ref></defval>
+          <defval><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78a67e19347f85332c3bbfd61266cecbe4e" kindref="member">DateGeneration::Backward</ref></defval>
         </param>
         <param>
           <type>bool</type>
@@ -126,15 +126,15 @@
           <defval>false</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>paymentCalendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <detaileddescription>
 <para>simple annual compounding coupon rates with internal schedule calculation </para>        </detaileddescription>
         <location file="/instruments/bonds/fixedratebond.hpp" line="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1ae2dbb843321a550af383fb2d6bdd87f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_1ae2dbb843321a550af383fb2d6bdd87f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FixedRateBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; InterestRate &gt; &amp;coupons, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date(), const Calendar &amp;paymentCalendar=Calendar())</argsstring>
@@ -148,11 +148,11 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="interest_rate" kindref="compound">InterestRate</ref> &gt; &amp;</type>
           <declname>coupons</declname>
         </param>
         <param>
@@ -166,28 +166,28 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>paymentCalendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <briefdescription>
-<para>generic compounding and frequency <ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref> coupons </para>        </briefdescription>
+<para>generic compounding and frequency <ref refid="interest_rate" kindref="compound">InterestRate</ref> coupons </para>        </briefdescription>
         <location file="/instruments/bonds/fixedratebond.hpp" line="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_1a70fafd3d3f212d824101e977784dbcf5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency frequency</definition>
         <argsstring>() const </argsstring>
         <name>frequency</name>
         <location file="/instruments/bonds/fixedratebond.hpp" line="85" bodyfile="/instruments/bonds/fixedratebond.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+      <memberdef kind="function" id="fixed_rate_bond_1a677cd8177f9f43a90321e2a7cea44b00" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter&amp; dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>

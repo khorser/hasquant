@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fixed_rate_bond_forward" kind="class" prot="public">
+  <compounddef id="fixed_rate_bond_forward" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBondForward</compoundname>
     <includes local="no">/instruments/fixedratebondforward.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_forward_1a0d85f16ee4f4bed9faec5733b908b2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_forward_1a0d85f16ee4f4bed9faec5733b908b2d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FixedRateBondForward</definition>
         <argsstring>(const Date &amp;valueDate, const Date &amp;maturityDate, Position::Type type, Real strike, Natural settlementDays, const DayCounter &amp;dayCounter, const Calendar &amp;calendar, BusinessDayConvention businessDayConvention, const boost::shared_ptr&lt; FixedRateBond &gt; &amp;fixedCouponBond, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;(), const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>FixedRateBondForward</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -31,11 +31,11 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -43,27 +43,27 @@
           <declname>businessDayConvention</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt; &amp;</type>
           <declname>fixedCouponBond</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <detaileddescription>
-<para>If strike is given in the constructor, can calculate the NPV of the contract via <ref refid="class_quant_lib_1_1_instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" kindref="member">NPV()</ref>.</para><para>If strike/forward price is desired, it can be obtained via <ref refid="class_quant_lib_1_1_fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" kindref="member">forwardPrice()</ref>. In this case, the strike variable in the constructor is irrelevant and will be ignored. </para>        </detaileddescription>
+<para>If strike is given in the constructor, can calculate the NPV of the contract via <ref refid="instrument_1a5a137dafb316bb3644a8f92bbf4c1abb" kindref="member">NPV()</ref>.</para><para>If strike/forward price is desired, it can be obtained via <ref refid="fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" kindref="member">forwardPrice()</ref>. In this case, the strike variable in the constructor is irrelevant and will be ignored. </para>        </detaileddescription>
         <location file="/instruments/fixedratebondforward.hpp" line="97"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_forward_1a72f9af6894914f64f567f95a5b819046" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real forwardPrice</definition>
         <argsstring>() const </argsstring>
@@ -72,7 +72,7 @@
 <para>(dirty) forward bond price </para>        </briefdescription>
         <location file="/instruments/fixedratebondforward.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_forward_1af5e54f0290cc4f8832293ca9f9cf996f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_forward_1af5e54f0290cc4f8832293ca9f9cf996f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real cleanForwardPrice</definition>
         <argsstring>() const </argsstring>
@@ -81,14 +81,14 @@
 <para>(dirty) forward bond price minus accrued on bond at delivery </para>        </briefdescription>
         <location file="/instruments/fixedratebondforward.hpp" line="107"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_forward_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fixed_rate_bond_forward_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real spotIncome</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
         <name>spotIncome</name>
-        <reimplements refid="class_quant_lib_1_1_forward_1a789981beda42e02c2698dee83d077a1d">spotIncome</reimplements>
+        <reimplements refid="forward_1a789981beda42e02c2698dee83d077a1d">spotIncome</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
         </param>
         <briefdescription>
@@ -97,12 +97,12 @@
 <para>Here only coupons between max(evaluation date,settlement date) and maturity date of bond forward contract are considered income. </para>        </detaileddescription>
         <location file="/instruments/fixedratebondforward.hpp" line="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_forward_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fixed_rate_bond_forward_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real spotValue</definition>
         <argsstring>() const </argsstring>
         <name>spotValue</name>
-        <reimplements refid="class_quant_lib_1_1_forward_1a0304e7ed8b1277b01dd0a094102ddbce">spotValue</reimplements>
+        <reimplements refid="forward_1a0304e7ed8b1277b01dd0a094102ddbce">spotValue</reimplements>
         <briefdescription>
 <para>NPV of underlying bond. </para>        </briefdescription>
         <location file="/instruments/fixedratebondforward.hpp" line="118"/>

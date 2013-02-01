@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_quote" kind="class" prot="public" abstract="yes">
+  <compounddef id="quote" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Quote</compoundname>
     <includes local="no">/quote.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="quote_1a6afb98d2d98c29387a91bf2feedc31cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Quote</definition>
         <argsstring>()</argsstring>
         <name>~Quote</name>
         <location file="/quote.hpp" line="39" bodyfile="/quote.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quote_1ab60805c81ba477be9e2c45b12a8f4f9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="quote_1ab60805c81ba477be9e2c45b12a8f4f9e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real value</definition>
         <argsstring>() const =0</argsstring>
@@ -20,13 +20,13 @@
 <para>returns the current value </para>        </briefdescription>
         <location file="/quote.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quote_1a84d80615491ecea423f99490445b73ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="quote_1a84d80615491ecea423f99490445b73ae" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool isValid</definition>
         <argsstring>() const =0</argsstring>
         <name>isValid</name>
         <briefdescription>
-<para>returns true if the <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
+<para>returns true if the <ref refid="quote" kindref="compound">Quote</ref> holds a valid value </para>        </briefdescription>
         <location file="/quote.hpp" line="43"/>
       </memberdef>
       </sectiondef>

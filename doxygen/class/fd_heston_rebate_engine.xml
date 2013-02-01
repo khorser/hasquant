@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_heston_rebate_engine" kind="class" prot="public">
+  <compounddef id="fd_heston_rebate_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdHestonRebateEngine</compoundname>
     <includes local="no">/pricingengines/barrier/fdhestonrebateengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a93a5297497abd3ea320ea47ac9deb2ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_heston_rebate_engine_1a93a5297497abd3ea320ea47ac9deb2ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdHestonRebateEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HestonModel &gt; &amp;model, Size tGrid=100, Size xGrid=100, Size vGrid=50, Size dampingSteps=0, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Hundsdorfer())</argsstring>
         <name>FdHestonRebateEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="heston_model" kindref="compound">HestonModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -40,17 +40,17 @@
         </param>
         <location file="/pricingengines/barrier/fdhestonrebateengine.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_heston_rebate_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="fd_heston_rebate_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/barrier/fdhestonrebateengine.hpp" line="54"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>Finite-Differences Heston <ref refid="struct_quant_lib_1_1_barrier" kindref="compound">Barrier</ref> <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref> rebate helper engine. </para>    </briefdescription>
+<para>Finite-Differences Heston <ref refid="barrier" kindref="compound">Barrier</ref> <ref refid="option" kindref="compound">Option</ref> rebate helper engine. </para>    </briefdescription>
     <location file="/pricingengines/barrier/fdhestonrebateengine.hpp" line="45" bodyfile="/pricingengines/barrier/fdhestonrebateengine.hpp" bodystart="42" bodyend="59"/>
   </compounddef>
 </doxygen>

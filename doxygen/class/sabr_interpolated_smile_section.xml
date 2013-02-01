@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_sabr_interpolated_smile_section" kind="class" prot="public">
+  <compounddef id="sabr_interpolated_smile_section" kind="class" prot="public">
     <compoundname>QuantLib::SabrInterpolatedSmileSection</compoundname>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a144c2c04b6c92cf1479282c40b078f63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a144c2c04b6c92cf1479282c40b078f63" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SabrInterpolatedSmileSection</definition>
         <argsstring>(const Date &amp;optionDate, const Handle&lt; Quote &gt; &amp;forward, const std::vector&lt; Rate &gt; &amp;strikes, bool hasFloatingStrikes, const Handle&lt; Quote &gt; &amp;atmVolatility, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;volHandles, Real alpha, Real beta, Real nu, Real rho, bool isAlphaFixed=false, bool isBetaFixed=false, bool isNuFixed=false, bool isRhoFixed=false, bool vegaWeighted=true, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method=boost::shared_ptr&lt; OptimizationMethod &gt;(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>SabrInterpolatedSmileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>forward</declname>
         </param>
         <param>
@@ -26,11 +26,11 @@
           <declname>hasFloatingStrikes</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>atmVolatility</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>volHandles</declname>
         </param>
         <param>
@@ -75,31 +75,31 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
           <declname>method</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <briefdescription>
 <para>all market data are quotes </para>        </briefdescription>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aaf9dac04211a3b13bfb6f9ee64ac9872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1aaf9dac04211a3b13bfb6f9ee64ac9872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SabrInterpolatedSmileSection</definition>
         <argsstring>(const Date &amp;optionDate, const Rate &amp;forward, const std::vector&lt; Rate &gt; &amp;strikes, bool hasFloatingStrikes, const Volatility &amp;atmVolatility, const std::vector&lt; Volatility &gt; &amp;vols, Real alpha, Real beta, Real nu, Real rho, bool isAlphaFixed=false, bool isBetaFixed=false, bool isNuFixed=false, bool isRhoFixed=false, bool vegaWeighted=true, const boost::shared_ptr&lt; EndCriteria &gt; &amp;endCriteria=boost::shared_ptr&lt; EndCriteria &gt;(), const boost::shared_ptr&lt; OptimizationMethod &gt; &amp;method=boost::shared_ptr&lt; OptimizationMethod &gt;(), const DayCounter &amp;dc=Actual365Fixed())</argsstring>
         <name>SabrInterpolatedSmileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -164,19 +164,19 @@
           <defval>true</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt; &amp;</type>
           <declname>endCriteria</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt; &amp;</type>
           <declname>method</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="optimization_method" kindref="compound">OptimizationMethod</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <briefdescription>
 <para>no quotes </para>        </briefdescription>
@@ -185,14 +185,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a48496bf12296efd2444759343a6b36f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a48496bf12296efd2444759343a6b36f2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
@@ -202,21 +202,21 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>SmileSection interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="86" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="178" bodyend="182"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="87" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a1a5e7324f15f847164d5cb42042e08f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real atmLevel</definition>
         <argsstring>() const </argsstring>
@@ -226,49 +226,49 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a8c237b56d8da22741f115e0afdea6b7c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real alpha</definition>
         <argsstring>() const </argsstring>
         <name>alpha</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="94" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="143" bodyend="146"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a78a3f49ebd7612d4d23a640186b86140" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real beta</definition>
         <argsstring>() const </argsstring>
         <name>beta</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="95" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="148" bodyend="151"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a69c12ede1099bb0263342867dd12e045" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nu</definition>
         <argsstring>() const </argsstring>
         <name>nu</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="96" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="153" bodyend="156"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>
         <name>rho</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="97" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="158" bodyend="161"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a575cfa031ce051c0f292518d6b0194e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rmsError</definition>
         <argsstring>() const </argsstring>
         <name>rmsError</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="98" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="163" bodyend="166"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1ac4d9decda86622fb96bacef77cfc4424" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxError</definition>
         <argsstring>() const </argsstring>
         <name>maxError</name>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="99" bodyfile="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" bodystart="168" bodyend="171"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1ad1df8a2c9fb6a94b00ab1e6670be4ce5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>EndCriteria::Type</type>
         <definition>EndCriteria::Type endCriteria</definition>
         <argsstring>() const </argsstring>
@@ -277,7 +277,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a03f096388f9df77a137b05398316d5eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real varianceImpl</definition>
         <argsstring>(Rate strike) const </argsstring>
@@ -288,7 +288,7 @@
         </param>
         <location file="/termstructures/volatility/sabrinterpolatedsmilesection.hpp" line="90"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_sabr_interpolated_smile_section_1a1f86e1622e6c213484d1425c30ebb6ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="sabr_interpolated_smile_section_1a1f86e1622e6c213484d1425c30ebb6ff" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Real volatilityImpl</definition>
         <argsstring>(Rate strike) const </argsstring>

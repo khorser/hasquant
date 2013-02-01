@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_c_american_basket_engine" kind="class" prot="public">
+  <compounddef id="m_c_american_basket_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCAmericanBasketEngine</compoundname>
     <includes local="no">/pricingengines/basket/mcamericanbasketengine.hpp</includes>
     <templateparamlist>
@@ -10,13 +10,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_american_basket_engine_1ab7a33222cd4c444ba422b612ab753317" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_american_basket_engine_1ab7a33222cd4c444ba422b612ab753317" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MCAmericanBasketEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcessArray &gt; &amp;, Size timeSteps, Size timeStepsPerYear, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed, Size nCalibrationSamples=Null&lt; Size &gt;())</argsstring>
         <name>MCAmericanBasketEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process_array" kindref="compound">StochasticProcessArray</ref> &gt; &amp;</type>
           <defname>processes</defname>
         </param>
         <param>
@@ -54,7 +54,7 @@
         <param>
           <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
           <declname>nCalibrationSamples</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt;()</defval>
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="60" bodyfile="/pricingengines/basket/mcamericanbasketengine.hpp" bodystart="119" bodyend="141"/>
       </memberdef>

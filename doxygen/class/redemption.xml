@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_redemption" kind="class" prot="public">
+  <compounddef id="redemption" kind="class" prot="public">
     <compoundname>QuantLib::Redemption</compoundname>
     <includes local="no">/cashflows/simplecashflow.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="redemption_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="simple_cash_flow_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
           <defname>v</defname>
         </param>
         <location file="/cashflows/simplecashflow.hpp" line="67" bodyfile="/cashflows/simplecashflow.hpp" bodystart="98" bodyend="105"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_redemption_1a0078f8809cfc51f35eafd6c47cb56ba7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="redemption_1a0078f8809cfc51f35eafd6c47cb56ba7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Redemption</definition>
         <argsstring>(Real amount, const Date &amp;date)</argsstring>
@@ -29,16 +29,16 @@
           <declname>amount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <location file="/cashflows/simplecashflow.hpp" line="64" bodyfile="/cashflows/simplecashflow.hpp" bodystart="62" bodyend="64"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_bond" kindref="compound">Bond</ref> redemption. </para>    </briefdescription>
+<para><ref refid="bond" kindref="compound">Bond</ref> redemption. </para>    </briefdescription>
     <detaileddescription>
-<para>This class specializes <ref refid="class_quant_lib_1_1_simple_cash_flow" kindref="compound">SimpleCashFlow</ref> so that visitors can perform more detailed cash-flow analysis. </para>    </detaileddescription>
+<para>This class specializes <ref refid="simple_cash_flow" kindref="compound">SimpleCashFlow</ref> so that visitors can perform more detailed cash-flow analysis. </para>    </detaileddescription>
     <location file="/cashflows/simplecashflow.hpp" line="60" bodyfile="/cashflows/simplecashflow.hpp" bodystart="60" bodyend="69"/>
   </compounddef>
 </doxygen>

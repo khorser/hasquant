@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swap_1_1results" kind="class" prot="public">
+  <compounddef id="swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::Swap::results</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1results_1ac5a15d92036be6b64b008d051b2a7948" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1results_1ac5a15d92036be6b64b008d051b2a7948" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; legNPV</definition>
         <argsstring></argsstring>
         <name>legNPV</name>
         <location file="/instruments/swap.hpp" line="126" bodyfile="/instruments/swap.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1results_1a18332f479638c6c20fafb87261e87d05" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1results_1a18332f479638c6c20fafb87261e87d05" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; legBPS</definition>
         <argsstring></argsstring>
         <name>legBPS</name>
         <location file="/instruments/swap.hpp" line="127" bodyfile="/instruments/swap.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1results_1ab205e2f4561c09fcf9b244ffdc7e9a64" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1results_1ab205e2f4561c09fcf9b244ffdc7e9a64" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
         <definition>std::vector&lt;DiscountFactor&gt; startDiscounts</definition>
         <argsstring></argsstring>
         <name>startDiscounts</name>
         <location file="/instruments/swap.hpp" line="128" bodyfile="/instruments/swap.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1results_1a93320485b5858e527f8369c180ed3cd9" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1results_1a93320485b5858e527f8369c180ed3cd9" prot="public" static="no" mutable="no">
         <type>std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt;</type>
         <definition>std::vector&lt;DiscountFactor&gt; endDiscounts</definition>
         <argsstring></argsstring>
         <name>endDiscounts</name>
         <location file="/instruments/swap.hpp" line="128" bodyfile="/instruments/swap.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_swap_1_1results_1a235bf110c2657842d190d2f016c4d747" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="swap_1_1results_1a235bf110c2657842d190d2f016c4d747" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor npvDateDiscount</definition>
         <argsstring></argsstring>
@@ -40,7 +40,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

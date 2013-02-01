@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_forward_option_arguments" kind="class" prot="public">
+  <compounddef id="forward_option_arguments" kind="class" prot="public">
     <compoundname>QuantLib::ForwardOptionArguments</compoundname>
     <includes local="no">/instruments/forwardvanillaoption.hpp</includes>
     <templateparamlist>
@@ -11,15 +11,15 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_option_arguments_1a6032d77a6dece5bc46d14d76e329f7eb" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="forward_option_arguments_1a6032d77a6dece5bc46d14d76e329f7eb" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real moneyness</definition>
         <argsstring></argsstring>
         <name>moneyness</name>
         <location file="/instruments/forwardvanillaoption.hpp" line="42" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_forward_option_arguments_1acce77eb25acc2dd928c6728a14602ad3" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="forward_option_arguments_1acce77eb25acc2dd928c6728a14602ad3" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date resetDate</definition>
         <argsstring></argsstring>
         <name>resetDate</name>
@@ -27,14 +27,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_option_arguments_1aff7e089c17aed3790040e0d4f520e8b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="forward_option_arguments_1aff7e089c17aed3790040e0d4f520e8b7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ForwardOptionArguments</definition>
         <argsstring>()</argsstring>
         <name>ForwardOptionArguments</name>
         <location file="/instruments/forwardvanillaoption.hpp" line="40" bodyfile="/instruments/forwardvanillaoption.hpp" bodystart="39" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_option_arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_option_arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

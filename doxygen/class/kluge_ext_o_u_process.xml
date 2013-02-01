@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_kluge_ext_o_u_process" kind="class" prot="public">
+  <compounddef id="kluge_ext_o_u_process" kind="class" prot="public">
     <compoundname>QuantLib::KlugeExtOUProcess</compoundname>
     <includes local="no">/experimental/processes/klugeextouprocess.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a55a7c3aeeb705e00c56215f1b2f2cf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a55a7c3aeeb705e00c56215f1b2f2cf44" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>KlugeExtOUProcess</definition>
         <argsstring>(Real rho, const boost::shared_ptr&lt; ExtOUWithJumpsProcess &gt; &amp;kluge, const boost::shared_ptr&lt; ExtendedOrnsteinUhlenbeckProcess &gt; &amp;extOU)</argsstring>
@@ -14,93 +14,93 @@
           <declname>rho</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt; &amp;</type>
           <declname>kluge</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt; &amp;</type>
           <declname>extOU</declname>
         </param>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
+        <reimplements refid="stochastic_process_1a154fc82502dc7257b459b1f13e2bc6b6">size</reimplements>
         <briefdescription>
 <para>returns the number of dimensions of the stochastic process </para>        </briefdescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="kluge_ext_o_u_process_1af712ecab6d5754978fed3860efc7f661" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size factors</definition>
         <argsstring>() const </argsstring>
         <name>factors</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
+        <reimplements refid="stochastic_process_1abc633d3c7227b3f3454b7af5272bd3f4">factors</reimplements>
         <briefdescription>
 <para>returns the number of independent factors of the process </para>        </briefdescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a00ce0583b0451d83b803b8a40cce1a2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; initialValues</definition>
         <argsstring>() const </argsstring>
         <name>initialValues</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
+        <reimplements refid="stochastic_process_1a23d85d7308543378898341eb84a6b258">initialValues</reimplements>
         <briefdescription>
 <para>returns the initial values of the state variables </para>        </briefdescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1af971c27bf35db18d8e7e7374e7cf234c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; drift</definition>
         <argsstring>(Time t, const Array &amp;x) const </argsstring>
         <name>drift</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1">drift</reimplements>
+        <reimplements refid="stochastic_process_1add74d4d9a1354fee6d3df7662b14e7e1">drift</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
 <para>returns the drift part of the equation, i.e., <formula id="351">$ \mu(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a4c79a85dc57b977a0eed8822b1fe487f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt;</type>
         <definition>Disposable&lt;Matrix&gt; diffusion</definition>
         <argsstring>(Time t, const Array &amp;x) const </argsstring>
         <name>diffusion</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1a8562aad455e247b42d47aab2b18f205a">diffusion</reimplements>
+        <reimplements refid="stochastic_process_1a8562aad455e247b42d47aab2b18f205a">diffusion</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x</declname>
         </param>
         <briefdescription>
 <para>returns the diffusion part of the equation, i.e. <formula id="352">$ \sigma(t, \mathrm{x}_t) $</formula> </para>        </briefdescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a89ac97af7698aa193a9c0731dcdd9d8a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>Disposable&lt;Array&gt; evolve</definition>
         <argsstring>(Time t0, const Array &amp;x0, Time dt, const Array &amp;dw) const </argsstring>
         <name>evolve</name>
-        <reimplements refid="class_quant_lib_1_1_stochastic_process_1add82def76a374049a66ae8cb3cfa0e97">evolve</reimplements>
+        <reimplements refid="stochastic_process_1add82def76a374049a66ae8cb3cfa0e97">evolve</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t0</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>x0</declname>
         </param>
         <param>
@@ -108,28 +108,28 @@
           <declname>dt</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>dw</declname>
         </param>
         <detaileddescription>
 <para>returns the asset value after a time interval <formula id="354">$ \Delta t $</formula> according to the given discretization. By default, it returns <formula id="357">\[ E(\mathrm{x}_0,t_0,\Delta t) + S(\mathrm{x}_0,t_0,\Delta t) \cdot \Delta \mathrm{w} \]</formula> where <formula id="358">$ E $</formula> is the expectation and <formula id="212">$ S $</formula> the standard deviation. </para>        </detaileddescription>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a5b46d5d1ec1c35c79571ef7bcce751e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a5b46d5d1ec1c35c79571ef7bcce751e7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="ext_o_u_with_jumps_process" kindref="compound">ExtOUWithJumpsProcess</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ExtOUWithJumpsProcess&gt; getKlugeProcess</definition>
         <argsstring>() const </argsstring>
         <name>getKlugeProcess</name>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a743af801f2f1cc3473411af76799f256" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a743af801f2f1cc3473411af76799f256" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="extended_ornstein_uhlenbeck_process" kindref="compound">ExtendedOrnsteinUhlenbeckProcess</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ExtendedOrnsteinUhlenbeckProcess&gt; getExtOUProcess</definition>
         <argsstring>() const </argsstring>
         <name>getExtOUProcess</name>
         <location file="/experimental/processes/klugeextouprocess.hpp" line="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kluge_ext_o_u_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="kluge_ext_o_u_process_1a9e74bed9ddc465f1211381d725c945bb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real rho</definition>
         <argsstring>() const </argsstring>

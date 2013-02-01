@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_ceiling_truncation" kind="class" prot="public">
+  <compounddef id="ceiling_truncation" kind="class" prot="public">
     <compoundname>QuantLib::CeilingTruncation</compoundname>
     <includes local="no">/math/rounding.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_ceiling_truncation_1ab87b9d64b561992e5c9f613a681b5b06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="ceiling_truncation_1ab87b9d64b561992e5c9f613a681b5b06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CeilingTruncation</definition>
         <argsstring>(Integer precision, Integer digit=5)</argsstring>

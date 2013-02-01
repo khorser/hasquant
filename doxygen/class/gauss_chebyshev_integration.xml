@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gauss_chebyshev_integration" kind="class" prot="public">
+  <compounddef id="gauss_chebyshev_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussChebyshevIntegration</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_chebyshev_integration_1ae642ad58699537542292864787a4179d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="gauss_chebyshev_integration_1ae642ad58699537542292864787a4179d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GaussChebyshevIntegration</definition>
         <argsstring>(Size n)</argsstring>

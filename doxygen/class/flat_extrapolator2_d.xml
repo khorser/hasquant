@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_flat_extrapolator2_d" kind="class" prot="public">
+  <compounddef id="flat_extrapolator2_d" kind="class" prot="public">
     <compoundname>QuantLib::FlatExtrapolator2D</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_flat_extrapolator2_d_1afb60f28213f6dfd343a02b2495da4133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="flat_extrapolator2_d_1afb60f28213f6dfd343a02b2495da4133" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FlatExtrapolator2D</definition>
         <argsstring>(boost::shared_ptr&lt; Interpolation2D &gt; decoratedInterpolation)</argsstring>
         <name>FlatExtrapolator2D</name>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="interpolation2_d" kindref="compound">Interpolation2D</ref> &gt;</type>
           <declname>decoratedInterpolation</declname>
         </param>
         <location file="/math/interpolations/flatextrapolation2d.hpp" line="34" bodyfile="/math/interpolations/flatextrapolation2d.hpp" bodystart="34" bodyend="37"/>

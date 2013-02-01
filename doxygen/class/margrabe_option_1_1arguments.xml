@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_margrabe_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="margrabe_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::MargrabeOption::arguments</compoundname>
     <includes local="no">/experimental/exoticoptions/margrabeoption.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1arguments_1a1ee402a368ee389be22c93da1113095d" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1arguments_1a1ee402a368ee389be22c93da1113095d" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer Q1</definition>
         <argsstring></argsstring>
         <name>Q1</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="64" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="64" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_margrabe_option_1_1arguments_1aa3e7521fcaaa405952b83f4da3133f11" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="margrabe_option_1_1arguments_1aa3e7521fcaaa405952b83f4da3133f11" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer Q2</definition>
         <argsstring></argsstring>
@@ -20,14 +20,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1_1arguments_1a3f3e8935c236a7cc71235cbd1845fbd8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>arguments</definition>
         <argsstring>()</argsstring>
         <name>arguments</name>
         <location file="/experimental/exoticoptions/margrabeoption.hpp" line="62" bodyfile="/experimental/exoticoptions/margrabeoption.hpp" bodystart="61" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_margrabe_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="margrabe_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

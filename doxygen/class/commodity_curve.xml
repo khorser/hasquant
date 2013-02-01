@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_commodity_curve" kind="class" prot="public">
+  <compounddef id="commodity_curve" kind="class" prot="public">
     <compoundname>QuantLib::CommodityCurve</compoundname>
     <includes local="no">/experimental/commodities/commoditycurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="friend" id="class_quant_lib_1_1_commodity_curve_1a6151a93fbb7f25659a2e351702a78fb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="friend" id="commodity_curve_1a6151a93fbb7f25659a2e351702a78fb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>friend std::ostream &amp;</type>
         <definition>std::ostream&amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;out, const CommodityCurve &amp;curve)</argsstring>
@@ -15,190 +15,190 @@
           <declname>out</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &amp;</type>
+          <type>const <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &amp;</type>
           <declname>curve</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="87"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="commodity_curve_1a4d739cc5d335052eb9f5b2ca559b81d1" prot="protected" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string name_</definition>
         <argsstring></argsstring>
         <name>name_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="91" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="91" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a792de4e88e29e3df5d753c1590d47d8c" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref></type>
+      <memberdef kind="variable" id="commodity_curve_1a792de4e88e29e3df5d753c1590d47d8c" prot="protected" static="no" mutable="no">
+        <type><ref refid="commodity_type" kindref="compound">CommodityType</ref></type>
         <definition>CommodityType commodityType_</definition>
         <argsstring></argsstring>
         <name>commodityType_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="92" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
+      <memberdef kind="variable" id="commodity_curve_1a14f8e29ce8fa87acbbc6b40f2e0dda26" prot="protected" static="no" mutable="no">
+        <type><ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref></type>
         <definition>UnitOfMeasure unitOfMeasure_</definition>
         <argsstring></argsstring>
         <name>unitOfMeasure_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="93" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+      <memberdef kind="variable" id="commodity_curve_1a9b8209f252ea1344d7fa6de58bc1102a" prot="protected" static="no" mutable="no">
+        <type><ref refid="currency" kindref="compound">Currency</ref></type>
         <definition>Currency currency_</definition>
         <argsstring></argsstring>
         <name>currency_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="94" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" static="no" mutable="yes">
-        <type>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;</type>
+      <memberdef kind="variable" id="commodity_curve_1a361b6eadf2fb8b49e1a53073e0f8f11d" prot="protected" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;</type>
         <definition>std::vector&lt;Date&gt; dates_</definition>
         <argsstring></argsstring>
         <name>dates_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="95" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" static="no" mutable="yes">
+      <memberdef kind="variable" id="commodity_curve_1a63b1ac1fe6074fcd9789119e547d4812" prot="protected" static="no" mutable="yes">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; times_</definition>
         <argsstring></argsstring>
         <name>times_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="96" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" static="no" mutable="yes">
+      <memberdef kind="variable" id="commodity_curve_1af9c626db41e269447653dcc7cc126d35" prot="protected" static="no" mutable="yes">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; data_</definition>
         <argsstring></argsstring>
         <name>data_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="97" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="97" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" static="no" mutable="yes">
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+      <memberdef kind="variable" id="commodity_curve_1a6633ee38a9d12ce3e342081d39e98fd0" prot="protected" static="no" mutable="yes">
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation interpolation_</definition>
         <argsstring></argsstring>
         <name>interpolation_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="98" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a79b0a8135f77fb012eb795d1c52cca5e" prot="protected" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_forward_flat" kindref="compound">ForwardFlat</ref></type>
+      <memberdef kind="variable" id="commodity_curve_1a79b0a8135f77fb012eb795d1c52cca5e" prot="protected" static="no" mutable="no">
+        <type><ref refid="forward_flat" kindref="compound">ForwardFlat</ref></type>
         <definition>ForwardFlat interpolator_</definition>
         <argsstring></argsstring>
         <name>interpolator_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="99" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="99" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1ab78d07f1db0c1382060b89e0c553af67" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt;</type>
+      <memberdef kind="variable" id="commodity_curve_1ab78d07f1db0c1382060b89e0c553af67" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;CommodityCurve&gt; basisOfCurve_</definition>
         <argsstring></argsstring>
         <name>basisOfCurve_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="100" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="100" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_commodity_curve_1a1c628be27a380ddef7f07934b8a641cf" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="commodity_curve_1a1c628be27a380ddef7f07934b8a641cf" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real basisOfCurveUomConversionFactor_</definition>
         <argsstring></argsstring>
         <name>basisOfCurveUomConversionFactor_</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="101" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1af8370604529de0f829b8424e1288a104" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::string &amp;</type>
         <definition>const std::string &amp; name</definition>
         <argsstring>() const </argsstring>
         <name>name</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="59" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="113" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_curve_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_curve_1a059df9f98e417bdd1764bc0ec6ecbcd5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
         <definition>const UnitOfMeasure&amp; unitOfMeasure</definition>
         <argsstring>() const </argsstring>
         <name>unitOfMeasure</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="commodity_curve_1abc33baebf744532876f39f22cf971342" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency&amp; currency</definition>
         <argsstring>() const </argsstring>
         <name>currency</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="commodity_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/experimental/commodities/commoditycurve.hpp" line="63" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="64" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="commodity_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="65" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="125" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a4a433ec559cce7fdc4b775b14b17833e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a4a433ec559cce7fdc4b775b14b17833e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; prices</definition>
         <argsstring>() const </argsstring>
         <name>prices</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="66" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="129" bodyend="131"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="commodity_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="67" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="142" bodyend="147"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="68" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa730ecf40446986507c93f1d7ea617b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1aa730ecf40446986507c93f1d7ea617b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setPrices</definition>
         <argsstring>(std::map&lt; Date, Real &gt; &amp;prices)</argsstring>
         <name>setPrices</name>
         <param>
-          <type>std::map&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>std::map&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>prices</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a55e55771ede1b54148b659ba9d643ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a55e55771ede1b54148b659ba9d643ea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setBasisOfCurve</definition>
         <argsstring>(const boost::shared_ptr&lt; CommodityCurve &gt; &amp;basisOfCurve)</argsstring>
         <name>setBasisOfCurve</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
           <declname>basisOfCurve</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="72"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a72f0cd7b8225db8500bbae340ccb70ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a72f0cd7b8225db8500bbae340ccb70ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;d, const boost::shared_ptr&lt; ExchangeContracts &gt; &amp;exchangeContracts, Integer nearbyOffset) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -211,24 +211,24 @@
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="77" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="155" bodyend="170"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa4feb09f9e5e39059703bef454a07503" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1aa4feb09f9e5e39059703bef454a07503" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real basisOfPrice</definition>
         <argsstring>(const Date &amp;d) const </argsstring>
         <name>basisOfPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="78" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="149" bodyend="152"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a681da17460971fc2c1acd636a7abeec0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="commodity_curve_1a681da17460971fc2c1acd636a7abeec0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date underlyingPriceDate</definition>
         <argsstring>(const Date &amp;date, const boost::shared_ptr&lt; ExchangeContracts &gt; &amp;exchangeContracts, Integer nearbyOffset) const </argsstring>
         <name>underlyingPriceDate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>date</declname>
         </param>
         <param>
@@ -241,14 +241,14 @@
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="82" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="174" bodyend="191"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a8d290de5782941db2494530df6897c63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="commodity_curve_1a8d290de5782941db2494530df6897c63" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="commodity_curve" kindref="compound">CommodityCurve</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt; CommodityCurve &gt; &amp; basisOfCurve</definition>
         <argsstring>() const </argsstring>
         <name>basisOfCurve</name>
         <location file="/experimental/commodities/commoditycurve.hpp" line="84" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="138" bodyend="140"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a7e503a2d78c89272768d5dd782f1493b" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a7e503a2d78c89272768d5dd782f1493b" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real basisOfPriceImpl</definition>
         <argsstring>(Time t) const </argsstring>
@@ -259,7 +259,7 @@
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="89" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="193" bodyend="207"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1aa7ee95a45f01c5aeb3e86470bac77dd8" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1aa7ee95a45f01c5aeb3e86470bac77dd8" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real priceImpl</definition>
         <argsstring>(Time t) const </argsstring>
@@ -272,7 +272,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a960e25179f66cd5a0b180d1b9af5d9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a960e25179f66cd5a0b180d1b9af5d9df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityCurve</definition>
         <argsstring>(const std::string &amp;name, const CommodityType &amp;commodityType, const Currency &amp;currency, const UnitOfMeasure &amp;unitOfMeasure, const Calendar &amp;calendar, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Real &gt; &amp;prices, const DayCounter &amp;dayCounter=Actual365Fixed())</argsstring>
@@ -282,23 +282,23 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -306,13 +306,13 @@
           <declname>prices</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_commodity_curve_1a02bdeb6c573f2f1bd3dec076e61459e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="commodity_curve_1a02bdeb6c573f2f1bd3dec076e61459e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CommodityCurve</definition>
         <argsstring>(const std::string &amp;name, const CommodityType &amp;commodityType, const Currency &amp;currency, const UnitOfMeasure &amp;unitOfMeasure, const Calendar &amp;calendar, const DayCounter &amp;dayCounter=Actual365Fixed())</argsstring>
@@ -322,31 +322,31 @@
           <declname>name</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
+          <type>const <ref refid="unit_of_measure" kindref="compound">UnitOfMeasure</ref> &amp;</type>
           <declname>unitOfMeasure</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
-          <defval><ref refid="class_quant_lib_1_1_actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
+          <defval><ref refid="actual365_fixed" kindref="compound">Actual365Fixed</ref>()</defval>
         </param>
         <location file="/experimental/commodities/commoditycurve.hpp" line="55"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_commodity" kindref="compound">Commodity</ref> term structure. </para>    </briefdescription>
+<para><ref refid="commodity" kindref="compound">Commodity</ref> term structure. </para>    </briefdescription>
     <location file="/experimental/commodities/commoditycurve.hpp" line="37" bodyfile="/experimental/commodities/commoditycurve.hpp" bodystart="37" bodyend="104"/>
   </compounddef>
 </doxygen>

@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_local_bootstrap" kind="class" prot="public">
+  <compounddef id="local_bootstrap" kind="class" prot="public">
     <compoundname>QuantLib::LocalBootstrap</compoundname>
     <includes local="no">/termstructures/localbootstrap.hpp</includes>
     <templateparamlist>
       <param>
-        <type>class <ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref></type>
+        <type>class <ref refid="curve" kindref="compound">Curve</ref></type>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1af581ddd45305ac7377fbe85856952886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="local_bootstrap_1af581ddd45305ac7377fbe85856952886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LocalBootstrap</definition>
         <argsstring>(Size localisation=2, bool forcePositive=true)</argsstring>
@@ -26,18 +26,18 @@
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="91" bodyfile="/termstructures/localbootstrap.hpp" bodystart="107" bodyend="111"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="local_bootstrap_1a021df2c056ab8a1b4e018a6b312d585b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setup</definition>
         <argsstring>(Curve *ts)</argsstring>
         <name>setup</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_curve" kindref="compound">Curve</ref> *</type>
+          <type><ref refid="curve" kindref="compound">Curve</ref> *</type>
           <declname>ts</declname>
         </param>
         <location file="/termstructures/localbootstrap.hpp" line="92" bodyfile="/termstructures/localbootstrap.hpp" bodystart="114" bodyend="130"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="local_bootstrap_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
@@ -48,7 +48,7 @@
     <briefdescription>
 <para>Localised-term-structure bootstrapper for most curve types. </para>    </briefdescription>
     <detaileddescription>
-<para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (<ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref>) the input term structure is solved on a number of market instruments which are passed as a vector of handles to <ref refid="class_quant_lib_1_1_bootstrap_helper" kindref="compound">BootstrapHelper</ref> instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the <ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref> class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
+<para>This algorithm enables a localised fitting for non-local interpolation methods.</para><para>As in the similar class (<ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref>) the input term structure is solved on a number of market instruments which are passed as a vector of handles to <ref refid="bootstrap_helper" kindref="compound">BootstrapHelper</ref> instances. Their maturities mark the boundaries of the interpolated segments.</para><para>Unlike the <ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref> class, the solution for each interpolated segment is derived using a local approximation. This restricts the risk profile s.t. the risk is localised. Therefore, we obtain a local IR risk profile whilst using a smoother interpolation method. Particularly good for the convex-monotone spline method. </para>    </detaileddescription>
     <location file="/termstructures/localbootstrap.hpp" line="86" bodyfile="/termstructures/localbootstrap.hpp" bodystart="86" bodyend="100"/>
   </compounddef>
 </doxygen>

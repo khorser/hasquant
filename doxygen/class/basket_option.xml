@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_basket_option" kind="class" prot="public">
+  <compounddef id="basket_option" kind="class" prot="public">
     <compoundname>QuantLib::BasketOption</compoundname>
     <includes local="no">/instruments/basketoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_basket_option_1_1engine" prot="public">QuantLib::BasketOption::engine</innerclass>
+    <innerclass refid="basket_option_1_1engine" prot="public">QuantLib::BasketOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_basket_option_1ae8816f8672de29c4d03b3f1334f300e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="basket_option_1ae8816f8672de29c4d03b3f1334f300e8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BasketOption</definition>
         <argsstring>(const boost::shared_ptr&lt; BasketPayoff &gt; &amp;, const boost::shared_ptr&lt; Exercise &gt; &amp;)</argsstring>
@@ -14,13 +14,13 @@
           <type>const boost::shared_ptr&lt; BasketPayoff &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
         <location file="/instruments/basketoption.hpp" line="107"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_basket" kindref="compound">Basket</ref> option on a number of assets. </para>    </briefdescription>
+<para><ref refid="basket" kindref="compound">Basket</ref> option on a number of assets. </para>    </briefdescription>
     <location file="/instruments/basketoption.hpp" line="103" bodyfile="/instruments/basketoption.hpp" bodystart="103" bodyend="108"/>
   </compounddef>
 </doxygen>

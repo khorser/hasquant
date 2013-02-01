@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_barrier_option" kind="class" prot="public">
+  <compounddef id="barrier_option" kind="class" prot="public">
     <compoundname>QuantLib::BarrierOption</compoundname>
     <includes local="no">/instruments/barrieroption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_barrier_option_1_1arguments" prot="public">QuantLib::BarrierOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_barrier_option_1_1engine" prot="public">QuantLib::BarrierOption::engine</innerclass>
+    <innerclass refid="barrier_option_1_1arguments" prot="public">QuantLib::BarrierOption::arguments</innerclass>
+    <innerclass refid="barrier_option_1_1engine" prot="public">QuantLib::BarrierOption::engine</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_barrier_option_1a294feb53bf4fbbc46ee9f9428b49dc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="barrier_option_1a294feb53bf4fbbc46ee9f9428b49dc33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BarrierOption</definition>
         <argsstring>(Barrier::Type barrierType, Real barrier, Real rebate, const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
@@ -24,21 +24,21 @@
           <declname>rebate</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/instruments/barrieroption.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_barrier_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="barrier_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -46,7 +46,7 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/barrieroption.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_barrier_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="barrier_option_1a95c0837ce9c4bcc4cb9b9ff975f3bfe1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real accuracy=1.0e-4, Size maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
@@ -56,7 +56,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -80,7 +80,7 @@
           <defval>4.0</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000047"><xreftitle>Warning</xreftitle><xrefdescription><para>see <ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref> for notes on implied-volatility calculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000047"><xreftitle>Warning</xreftitle><xrefdescription><para>see <ref refid="vanilla_option" kindref="compound">VanillaOption</ref> for notes on implied-volatility calculation. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/instruments/barrieroption.hpp" line="61"/>
       </memberdef>
       </sectiondef>

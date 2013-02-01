@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fd_simple_b_s_swing_engine" kind="class" prot="public">
+  <compounddef id="fd_simple_b_s_swing_engine" kind="class" prot="public">
     <compoundname>QuantLib::FdSimpleBSSwingEngine</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_b_s_swing_engine_1adeb653af21c97b3c9f86854a943ce836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_simple_b_s_swing_engine_1adeb653af21c97b3c9f86854a943ce836" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdSimpleBSSwingEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;p, Size tGrid=50, Size xGrid=100, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas())</argsstring>
         <name>FdSimpleBSSwingEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <param>
@@ -29,7 +29,7 @@
         </param>
         <location file="/pricingengines/vanilla/fdsimplebsswingengine.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fd_simple_b_s_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fd_simple_b_s_swing_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

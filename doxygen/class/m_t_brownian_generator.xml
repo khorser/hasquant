@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_t_brownian_generator" kind="class" prot="public">
+  <compounddef id="m_t_brownian_generator" kind="class" prot="public">
     <compoundname>QuantLib::MTBrownianGenerator</compoundname>
     <includes local="no">/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_1ace032769d4c059283496dd6aa3b75767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="m_t_brownian_generator_1ace032769d4c059283496dd6aa3b75767" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>MTBrownianGenerator</definition>
         <argsstring>(Size factors, Size steps, unsigned long seed=0)</argsstring>
@@ -24,7 +24,7 @@
         </param>
         <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_1a5a8ee20027256cd968b0561e1bb071c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="m_t_brownian_generator_1a5a8ee20027256cd968b0561e1bb071c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nextStep</definition>
         <argsstring>(std::vector&lt; Real &gt; &amp;)</argsstring>
@@ -34,21 +34,21 @@
         </param>
         <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_1a924332975ee95db8a63daf02e10d3bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="m_t_brownian_generator_1a924332975ee95db8a63daf02e10d3bdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nextPath</definition>
         <argsstring>()</argsstring>
         <name>nextPath</name>
         <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="m_t_brownian_generator_1a5a984db39a3d1f2e80e8a889cd279e27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfFactors</definition>
         <argsstring>() const </argsstring>
         <name>numberOfFactors</name>
         <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_t_brownian_generator_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="m_t_brownian_generator_1aed640b8d340edab41683b6aadd89665b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberOfSteps</definition>
         <argsstring>() const </argsstring>
@@ -59,7 +59,7 @@
     <briefdescription>
 <para>Mersenne-twister Brownian generator for market-model simulations. </para>    </briefdescription>
     <detaileddescription>
-<para>Incremental Brownian generator using a Mersenne-twister uniform generator and inverse-cumulative Gaussian method.</para><para><simplesect kind="note"><para>At this time, generation of the underlying uniform sequence is eager, while its transformation into Gaussian variates is lazy. Further optimization might be possible by using the Mersenne twister directly instead of a <ref refid="class_quant_lib_1_1_random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>; however, it is not clear how much of a difference this would make when compared to the inverse-cumulative Gaussian calculation. </para></simplesect>
+<para>Incremental Brownian generator using a Mersenne-twister uniform generator and inverse-cumulative Gaussian method.</para><para><simplesect kind="note"><para>At this time, generation of the underlying uniform sequence is eager, while its transformation into Gaussian variates is lazy. Further optimization might be possible by using the Mersenne twister directly instead of a <ref refid="random_sequence_generator" kindref="compound">RandomSequenceGenerator</ref>; however, it is not clear how much of a difference this would make when compared to the inverse-cumulative Gaussian calculation. </para></simplesect>
 </para>    </detaileddescription>
     <location file="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" line="43" bodyfile="/models/marketmodels/browniangenerators/mtbrowniangenerator.hpp" bodystart="43" bodyend="59"/>
   </compounddef>

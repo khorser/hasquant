@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_random_default_model" kind="class" prot="public" abstract="yes">
+  <compounddef id="random_default_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RandomDefaultModel</compoundname>
     <includes local="no">/experimental/credit/randomdefaultmodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="random_default_model_1a71ba42c4a5efb507deda9781b6e62c19" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>RandomDefaultModel</definition>
         <argsstring>(boost::shared_ptr&lt; Pool &gt; pool, const std::vector&lt; DefaultProbKey &gt; &amp;defaultKeys)</argsstring>
@@ -14,19 +14,19 @@
           <declname>pool</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &gt; &amp;</type>
           <declname>defaultKeys</declname>
         </param>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="41" bodyfile="/experimental/credit/randomdefaultmodel.hpp" bodystart="39" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1ac7a9258a633f4ec45a6efe376e5abc9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="random_default_model_1ac7a9258a633f4ec45a6efe376e5abc9d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~RandomDefaultModel</definition>
         <argsstring>()</argsstring>
         <name>~RandomDefaultModel</name>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="46" bodyfile="/experimental/credit/randomdefaultmodel.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="random_default_model_1ab88b59bed0374edc89a9d1ea4c13ace8" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void nextSequence</definition>
         <argsstring>(Real tmax=QL_MAX_REAL)=0</argsstring>
@@ -40,7 +40,7 @@
 <para>Generate a sequence of random default times, one for each name in the pool, and store the result in the Pool using method setTime(name). tmax denotes the maximum relevant time- default times &gt; tmax are not computed but set to tmax + 1 instead to save coputation time. </para>        </detaileddescription>
         <location file="/experimental/credit/randomdefaultmodel.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="random_default_model_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>

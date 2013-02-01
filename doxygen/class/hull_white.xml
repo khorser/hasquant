@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_hull_white" kind="class" prot="public">
+  <compounddef id="hull_white" kind="class" prot="public">
     <compoundname>QuantLib::HullWhite</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/hullwhite.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_hull_white_1_1_dynamics" prot="public">QuantLib::HullWhite::Dynamics</innerclass>
-    <innerclass refid="class_quant_lib_1_1_hull_white_1_1_fitting_parameter" prot="public">QuantLib::HullWhite::FittingParameter</innerclass>
+    <innerclass refid="hull_white_1_1_dynamics" prot="public">QuantLib::HullWhite::Dynamics</innerclass>
+    <innerclass refid="hull_white_1_1_fitting_parameter" prot="public">QuantLib::HullWhite::FittingParameter</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a5a576c1761c7ea4da9bb03a78b7ad5d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_1a5a576c1761c7ea4da9bb03a78b7ad5d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HullWhite</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a=0.1, Real sigma=0.01)</argsstring>
         <name>HullWhite</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -27,36 +27,36 @@
         </param>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="hull_white_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
+        <reimplements refid="one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <briefdescription>
 <para>Return by default a trinomial recombining tree. </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="hull_white_1ab819304423e7791547c3089322a190be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; OneFactorModel::ShortRateDynamics &gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplements>
+        <reimplements refid="vasicek_1ab819304423e7791547c3089322a190be">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="55" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="154" bodyend="157"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="hull_white_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
-        <reimplements refid="class_quant_lib_1_1_vasicek_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
+        <reimplements refid="vasicek_1a7c92e4a748c8ff38b33f1460ee56dceb">discountBondOption</reimplements>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>
@@ -77,7 +77,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_hull_white_1af554e020436a6a21568f1149d61e2f54" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="hull_white_1af554e020436a6a21568f1149d61e2f54" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>static Rate convexityBias</definition>
         <argsstring>(Real futurePrice, Time t, Time T, Real sigma, Real a)</argsstring>
@@ -111,7 +111,7 @@
     <briefdescription>
 <para>Single-factor Hull-White (extended Vasicek) model class. </para>    </briefdescription>
     <detaileddescription>
-<para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying <ref refid="class_quant_lib_1_1_vasicek" kindref="compound">Vasicek</ref> model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This class implements the standard single-factor Hull-White model defined by <formula id="304">\[ dr_t = (\theta(t) - \alpha r_t)dt + \sigma dW_t \]</formula> where <formula id="3">$ \alpha $</formula> and <formula id="4">$ \sigma $</formula> are constants.</para><para><xrefsect id="test_1_test000084"><xreftitle>Tests</xreftitle><xrefdescription><para>calibration results are tested against cached values</para></xrefdescription></xrefsect></para><para><xrefsect id="bug_1_bug000009"><xreftitle>Bug</xreftitle><xrefdescription><para>When the term structure is relinked, the r0 parameter of the underlying <ref refid="vasicek" kindref="compound">Vasicek</ref> model is not updated.</para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/models/shortrate/onefactormodels/hullwhite.hpp" line="48" bodyfile="/models/shortrate/onefactormodels/hullwhite.hpp" bodystart="48" bodyend="85"/>
   </compounddef>
 </doxygen>

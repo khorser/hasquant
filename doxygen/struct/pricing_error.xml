@@ -1,48 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_pricing_error" kind="struct" prot="public">
+  <compounddef id="pricing_error" kind="struct" prot="public">
     <compoundname>QuantLib::PricingError</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="struct_quant_lib_1_1_pricing_error_1a221b779e6bb7b8d40677d7642bfefac5" prot="public" static="no">
+      <memberdef kind="enum" id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5" prot="public" static="no">
         <name>Level</name>
-        <enumvalue id="struct_quant_lib_1_1_pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a1cd805eaf0bb58a90fe7e7e4cf6a3cdc" prot="public">
+        <enumvalue id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a1cd805eaf0bb58a90fe7e7e4cf6a3cdc" prot="public">
           <name>Info</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a48f2bb70fceb692a2dedd8cea496c44b" prot="public">
+        <enumvalue id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a48f2bb70fceb692a2dedd8cea496c44b" prot="public">
           <name>Warning</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a4dfd42ec49d09d8c6555c218301cc30f" prot="public">
+        <enumvalue id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a4dfd42ec49d09d8c6555c218301cc30f" prot="public">
           <name>Error</name>
         </enumvalue>
-        <enumvalue id="struct_quant_lib_1_1_pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a24d54883f5403a81c97e5ce29ee031ba" prot="public">
+        <enumvalue id="pricing_error_1a221b779e6bb7b8d40677d7642bfefac5a24d54883f5403a81c97e5ce29ee031ba" prot="public">
           <name>Fatal</name>
         </enumvalue>
         <location file="/experimental/commodities/commodity.hpp" line="42" bodyfile="/experimental/commodities/commodity.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1_pricing_error_1a6bf2b8e3cb4dd7519562ad96e22c7f32" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="pricing_error_1a6bf2b8e3cb4dd7519562ad96e22c7f32" prot="public" static="no" mutable="no">
         <type>Level</type>
         <definition>Level errorLevel</definition>
         <argsstring></argsstring>
         <name>errorLevel</name>
         <location file="/experimental/commodities/commodity.hpp" line="44" bodyfile="/experimental/commodities/commodity.hpp" bodystart="44" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_pricing_error_1abfc9782d5d6a3e1e5ddeab095f96ab4e" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="pricing_error_1abfc9782d5d6a3e1e5ddeab095f96ab4e" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string tradeId</definition>
         <argsstring></argsstring>
         <name>tradeId</name>
         <location file="/experimental/commodities/commodity.hpp" line="45" bodyfile="/experimental/commodities/commodity.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_pricing_error_1a8c94119e5bd6fbde0680ef83f01c9685" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="pricing_error_1a8c94119e5bd6fbde0680ef83f01c9685" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string error</definition>
         <argsstring></argsstring>
         <name>error</name>
         <location file="/experimental/commodities/commodity.hpp" line="46" bodyfile="/experimental/commodities/commodity.hpp" bodystart="46" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_pricing_error_1a06f18b7e05b64c4ff0d03f07ae379a68" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="pricing_error_1a06f18b7e05b64c4ff0d03f07ae379a68" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string detail</definition>
         <argsstring></argsstring>
@@ -51,7 +51,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1_pricing_error_1a4e998ade43143dd259a537b69048ee46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="pricing_error_1a4e998ade43143dd259a537b69048ee46" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PricingError</definition>
         <argsstring>(Level errorLevel, const std::string &amp;error, const std::string &amp;detail)</argsstring>

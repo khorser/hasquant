@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer" kind="class" prot="public">
+  <compounddef id="black_ibor_quanto_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::BlackIborQuantoCouponPricer</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_ibor_quanto_coupon_pricer_1a9b361d743ab1731bf84bb6f674488e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="black_ibor_quanto_coupon_pricer_1a9b361d743ab1731bf84bb6f674488e1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BlackIborQuantoCouponPricer</definition>
         <argsstring>(const Handle&lt; BlackVolTermStructure &gt; &amp;fxRateBlackVolatility, const Handle&lt; Quote &gt; &amp;underlyingFxCorrelation, const Handle&lt; OptionletVolatilityStructure &gt; &amp;capletVolatility)</argsstring>
         <name>BlackIborQuantoCouponPricer</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="black_vol_term_structure" kindref="compound">BlackVolTermStructure</ref> &gt; &amp;</type>
           <declname>fxRateBlackVolatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>underlyingFxCorrelation</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>capletVolatility</declname>
         </param>
         <location file="/experimental/coupons/quantocouponpricer.hpp" line="41" bodyfile="/experimental/coupons/quantocouponpricer.hpp" bodystart="35" bodyend="44"/>

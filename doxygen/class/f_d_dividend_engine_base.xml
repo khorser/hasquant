@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_d_dividend_engine_base" kind="class" prot="public" abstract="yes">
+  <compounddef id="f_d_dividend_engine_base" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FDDividendEngineBase</compoundname>
     <includes local="no">/pricingengines/vanilla/fddividendengine.hpp</includes>
     <templateparamlist>
@@ -8,17 +8,17 @@
         <type>template&lt; class &gt; class</type>
         <declname>Scheme</declname>
         <defname>Scheme</defname>
-        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+        <defval><ref refid="crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_d_dividend_engine_base_1a929b7ec6b0ab69abc1bc28136afdee47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="f_d_dividend_engine_base_1a929b7ec6b0ab69abc1bc28136afdee47" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FDDividendEngineBase</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Size timeSteps=100, Size gridPoints=100, bool timeDependent=false)</argsstring>
         <name>FDDividendEngineBase</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_binomial_probability_of_at_least_n_events" kind="class" prot="public">
+  <compounddef id="binomial_probability_of_at_least_n_events" kind="class" prot="public">
     <compoundname>QuantLib::BinomialProbabilityOfAtLeastNEvents</compoundname>
     <includes local="no">/experimental/credit/lossdistribution.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_binomial_probability_of_at_least_n_events_1a6322e99b3427d6b1b803b0d6d3ac94f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="binomial_probability_of_at_least_n_events_1a6322e99b3427d6b1b803b0d6d3ac94f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>BinomialProbabilityOfAtLeastNEvents</definition>
         <argsstring>(int n)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/experimental/credit/lossdistribution.hpp" line="91" bodyfile="/experimental/credit/lossdistribution.hpp" bodystart="91" bodyend="91"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_binomial_probability_of_at_least_n_events_1a92a26b21f56ce2d0cbaf54cb581c164c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="binomial_probability_of_at_least_n_events_1a92a26b21f56ce2d0cbaf54cb581c164c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(std::vector&lt; Real &gt; p)</argsstring>

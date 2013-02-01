@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1details_1_1_linear_fcts" kind="class" prot="public">
+  <compounddef id="details_1_1_linear_fcts" kind="class" prot="public">
     <compoundname>QuantLib::details::LinearFcts</compoundname>
     <templateparamlist>
       <param>
@@ -11,7 +11,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1details_1_1_linear_fcts_1a122926722deac54918277d415b3fe694" prot="public" static="no">
+      <memberdef kind="typedef" id="details_1_1_linear_fcts_1a122926722deac54918277d415b3fe694" prot="public" static="no">
         <type>xContainer::value_type</type>
         <definition>typedef xContainer::value_type ArgumentType</definition>
         <argsstring></argsstring>
@@ -20,7 +20,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fcts_1a1aa55cf772d33c64b491cf0978981e18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="details_1_1_linear_fcts_1a1aa55cf772d33c64b491cf0978981e18" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>LinearFcts</definition>
         <argsstring>(const xContainer &amp;x, Real intercept)</argsstring>
@@ -35,7 +35,7 @@
         </param>
         <location file="/math/linearleastsquaresregression.hpp" line="54" bodyfile="/math/linearleastsquaresregression.hpp" bodystart="54" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1details_1_1_linear_fcts_1a5f84e474aca6cd7b9de3c7a4963c7b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="details_1_1_linear_fcts_1a5f84e474aca6cd7b9de3c7a4963c7b63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, ArgumentType &gt; &gt; &amp;</type>
         <definition>const std::vector&lt; boost::function1&lt;Real, ArgumentType&gt; &gt;&amp; fcts</definition>
         <argsstring>()</argsstring>

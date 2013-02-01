@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_explicit_euler" kind="class" prot="public">
+  <compounddef id="explicit_euler" kind="class" prot="public">
     <compoundname>QuantLib::ExplicitEuler</compoundname>
     <includes local="no">/methods/finitedifferences/expliciteuler.hpp</includes>
     <templateparamlist>
@@ -9,43 +9,43 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1ab85b62c5cc90bded0075d322e91fd993" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_1ab85b62c5cc90bded0075d322e91fd993" prot="public" static="no">
         <type>OperatorTraits&lt; Operator &gt;</type>
         <definition>typedef OperatorTraits&lt;Operator&gt; traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="69" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
         <type>traits::operator_type</type>
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="70" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="70" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
         <type>traits::array_type</type>
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="71" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a5ef2ff2e57a5eb84f1e124859bac8d74" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">traits::bc_type</ref></type>
+      <memberdef kind="typedef" id="explicit_euler_1a5ef2ff2e57a5eb84f1e124859bac8d74" prot="public" static="no">
+        <type><ref refid="boundary_condition" kindref="compound">traits::bc_type</ref></type>
         <definition>typedef traits::bc_type bc_type</definition>
         <argsstring></argsstring>
         <name>bc_type</name>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="72" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="72" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
         <type>traits::bc_set</type>
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="73" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_step_condition" kindref="compound">traits::condition_type</ref></type>
+      <memberdef kind="typedef" id="explicit_euler_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
+        <type><ref refid="step_condition" kindref="compound">traits::condition_type</ref></type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
@@ -53,7 +53,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_explicit_euler_1ae8554f66409add3f74084a628d27424b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="explicit_euler_1ae8554f66409add3f74084a628d27424b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExplicitEuler</definition>
         <argsstring>(const operator_type &amp;L, const std::vector&lt; boost::shared_ptr&lt; bc_type &gt; &gt; &amp;bcs)</argsstring>
@@ -63,7 +63,7 @@
           <declname>L</declname>
         </param>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_boundary_condition" kindref="compound">bc_type</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="boundary_condition" kindref="compound">bc_type</ref> &gt; &gt; &amp;</type>
           <declname>bcs</declname>
         </param>
         <location file="/methods/finitedifferences/expliciteuler.hpp" line="78" bodyfile="/methods/finitedifferences/expliciteuler.hpp" bodystart="76" bodyend="78"/>

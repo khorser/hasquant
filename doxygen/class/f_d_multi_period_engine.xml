@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_d_multi_period_engine" kind="class" prot="public" abstract="yes">
+  <compounddef id="f_d_multi_period_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FDMultiPeriodEngine</compoundname>
     <templateparamlist>
       <param>
         <type>template&lt; class &gt; class</type>
         <declname>Scheme</declname>
         <defname>Scheme</defname>
-        <defval><ref refid="class_quant_lib_1_1_crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
+        <defval><ref refid="crank_nicolson" kindref="compound">CrankNicolson</ref></defval>
       </param>
     </templateparamlist>
     <location file="/pricingengines/vanilla/fdmultiperiodengine.hpp" line="37" bodyfile="/pricingengines/vanilla/fdmultiperiodengine.hpp" bodystart="37" bodyend="85"/>

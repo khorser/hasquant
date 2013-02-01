@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1n__cubic__spline" kind="class" prot="public">
+  <compounddef id="detail_1_1n__cubic__spline" kind="class" prot="public">
     <compoundname>QuantLib::detail::n_cubic_spline</compoundname>
     <templateparamlist>
       <param>
@@ -8,21 +8,21 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1aa91b0ef834fa3ce8c160e7fcd85d6285" prot="public" static="no">
+      <memberdef kind="typedef" id="detail_1_1n__cubic__spline_1aa91b0ef834fa3ce8c160e7fcd85d6285" prot="public" static="no">
         <type>Data&lt; base_data, typename X::data &gt;</type>
         <definition>typedef Data&lt;base_data, typename X::data&gt; data</definition>
         <argsstring></argsstring>
         <name>data</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="263" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="263" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" static="no">
+      <memberdef kind="typedef" id="detail_1_1n__cubic__spline_1a406c9d62f5e5f3152713996ba9fc87aa" prot="public" static="no">
         <type>DataTable&lt; typename X::data_table &gt;</type>
         <definition>typedef DataTable&lt;typename X::data_table&gt; data_table</definition>
         <argsstring></argsstring>
         <name>data_table</name>
         <location file="/math/interpolations/multicubicspline.hpp" line="264" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="264" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1acfc455c96d779248db3eff8e5da03ab2" prot="public" static="no">
+      <memberdef kind="typedef" id="detail_1_1n__cubic__spline_1acfc455c96d779248db3eff8e5da03ab2" prot="public" static="no">
         <type>Point&lt; base_output_data, typename X::output_data &gt;</type>
         <definition>typedef Point&lt;base_output_data, typename X::output_data&gt; output_data</definition>
         <argsstring></argsstring>
@@ -31,7 +31,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a8733ec13e7348dddf398be84ea1bd3ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1n__cubic__spline_1a8733ec13e7348dddf398be84ea1bd3ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>n_cubic_spline</definition>
         <argsstring>(const data &amp;d, const data &amp;d2, const data_table &amp;y, data_table &amp;y2, output_data &amp;v)</argsstring>
@@ -58,7 +58,7 @@
         </param>
         <location file="/math/interpolations/multicubicspline.hpp" line="268" bodyfile="/math/interpolations/multicubicspline.hpp" bodystart="266" bodyend="271"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1n__cubic__spline_1a236ae487a46d1dbfab700dbd6eb4a642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1n__cubic__spline_1a236ae487a46d1dbfab700dbd6eb4a642" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>~n_cubic_spline</definition>
         <argsstring>()</argsstring>

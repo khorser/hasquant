@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1detail_1_1ordinal__holder" kind="struct" prot="public">
+  <compounddef id="detail_1_1ordinal__holder" kind="struct" prot="public">
     <compoundname>QuantLib::detail::ordinal_holder</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1detail_1_1ordinal__holder_1a4c79e7f153710550f0238535048a4d0a" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="detail_1_1ordinal__holder_1a4c79e7f153710550f0238535048a4d0a" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size n</definition>
         <argsstring></argsstring>
@@ -12,7 +12,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1detail_1_1ordinal__holder_1a6678dc9223da2f51de8b759e8564bb87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1ordinal__holder_1a6678dc9223da2f51de8b759e8564bb87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ordinal_holder</definition>
         <argsstring>(Size n)</argsstring>

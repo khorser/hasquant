@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_simple_day_counter" kind="class" prot="public">
+  <compounddef id="simple_day_counter" kind="class" prot="public">
     <compoundname>QuantLib::SimpleDayCounter</compoundname>
     <includes local="no">/time/daycounters/simpledaycounter.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_simple_day_counter_1aeacf3f515bbda5190060eca01fc142cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simple_day_counter_1aeacf3f515bbda5190060eca01fc142cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>SimpleDayCounter</definition>
         <argsstring>()</argsstring>
@@ -15,7 +15,7 @@
     <briefdescription>
 <para>Simple day counter for reproducing theoretical calculations. </para>    </briefdescription>
     <detaileddescription>
-<para>This day counter tries to ensure that whole-month distances are returned as a simple fraction, i.e., 1 year = 1.0, 6 months = 0.5, 3 months = 0.25 and so forth.</para><para><xrefsect id="caveats_1_caveats000147"><xreftitle>Warning</xreftitle><xrefdescription><para>this day counter should be used together with <ref refid="class_quant_lib_1_1_null_calendar" kindref="compound">NullCalendar</ref>, which ensures that dates at whole-month distances share the same day of month. It is <bold>not</bold> guaranteed to work with any other calendar.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000155"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the results is checked against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>This day counter tries to ensure that whole-month distances are returned as a simple fraction, i.e., 1 year = 1.0, 6 months = 0.5, 3 months = 0.25 and so forth.</para><para><xrefsect id="caveats_1_caveats000147"><xreftitle>Warning</xreftitle><xrefdescription><para>this day counter should be used together with <ref refid="null_calendar" kindref="compound">NullCalendar</ref>, which ensures that dates at whole-month distances share the same day of month. It is <bold>not</bold> guaranteed to work with any other calendar.</para></xrefdescription></xrefsect></para><para><xrefsect id="test_1_test000155"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the results is checked against known good values. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/time/daycounters/simpledaycounter.hpp" line="46" bodyfile="/time/daycounters/simpledaycounter.hpp" bodystart="46" bodyend="62"/>
   </compounddef>
 </doxygen>

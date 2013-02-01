@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_loss" kind="class" prot="public">
+  <compounddef id="loss" kind="class" prot="public">
     <compoundname>QuantLib::Loss</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_1a33447f96f00d708dd345d6eb79c95d41" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="loss_1a33447f96f00d708dd345d6eb79c95d41" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real time</definition>
         <argsstring></argsstring>
         <name>time</name>
         <location file="/experimental/credit/loss.hpp" line="34" bodyfile="/experimental/credit/loss.hpp" bodystart="33" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_loss_1a97dc362a0df831201a29780ff74a5356" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="loss_1a97dc362a0df831201a29780ff74a5356" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real amount</definition>
         <argsstring></argsstring>
@@ -19,7 +19,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_loss_1a56750a77e1173487ec374491fe890f4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="loss_1a56750a77e1173487ec374491fe890f4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Loss</definition>
         <argsstring>(Real t=0.0, Real a=0.0)</argsstring>

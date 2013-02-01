@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_first_derivative_op" kind="class" prot="public">
+  <compounddef id="first_derivative_op" kind="class" prot="public">
     <compoundname>QuantLib::FirstDerivativeOp</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_first_derivative_op_1a103481ada0c1754f9e9d1336c9b4d5a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="first_derivative_op_1a103481ada0c1754f9e9d1336c9b4d5a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FirstDerivativeOp</definition>
         <argsstring>(Size direction, const boost::shared_ptr&lt; FdmMesher &gt; &amp;mesher)</argsstring>

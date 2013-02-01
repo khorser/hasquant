@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration" kind="class" prot="public">
+  <compounddef id="c_t_s_m_m_caplet_original_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletOriginalCalibration</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1adad1b2b304f426594ea51a02e2e2dab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_t_s_m_m_caplet_original_calibration_1adad1b2b304f426594ea51a02e2e2dab8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CTSMMCapletOriginalCalibration</definition>
         <argsstring>(const EvolutionDescription &amp;evolution, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const boost::shared_ptr&lt; CurveState &gt; &amp;cs, Spread displacement, const std::vector&lt; Real &gt; &amp;alpha, bool lowestRoot, bool useFullApprox)</argsstring>
         <name>CTSMMCapletOriginalCalibration</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -48,13 +48,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_original_calibration_1a097b78f093cd8bb672cc0b64e52cc1b2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_t_s_m_m_caplet_original_calibration_1a097b78f093cd8bb672cc0b64e52cc1b2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>static Natural calibrationFunction</definition>
         <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const CurveState &amp;cs, Spread displacement, const std::vector&lt; Real &gt; &amp;alpha, bool lowestRoot, bool useFullApprox, Size numberOfFactors, std::vector&lt; Matrix &gt; &amp;swapCovariancePseudoRoots)</argsstring>
         <name>calibrationFunction</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -70,7 +70,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -94,7 +94,7 @@
           <declname>numberOfFactors</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="/models/marketmodels/models/capletcoterminalswaptioncalibration.hpp" line="61"/>

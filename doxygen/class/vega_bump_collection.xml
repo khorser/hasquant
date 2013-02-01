@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_vega_bump_collection" kind="class" prot="public">
+  <compounddef id="vega_bump_collection" kind="class" prot="public">
     <compoundname>QuantLib::VegaBumpCollection</compoundname>
     <includes local="no">/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a9aa96483524a13761fc851a225faf50f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a9aa96483524a13761fc851a225faf50f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VegaBumpCollection</definition>
         <argsstring>(const boost::shared_ptr&lt; MarketModel &gt; &amp;volStructure, bool allowFactorwiseBumping=true)</argsstring>
         <name>VegaBumpCollection</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <param>
@@ -20,7 +20,7 @@
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a675f35cec38522cbb7819d855cc01293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a675f35cec38522cbb7819d855cc01293" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VegaBumpCollection</definition>
         <argsstring>(const std::vector&lt; VegaBumpCluster &gt; &amp;allBumps, const boost::shared_ptr&lt; MarketModel &gt; &amp;volStructure)</argsstring>
@@ -30,47 +30,47 @@
           <declname>allBumps</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
           <declname>volStructure</declname>
         </param>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a0a87126359f062bf1cf7e3b1f5388d11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a0a87126359f062bf1cf7e3b1f5388d11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size numberBumps</definition>
         <argsstring>() const </argsstring>
         <name>numberBumps</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="108"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1af630bf4038f58f37c8dc2aaca33043c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="vega_bump_collection_1af630bf4038f58f37c8dc2aaca33043c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const boost::shared_ptr&lt; <ref refid="market_model" kindref="compound">MarketModel</ref> &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;MarketModel&gt;&amp; associatedModel</definition>
         <argsstring>() const </argsstring>
         <name>associatedModel</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="111" bodyfile="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" bodystart="110" bodyend="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a4d1f10402c8899701f98b86b09233b28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a4d1f10402c8899701f98b86b09233b28" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; VegaBumpCluster &gt; &amp;</type>
         <definition>const std::vector&lt;VegaBumpCluster&gt;&amp; allBumps</definition>
         <argsstring>() const </argsstring>
         <name>allBumps</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="116"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a7ffe8a6212a0eb3fc7bbc8e9bc51dfcd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a7ffe8a6212a0eb3fc7bbc8e9bc51dfcd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isFull</definition>
         <argsstring>() const </argsstring>
         <name>isFull</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="118"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a2d80b7ff7f5079612af444b6bf528d1a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a2d80b7ff7f5079612af444b6bf528d1a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isNonOverlapping</definition>
         <argsstring>() const </argsstring>
         <name>isNonOverlapping</name>
         <location file="/models/marketmodels/pathwisegreeks/vegabumpcluster.hpp" line="119"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vega_bump_collection_1a32c4f3ea89e1a400b29a505a410ef98e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="vega_bump_collection_1a32c4f3ea89e1a400b29a505a410ef98e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isSensible</definition>
         <argsstring>() const </argsstring>

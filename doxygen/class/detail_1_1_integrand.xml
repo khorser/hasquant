@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_integrand" kind="class" prot="public">
+  <compounddef id="detail_1_1_integrand" kind="class" prot="public">
     <compoundname>QuantLib::detail::Integrand</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_integrand_1a6597fe9c344aad7a42e225ba95fb5354" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_integrand_1a6597fe9c344aad7a42e225ba95fb5354" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Integrand</definition>
         <argsstring>(const Path &amp;path, const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>Integrand</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_path" kindref="compound">Path</ref> &amp;</type>
+          <type>const <ref refid="path" kindref="compound">Path</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/pricingengines/forward/mcvarianceswapengine.hpp" line="324" bodyfile="/pricingengines/forward/mcvarianceswapengine.hpp" bodystart="321" bodyend="324"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_integrand_1a9736183e84f061ad08b6d595e2c293bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_integrand_1a9736183e84f061ad08b6d595e2c293bf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Time t) const </argsstring>

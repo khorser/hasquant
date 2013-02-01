@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gaussian_copula" kind="class" prot="public">
+  <compounddef id="gaussian_copula" kind="class" prot="public">
     <compoundname>QuantLib::GaussianCopula</compoundname>
     <includes local="no">/math/copulas/gaussiancopula.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_copula_1a025f2c6e6ec49736861536ce63c46734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_copula_1a025f2c6e6ec49736861536ce63c46734" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>GaussianCopula</definition>
         <argsstring>(Real rho)</argsstring>
@@ -15,7 +15,7 @@
         </param>
         <location file="/math/copulas/gaussiancopula.hpp" line="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_copula_1a478727f07320133ea98b12c6036f817d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real x, Real y) const </argsstring>

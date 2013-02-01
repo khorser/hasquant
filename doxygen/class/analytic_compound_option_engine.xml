@@ -1,33 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_analytic_compound_option_engine" kind="class" prot="public">
+  <compounddef id="analytic_compound_option_engine" kind="class" prot="public">
     <compoundname>QuantLib::AnalyticCompoundOptionEngine</compoundname>
     <includes local="no">/experimental/compoundoption/analyticcompoundoptionengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1ac7ffd680902b85942ef1db0a0bb3e3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="analytic_compound_option_engine_1ac7ffd680902b85942ef1db0a0bb3e3c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AnalyticCompoundOptionEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; GeneralizedBlackScholesProcess &gt; &amp;process)</argsstring>
         <name>AnalyticCompoundOptionEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_analytic_compound_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="analytic_compound_option_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Pricing engine for compound options using analytical formulae. </para>    </briefdescription>
     <detaileddescription>
-<para>The formulas are taken from &quot;Foreign Exchange Risk&quot;, Uwe Wystup, Risk 2002, where closed form <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref> are available. (not available in Haug 2007). Value: Page 84, <ref refid="class_quant_lib_1_1_greeks" kindref="compound">Greeks</ref>: Pages 94-95.</para><para><xrefsect id="test_1_test000005"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>The formulas are taken from &quot;Foreign Exchange Risk&quot;, Uwe Wystup, Risk 2002, where closed form <ref refid="greeks" kindref="compound">Greeks</ref> are available. (not available in Haug 2007). Value: Page 84, <ref refid="greeks" kindref="compound">Greeks</ref>: Pages 94-95.</para><para><xrefsect id="test_1_test000005"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness of the returned value is tested by reproducing results available in literature. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="45" bodyfile="/experimental/compoundoption/analyticcompoundoptionengine.hpp" bodystart="45" bodyend="100"/>
   </compounddef>
 </doxygen>

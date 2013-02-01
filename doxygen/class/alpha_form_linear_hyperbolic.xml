@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_alpha_form_linear_hyperbolic" kind="class" prot="public">
+  <compounddef id="alpha_form_linear_hyperbolic" kind="class" prot="public">
     <compoundname>QuantLib::AlphaFormLinearHyperbolic</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a989b8d9fd65f0f9caae32480b2c9ff8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="alpha_form_linear_hyperbolic_1a989b8d9fd65f0f9caae32480b2c9ff8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AlphaFormLinearHyperbolic</definition>
         <argsstring>(const std::vector&lt; Time &gt; &amp;times, Real alpha=0.0)</argsstring>
@@ -19,14 +19,14 @@
         </param>
         <location file="/models/marketmodels/models/alphaformconcrete.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a32831166651608bf6aa488a459b89a28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="alpha_form_linear_hyperbolic_1a32831166651608bf6aa488a459b89a28" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~AlphaFormLinearHyperbolic</definition>
         <argsstring>()</argsstring>
         <name>~AlphaFormLinearHyperbolic</name>
         <location file="/models/marketmodels/models/alphaformconcrete.hpp" line="44" bodyfile="/models/marketmodels/models/alphaformconcrete.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1a505ee7ab6797433701bc35ad7288999f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="alpha_form_linear_hyperbolic_1a505ee7ab6797433701bc35ad7288999f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real operator()</definition>
         <argsstring>(Integer i) const </argsstring>
@@ -37,7 +37,7 @@
         </param>
         <location file="/models/marketmodels/models/alphaformconcrete.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_alpha_form_linear_hyperbolic_1adb629c9fa86a33bf0492d07c25176173" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="alpha_form_linear_hyperbolic_1adb629c9fa86a33bf0492d07c25176173" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void setAlpha</definition>
         <argsstring>(Real alpha_)</argsstring>

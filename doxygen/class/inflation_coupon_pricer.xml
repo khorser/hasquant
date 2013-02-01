@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_inflation_coupon_pricer" kind="class" prot="public" abstract="yes">
+  <compounddef id="inflation_coupon_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::InflationCouponPricer</compoundname>
     <includes local="no">/cashflows/inflationcouponpricer.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a2af0079d7951f0a9d60eb08ea1b8a328" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real swapletPrice</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletPrice</name>
         <location file="/cashflows/inflationcouponpricer.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a4100ee30f35fdcdb0fce21a1a151ddfb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate swapletRate</definition>
         <argsstring>() const =0</argsstring>
         <name>swapletRate</name>
         <location file="/cashflows/inflationcouponpricer.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a020cea32bd7e04f0fe1cfdf6dc146423" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real capletPrice</definition>
         <argsstring>(Rate effectiveCap) const =0</argsstring>
@@ -30,7 +30,7 @@
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="61"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a1e4c2e805a4460558a9f77740d309cad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate capletRate</definition>
         <argsstring>(Rate effectiveCap) const =0</argsstring>
@@ -41,7 +41,7 @@
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a1a4fed13ca15b398ac2b09c1c58d387d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real floorletPrice</definition>
         <argsstring>(Rate effectiveFloor) const =0</argsstring>
@@ -52,7 +52,7 @@
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a214779867426164db11377dadc63d672" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate floorletRate</definition>
         <argsstring>(Rate effectiveFloor) const =0</argsstring>
@@ -63,30 +63,30 @@
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1a660765139f15a8cff2492d12b6232095" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1a660765139f15a8cff2492d12b6232095" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void initialize</definition>
         <argsstring>(const InflationCoupon &amp;)=0</argsstring>
         <name>initialize</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_inflation_coupon" kindref="compound">InflationCoupon</ref> &amp;</type>
+          <type>const <ref refid="inflation_coupon" kindref="compound">InflationCoupon</ref> &amp;</type>
         </param>
         <location file="/cashflows/inflationcouponpricer.hpp" line="65"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1acd36d7881ea8503d5c5824e7a5ad6c7e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>virtual void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/cashflows/inflationcouponpricer.hpp" line="70" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="70" bodyend="70"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_inflation_coupon_pricer_1ad147a1afa82e0fb39dde2053c1008538" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="inflation_coupon_pricer_1ad147a1afa82e0fb39dde2053c1008538" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~InflationCouponPricer</definition>
         <argsstring>()</argsstring>
@@ -97,7 +97,7 @@
     <briefdescription>
 <para>Base inflation-coupon pricer. </para>    </briefdescription>
     <detaileddescription>
-<para>The main reason we can&apos;t use <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> as the base is that it takes a <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> which takes an <ref refid="class_quant_lib_1_1_interest_rate_index" kindref="compound">InterestRateIndex</ref> and we need an inflation index (these are lagged).</para><para>The basic inflation-specific thing that the pricer has to do is deal with different lags in the index and the option e.g. the option could look 3 months back and the index 2.</para><para>We add the requirement that pricers do inverseCap/Floor-lets. These are cap/floor-lets as usually defined, i.e. pay out if underlying is above/below a strike. The non-inverse (usual) versions are from a coupon point of view (a capped coupon has a maximum at the strike).</para><para>We add the inverse prices so that conventional caps can be priced simply. </para>    </detaileddescription>
+<para>The main reason we can&apos;t use <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> as the base is that it takes a <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> which takes an <ref refid="interest_rate_index" kindref="compound">InterestRateIndex</ref> and we need an inflation index (these are lagged).</para><para>The basic inflation-specific thing that the pricer has to do is deal with different lags in the index and the option e.g. the option could look 3 months back and the index 2.</para><para>We add the requirement that pricers do inverseCap/Floor-lets. These are cap/floor-lets as usually defined, i.e. pay out if underlying is above/below a strike. The non-inverse (usual) versions are from a coupon point of view (a capped coupon has a maximum at the strike).</para><para>We add the inverse prices so that conventional caps can be priced simply. </para>    </detaileddescription>
     <location file="/cashflows/inflationcouponpricer.hpp" line="54" bodyfile="/cashflows/inflationcouponpricer.hpp" bodystart="53" bodyend="75"/>
   </compounddef>
 </doxygen>

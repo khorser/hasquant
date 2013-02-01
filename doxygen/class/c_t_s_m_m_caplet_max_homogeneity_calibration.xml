@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
+  <compounddef id="c_t_s_m_m_caplet_max_homogeneity_calibration" kind="class" prot="public">
     <compoundname>QuantLib::CTSMMCapletMaxHomogeneityCalibration</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_t_s_m_m_caplet_max_homogeneity_calibration_1aa400dd36c121e98d640c687caa1c63ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CTSMMCapletMaxHomogeneityCalibration</definition>
         <argsstring>(const EvolutionDescription &amp;evolution, const boost::shared_ptr&lt; PiecewiseConstantCorrelation &gt; &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const boost::shared_ptr&lt; CurveState &gt; &amp;cs, Spread displacement, Real caplet0Swaption1Priority=1.0)</argsstring>
         <name>CTSMMCapletMaxHomogeneityCalibration</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="curve_state" kindref="compound">CurveState</ref> &gt; &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -41,13 +41,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_t_s_m_m_caplet_max_homogeneity_calibration_1aba9aa91bfbbc3221482caa0c9fdfba20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_t_s_m_m_caplet_max_homogeneity_calibration_1aba9aa91bfbbc3221482caa0c9fdfba20" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>static Natural capletMaxHomogeneityCalibration</definition>
         <argsstring>(const EvolutionDescription &amp;evolution, const PiecewiseConstantCorrelation &amp;corr, const std::vector&lt; boost::shared_ptr&lt; PiecewiseConstantVariance &gt; &gt; &amp;displacedSwapVariances, const std::vector&lt; Volatility &gt; &amp;capletVols, const CurveState &amp;cs, const Spread displacement, Real caplet0Swaption1Priority, Size numberOfFactors, Size maxIterations, Real tolerance, Real &amp;deformationSize, Real &amp;totalSwaptionError, std::vector&lt; Matrix &gt; &amp;swapCovariancePseudoRoots)</argsstring>
         <name>capletMaxHomogeneityCalibration</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+          <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
           <declname>evolution</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <declname>capletVols</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_curve_state" kindref="compound">CurveState</ref> &amp;</type>
+          <type>const <ref refid="curve_state" kindref="compound">CurveState</ref> &amp;</type>
           <declname>cs</declname>
         </param>
         <param>
@@ -95,7 +95,7 @@
           <declname>totalSwaptionError</declname>
         </param>
         <param>
-          <type>std::vector&lt; <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
+          <type>std::vector&lt; <ref refid="matrix" kindref="compound">Matrix</ref> &gt; &amp;</type>
           <declname>swapCovariancePseudoRoots</declname>
         </param>
         <location file="/models/marketmodels/models/capletcoterminalmaxhomogeneity.hpp" line="57"/>

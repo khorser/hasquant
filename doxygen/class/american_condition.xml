@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_american_condition" kind="class" prot="public">
+  <compounddef id="american_condition" kind="class" prot="public">
     <compoundname>QuantLib::AmericanCondition</compoundname>
     <includes local="no">/methods/finitedifferences/americancondition.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1aff67f7f6768010452bb295e89923b85a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="american_condition_1aff67f7f6768010452bb295e89923b85a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>AmericanCondition</definition>
         <argsstring>(Option::Type type, Real strike)</argsstring>
@@ -19,13 +19,13 @@
         </param>
         <location file="/methods/finitedifferences/americancondition.hpp" line="41" bodyfile="/methods/finitedifferences/americancondition.hpp" bodystart="39" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_american_condition_1aff6af0dd69f21e0c9ab7978eaa3df156" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="american_condition_1aff6af0dd69f21e0c9ab7978eaa3df156" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>AmericanCondition</definition>
         <argsstring>(const Array &amp;intrinsicValues)</argsstring>
         <name>AmericanCondition</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>intrinsicValues</declname>
         </param>
         <location file="/methods/finitedifferences/americancondition.hpp" line="43" bodyfile="/methods/finitedifferences/americancondition.hpp" bodystart="42" bodyend="43"/>

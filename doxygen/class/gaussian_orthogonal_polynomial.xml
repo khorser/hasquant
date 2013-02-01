@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gaussian_orthogonal_polynomial" kind="class" prot="public" abstract="yes">
+  <compounddef id="gaussian_orthogonal_polynomial" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::GaussianOrthogonalPolynomial</compoundname>
     <includes local="no">/math/integrals/gaussianorthogonalpolynomial.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1ad23187cb308f85ea0dea7911b6c0546d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1ad23187cb308f85ea0dea7911b6c0546d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~GaussianOrthogonalPolynomial</definition>
         <argsstring>()</argsstring>
         <name>~GaussianOrthogonalPolynomial</name>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="52" bodyfile="/math/integrals/gaussianorthogonalpolynomial.hpp" bodystart="52" bodyend="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a285550e8d0f3964935a6301d1d2f4037" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1a285550e8d0f3964935a6301d1d2f4037" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real mu_0</definition>
         <argsstring>() const =0</argsstring>
         <name>mu_0</name>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a4b62a25af75d692dbf58ce06f96184ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1a4b62a25af75d692dbf58ce06f96184ca" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real alpha</definition>
         <argsstring>(Size i) const =0</argsstring>
@@ -29,7 +29,7 @@
         </param>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1ad9af9b51bda36a25555694b57ed3014c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1ad9af9b51bda36a25555694b57ed3014c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real beta</definition>
         <argsstring>(Size i) const =0</argsstring>
@@ -40,7 +40,7 @@
         </param>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1af8bd61e6c7a4d4d245f25e375ff42fa8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1af8bd61e6c7a4d4d245f25e375ff42fa8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real w</definition>
         <argsstring>(Real x) const =0</argsstring>
@@ -51,7 +51,7 @@
         </param>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1a452af47b58099bbec68537241bd743f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1a452af47b58099bbec68537241bd743f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Size i, Real x) const </argsstring>
@@ -66,7 +66,7 @@
         </param>
         <location file="/math/integrals/gaussianorthogonalpolynomial.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_gaussian_orthogonal_polynomial_1aef33067e7357c2c91caa62c6f38ecaa1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="gaussian_orthogonal_polynomial_1aef33067e7357c2c91caa62c6f38ecaa1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real weightedValue</definition>
         <argsstring>(Size i, Real x) const </argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_linear_op" kind="class" prot="public" abstract="yes">
+  <compounddef id="fdm_linear_op" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmLinearOp</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+      <memberdef kind="typedef" id="fdm_linear_op_1a683f6e911f21420fe0ff4609055a8c41" prot="public" static="no">
+        <type><ref refid="array" kindref="compound">Array</ref></type>
         <definition>typedef Array array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
@@ -12,20 +12,20 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="fdm_linear_op_1ae6077ba76975d5efe5188a597db1c27f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~FdmLinearOp</definition>
         <argsstring>()</argsstring>
         <name>~FdmLinearOp</name>
         <location file="/methods/finitedifferences/operators/fdmlinearop.hpp" line="36" bodyfile="/methods/finitedifferences/operators/fdmlinearop.hpp" bodystart="36" bodyend="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_linear_op_1adbd8c74d39db458bcb26da7d42d0039d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_linear_op_1adbd8c74d39db458bcb26da7d42d0039d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">array_type</ref> &gt;</type>
         <definition>virtual Disposable&lt;array_type&gt; apply</definition>
         <argsstring>(const array_type &amp;r) const =0</argsstring>
         <name>apply</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">array_type</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">array_type</ref> &amp;</type>
           <declname>r</declname>
         </param>
         <location file="/methods/finitedifferences/operators/fdmlinearop.hpp" line="37"/>

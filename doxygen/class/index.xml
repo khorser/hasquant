@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_index" kind="class" prot="public" abstract="yes">
+  <compounddef id="index" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Index</compoundname>
     <includes local="no">/index.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="index_1ae31939bafb7379752a737547ff7711b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Index</definition>
         <argsstring>()</argsstring>
         <name>~Index</name>
         <location file="/index.hpp" line="46" bodyfile="/index.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="index_1a7f04e718c6856c4d3d77a496b6acad0d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>std::string</type>
         <definition>virtual std::string name</definition>
         <argsstring>() const =0</argsstring>
@@ -22,8 +22,8 @@
 <para><xrefsect id="caveats_1_caveats000031"><xreftitle>Warning</xreftitle><xrefdescription><para>This method is used for output and comparison between indexes. It is <bold>not</bold> meant to be used for writing switch-on-type code. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/index.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="index_1a017c78ebe125418dde1aacb7c610265a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>virtual Calendar fixingCalendar</definition>
         <argsstring>() const =0</argsstring>
         <name>fixingCalendar</name>
@@ -31,26 +31,26 @@
 <para>returns the calendar defining valid fixing dates </para>        </briefdescription>
         <location file="/index.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="index_1abaaf5b4d83d8e96c321a71b3eec62a78" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool isValidFixingDate</definition>
         <argsstring>(const Date &amp;fixingDate) const =0</argsstring>
         <name>isValidFixingDate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <briefdescription>
 <para>returns TRUE if the fixing date is a valid one </para>        </briefdescription>
         <location file="/index.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="index_1a3fe8532d0a96ae0ba25ac781e150aa37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real fixing</definition>
         <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const =0</argsstring>
         <name>fixing</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
@@ -64,22 +64,22 @@
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
         <location file="/index.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="index_1aeaa2b4c70839cef5ffb0e770e42331a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const TimeSeries&lt;Real&gt;&amp; timeSeries</definition>
         <argsstring>() const </argsstring>
         <name>timeSeries</name>
         <briefdescription>
-<para>returns the fixing <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+<para>returns the fixing <ref refid="time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
         <location file="/index.hpp" line="64" bodyfile="/index.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="index_1a7a90b939ae6213878841b3a7d08776bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void addFixing</definition>
         <argsstring>(const Date &amp;fixingDate, Real fixing, bool forceOverwrite=false)</argsstring>
         <name>addFixing</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
@@ -97,13 +97,13 @@
 <para>the date passed as arguments must be the actual calendar date of the fixing; no settlement days must be used. </para>        </detaileddescription>
         <location file="/index.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a7508199daa86b2f60ad153454b944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="index_1a7508199daa86b2f60ad153454b944558" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void addFixings</definition>
         <argsstring>(const TimeSeries&lt; Real &gt; &amp;t, bool forceOverwrite=false)</argsstring>
         <name>addFixings</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
+          <type>const <ref refid="time_series" kindref="compound">TimeSeries</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
           <declname>t</declname>
         </param>
         <param>
@@ -112,12 +112,12 @@
           <defval>false</defval>
         </param>
         <briefdescription>
-<para>stores historical fixings from a <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
+<para>stores historical fixings from a <ref refid="time_series" kindref="compound">TimeSeries</ref> </para>        </briefdescription>
         <detaileddescription>
-<para>the dates in the <ref refid="class_quant_lib_1_1_time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
+<para>the dates in the <ref refid="time_series" kindref="compound">TimeSeries</ref> must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
         <location file="/index.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="index_1ac5a81c6efaef1986836098611234389a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class DateIterator</type>
@@ -153,7 +153,7 @@
 <para>the dates passed as arguments must be the actual calendar dates of the fixings; no settlement days must be used. </para>        </detaileddescription>
         <location file="/index.hpp" line="87" bodyfile="/index.hpp" bodystart="85" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="index_1a45034f65c461ffc15eb4679b02dde6c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void clearFixings</definition>
         <argsstring>()</argsstring>

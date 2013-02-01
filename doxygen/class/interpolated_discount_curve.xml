@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_discount_curve" kind="class" prot="public">
+  <compounddef id="interpolated_discount_curve" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedDiscountCurve</compoundname>
     <includes local="no">/termstructures/yield/discountcurve.hpp</includes>
     <templateparamlist>
@@ -10,12 +10,12 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_discount_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/yield/discountcurve.hpp" line="65" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="115" bodyend="117"/>
@@ -23,36 +23,36 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>other inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/yield/discountcurve.hpp" line="69" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="121" bodyend="123"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="interpolated_discount_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/termstructures/yield/discountcurve.hpp" line="70" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="127" bodyend="129"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/yield/discountcurve.hpp" line="71" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="133" bodyend="135"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a86a2497b9c215843d6c3e42517776511" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1a86a2497b9c215843d6c3e42517776511" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; DiscountFactor &gt; &amp; discounts</definition>
         <argsstring>() const </argsstring>
         <name>discounts</name>
         <location file="/termstructures/yield/discountcurve.hpp" line="72" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="139" bodyend="141"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="interpolated_discount_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -61,12 +61,12 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure implementation</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1a2c21d8d34e88bb0451cabdd4e280ab17" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor discountImpl</definition>
         <argsstring>(Time) const </argsstring>
         <name>discountImpl</name>
-        <reimplements refid="class_quant_lib_1_1_yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
+        <reimplements refid="yield_term_structure_1afe73bf9ae8077e99d6edde6ea309e991">discountImpl</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         </param>
@@ -76,13 +76,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a8fe1a1d910b193a5dada793d5f07bc90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1a8fe1a1d910b193a5dada793d5f07bc90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedDiscountCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; DiscountFactor &gt; &amp;dfs, const DayCounter &amp;dayCounter, const Calendar &amp;cal=Calendar(), const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;jumps=std::vector&lt; Handle&lt; Quote &gt; &gt;(), const std::vector&lt; Date &gt; &amp;jumpDates=std::vector&lt; Date &gt;(), const Interpolator &amp;interpolator=Interpolator())</argsstring>
         <name>InterpolatedDiscountCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -90,23 +90,23 @@
           <declname>dfs</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>jumps</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt;()</defval>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>jumpDates</declname>
-          <defval>std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;()</defval>
+          <defval>std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;()</defval>
         </param>
         <param>
           <type>const Interpolator &amp;</type>
@@ -115,13 +115,13 @@
         </param>
         <location file="/termstructures/yield/discountcurve.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a6113b500cd6d2ee2ea94e277c047b36a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1a6113b500cd6d2ee2ea94e277c047b36a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedDiscountCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; DiscountFactor &gt; &amp;dfs, const DayCounter &amp;dayCounter, const Calendar &amp;calendar, const Interpolator &amp;interpolator)</argsstring>
         <name>InterpolatedDiscountCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -129,11 +129,11 @@
           <declname>dfs</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -142,13 +142,13 @@
         </param>
         <location file="/termstructures/yield/discountcurve.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_discount_curve_1a5f57ebccd5c2b3a5d49277a583c46ed3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_discount_curve_1a5f57ebccd5c2b3a5d49277a583c46ed3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedDiscountCurve</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; DiscountFactor &gt; &amp;dfs, const DayCounter &amp;dayCounter, const Interpolator &amp;interpolator)</argsstring>
         <name>InterpolatedDiscountCurve</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -156,7 +156,7 @@
           <declname>dfs</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -167,7 +167,7 @@
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para><ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of discount factors. </para>    </briefdescription>
+<para><ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> based on interpolation of discount factors. </para>    </briefdescription>
     <location file="/termstructures/yield/discountcurve.hpp" line="42" bodyfile="/termstructures/yield/discountcurve.hpp" bodystart="40" bodyend="101"/>
   </compounddef>
 </doxygen>

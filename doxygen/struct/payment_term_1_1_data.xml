@@ -1,31 +1,31 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="struct_quant_lib_1_1_payment_term_1_1_data" kind="struct" prot="protected">
+  <compounddef id="payment_term_1_1_data" kind="struct" prot="protected">
     <compoundname>QuantLib::PaymentTerm::Data</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="payment_term_1_1_data_1a9b45b3e13bd9167aab02e17e08916231" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string name</definition>
         <argsstring></argsstring>
         <name>name</name>
         <location file="/experimental/commodities/paymentterm.hpp" line="57" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="57" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1a7ec11d2afdbee6ed91f40584c319f923" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="payment_term_1_1_data_1a7ec11d2afdbee6ed91f40584c319f923" prot="public" static="no" mutable="no">
         <type>EventType</type>
         <definition>EventType eventType</definition>
         <argsstring></argsstring>
         <name>eventType</name>
         <location file="/experimental/commodities/paymentterm.hpp" line="58" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="58" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1ad574a26f94e97270ded97bff02bdaf14" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="payment_term_1_1_data_1ad574a26f94e97270ded97bff02bdaf14" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer offsetDays</definition>
         <argsstring></argsstring>
         <name>offsetDays</name>
         <location file="/experimental/commodities/paymentterm.hpp" line="59" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="59" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="struct_quant_lib_1_1_payment_term_1_1_data_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="variable" id="payment_term_1_1_data_1a78752433f4fe4a459158fefc086335e5" prot="public" static="no" mutable="no">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring></argsstring>
         <name>calendar</name>
@@ -33,7 +33,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="struct_quant_lib_1_1_payment_term_1_1_data_1acab908bba0f709e62dfb9fd9116b0f75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="payment_term_1_1_data_1acab908bba0f709e62dfb9fd9116b0f75" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Data</definition>
         <argsstring>(const std::string &amp;name, EventType eventType, Integer offsetDays, const Calendar &amp;calendar)</argsstring>
@@ -51,7 +51,7 @@
           <declname>offsetDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <location file="/experimental/commodities/paymentterm.hpp" line="63" bodyfile="/experimental/commodities/paymentterm.hpp" bodystart="82" bodyend="87"/>

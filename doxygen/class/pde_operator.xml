@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pde_operator" kind="class" prot="public">
+  <compounddef id="pde_operator" kind="class" prot="public">
     <compoundname>QuantLib::PdeOperator</compoundname>
     <templateparamlist>
       <param>
@@ -8,7 +8,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pde_operator_1a83ba8858d1539f48a6efa876f4fbec10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="pde_operator_1a83ba8858d1539f48a6efa876f4fbec10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class T</type>
@@ -19,7 +19,7 @@
         <argsstring>(const Array &amp;grid, T process, Time residualTime=0.0)</argsstring>
         <name>PdeOperator</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <param>

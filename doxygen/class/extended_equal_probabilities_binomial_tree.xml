@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree" kind="class" prot="public" abstract="yes">
+  <compounddef id="extended_equal_probabilities_binomial_tree" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::ExtendedEqualProbabilitiesBinomialTree</compoundname>
     <includes local="no">/experimental/lattices/extendedbinomialtree.hpp</includes>
     <templateparamlist>
@@ -11,13 +11,13 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1abdbea11b54755e08de44aa8a46ce0c53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_equal_probabilities_binomial_tree_1abdbea11b54755e08de44aa8a46ce0c53" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ExtendedEqualProbabilitiesBinomialTree</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Time end, Size steps)</argsstring>
         <name>ExtendedEqualProbabilitiesBinomialTree</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -30,14 +30,14 @@
         </param>
         <location file="/experimental/lattices/extendedbinomialtree.hpp" line="81" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="77" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1aa8d6fdd8152e58e8221e45787df944e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="extended_equal_probabilities_binomial_tree_1aa8d6fdd8152e58e8221e45787df944e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~ExtendedEqualProbabilitiesBinomialTree</definition>
         <argsstring>()</argsstring>
         <name>~ExtendedEqualProbabilitiesBinomialTree</name>
         <location file="/experimental/lattices/extendedbinomialtree.hpp" line="82" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_equal_probabilities_binomial_tree_1aadac025a5f64f237485fd45611a1b2d9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real underlying</definition>
         <argsstring>(Size i, Size index) const </argsstring>
@@ -52,7 +52,7 @@
         </param>
         <location file="/experimental/lattices/extendedbinomialtree.hpp" line="84" bodyfile="/experimental/lattices/extendedbinomialtree.hpp" bodystart="84" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_extended_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="extended_equal_probabilities_binomial_tree_1a8bc8de40659e05e8da8823d40dabe123" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real probability</definition>
         <argsstring>(Size, Size, Size) const </argsstring>

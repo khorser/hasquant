@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve" kind="class" prot="public">
+  <compounddef id="piecewise_yo_y_inflation_curve" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseYoYInflationCurve</compoundname>
     <includes local="no">/termstructures/inflation/piecewiseyoyinflationcurve.hpp</includes>
     <templateparamlist>
@@ -11,34 +11,34 @@
         <type>template&lt; class &gt; class</type>
         <declname>Bootstrap</declname>
         <defname>Bootstrap</defname>
-        <defval><ref refid="class_quant_lib_1_1_iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
+        <defval><ref refid="iterative_bootstrap" kindref="compound">IterativeBootstrap</ref></defval>
       </param>
       <param>
         <type>class Traits</type>
-        <defval><ref refid="class_quant_lib_1_1_yo_y_inflation_traits" kindref="compound">YoYInflationTraits</ref></defval>
+        <defval><ref refid="yo_y_inflation_traits" kindref="compound">YoYInflationTraits</ref></defval>
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1aeffd89f5714445ff9dd40e96c7050c59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1aeffd89f5714445ff9dd40e96c7050c59" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseYoYInflationCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar, const DayCounter &amp;dayCounter, const Period &amp;lag, Frequency frequency, bool indexIsInterpolated, Rate baseYoYRate, const Handle&lt; YieldTermStructure &gt; &amp;nominalTS, const std::vector&lt; boost::shared_ptr&lt; typename Traits::helper &gt; &gt; &amp;instruments, Real accuracy=1.0e-12, const Interpolator &amp;i=Interpolator())</argsstring>
         <name>PiecewiseYoYInflationCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>lag</declname>
         </param>
         <param>
@@ -54,7 +54,7 @@
           <declname>baseYoYRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>nominalTS</declname>
         </param>
         <param>
@@ -76,24 +76,24 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inflation interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplements>
+        <reimplements refid="interpolated_yo_y_inflation_curve_1a872006051a1b47c481388e2f5313fd91">baseDate</reimplements>
         <briefdescription>
 <para>minimum (base) date </para>        </briefdescription>
         <detaileddescription>
 <para>Important in inflation since it starts before nominal reference date. Changes depending whether index is interpolated or not. When interpolated the base date is just observation lag before nominal. When not interpolated it is the beginning of the relevant period (hence it is easy to create interpolated fixings from a not-interpolated curve because interpolation, usually, of fixings is forward looking). </para>        </detaileddescription>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="75" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="112" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_interpolated_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplements>
+        <reimplements refid="interpolated_yo_y_inflation_curve_1a74d8fc5480ca811db8332b7b30597fe9">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="76" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="118" bodyend="121"/>
@@ -101,29 +101,29 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1aa338cfa77dc3c8dc467f4225459094fd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Time &gt; &amp; times</definition>
         <argsstring>() const </argsstring>
         <name>times</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="80" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="124" bodyend="127"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1a021de10463e6e18e294494d7cbb2b75d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Date &gt; &amp; dates</definition>
         <argsstring>() const </argsstring>
         <name>dates</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="81" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="130" bodyend="133"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1ac4cb0310cb2b45d6d243dd93f5d0b00f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt; Real &gt; &amp; data</definition>
         <argsstring>() const </argsstring>
         <name>data</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="82" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="136" bodyend="139"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; std::pair&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1ad18c145fb4f30b90c7f7a93f9b36417e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; std::pair&lt; <ref refid="date" kindref="compound">Date</ref>, <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &gt;</type>
         <definition>std::vector&lt; std::pair&lt; Date, Real &gt; &gt; nodes</definition>
         <argsstring>() const </argsstring>
         <name>nodes</name>
@@ -132,24 +132,24 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="piecewise_yo_y_inflation_curve_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
+        <reimplements refid="lazy_object_1ac5c54df7ed3b930268c8d7752c101725">update</reimplements>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="87" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="154" bodyend="157"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_yo_y_inflation_curve_1aada8c38edc7a4968494c4838ecfd99ce" prot="public" static="no">
         <type>Traits</type>
         <definition>typedef Traits traits_type</definition>
         <argsstring></argsstring>
         <name>traits_type</name>
         <location file="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" line="47" bodyfile="/termstructures/inflation/piecewiseyoyinflationcurve.hpp" bodystart="47" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_piecewise_yo_y_inflation_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
+      <memberdef kind="typedef" id="piecewise_yo_y_inflation_curve_1a89a0f20565fc38a4735f79b7c6deeed7" prot="public" static="no">
         <type>Interpolator</type>
         <definition>typedef Interpolator interpolator_type</definition>
         <argsstring></argsstring>

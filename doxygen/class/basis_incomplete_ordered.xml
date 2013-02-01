@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_basis_incomplete_ordered" kind="class" prot="public">
+  <compounddef id="basis_incomplete_ordered" kind="class" prot="public">
     <compoundname>QuantLib::BasisIncompleteOrdered</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="basis_incomplete_ordered_1a967c1b6bde796319e9551f2b4bc9f96b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BasisIncompleteOrdered</definition>
         <argsstring>(Size euclideanDimension)</argsstring>
@@ -14,35 +14,35 @@
         </param>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="31"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="basis_incomplete_ordered_1addee3cfc1b7ea80b0cb58b23d33b61cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool addVector</definition>
         <argsstring>(const Array &amp;newVector)</argsstring>
         <name>addVector</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>newVector</declname>
         </param>
         <briefdescription>
 <para>return value indicates if the vector was linearly independent </para>        </briefdescription>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="33"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="basis_incomplete_ordered_1aba2dcad8887ff6338e9c2f9f57fa6656" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size basisSize</definition>
         <argsstring>() const </argsstring>
         <name>basisSize</name>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="34"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="basis_incomplete_ordered_1ad0f6a0b30c3632f8935f0bd718960e95" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size euclideanDimension</definition>
         <argsstring>() const </argsstring>
         <name>euclideanDimension</name>
         <location file="/math/matrixutilities/basisincompleteordered.hpp" line="35"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref></type>
+      <memberdef kind="function" id="basis_incomplete_ordered_1a9805cc5c059fc8b5fb8088db6cd02c84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="matrix" kindref="compound">Matrix</ref></type>
         <definition>Matrix getBasisAsRowsInMatrix</definition>
         <argsstring>() const </argsstring>
         <name>getBasisAsRowsInMatrix</name>

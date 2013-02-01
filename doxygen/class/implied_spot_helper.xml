@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_implied_spot_helper" kind="class" prot="public">
+  <compounddef id="implied_spot_helper" kind="class" prot="public">
     <compoundname>QuantLib::ImpliedSpotHelper</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_implied_spot_helper_1a7b3d43cf263798d7c26a754bfed48aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="implied_spot_helper_1a7b3d43cf263798d7c26a754bfed48aa0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ImpliedSpotHelper</definition>
         <argsstring>(DiscountFactor dividendDiscount, DiscountFactor riskFreeDiscount, Real standardDeviation, boost::shared_ptr&lt; PlainVanillaPayoff &gt; payoff, Real strike)</argsstring>
@@ -21,7 +21,7 @@
           <declname>standardDeviation</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="plain_vanilla_payoff" kindref="compound">PlainVanillaPayoff</ref> &gt;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -30,7 +30,7 @@
         </param>
         <location file="/experimental/compoundoption/analyticcompoundoptionengine.hpp" line="110"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="implied_spot_helper_1aec77a0c65f487ce16c737d656d42cbb7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real spot) const </argsstring>

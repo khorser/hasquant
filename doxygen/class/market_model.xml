@@ -1,60 +1,60 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_market_model" kind="class" prot="public" abstract="yes">
+  <compounddef id="market_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::MarketModel</compoundname>
     <includes local="no">/models/marketmodels/marketmodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="market_model_1a816506d51e4cf5c6e2dccec53af55e6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~MarketModel</definition>
         <argsstring>()</argsstring>
         <name>~MarketModel</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="41" bodyfile="/models/marketmodels/marketmodel.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1adc217a0c2cb706bc4f845d44424e1b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="market_model_1adc217a0c2cb706bc4f845d44424e1b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Rate&gt;&amp; initialRates</definition>
         <argsstring>() const =0</argsstring>
         <name>initialRates</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a77c3a5ee494fde88b9eca13f27fd28eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="market_model_1a77c3a5ee494fde88b9eca13f27fd28eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref> &gt; &amp;</type>
         <definition>virtual const std::vector&lt;Spread&gt;&amp; displacements</definition>
         <argsstring>() const =0</argsstring>
         <name>displacements</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
+      <memberdef kind="function" id="market_model_1a68dfe7446a0e67a069cc65607e33fba7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="evolution_description" kindref="compound">EvolutionDescription</ref> &amp;</type>
         <definition>virtual const EvolutionDescription&amp; evolution</definition>
         <argsstring>() const =0</argsstring>
         <name>evolution</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="market_model_1ae0b5ee9b6e485b66f6cb44a08904136d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfRates</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfRates</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a23e12972a841e8410cafc8a15056196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="market_model_1a23e12972a841e8410cafc8a15056196e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfFactors</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfFactors</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1abe6f647dd9a9c3dc968ac76116801348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="market_model_1abe6f647dd9a9c3dc968ac76116801348" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>virtual Size numberOfSteps</definition>
         <argsstring>() const =0</argsstring>
         <name>numberOfSteps</name>
         <location file="/models/marketmodels/marketmodel.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a6fba75f39ffbed5d1523150428b94d2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="market_model_1a6fba75f39ffbed5d1523150428b94d2b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>virtual const Matrix&amp; pseudoRoot</definition>
         <argsstring>(Size i) const =0</argsstring>
         <name>pseudoRoot</name>
@@ -64,8 +64,8 @@
         </param>
         <location file="/models/marketmodels/marketmodel.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="market_model_1a2534d6cfef652a9c7eff1da6a0b2a0c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>virtual const Matrix&amp; covariance</definition>
         <argsstring>(Size i) const </argsstring>
         <name>covariance</name>
@@ -75,8 +75,8 @@
         </param>
         <location file="/models/marketmodels/marketmodel.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="market_model_1af790cfbb62e4ea9f90c6406b6943f8f0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>virtual const Matrix&amp; totalCovariance</definition>
         <argsstring>(Size endIndex) const </argsstring>
         <name>totalCovariance</name>
@@ -86,7 +86,7 @@
         </param>
         <location file="/models/marketmodels/marketmodel.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="market_model_1a18b43aae2cea6a49ffe4ea29494cc2a8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref> &gt;</type>
         <definition>std::vector&lt;Volatility&gt; timeDependentVolatility</definition>
         <argsstring>(Size i) const </argsstring>

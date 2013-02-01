@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm2_dim_solver" kind="class" prot="public">
+  <compounddef id="fdm2_dim_solver" kind="class" prot="public">
     <compoundname>QuantLib::Fdm2DimSolver</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1ae702dcf75518662713b6cd9f4e99d76f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1ae702dcf75518662713b6cd9f4e99d76f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Fdm2DimSolver</definition>
         <argsstring>(const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc, const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;op)</argsstring>
@@ -22,7 +22,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1ac0ba2422f2ffe2d1843462c15d8ce84b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1ac0ba2422f2ffe2d1843462c15d8ce84b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real interpolateAt</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -37,7 +37,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a7ce5036c20066e383d5b68d770a3b847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1a7ce5036c20066e383d5b68d770a3b847" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -52,7 +52,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1a35279b56a8a434738b5210e5abe66376" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivativeX</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -67,7 +67,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1a9bb70b34a017142d208a3439a59238cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivativeY</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -82,7 +82,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a0fa7710cae036567b83922ed8125e564" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1a0fa7710cae036567b83922ed8125e564" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivativeXX</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -97,7 +97,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1ae3d80f9c78734c076475283c675c425c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1ae3d80f9c78734c076475283c675c425c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivativeYY</definition>
         <argsstring>(Real x, Real y) const </argsstring>
@@ -112,7 +112,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm2dimsolver.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm2_dim_solver_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm2_dim_solver_1a96c8f7599965301834826364d48349fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivativeXY</definition>
         <argsstring>(Real x, Real y) const </argsstring>

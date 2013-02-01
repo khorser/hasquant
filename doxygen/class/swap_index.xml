@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swap_index" kind="class" prot="public">
+  <compounddef id="swap_index" kind="class" prot="public">
     <compoundname>QuantLib::SwapIndex</compoundname>
     <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>InterestRateIndex interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="swap_index_1a615a330e425e4b9abceba4a56fc2664f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>(const Date &amp;valueDate) const </argsstring>
         <name>maturityDate</name>
-        <reimplements refid="class_quant_lib_1_1_interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
+        <reimplements refid="interest_rate_index_1a272504b2735ffa618889e575d93212a9">maturityDate</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
         <location file="/indexes/swapindex.hpp" line="63"/>
@@ -20,55 +20,55 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a55d0d8b63c13eae3e81de1ab0c832d0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="function" id="swap_index_1a55d0d8b63c13eae3e81de1ab0c832d0a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>Period fixedLegTenor</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegTenor</name>
         <location file="/indexes/swapindex.hpp" line="67" bodyfile="/indexes/swapindex.hpp" bodystart="67" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a5f701a7f5081b78395cb2b116568df02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_index_1a5f701a7f5081b78395cb2b116568df02" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention fixedLegConvention</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegConvention</name>
         <location file="/indexes/swapindex.hpp" line="68" bodyfile="/indexes/swapindex.hpp" bodystart="128" bodyend="130"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a39c9489a774110f2c9109243222f287e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+      <memberdef kind="function" id="swap_index_1a39c9489a774110f2c9109243222f287e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;IborIndex&gt; iborIndex</definition>
         <argsstring>() const </argsstring>
         <name>iborIndex</name>
         <location file="/indexes/swapindex.hpp" line="69" bodyfile="/indexes/swapindex.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="swap_index_1a602aff2af572fe9b816a379dae8fb4ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; forwardingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>forwardingTermStructure</name>
         <location file="/indexes/swapindex.hpp" line="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a7f25888de58002b814b55c194461958d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="swap_index_1a7f25888de58002b814b55c194461958d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
         <definition>Handle&lt;YieldTermStructure&gt; discountingTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>discountingTermStructure</name>
         <location file="/indexes/swapindex.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1acf2e42f9336ae9075e37b7655fb2b18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="swap_index_1acf2e42f9336ae9075e37b7655fb2b18e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool exogenousDiscount</definition>
         <argsstring>() const </argsstring>
         <name>exogenousDiscount</name>
         <location file="/indexes/swapindex.hpp" line="72" bodyfile="/indexes/swapindex.hpp" bodystart="132" bodyend="134"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1afccaabbaca855e9e0b6a82e88eb59551" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
+      <memberdef kind="function" id="swap_index_1afccaabbaca855e9e0b6a82e88eb59551" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="vanilla_swap" kindref="compound">VanillaSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;VanillaSwap&gt; underlyingSwap</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>underlyingSwap</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <detaileddescription>
@@ -78,13 +78,13 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other methods</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a73ace5db73159bfcf0e4e8ee9f4e0ef6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swap_index" kindref="compound">SwapIndex</ref> &gt;</type>
+      <memberdef kind="function" id="swap_index_1a73ace5db73159bfcf0e4e8ee9f4e0ef6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="swap_index" kindref="compound">SwapIndex</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;SwapIndex&gt; clone</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;forwarding) const </argsstring>
         <name>clone</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <briefdescription>
@@ -93,7 +93,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1af156ef2b3f82ab02b6581de586d4884c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_index_1af156ef2b3f82ab02b6581de586d4884c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwapIndex</definition>
         <argsstring>(const std::string &amp;familyName, const Period &amp;tenor, Natural settlementDays, Currency currency, const Calendar &amp;calendar, const Period &amp;fixedLegTenor, BusinessDayConvention fixedLegConvention, const DayCounter &amp;fixedLegDayCounter, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex)</argsstring>
@@ -103,7 +103,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -111,15 +111,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+          <type><ref refid="currency" kindref="compound">Currency</ref></type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>fixedLegTenor</declname>
         </param>
         <param>
@@ -127,16 +127,16 @@
           <declname>fixedLegConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedLegDayCounter</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <location file="/indexes/swapindex.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swap_index_1a00ecd319fd0c7b9daff73ca5b59fa0f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swap_index_1a00ecd319fd0c7b9daff73ca5b59fa0f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwapIndex</definition>
         <argsstring>(const std::string &amp;familyName, const Period &amp;tenor, Natural settlementDays, Currency currency, const Calendar &amp;calendar, const Period &amp;fixedLegTenor, BusinessDayConvention fixedLegConvention, const DayCounter &amp;fixedLegDayCounter, const boost::shared_ptr&lt; IborIndex &gt; &amp;iborIndex, const Handle&lt; YieldTermStructure &gt; &amp;discountingTermStructure)</argsstring>
@@ -146,7 +146,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -154,15 +154,15 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+          <type><ref refid="currency" kindref="compound">Currency</ref></type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>fixedLegTenor</declname>
         </param>
         <param>
@@ -170,15 +170,15 @@
           <declname>fixedLegConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedLegDayCounter</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>iborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountingTermStructure</declname>
         </param>
         <location file="/indexes/swapindex.hpp" line="60"/>

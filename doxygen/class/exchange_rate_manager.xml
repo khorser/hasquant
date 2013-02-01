@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_exchange_rate_manager" kind="class" prot="public">
+  <compounddef id="exchange_rate_manager" kind="class" prot="public">
     <compoundname>QuantLib::ExchangeRateManager</compoundname>
     <includes local="no">/currencies/exchangeratemanager.hpp</includes>
-    <innerclass refid="struct_quant_lib_1_1_exchange_rate_manager_1_1_entry" prot="public">QuantLib::ExchangeRateManager::Entry</innerclass>
+    <innerclass refid="exchange_rate_manager_1_1_entry" prot="public">QuantLib::ExchangeRateManager::Entry</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1a06d8b6a35265988b53450aeab76d5745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exchange_rate_manager_1a06d8b6a35265988b53450aeab76d5745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void add</definition>
         <argsstring>(const ExchangeRate &amp;, const Date &amp;startDate=Date::minDate(), const Date &amp;endDate=Date::maxDate())</argsstring>
         <name>add</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
+          <type>const <ref refid="exchange_rate" kindref="compound">ExchangeRate</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
+          <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>endDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date_1ab16674c4f64b17d89302cf0805f1fdbd" kindref="member">Date::maxDate</ref>()</defval>
+          <defval><ref refid="date_1ab16674c4f64b17d89302cf0805f1fdbd" kindref="member">Date::maxDate</ref>()</defval>
         </param>
         <briefdescription>
 <para>Add an exchange rate. </para>        </briefdescription>
@@ -30,34 +30,34 @@
 </para>        </detaileddescription>
         <location file="/currencies/exchangeratemanager.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1a093a0fb71cc0f5e543d1e5a29f265da2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_exchange_rate" kindref="compound">ExchangeRate</ref></type>
+      <memberdef kind="function" id="exchange_rate_manager_1a093a0fb71cc0f5e543d1e5a29f265da2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="exchange_rate" kindref="compound">ExchangeRate</ref></type>
         <definition>ExchangeRate lookup</definition>
         <argsstring>(const Currency &amp;source, const Currency &amp;target, Date date=Date(), ExchangeRate::Type type=ExchangeRate::Derived) const </argsstring>
         <name>lookup</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>source</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>target</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>date</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">ExchangeRate::Type</ref></type>
+          <type><ref refid="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7" kindref="member">ExchangeRate::Type</ref></type>
           <declname>type</declname>
-          <defval><ref refid="class_quant_lib_1_1_exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" kindref="member">ExchangeRate::Derived</ref></defval>
+          <defval><ref refid="exchange_rate_1a1d1cfd8ffb84e947f82999c682b666a7a199000469c33d046262a9a25da58b6a0" kindref="member">ExchangeRate::Derived</ref></defval>
         </param>
         <detaileddescription>
 <para>Lookup the exchange rate between two currencies at a given date. If the given type is Direct, only direct exchange rates will be returned if available; if Derived, direct rates are still preferred but derived rates are allowed.</para><para><xrefsect id="caveats_1_caveats000004"><xreftitle>Warning</xreftitle><xrefdescription><para>if two or more exchange-rate chains are possible which allow to specify a requested rate, it is unspecified which one is returned. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/currencies/exchangeratemanager.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_exchange_rate_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="exchange_rate_manager_1ac8bb3912a3ce86b15842e79d0b421204" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void clear</definition>
         <argsstring>()</argsstring>

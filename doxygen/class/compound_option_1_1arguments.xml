@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_compound_option_1_1arguments" kind="class" prot="public">
+  <compounddef id="compound_option_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CompoundOption::arguments</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_asset_option" kindref="compound">OneAssetOption</ref> &gt;</type>
+      <memberdef kind="variable" id="compound_option_1_1arguments_1a0788b2146ee7869e378798503f7990f1" prot="public" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="one_asset_option" kindref="compound">OneAssetOption</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;OneAssetOption&gt; motherOption</definition>
         <argsstring></argsstring>
         <name>motherOption</name>
@@ -12,7 +12,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_compound_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="compound_option_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

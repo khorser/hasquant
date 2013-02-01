@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_brazil" kind="class" prot="public">
+  <compounddef id="brazil" kind="class" prot="public">
     <compoundname>QuantLib::Brazil</compoundname>
     <includes local="no">/time/calendars/brazil.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+      <memberdef kind="enum" id="brazil_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
-        <enumvalue id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public">
+        <enumvalue id="brazil_1abe41cfffd960e29a5d8b07be00aeda42a6f0faf2bdd3a1f7cf69bcd9164150be8" prot="public">
           <name>Settlement</name>
           <briefdescription>
 <para>generic settlement calendar </para>          </briefdescription>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42a89fe455d57ae52cfe608090a0ffe2979" prot="public">
+        <enumvalue id="brazil_1abe41cfffd960e29a5d8b07be00aeda42a89fe455d57ae52cfe608090a0ffe2979" prot="public">
           <name>Exchange</name>
           <briefdescription>
 <para>BOVESPA calendar. </para>          </briefdescription>
@@ -22,15 +22,15 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_brazil_1a7c199eab446f4b3abb6850b0171d1872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="brazil_1a7c199eab446f4b3abb6850b0171d1872" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Brazil</definition>
         <argsstring>(Market market=Settlement)</argsstring>
         <name>Brazil</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_brazil_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type><ref refid="brazil_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>market</declname>
-          <defval><ref refid="struct_quant_lib_1_1_settlement" kindref="compound">Settlement</ref></defval>
+          <defval><ref refid="settlement" kindref="compound">Settlement</ref></defval>
         </param>
         <location file="/time/calendars/brazil.hpp" line="93"/>
       </memberdef>

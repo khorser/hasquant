@@ -1,43 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_caplet_variance_curve" kind="class" prot="public">
+  <compounddef id="caplet_variance_curve" kind="class" prot="public">
     <compoundname>QuantLib::CapletVarianceCurve</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/capletvariancecurve.hpp</includes>
       <sectiondef kind="user-defined">
       <header>TermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="caplet_variance_curve_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="44" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="65" bodyend="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="caplet_variance_curve_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="45" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="69" bodyend="71"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1ab8237fa09c27ca6fa7edc11f1264fefa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="caplet_variance_curve_1ab8237fa09c27ca6fa7edc11f1264fefa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>CapletVarianceCurve</definition>
         <argsstring>(const Date &amp;referenceDate, const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Volatility &gt; &amp;capletVolCurve, const DayCounter &amp;dayCounter)</argsstring>
         <name>CapletVarianceCurve</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -45,34 +45,34 @@
           <declname>capletVolCurve</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="41" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="57" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="caplet_variance_curve_1aec700319eaa1c6fca66df8e15aea6167" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real minStrike</definition>
         <argsstring>() const </argsstring>
         <name>minStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1aaa54e38ec0aabcec3de3342602c4015f">minStrike</reimplements>
         <briefdescription>
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="47" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="73" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_caplet_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="caplet_variance_curve_1abe69dc8630a5ea3f8333cfdfd01ba765" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real maxStrike</definition>
         <argsstring>() const </argsstring>
         <name>maxStrike</name>
-        <reimplements refid="class_quant_lib_1_1_volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
+        <reimplements refid="volatility_term_structure_1a50d3c0b68286f6b64878e8c785822805">maxStrike</reimplements>
         <briefdescription>
 <para>the maximum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="48" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="77" bodyend="79"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para><xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>use the <ref refid="class_quant_lib_1_1_stripped_optionlet_adapter" kindref="compound">StrippedOptionletAdapter</ref> of a <ref refid="class_quant_lib_1_1_stripped_optionlet" kindref="compound">StrippedOptionlet</ref> instance </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para><xrefsect id="deprecated_1_deprecated000001"><xreftitle>Deprecated</xreftitle><xrefdescription><para>use the <ref refid="stripped_optionlet_adapter" kindref="compound">StrippedOptionletAdapter</ref> of a <ref refid="stripped_optionlet" kindref="compound">StrippedOptionlet</ref> instance </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/capletvariancecurve.hpp" line="36" bodyfile="/termstructures/volatility/optionlet/capletvariancecurve.hpp" bodystart="36" bodyend="55"/>
   </compounddef>
 </doxygen>

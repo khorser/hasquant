@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_heston_model_helper" kind="class" prot="public">
+  <compounddef id="heston_model_helper" kind="class" prot="public">
     <compoundname>QuantLib::HestonModelHelper</compoundname>
     <includes local="no">/models/equity/hestonmodelhelper.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1ab1df92f492a78501874b8580fdbeb697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="heston_model_helper_1ab1df92f492a78501874b8580fdbeb697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>HestonModelHelper</definition>
         <argsstring>(const Period &amp;maturity, const Calendar &amp;calendar, const Real s0, const Real strikePrice, const Handle&lt; Quote &gt; &amp;volatility, const Handle&lt; YieldTermStructure &gt; &amp;riskFreeRate, const Handle&lt; YieldTermStructure &gt; &amp;dividendYield, CalibrationHelper::CalibrationErrorType errorType=CalibrationHelper::RelativePriceError)</argsstring>
         <name>HestonModelHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -26,15 +26,15 @@
           <declname>strikePrice</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>riskFreeRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>dividendYield</declname>
         </param>
         <param>
@@ -44,33 +44,33 @@
         </param>
         <location file="/models/equity/hestonmodelhelper.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a9cee8013f93ddeb3dcdd7e8e41efe78d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="heston_model_helper_1a9cee8013f93ddeb3dcdd7e8e41efe78d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void addTimesTo</definition>
         <argsstring>(std::list&lt; Time &gt; &amp;) const </argsstring>
         <name>addTimesTo</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
+        <reimplements refid="calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
         <param>
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
         </param>
         <location file="/models/equity/hestonmodelhelper.hpp" line="46" bodyfile="/models/equity/hestonmodelhelper.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a7e150860902ed14d27ceee6baaed0942" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="heston_model_helper_1a7e150860902ed14d27ceee6baaed0942" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real modelValue</definition>
         <argsstring>() const </argsstring>
         <name>modelValue</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
+        <reimplements refid="calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
         <location file="/models/equity/hestonmodelhelper.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a30466de83789323a5c4b09b48f069500" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="heston_model_helper_1a30466de83789323a5c4b09b48f069500" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackPrice</definition>
         <argsstring>(Real volatility) const </argsstring>
         <name>blackPrice</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
+        <reimplements refid="calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>volatility</declname>
@@ -79,7 +79,7 @@
 <para>Black price given a volatility. </para>        </briefdescription>
         <location file="/models/equity/hestonmodelhelper.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_heston_model_helper_1a031873b070bc7219052b0fcc0cf0a5c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="heston_model_helper_1a031873b070bc7219052b0fcc0cf0a5c6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>Time maturity</definition>
         <argsstring>() const </argsstring>

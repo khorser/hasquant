@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_vanilla_swing_option" kind="class" prot="public">
+  <compounddef id="vanilla_swing_option" kind="class" prot="public">
     <compoundname>QuantLib::VanillaSwingOption</compoundname>
     <includes local="no">/instruments/vanillaswingoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_vanilla_swing_option_1_1arguments" prot="public">QuantLib::VanillaSwingOption::arguments</innerclass>
+    <innerclass refid="vanilla_swing_option_1_1arguments" prot="public">QuantLib::VanillaSwingOption::arguments</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swing_option_1a80949fe63cd72b900da964c4f3edfb65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="vanilla_swing_option_1a80949fe63cd72b900da964c4f3edfb65" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>VanillaSwingOption</definition>
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;payoff, const boost::shared_ptr&lt; SwingExercise &gt; &amp;ex, Size minExerciseRights, Size maxExerciseRights)</argsstring>
         <name>VanillaSwingOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="swing_exercise" kindref="compound">SwingExercise</ref> &gt; &amp;</type>
           <declname>ex</declname>
         </param>
         <param>
@@ -28,22 +28,22 @@
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="62" bodyfile="/instruments/vanillaswingoption.hpp" bodystart="57" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swing_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="vanilla_swing_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplements>
+        <reimplements refid="one_asset_option_1a274c03751addc5c2ea63cc23d14a0bfe">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/vanillaswingoption.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_vanilla_swing_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="vanilla_swing_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

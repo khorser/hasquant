@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_pricing_engine" kind="class" prot="public" abstract="yes">
+  <compounddef id="pricing_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PricingEngine</compoundname>
     <includes local="no">/pricingengine.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_pricing_engine_1_1arguments" prot="public">QuantLib::PricingEngine::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_pricing_engine_1_1results" prot="public">QuantLib::PricingEngine::results</innerclass>
+    <innerclass refid="pricing_engine_1_1arguments" prot="public">QuantLib::PricingEngine::arguments</innerclass>
+    <innerclass refid="pricing_engine_1_1results" prot="public">QuantLib::PricingEngine::results</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="pricing_engine_1afd59dc473bb01f5df6a6bdd1decde3f0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~PricingEngine</definition>
         <argsstring>()</argsstring>
         <name>~PricingEngine</name>
         <location file="/pricingengine.hpp" line="38" bodyfile="/pricingengine.hpp" bodystart="38" bodyend="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1acadfc179f7be93951a88d8d9785402d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="pricing_engine_1acadfc179f7be93951a88d8d9785402d3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>arguments *</type>
         <definition>virtual arguments* getArguments</definition>
         <argsstring>() const =0</argsstring>
         <name>getArguments</name>
         <location file="/pricingengine.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="pricing_engine_1ab7e33911413d94c4aa80aaf41eccddad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>const results *</type>
         <definition>virtual const results* getResults</definition>
         <argsstring>() const =0</argsstring>
         <name>getResults</name>
         <location file="/pricingengine.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="pricing_engine_1a20dcbdfbd0ec77afc802522bb7e379c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void reset</definition>
         <argsstring>()=0</argsstring>
         <name>reset</name>
         <location file="/pricingengine.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void calculate</definition>
         <argsstring>() const =0</argsstring>

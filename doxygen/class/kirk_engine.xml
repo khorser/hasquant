@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_kirk_engine" kind="class" prot="public">
+  <compounddef id="kirk_engine" kind="class" prot="public">
     <compoundname>QuantLib::KirkEngine</compoundname>
     <includes local="no">/pricingengines/basket/kirkengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_kirk_engine_1a62a4b370f5680744ea910ac2cf036b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="kirk_engine_1a62a4b370f5680744ea910ac2cf036b66" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>KirkEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; BlackProcess &gt; &amp;process1, const boost::shared_ptr&lt; BlackProcess &gt; &amp;process2, Real correlation)</argsstring>
         <name>KirkEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
           <declname>process1</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="black_process" kindref="compound">BlackProcess</ref> &gt; &amp;</type>
           <declname>process2</declname>
         </param>
         <param>
@@ -23,12 +23,12 @@
         </param>
         <location file="/pricingengines/basket/kirkengine.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_kirk_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="kirk_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/basket/kirkengine.hpp" line="49"/>
       </memberdef>
       </sectiondef>

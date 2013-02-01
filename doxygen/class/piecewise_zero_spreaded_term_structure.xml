@@ -1,77 +1,77 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure" kind="class" prot="public">
+  <compounddef id="piecewise_zero_spreaded_term_structure" kind="class" prot="public">
     <compoundname>QuantLib::PiecewiseZeroSpreadedTermStructure</compoundname>
     <includes local="no">/termstructures/yield/piecewisezerospreadedtermstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>YieldTermStructure interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref></type>
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1ac147d63df367bbe5282b76b1f98cb9be" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="day_counter" kindref="compound">DayCounter</ref></type>
         <definition>DayCounter dayCounter</definition>
         <argsstring>() const </argsstring>
         <name>dayCounter</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
+        <reimplements refid="term_structure_1ac147d63df367bbe5282b76b1f98cb9be">dayCounter</reimplements>
         <briefdescription>
 <para>the day counter used for date/time conversion </para>        </briefdescription>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="56" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="100" bodyend="102"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1ab6506da60fec85c6f146f1b43116de70" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>Natural settlementDays</definition>
         <argsstring>() const </argsstring>
         <name>settlementDays</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
+        <reimplements refid="term_structure_1ab6506da60fec85c6f146f1b43116de70">settlementDays</reimplements>
         <briefdescription>
 <para>the settlementDays used for reference date calculation </para>        </briefdescription>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="57" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="108" bodyend="110"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
+        <reimplements refid="term_structure_1ae9a0f3904cff2fe61596c593dd0b6448">calendar</reimplements>
         <briefdescription>
 <para>the calendar used for reference and/or option date calculation </para>        </briefdescription>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="58" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="104" bodyend="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1a5662908c63119a3b347a7e0ec8544afa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
         <definition>const Date &amp; referenceDate</definition>
         <argsstring>() const </argsstring>
         <name>referenceDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
+        <reimplements refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0">referenceDate</reimplements>
         <briefdescription>
 <para>the date at which discount = 1.0 and/or variance = 0.0 </para>        </briefdescription>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="59" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="113" bodyend="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1a74d8fc5480ca811db8332b7b30597fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
-        <reimplements refid="class_quant_lib_1_1_term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
+        <reimplements refid="term_structure_1a9d5c437961b8f9e30cffb723777ed7c6">maxDate</reimplements>
         <briefdescription>
 <para>the latest date for which the curve can return values </para>        </briefdescription>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="60" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="117" bodyend="119"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_piecewise_zero_spreaded_term_structure_1a08ce7c74ee74b1205a2f53da9fae1f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="piecewise_zero_spreaded_term_structure_1a08ce7c74ee74b1205a2f53da9fae1f9f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>PiecewiseZeroSpreadedTermStructure</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;, const std::vector&lt; Handle&lt; Quote &gt; &gt; &amp;spreads, const std::vector&lt; Date &gt; &amp;dates, Compounding comp=Continuous, Frequency freq=NoFrequency, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>PiecewiseZeroSpreadedTermStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <defname>h</defname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &gt; &amp;</type>
           <declname>spreads</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -85,9 +85,9 @@
           <defval><ref refid="group__datetime_1gga6d41db8ba0ea90d22df35889df452adaad7764a2ea2518891555bd395faffb4da" kindref="member">NoFrequency</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <location file="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" line="53" bodyfile="/termstructures/yield/piecewisezerospreadedtermstructure.hpp" bodystart="82" bodyend="98"/>
       </memberdef>

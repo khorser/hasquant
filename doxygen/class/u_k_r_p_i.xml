@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_u_k_r_p_i" kind="class" prot="public">
+  <compounddef id="u_k_r_p_i" kind="class" prot="public">
     <compoundname>QuantLib::UKRPI</compoundname>
     <includes local="no">/indexes/inflation/ukrpi.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_u_k_r_p_i_1a617ce65bc55b4b27aaabc877b8437872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="u_k_r_p_i_1a617ce65bc55b4b27aaabc877b8437872" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>UKRPI</definition>
         <argsstring>(bool interpolated, const Handle&lt; ZeroInflationTermStructure &gt; &amp;ts=Handle&lt; ZeroInflationTermStructure &gt;())</argsstring>
@@ -14,15 +14,15 @@
           <declname>interpolated</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/inflation/ukrpi.hpp" line="45" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="35" bodyend="45"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>UK Retail Price Inflation <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref>. </para>    </briefdescription>
+<para>UK Retail Price Inflation <ref refid="index" kindref="compound">Index</ref>. </para>    </briefdescription>
     <location file="/indexes/inflation/ukrpi.hpp" line="33" bodyfile="/indexes/inflation/ukrpi.hpp" bodystart="33" bodyend="46"/>
   </compounddef>
 </doxygen>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_convex_monotone_impl" kind="class" prot="public">
+  <compounddef id="detail_1_1_convex_monotone_impl" kind="class" prot="public">
     <compoundname>QuantLib::detail::ConvexMonotoneImpl</compoundname>
     <templateparamlist>
       <param>
@@ -11,25 +11,25 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30" prot="public" static="no">
+      <memberdef kind="enum" id="detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30" prot="public" static="no">
         <name>SectionType</name>
-        <enumvalue id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a6fa41e681bc472a4cf1154e269c08f32" prot="public">
+        <enumvalue id="detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a6fa41e681bc472a4cf1154e269c08f32" prot="public">
           <name>EverywhereConstant</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a0da3c58c4ca9886f7623ae0179d90dc3" prot="public">
+        <enumvalue id="detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a0da3c58c4ca9886f7623ae0179d90dc3" prot="public">
           <name>ConstantGradient</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a22b47184cf9284e6324162d5c220157e" prot="public">
+        <enumvalue id="detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a22b47184cf9284e6324162d5c220157e" prot="public">
           <name>QuadraticMinimum</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a5f6ea691c362dc3d192a7571286d7e4e" prot="public">
+        <enumvalue id="detail_1_1_convex_monotone_impl_1a25c82173ed332876ea7c76359befda30a5f6ea691c362dc3d192a7571286d7e4e" prot="public">
           <name>QuadraticMaximum</name>
         </enumvalue>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="48" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="48" bodyend="53"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a7af9abd73fc8bb3827c5053016c50d8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1a7af9abd73fc8bb3827c5053016c50d8d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConvexMonotoneImpl</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin, Real quadraticity, Real monotonicity, bool forcePositive, bool constantLastPeriod, const helper_map &amp;preExistingHelpers)</argsstring>
@@ -68,14 +68,14 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="68" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="55" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="81" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="473" bodyend="715"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1a32c15e88e971c70d04d00d6c1f01672b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real value</definition>
         <argsstring>(Real x) const </argsstring>
@@ -86,7 +86,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="83" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="718" bodyend="724"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1a7986adf4df78eb3fb880eb9bfbc85d59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real primitive</definition>
         <argsstring>(Real x) const </argsstring>
@@ -97,7 +97,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="84" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="727" bodyend="733"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a40d5931c8135350130ddb69962b5c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1a40d5931c8135350130ddb69962b5c760" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real derivative</definition>
         <argsstring>(Real) const </argsstring>
@@ -107,7 +107,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="85" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="85" bodyend="87"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1a54a2181d7818a60ff966d7d89a4bed2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real secondDerivative</definition>
         <argsstring>(Real) const </argsstring>
@@ -117,7 +117,7 @@
         </param>
         <location file="/math/interpolations/convexmonotoneinterpolation.hpp" line="88" bodyfile="/math/interpolations/convexmonotoneinterpolation.hpp" bodystart="88" bodyend="91"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_convex_monotone_impl_1aefe531d5e4cd25908a955d201aef48cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_convex_monotone_impl_1aefe531d5e4cd25908a955d201aef48cb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>helper_map</type>
         <definition>helper_map getExistingHelpers</definition>
         <argsstring>()</argsstring>

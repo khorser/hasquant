@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_india" kind="class" prot="public">
+  <compounddef id="india" kind="class" prot="public">
     <compoundname>QuantLib::India</compoundname>
     <includes local="no">/time/calendars/india.hpp</includes>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
+      <memberdef kind="enum" id="india_1abe41cfffd960e29a5d8b07be00aeda42" prot="public" static="no">
         <name>Market</name>
-        <enumvalue id="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" prot="public">
+        <enumvalue id="india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" prot="public">
           <name>NSE</name>
           <briefdescription>
-<para>National <ref refid="class_quant_lib_1_1_stock" kindref="compound">Stock</ref> Exchange. </para>          </briefdescription>
+<para>National <ref refid="stock" kindref="compound">Stock</ref> Exchange. </para>          </briefdescription>
         </enumvalue>
         <location file="/time/calendars/india.hpp" line="77" bodyfile="/time/calendars/india.hpp" bodystart="77" bodyend="78"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_india_1a863d65355fbcbc2aff6d63c7f3378ef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="india_1a863d65355fbcbc2aff6d63c7f3378ef5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>India</definition>
         <argsstring>(Market m=NSE)</argsstring>
         <name>India</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
+          <type><ref refid="india_1abe41cfffd960e29a5d8b07be00aeda42" kindref="member">Market</ref></type>
           <declname>m</declname>
-          <defval><ref refid="class_quant_lib_1_1_india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" kindref="member">NSE</ref></defval>
+          <defval><ref refid="india_1abe41cfffd960e29a5d8b07be00aeda42a936d3117a6170ef59dd01b4593c271e5" kindref="member">NSE</ref></defval>
         </param>
         <location file="/time/calendars/india.hpp" line="79"/>
       </memberdef>
@@ -31,7 +31,7 @@
     <briefdescription>
 <para>Indian calendars. </para>    </briefdescription>
     <detaileddescription>
-<para>Holidays for the National <ref refid="class_quant_lib_1_1_stock" kindref="compound">Stock</ref> Exchange (data from <ulink url="http://www.nse-india.com/">http://www.nse-india.com/</ulink>): <itemizedlist>
+<para>Holidays for the National <ref refid="stock" kindref="compound">Stock</ref> Exchange (data from <ulink url="http://www.nse-india.com/">http://www.nse-india.com/</ulink>): <itemizedlist>
 <listitem>
 <para>Saturdays </para></listitem>
 <listitem>

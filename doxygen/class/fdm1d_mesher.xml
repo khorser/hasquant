@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm1d_mesher" kind="class" prot="public">
+  <compounddef id="fdm1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::Fdm1dMesher</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1ab4d75a75239852265b97d3efb33fcf2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Fdm1dMesher</definition>
         <argsstring>(Size size)</argsstring>
@@ -14,14 +14,14 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="37" bodyfile="/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="36" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1a9d78a687cf2a391198bb3cbc08bc06cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>Size size</definition>
         <argsstring>() const </argsstring>
         <name>size</name>
         <location file="/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="39" bodyfile="/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1a0726574713e89fcc5ec41b656172270c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1a0726574713e89fcc5ec41b656172270c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real dplus</definition>
         <argsstring>(Size index) const </argsstring>
@@ -32,7 +32,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="40" bodyfile="/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1a1155518c087ec4af6ff6109358df607a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1a1155518c087ec4af6ff6109358df607a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real dminus</definition>
         <argsstring>(Size index) const </argsstring>
@@ -43,7 +43,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="41" bodyfile="/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="41" bodyend="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1a419dfb57dd2688876897560d8e9d8dd6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1a419dfb57dd2688876897560d8e9d8dd6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real location</definition>
         <argsstring>(Size index) const </argsstring>
@@ -54,7 +54,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdm1dmesher.hpp" line="42" bodyfile="/methods/finitedifferences/meshers/fdm1dmesher.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm1d_mesher_1a66c06bbb278d9d165875f6c099a52db1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm1d_mesher_1a66c06bbb278d9d165875f6c099a52db1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Real&gt;&amp; locations</definition>
         <argsstring>() const </argsstring>

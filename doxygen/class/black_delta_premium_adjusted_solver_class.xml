@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class" kind="class" prot="public">
+  <compounddef id="black_delta_premium_adjusted_solver_class" kind="class" prot="public">
     <compoundname>QuantLib::BlackDeltaPremiumAdjustedSolverClass</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1a6d7137518df6f679f1acbbb53d270b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_premium_adjusted_solver_class_1a6d7137518df6f679f1acbbb53d270b2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackDeltaPremiumAdjustedSolverClass</definition>
         <argsstring>(Option::Type ot, DeltaVolQuote::DeltaType dt, Real spot, DiscountFactor dDiscount, DiscountFactor fDiscount, Real stdDev, Real delta)</argsstring>
@@ -38,7 +38,7 @@
         </param>
         <location file="/experimental/fx/blackdeltacalculator.hpp" line="94"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_delta_premium_adjusted_solver_class_1af4d58202ba9cbaf8e86ff10bd1c88cc8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(Real strike) const </argsstring>

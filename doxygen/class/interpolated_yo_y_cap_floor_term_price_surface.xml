@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface" kind="class" prot="public">
+  <compounddef id="interpolated_yo_y_cap_floor_term_price_surface" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedYoYCapFloorTermPriceSurface</compoundname>
     <templateparamlist>
       <param>
@@ -11,8 +11,8 @@
       </param>
     </templateparamlist>
       <sectiondef kind="user-defined">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a8f99356f853de778d6eb053615c1bdbf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date maxDate</definition>
         <argsstring>() const </argsstring>
         <name>maxDate</name>
@@ -20,8 +20,8 @@
 <para>inflation term structure interface </para>        </briefdescription>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="168" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="168" bodyend="168"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a89ce98e9bb2a22127b03621ee6149660" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>virtual Date baseDate</definition>
         <argsstring>() const </argsstring>
         <name>baseDate</name>
@@ -30,34 +30,34 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>YoYCapFloorTermPriceSurface interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a65bb7d6ce4da0d29e409972410ea7fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a65bb7d6ce4da0d29e409972410ea7fde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>std::pair&lt; std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>virtual std::pair&lt;std::vector&lt;Time&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapTimeRates</definition>
         <argsstring>() const </argsstring>
         <name>atmYoYSwapTimeRates</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="176" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="176" bodyend="176"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ac977401fe72609c0fadd05093a4d33a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>std::pair&lt; std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1ac977401fe72609c0fadd05093a4d33a0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>std::pair&lt; std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt;, std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &gt;</type>
         <definition>virtual std::pair&lt;std::vector&lt;Date&gt;, std::vector&lt;Rate&gt; &gt; atmYoYSwapDateRates</definition>
         <argsstring>() const </argsstring>
         <name>atmYoYSwapDateRates</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="178" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="178" bodyend="178"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1aa190eb1cb9b0a3927a42ac74533d88f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1aa190eb1cb9b0a3927a42ac74533d88f5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="yo_y_inflation_term_structure" kindref="compound">YoYInflationTermStructure</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;YoYInflationTermStructure&gt; YoYTS</definition>
         <argsstring>() const </argsstring>
         <name>YoYTS</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="180" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="180" bodyend="180"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a32c3ce6a2e2fb8dee9bec0d95bcf9d04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a32c3ce6a2e2fb8dee9bec0d95bcf9d04" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate price</definition>
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -66,13 +66,13 @@
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="181" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="299" bodyend="302"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ae57ffbfd1f2184c2b16f624f469d5fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1ae57ffbfd1f2184c2b16f624f469d5fe9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Rate floorPrice</definition>
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -81,13 +81,13 @@
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="182" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="315" bodyend="318"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a755e3777a6105eeac8815811006a1ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a755e3777a6105eeac8815811006a1ce6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Rate capPrice</definition>
         <argsstring>(const Date &amp;d, const Rate k) const </argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -96,13 +96,13 @@
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="183" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="307" bodyend="310"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a21a177d6e9d869c5e070ffef9946b901" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a21a177d6e9d869c5e070ffef9946b901" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate atmYoYSwapRate</definition>
         <argsstring>(const Date &amp;d, bool extrapolate=true) const </argsstring>
         <name>atmYoYSwapRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -112,19 +112,19 @@
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="185" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="184" bodyend="187"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ac1b9a6bc2b5350cef4de2667f317e05a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1ac1b9a6bc2b5350cef4de2667f317e05a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate atmYoYRate</definition>
         <argsstring>(const Date &amp;d, const Period &amp;obsLag=Period(-1, Days), bool extrapolate=true) const </argsstring>
         <name>atmYoYRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>obsLag</declname>
-          <defval><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref>(-1, Days)</defval>
+          <defval><ref refid="period" kindref="compound">Period</ref>(-1, Days)</defval>
         </param>
         <param>
           <type>bool</type>
@@ -136,14 +136,14 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="200" bodyfile="/experimental/inflation/yoycapfloortermpricesurface.hpp" bodystart="269" bodyend="271"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -152,7 +152,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a746b3a2f008f6798fe58baaf86591028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a746b3a2f008f6798fe58baaf86591028" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedYoYCapFloorTermPriceSurface</definition>
         <argsstring>(Natural fixingDays, const Period &amp;yyLag, const boost::shared_ptr&lt; YoYInflationIndex &gt; &amp;yii, Rate baseRate, const Handle&lt; YieldTermStructure &gt; &amp;nominal, const DayCounter &amp;dc, const Calendar &amp;cal, const BusinessDayConvention &amp;bdc, const std::vector&lt; Rate &gt; &amp;cStrikes, const std::vector&lt; Rate &gt; &amp;fStrikes, const std::vector&lt; Period &gt; &amp;cfMaturities, const Matrix &amp;cPrice, const Matrix &amp;fPrice, const Interpolator2D &amp;interpolator2d=Interpolator2D(), const Interpolator1D &amp;interpolator1d=Interpolator1D())</argsstring>
@@ -162,11 +162,11 @@
           <declname>fixingDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>yyLag</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="yo_y_inflation_index" kindref="compound">YoYInflationIndex</ref> &gt; &amp;</type>
           <declname>yii</declname>
         </param>
         <param>
@@ -174,15 +174,15 @@
           <declname>baseRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -198,15 +198,15 @@
           <declname>fStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>cfMaturities</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>cPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>fPrice</declname>
         </param>
         <param>
@@ -221,7 +221,7 @@
         </param>
         <location file="/experimental/inflation/yoycapfloortermpricesurface.hpp" line="164"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_yo_y_cap_floor_term_price_surface_1a66ae1670ab70ecea30f86c1b5eaa653a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="interpolated_yo_y_cap_floor_term_price_surface_1a66ae1670ab70ecea30f86c1b5eaa653a" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga7e529c39c477ba1f5a22264d93e8457a" kindref="member">Natural</ref></type>
         <definition>virtual Natural fixingDays</definition>
         <argsstring>() const </argsstring>

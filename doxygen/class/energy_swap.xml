@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_energy_swap" kind="class" prot="public">
+  <compounddef id="energy_swap" kind="class" prot="public">
     <compoundname>QuantLib::EnergySwap</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a97463b8decd2a897e5b74ff4137eae58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="energy_swap_1a97463b8decd2a897e5b74ff4137eae58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EnergySwap</definition>
         <argsstring>(const Calendar &amp;calendar, const Currency &amp;payCurrency, const Currency &amp;receiveCurrency, const PricingPeriods &amp;pricingPeriods, const CommodityType &amp;commodityType, const boost::shared_ptr&lt; SecondaryCosts &gt; &amp;secondaryCosts)</argsstring>
         <name>EnergySwap</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>payCurrency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>receiveCurrency</declname>
         </param>
         <param>
@@ -25,7 +25,7 @@
           <declname>pricingPeriods</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+          <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
           <declname>commodityType</declname>
         </param>
         <param>
@@ -34,64 +34,64 @@
         </param>
         <location file="/experimental/commodities/energyswap.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="energy_swap_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
         <location file="/experimental/commodities/energyswap.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+      <memberdef kind="function" id="energy_swap_1ab3ba2ffdff08fce88df18a7b90502423" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         <definition>const Calendar&amp; calendar</definition>
         <argsstring>() const </argsstring>
         <name>calendar</name>
         <location file="/experimental/commodities/energyswap.hpp" line="44" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1af959291e4c35bb7a553101d736a72359" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="energy_swap_1af959291e4c35bb7a553101d736a72359" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency&amp; payCurrency</definition>
         <argsstring>() const </argsstring>
         <name>payCurrency</name>
         <location file="/experimental/commodities/energyswap.hpp" line="45" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a77a6f3f389661b64bee75eb52b4c7fe7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+      <memberdef kind="function" id="energy_swap_1a77a6f3f389661b64bee75eb52b4c7fe7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
         <definition>const Currency&amp; receiveCurrency</definition>
         <argsstring>() const </argsstring>
         <name>receiveCurrency</name>
         <location file="/experimental/commodities/energyswap.hpp" line="46" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="46" bodyend="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1aa1f173496e5327c7a5c4214813c6b20e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="energy_swap_1aa1f173496e5327c7a5c4214813c6b20e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const PricingPeriods &amp;</type>
         <definition>const PricingPeriods&amp; pricingPeriods</definition>
         <argsstring>() const </argsstring>
         <name>pricingPeriods</name>
         <location file="/experimental/commodities/energyswap.hpp" line="47" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="47" bodyend="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a3a8fe1e133670b135d9cc68e9023c893" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="energy_swap_1a3a8fe1e133670b135d9cc68e9023c893" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const EnergyDailyPositions &amp;</type>
         <definition>const EnergyDailyPositions&amp; dailyPositions</definition>
         <argsstring>() const </argsstring>
         <name>dailyPositions</name>
         <location file="/experimental/commodities/energyswap.hpp" line="48" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="48" bodyend="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a92faec0e77b127b737a33d89667ada28" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="energy_swap_1a92faec0e77b127b737a33d89667ada28" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const CommodityCashFlows &amp;</type>
         <definition>const CommodityCashFlows&amp; paymentCashFlows</definition>
         <argsstring>() const </argsstring>
         <name>paymentCashFlows</name>
         <location file="/experimental/commodities/energyswap.hpp" line="51" bodyfile="/experimental/commodities/energyswap.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
+      <memberdef kind="function" id="energy_swap_1a54bbb7bd1347c8d9c97410a6e812ab79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="commodity_type" kindref="compound">CommodityType</ref> &amp;</type>
         <definition>const CommodityType&amp; commodityType</definition>
         <argsstring>() const </argsstring>
         <name>commodityType</name>
         <location file="/experimental/commodities/energyswap.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_energy_swap_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_quantity" kindref="compound">Quantity</ref></type>
+      <memberdef kind="function" id="energy_swap_1a83ca7dd25d2c6f6fef9e0af158976dda" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="quantity" kindref="compound">Quantity</ref></type>
         <definition>Quantity quantity</definition>
         <argsstring>() const </argsstring>
         <name>quantity</name>

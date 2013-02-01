@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_type_payoff" kind="class" prot="public">
+  <compounddef id="type_payoff" kind="class" prot="public">
     <compoundname>QuantLib::TypePayoff</compoundname>
     <includes local="no">/instruments/payoffs.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Payoff interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="type_payoff_1a7b5000e45c1386c4e56ef650f6b0ef5b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::string</type>
         <definition>std::string description</definition>
         <argsstring>() const </argsstring>
         <name>description</name>
-        <reimplements refid="class_quant_lib_1_1_payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
+        <reimplements refid="payoff_1a77d7003fa5d2e29669371413d5662141">description</reimplements>
         <location file="/instruments/payoffs.hpp" line="54"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="type_payoff_1aeb3010f80a6d93ea7ecfd86d7563d458" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Option::Type</type>
         <definition>Option::Type optionType</definition>
         <argsstring>() const </argsstring>

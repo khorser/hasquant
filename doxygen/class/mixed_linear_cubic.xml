@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_mixed_linear_cubic" kind="class" prot="public">
+  <compounddef id="mixed_linear_cubic" kind="class" prot="public">
     <compoundname>QuantLib::MixedLinearCubic</compoundname>
     <includes local="no">/math/interpolations/mixedinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_mixed_linear_cubic_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="mixed_linear_cubic_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
         <definition>const bool global</definition>
         <argsstring></argsstring>
@@ -12,7 +12,7 @@
         <initializer>= true</initializer>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="142" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="142" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_mixed_linear_cubic_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="mixed_linear_cubic_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size requiredPoints</definition>
         <argsstring></argsstring>
@@ -22,7 +22,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_1a7633bf2cd65b9e7c029b58b6db51db9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="mixed_linear_cubic_1a7633bf2cd65b9e7c029b58b6db51db9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MixedLinearCubic</definition>
         <argsstring>(Size n, CubicInterpolation::DerivativeApprox da, bool monotonic=true, CubicInterpolation::BoundaryCondition leftCondition=CubicInterpolation::SecondDerivative, Real leftConditionValue=0.0, CubicInterpolation::BoundaryCondition rightCondition=CubicInterpolation::SecondDerivative, Real rightConditionValue=0.0)</argsstring>
@@ -32,7 +32,7 @@
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
+          <type><ref refid="cubic_interpolation_1aeccb633d9226f37b800589483ea2f0f6" kindref="member">CubicInterpolation::DerivativeApprox</ref></type>
           <declname>da</declname>
         </param>
         <param>
@@ -41,9 +41,9 @@
           <defval>true</defval>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>leftCondition</declname>
-          <defval><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a23de8c854eb282410ba10963837c94b5" kindref="member">CubicInterpolation::SecondDerivative</ref></defval>
+          <defval><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a23de8c854eb282410ba10963837c94b5" kindref="member">CubicInterpolation::SecondDerivative</ref></defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -51,9 +51,9 @@
           <defval>0.0</defval>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
+          <type><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555" kindref="member">CubicInterpolation::BoundaryCondition</ref></type>
           <declname>rightCondition</declname>
-          <defval><ref refid="class_quant_lib_1_1_cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a23de8c854eb282410ba10963837c94b5" kindref="member">CubicInterpolation::SecondDerivative</ref></defval>
+          <defval><ref refid="cubic_interpolation_1af3393571fa8a8daa4ee5c06613b26555a23de8c854eb282410ba10963837c94b5" kindref="member">CubicInterpolation::SecondDerivative</ref></defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -62,7 +62,7 @@
         </param>
         <location file="/math/interpolations/mixedinterpolation.hpp" line="131" bodyfile="/math/interpolations/mixedinterpolation.hpp" bodystart="120" bodyend="131"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_mixed_linear_cubic_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="mixed_linear_cubic_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -71,7 +71,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>

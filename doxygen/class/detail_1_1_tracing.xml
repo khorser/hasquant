@@ -1,23 +1,23 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1detail_1_1_tracing" kind="class" prot="public">
+  <compounddef id="detail_1_1_tracing" kind="class" prot="public">
     <compoundname>QuantLib::detail::Tracing</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a486f22824bd83c5308a0d70ffac6f758" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a486f22824bd83c5308a0d70ffac6f758" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void enable</definition>
         <argsstring>()</argsstring>
         <name>enable</name>
         <location file="/utilities/tracing.hpp" line="70" bodyfile="/utilities/tracing.hpp" bodystart="70" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a8cfbbe53c1cf6e3054736daea3044c0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a8cfbbe53c1cf6e3054736daea3044c0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void disable</definition>
         <argsstring>()</argsstring>
         <name>disable</name>
         <location file="/utilities/tracing.hpp" line="77" bodyfile="/utilities/tracing.hpp" bodystart="77" bodyend="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1ad590312feef889aa6887f072b334162c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1ad590312feef889aa6887f072b334162c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setStream</definition>
         <argsstring>(std::ostream &amp;stream)</argsstring>
@@ -28,35 +28,35 @@
         </param>
         <location file="/utilities/tracing.hpp" line="78" bodyfile="/utilities/tracing.hpp" bodystart="78" bodyend="78"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a1d79980f25d38aba3d6777d0afe544f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a1d79980f25d38aba3d6777d0afe544f3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool enabled</definition>
         <argsstring>() const </argsstring>
         <name>enabled</name>
         <location file="/utilities/tracing.hpp" line="79" bodyfile="/utilities/tracing.hpp" bodystart="79" bodyend="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1aa38e56e146bc20466a2b5969217cbb73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1aa38e56e146bc20466a2b5969217cbb73" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream&amp; stream</definition>
         <argsstring>()</argsstring>
         <name>stream</name>
         <location file="/utilities/tracing.hpp" line="80" bodyfile="/utilities/tracing.hpp" bodystart="80" bodyend="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a0d2912955de777acfcd951216a40f795" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a0d2912955de777acfcd951216a40f795" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gab9c87440c314438e51a899a03d2442d0" kindref="member">Integer</ref></type>
         <definition>Integer depth</definition>
         <argsstring>() const </argsstring>
         <name>depth</name>
         <location file="/utilities/tracing.hpp" line="81" bodyfile="/utilities/tracing.hpp" bodystart="81" bodyend="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a6663cf1e20c2f8162d29d31c8f6324e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a6663cf1e20c2f8162d29d31c8f6324e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void down</definition>
         <argsstring>()</argsstring>
         <name>down</name>
         <location file="/utilities/tracing.hpp" line="82" bodyfile="/utilities/tracing.hpp" bodystart="82" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1detail_1_1_tracing_1a0a1d932d49dd1079cfd0964b11adc7a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="detail_1_1_tracing_1a0a1d932d49dd1079cfd0964b11adc7a0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void up</definition>
         <argsstring>()</argsstring>

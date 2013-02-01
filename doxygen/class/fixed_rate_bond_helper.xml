@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fixed_rate_bond_helper" kind="class" prot="public">
+  <compounddef id="fixed_rate_bond_helper" kind="class" prot="public">
     <compoundname>QuantLib::FixedRateBondHelper</compoundname>
       <sectiondef kind="user-defined">
       <header>additional inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt;</type>
+      <memberdef kind="function" id="fixed_rate_bond_helper_1ab68f3ea5d56505dbf17e2210d9cbc00d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="fixed_rate_bond" kindref="compound">FixedRateBond</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; FixedRateBond &gt; fixedRateBond</definition>
         <argsstring>() const </argsstring>
         <name>fixedRateBond</name>
@@ -14,25 +14,25 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_helper_1a1d7eaf2f5dccce1c7781b54d64ba4a07" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/termstructures/yield/bondhelpers.hpp" line="83"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fixed_rate_bond_helper_1a79eb27824ff30b4ccffc460090b7cc1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fixed_rate_bond_helper_1a79eb27824ff30b4ccffc460090b7cc1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FixedRateBondHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;cleanPrice, Natural settlementDays, Real faceAmount, const Schedule &amp;schedule, const std::vector&lt; Rate &gt; &amp;coupons, const DayCounter &amp;dayCounter, BusinessDayConvention paymentConv=Following, Real redemption=100.0, const Date &amp;issueDate=Date())</argsstring>
         <name>FixedRateBondHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>cleanPrice</declname>
         </param>
         <param>
@@ -44,7 +44,7 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -52,7 +52,7 @@
           <declname>coupons</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -66,9 +66,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/termstructures/yield/bondhelpers.hpp" line="76"/>
       </memberdef>

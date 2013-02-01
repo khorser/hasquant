@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_p_i_cap_floor" kind="class" prot="public">
+  <compounddef id="c_p_i_cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::CPICapFloor</compoundname>
     <includes local="no">/instruments/cpicapfloor.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments" prot="public">QuantLib::CPICapFloor::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1engine" prot="public">QuantLib::CPICapFloor::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_c_p_i_cap_floor_1_1results" prot="public">QuantLib::CPICapFloor::results</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1arguments" prot="public">QuantLib::CPICapFloor::arguments</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1engine" prot="public">QuantLib::CPICapFloor::engine</innerclass>
+    <innerclass refid="c_p_i_cap_floor_1_1results" prot="public">QuantLib::CPICapFloor::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a3171d89ee01d523d48ebf3097a88fd1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1a3171d89ee01d523d48ebf3097a88fd1e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Option::Type</type>
         <definition>Option::Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
         <location file="/instruments/cpicapfloor.hpp" line="83" bodyfile="/instruments/cpicapfloor.hpp" bodystart="83" bodyend="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/instruments/cpicapfloor.hpp" line="84" bodyfile="/instruments/cpicapfloor.hpp" bodystart="84" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a4fc51b15e0ddcd286e54d1d5d0f18984" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1a4fc51b15e0ddcd286e54d1d5d0f18984" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate strike</definition>
         <argsstring>() const </argsstring>
@@ -31,29 +31,29 @@
 <para><formula id="144">$ K $</formula> in the above formula. </para>        </briefdescription>
         <location file="/instruments/cpicapfloor.hpp" line="86" bodyfile="/instruments/cpicapfloor.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="c_p_i_cap_floor_1a8672d26ae625ac44319bf3ad4ced846e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date fixingDate</definition>
         <argsstring>() const </argsstring>
         <name>fixingDate</name>
         <location file="/instruments/cpicapfloor.hpp" line="87"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a2915ae916f733e8452c0320c8fd3f977" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="c_p_i_cap_floor_1a2915ae916f733e8452c0320c8fd3f977" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date payDate</definition>
         <argsstring>() const </argsstring>
         <name>payDate</name>
         <location file="/instruments/cpicapfloor.hpp" line="88"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aca3f0afb8c42c2854ff124d0074b6363" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+      <memberdef kind="function" id="c_p_i_cap_floor_1aca3f0afb8c42c2854ff124d0074b6363" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
         <definition>Handle&lt;ZeroInflationIndex&gt; inflationIndex</definition>
         <argsstring>() const </argsstring>
         <name>inflationIndex</name>
         <location file="/instruments/cpicapfloor.hpp" line="89" bodyfile="/instruments/cpicapfloor.hpp" bodystart="89" bodyend="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="function" id="c_p_i_cap_floor_1a44d0249f5e6de07f14d8b0255d499a38" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring>() const </argsstring>
         <name>observationLag</name>
@@ -62,22 +62,22 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/cpicapfloor.hpp" line="95"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -85,12 +85,12 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/instruments/cpicapfloor.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1a0f63e39daa12d877d8156360b8f920af" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *r) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="instrument_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>
@@ -101,7 +101,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1adc5fca7874ca8a0235557aa105b96267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1adc5fca7874ca8a0235557aa105b96267" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CPICapFloor</definition>
         <argsstring>(Option::Type type, Real nominal, const Date &amp;startDate, Real baseCPI, const Date &amp;maturity, const Calendar &amp;fixCalendar, BusinessDayConvention fixConvention, const Calendar &amp;payCalendar, BusinessDayConvention payConvention, Rate strike, const Handle&lt; ZeroInflationIndex &gt; &amp;infIndex, const Period &amp;observationLag, CPI::InterpolationType observationInterpolation=CPI::AsIndex)</argsstring>
@@ -115,7 +115,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
@@ -123,11 +123,11 @@
           <declname>baseCPI</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>fixCalendar</declname>
         </param>
         <param>
@@ -135,7 +135,7 @@
           <declname>fixConvention</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>payCalendar</declname>
         </param>
         <param>
@@ -147,11 +147,11 @@
           <declname>strike</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>infIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
@@ -165,7 +165,7 @@
     <briefdescription>
 <para>CPI cap or floor. </para>    </briefdescription>
     <detaileddescription>
-<para>Quoted as a fixed strike rate <formula id="144">$ K $</formula>. <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref>: <formula id="145">\[ P_n(0,T) \max(y (N [(1+K)^{T}-1] - N \left[ \frac{I(T)}{I(0)} -1 \right]), 0) \]</formula> where <formula id="45">$ T $</formula> is the maturity time, <formula id="146">$ P_n(0,t) $</formula> is the nominal discount factor at time <formula id="147">$ t $</formula>, <formula id="32">$ N $</formula> is the notional, and <formula id="148">$ I(t) $</formula> is the inflation index value at time <formula id="147">$ t $</formula>.</para><para>Inflation is generally available on every day, including holidays and weekends. Hence there is a variable to state whether the observe/fix dates for inflation are adjusted or not. The default is not to adjust.</para><para>N.B. a cpi cap or floor is an option, not a cap or floor on a coupon. Thus this is very similar to a ZCIIS and has a single flow, this is as usual for cpi because it is cumulative up to option maturity from base date.</para><para>We do not inherit from <ref refid="class_quant_lib_1_1_option" kindref="compound">Option</ref>, although this would be reasonable, because we do not have that degree of generality. </para>    </detaileddescription>
+<para>Quoted as a fixed strike rate <formula id="144">$ K $</formula>. <ref refid="payoff" kindref="compound">Payoff</ref>: <formula id="145">\[ P_n(0,T) \max(y (N [(1+K)^{T}-1] - N \left[ \frac{I(T)}{I(0)} -1 \right]), 0) \]</formula> where <formula id="45">$ T $</formula> is the maturity time, <formula id="146">$ P_n(0,t) $</formula> is the nominal discount factor at time <formula id="147">$ t $</formula>, <formula id="32">$ N $</formula> is the notional, and <formula id="148">$ I(t) $</formula> is the inflation index value at time <formula id="147">$ t $</formula>.</para><para>Inflation is generally available on every day, including holidays and weekends. Hence there is a variable to state whether the observe/fix dates for inflation are adjusted or not. The default is not to adjust.</para><para>N.B. a cpi cap or floor is an option, not a cap or floor on a coupon. Thus this is very similar to a ZCIIS and has a single flow, this is as usual for cpi because it is cumulative up to option maturity from base date.</para><para>We do not inherit from <ref refid="option" kindref="compound">Option</ref>, although this would be reasonable, because we do not have that degree of generality. </para>    </detaileddescription>
     <location file="/instruments/cpicapfloor.hpp" line="62" bodyfile="/instruments/cpicapfloor.hpp" bodystart="62" bodyend="114"/>
   </compounddef>
 </doxygen>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_c_vanilla_engine" kind="class" prot="public">
+  <compounddef id="m_c_vanilla_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCVanillaEngine</compoundname>
     <includes local="no">/pricingengines/vanilla/mcvanillaengine.hpp</includes>
     <templateparamlist>
@@ -24,11 +24,11 @@
         <type>class</type>
         <declname>Inst</declname>
         <defname>Inst</defname>
-        <defval><ref refid="class_quant_lib_1_1_vanilla_option" kindref="compound">VanillaOption</ref></defval>
+        <defval><ref refid="vanilla_option" kindref="compound">VanillaOption</ref></defval>
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_vanilla_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

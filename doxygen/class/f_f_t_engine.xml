@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_f_f_t_engine" kind="class" prot="public" abstract="yes">
+  <compounddef id="f_f_t_engine" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FFTEngine</compoundname>
     <includes local="no">/experimental/variancegamma/fftengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1aa0711fbc7eaf022530829206e3e8be5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="f_f_t_engine_1aa0711fbc7eaf022530829206e3e8be5d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FFTEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Real logStrikeSpacing)</argsstring>
         <name>FFTEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -19,33 +19,33 @@
         </param>
         <location file="/experimental/variancegamma/fftengine.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="f_f_t_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
         <location file="/experimental/variancegamma/fftengine.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="f_f_t_engine_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/experimental/variancegamma/fftengine.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1afd32d8654dad09cba7b323c7c9d6cbb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="f_f_t_engine_1afd32d8654dad09cba7b323c7c9d6cbb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void precalculate</definition>
         <argsstring>(const std::vector&lt; boost::shared_ptr&lt; Instrument &gt; &gt; &amp;optionList)</argsstring>
         <name>precalculate</name>
         <param>
-          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_instrument" kindref="compound">Instrument</ref> &gt; &gt; &amp;</type>
+          <type>const std::vector&lt; boost::shared_ptr&lt; <ref refid="instrument" kindref="compound">Instrument</ref> &gt; &gt; &amp;</type>
           <declname>optionList</declname>
         </param>
         <location file="/experimental/variancegamma/fftengine.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_f_f_t_engine_1a957725ec1d11493d09636c2a11701d87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>std::auto_ptr&lt; <ref refid="class_quant_lib_1_1_f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
+      <memberdef kind="function" id="f_f_t_engine_1a957725ec1d11493d09636c2a11701d87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>std::auto_ptr&lt; <ref refid="f_f_t_engine" kindref="compound">FFTEngine</ref> &gt;</type>
         <definition>virtual std::auto_ptr&lt;FFTEngine&gt; clone</definition>
         <argsstring>() const =0</argsstring>
         <name>clone</name>

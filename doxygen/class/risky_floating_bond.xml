@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_risky_floating_bond" kind="class" prot="public">
+  <compounddef id="risky_floating_bond" kind="class" prot="public">
     <compoundname>QuantLib::RiskyFloatingBond</compoundname>
     <includes local="no">/experimental/credit/riskybond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1ac8a3132ce238b909413eceac6fcb06be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="risky_floating_bond_1ac8a3132ce238b909413eceac6fcb06be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RiskyFloatingBond</definition>
         <argsstring>(std::string name, Currency ccy, Real recoveryRate, Handle&lt; DefaultProbabilityTermStructure &gt; defaultTS, Schedule schedule, boost::shared_ptr&lt; IborIndex &gt; index, Integer fixingDays, Real spread, std::vector&lt; Real &gt; notionals, Handle&lt; YieldTermStructure &gt; yieldTS)</argsstring>
@@ -14,7 +14,7 @@
           <declname>name</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+          <type><ref refid="currency" kindref="compound">Currency</ref></type>
           <declname>ccy</declname>
         </param>
         <param>
@@ -22,15 +22,15 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
+          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> &gt;</type>
           <declname>defaultTS</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref></type>
+          <type><ref refid="schedule" kindref="compound">Schedule</ref></type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
+          <type>boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt;</type>
           <declname>index</declname>
         </param>
         <param>
@@ -46,62 +46,62 @@
           <declname>notionals</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
+          <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;</type>
           <declname>yieldTS</declname>
         </param>
         <location file="/experimental/credit/riskybond.hpp" line="153"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1afa370ed34023fad18a16a731b4db2f33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="risky_floating_bond_1afa370ed34023fad18a16a731b4db2f33" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; cashflows</definition>
         <argsstring>() const </argsstring>
         <name>cashflows</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a65472f32ffe45cf2966fe454256b53d1">cashflows</reimplements>
+        <reimplements refid="risky_bond_1a65472f32ffe45cf2966fe454256b53d1">cashflows</reimplements>
         <location file="/experimental/credit/riskybond.hpp" line="154"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1aa2384a4500da600292b83a9dd7df4164" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="risky_floating_bond_1aa2384a4500da600292b83a9dd7df4164" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real notional</definition>
         <argsstring>(Date date=Date::minDate()) const </argsstring>
         <name>notional</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a5c5584164976b30f71fd4d47866a6a7b">notional</reimplements>
+        <reimplements refid="risky_bond_1a5c5584164976b30f71fd4d47866a6a7b">notional</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>date</declname>
-          <defval><ref refid="class_quant_lib_1_1_date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
+          <defval><ref refid="date_1a23625bfa1e742192c8983792debcf7c1" kindref="member">Date::minDate</ref>()</defval>
         </param>
         <location file="/experimental/credit/riskybond.hpp" line="155"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a5a7ce2cc06cc4f622cfd651e7d22776f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="risky_floating_bond_1a5a7ce2cc06cc4f622cfd651e7d22776f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date effectiveDate</definition>
         <argsstring>() const </argsstring>
         <name>effectiveDate</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a4fd16e05df63a0060efd55ab4d2396bd">effectiveDate</reimplements>
+        <reimplements refid="risky_bond_1a4fd16e05df63a0060efd55ab4d2396bd">effectiveDate</reimplements>
         <location file="/experimental/credit/riskybond.hpp" line="156"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="risky_floating_bond_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a580b196687c62f4d8576f11ef8987477">maturityDate</reimplements>
+        <reimplements refid="risky_bond_1a580b196687c62f4d8576f11ef8987477">maturityDate</reimplements>
         <location file="/experimental/credit/riskybond.hpp" line="157"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a9e4418003f465fb39df82e28d2879099" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="risky_floating_bond_1a9e4418003f465fb39df82e28d2879099" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; interestFlows</definition>
         <argsstring>() const </argsstring>
         <name>interestFlows</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a4587be7cee2cbaec53a7773806961f95">interestFlows</reimplements>
+        <reimplements refid="risky_bond_1a4587be7cee2cbaec53a7773806961f95">interestFlows</reimplements>
         <location file="/experimental/credit/riskybond.hpp" line="158"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_risky_floating_bond_1a8a460b368ba6b41ae68c27347281a1ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="risky_floating_bond_1a8a460b368ba6b41ae68c27347281a1ad" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>std::vector&lt; boost::shared_ptr&lt; <ref refid="cash_flow" kindref="compound">CashFlow</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::shared_ptr&lt;CashFlow&gt; &gt; notionalFlows</definition>
         <argsstring>() const </argsstring>
         <name>notionalFlows</name>
-        <reimplements refid="class_quant_lib_1_1_risky_bond_1a0f39350cd04b9af24095c5345c33e103">notionalFlows</reimplements>
+        <reimplements refid="risky_bond_1a0f39350cd04b9af24095c5345c33e103">notionalFlows</reimplements>
         <location file="/experimental/credit/riskybond.hpp" line="159"/>
       </memberdef>
       </sectiondef>

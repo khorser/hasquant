@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_g_function_factory" kind="class" prot="public">
+  <compounddef id="g_function_factory" kind="class" prot="public">
     <compoundname>QuantLib::GFunctionFactory</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0" prot="public" static="no">
+      <memberdef kind="enum" id="g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0" prot="public" static="no">
         <name>YieldCurveModel</name>
-        <enumvalue id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a57f9bf199e30a749a03be1dac2f5f624" prot="public">
+        <enumvalue id="g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a57f9bf199e30a749a03be1dac2f5f624" prot="public">
           <name>Standard</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0aafa42ecf160c9f3afb314efcb8aa352a" prot="public">
+        <enumvalue id="g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0aafa42ecf160c9f3afb314efcb8aa352a" prot="public">
           <name>ExactYield</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0ae3aa6b271f27680f24179f357c81354e" prot="public">
+        <enumvalue id="g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0ae3aa6b271f27680f24179f357c81354e" prot="public">
           <name>ParallelShifts</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a606bc5398bb1642b29021a9f8fb67ce3" prot="public">
+        <enumvalue id="g_function_factory_1adc624ab81f6c4dc14b6291f6477f33f0a606bc5398bb1642b29021a9f8fb67ce3" prot="public">
           <name>NonParallelShifts</name>
         </enumvalue>
         <location file="/cashflows/conundrumpricer.hpp" line="73" bodyfile="/cashflows/conundrumpricer.hpp" bodystart="73" bodyend="77"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1acaab67d019feb98a326d097881f1fe2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g_function_factory_1acaab67d019feb98a326d097881f1fe2c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; GFunction &gt;</type>
         <definition>static boost::shared_ptr&lt;GFunction&gt; newGFunctionStandard</definition>
         <argsstring>(Size q, Real delta, Size swapLength)</argsstring>
@@ -40,28 +40,28 @@
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1a5f2826e9e117c97265bfd903b2fd12fb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g_function_factory_1a5f2826e9e117c97265bfd903b2fd12fb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; GFunction &gt;</type>
         <definition>static boost::shared_ptr&lt;GFunction&gt; newGFunctionExactYield</definition>
         <argsstring>(const CmsCoupon &amp;coupon)</argsstring>
         <name>newGFunctionExactYield</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
+          <type>const <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
           <declname>coupon</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g_function_factory_1a19ff14c354896e975b2e3641865e46f5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="g_function_factory_1a19ff14c354896e975b2e3641865e46f5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>boost::shared_ptr&lt; GFunction &gt;</type>
         <definition>static boost::shared_ptr&lt;GFunction&gt; newGFunctionWithShifts</definition>
         <argsstring>(const CmsCoupon &amp;coupon, const Handle&lt; Quote &gt; &amp;meanReversion)</argsstring>
         <name>newGFunctionWithShifts</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
+          <type>const <ref refid="cms_coupon" kindref="compound">CmsCoupon</ref> &amp;</type>
           <declname>coupon</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>meanReversion</declname>
         </param>
         <location file="/cashflows/conundrumpricer.hpp" line="86"/>

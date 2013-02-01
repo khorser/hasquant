@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_recovery_rate_model" kind="class" prot="public" abstract="yes">
+  <compounddef id="recovery_rate_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::RecoveryRateModel</compoundname>
     <includes local="no">/experimental/credit/recoveryratemodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1aaad2f8d05f1afd02a7511a65519a4a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="recovery_rate_model_1aaad2f8d05f1afd02a7511a65519a4a5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real recoveryValue</definition>
         <argsstring>(const Date &amp;defaultDate, const DefaultProbKey &amp;defaultKey=DefaultProbKey()) const </argsstring>
         <name>recoveryValue</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>defaultDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
+          <type>const <ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref> &amp;</type>
           <declname>defaultKey</declname>
-          <defval><ref refid="class_quant_lib_1_1_default_prob_key" kindref="compound">DefaultProbKey</ref>()</defval>
+          <defval><ref refid="default_prob_key" kindref="compound">DefaultProbKey</ref>()</defval>
         </param>
         <detaileddescription>
 <para>returns the expected recovery rate at a future time conditional on some default event type and seniority. </para>        </detaileddescription>
         <location file="/experimental/credit/recoveryratemodel.hpp" line="39" bodyfile="/experimental/credit/recoveryratemodel.hpp" bodystart="38" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="recovery_rate_model_1a8be5f6243e76fbc12665e1111531fb66" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool appliesToSeniority</definition>
         <argsstring>(Seniority) const =0</argsstring>
@@ -34,7 +34,7 @@
 <para>Returns true if the model will return recovery rates for the requested seniority. </para>        </detaileddescription>
         <location file="/experimental/credit/recoveryratemodel.hpp" line="46"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_recovery_rate_model_1a37915b226f19351027ec846e3af7e44e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="recovery_rate_model_1a37915b226f19351027ec846e3af7e44e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~RecoveryRateModel</definition>
         <argsstring>()</argsstring>

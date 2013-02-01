@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_line_search_based_method" kind="class" prot="public" abstract="yes">
+  <compounddef id="line_search_based_method" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::LineSearchBasedMethod</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="line_search_based_method_1a5c26f9356a1e65d3dbab1a881698f820" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LineSearchBasedMethod</definition>
         <argsstring>(const boost::shared_ptr&lt; LineSearch &gt; &amp;lSearch=boost::shared_ptr&lt; LineSearch &gt;())</argsstring>
         <name>LineSearchBasedMethod</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
           <declname>lSearch</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
         <location file="/math/optimization/linesearchbasedmethod.hpp" line="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="line_search_based_method_1a8e7c066922fd3c11a5a68bc193d1f6ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~LineSearchBasedMethod</definition>
         <argsstring>()</argsstring>
         <name>~LineSearchBasedMethod</name>
         <location file="/math/optimization/linesearchbasedmethod.hpp" line="40" bodyfile="/math/optimization/linesearchbasedmethod.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="line_search_based_method_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>EndCriteria::Type</type>
         <definition>virtual EndCriteria::Type minimize</definition>
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
         <name>minimize</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <location file="/math/optimization/linesearchbasedmethod.hpp" line="43"/>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_simplex" kind="class" prot="public">
+  <compounddef id="simplex" kind="class" prot="public">
     <compoundname>QuantLib::Simplex</compoundname>
     <includes local="no">/math/optimization/simplex.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="simplex_1ae15567fc9f817266ba4916db54df9013" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Simplex</definition>
         <argsstring>(Real lambda)</argsstring>
@@ -17,18 +17,18 @@
 <para>Constructor taking as input the characteristic length </para>        </detaileddescription>
         <location file="/math/optimization/simplex.hpp" line="42" bodyfile="/math/optimization/simplex.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="simplex_1a3b8d7f680b62c4b7cf2aa17eb818688a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>EndCriteria::Type</type>
         <definition>virtual EndCriteria::Type minimize</definition>
         <argsstring>(Problem &amp;P, const EndCriteria &amp;endCriteria)</argsstring>
         <name>minimize</name>
-        <reimplements refid="class_quant_lib_1_1_optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
+        <reimplements refid="optimization_method_1a6bf9f0581475e7a28bdf478f941f116e">minimize</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_problem" kindref="compound">Problem</ref> &amp;</type>
+          <type><ref refid="problem" kindref="compound">Problem</ref> &amp;</type>
           <declname>P</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
+          <type>const <ref refid="end_criteria" kindref="compound">EndCriteria</ref> &amp;</type>
           <declname>endCriteria</declname>
         </param>
         <briefdescription>

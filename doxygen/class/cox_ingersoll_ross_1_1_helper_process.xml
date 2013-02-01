@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process" kind="class" prot="public">
+  <compounddef id="cox_ingersoll_ross_1_1_helper_process" kind="class" prot="public">
     <compoundname>QuantLib::CoxIngersollRoss::HelperProcess</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1ace87e1fa10f8c6fa480a7212d3a88392" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_helper_process_1ace87e1fa10f8c6fa480a7212d3a88392" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>HelperProcess</definition>
         <argsstring>(Real theta, Real k, Real sigma, Real y0)</argsstring>
@@ -26,14 +26,14 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="82" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="81" bodyend="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_helper_process_1a89d2f497b5fd0d0a0dce2ec82c86e778" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real x0</definition>
         <argsstring>() const </argsstring>
         <name>x0</name>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="84" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="84" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a235679989fd92d45c74c198d7d1b475c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_helper_process_1a235679989fd92d45c74c198d7d1b475c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real drift</definition>
         <argsstring>(Time, Real y) const </argsstring>
@@ -47,7 +47,7 @@
         </param>
         <location file="/models/shortrate/onefactormodels/coxingersollross.hpp" line="87" bodyfile="/models/shortrate/onefactormodels/coxingersollross.hpp" bodystart="87" bodyend="90"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cox_ingersoll_ross_1_1_helper_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cox_ingersoll_ross_1_1_helper_process_1a73959c8b969d8981d5d670b367d51aed" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real diffusion</definition>
         <argsstring>(Time, Real) const </argsstring>

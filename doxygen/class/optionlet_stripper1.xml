@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_optionlet_stripper1" kind="class" prot="public">
+  <compounddef id="optionlet_stripper1" kind="class" prot="public">
     <compoundname>QuantLib::OptionletStripper1</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletstripper1.hpp</includes>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="optionlet_stripper1_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
-        <reimplements refid="class_quant_lib_1_1_lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
+        <reimplements refid="lazy_object_1a572dbe926524786c64db01e31dba7ab8">performCalculations</reimplements>
         <detaileddescription>
 <para>This method must implement any calculations which must be (re)done in order to calculate the desired results. </para>        </detaileddescription>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="58"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_stripper1_1a50c685dc3d05c91348434bed9dadaa6c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OptionletStripper1</definition>
         <argsstring>(const boost::shared_ptr&lt; CapFloorTermVolSurface &gt; &amp;, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, Rate switchStrikes=Null&lt; Rate &gt;(), Real accuracy=1.0e-6, Natural maxIter=100)</argsstring>
         <name>OptionletStripper1</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>switchStrikes</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
@@ -46,28 +46,28 @@
         </param>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a3f590eca85355aa1a98827c343c9ff72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="optionlet_stripper1_1a3f590eca85355aa1a98827c343c9ff72" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; capFloorPrices</definition>
         <argsstring>() const </argsstring>
         <name>capFloorPrices</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a6b86390f9bcc7e31227f4844560f0912" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="optionlet_stripper1_1a6b86390f9bcc7e31227f4844560f0912" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; capFloorVolatilities</definition>
         <argsstring>() const </argsstring>
         <name>capFloorVolatilities</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1a2f59de205665d90bc0556666dde3a4d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+      <memberdef kind="function" id="optionlet_stripper1_1a2f59de205665d90bc0556666dde3a4d5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
         <definition>const Matrix&amp; optionletPrices</definition>
         <argsstring>() const </argsstring>
         <name>optionletPrices</name>
         <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_stripper1_1ae7071988d2b785277b38d596f7627f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_stripper1_1ae7071988d2b785277b38d596f7627f84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate switchStrike</definition>
         <argsstring>() const </argsstring>
@@ -76,7 +76,7 @@
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a <ref refid="class_quant_lib_1_1_cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref>. </para>    </detaileddescription>
+<para>Helper class to strip optionlet (i.e. caplet/floorlet) volatilities (a.k.a. forward-forward volatilities) from the (cap/floor) term volatilities of a <ref refid="cap_floor_term_vol_surface" kindref="compound">CapFloorTermVolSurface</ref>. </para>    </detaileddescription>
     <location file="/termstructures/volatility/optionlet/optionletstripper1.hpp" line="43" bodyfile="/termstructures/volatility/optionlet/optionletstripper1.hpp" bodystart="43" bodyend="72"/>
   </compounddef>
 </doxygen>

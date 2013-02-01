@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_black_scholes_solver" kind="class" prot="public">
+  <compounddef id="fdm_black_scholes_solver" kind="class" prot="public">
     <compoundname>QuantLib::FdmBlackScholesSolver</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" static="no">
+      <memberdef kind="typedef" id="fdm_black_scholes_solver_1a062ac6697ede4ec0ad571e1557c8dd59" prot="public" static="no">
         <type>std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;</type>
         <definition>typedef std::vector&lt;boost::shared_ptr&lt;FdmDirichletBoundary&gt; &gt; BoundaryConditionSet</definition>
         <argsstring></argsstring>
@@ -12,13 +12,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a2986b49afcf28744b247caa5903df833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_black_scholes_solver_1a2986b49afcf28744b247caa5903df833" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmBlackScholesSolver</definition>
         <argsstring>(const Handle&lt; GeneralizedBlackScholesProcess &gt; &amp;process, Real strike, const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc=FdmSchemeDesc::Douglas(), bool localVol=false, Real illegalLocalVolOverwrite=-Null&lt; Real &gt;())</argsstring>
         <name>FdmBlackScholesSolver</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="generalized_black_scholes_process" kindref="compound">GeneralizedBlackScholesProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -42,11 +42,11 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>illegalLocalVolOverwrite</declname>
-          <defval>-<ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval>-<ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1ac135bb3ca4f704218ebcc70c1dffeef3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_black_scholes_solver_1ac135bb3ca4f704218ebcc70c1dffeef3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real valueAt</definition>
         <argsstring>(Real s) const </argsstring>
@@ -57,7 +57,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a8b0fc7774c2f2b044382fec8eb106395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_black_scholes_solver_1a8b0fc7774c2f2b044382fec8eb106395" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real deltaAt</definition>
         <argsstring>(Real s) const </argsstring>
@@ -68,7 +68,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1aad84cbb24ad994902f176e28a82c899e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_black_scholes_solver_1aad84cbb24ad994902f176e28a82c899e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gammaAt</definition>
         <argsstring>(Real s) const </argsstring>
@@ -79,7 +79,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdmblackscholessolver.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_black_scholes_solver_1a7e97a9498f2ad1d643305f505d933a1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_black_scholes_solver_1a7e97a9498f2ad1d643305f505d933a1c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real s) const </argsstring>

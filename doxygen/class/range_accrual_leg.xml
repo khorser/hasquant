@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_range_accrual_leg" kind="class" prot="public">
+  <compounddef id="range_accrual_leg" kind="class" prot="public">
     <compoundname>QuantLib::RangeAccrualLeg</compoundname>
     <includes local="no">/cashflows/rangeaccrual.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1aae549cc64b5f157483f020c6fbbae722" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="range_accrual_leg_1aae549cc64b5f157483f020c6fbbae722" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>RangeAccrualLeg</definition>
         <argsstring>(const Schedule &amp;schedule, const boost::shared_ptr&lt; IborIndex &gt; &amp;index)</argsstring>
         <name>RangeAccrualLeg</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="205"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a8ba4a89f6ae58e61fd5eff7cfa53a51d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a8ba4a89f6ae58e61fd5eff7cfa53a51d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withNotionals</definition>
         <argsstring>(Real notional)</argsstring>
         <name>withNotionals</name>
@@ -30,8 +30,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="206"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a3e6206528f084351b623867b48a7cd1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a3e6206528f084351b623867b48a7cd1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withNotionals</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;notionals)</argsstring>
         <name>withNotionals</name>
@@ -41,18 +41,18 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="207"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a57856929adb0ca89276afc2ca11c90b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a57856929adb0ca89276afc2ca11c90b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withPaymentDayCounter</definition>
         <argsstring>(const DayCounter &amp;)</argsstring>
         <name>withPaymentDayCounter</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="208"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a5d91a3ac7b5795f2072232f9e3207620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a5d91a3ac7b5795f2072232f9e3207620" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withPaymentAdjustment</definition>
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withPaymentAdjustment</name>
@@ -61,8 +61,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="209"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1af8aeca17cf564baeacd3d62cf4326f9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1af8aeca17cf564baeacd3d62cf4326f9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withFixingDays</definition>
         <argsstring>(Natural fixingDays)</argsstring>
         <name>withFixingDays</name>
@@ -72,8 +72,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="210"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a1c7d3fcb9aa7628404b40f3ed2a5e11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a1c7d3fcb9aa7628404b40f3ed2a5e11a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withFixingDays</definition>
         <argsstring>(const std::vector&lt; Natural &gt; &amp;fixingDays)</argsstring>
         <name>withFixingDays</name>
@@ -83,8 +83,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="211"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1aa82973f34823d38c35cb060ee2c9b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1aa82973f34823d38c35cb060ee2c9b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withGearings</definition>
         <argsstring>(Real gearing)</argsstring>
         <name>withGearings</name>
@@ -94,8 +94,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="212"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1ab62831139af630d58def44d38ed97fa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1ab62831139af630d58def44d38ed97fa2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withGearings</definition>
         <argsstring>(const std::vector&lt; Real &gt; &amp;gearings)</argsstring>
         <name>withGearings</name>
@@ -105,8 +105,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="213"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1af790d5d765bc8c6a6433749b9bb88183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1af790d5d765bc8c6a6433749b9bb88183" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withSpreads</definition>
         <argsstring>(Spread spread)</argsstring>
         <name>withSpreads</name>
@@ -116,8 +116,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="214"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a5e87af83bf739c7618c4de9a3e6fb049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a5e87af83bf739c7618c4de9a3e6fb049" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withSpreads</definition>
         <argsstring>(const std::vector&lt; Spread &gt; &amp;spreads)</argsstring>
         <name>withSpreads</name>
@@ -127,8 +127,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="215"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a3b50cb89a40e24c9364bc552ea3de063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a3b50cb89a40e24c9364bc552ea3de063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withLowerTriggers</definition>
         <argsstring>(Rate trigger)</argsstring>
         <name>withLowerTriggers</name>
@@ -138,8 +138,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="216"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a0a6124ce6520c910ee0afc980bea3e28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a0a6124ce6520c910ee0afc980bea3e28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withLowerTriggers</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;triggers)</argsstring>
         <name>withLowerTriggers</name>
@@ -149,8 +149,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="217"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a58050af3f9d3d09329eb0c85c0bd1ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a58050af3f9d3d09329eb0c85c0bd1ea1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withUpperTriggers</definition>
         <argsstring>(Rate trigger)</argsstring>
         <name>withUpperTriggers</name>
@@ -160,8 +160,8 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="218"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a0183f30ae0d441b86ff67518125f6e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a0183f30ae0d441b86ff67518125f6e9c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withUpperTriggers</definition>
         <argsstring>(const std::vector&lt; Rate &gt; &amp;triggers)</argsstring>
         <name>withUpperTriggers</name>
@@ -171,18 +171,18 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="219"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a44d5beb92399a99ebf855ba80e9a4ee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a44d5beb92399a99ebf855ba80e9a4ee1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withObservationTenor</definition>
         <argsstring>(const Period &amp;)</argsstring>
         <name>withObservationTenor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="220"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1a88117c18b3b46e44588d7c5426d79ba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
+      <memberdef kind="function" id="range_accrual_leg_1a88117c18b3b46e44588d7c5426d79ba2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="range_accrual_leg" kindref="compound">RangeAccrualLeg</ref> &amp;</type>
         <definition>RangeAccrualLeg&amp; withObservationConvention</definition>
         <argsstring>(BusinessDayConvention)</argsstring>
         <name>withObservationConvention</name>
@@ -191,7 +191,7 @@
         </param>
         <location file="/cashflows/rangeaccrual.hpp" line="221"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_range_accrual_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="range_accrual_leg_1ab90967eddf8d006442846cf44ea38756" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>operator Leg</definition>
         <argsstring>() const </argsstring>

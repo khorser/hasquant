@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_two_factor_model" kind="class" prot="public" abstract="yes">
+  <compounddef id="two_factor_model" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TwoFactorModel</compoundname>
     <includes local="no">/models/shortrate/twofactormodel.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::TwoFactorModel::ShortRateDynamics</innerclass>
-    <innerclass refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_tree" prot="public">QuantLib::TwoFactorModel::ShortRateTree</innerclass>
+    <innerclass refid="two_factor_model_1_1_short_rate_dynamics" prot="public">QuantLib::TwoFactorModel::ShortRateDynamics</innerclass>
+    <innerclass refid="two_factor_model_1_1_short_rate_tree" prot="public">QuantLib::TwoFactorModel::ShortRateTree</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1ab21a4909440df05943ed8035a3cb8ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="two_factor_model_1ab21a4909440df05943ed8035a3cb8ec9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>TwoFactorModel</definition>
         <argsstring>(Size nParams)</argsstring>
@@ -17,8 +17,8 @@
         </param>
         <location file="/models/shortrate/twofactormodel.hpp" line="38"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="two_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="two_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const =0</argsstring>
         <name>dynamics</name>
@@ -26,14 +26,14 @@
 <para>Returns the short-rate dynamics. </para>        </briefdescription>
         <location file="/models/shortrate/twofactormodel.hpp" line="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_two_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="two_factor_model_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
+        <reimplements refid="short_rate_model_1aa2fed99620ce2815f3b2c00a61235f3d">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <briefdescription>

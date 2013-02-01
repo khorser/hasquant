@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_optionlet_volatility_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="optionlet_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::OptionletVolatilityStructure</compoundname>
     <includes local="no">/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a32f8f347e008782ed493983ca4ce858c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="optionlet_volatility_structure_1a32f8f347e008782ed493983ca4ce858c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OptionletVolatilityStructure</definition>
         <argsstring>(const Calendar &amp;cal, BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>OptionletVolatilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -21,15 +21,15 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000127"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000127"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="52"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1aac8c7b91f00da54ac59aed3bdb766beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1aac8c7b91f00da54ac59aed3bdb766beb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OptionletVolatilityStructure</definition>
         <argsstring>(BusinessDayConvention bdc=Following, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -40,27 +40,27 @@
           <defval><ref refid="group__datetime_1ggaff46c5ae9385d20709bedade86edd368ab6a37af780aa2b97f8bbdc4d149dae18" kindref="member">Following</ref></defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000128"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000128"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1abc005ed912019fd298bb68e36ba6b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1abc005ed912019fd298bb68e36ba6b531" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OptionletVolatilityStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;cal, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
         <name>OptionletVolatilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -68,15 +68,15 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>initialize with a fixed reference date </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a1c510799e2a47a0e0db5a8e12c4bdf82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1a1c510799e2a47a0e0db5a8e12c4bdf82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OptionletVolatilityStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, BusinessDayConvention bdc, const DayCounter &amp;dc=DayCounter())</argsstring>
@@ -86,16 +86,16 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <briefdescription>
 <para>calculate the reference date based on the global evaluation date </para>        </briefdescription>
@@ -104,13 +104,13 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Volatility and Variance</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ad6581b343c19b58d18e3b643265f4f57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1ad6581b343c19b58d18e3b643265f4f57" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Period &amp;optionTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -126,13 +126,13 @@
 <para>returns the volatility for a given option tenor and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="78" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="129" bodyend="134"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ad5ab11f498f030d526aa84748e471198" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1ad5ab11f498f030d526aa84748e471198" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Date &amp;optionDate, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -148,7 +148,7 @@
 <para>returns the volatility for a given option date and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="82" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="171" bodyend="177"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ab3657d277d77b795f571009c749ebe6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1ab3657d277d77b795f571009c749ebe6e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(Time optionTime, Rate strike, bool extrapolate=false) const </argsstring>
@@ -170,13 +170,13 @@
 <para>returns the volatility for a given option time and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="86" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="180" bodyend="186"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ad2c0a3642e6d43657e8e0db4f95de79f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1ad2c0a3642e6d43657e8e0db4f95de79f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Period &amp;optionTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -192,13 +192,13 @@
 <para>returns the Black variance for a given option tenor and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="91" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="137" bodyend="142"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a6a6fe7caa627cbd9bb41caba6bcf7ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1a6a6fe7caa627cbd9bb41caba6bcf7ed0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Date &amp;optionDate, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -214,7 +214,7 @@
 <para>returns the Black variance for a given option date and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="95" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="153" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a04544d95827f5dfd73f2c69385b9a980" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1a04544d95827f5dfd73f2c69385b9a980" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(Time optionTime, Rate strike, bool extrapolate=false) const </argsstring>
@@ -236,13 +236,13 @@
 <para>returns the Black variance for a given option time and strike rate </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="99" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="162" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a33f390e56035afa8c4a33b1005f8985e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="optionlet_volatility_structure_1a33f390e56035afa8c4a33b1005f8985e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Period &amp;optionTenor, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
@@ -254,13 +254,13 @@
 <para>returns the smile for a given option tenor </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="103" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="145" bodyend="149"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1a5760886ba5316a82496a9723a757a057" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="optionlet_volatility_structure_1a5760886ba5316a82496a9723a757a057" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Date &amp;optionDate, bool extr=false) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
@@ -272,8 +272,8 @@
 <para>returns the smile for a given option date </para>        </briefdescription>
         <location file="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" line="106" bodyfile="/termstructures/volatility/optionlet/optionletvolatilitystructure.hpp" bodystart="189" bodyend="193"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1aaf9f27b8fd87d001474aecfd92551526" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="optionlet_volatility_structure_1aaf9f27b8fd87d001474aecfd92551526" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(Time optionTime, bool extr=false) const </argsstring>
         <name>smileSection</name>
@@ -292,7 +292,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_optionlet_volatility_structure_1ae4629ab98ad7e7f84827e8ae19612a71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="optionlet_volatility_structure_1ae4629ab98ad7e7f84827e8ae19612a71" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~OptionletVolatilityStructure</definition>
         <argsstring>()</argsstring>

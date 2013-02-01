@@ -1,28 +1,28 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cap_floor" kind="class" prot="public">
+  <compounddef id="cap_floor" kind="class" prot="public">
     <compoundname>QuantLib::CapFloor</compoundname>
     <includes local="no">/instruments/capfloor.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_cap_floor_1_1arguments" prot="public">QuantLib::CapFloor::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_cap_floor_1_1engine" prot="public">QuantLib::CapFloor::engine</innerclass>
+    <innerclass refid="cap_floor_1_1arguments" prot="public">QuantLib::CapFloor::arguments</innerclass>
+    <innerclass refid="cap_floor_1_1engine" prot="public">QuantLib::CapFloor::engine</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cap_floor_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/instruments/capfloor.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="cap_floor_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -33,57 +33,57 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
         <location file="/instruments/capfloor.hpp" line="73" bodyfile="/instruments/capfloor.hpp" bodystart="73" bodyend="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a7d67016c4c1751cd680e0e5ad6a3c276" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1a7d67016c4c1751cd680e0e5ad6a3c276" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; capRates</definition>
         <argsstring>() const </argsstring>
         <name>capRates</name>
         <location file="/instruments/capfloor.hpp" line="74" bodyfile="/instruments/capfloor.hpp" bodystart="74" bodyend="74"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a45cc04b41d9b6bcd32ed1cdb654a24e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1a45cc04b41d9b6bcd32ed1cdb654a24e1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Rate&gt;&amp; floorRates</definition>
         <argsstring>() const </argsstring>
         <name>floorRates</name>
         <location file="/instruments/capfloor.hpp" line="75" bodyfile="/instruments/capfloor.hpp" bodystart="75" bodyend="75"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1ab770ccb862fe2799b9f9aeff11c9aeb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1ab770ccb862fe2799b9f9aeff11c9aeb1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; floatingLeg</definition>
         <argsstring>() const </argsstring>
         <name>floatingLeg</name>
         <location file="/instruments/capfloor.hpp" line="76" bodyfile="/instruments/capfloor.hpp" bodystart="76" bodyend="76"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="cap_floor_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/instruments/capfloor.hpp" line="78"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="cap_floor_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/instruments/capfloor.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1abead3b30d656cfccd533e2a5d2d171c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+      <memberdef kind="function" id="cap_floor_1abead3b30d656cfccd533e2a5d2d171c9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; lastFloatingRateCoupon</definition>
         <argsstring>() const </argsstring>
         <name>lastFloatingRateCoupon</name>
         <location file="/instruments/capfloor.hpp" line="80"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1ac6e4a72af12ff0d90d441b87182bd0f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_cap_floor" kindref="compound">CapFloor</ref> &gt;</type>
+      <memberdef kind="function" id="cap_floor_1ac6e4a72af12ff0d90d441b87182bd0f4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="cap_floor" kindref="compound">CapFloor</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;CapFloor&gt; optionlet</definition>
         <argsstring>(const Size n) const </argsstring>
         <name>optionlet</name>
@@ -92,27 +92,27 @@
           <declname>n</declname>
         </param>
         <briefdescription>
-<para>Returns the n-th optionlet as a new <ref refid="class_quant_lib_1_1_cap_floor" kindref="compound">CapFloor</ref> with only one cash flow. </para>        </briefdescription>
+<para>Returns the n-th optionlet as a new <ref refid="cap_floor" kindref="compound">CapFloor</ref> with only one cash flow. </para>        </briefdescription>
         <location file="/instruments/capfloor.hpp" line="82"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7af9bc10921debb0c226068d339f55d223" prot="public">
+        <enumvalue id="cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7af9bc10921debb0c226068d339f55d223" prot="public">
           <name>Cap</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public">
+        <enumvalue id="cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a94e95e4b8360855608dfad0b1f43a301" prot="public">
           <name>Floor</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a4782631f7ffdc8dea0453ccb0d9fc636" prot="public">
+        <enumvalue id="cap_floor_1a1d1cfd8ffb84e947f82999c682b666a7a4782631f7ffdc8dea0453ccb0d9fc636" prot="public">
           <name>Collar</name>
         </enumvalue>
         <location file="/instruments/capfloor.hpp" line="56" bodyfile="/instruments/capfloor.hpp" bodystart="56" bodyend="56"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a6f0891310d58cfd07749fe51ac4f8e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1a6f0891310d58cfd07749fe51ac4f8e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CapFloor</definition>
         <argsstring>(Type type, const Leg &amp;floatingLeg, const std::vector&lt; Rate &gt; &amp;capRates, const std::vector&lt; Rate &gt; &amp;floorRates)</argsstring>
@@ -135,7 +135,7 @@
         </param>
         <location file="/instruments/capfloor.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1a03554f9335835c2a9136a361d1901d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1a03554f9335835c2a9136a361d1901d69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CapFloor</definition>
         <argsstring>(Type type, const Leg &amp;floatingLeg, const std::vector&lt; Rate &gt; &amp;strikes)</argsstring>
@@ -154,18 +154,18 @@
         </param>
         <location file="/instruments/capfloor.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1ab22cef59ebd5cc4069092b8faa08aa0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1ab22cef59ebd5cc4069092b8faa08aa0c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate atmRate</definition>
         <argsstring>(const YieldTermStructure &amp;discountCurve) const </argsstring>
         <name>atmRate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
+          <type>const <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <location file="/instruments/capfloor.hpp" line="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cap_floor_1aa297fb33a109811a2c2f0c3b18a132c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cap_floor_1aa297fb33a109811a2c2f0c3b18a132c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility impliedVolatility</definition>
         <argsstring>(Real price, const Handle&lt; YieldTermStructure &gt; &amp;disc, Volatility guess, Real accuracy=1.0e-4, Natural maxEvaluations=100, Volatility minVol=1.0e-7, Volatility maxVol=4.0) const </argsstring>
@@ -175,7 +175,7 @@
           <declname>price</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>disc</declname>
         </param>
         <param>

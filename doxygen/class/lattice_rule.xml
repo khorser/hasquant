@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_lattice_rule" kind="class" prot="public">
+  <compounddef id="lattice_rule" kind="class" prot="public">
     <compoundname>QuantLib::LatticeRule</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" static="no">
+      <memberdef kind="enum" id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2d" prot="public" static="no">
         <name>type</name>
-        <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da42a4ade1acd55a49164099104990e09f" prot="public">
+        <enumvalue id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da42a4ade1acd55a49164099104990e09f" prot="public">
           <name>A</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da3f2a77ecd272aa6d6b5902faa5e5fc68" prot="public">
+        <enumvalue id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da3f2a77ecd272aa6d6b5902faa5e5fc68" prot="public">
           <name>B</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da739ce3f516592d245d16fd8a3893472c" prot="public">
+        <enumvalue id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da739ce3f516592d245d16fd8a3893472c" prot="public">
           <name>C</name>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da77a6b11f9898c052926f1d49765861e8" prot="public">
+        <enumvalue id="lattice_rule_1a7aead736a07eaf25623ad7bfa1f0ee2da77a6b11f9898c052926f1d49765861e8" prot="public">
           <name>D</name>
         </enumvalue>
         <location file="/math/randomnumbers/latticerules.hpp" line="39" bodyfile="/math/randomnumbers/latticerules.hpp" bodystart="39" bodyend="39"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_lattice_rule_1a3f2214d87379615e249262f6c04cba8d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="lattice_rule_1a3f2214d87379615e249262f6c04cba8d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void getRule</definition>
         <argsstring>(type name, std::vector&lt; Real &gt; &amp;Z, Integer N)</argsstring>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine" kind="class" prot="public">
+  <compounddef id="m_c_hull_white_cap_floor_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCHullWhiteCapFloorEngine</compoundname>
     <includes local="no">/pricingengines/capfloor/mchullwhiteengine.hpp</includes>
     <templateparamlist>
@@ -14,21 +14,21 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a930da5a9e4d53caa2103161fd7a65ea8" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_multi_path_generator" kindref="compound">simulation::path_generator_type</ref></type>
+      <memberdef kind="typedef" id="m_c_hull_white_cap_floor_engine_1a930da5a9e4d53caa2103161fd7a65ea8" prot="public" static="no">
+        <type><ref refid="multi_path_generator" kindref="compound">simulation::path_generator_type</ref></type>
         <definition>typedef simulation::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="68" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="68" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1ad640b37266d58777e03c16173e00e51a" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_path_pricer" kindref="compound">simulation::path_pricer_type</ref></type>
+      <memberdef kind="typedef" id="m_c_hull_white_cap_floor_engine_1ad640b37266d58777e03c16173e00e51a" prot="public" static="no">
+        <type><ref refid="path_pricer" kindref="compound">simulation::path_pricer_type</ref></type>
         <definition>typedef simulation::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="69" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="69" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a0a698c34685b79e1cd004206d17a8a6a" prot="public" static="no">
+      <memberdef kind="typedef" id="m_c_hull_white_cap_floor_engine_1a0a698c34685b79e1cd004206d17a8a6a" prot="public" static="no">
         <type>simulation::stats_type</type>
         <definition>typedef simulation::stats_type stats_type</definition>
         <argsstring></argsstring>
@@ -37,13 +37,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1adcb403eb8967770e49aa38e1681a949d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_hull_white_cap_floor_engine_1adcb403eb8967770e49aa38e1681a949d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MCHullWhiteCapFloorEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HullWhite &gt; &amp;model, bool brownianBridge, bool antitheticVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCHullWhiteCapFloorEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="hull_white" kindref="compound">HullWhite</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -72,12 +72,12 @@
         </param>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="82" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="72" bodyend="84"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_hull_white_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="m_c_hull_white_cap_floor_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>
         <name>calculate</name>
-        <reimplements refid="class_quant_lib_1_1_pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
+        <reimplements refid="pricing_engine_1a6b564cec9dfa3d4397000b9f3b7a43f6">calculate</reimplements>
         <location file="/pricingengines/capfloor/mchullwhiteengine.hpp" line="86" bodyfile="/pricingengines/capfloor/mchullwhiteengine.hpp" bodystart="86" bodyend="94"/>
       </memberdef>
       </sectiondef>

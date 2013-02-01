@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_simple_process1d_mesher" kind="class" prot="public">
+  <compounddef id="fdm_simple_process1d_mesher" kind="class" prot="public">
     <compoundname>QuantLib::FdmSimpleProcess1dMesher</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_simple_process1d_mesher_1a330df14e22a12663b22bfc3055cc6e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm_simple_process1d_mesher_1a330df14e22a12663b22bfc3055cc6e56" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>FdmSimpleProcess1dMesher</definition>
         <argsstring>(Size size, const boost::shared_ptr&lt; StochasticProcess1D &gt; &amp;process, Time maturity, Size tAvgSteps=10, Real epsilon=0.0001, Real mandatoryPoint=Null&lt; Real &gt;())</argsstring>
@@ -13,7 +13,7 @@
           <declname>size</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="stochastic_process1_d" kindref="compound">StochasticProcess1D</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -33,7 +33,7 @@
         <param>
           <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
           <declname>mandatoryPoint</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;()</defval>
         </param>
         <location file="/methods/finitedifferences/meshers/fdmsimpleprocess1dmesher.hpp" line="41"/>
       </memberdef>

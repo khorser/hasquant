@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_generic_gaussian_statistics" kind="class" prot="public">
+  <compounddef id="generic_gaussian_statistics" kind="class" prot="public">
     <compoundname>QuantLib::GenericGaussianStatistics</compoundname>
     <includes local="no">/math/statistics/gaussianstatistics.hpp</includes>
     <templateparamlist>
@@ -10,7 +10,7 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>Gaussian risk measures</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1af3cbbc20c55a893d61eb65aef528ff06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1af3cbbc20c55a893d61eb65aef528ff06" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianDownsideVariance</definition>
         <argsstring>() const </argsstring>
@@ -19,7 +19,7 @@
 <para>returns the downside variance, defined as <formula id="248">\[ \frac{N}{N-1} \times \frac{ \sum_{i=1}^{N} \theta \times x_i^{2}}{ \sum_{i=1}^{N} w_i} \]</formula>, where <formula id="249">$ \theta $</formula> = 0 if x &gt; 0 and <formula id="249">$ \theta $</formula> =1 if x &lt;0 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="53" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="53" bodyend="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a2be50d3e88601f790cf85128decdde3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a2be50d3e88601f790cf85128decdde3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianDownsideDeviation</definition>
         <argsstring>() const </argsstring>
@@ -28,7 +28,7 @@
 <para>returns the downside deviation, defined as the square root of the downside variance. </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="60" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1aa4b3556e8967cf8f3da9e998b7c9c8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1aa4b3556e8967cf8f3da9e998b7c9c8f9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianRegret</definition>
         <argsstring>(Real target) const </argsstring>
@@ -41,7 +41,7 @@
 <para>returns the variance of observations below target <formula id="250">\[ \frac{\sum w_i (min(0, x_i-target))^2 }{\sum w_i}. \]</formula> <verbatim>      See Dembo, Freeman &quot;The Rules Of Risk&quot;, Wiley (2001)</verbatim> </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="69" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="132" bodyend="144"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1ac43553dfb9cb5f223bfd64e7b8e072b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1ac43553dfb9cb5f223bfd64e7b8e072b7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianPercentile</definition>
         <argsstring>(Real percentile) const </argsstring>
@@ -55,7 +55,7 @@
 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="76" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="148" bodyend="159"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1ab00ed695ce6547ce34fb0e88288b7a58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1ab00ed695ce6547ce34fb0e88288b7a58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianTopPercentile</definition>
         <argsstring>(Real percentile) const </argsstring>
@@ -69,7 +69,7 @@
 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="77" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="163" bodyend="167"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a6ecbb1924516db89455dcd67b0755fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a6ecbb1924516db89455dcd67b0755fe9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianPotentialUpside</definition>
         <argsstring>(Real percentile) const </argsstring>
@@ -85,7 +85,7 @@
 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="80" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="171" bodyend="180"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a4d77f5f2ac9ea852e79f46f0001f1c2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a4d77f5f2ac9ea852e79f46f0001f1c2e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianValueAtRisk</definition>
         <argsstring>(Real percentile) const </argsstring>
@@ -101,7 +101,7 @@
 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="83" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="185" bodyend="196"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a2276577eda78bd4a09353a3d917d3071" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a2276577eda78bd4a09353a3d917d3071" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianExpectedShortfall</definition>
         <argsstring>(Real percentile) const </argsstring>
@@ -121,7 +121,7 @@
 </para>        </detaileddescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="99" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="201" bodyend="216"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1ada88dfccfdbf634b983c47a081784753" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1ada88dfccfdbf634b983c47a081784753" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianShortfall</definition>
         <argsstring>(Real target) const </argsstring>
@@ -134,7 +134,7 @@
 <para>gaussian-assumption Shortfall (observations below target) </para>        </briefdescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="102" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="220" bodyend="225"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1acabfa0f881208aff4a8d0490637c05dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1acabfa0f881208aff4a8d0490637c05dd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gaussianAverageShortfall</definition>
         <argsstring>(Real target) const </argsstring>
@@ -144,12 +144,12 @@
           <declname>target</declname>
         </param>
         <briefdescription>
-<para>gaussian-assumption <ref refid="struct_quant_lib_1_1_average" kindref="compound">Average</ref> Shortfall (averaged shortfallness) </para>        </briefdescription>
+<para>gaussian-assumption <ref refid="average" kindref="compound">Average</ref> Shortfall (averaged shortfallness) </para>        </briefdescription>
         <location file="/math/statistics/gaussianstatistics.hpp" line="105" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="229" bodyend="236"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_generic_gaussian_statistics_1a7f69b339f59d747116c662a0a6b922be" prot="public" static="no">
+      <memberdef kind="typedef" id="generic_gaussian_statistics_1a7f69b339f59d747116c662a0a6b922be" prot="public" static="no">
         <type>Stat::value_type</type>
         <definition>typedef Stat::value_type value_type</definition>
         <argsstring></argsstring>
@@ -158,14 +158,14 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a1bcd30d28725b74f422e735de4f87814" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a1bcd30d28725b74f422e735de4f87814" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericGaussianStatistics</definition>
         <argsstring>()</argsstring>
         <name>GenericGaussianStatistics</name>
         <location file="/math/statistics/gaussianstatistics.hpp" line="43" bodyfile="/math/statistics/gaussianstatistics.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_generic_gaussian_statistics_1a98a57141b893f44999280b7e5007f39d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="generic_gaussian_statistics_1a98a57141b893f44999280b7e5007f39d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GenericGaussianStatistics</definition>
         <argsstring>(const Stat &amp;s)</argsstring>

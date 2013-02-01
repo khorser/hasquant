@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_explicit_euler_scheme" kind="class" prot="public">
+  <compounddef id="explicit_euler_scheme" kind="class" prot="public">
     <compoundname>QuantLib::ExplicitEulerScheme</compoundname>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_scheme_1ad66caa3a712f1851c280155e836560f1" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_scheme_1ad66caa3a712f1851c280155e836560f1" prot="public" static="no">
         <type>OperatorTraits&lt; FdmLinearOp &gt;</type>
         <definition>typedef OperatorTraits&lt;FdmLinearOp&gt; traits</definition>
         <argsstring></argsstring>
         <name>traits</name>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="38" bodyfile="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="38" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_scheme_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_scheme_1a02ede700df8d04acf392294f6ab090c4" prot="public" static="no">
         <type>traits::operator_type</type>
         <definition>typedef traits::operator_type operator_type</definition>
         <argsstring></argsstring>
         <name>operator_type</name>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="39" bodyfile="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_scheme_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_scheme_1ac07e755f1412353806d561469c9ad49f" prot="public" static="no">
         <type>traits::array_type</type>
         <definition>typedef traits::array_type array_type</definition>
         <argsstring></argsstring>
         <name>array_type</name>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="40" bodyfile="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_scheme_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
+      <memberdef kind="typedef" id="explicit_euler_scheme_1a7fb68e182d263712988c9b0afe1ad6a0" prot="public" static="no">
         <type>traits::bc_set</type>
         <definition>typedef traits::bc_set bc_set</definition>
         <argsstring></argsstring>
         <name>bc_set</name>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="41" bodyfile="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_explicit_euler_scheme_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_step_condition" kindref="compound">traits::condition_type</ref></type>
+      <memberdef kind="typedef" id="explicit_euler_scheme_1a9b68be7f0b8097f723468a930f604c39" prot="public" static="no">
+        <type><ref refid="step_condition" kindref="compound">traits::condition_type</ref></type>
         <definition>typedef traits::condition_type condition_type</definition>
         <argsstring></argsstring>
         <name>condition_type</name>
@@ -40,7 +40,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_explicit_euler_scheme_1ae8ee00806f2fb42943edafdd13e2a7da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="explicit_euler_scheme_1ae8ee00806f2fb42943edafdd13e2a7da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ExplicitEulerScheme</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;map, const std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt; &amp;bc_set=std::vector&lt; boost::shared_ptr&lt; FdmDirichletBoundary &gt; &gt;())</argsstring>
@@ -56,7 +56,7 @@
         </param>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_explicit_euler_scheme_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="explicit_euler_scheme_1ae31015dcf2ddc4f248be2533b0bbbd95" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void step</definition>
         <argsstring>(array_type &amp;a, Time t)</argsstring>
@@ -71,7 +71,7 @@
         </param>
         <location file="/methods/finitedifferences/schemes/expliciteulerscheme.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_explicit_euler_scheme_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="explicit_euler_scheme_1a7c6bf7e1e335626aa6f4e7a46f361b50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setStep</definition>
         <argsstring>(Time dt)</argsstring>

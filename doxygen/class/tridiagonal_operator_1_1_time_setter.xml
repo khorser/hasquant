@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter" kind="class" prot="public" abstract="yes">
+  <compounddef id="tridiagonal_operator_1_1_time_setter" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::TridiagonalOperator::TimeSetter</compoundname>
     <includes local="no">/methods/finitedifferences/tridiagonaloperator.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="tridiagonal_operator_1_1_time_setter_1aa236e8ce6b8e6f851241a22293c34987" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~TimeSetter</definition>
         <argsstring>()</argsstring>
         <name>~TimeSetter</name>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="114" bodyfile="/methods/finitedifferences/tridiagonaloperator.hpp" bodystart="114" bodyend="114"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_tridiagonal_operator_1_1_time_setter_1afe6b35c7276438094855ba4bf9f6290b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="tridiagonal_operator_1_1_time_setter_1afe6b35c7276438094855ba4bf9f6290b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void setTime</definition>
         <argsstring>(Time t, TridiagonalOperator &amp;L) const =0</argsstring>
@@ -21,7 +21,7 @@
           <declname>t</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
+          <type><ref refid="tridiagonal_operator" kindref="compound">TridiagonalOperator</ref> &amp;</type>
           <declname>L</declname>
         </param>
         <location file="/methods/finitedifferences/tridiagonaloperator.hpp" line="116"/>

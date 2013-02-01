@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_digital_replication" kind="class" prot="public">
+  <compounddef id="digital_replication" kind="class" prot="public">
     <compoundname>QuantLib::DigitalReplication</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a3fbcc5ce44cc980761d57f134058b57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="digital_replication_1a3fbcc5ce44cc980761d57f134058b57c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>DigitalReplication</definition>
         <argsstring>(Replication::Type t=Replication::Central, Real gap=1e-4)</argsstring>
@@ -20,14 +20,14 @@
         </param>
         <location file="/cashflows/replication.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a93fe2704df3e3ae39e5e991b9370399f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="digital_replication_1a93fe2704df3e3ae39e5e991b9370399f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Replication::Type</type>
         <definition>Replication::Type replicationType</definition>
         <argsstring>() const </argsstring>
         <name>replicationType</name>
         <location file="/cashflows/replication.hpp" line="48" bodyfile="/cashflows/replication.hpp" bodystart="48" bodyend="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_digital_replication_1a763599594f2a726834f274e8b224a6e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="digital_replication_1a763599594f2a726834f274e8b224a6e3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real gap</definition>
         <argsstring>() const </argsstring>

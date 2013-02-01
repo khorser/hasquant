@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_american_basket_path_pricer" kind="class" prot="public">
+  <compounddef id="american_basket_path_pricer" kind="class" prot="public">
     <compoundname>QuantLib::AmericanBasketPathPricer</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1a126aa36cc7c20060c3b91022dee3102e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="american_basket_path_pricer_1a126aa36cc7c20060c3b91022dee3102e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>AmericanBasketPathPricer</definition>
         <argsstring>(Size assetNumber, const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, Size polynomOrder=2, LsmBasisSystem::PolynomType polynomType=LsmBasisSystem::Monomial)</argsstring>
@@ -13,7 +13,7 @@
           <declname>assetNumber</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -28,13 +28,13 @@
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1a5422696d00dda83ea6d9d41ba3a6967c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+      <memberdef kind="function" id="american_basket_path_pricer_1a5422696d00dda83ea6d9d41ba3a6967c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="array" kindref="compound">Array</ref></type>
         <definition>Array state</definition>
         <argsstring>(const MultiPath &amp;path, Size t) const </argsstring>
         <name>state</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <param>
@@ -43,13 +43,13 @@
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="103"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1a9741aeb3c0e26119a689d89552fb0e91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="american_basket_path_pricer_1a9741aeb3c0e26119a689d89552fb0e91" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real operator()</definition>
         <argsstring>(const MultiPath &amp;path, Size t) const </argsstring>
         <name>operator()</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_multi_path" kindref="compound">MultiPath</ref> &amp;</type>
+          <type>const <ref refid="multi_path" kindref="compound">MultiPath</ref> &amp;</type>
           <declname>path</declname>
         </param>
         <param>
@@ -58,8 +58,8 @@
         </param>
         <location file="/pricingengines/basket/mcamericanbasketengine.hpp" line="104"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_american_basket_path_pricer_1aae6298ed1ee2c1d736a201b3c27c36bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt; &gt;</type>
+      <memberdef kind="function" id="american_basket_path_pricer_1aae6298ed1ee2c1d736a201b3c27c36bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; boost::function1&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref>, <ref refid="array" kindref="compound">Array</ref> &gt; &gt;</type>
         <definition>std::vector&lt;boost::function1&lt;Real, Array&gt; &gt; basisSystem</definition>
         <argsstring>() const </argsstring>
         <name>basisSystem</name>

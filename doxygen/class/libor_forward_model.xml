@@ -1,29 +1,29 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_libor_forward_model" kind="class" prot="public">
+  <compounddef id="libor_forward_model" kind="class" prot="public">
     <compoundname>QuantLib::LiborForwardModel</compoundname>
     <includes local="no">/legacy/libormarketmodels/liborforwardmodel.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1aa6b4ca3d94c5fb230cad0b17de1af907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="libor_forward_model_1aa6b4ca3d94c5fb230cad0b17de1af907" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>LiborForwardModel</definition>
         <argsstring>(const boost::shared_ptr&lt; LiborForwardModelProcess &gt; &amp;process, const boost::shared_ptr&lt; LmVolatilityModel &gt; &amp;volaModel, const boost::shared_ptr&lt; LmCorrelationModel &gt; &amp;corrModel)</argsstring>
         <name>LiborForwardModel</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_libor_forward_model_process" kindref="compound">LiborForwardModelProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="libor_forward_model_process" kindref="compound">LiborForwardModelProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="lm_volatility_model" kindref="compound">LmVolatilityModel</ref> &gt; &amp;</type>
           <declname>volaModel</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="lm_correlation_model" kindref="compound">LmCorrelationModel</ref> &gt; &amp;</type>
           <declname>corrModel</declname>
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1a42a0944ff9657f6e09b675236c3d988c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="libor_forward_model_1a42a0944ff9657f6e09b675236c3d988c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate S_0</definition>
         <argsstring>(Size alpha, Size beta) const </argsstring>
@@ -38,19 +38,19 @@
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1a4eea92d30a83afe5659443d0f391f180" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_swaption_volatility_matrix" kindref="compound">SwaptionVolatilityMatrix</ref> &gt;</type>
+      <memberdef kind="function" id="libor_forward_model_1a4eea92d30a83afe5659443d0f391f180" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="swaption_volatility_matrix" kindref="compound">SwaptionVolatilityMatrix</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;SwaptionVolatilityMatrix&gt; getSwaptionVolatilityMatrix</definition>
         <argsstring>() const </argsstring>
         <name>getSwaptionVolatilityMatrix</name>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="libor_forward_model_1ae85d814b067b54d8e1ea803a90a6db32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga642a971a0bcbbd2fb26c35e1a06e5761" kindref="member">DiscountFactor</ref></type>
         <definition>DiscountFactor discount</definition>
         <argsstring>(Time t) const </argsstring>
         <name>discount</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1ad70c7f05240b55443c045ba1d209f829">discount</reimplements>
+        <reimplements refid="affine_model_1ad70c7f05240b55443c045ba1d209f829">discount</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>t</declname>
@@ -59,12 +59,12 @@
 <para>Implied discount curve. </para>        </briefdescription>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1a1324bc7ce72e493fb4aa734a4cb6ec85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="libor_forward_model_1a1324bc7ce72e493fb4aa734a4cb6ec85" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBond</definition>
         <argsstring>(Time now, Time maturity, Array factors) const </argsstring>
         <name>discountBond</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1">discountBond</reimplements>
+        <reimplements refid="affine_model_1ae8cca5ae4349ab3bfc3085e131fba3a1">discountBond</reimplements>
         <param>
           <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
           <declname>now</declname>
@@ -74,17 +74,17 @@
           <declname>maturity</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref></type>
+          <type><ref refid="array" kindref="compound">Array</ref></type>
           <declname>factors</declname>
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="libor_forward_model_1a0b47448ed1ba48ac5138854aed3f1d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real discountBondOption</definition>
         <argsstring>(Option::Type type, Real strike, Time maturity, Time bondMaturity) const </argsstring>
         <name>discountBondOption</name>
-        <reimplements refid="class_quant_lib_1_1_affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
+        <reimplements refid="affine_model_1a75cd313ff0f7511ba974aa86d3caadf5">discountBondOption</reimplements>
         <param>
           <type>Option::Type</type>
           <declname>type</declname>
@@ -103,14 +103,14 @@
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_libor_forward_model_1ae83c058519d7bfc23a3101b42ee038bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="libor_forward_model_1ae83c058519d7bfc23a3101b42ee038bf" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setParams</definition>
         <argsstring>(const Array &amp;params)</argsstring>
         <name>setParams</name>
-        <reimplements refid="class_quant_lib_1_1_calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18">setParams</reimplements>
+        <reimplements refid="calibrated_model_1a3ce9fc39f465b4155ac6573ebb571c18">setParams</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>params</declname>
         </param>
         <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="69"/>
@@ -119,7 +119,7 @@
     <briefdescription>
 <para>Libor forward model </para>    </briefdescription>
     <detaileddescription>
-<para>References:</para><para>Stefan Weber, 2005, Efficient Calibration for <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Models, (<ulink url="http://workshop.mathfinance.de/2005/papers/weber/slides.pdf">http://workshop.mathfinance.de/2005/papers/weber/slides.pdf</ulink>)</para><para>Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003, Different Covariance Parameterizations of <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> Market Model and Joint Caps/Swaptions Calibration, (<ulink url="http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf">http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf</ulink></para><para><xrefsect id="test_1_test000026"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested using Monte-Carlo Simulation to reproduce swaption npvs, model calibration and exact cap pricing </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<para>References:</para><para>Stefan Weber, 2005, Efficient Calibration for <ref refid="libor" kindref="compound">Libor</ref> Market Models, (<ulink url="http://workshop.mathfinance.de/2005/papers/weber/slides.pdf">http://workshop.mathfinance.de/2005/papers/weber/slides.pdf</ulink>)</para><para>Damiano Brigo, Fabio Mercurio, Massimo Morini, 2003, Different Covariance Parameterizations of <ref refid="libor" kindref="compound">Libor</ref> Market Model and Joint Caps/Swaptions Calibration, (<ulink url="http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf">http://www.business.uts.edu.au/qfrc/conferences/qmf2001/Brigo_D.pdf</ulink></para><para><xrefsect id="test_1_test000026"><xreftitle>Tests</xreftitle><xrefdescription><para>the correctness is tested using Monte-Carlo Simulation to reproduce swaption npvs, model calibration and exact cap pricing </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <location file="/legacy/libormarketmodels/liborforwardmodel.hpp" line="51" bodyfile="/legacy/libormarketmodels/liborforwardmodel.hpp" bodystart="51" bodyend="80"/>
   </compounddef>
 </doxygen>

@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_min_basket_payoff" kind="class" prot="public">
+  <compounddef id="min_basket_payoff" kind="class" prot="public">
     <compoundname>QuantLib::MinBasketPayoff</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_min_basket_payoff_1abeb4647ab1389149408df7e084d6b3f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="min_basket_payoff_1abeb4647ab1389149408df7e084d6b3f5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MinBasketPayoff</definition>
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;p)</argsstring>
         <name>MinBasketPayoff</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="57" bodyfile="/instruments/basketoption.hpp" bodystart="56" bodyend="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_min_basket_payoff_1a8af5614e309a5b2a685b9c4ac364dc46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="min_basket_payoff_1a8af5614e309a5b2a685b9c4ac364dc46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real accumulate</definition>
         <argsstring>(const Array &amp;a) const </argsstring>
         <name>accumulate</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>a</declname>
         </param>
         <location file="/instruments/basketoption.hpp" line="58" bodyfile="/instruments/basketoption.hpp" bodystart="58" bodyend="60"/>

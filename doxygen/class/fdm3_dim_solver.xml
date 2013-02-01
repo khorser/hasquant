@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm3_dim_solver" kind="class" prot="public">
+  <compounddef id="fdm3_dim_solver" kind="class" prot="public">
     <compoundname>QuantLib::Fdm3DimSolver</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a78fb9edae255d65e5a8f536ec8e28893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm3_dim_solver_1a78fb9edae255d65e5a8f536ec8e28893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Fdm3DimSolver</definition>
         <argsstring>(const FdmSolverDesc &amp;solverDesc, const FdmSchemeDesc &amp;schemeDesc, const boost::shared_ptr&lt; FdmLinearOpComposite &gt; &amp;op)</argsstring>
@@ -22,14 +22,14 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm3_dim_solver_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
         <name>performCalculations</name>
         <location file="/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a41bbadb8d3e97a883e1b7a70f27e4838" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm3_dim_solver_1a41bbadb8d3e97a883e1b7a70f27e4838" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real interpolateAt</definition>
         <argsstring>(Real x, Real y, Rate z) const </argsstring>
@@ -48,7 +48,7 @@
         </param>
         <location file="/methods/finitedifferences/solvers/fdm3dimsolver.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm3_dim_solver_1a97b5f5aa53e4698ceae478523bbf9359" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="fdm3_dim_solver_1a97b5f5aa53e4698ceae478523bbf9359" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real thetaAt</definition>
         <argsstring>(Real x, Real y, Rate z) const </argsstring>

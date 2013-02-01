@@ -1,74 +1,74 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_overnight_indexed_swap" kind="class" prot="public">
+  <compounddef id="overnight_indexed_swap" kind="class" prot="public">
     <compoundname>QuantLib::OvernightIndexedSwap</compoundname>
     <includes local="no">/instruments/overnightindexedswap.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
         <name>type</name>
         <location file="/instruments/overnightindexedswap.hpp" line="58" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="58" bodyend="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/instruments/overnightindexedswap.hpp" line="59" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="103" bodyend="106"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a8f80a768e3cf3e15b9080476e9fcb3ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a8f80a768e3cf3e15b9080476e9fcb3ab" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref> &gt;</type>
         <definition>std::vector&lt;Real&gt; nominals</definition>
         <argsstring>() const </argsstring>
         <name>nominals</name>
         <location file="/instruments/overnightindexedswap.hpp" line="60" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="60" bodyend="60"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a865ebb01241a362567e63527db98dab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a865ebb01241a362567e63527db98dab2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__datetime_1ga6d41db8ba0ea90d22df35889df452ada" kindref="member">Frequency</ref></type>
         <definition>Frequency paymentFrequency</definition>
         <argsstring>()</argsstring>
         <name>paymentFrequency</name>
         <location file="/instruments/overnightindexedswap.hpp" line="63" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a21ca699ff10159146df2e2673c1cc118" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fixedRate</definition>
         <argsstring>() const </argsstring>
         <name>fixedRate</name>
         <location file="/instruments/overnightindexedswap.hpp" line="65" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="65" bodyend="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a683c95096eea61b1a1ed14d32288150d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+      <memberdef kind="function" id="overnight_indexed_swap_1a683c95096eea61b1a1ed14d32288150d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
         <definition>const DayCounter&amp; fixedDayCount</definition>
         <argsstring>()</argsstring>
         <name>fixedDayCount</name>
         <location file="/instruments/overnightindexedswap.hpp" line="66" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="66" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1adba9c35966b6b177d2f6d73bf6ce9cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1adba9c35966b6b177d2f6d73bf6ce9cee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const boost::shared_ptr&lt; OvernightIndex &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;OvernightIndex&gt;&amp; overnightIndex</definition>
         <argsstring>()</argsstring>
         <name>overnightIndex</name>
         <location file="/instruments/overnightindexedswap.hpp" line="68"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1ab2974165ca4841b20224e8d276227ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1ab2974165ca4841b20224e8d276227ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread spread</definition>
         <argsstring>()</argsstring>
         <name>spread</name>
         <location file="/instruments/overnightindexedswap.hpp" line="69" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="69" bodyend="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a720acf11b744a6529b383940d01117a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a720acf11b744a6529b383940d01117a6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; fixedLeg</definition>
         <argsstring>() const </argsstring>
         <name>fixedLeg</name>
         <location file="/instruments/overnightindexedswap.hpp" line="71" bodyfile="/instruments/overnightindexedswap.hpp" bodystart="71" bodyend="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1adf0b47fac1d94d9b87c77881eb85fbf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1adf0b47fac1d94d9b87c77881eb85fbf6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; overnightLeg</definition>
         <argsstring>() const </argsstring>
@@ -78,42 +78,42 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Results</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a8299475d045050eb89682c7fa25ca208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a8299475d045050eb89682c7fa25ca208" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fixedLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegBPS</name>
         <location file="/instruments/overnightindexedswap.hpp" line="77"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a36e1152928660bd46ffdcdfde8a70e6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fixedLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>fixedLegNPV</name>
         <location file="/instruments/overnightindexedswap.hpp" line="78"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a66129d40442a389121feb6e330d54f79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a66129d40442a389121feb6e330d54f79" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real fairRate</definition>
         <argsstring>() const </argsstring>
         <name>fairRate</name>
         <location file="/instruments/overnightindexedswap.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a266e13c778bc92a9789393871659b6bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a266e13c778bc92a9789393871659b6bd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real overnightLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>overnightLegBPS</name>
         <location file="/instruments/overnightindexedswap.hpp" line="81"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a981564829c746af02c1b945c603ee618" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a981564829c746af02c1b945c603ee618" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real overnightLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>overnightLegNPV</name>
         <location file="/instruments/overnightindexedswap.hpp" line="82"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a9fed7d028c05630c089b2ae653dd94a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread fairSpread</definition>
         <argsstring>() const </argsstring>
@@ -122,13 +122,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
+        <enumvalue id="overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
+        <enumvalue id="overnight_indexed_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
         </enumvalue>
@@ -136,7 +136,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a89407c6282554fca99c92abfe5be0966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a89407c6282554fca99c92abfe5be0966" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OvernightIndexedSwap</definition>
         <argsstring>(Type type, Real nominal, const Schedule &amp;schedule, Rate fixedRate, const DayCounter &amp;fixedDC, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, Spread spread=0.0)</argsstring>
@@ -150,7 +150,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -158,7 +158,7 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedDC</declname>
         </param>
         <param>
@@ -172,7 +172,7 @@
         </param>
         <location file="/instruments/overnightindexedswap.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_1a1741a0edce85689f3a0597a0fe0c7515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_1a1741a0edce85689f3a0597a0fe0c7515" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OvernightIndexedSwap</definition>
         <argsstring>(Type type, std::vector&lt; Real &gt; nominals, const Schedule &amp;schedule, Rate fixedRate, const DayCounter &amp;fixedDC, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex, Spread spread=0.0)</argsstring>
@@ -186,7 +186,7 @@
           <declname>nominals</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>schedule</declname>
         </param>
         <param>
@@ -194,7 +194,7 @@
           <declname>fixedRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedDC</declname>
         </param>
         <param>

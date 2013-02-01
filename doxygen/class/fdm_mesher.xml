@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_fdm_mesher" kind="class" prot="public" abstract="yes">
+  <compounddef id="fdm_mesher" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::FdmMesher</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_mesher_1ae5fe040b824b35f74c3e811df310e263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>FdmMesher</definition>
         <argsstring>(const boost::shared_ptr&lt; FdmLinearOpLayout &gt; &amp;layout)</argsstring>
@@ -14,14 +14,14 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="39" bodyfile="/methods/finitedifferences/meshers/fdmmesher.hpp" bodystart="38" bodyend="39"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1ac2b15cf3ca5f5499e5306151207cf0c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="fdm_mesher_1ac2b15cf3ca5f5499e5306151207cf0c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~FdmMesher</definition>
         <argsstring>()</argsstring>
         <name>~FdmMesher</name>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="40" bodyfile="/methods/finitedifferences/meshers/fdmmesher.hpp" bodystart="40" bodyend="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1ae308aa3ade328279676c13fee733e8cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="fdm_mesher_1ae308aa3ade328279676c13fee733e8cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real dplus</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Size direction) const =0</argsstring>
@@ -36,7 +36,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1a6b09e3a90550a856ca19c93dc23388b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="fdm_mesher_1a6b09e3a90550a856ca19c93dc23388b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real dminus</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Size direction) const =0</argsstring>
@@ -51,7 +51,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1a3de23f4bdc91890b9ee984d8f61f98a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="fdm_mesher_1a3de23f4bdc91890b9ee984d8f61f98a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real location</definition>
         <argsstring>(const FdmLinearOpIterator &amp;iter, Size direction) const =0</argsstring>
@@ -66,8 +66,8 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1a0be368cb77d0f5ef59dcef81a427cc4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type><ref refid="class_quant_lib_1_1_disposable" kindref="compound">Disposable</ref>&lt; <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &gt;</type>
+      <memberdef kind="function" id="fdm_mesher_1a0be368cb77d0f5ef59dcef81a427cc4e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="disposable" kindref="compound">Disposable</ref>&lt; <ref refid="array" kindref="compound">Array</ref> &gt;</type>
         <definition>virtual Disposable&lt;Array&gt; locations</definition>
         <argsstring>(Size direction) const =0</argsstring>
         <name>locations</name>
@@ -77,7 +77,7 @@
         </param>
         <location file="/methods/finitedifferences/meshers/fdmmesher.hpp" line="48"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_fdm_mesher_1a6b36f4c5ff72e78891a8a0debfe2de35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="fdm_mesher_1a6b36f4c5ff72e78891a8a0debfe2de35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>const boost::shared_ptr&lt; FdmLinearOpLayout &gt; &amp;</type>
         <definition>const boost::shared_ptr&lt;FdmLinearOpLayout&gt;&amp; layout</definition>
         <argsstring>() const </argsstring>

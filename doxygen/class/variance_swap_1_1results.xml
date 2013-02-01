@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_variance_swap_1_1results" kind="class" prot="public">
+  <compounddef id="variance_swap_1_1results" kind="class" prot="public">
     <compoundname>QuantLib::VarianceSwap::results</compoundname>
     <includes local="no">/instruments/varianceswap.hpp</includes>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_variance_swap_1_1results_1a0dbb7d4efbc792edb4ef8e546e1aa861" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="variance_swap_1_1results_1a0dbb7d4efbc792edb4ef8e546e1aa861" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real variance</definition>
         <argsstring></argsstring>
@@ -13,7 +13,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_swap_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="variance_swap_1_1results_1ad20897c5c8bd47f5d4005989bead0e55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void reset</definition>
         <argsstring>()</argsstring>

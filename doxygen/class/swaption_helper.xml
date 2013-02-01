@@ -1,44 +1,44 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swaption_helper" kind="class" prot="public">
+  <compounddef id="swaption_helper" kind="class" prot="public">
     <compoundname>QuantLib::SwaptionHelper</compoundname>
     <includes local="no">/models/shortrate/calibrationhelpers/swaptionhelper.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1aa033f79a3c568d259cdaf1efcbb054c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swaption_helper_1aa033f79a3c568d259cdaf1efcbb054c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwaptionHelper</definition>
         <argsstring>(const Period &amp;maturity, const Period &amp;length, const Handle&lt; Quote &gt; &amp;volatility, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Period &amp;fixedLegTenor, const DayCounter &amp;fixedLegDayCounter, const DayCounter &amp;floatingLegDayCounter, const Handle&lt; YieldTermStructure &gt; &amp;termStructure, CalibrationHelper::CalibrationErrorType errorType=CalibrationHelper::RelativePriceError)</argsstring>
         <name>SwaptionHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>maturity</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>length</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>volatility</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>fixedLegTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>fixedLegDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>floatingLegDayCounter</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -48,34 +48,34 @@
         </param>
         <location file="/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swaption_helper_1af4e5312442df0cb0ab6cccc66fb7bf6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void addTimesTo</definition>
         <argsstring>(std::list&lt; Time &gt; &amp;times) const </argsstring>
         <name>addTimesTo</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
+        <reimplements refid="calibration_helper_1a06c670b250bcd21e9787ebc007093545">addTimesTo</reimplements>
         <param>
           <type>std::list&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt; &amp;</type>
           <declname>times</declname>
         </param>
         <location file="/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="50"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swaption_helper_1a03d4abdfc2297309ddc7bcb7b2df2ef4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real modelValue</definition>
         <argsstring>() const </argsstring>
         <name>modelValue</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
+        <reimplements refid="calibration_helper_1a573ec85444166decbaa5888155b9fa39">modelValue</reimplements>
         <briefdescription>
 <para>returns the price of the instrument according to the model </para>        </briefdescription>
         <location file="/models/shortrate/calibrationhelpers/swaptionhelper.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swaption_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="swaption_helper_1a722ad9621557c52aa1b7e1e6f7308424" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>virtual Real blackPrice</definition>
         <argsstring>(Volatility volatility) const </argsstring>
         <name>blackPrice</name>
-        <reimplements refid="class_quant_lib_1_1_calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
+        <reimplements refid="calibration_helper_1ae916246904fe19039c315903020642ff">blackPrice</reimplements>
         <param>
           <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
           <declname>volatility</declname>

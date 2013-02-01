@@ -1,107 +1,107 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments" kind="class" prot="public">
+  <compounddef id="c_p_i_cap_floor_1_1arguments" kind="class" prot="public">
     <compoundname>QuantLib::CPICapFloor::arguments</compoundname>
       <sectiondef kind="public-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1af0e108519286f3c7f1b8bcd11d6cfb68" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1af0e108519286f3c7f1b8bcd11d6cfb68" prot="public" static="no" mutable="no">
         <type>Option::Type</type>
         <definition>Option::Type type</definition>
         <argsstring></argsstring>
         <name>type</name>
         <location file="/instruments/cpicapfloor.hpp" line="119" bodyfile="/instruments/cpicapfloor.hpp" bodystart="119" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a587bb2361e4713f6bbe62501a9c37ea1" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring></argsstring>
         <name>nominal</name>
         <location file="/instruments/cpicapfloor.hpp" line="120" bodyfile="/instruments/cpicapfloor.hpp" bodystart="120" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ab16240514dfa222811ef2fb14a72d4a8" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring></argsstring>
         <name>startDate</name>
         <location file="/instruments/cpicapfloor.hpp" line="121" bodyfile="/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ae4163a3dd4d0d8f6bd5c9c82321ff0f0" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ae4163a3dd4d0d8f6bd5c9c82321ff0f0" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date fixDate</definition>
         <argsstring></argsstring>
         <name>fixDate</name>
         <location file="/instruments/cpicapfloor.hpp" line="121" bodyfile="/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1aebed7f368494937495cfdf5ee9e85cab" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1aebed7f368494937495cfdf5ee9e85cab" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date payDate</definition>
         <argsstring></argsstring>
         <name>payDate</name>
         <location file="/instruments/cpicapfloor.hpp" line="121" bodyfile="/instruments/cpicapfloor.hpp" bodystart="121" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a7147aec61f1b39b7940bbfd1cd859f47" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a7147aec61f1b39b7940bbfd1cd859f47" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real baseCPI</definition>
         <argsstring></argsstring>
         <name>baseCPI</name>
         <location file="/instruments/cpicapfloor.hpp" line="122" bodyfile="/instruments/cpicapfloor.hpp" bodystart="122" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a43cdf885457559a4b455fed55a1a27dd" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a43cdf885457559a4b455fed55a1a27dd" prot="public" static="no" mutable="no">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturity</definition>
         <argsstring></argsstring>
         <name>maturity</name>
         <location file="/instruments/cpicapfloor.hpp" line="123" bodyfile="/instruments/cpicapfloor.hpp" bodystart="123" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a8b6b1f982a630c25d1addb947caaba20" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a8b6b1f982a630c25d1addb947caaba20" prot="public" static="no" mutable="no">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar fixCalendar</definition>
         <argsstring></argsstring>
         <name>fixCalendar</name>
         <location file="/instruments/cpicapfloor.hpp" line="124" bodyfile="/instruments/cpicapfloor.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a564ccb9747850bf2b905b55aab9aaaf5" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a564ccb9747850bf2b905b55aab9aaaf5" prot="public" static="no" mutable="no">
+        <type><ref refid="calendar" kindref="compound">Calendar</ref></type>
         <definition>Calendar payCalendar</definition>
         <argsstring></argsstring>
         <name>payCalendar</name>
         <location file="/instruments/cpicapfloor.hpp" line="124" bodyfile="/instruments/cpicapfloor.hpp" bodystart="124" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ada67439b509ef6c29b3ea133750d0253" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ada67439b509ef6c29b3ea133750d0253" prot="public" static="no" mutable="no">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention fixConvention</definition>
         <argsstring></argsstring>
         <name>fixConvention</name>
         <location file="/instruments/cpicapfloor.hpp" line="125" bodyfile="/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1ac5be8de9a77f16aae5dcedd748b64c2c" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1ac5be8de9a77f16aae5dcedd748b64c2c" prot="public" static="no" mutable="no">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention payConvention</definition>
         <argsstring></argsstring>
         <name>payConvention</name>
         <location file="/instruments/cpicapfloor.hpp" line="125" bodyfile="/instruments/cpicapfloor.hpp" bodystart="125" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a9a4a33b294edec6ebb0de2820c5f8408" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a9a4a33b294edec6ebb0de2820c5f8408" prot="public" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate strike</definition>
         <argsstring></argsstring>
         <name>strike</name>
         <location file="/instruments/cpicapfloor.hpp" line="126" bodyfile="/instruments/cpicapfloor.hpp" bodystart="126" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a4d7374959254cdc28051707949d34a53" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a4d7374959254cdc28051707949d34a53" prot="public" static="no" mutable="no">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
         <definition>Handle&lt;ZeroInflationIndex&gt; infIndex</definition>
         <argsstring></argsstring>
         <name>infIndex</name>
         <location file="/instruments/cpicapfloor.hpp" line="127" bodyfile="/instruments/cpicapfloor.hpp" bodystart="127" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" static="no" mutable="no">
-        <type><ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref></type>
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1a70e540d91380c6a734f04886ff863e8e" prot="public" static="no" mutable="no">
+        <type><ref refid="period" kindref="compound">Period</ref></type>
         <definition>Period observationLag</definition>
         <argsstring></argsstring>
         <name>observationLag</name>
         <location file="/instruments/cpicapfloor.hpp" line="128" bodyfile="/instruments/cpicapfloor.hpp" bodystart="128" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1accbbdff5a9957196a62671150550449d" prot="public" static="no" mutable="no">
+      <memberdef kind="variable" id="c_p_i_cap_floor_1_1arguments_1accbbdff5a9957196a62671150550449d" prot="public" static="no" mutable="no">
         <type>CPI::InterpolationType</type>
         <definition>CPI::InterpolationType observationInterpolation</definition>
         <argsstring></argsstring>
@@ -110,7 +110,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_p_i_cap_floor_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_p_i_cap_floor_1_1arguments_1a048aaadf42ac725952523dd9546e96b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void validate</definition>
         <argsstring>() const </argsstring>

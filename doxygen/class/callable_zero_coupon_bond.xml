@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callable_zero_coupon_bond" kind="class" prot="public">
+  <compounddef id="callable_zero_coupon_bond" kind="class" prot="public">
     <compoundname>QuantLib::CallableZeroCouponBond</compoundname>
     <includes local="no">/experimental/callablebonds/callablebond.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_zero_coupon_bond_1a69f78009b895c7b0982ca1038e16a60d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_zero_coupon_bond_1a69f78009b895c7b0982ca1038e16a60d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableZeroCouponBond</definition>
         <argsstring>(Natural settlementDays, Real faceAmount, const Calendar &amp;calendar, const Date &amp;maturityDate, const DayCounter &amp;dayCounter, BusinessDayConvention paymentConvention=Following, Real redemption=100.0, const Date &amp;issueDate=Date(), const CallabilitySchedule &amp;putCallSchedule=CallabilitySchedule())</argsstring>
@@ -18,15 +18,15 @@
           <declname>faceAmount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -40,9 +40,9 @@
           <defval>100.0</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
           <type>const CallabilitySchedule &amp;</type>

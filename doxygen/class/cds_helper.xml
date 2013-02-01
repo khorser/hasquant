@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_cds_helper" kind="class" prot="public" abstract="yes">
+  <compounddef id="cds_helper" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CdsHelper</compoundname>
     <includes local="no">/termstructures/credit/defaultprobabilityhelpers.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1aadb08e58343efaf93254f2fc5b84b6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_helper_1aadb08e58343efaf93254f2fc5b84b6a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CdsHelper</definition>
         <argsstring>(const Handle&lt; Quote &gt; &amp;quote, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
         <name>CdsHelper</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_quote" kindref="compound">Quote</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="quote" kindref="compound">Quote</ref> &gt; &amp;</type>
           <declname>quote</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -22,7 +22,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -34,11 +34,11 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -46,7 +46,7 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -61,7 +61,7 @@
         </param>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1ac70664feda1ab9d9cf8af821a8e521fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_helper_1ac70664feda1ab9d9cf8af821a8e521fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CdsHelper</definition>
         <argsstring>(Rate quote, const Period &amp;tenor, Integer settlementDays, const Calendar &amp;calendar, Frequency frequency, BusinessDayConvention paymentConvention, DateGeneration::Rule rule, const DayCounter &amp;dayCounter, Real recoveryRate, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve, bool settlesAccrual=true, bool paysAtDefaultTime=true)</argsstring>
@@ -71,7 +71,7 @@
           <declname>quote</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -79,7 +79,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
         </param>
         <param>
@@ -91,11 +91,11 @@
           <declname>paymentConvention</declname>
         </param>
         <param>
-          <type><ref refid="struct_quant_lib_1_1_date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
+          <type><ref refid="date_generation_1a11fcd51ef86118f65e603c1474377a78" kindref="member">DateGeneration::Rule</ref></type>
           <declname>rule</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dayCounter</declname>
         </param>
         <param>
@@ -103,7 +103,7 @@
           <declname>recoveryRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
         </param>
         <param>
@@ -118,13 +118,13 @@
         </param>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="79"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_cds_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="cds_helper_1a845ffeb1161341447a075435a0718e39" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setTermStructure</definition>
         <argsstring>(DefaultProbabilityTermStructure *)</argsstring>
         <name>setTermStructure</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
+          <type><ref refid="default_probability_term_structure" kindref="compound">DefaultProbabilityTermStructure</ref> *</type>
         </param>
         <location file="/termstructures/credit/defaultprobabilityhelpers.hpp" line="80"/>
       </memberdef>
@@ -142,7 +142,7 @@
 <parametername>frequency</parametername>
 </parameternamelist>
 <parameterdescription>
-<para><ref refid="class_quant_lib_1_1_coupon" kindref="compound">Coupon</ref> frequency. </para></parameterdescription>
+<para><ref refid="coupon" kindref="compound">Coupon</ref> frequency. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>

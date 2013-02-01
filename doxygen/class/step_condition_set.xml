@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_step_condition_set" kind="class" prot="public">
+  <compounddef id="step_condition_set" kind="class" prot="public">
     <compoundname>QuantLib::StepConditionSet</compoundname>
     <includes local="no">/methods/finitedifferences/parallelevolver.hpp</includes>
     <templateparamlist>
@@ -9,7 +9,7 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="step_condition_set_1aa6b5bf15c9aada8bfa49c8e9bc9f5d46" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void applyTo</definition>
         <argsstring>(std::vector&lt; array_type &gt; &amp;a, Time t) const </argsstring>
@@ -24,7 +24,7 @@
         </param>
         <location file="/methods/finitedifferences/parallelevolver.hpp" line="50" bodyfile="/methods/finitedifferences/parallelevolver.hpp" bodystart="50" bodyend="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="step_condition_set_1ac13210b14b9539554521f49ccc7248da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void push_back</definition>
         <argsstring>(const itemType &amp;a)</argsstring>

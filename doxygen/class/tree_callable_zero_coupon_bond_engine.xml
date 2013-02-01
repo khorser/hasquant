@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine" kind="class" prot="public">
+  <compounddef id="tree_callable_zero_coupon_bond_engine" kind="class" prot="public">
     <compoundname>QuantLib::TreeCallableZeroCouponBondEngine</compoundname>
     <includes local="no">/experimental/callablebonds/treecallablebondengine.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine_1a6556191fffdab7edfba81a08e2af489c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="tree_callable_zero_coupon_bond_engine_1a6556191fffdab7edfba81a08e2af489c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TreeCallableZeroCouponBondEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const Size timeSteps, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCallableZeroCouponBondEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
@@ -18,29 +18,29 @@
           <declname>timeSteps</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="70" bodyfile="/experimental/callablebonds/treecallablebondengine.hpp" bodystart="65" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_tree_callable_zero_coupon_bond_engine_1af4fa509a37e6bf70bdc7c33326ed7467" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="tree_callable_zero_coupon_bond_engine_1af4fa509a37e6bf70bdc7c33326ed7467" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>TreeCallableZeroCouponBondEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; ShortRateModel &gt; &amp;model, const TimeGrid &amp;timeGrid, const Handle&lt; YieldTermStructure &gt; &amp;termStructure=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>TreeCallableZeroCouponBondEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="short_rate_model" kindref="compound">ShortRateModel</ref> &gt; &amp;</type>
           <declname>model</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>timeGrid</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/experimental/callablebonds/treecallablebondengine.hpp" line="77" bodyfile="/experimental/callablebonds/treecallablebondengine.hpp" bodystart="72" bodyend="77"/>
       </memberdef>

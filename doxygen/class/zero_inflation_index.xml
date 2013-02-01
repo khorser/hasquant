@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_zero_inflation_index" kind="class" prot="public">
+  <compounddef id="zero_inflation_index" kind="class" prot="public">
     <compoundname>QuantLib::ZeroInflationIndex</compoundname>
     <includes local="no">/indexes/inflationindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Index interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="zero_inflation_index_1a1c776ca10de744b29a4d051102003eb9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fixing</definition>
         <argsstring>(const Date &amp;fixingDate, bool forecastTodaysFixing=false) const </argsstring>
         <name>fixing</name>
-        <reimplements refid="class_quant_lib_1_1_inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6">fixing</reimplements>
+        <reimplements refid="inflation_index_1ab2e953a50a4d61d840d72c13c4789ea6">fixing</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <param>
@@ -21,33 +21,33 @@
           <defval>false</defval>
         </param>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000041"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="class_quant_lib_1_1_index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000041"><xreftitle>Warning</xreftitle><xrefdescription><para>the forecastTodaysFixing parameter (required by the <ref refid="index" kindref="compound">Index</ref> interface) is currently ignored. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/indexes/inflationindex.hpp" line="156"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Other methods</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a6e111b7f22a3b4a568736631d743a296" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;</type>
+      <memberdef kind="function" id="zero_inflation_index_1a6e111b7f22a3b4a568736631d743a296" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;</type>
         <definition>Handle&lt; ZeroInflationTermStructure &gt; zeroInflationTermStructure</definition>
         <argsstring>() const </argsstring>
         <name>zeroInflationTermStructure</name>
         <location file="/indexes/inflationindex.hpp" line="160" bodyfile="/indexes/inflationindex.hpp" bodystart="249" bodyend="251"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a07e5121e8d142b09d0810142e07d6107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
+      <memberdef kind="function" id="zero_inflation_index_1a07e5121e8d142b09d0810142e07d6107" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ZeroInflationIndex&gt; clone</definition>
         <argsstring>(const Handle&lt; ZeroInflationTermStructure &gt; &amp;h) const </argsstring>
         <name>clone</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
         </param>
         <location file="/indexes/inflationindex.hpp" line="162"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_zero_inflation_index_1a405cafaa1c2d2ba680a5ef10bc818dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="zero_inflation_index_1a405cafaa1c2d2ba680a5ef10bc818dd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ZeroInflationIndex</definition>
         <argsstring>(const std::string &amp;familyName, const Region &amp;region, bool revised, bool interpolated, Frequency frequency, const Period &amp;availabilityLag, const Currency &amp;currency, const Handle&lt; ZeroInflationTermStructure &gt; &amp;ts=Handle&lt; ZeroInflationTermStructure &gt;())</argsstring>
@@ -57,7 +57,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_region" kindref="compound">Region</ref> &amp;</type>
+          <type>const <ref refid="region" kindref="compound">Region</ref> &amp;</type>
           <declname>region</declname>
         </param>
         <param>
@@ -73,17 +73,17 @@
           <declname>frequency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>availabilityLag</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref> &amp;</type>
+          <type>const <ref refid="currency" kindref="compound">Currency</ref> &amp;</type>
           <declname>currency</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt; &amp;</type>
           <declname>ts</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_term_structure" kindref="compound">ZeroInflationTermStructure</ref> &gt;()</defval>
         </param>
         <briefdescription>
 <para>Always use the evaluation date as the reference date. </para>        </briefdescription>

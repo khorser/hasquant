@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_gauss_jacobi_integration" kind="class" prot="public">
+  <compounddef id="gauss_jacobi_integration" kind="class" prot="public">
     <compoundname>QuantLib::GaussJacobiIntegration</compoundname>
     <includes local="no">/math/integrals/gaussianquadratures.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_gauss_jacobi_integration_1a284a6500e1a0b65fd67e38a177dc2346" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="gauss_jacobi_integration_1a284a6500e1a0b65fd67e38a177dc2346" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>GaussJacobiIntegration</definition>
         <argsstring>(Size n, Real alpha, Real beta)</argsstring>

@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_forward_rate_agreement" kind="class" prot="public">
+  <compounddef id="forward_rate_agreement" kind="class" prot="public">
     <compoundname>QuantLib::ForwardRateAgreement</compoundname>
       <sectiondef kind="user-defined">
       <header>Calculations</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_rate_agreement_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
@@ -13,8 +13,8 @@
 <para>A FRA expires/settles on the valueDate </para>        </detaileddescription>
         <location file="/instruments/forwardrateagreement.hpp" line="89"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="forward_rate_agreement_1a49ecc3acffc7ff1c2aacdc1007e6905f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date settlementDate</definition>
         <argsstring>() const </argsstring>
         <name>settlementDate</name>
@@ -22,20 +22,20 @@
 <para>This returns evaluationDate + settlementDays (not FRA valueDate). </para>        </detaileddescription>
         <location file="/instruments/forwardrateagreement.hpp" line="93"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_rate_agreement_1a1560226b41dc061de57d00f0b0e0b7eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real spotIncome</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;incomeDiscountCurve) const </argsstring>
         <name>spotIncome</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>incomeDiscountCurve</declname>
         </param>
         <detaileddescription>
 <para>Income is zero for a FRA </para>        </detaileddescription>
         <location file="/instruments/forwardrateagreement.hpp" line="96"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_rate_agreement_1a51d635d520ea883db82bac7f4e684b75" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real spotValue</definition>
         <argsstring>() const </argsstring>
@@ -46,8 +46,8 @@
 <para>This has always a positive value (asset), even if short the FRA </para>        </detaileddescription>
         <location file="/instruments/forwardrateagreement.hpp" line="99"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_interest_rate" kindref="compound">InterestRate</ref></type>
+      <memberdef kind="function" id="forward_rate_agreement_1abbe3314a442cd9731e16d18156a1fd80" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="interest_rate" kindref="compound">InterestRate</ref></type>
         <definition>InterestRate forwardRate</definition>
         <argsstring>() const </argsstring>
         <name>forwardRate</name>
@@ -57,17 +57,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_forward_rate_agreement_1a0a18646e733f463c19240f886cd7230f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="forward_rate_agreement_1a0a18646e733f463c19240f886cd7230f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>ForwardRateAgreement</definition>
         <argsstring>(const Date &amp;valueDate, const Date &amp;maturityDate, Position::Type type, Rate strikeForwardRate, Real notionalAmount, const boost::shared_ptr&lt; IborIndex &gt; &amp;index, const Handle&lt; YieldTermStructure &gt; &amp;discountCurve=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>ForwardRateAgreement</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>valueDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -83,13 +83,13 @@
           <declname>notionalAmount</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>index</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discountCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/instruments/forwardrateagreement.hpp" line="85"/>
       </memberdef>

@@ -1,40 +1,40 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_eur_libor_swap_ifr_fix" kind="class" prot="public">
+  <compounddef id="eur_libor_swap_ifr_fix" kind="class" prot="public">
     <compoundname>QuantLib::EurLiborSwapIfrFix</compoundname>
     <includes local="no">/indexes/swap/eurliborswap.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_eur_libor_swap_ifr_fix_1abd57d7a00495ad9297ec3fa3c931a5cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="eur_libor_swap_ifr_fix_1abd57d7a00495ad9297ec3fa3c931a5cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EurLiborSwapIfrFix</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;h=Handle&lt; YieldTermStructure &gt;())</argsstring>
         <name>EurLiborSwapIfrFix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>h</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <location file="/indexes/swap/eurliborswap.hpp" line="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_eur_libor_swap_ifr_fix_1a7f8385cbf315006ff566a71c95b1c2c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="eur_libor_swap_ifr_fix_1a7f8385cbf315006ff566a71c95b1c2c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>EurLiborSwapIfrFix</definition>
         <argsstring>(const Period &amp;tenor, const Handle&lt; YieldTermStructure &gt; &amp;forwarding, const Handle&lt; YieldTermStructure &gt; &amp;discounting)</argsstring>
         <name>EurLiborSwapIfrFix</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>forwarding</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>discounting</declname>
         </param>
         <location file="/indexes/swap/eurliborswap.hpp" line="86"/>
@@ -43,7 +43,7 @@
     <briefdescription>
 <para>EurLiborSwapIfrFix index base class </para>    </briefdescription>
     <detaileddescription>
-<para>EUR Libor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>, 1Y vs 3M <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref>. For more info see <ulink url="http://www.ifrmarkets.com">http://www.ifrmarkets.com</ulink>. </para>    </detaileddescription>
+<para>EUR Libor Swap indexes published by IFR Markets and distributed by Reuters page TGM42281 and by Telerate. Annual 30/360 vs 6M <ref refid="libor" kindref="compound">Libor</ref>, 1Y vs 3M <ref refid="libor" kindref="compound">Libor</ref>. For more info see <ulink url="http://www.ifrmarkets.com">http://www.ifrmarkets.com</ulink>. </para>    </detaileddescription>
     <location file="/indexes/swap/eurliborswap.hpp" line="79" bodyfile="/indexes/swap/eurliborswap.hpp" bodystart="79" bodyend="87"/>
   </compounddef>
 </doxygen>

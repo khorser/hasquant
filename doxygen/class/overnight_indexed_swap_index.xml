@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_overnight_indexed_swap_index" kind="class" prot="public">
+  <compounddef id="overnight_indexed_swap_index" kind="class" prot="public">
     <compoundname>QuantLib::OvernightIndexedSwapIndex</compoundname>
     <includes local="no">/indexes/swapindex.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_index_1ac2658cae9d72d328e8348656b07d8840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_index_1ac2658cae9d72d328e8348656b07d8840" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>boost::shared_ptr&lt; OvernightIndex &gt;</type>
         <definition>boost::shared_ptr&lt; OvernightIndex &gt; overnightIndex</definition>
         <argsstring>() const </argsstring>
         <name>overnightIndex</name>
         <location file="/indexes/swapindex.hpp" line="111" bodyfile="/indexes/swapindex.hpp" bodystart="137" bodyend="139"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_index_1a3c9a90446e2ee0b8cafbf57b9f4c671b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
+      <memberdef kind="function" id="overnight_indexed_swap_index_1a3c9a90446e2ee0b8cafbf57b9f4c671b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="overnight_indexed_swap" kindref="compound">OvernightIndexedSwap</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;OvernightIndexedSwap&gt; underlyingSwap</definition>
         <argsstring>(const Date &amp;fixingDate) const </argsstring>
         <name>underlyingSwap</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>fixingDate</declname>
         </param>
         <detaileddescription>
@@ -27,7 +27,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_overnight_indexed_swap_index_1ac558cbb6a787700e36416e77e0ebb2f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="overnight_indexed_swap_index_1ac558cbb6a787700e36416e77e0ebb2f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>OvernightIndexedSwapIndex</definition>
         <argsstring>(const std::string &amp;familyName, const Period &amp;tenor, Natural settlementDays, Currency currency, const boost::shared_ptr&lt; OvernightIndex &gt; &amp;overnightIndex)</argsstring>
@@ -37,7 +37,7 @@
           <declname>familyName</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>tenor</declname>
         </param>
         <param>
@@ -45,7 +45,7 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type><ref refid="class_quant_lib_1_1_currency" kindref="compound">Currency</ref></type>
+          <type><ref refid="currency" kindref="compound">Currency</ref></type>
           <declname>currency</declname>
         </param>
         <param>

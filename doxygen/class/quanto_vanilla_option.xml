@@ -1,25 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_quanto_vanilla_option" kind="class" prot="public">
+  <compounddef id="quanto_vanilla_option" kind="class" prot="public">
     <compoundname>QuantLib::QuantoVanillaOption</compoundname>
     <includes local="no">/instruments/quantovanillaoption.hpp</includes>
       <sectiondef kind="user-defined">
       <header>greeks</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1a16e8429b2ebe705c6f981a7728158131" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="quanto_vanilla_option_1a16e8429b2ebe705c6f981a7728158131" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qvega</definition>
         <argsstring>() const </argsstring>
         <name>qvega</name>
         <location file="/instruments/quantovanillaoption.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1a5b5e28f6a223305ec770c593eb8ba609" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="quanto_vanilla_option_1a5b5e28f6a223305ec770c593eb8ba609" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qrho</definition>
         <argsstring>() const </argsstring>
         <name>qrho</name>
         <location file="/instruments/quantovanillaoption.hpp" line="59"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1ad8c7fcabc3c58c835d409bda7853f4e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="quanto_vanilla_option_1ad8c7fcabc3c58c835d409bda7853f4e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real qlambda</definition>
         <argsstring>() const </argsstring>
@@ -28,22 +28,22 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_vanilla_option_1a8600d8a5ef6347993170f7a6d1302a14" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_option_1_1arguments" kindref="compound">OneAssetOption::arguments</ref></type>
+      <memberdef kind="typedef" id="quanto_vanilla_option_1a8600d8a5ef6347993170f7a6d1302a14" prot="public" static="no">
+        <type><ref refid="option_1_1arguments" kindref="compound">OneAssetOption::arguments</ref></type>
         <definition>typedef OneAssetOption::arguments arguments</definition>
         <argsstring></argsstring>
         <name>arguments</name>
         <location file="/instruments/quantovanillaoption.hpp" line="51" bodyfile="/instruments/quantovanillaoption.hpp" bodystart="51" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_vanilla_option_1af88f225b41d278d86ff29218006529b2" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_quanto_option_results" kindref="compound">QuantoOptionResults</ref>&lt; <ref refid="class_quant_lib_1_1_one_asset_option_1_1results" kindref="compound">OneAssetOption::results</ref> &gt;</type>
+      <memberdef kind="typedef" id="quanto_vanilla_option_1af88f225b41d278d86ff29218006529b2" prot="public" static="no">
+        <type><ref refid="quanto_option_results" kindref="compound">QuantoOptionResults</ref>&lt; <ref refid="one_asset_option_1_1results" kindref="compound">OneAssetOption::results</ref> &gt;</type>
         <definition>typedef QuantoOptionResults&lt;OneAssetOption::results&gt; results</definition>
         <argsstring></argsstring>
         <name>results</name>
         <location file="/instruments/quantovanillaoption.hpp" line="52" bodyfile="/instruments/quantovanillaoption.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_quanto_vanilla_option_1ac74fffeebb92b4fafa5d01655b5d5a87" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_generic_engine" kindref="compound">GenericEngine</ref>&lt; <ref refid="class_quant_lib_1_1_option_1_1arguments" kindref="compound">arguments</ref>, <ref refid="class_quant_lib_1_1_quanto_option_results" kindref="compound">results</ref> &gt;</type>
+      <memberdef kind="typedef" id="quanto_vanilla_option_1ac74fffeebb92b4fafa5d01655b5d5a87" prot="public" static="no">
+        <type><ref refid="generic_engine" kindref="compound">GenericEngine</ref>&lt; <ref refid="option_1_1arguments" kindref="compound">arguments</ref>, <ref refid="quanto_option_results" kindref="compound">results</ref> &gt;</type>
         <definition>typedef GenericEngine&lt;arguments, results&gt; engine</definition>
         <argsstring></argsstring>
         <name>engine</name>
@@ -51,25 +51,25 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1aa8fd943d8f37ed070222b9abe6db9633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="quanto_vanilla_option_1aa8fd943d8f37ed070222b9abe6db9633" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>QuantoVanillaOption</definition>
         <argsstring>(const boost::shared_ptr&lt; StrikedTypePayoff &gt; &amp;, const boost::shared_ptr&lt; Exercise &gt; &amp;)</argsstring>
         <name>QuantoVanillaOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="striked_type_payoff" kindref="compound">StrikedTypePayoff</ref> &gt; &amp;</type>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
         </param>
         <location file="/instruments/quantovanillaoption.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_quanto_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="quanto_vanilla_option_1aa0a3105ddebcff9f233fb76a8a31fafe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void fetchResults</definition>
         <argsstring>(const PricingEngine::results *) const </argsstring>
         <name>fetchResults</name>
-        <reimplements refid="class_quant_lib_1_1_one_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
+        <reimplements refid="one_asset_option_1aa0a3105ddebcff9f233fb76a8a31fafe">fetchResults</reimplements>
         <param>
           <type>const PricingEngine::results *</type>
           <defname>r</defname>

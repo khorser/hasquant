@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_black_karasinski" kind="class" prot="public">
+  <compounddef id="black_karasinski" kind="class" prot="public">
     <compoundname>QuantLib::BlackKarasinski</compoundname>
     <includes local="no">/models/shortrate/onefactormodels/blackkarasinski.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_black_karasinski_1_1_dynamics" prot="public">QuantLib::BlackKarasinski::Dynamics</innerclass>
+    <innerclass refid="black_karasinski_1_1_dynamics" prot="public">QuantLib::BlackKarasinski::Dynamics</innerclass>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1aadfac54b64d637fadf35d1c3cb7b7fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="black_karasinski_1aadfac54b64d637fadf35d1c3cb7b7fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BlackKarasinski</definition>
         <argsstring>(const Handle&lt; YieldTermStructure &gt; &amp;termStructure, Real a=0.1, Real sigma=0.1)</argsstring>
         <name>BlackKarasinski</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>termStructure</declname>
         </param>
         <param>
@@ -26,24 +26,24 @@
         </param>
         <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
+      <memberdef kind="function" id="black_karasinski_1a89786edacdadb5904c317fd4ed5cb3bd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="one_factor_model_1_1_short_rate_dynamics" kindref="compound">ShortRateDynamics</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;ShortRateDynamics&gt; dynamics</definition>
         <argsstring>() const </argsstring>
         <name>dynamics</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
+        <reimplements refid="one_factor_model_1a72b4214fbe5a64ae836f4e29f33d30cc">dynamics</reimplements>
         <briefdescription>
 <para>returns the short-rate dynamics </para>        </briefdescription>
         <location file="/models/shortrate/onefactormodels/blackkarasinski.hpp" line="47" bodyfile="/models/shortrate/onefactormodels/blackkarasinski.hpp" bodystart="47" bodyend="49"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_black_karasinski_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_lattice" kindref="compound">Lattice</ref> &gt;</type>
+      <memberdef kind="function" id="black_karasinski_1a14130554fc69efb397b13bff53cc5eeb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="lattice" kindref="compound">Lattice</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Lattice&gt; tree</definition>
         <argsstring>(const TimeGrid &amp;grid) const </argsstring>
         <name>tree</name>
-        <reimplements refid="class_quant_lib_1_1_one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
+        <reimplements refid="one_factor_model_1a14130554fc69efb397b13bff53cc5eeb">tree</reimplements>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
+          <type>const <ref refid="time_grid" kindref="compound">TimeGrid</ref> &amp;</type>
           <declname>grid</declname>
         </param>
         <briefdescription>

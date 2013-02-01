@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_o_p_currency" kind="class" prot="public">
+  <compounddef id="c_o_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::COPCurrency</compoundname>
     <includes local="no">/currencies/america.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_o_p_currency_1ad9613b64c10fbae55fdbb19522f785d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="c_o_p_currency_1ad9613b64c10fbae55fdbb19522f785d2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>COPCurrency</definition>
         <argsstring>()</argsstring>

@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_callable_bond_volatility_structure" kind="class" prot="public" abstract="yes">
+  <compounddef id="callable_bond_volatility_structure" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::CallableBondVolatilityStructure</compoundname>
     <includes local="no">/experimental/callablebonds/callablebondvolstructure.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Constructors</header>
-      <description><para>See the <ref refid="class_quant_lib_1_1_term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ac90021113d4115457bb5afdfb6492de1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <description><para>See the <ref refid="term_structure" kindref="compound">TermStructure</ref> documentation for issues regarding constructors. </para></description>
+      <memberdef kind="function" id="callable_bond_volatility_structure_1ac90021113d4115457bb5afdfb6492de1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondVolatilityStructure</definition>
         <argsstring>(const DayCounter &amp;dc=DayCounter(), BusinessDayConvention bdc=Following)</argsstring>
         <name>CallableBondVolatilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -24,27 +24,27 @@
         <briefdescription>
 <para>default constructor </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="caveats_1_caveats000008"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="class_quant_lib_1_1_term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="caveats_1_caveats000008"><xreftitle>Warning</xreftitle><xrefdescription><para>term structures initialized by means of this constructor must manage their own reference date by overriding the <ref refid="term_structure_1aa9ae6cc6009ac64d4f265065eab08be0" kindref="member">referenceDate()</ref> method. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="51"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ae868712f11d4812df6a63fbee0cf03a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1ae868712f11d4812df6a63fbee0cf03a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondVolatilityStructure</definition>
         <argsstring>(const Date &amp;referenceDate, const Calendar &amp;calendar=Calendar(), const DayCounter &amp;dc=DayCounter(), BusinessDayConvention bdc=Following)</argsstring>
         <name>CallableBondVolatilityStructure</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>referenceDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>calendar</declname>
-          <defval><ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref>()</defval>
+          <defval><ref refid="calendar" kindref="compound">Calendar</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -55,7 +55,7 @@
 <para>initialize with a fixed reference date </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="56"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1abb14b39203712e76842a8a3374ddd8b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1abb14b39203712e76842a8a3374ddd8b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CallableBondVolatilityStructure</definition>
         <argsstring>(Natural settlementDays, const Calendar &amp;, const DayCounter &amp;dc=DayCounter(), BusinessDayConvention bdc=Following)</argsstring>
@@ -65,12 +65,12 @@
           <declname>settlementDays</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
-          <defval><ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref>()</defval>
+          <defval><ref refid="day_counter" kindref="compound">DayCounter</ref>()</defval>
         </param>
         <param>
           <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
@@ -84,7 +84,7 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Volatility, variance and smile</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1af9fbf120adada072dc64ec8a1b00e267" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1af9fbf120adada072dc64ec8a1b00e267" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(Time optionTime, Time bondLength, Rate strike, bool extrapolate=false) const </argsstring>
@@ -110,7 +110,7 @@
 <para>returns the volatility for a given option time and bondLength </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="70" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="167" bodyend="174"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a80d950672dba969999a87297f450a2f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a80d950672dba969999a87297f450a2f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(Time optionTime, Time bondLength, Rate strike, bool extrapolate=false) const </argsstring>
@@ -136,17 +136,17 @@
 <para>returns the Black variance for a given option time and bondLength </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="75" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="177" bodyend="185"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a561306c8ac57997e1264bea10238ca8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a561306c8ac57997e1264bea10238ca8e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;bondTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <param>
@@ -162,17 +162,17 @@
 <para>returns the volatility for a given option date and bond tenor </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="81" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="188" bodyend="195"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1adcc6e29855e39cb9903d7f1cb822b905" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1adcc6e29855e39cb9903d7f1cb822b905" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;bondTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <param>
@@ -188,32 +188,32 @@
 <para>returns the Black variance for a given option date and bond tenor </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="86" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="197" bodyend="206"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ad59951a0af3ebeee35e4e3e37c604c07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="callable_bond_volatility_structure_1ad59951a0af3ebeee35e4e3e37c604c07" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>virtual boost::shared_ptr&lt;SmileSection&gt; smileSection</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;bondTenor) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="89" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="87" bodyend="92"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a245951532beda8da082fc0e392d36f5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a245951532beda8da082fc0e392d36f5c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1gaaa95ab7fe66935e3f7535413fad2a7d3" kindref="member">Volatility</ref></type>
         <definition>Volatility volatility</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;bondTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>volatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <param>
@@ -229,17 +229,17 @@
 <para>returns the volatility for a given option tenor and bond tenor </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="98" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="208" bodyend="215"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a2f961a34723dffde5e087af32b59705e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a2f961a34723dffde5e087af32b59705e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real blackVariance</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;bondTenor, Rate strike, bool extrapolate=false) const </argsstring>
         <name>blackVariance</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <param>
@@ -255,17 +255,17 @@
 <para>returns the Black variance for a given option tenor and bond tenor </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="103" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="217" bodyend="227"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a29ec6129fd58bbcf18ee1eca2a776d53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_smile_section" kindref="compound">SmileSection</ref> &gt;</type>
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a29ec6129fd58bbcf18ee1eca2a776d53" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="smile_section" kindref="compound">SmileSection</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; SmileSection &gt; smileSection</definition>
         <argsstring>(const Period &amp;optionTenor, const Period &amp;bondTenor) const </argsstring>
         <name>smileSection</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="106" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="231" bodyend="236"/>
@@ -273,8 +273,8 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Limits</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a7d242cf24fadcf875b9e2f621014c4ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
-        <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a7d242cf24fadcf875b9e2f621014c4ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
         <definition>virtual const Period&amp; maxBondTenor</definition>
         <argsstring>() const =0</argsstring>
         <name>maxBondTenor</name>
@@ -282,7 +282,7 @@
 <para>the largest length for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="111"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a5a56f9ec1c7f3fdf00e72197fa64bf82" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref></type>
         <definition>virtual Time maxBondLength</definition>
         <argsstring>() const </argsstring>
@@ -291,7 +291,7 @@
 <para>the largest bondLength for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="113"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1aaa54e38ec0aabcec3de3342602c4015f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate minStrike</definition>
         <argsstring>() const =0</argsstring>
@@ -300,7 +300,7 @@
 <para>the minimum strike for which the term structure can return vols </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="115"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a50d3c0b68286f6b64878e8c785822805" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate maxStrike</definition>
         <argsstring>() const =0</argsstring>
@@ -311,31 +311,31 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ada8af97566cac3b1558a3ba8ca7379fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1ada8af97566cac3b1558a3ba8ca7379fa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~CallableBondVolatilityStructure</definition>
         <argsstring>()</argsstring>
         <name>~CallableBondVolatilityStructure</name>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="63" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="63" bodyend="63"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a74e9986d7c3c9fd0a83591f674bd7ba3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a74e9986d7c3c9fd0a83591f674bd7ba3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>std::pair&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref>, <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>virtual std::pair&lt;Time,Time&gt; convertDates</definition>
         <argsstring>(const Date &amp;optionDate, const Period &amp;bondTenor) const </argsstring>
         <name>convertDates</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>optionDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>bondTenor</declname>
         </param>
         <briefdescription>
 <para>implements the conversion between dates and times </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="122"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="callable_bond_volatility_structure_1a9d653d6960e5abf8a835f24fd9beb685" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__datetime_1gaff46c5ae9385d20709bedade86edd368" kindref="member">BusinessDayConvention</ref></type>
         <definition>BusinessDayConvention businessDayConvention</definition>
         <argsstring>() const </argsstring>
@@ -344,13 +344,13 @@
 <para>the business day convention used for option date calculation </para>        </briefdescription>
         <location file="/experimental/callablebonds/callablebondvolstructure.hpp" line="124" bodyfile="/experimental/callablebonds/callablebondvolstructure.hpp" bodystart="156" bodyend="158"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_callable_bond_volatility_structure_1ae7ec439ac8ca08eb9650f5f8d2af2d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="callable_bond_volatility_structure_1ae7ec439ac8ca08eb9650f5f8d2af2d2d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date optionDateFromTenor</definition>
         <argsstring>(const Period &amp;optionTenor) const </argsstring>
         <name>optionDateFromTenor</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>optionTenor</declname>
         </param>
         <briefdescription>

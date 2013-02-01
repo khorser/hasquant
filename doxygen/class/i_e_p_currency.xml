@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_i_e_p_currency" kind="class" prot="public">
+  <compounddef id="i_e_p_currency" kind="class" prot="public">
     <compoundname>QuantLib::IEPCurrency</compoundname>
     <includes local="no">/currencies/europe.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_i_e_p_currency_1ae110214af9c9d4a89e0ea46a4f5fc091" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="i_e_p_currency_1ae110214af9c9d4a89e0ea46a4f5fc091" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>IEPCurrency</definition>
         <argsstring>()</argsstring>

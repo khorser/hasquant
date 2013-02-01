@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_conjugate_gradient" kind="class" prot="public">
+  <compounddef id="conjugate_gradient" kind="class" prot="public">
     <compoundname>QuantLib::ConjugateGradient</compoundname>
     <includes local="no">/math/optimization/conjugategradient.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_conjugate_gradient_1a611b1406837535a9ac3fea2ed17ef2e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="conjugate_gradient_1a611b1406837535a9ac3fea2ed17ef2e2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>ConjugateGradient</definition>
         <argsstring>(const boost::shared_ptr&lt; LineSearch &gt; &amp;lineSearch=boost::shared_ptr&lt; LineSearch &gt;())</argsstring>
         <name>ConjugateGradient</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt; &amp;</type>
           <declname>lineSearch</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="line_search" kindref="compound">LineSearch</ref> &gt;()</defval>
         </param>
         <location file="/math/optimization/conjugategradient.hpp" line="46" bodyfile="/math/optimization/conjugategradient.hpp" bodystart="44" bodyend="46"/>
       </memberdef>

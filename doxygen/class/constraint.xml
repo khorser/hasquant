@@ -1,38 +1,38 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_constraint" kind="class" prot="public">
+  <compounddef id="constraint" kind="class" prot="public">
     <compoundname>QuantLib::Constraint</compoundname>
     <includes local="no">/math/optimization/constraint.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="constraint_1ac6e61de369e994009e36f344f99c15ad" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool empty</definition>
         <argsstring>() const </argsstring>
         <name>empty</name>
         <location file="/math/optimization/constraint.hpp" line="43" bodyfile="/math/optimization/constraint.hpp" bodystart="43" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="constraint_1af33e3c1f0f763c765bd9452df8cf88c0" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool test</definition>
         <argsstring>(const Array &amp;p) const </argsstring>
         <name>test</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>p</declname>
         </param>
         <location file="/math/optimization/constraint.hpp" line="44" bodyfile="/math/optimization/constraint.hpp" bodystart="44" bodyend="44"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1a414636115d40f3f109075e174fc674eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="constraint_1a414636115d40f3f109075e174fc674eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real update</definition>
         <argsstring>(Array &amp;p, const Array &amp;direction, Real beta)</argsstring>
         <name>update</name>
         <param>
-          <type><ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type><ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>p</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_array" kindref="compound">Array</ref> &amp;</type>
+          <type>const <ref refid="array" kindref="compound">Array</ref> &amp;</type>
           <declname>direction</declname>
         </param>
         <param>
@@ -41,15 +41,15 @@
         </param>
         <location file="/math/optimization/constraint.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="constraint_1a4066458ca2fba057c77cc948ee4d93c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>Constraint</definition>
         <argsstring>(const boost::shared_ptr&lt; Impl &gt; &amp;impl=boost::shared_ptr&lt; Impl &gt;())</argsstring>
         <name>Constraint</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constraint_1_1_impl" kindref="compound">Impl</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="constraint_1_1_impl" kindref="compound">Impl</ref> &gt; &amp;</type>
           <declname>impl</declname>
-          <defval>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_constraint_1_1_impl" kindref="compound">Impl</ref> &gt;()</defval>
+          <defval>boost::shared_ptr&lt; <ref refid="constraint_1_1_impl" kindref="compound">Impl</ref> &gt;()</defval>
         </param>
         <location file="/math/optimization/constraint.hpp" line="49"/>
       </memberdef>

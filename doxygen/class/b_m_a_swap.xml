@@ -1,32 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_b_m_a_swap" kind="class" prot="public">
+  <compounddef id="b_m_a_swap" kind="class" prot="public">
     <compoundname>QuantLib::BMASwap</compoundname>
     <includes local="no">/instruments/bmaswap.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a732b3eb6ff32f26801313e147d576dfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a732b3eb6ff32f26801313e147d576dfd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real liborFraction</definition>
         <argsstring>() const </argsstring>
         <name>liborFraction</name>
         <location file="/instruments/bmaswap.hpp" line="53"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1aea41d9796ef730b280d153450ee61964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1aea41d9796ef730b280d153450ee61964" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread liborSpread</definition>
         <argsstring>() const </argsstring>
         <name>liborSpread</name>
         <location file="/instruments/bmaswap.hpp" line="54"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a0c27f57255d093f0a9c42fb53e991e7d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real nominal</definition>
         <argsstring>() const </argsstring>
         <name>nominal</name>
         <location file="/instruments/bmaswap.hpp" line="55"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1afbd0fa31db28593e9669c3c56711c0a7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>Type</type>
         <definition>Type type</definition>
         <argsstring>() const </argsstring>
@@ -35,14 +35,14 @@
 <para>&quot;payer&quot; or &quot;receiver&quot; refer to the BMA leg </para>        </briefdescription>
         <location file="/instruments/bmaswap.hpp" line="57"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1acfe03e2a4aaefd6669112baf333cc14c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1acfe03e2a4aaefd6669112baf333cc14c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; bmaLeg</definition>
         <argsstring>() const </argsstring>
         <name>bmaLeg</name>
         <location file="/instruments/bmaswap.hpp" line="58"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a5ad7aa63cd6fb992654999bb656882f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a5ad7aa63cd6fb992654999bb656882f5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const <ref refid="namespace_quant_lib_1a1d16a4a9842369c3a13c094b15f99a4a" kindref="member">Leg</ref> &amp;</type>
         <definition>const Leg&amp; liborLeg</definition>
         <argsstring>() const </argsstring>
@@ -52,42 +52,42 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Results</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a0707097937d833306ca609088d4f416f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a0707097937d833306ca609088d4f416f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real liborLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>liborLegBPS</name>
         <location file="/instruments/bmaswap.hpp" line="64"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a3cff4d8e54d979f67f92f98ed4c5db18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a3cff4d8e54d979f67f92f98ed4c5db18" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real liborLegNPV</definition>
         <argsstring>() const </argsstring>
         <name>liborLegNPV</name>
         <location file="/instruments/bmaswap.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a147bf5d06b5f2177c6307feb7e1b370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a147bf5d06b5f2177c6307feb7e1b370c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate fairLiborFraction</definition>
         <argsstring>() const </argsstring>
         <name>fairLiborFraction</name>
         <location file="/instruments/bmaswap.hpp" line="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a06f94595a0296dc414b7f53316cf35be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a06f94595a0296dc414b7f53316cf35be" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gae7427f4743503002b0c6eeeefae91a3d" kindref="member">Spread</ref></type>
         <definition>Spread fairLiborSpread</definition>
         <argsstring>() const </argsstring>
         <name>fairLiborSpread</name>
         <location file="/instruments/bmaswap.hpp" line="67"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a45e18fdf92b40a73aa3e99e9e06f27e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a45e18fdf92b40a73aa3e99e9e06f27e9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real bmaLegBPS</definition>
         <argsstring>() const </argsstring>
         <name>bmaLegBPS</name>
         <location file="/instruments/bmaswap.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1ad3113cd2f1fb8b6611e478df44affdf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1ad3113cd2f1fb8b6611e478df44affdf5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real bmaLegNPV</definition>
         <argsstring>() const </argsstring>
@@ -96,13 +96,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
+        <enumvalue id="b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a7928a668954c57bb64a7a9d98994cbaa" prot="public">
           <name>Receiver</name>
           <initializer>= -1</initializer>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
+        <enumvalue id="b_m_a_swap_1a1d1cfd8ffb84e947f82999c682b666a7a9ca3b60bb6eb8726ba5e66e5afa8b6a0" prot="public">
           <name>Payer</name>
           <initializer>= 1</initializer>
         </enumvalue>
@@ -110,7 +110,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_b_m_a_swap_1a6e41b7b5fbe131e7f781084d96fb93e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="b_m_a_swap_1a6e41b7b5fbe131e7f781084d96fb93e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>BMASwap</definition>
         <argsstring>(Type type, Real nominal, const Schedule &amp;liborSchedule, Rate liborFraction, Rate liborSpread, const boost::shared_ptr&lt; IborIndex &gt; &amp;liborIndex, const DayCounter &amp;liborDayCount, const Schedule &amp;bmaSchedule, const boost::shared_ptr&lt; BMAIndex &gt; &amp;bmaIndex, const DayCounter &amp;bmaDayCount)</argsstring>
@@ -124,7 +124,7 @@
           <declname>nominal</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>liborSchedule</declname>
         </param>
         <param>
@@ -136,30 +136,30 @@
           <declname>liborSpread</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="ibor_index" kindref="compound">IborIndex</ref> &gt; &amp;</type>
           <declname>liborIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>liborDayCount</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_schedule" kindref="compound">Schedule</ref> &amp;</type>
+          <type>const <ref refid="schedule" kindref="compound">Schedule</ref> &amp;</type>
           <declname>bmaSchedule</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="b_m_a_index" kindref="compound">BMAIndex</ref> &gt; &amp;</type>
           <declname>bmaIndex</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>bmaDayCount</declname>
         </param>
         <location file="/instruments/bmaswap.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
-<para>swap paying <ref refid="class_quant_lib_1_1_libor" kindref="compound">Libor</ref> against BMA coupons </para>    </briefdescription>
+<para>swap paying <ref refid="libor" kindref="compound">Libor</ref> against BMA coupons </para>    </briefdescription>
     <location file="/instruments/bmaswap.hpp" line="35" bodyfile="/instruments/bmaswap.hpp" bodystart="35" bodyend="78"/>
   </compounddef>
 </doxygen>

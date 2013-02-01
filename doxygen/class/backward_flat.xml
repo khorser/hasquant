@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_backward_flat" kind="class" prot="public">
+  <compounddef id="backward_flat" kind="class" prot="public">
     <compoundname>QuantLib::BackwardFlat</compoundname>
     <includes local="no">/math/interpolations/backwardflatinterpolation.hpp</includes>
       <sectiondef kind="public-static-attrib">
-      <memberdef kind="variable" id="class_quant_lib_1_1_backward_flat_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="backward_flat_1a288e578670054bd80e88dffe71d28b7b" prot="public" static="yes" mutable="no">
         <type>const bool</type>
         <definition>const bool global</definition>
         <argsstring></argsstring>
@@ -12,7 +12,7 @@
         <initializer>= false</initializer>
         <location file="/math/interpolations/backwardflatinterpolation.hpp" line="98" bodyfile="/math/interpolations/backwardflatinterpolation.hpp" bodystart="98" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_backward_flat_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
+      <memberdef kind="variable" id="backward_flat_1abe404d63ad88b3b804b458aa23052be5" prot="public" static="yes" mutable="no">
         <type>const <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref></type>
         <definition>const Size requiredPoints</definition>
         <argsstring></argsstring>
@@ -22,7 +22,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_backward_flat_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="backward_flat_1a51dd5c56d90da172e213d17a6d74550c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class I1</type>
@@ -31,7 +31,7 @@
             <type>class I2</type>
           </param>
         </templateparamlist>
-        <type><ref refid="class_quant_lib_1_1_interpolation" kindref="compound">Interpolation</ref></type>
+        <type><ref refid="interpolation" kindref="compound">Interpolation</ref></type>
         <definition>Interpolation interpolate</definition>
         <argsstring>(const I1 &amp;xBegin, const I1 &amp;xEnd, const I2 &amp;yBegin) const </argsstring>
         <name>interpolate</name>

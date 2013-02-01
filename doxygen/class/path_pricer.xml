@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_path_pricer" kind="class" prot="public" abstract="yes">
+  <compounddef id="path_pricer" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::PathPricer</compoundname>
     <includes local="no">/methods/montecarlo/pathpricer.hpp</includes>
     <templateparamlist>
@@ -17,14 +17,14 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="path_pricer_1a7b2e7c8e91d0214fca02b2094622a1ff" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~PathPricer</definition>
         <argsstring>()</argsstring>
         <name>~PathPricer</name>
         <location file="/methods/montecarlo/pathpricer.hpp" line="42" bodyfile="/methods/montecarlo/pathpricer.hpp" bodystart="42" bodyend="42"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_path_pricer_1a8d202422e04c42b1c33fe366569a4ef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="path_pricer_1a8d202422e04c42b1c33fe366569a4ef5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>ValueType</type>
         <definition>virtual ValueType operator()</definition>
         <argsstring>(const PathType &amp;path) const =0</argsstring>

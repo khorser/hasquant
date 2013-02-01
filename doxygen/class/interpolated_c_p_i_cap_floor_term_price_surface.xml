@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface" kind="class" prot="public">
+  <compounddef id="interpolated_c_p_i_cap_floor_term_price_surface" kind="class" prot="public">
     <compoundname>QuantLib::InterpolatedCPICapFloorTermPriceSurface</compoundname>
     <templateparamlist>
       <param>
@@ -9,14 +9,14 @@
     </templateparamlist>
       <sectiondef kind="user-defined">
       <header>LazyObject interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="180" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="242" bodyend="244"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a02b90bbfee3ee29627939544fb59ec93" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void performCalculations</definition>
         <argsstring>() const </argsstring>
@@ -27,13 +27,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a12c5d8f7c68e37719d86258fe8747527" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a12c5d8f7c68e37719d86258fe8747527" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real price</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>price</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -46,13 +46,13 @@
 <para>remember that the strike uses the quoting convention </para>        </detaileddescription>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="193" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="340" bodyend="344"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a117624639548aa99f4972d0724304976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a117624639548aa99f4972d0724304976" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real capPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>capPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -63,13 +63,13 @@
 <para>remember that the strike uses the quoting convention </para>        </briefdescription>
         <location file="/experimental/inflation/cpicapfloortermpricesurface.hpp" line="194" bodyfile="/experimental/inflation/cpicapfloortermpricesurface.hpp" bodystart="349" bodyend="352"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1af4014079a3db1bb4029f72f83c2fdb77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1af4014079a3db1bb4029f72f83c2fdb77" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real floorPrice</definition>
         <argsstring>(const Date &amp;d, Rate k) const </argsstring>
         <name>floorPrice</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>d</declname>
         </param>
         <param>
@@ -82,7 +82,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_interpolated_c_p_i_cap_floor_term_price_surface_1a8334d5a83e4b970ae5e8c3fe7fd97afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="interpolated_c_p_i_cap_floor_term_price_surface_1a8334d5a83e4b970ae5e8c3fe7fd97afc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>InterpolatedCPICapFloorTermPriceSurface</definition>
         <argsstring>(Real nominal, Rate startRate, const Period &amp;observationLag, const Calendar &amp;cal, const BusinessDayConvention &amp;bdc, const DayCounter &amp;dc, const Handle&lt; ZeroInflationIndex &gt; &amp;zii, const Handle&lt; YieldTermStructure &gt; &amp;yts, const std::vector&lt; Rate &gt; &amp;cStrikes, const std::vector&lt; Rate &gt; &amp;fStrikes, const std::vector&lt; Period &gt; &amp;cfMaturities, const Matrix &amp;cPrice, const Matrix &amp;fPrice, const Interpolator2D &amp;interpolator2d=Interpolator2D())</argsstring>
@@ -96,11 +96,11 @@
           <declname>startRate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &amp;</type>
+          <type>const <ref refid="period" kindref="compound">Period</ref> &amp;</type>
           <declname>observationLag</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_calendar" kindref="compound">Calendar</ref> &amp;</type>
+          <type>const <ref refid="calendar" kindref="compound">Calendar</ref> &amp;</type>
           <declname>cal</declname>
         </param>
         <param>
@@ -108,15 +108,15 @@
           <declname>bdc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="zero_inflation_index" kindref="compound">ZeroInflationIndex</ref> &gt; &amp;</type>
           <declname>zii</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>yts</declname>
         </param>
         <param>
@@ -128,15 +128,15 @@
           <declname>fStrikes</declname>
         </param>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_period" kindref="compound">Period</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="period" kindref="compound">Period</ref> &gt; &amp;</type>
           <declname>cfMaturities</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>cPrice</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <type>const <ref refid="matrix" kindref="compound">Matrix</ref> &amp;</type>
           <declname>fPrice</declname>
         </param>
         <param>

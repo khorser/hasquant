@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_m_c_heston_hull_white_engine" kind="class" prot="public">
+  <compounddef id="m_c_heston_hull_white_engine" kind="class" prot="public">
     <compoundname>QuantLib::MCHestonHullWhiteEngine</compoundname>
     <templateparamlist>
       <param>
@@ -13,35 +13,35 @@
       </param>
     </templateparamlist>
       <sectiondef kind="public-type">
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a37116ca08bca75796598af372e6bd37a" prot="public" static="no">
-        <type><ref refid="class_quant_lib_1_1_m_c_vanilla_engine" kindref="compound">MCVanillaEngine</ref>&lt; <ref refid="struct_quant_lib_1_1_multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;</type>
+      <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1a37116ca08bca75796598af372e6bd37a" prot="public" static="no">
+        <type><ref refid="m_c_vanilla_engine" kindref="compound">MCVanillaEngine</ref>&lt; <ref refid="multi_variate" kindref="compound">MultiVariate</ref>, RNG, S &gt;</type>
         <definition>typedef MCVanillaEngine&lt;MultiVariate, RNG,S&gt; base_type</definition>
         <argsstring></argsstring>
         <name>base_type</name>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="39" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="39" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a63172d334e6e6c144c8250ad206807d8" prot="public" static="no">
+      <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1a63172d334e6e6c144c8250ad206807d8" prot="public" static="no">
         <type>base_type::path_generator_type</type>
         <definition>typedef base_type::path_generator_type path_generator_type</definition>
         <argsstring></argsstring>
         <name>path_generator_type</name>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="40" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a9b9f9c885b7073e44e5ecd2f5c581a33" prot="public" static="no">
+      <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1a9b9f9c885b7073e44e5ecd2f5c581a33" prot="public" static="no">
         <type>base_type::path_pricer_type</type>
         <definition>typedef base_type::path_pricer_type path_pricer_type</definition>
         <argsstring></argsstring>
         <name>path_pricer_type</name>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="41" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="41" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1ab0f5ea1160850fd5724892954db5a9e9" prot="public" static="no">
+      <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1ab0f5ea1160850fd5724892954db5a9e9" prot="public" static="no">
         <type>base_type::stats_type</type>
         <definition>typedef base_type::stats_type stats_type</definition>
         <argsstring></argsstring>
         <name>stats_type</name>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="42" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="42" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="typedef" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a21bf7bfc088e7aa0bd86374137564db4" prot="public" static="no">
+      <memberdef kind="typedef" id="m_c_heston_hull_white_engine_1a21bf7bfc088e7aa0bd86374137564db4" prot="public" static="no">
         <type>base_type::result_type</type>
         <definition>typedef base_type::result_type result_type</definition>
         <argsstring></argsstring>
@@ -50,13 +50,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a6313b02a69d11219f6cacad9d339567e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_heston_hull_white_engine_1a6313b02a69d11219f6cacad9d339567e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>MCHestonHullWhiteEngine</definition>
         <argsstring>(const boost::shared_ptr&lt; HybridHestonHullWhiteProcess &gt; &amp;process, Size timeSteps, Size timeStepsPerYear, bool antitheticVariate, bool controlVariate, Size requiredSamples, Real requiredTolerance, Size maxSamples, BigNatural seed)</argsstring>
         <name>MCHestonHullWhiteEngine</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="hybrid_heston_hull_white_process" kindref="compound">HybridHestonHullWhiteProcess</ref> &gt; &amp;</type>
           <declname>process</declname>
         </param>
         <param>
@@ -93,7 +93,7 @@
         </param>
         <location file="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" line="54" bodyfile="/pricingengines/vanilla/mchestonhullwhiteengine.hpp" bodystart="112" bodyend="126"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_m_c_heston_hull_white_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="m_c_heston_hull_white_engine_1a10873979f635888606e03f9cb2d8a096" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void calculate</definition>
         <argsstring>() const </argsstring>

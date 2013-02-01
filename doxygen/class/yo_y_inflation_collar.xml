@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_yo_y_inflation_collar" kind="class" prot="public">
+  <compounddef id="yo_y_inflation_collar" kind="class" prot="public">
     <compoundname>QuantLib::YoYInflationCollar</compoundname>
     <includes local="no">/instruments/inflationcapfloor.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_yo_y_inflation_collar_1a134e9c10f9e748594d3d79bf666ceb1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="yo_y_inflation_collar_1a134e9c10f9e748594d3d79bf666ceb1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>YoYInflationCollar</definition>
         <argsstring>(const Leg &amp;yoyLeg, const std::vector&lt; Rate &gt; &amp;capRates, const std::vector&lt; Rate &gt; &amp;floorRates)</argsstring>

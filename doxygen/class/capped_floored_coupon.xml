@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_capped_floored_coupon" kind="class" prot="public">
+  <compounddef id="capped_floored_coupon" kind="class" prot="public">
     <compoundname>QuantLib::CappedFlooredCoupon</compoundname>
     <includes local="no">/cashflows/capflooredcoupon.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Coupon interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a5b4bfa298dfe61af7cd976b87fc7fd22" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate rate</definition>
         <argsstring>() const </argsstring>
         <name>rate</name>
-        <reimplements refid="class_quant_lib_1_1_coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
+        <reimplements refid="coupon_1a120f8a9f50fd915f019580dad4789819">rate</reimplements>
         <briefdescription>
 <para>accrued rate </para>        </briefdescription>
         <location file="/cashflows/capflooredcoupon.hpp" line="65"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a1105a85aa265385c18ae0e0a180b322e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate convexityAdjustment</definition>
         <argsstring>() const </argsstring>
         <name>convexityAdjustment</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
+        <reimplements refid="floating_rate_coupon_1a1105a85aa265385c18ae0e0a180b322e">convexityAdjustment</reimplements>
         <briefdescription>
 <para>convexity adjustment </para>        </briefdescription>
         <location file="/cashflows/capflooredcoupon.hpp" line="66"/>
@@ -28,112 +28,112 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Observer interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1ac5c54df7ed3b930268c8d7752c101725" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void update</definition>
         <argsstring>()</argsstring>
         <name>update</name>
-        <reimplements refid="class_quant_lib_1_1_observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
+        <reimplements refid="observer_1a99b02345a8a15d3c5ea2844a2253f510">update</reimplements>
         <location file="/cashflows/capflooredcoupon.hpp" line="79"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Visitability</header>
-      <memberdef kind="variable" id="class_quant_lib_1_1_capped_floored_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
+      <memberdef kind="variable" id="capped_floored_coupon_1a8f7dfb713dc9e9d2850445f1db36784d" prot="protected" static="no" mutable="no">
+        <type>boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;FloatingRateCoupon&gt; underlying_</definition>
         <argsstring></argsstring>
         <name>underlying_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="93" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_capped_floored_coupon_1ad9a123dd1d1858dbc8fe3ecf8ff99ab9" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="capped_floored_coupon_1ad9a123dd1d1858dbc8fe3ecf8ff99ab9" prot="protected" static="no" mutable="no">
         <type>bool</type>
         <definition>bool isCapped_</definition>
         <argsstring></argsstring>
         <name>isCapped_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="94" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_capped_floored_coupon_1afc2aa543381158122b2f65ce1f12bd11" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="capped_floored_coupon_1afc2aa543381158122b2f65ce1f12bd11" prot="protected" static="no" mutable="no">
         <type>bool</type>
         <definition>bool isFloored_</definition>
         <argsstring></argsstring>
         <name>isFloored_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="94" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="94" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_capped_floored_coupon_1a88a22c2f44ff79c880a136bd11c8e862" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="capped_floored_coupon_1a88a22c2f44ff79c880a136bd11c8e862" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate cap_</definition>
         <argsstring></argsstring>
         <name>cap_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="95" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="variable" id="class_quant_lib_1_1_capped_floored_coupon_1ac94856cfd3073eb172529de9c37cae86" prot="protected" static="no" mutable="no">
+      <memberdef kind="variable" id="capped_floored_coupon_1ac94856cfd3073eb172529de9c37cae86" prot="protected" static="no" mutable="no">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate floor_</definition>
         <argsstring></argsstring>
         <name>floor_</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="95" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a896099363a2a409d2485c3ce9e4e4265" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void accept</definition>
         <argsstring>(AcyclicVisitor &amp;)</argsstring>
         <name>accept</name>
-        <reimplements refid="class_quant_lib_1_1_floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
+        <reimplements refid="floating_rate_coupon_1a1d7eaf2f5dccce1c7781b54d64ba4a07">accept</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
+          <type><ref refid="acyclic_visitor" kindref="compound">AcyclicVisitor</ref> &amp;</type>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="83"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1aa9a0e113b3dc93361f1c9f0b199191c3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isCapped</definition>
         <argsstring>() const </argsstring>
         <name>isCapped</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="85" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="85" bodyend="85"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a2a2a88688014a4840818ae383d1c282c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool isFloored</definition>
         <argsstring>() const </argsstring>
         <name>isFloored</name>
         <location file="/cashflows/capflooredcoupon.hpp" line="86" bodyfile="/cashflows/capflooredcoupon.hpp" bodystart="86" bodyend="86"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1aca00c886d58d76f563e8be07f153956c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void setPricer</definition>
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCouponPricer &gt; &amp;pricer)</argsstring>
         <name>setPricer</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon_pricer" kindref="compound">FloatingRateCouponPricer</ref> &gt; &amp;</type>
           <declname>pricer</declname>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="89"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a45677574b760e92748a5fd00950e8191" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a45677574b760e92748a5fd00950e8191" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CappedFlooredCoupon</definition>
         <argsstring>(const boost::shared_ptr&lt; FloatingRateCoupon &gt; &amp;underlying, Rate cap=Null&lt; Rate &gt;(), Rate floor=Null&lt; Rate &gt;())</argsstring>
         <name>CappedFlooredCoupon</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="floating_rate_coupon" kindref="compound">FloatingRateCoupon</ref> &gt; &amp;</type>
           <declname>underlying</declname>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>cap</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <param>
           <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
           <declname>floor</declname>
-          <defval><ref refid="class_quant_lib_1_1_null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
+          <defval><ref refid="null" kindref="compound">Null</ref>&lt; <ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/capflooredcoupon.hpp" line="62"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a3769052f73e0705a1af285e974fae169" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate cap</definition>
         <argsstring>() const </argsstring>
@@ -142,7 +142,7 @@
 <para>cap </para>        </briefdescription>
         <location file="/cashflows/capflooredcoupon.hpp" line="69"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a2982a6603a5536c983895d191b358d70" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate floor</definition>
         <argsstring>() const </argsstring>
@@ -151,7 +151,7 @@
 <para>floor </para>        </briefdescription>
         <location file="/cashflows/capflooredcoupon.hpp" line="71"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a1f3d0a8bc74dac1782660657055382c6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate effectiveCap</definition>
         <argsstring>() const </argsstring>
@@ -160,7 +160,7 @@
 <para>effective cap of fixing </para>        </briefdescription>
         <location file="/cashflows/capflooredcoupon.hpp" line="73"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_capped_floored_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="capped_floored_coupon_1a367019171b0d6cd2d82334d19650367a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>Rate effectiveFloor</definition>
         <argsstring>() const </argsstring>

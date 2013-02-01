@@ -1,19 +1,19 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_variance_option" kind="class" prot="public">
+  <compounddef id="variance_option" kind="class" prot="public">
     <compoundname>QuantLib::VarianceOption</compoundname>
     <includes local="no">/experimental/varianceoption/varianceoption.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_variance_option_1_1arguments" prot="public">QuantLib::VarianceOption::arguments</innerclass>
-    <innerclass refid="class_quant_lib_1_1_variance_option_1_1engine" prot="public">QuantLib::VarianceOption::engine</innerclass>
-    <innerclass refid="class_quant_lib_1_1_variance_option_1_1results" prot="public">QuantLib::VarianceOption::results</innerclass>
+    <innerclass refid="variance_option_1_1arguments" prot="public">QuantLib::VarianceOption::arguments</innerclass>
+    <innerclass refid="variance_option_1_1engine" prot="public">QuantLib::VarianceOption::engine</innerclass>
+    <innerclass refid="variance_option_1_1results" prot="public">QuantLib::VarianceOption::results</innerclass>
       <sectiondef kind="user-defined">
       <header>Instrument interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="variance_option_1a274c03751addc5c2ea63cc23d14a0bfe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>bool</type>
         <definition>bool isExpired</definition>
         <argsstring>() const </argsstring>
         <name>isExpired</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
+        <reimplements refid="instrument_1a672af63d5c16d2597399475923d21ad0">isExpired</reimplements>
         <briefdescription>
 <para>returns whether the instrument might have value greater than zero. </para>        </briefdescription>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="50"/>
@@ -21,29 +21,29 @@
       </sectiondef>
       <sectiondef kind="user-defined">
       <header>Inspectors</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="variance_option_1a3ab172f9ecc49c3e4606945f0704dcdb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date startDate</definition>
         <argsstring>() const </argsstring>
         <name>startDate</name>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="54" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="91" bodyend="93"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+      <memberdef kind="function" id="variance_option_1a716a3c2e199a948105b3be48b6c338aa" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="date" kindref="compound">Date</ref></type>
         <definition>Date maturityDate</definition>
         <argsstring>() const </argsstring>
         <name>maturityDate</name>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="55" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="95" bodyend="97"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="variance_option_1a77c2316297c4e96aac988cecd2564e72" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real notional</definition>
         <argsstring>() const </argsstring>
         <name>notional</name>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="56" bodyfile="/experimental/varianceoption/varianceoption.hpp" bodystart="99" bodyend="101"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a4487eeb30731c49f34adc51f011ee981" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="function" id="variance_option_1a4487eeb30731c49f34adc51f011ee981" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt; Payoff &gt; payoff</definition>
         <argsstring>() const </argsstring>
         <name>payoff</name>
@@ -51,13 +51,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1af20a440ba02476b7bafabf1b78811f30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="variance_option_1af20a440ba02476b7bafabf1b78811f30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>VarianceOption</definition>
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, Real notional, const Date &amp;startDate, const Date &amp;maturityDate)</argsstring>
         <name>VarianceOption</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
@@ -65,21 +65,21 @@
           <declname>notional</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <location file="/experimental/varianceoption/varianceoption.hpp" line="47"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_variance_option_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="variance_option_1a769a037255393b166557200edad61038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *args) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>

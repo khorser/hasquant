@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_option" kind="class" prot="public">
+  <compounddef id="option" kind="class" prot="public">
     <compoundname>QuantLib::Option</compoundname>
     <includes local="no">/option.hpp</includes>
-    <innerclass refid="class_quant_lib_1_1_option_1_1arguments" prot="public">QuantLib::Option::arguments</innerclass>
+    <innerclass refid="option_1_1arguments" prot="public">QuantLib::Option::arguments</innerclass>
       <sectiondef kind="public-type">
-      <memberdef kind="enum" id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
+      <memberdef kind="enum" id="option_1a1d1cfd8ffb84e947f82999c682b666a7" prot="public" static="no">
         <name>Type</name>
-        <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
+        <enumvalue id="option_1a1d1cfd8ffb84e947f82999c682b666a7a210f6c106607e9370f292cc1dd4ca873" prot="public">
           <name>Put</name>
           <initializer>= -1</initializer>
         </enumvalue>
-        <enumvalue id="class_quant_lib_1_1_option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
+        <enumvalue id="option_1a1d1cfd8ffb84e947f82999c682b666a7a59b9abc46faffa225d20abc5e5252417" prot="public">
           <name>Call</name>
           <initializer>= 1</initializer>
         </enumvalue>
@@ -19,27 +19,27 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1adfced6b95046a68a31ad8bee9157eb9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="option_1adfced6b95046a68a31ad8bee9157eb9c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Option</definition>
         <argsstring>(const boost::shared_ptr&lt; Payoff &gt; &amp;payoff, const boost::shared_ptr&lt; Exercise &gt; &amp;exercise)</argsstring>
         <name>Option</name>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt; &amp;</type>
           <declname>payoff</declname>
         </param>
         <param>
-          <type>const boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
+          <type>const boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt; &amp;</type>
           <declname>exercise</declname>
         </param>
         <location file="/option.hpp" line="43" bodyfile="/option.hpp" bodystart="41" bodyend="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="option_1aad6958108bfaef12bc4ccd6b3d7a7231" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type>void</type>
         <definition>void setupArguments</definition>
         <argsstring>(PricingEngine::arguments *) const </argsstring>
         <name>setupArguments</name>
-        <reimplements refid="class_quant_lib_1_1_instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
+        <reimplements refid="instrument_1aad6958108bfaef12bc4ccd6b3d7a7231">setupArguments</reimplements>
         <param>
           <type>PricingEngine::arguments *</type>
         </param>
@@ -47,15 +47,15 @@
 <para>When a derived argument structure is defined for an instrument, this method should be overridden to fill it. This is mandatory in case a pricing engine is used. </para>        </detaileddescription>
         <location file="/option.hpp" line="44" bodyfile="/option.hpp" bodystart="95" bodyend="102"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_payoff" kindref="compound">Payoff</ref> &gt;</type>
+      <memberdef kind="function" id="option_1ad20055b3037f613d7246b9b637768154" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="payoff" kindref="compound">Payoff</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Payoff&gt; payoff</definition>
         <argsstring>()</argsstring>
         <name>payoff</name>
         <location file="/option.hpp" line="45" bodyfile="/option.hpp" bodystart="45" bodyend="45"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
-        <type>boost::shared_ptr&lt; <ref refid="class_quant_lib_1_1_exercise" kindref="compound">Exercise</ref> &gt;</type>
+      <memberdef kind="function" id="option_1a451a2ea87e8074ea8fba41a3a8281b79" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>boost::shared_ptr&lt; <ref refid="exercise" kindref="compound">Exercise</ref> &gt;</type>
         <definition>boost::shared_ptr&lt;Exercise&gt; exercise</definition>
         <argsstring>()</argsstring>
         <name>exercise</name>
@@ -63,7 +63,7 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="related">
-      <memberdef kind="function" id="class_quant_lib_1_1_option_1a03bf400e04666eadc73907b0c716739e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="option_1a03bf400e04666eadc73907b0c716739e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
         <definition>std::ostream &amp; operator&lt;&lt;</definition>
         <argsstring>(std::ostream &amp;, Option::Type)</argsstring>

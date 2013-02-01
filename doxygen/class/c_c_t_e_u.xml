@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_c_c_t_e_u" kind="class" prot="public">
+  <compounddef id="c_c_t_e_u" kind="class" prot="public">
     <compoundname>QuantLib::CCTEU</compoundname>
     <includes local="no">/instruments/bonds/btp.hpp</includes>
       <sectiondef kind="user-defined">
       <header>Bond interface</header>
-      <memberdef kind="function" id="class_quant_lib_1_1_c_c_t_e_u_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="c_c_t_e_u_1ae8885ec61dd18583e5ac542fb5498fe4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1ga4bdf4bfe76b9ffa6fa64c47d8bfa0c78" kindref="member">Real</ref></type>
         <definition>Real accruedAmount</definition>
         <argsstring>(Date d=Date()) const </argsstring>
         <name>accruedAmount</name>
-        <reimplements refid="class_quant_lib_1_1_bond_1a0fc8bd8e30a2481352f942bbbd8666dc">accruedAmount</reimplements>
+        <reimplements refid="bond_1a0fc8bd8e30a2481352f942bbbd8666dc">accruedAmount</reimplements>
         <param>
-          <type><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref></type>
+          <type><ref refid="date" kindref="compound">Date</ref></type>
           <declname>d</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <briefdescription>
 <para>accrued amount at a given date </para>        </briefdescription>
@@ -24,13 +24,13 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_c_c_t_e_u_1afc07e81624e343114b80f985ba96cb5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="c_c_t_e_u_1afc07e81624e343114b80f985ba96cb5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>CCTEU</definition>
         <argsstring>(const Date &amp;maturityDate, Spread spread, const Handle&lt; YieldTermStructure &gt; &amp;fwdCurve=Handle&lt; YieldTermStructure &gt;(), const Date &amp;startDate=Date(), const Date &amp;issueDate=Date())</argsstring>
         <name>CCTEU</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>maturityDate</declname>
         </param>
         <param>
@@ -38,25 +38,25 @@
           <declname>spread</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt; &amp;</type>
           <declname>fwdCurve</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="yield_term_structure" kindref="compound">YieldTermStructure</ref> &gt;()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>startDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>issueDate</declname>
-          <defval><ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref>()</defval>
+          <defval><ref refid="date" kindref="compound">Date</ref>()</defval>
         </param>
         <location file="/instruments/bonds/btp.hpp" line="49"/>
       </memberdef>
       </sectiondef>
     <detaileddescription>
-<para>Italian <ref refid="class_quant_lib_1_1_c_c_t_e_u" kindref="compound">CCTEU</ref> (Certificato di credito del tesoro) <ref refid="class_quant_lib_1_1_euribor6_m" kindref="compound">Euribor6M</ref> indexed floating rate bond </para>    </detaileddescription>
+<para>Italian <ref refid="c_c_t_e_u" kindref="compound">CCTEU</ref> (Certificato di credito del tesoro) <ref refid="euribor6_m" kindref="compound">Euribor6M</ref> indexed floating rate bond </para>    </detaileddescription>
     <location file="/instruments/bonds/btp.hpp" line="42" bodyfile="/instruments/bonds/btp.hpp" bodystart="42" bodyend="56"/>
   </compounddef>
 </doxygen>

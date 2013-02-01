@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_ibor_coupon_pricer" kind="class" prot="public">
+  <compounddef id="ibor_coupon_pricer" kind="class" prot="public">
     <compoundname>QuantLib::IborCouponPricer</compoundname>
     <includes local="no">/cashflows/couponpricer.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="ibor_coupon_pricer_1ab8cc31db512e6184c6e636cb48f528dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>IborCouponPricer</definition>
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>IborCouponPricer</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="66" bodyfile="/cashflows/couponpricer.hpp" bodystart="64" bodyend="66"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
-        <type><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
+      <memberdef kind="function" id="ibor_coupon_pricer_1adfef2cab50b0c3b85151beaabf9309b5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;</type>
         <definition>Handle&lt;OptionletVolatilityStructure&gt; capletVolatility</definition>
         <argsstring>() const </argsstring>
         <name>capletVolatility</name>
         <location file="/cashflows/couponpricer.hpp" line="68" bodyfile="/cashflows/couponpricer.hpp" bodystart="68" bodyend="70"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_ibor_coupon_pricer_1ad26418d5cb34209463153a8b64491999" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="ibor_coupon_pricer_1ad26418d5cb34209463153a8b64491999" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>void</type>
         <definition>void setCapletVolatility</definition>
         <argsstring>(const Handle&lt; OptionletVolatilityStructure &gt; &amp;v=Handle&lt; OptionletVolatilityStructure &gt;())</argsstring>
         <name>setCapletVolatility</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
+          <type>const <ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt; &amp;</type>
           <declname>v</declname>
-          <defval><ref refid="class_quant_lib_1_1_handle" kindref="compound">Handle</ref>&lt; <ref refid="class_quant_lib_1_1_optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
+          <defval><ref refid="handle" kindref="compound">Handle</ref>&lt; <ref refid="optionlet_volatility_structure" kindref="compound">OptionletVolatilityStructure</ref> &gt;()</defval>
         </param>
         <location file="/cashflows/couponpricer.hpp" line="73" bodyfile="/cashflows/couponpricer.hpp" bodystart="71" bodyend="78"/>
       </memberdef>

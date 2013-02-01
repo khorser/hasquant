@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_secant" kind="class" prot="public">
+  <compounddef id="secant" kind="class" prot="public">
     <compoundname>QuantLib::Secant</compoundname>
     <includes local="no">/math/solvers1d/secant.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_secant_1a89c27acbd6897ade1c40e93c8b380558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="secant_1a89c27acbd6897ade1c40e93c8b380558" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
             <type>class F</type>

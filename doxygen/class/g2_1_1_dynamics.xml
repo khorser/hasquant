@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_g2_1_1_dynamics" kind="class" prot="public">
+  <compounddef id="g2_1_1_dynamics" kind="class" prot="public">
     <compoundname>QuantLib::G2::Dynamics</compoundname>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_dynamics_1a0513bda7e06cc1fac8a057176d377efc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="g2_1_1_dynamics_1a0513bda7e06cc1fac8a057176d377efc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>Dynamics</definition>
         <argsstring>(const Parameter &amp;fitting, Real a, Real sigma, Real b, Real eta, Real rho)</argsstring>
         <name>Dynamics</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_parameter" kindref="compound">Parameter</ref> &amp;</type>
+          <type>const <ref refid="parameter" kindref="compound">Parameter</ref> &amp;</type>
           <declname>fitting</declname>
         </param>
         <param>
@@ -34,7 +34,7 @@
         </param>
         <location file="/models/shortrate/twofactormodels/g2.hpp" line="135" bodyfile="/models/shortrate/twofactormodels/g2.hpp" bodystart="124" bodyend="135"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_g2_1_1_dynamics_1a5214cecca17100330a48b406d11aa1d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="g2_1_1_dynamics_1a5214cecca17100330a48b406d11aa1d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
         <type><ref refid="group__types_1gaede435af51236692b1107d7639581d39" kindref="member">Rate</ref></type>
         <definition>virtual Rate shortRate</definition>
         <argsstring>(Time t, Real x, Real y) const </argsstring>

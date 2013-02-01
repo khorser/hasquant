@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_domain" kind="class" prot="public" abstract="yes">
+  <compounddef id="domain" kind="class" prot="public" abstract="yes">
     <compoundname>QuantLib::Domain</compoundname>
     <includes local="no">/math/domain.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+      <memberdef kind="function" id="domain_1a6714fb4293e9e2060f72f292425a6481" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
         <type>bool</type>
         <definition>virtual bool includes</definition>
         <argsstring>(Real x, Real y) const =0</argsstring>
@@ -19,7 +19,7 @@
         </param>
         <location file="/math/domain.hpp" line="36"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+      <memberdef kind="function" id="domain_1a6d761774f807ee6735b9c220a83d8922" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type>bool</type>
         <definition>bool operator()</definition>
         <argsstring>(Real x, Real y)</argsstring>
@@ -34,7 +34,7 @@
         </param>
         <location file="/math/domain.hpp" line="37" bodyfile="/math/domain.hpp" bodystart="37" bodyend="37"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+      <memberdef kind="function" id="domain_1ae8e9881bdb3ae7c7ef2a09001763dece" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
         <type></type>
         <definition>virtual ~Domain</definition>
         <argsstring>()</argsstring>

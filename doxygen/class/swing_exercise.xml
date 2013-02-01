@@ -1,16 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.3.1">
-  <compounddef id="class_quant_lib_1_1_swing_exercise" kind="class" prot="public">
+  <compounddef id="swing_exercise" kind="class" prot="public">
     <compoundname>QuantLib::SwingExercise</compoundname>
     <includes local="no">/instruments/vanillaswingoption.hpp</includes>
       <sectiondef kind="public-func">
-      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a3d33fb3ddbacd3ab8c1b4bb3c8a785a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swing_exercise_1a3d33fb3ddbacd3ab8c1b4bb3c8a785a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwingExercise</definition>
         <argsstring>(const std::vector&lt; Date &gt; &amp;dates, const std::vector&lt; Size &gt; &amp;seconds=std::vector&lt; Size &gt;())</argsstring>
         <name>SwingExercise</name>
         <param>
-          <type>const std::vector&lt; <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &gt; &amp;</type>
+          <type>const std::vector&lt; <ref refid="date" kindref="compound">Date</ref> &gt; &amp;</type>
           <declname>dates</declname>
         </param>
         <param>
@@ -20,17 +20,17 @@
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="40"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a86a73dda254c228aa836fc63225035e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swing_exercise_1a86a73dda254c228aa836fc63225035e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>SwingExercise</definition>
         <argsstring>(const Date &amp;from, const Date &amp;to, Size stepSizeSecs)</argsstring>
         <name>SwingExercise</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>from</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>to</declname>
         </param>
         <param>
@@ -39,24 +39,24 @@
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="41"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1a4a96ab5e0b859956a62bd5ecebe9e3d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swing_exercise_1a4a96ab5e0b859956a62bd5ecebe9e3d4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="group__types_1gaf38bdb4c54463b1f456655efa95b5c77" kindref="member">Size</ref> &gt; &amp;</type>
         <definition>const std::vector&lt;Size&gt;&amp; seconds</definition>
         <argsstring>() const </argsstring>
         <name>seconds</name>
         <location file="/instruments/vanillaswingoption.hpp" line="43"/>
       </memberdef>
-      <memberdef kind="function" id="class_quant_lib_1_1_swing_exercise_1acac4050de15bd932950bb7cce7056791" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="swing_exercise_1acac4050de15bd932950bb7cce7056791" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; <ref refid="group__types_1ga14fb8fca43a68f4168654e1f9f7e22f7" kindref="member">Time</ref> &gt;</type>
         <definition>std::vector&lt;Time&gt; exerciseTimes</definition>
         <argsstring>(const DayCounter &amp;dc, const Date &amp;refDate) const </argsstring>
         <name>exerciseTimes</name>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_day_counter" kindref="compound">DayCounter</ref> &amp;</type>
+          <type>const <ref refid="day_counter" kindref="compound">DayCounter</ref> &amp;</type>
           <declname>dc</declname>
         </param>
         <param>
-          <type>const <ref refid="class_quant_lib_1_1_date" kindref="compound">Date</ref> &amp;</type>
+          <type>const <ref refid="date" kindref="compound">Date</ref> &amp;</type>
           <declname>refDate</declname>
         </param>
         <location file="/instruments/vanillaswingoption.hpp" line="46"/>
